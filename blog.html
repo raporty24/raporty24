@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog – PentaFlowBI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .section-title {
+        font-size: 2.2rem;
+        font-weight: 900;
+        letter-spacing: -1px;
+        display: inline-block;
+        position: relative;
+        margin-bottom: 0.7em;
+      }
+      .section-title-bar {
+        display: block;
+        height: 7px;
+        margin: 0.2em auto 0 auto;
+        border-radius: 4px;
+        background: linear-gradient(90deg, #41d8a8, #388dff 80%, #888);
+        width: 100%;
+        min-width: 30px;
+        max-width: 340px;
+        opacity: 0.96;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 2px 20px 0 #388dff22;
+        background-size: 140% auto;
+        animation: barGrowBlog 1.1s cubic-bezier(0.72, 0.15, 0.36, 1.17) 0s 1;
+      }
+      @keyframes barGrowBlog {
+        0% {
+          width: 0;
+          filter: brightness(1);
+        }
+        70% {
+          width: 100%;
+          filter: brightness(2);
+        }
+        100% {
+          width: 100%;
+          filter: brightness(1);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <nav
+      class="w-full px-4 py-3 flex justify-between items-center bg-white shadow mb-10"
+    >
+      <a
+        href="index.html"
+        class="font-bold text-xl text-blue-600 hover:underline"
+        >&larr; Strona główna</a
+      >
+      <span class="text-gray-600 font-semibold">Blog PentaFlowBI</span>
+    </nav>
+
+    <main class="container mx-auto px-4">
+      <h2 class="section-title mb-10">
+        Blog
+        <span class="section-title-bar"></span>
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Artykuł 1 -->
+        <article class="bg-gray-50 p-6 rounded-xl shadow">
+          <h3 class="font-bold text-2xl mb-2 text-green-800">
+            Średnia krocząca – jak ją liczyć i dlaczego jest ważna w biznesie?
+          </h3>
+          <p class="text-gray-700 mb-2 text-sm">
+            W świecie analizy danych, średnia krocząca pozwala wygładzić wahania
+            i wyłapać prawdziwe trendy. To narzędzie niezastąpione w raportach
+            sprzedaży, prognozowaniu czy analizie finansowej.
+          </p>
+          <ul class="list-disc list-inside mb-2 text-gray-600 text-sm">
+            <li>
+              <b>Jak liczyć?</b> – sumujesz kilka ostatnich wartości i dzielisz
+              przez ich liczbę (np. 7-dniowa średnia sprzedaży).
+            </li>
+            <li>
+              <b>Zastosowania:</b> prognozy, sezonowość, detekcja nietypowych
+              zdarzeń (np. skoki zamówień, promocje).
+            </li>
+            <li>
+              W Excelu to prosta formuła: <code>=AVERAGE(B2:B8)</code> i
+              kopiowanie w dół.
+            </li>
+          </ul>
+          <p class="text-gray-700 text-xs">
+            Przykład: masz sprzedaż z 30 dni, ale zależy Ci na trendzie, nie
+            szumie dziennym – średnia krocząca pokaże “prawdziwy” wzrost lub
+            spadek.
+          </p>
+        </article>
+        <!-- Artykuł 2 -->
+        <article class="bg-gray-50 p-6 rounded-xl shadow">
+          <h3 class="font-bold text-2xl mb-2 text-blue-800">
+            Jak szybko zrobić dashboard w Excelu i go zautomatyzować?
+          </h3>
+          <p class="text-gray-700 mb-2 text-sm">
+            Dashboardy Excel pozwalają śledzić kluczowe wskaźniki (KPI) w jednym
+            miejscu. Kluczowe kroki:
+          </p>
+          <ul class="list-disc list-inside mb-2 text-gray-600 text-sm">
+            <li>
+              <b>Zbierz dane</b> – najlepiej tabelarycznie (np. lista sprzedaży,
+              koszty).
+            </li>
+            <li>
+              <b>Twórz wykresy</b> – kolumnowe, liniowe, pierścieniowe. Wstaw je
+              na osobnym arkuszu (“Panel”).
+            </li>
+            <li>
+              <b>Dodaj segmenty i filtry</b> (slicery) – interaktywność nawet
+              dla laika.
+            </li>
+            <li>
+              <b>Automatyzuj</b> – użyj Power Query do pobierania nowych danych
+              automatycznie!
+            </li>
+          </ul>
+          <p class="text-gray-700 text-xs">
+            Taki dashboard oszczędzi Ci dziesiątki godzin na ręcznym tworzeniu
+            raportów i zawsze będzie aktualny.
+          </p>
+        </article>
+      </div>
+    </main>
+  </body>
+</html>
