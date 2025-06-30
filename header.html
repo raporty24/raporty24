@@ -1,0 +1,40 @@
+<header class="sticky top-0 bg-white shadow z-50" x-data>
+  <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+    <div><img src="/logos.png" alt="Raporty24" class="w-32 md:w-40" /></div>
+    <div class="space-x-6 font-medium hidden md:flex">
+      <a href="#onas" class="hover:text-green-400">O nas</a>
+      <a href="#cennik" class="hover:text-green-400">Cennik</a>
+      <a href="#abonament" class="hover:text-green-400">Abonament</a>
+      <a href="#dlaczego" class="hover:text-green-400">Dlaczego my?</a>
+      <a href="#kontakt" class="hover:text-green-400">Kontakt</a>
+    </div>
+    <button class="md:hidden" @click="menuOpen = !menuOpen">
+      <svg
+        class="w-6 h-6 text-green-500"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        />
+      </svg>
+    </button>
+  </nav>
+  <div
+    class="bg-white shadow md:hidden"
+    x-show="menuOpen"
+    @click.away="menuOpen = false"
+  >
+    <nav class="flex flex-col px-4 py-2 space-y-2">
+      <a href="#onas" class="hover:text-green-400">O nas</a>
+      <a href="#cennik" class="hover:text-green-400">Cennik</a>
+      <a href="#abonament" class="hover:text-green-400">Abonament</a>
+      <a href="#dlaczego" class="hover:text-green-400">Dlaczego my?</a>
+      <a href="#kontakt" class="hover:text-green-400">Kontakt</a>
+    </nav>
+  </div>
+</header>

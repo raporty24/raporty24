@@ -27,8 +27,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script
       defer
-      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
     <style>
       .overlay-blur {
         backdrop-filter: blur(3px);
@@ -36,14 +41,14 @@
       }
     </style>
   </head>
-  <body class="bg-gray-50 antialiased">
-    <!-- Menu główne -->
-    <header class="sticky top-0 bg-white shadow z-50" x-data>
+  <body class="bg-gray-50 antialiased" onload="loadPanel('analytics')">
+    <!-- HEADER -->
+    <header class="sticky top-0 bg-white shadow z-50">
       <nav
         class="container mx-auto px-4 py-4 flex justify-between items-center"
       >
-        <div><img src="/logos.png" alt="Raporty24" class="w-32 md:w-40" /></div>
-        <div class="space-x-6 font-medium hidden md:flex">
+        <img src="/logos.png" alt="Raporty24" class="w-32 md:w-40" />
+        <div class="hidden md:flex space-x-6 font-medium">
           <a href="#onas" class="hover:text-green-400">O nas</a>
           <a href="#cennik" class="hover:text-green-400">Cennik</a>
           <a href="#abonament" class="hover:text-green-400">Abonament</a>
@@ -51,25 +56,15 @@
           <a href="#kontakt" class="hover:text-green-400">Kontakt</a>
         </div>
         <button class="md:hidden" @click="menuOpen = !menuOpen">
-          <svg
-            class="w-6 h-6 text-green-500"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
+          <i class="fas fa-bars text-green-500"></i>
         </button>
       </nav>
+      <!-- Mobile Menu -->
       <div
         class="bg-white shadow md:hidden"
         x-show="menuOpen"
         @click.away="menuOpen = false"
+        x-transition
       >
         <nav class="flex flex-col px-4 py-2 space-y-2">
           <a href="#onas" class="hover:text-green-400">O nas</a>
@@ -81,20 +76,14 @@
       </div>
     </header>
 
-    <!-- Blog Button -->
-    <a
-      href="/blog.html"
-      class="fixed top-5 right-5 bg-green-400 text-white py-2 px-4 rounded-full shadow-lg font-semibold hover:bg-green-500 transition"
-      >Blog</a
-    >
-
-    <!-- Hero -->
+    <!-- HERO -->
     <section
       class="relative h-[400px] flex items-center justify-center overflow-hidden"
     >
       <img
-        src="/hero2.png"
+        src="hero2.png"
         class="absolute inset-0 w-full h-full object-cover opacity-80"
+        alt="Hero tło"
       />
       <div
         class="absolute inset-0 bg-gradient-to-br from-green-400/60 via-blue-400/40 to-gray-500/50 overlay-blur"
@@ -106,27 +95,25 @@
           class="mx-auto w-48 md:w-64 mb-4"
         />
         <p class="text-xl font-medium mb-6">
-          Całościowe wsparcie w analizie, raportowaniu i optymalizacji danych
+          Optymalizacja Excel i analityka dla Twojej firmy!
         </p>
-        <div
-          class="inline-flex rounded-full bg-white/80 p-1 shadow-lg flex-wrap"
-        >
+        <div class="inline-flex bg-white/80 p-1 rounded-full shadow-lg">
           <button
-            @click="panel='analytics'"
+            @click="panel = 'analytics'; loadPanel('analytics')"
             :class="panel==='analytics' ? 'bg-green-400 text-white' : 'text-gray-600'"
             class="px-6 py-2 rounded-full transition"
           >
             Analiza
           </button>
           <button
-            @click="panel='reporting'"
+            @click="panel = 'reporting'; loadPanel('reporting')"
             :class="panel==='reporting' ? 'bg-blue-400 text-white' : 'text-gray-600'"
             class="px-6 py-2 rounded-full transition"
           >
             Raportowanie
           </button>
           <button
-            @click="panel='optimization'"
+            @click="panel = 'optimization'; loadPanel('optimization')"
             :class="panel==='optimization' ? 'bg-gray-500 text-white' : 'text-gray-600'"
             class="px-6 py-2 rounded-full transition"
           >
@@ -136,176 +123,151 @@
       </div>
     </section>
 
-    <!-- Dynamiczne panele -->
+    <!-- PANELS -->
     <section class="container mx-auto px-4 my-16">
-      <template x-if="panel==='analytics'">
-        <div class="bg-green-50 p-8 rounded shadow-lg">
-          <h2 class="text-3xl font-bold mb-4 text-green-600">Analiza danych</h2>
-          <img
-            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80"
-            class="rounded mb-4"
-          />
-          <ul class="list-disc pl-6 mb-4">
-            <li>Wizualizacje trendów sprzedaży</li>
-            <li>Segmentacja klientów i cohort analysis</li>
-            <li>Analiza efektywności kampanii marketingowych</li>
-            <li>Dashboardy KPI w czasie rzeczywistym</li>
-            <li>Modelowanie predykcyjne</li>
-          </ul>
+      <div x-show="panel==='analytics'" x-transition>
+        <div id="analytics-panel-content"></div>
+      </div>
+      <div x-show="panel==='reporting'" x-transition>
+        <div id="reporting-panel-content"></div>
+      </div>
+      <div x-show="panel==='optimization'" x-transition>
+        <div id="optimization-panel-content"></div>
+      </div>
+    </section>
+
+    <!-- O NAS -->
+    <section id="onas" class="container mx-auto px-4 py-16">
+      <div class="bg-white rounded-2xl shadow-xl p-8 md:p-16 mb-12">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-gray-800 mb-6 flex items-center gap-4"
+        >
+          <i class="fas fa-users text-green-400"></i> O nas
+        </h2>
+        <p class="text-gray-700 text-lg mb-8">
+          Jesteśmy zespołem praktyków z realnym doświadczeniem –
+          <span class="font-bold text-green-600">Raporty24</span> powstało z
+          pasji do automatyzacji, analizy i raportowania, aby pomagać firmom
+          rozwijać się szybciej i mądrzej. <br />
+          Działamy na rynku od
+          <span class="font-bold text-blue-600">3 lat</span>, mamy na koncie
+          setki zrealizowanych projektów dla małych i średnich firm.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
+          <!-- Rafał -->
           <div
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"
+            class="flex items-center bg-gradient-to-br from-green-50 to-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300"
           >
-            <div class="bg-white p-4 rounded shadow">
-              <h3 class="font-semibold mb-2">Pakiet Start</h3>
-              <p>Analiza podstawowa, wizualizacje</p>
-              <p class="font-bold mt-2">od 250 zł</p>
+            <img
+              src="person_1.png"
+              alt="Rafał – ekspert Power BI"
+              class="w-24 h-24 rounded-full object-cover border-4 border-green-200 mr-6 shadow"
+            />
+            <div>
+              <h3 class="text-xl font-bold text-gray-800 mb-1">Rafał</h3>
+              <div
+                class="text-green-500 font-semibold mb-2 flex items-center gap-1"
+              >
+                <i class="fas fa-chart-bar"></i>
+                Ekspert raportowania, Power BI, Excel, dashboardy
+              </div>
+              <ul class="list-disc pl-5 text-gray-700 text-base space-y-1">
+                <li>Automatyzacje i dashboardy Power BI/Excel</li>
+                <li>Tworzenie raportów pod KPI</li>
+                <li>Audyt i wdrożenia raportowania</li>
+                <li>Wspiera klientów na każdym etapie projektu</li>
+              </ul>
             </div>
-            <div class="bg-white p-4 rounded shadow">
-              <h3 class="font-semibold mb-2">Pakiet Pro</h3>
-              <p>Zaawansowane dashboardy, segmentacje</p>
-              <p class="font-bold mt-2">od 450 zł</p>
-            </div>
-            <div class="bg-white p-4 rounded shadow">
-              <h3 class="font-semibold mb-2">Pakiet Premium</h3>
-              <p>Predykcje, ML, konsultacje</p>
-              <p class="font-bold mt-2">od 700 zł</p>
+          </div>
+          <!-- Monika -->
+          <div
+            class="flex items-center bg-gradient-to-br from-blue-50 to-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300"
+          >
+            <img
+              src="person_2.jpg"
+              alt="Monika – python, analiza danych"
+              class="w-24 h-24 rounded-full object-cover border-4 border-blue-200 mr-6 shadow"
+            />
+            <div>
+              <h3 class="text-xl font-bold text-gray-800 mb-1">Monika</h3>
+              <div
+                class="text-blue-500 font-semibold mb-2 flex items-center gap-1"
+              >
+                <i class="fas fa-code"></i>
+                Python, SQL, analiza danych, automatyzacje
+              </div>
+              <ul class="list-disc pl-5 text-gray-700 text-base space-y-1">
+                <li>Buduje automatyzacje w Pythonie i SQL</li>
+                <li>Zaawansowana analiza i oczyszczanie danych</li>
+                <li>Wdraża rozwiązania AI &amp; machine learning</li>
+                <li>Zawsze szuka najlepszego algorytmu!</li>
+              </ul>
             </div>
           </div>
         </div>
-      </template>
-
-      <template x-if="panel==='reporting'">
-        <div class="bg-blue-50 p-8 rounded shadow-lg">
-          <h2 class="text-3xl font-bold mb-4 text-blue-600">Raportowanie</h2>
-          <img
-            src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80"
-            class="rounded mb-4"
-          />
-          <ul class="list-disc pl-6 mb-4">
-            <li>Interaktywne dashboardy Power BI</li>
-            <li>Automatyczne raporty w Excelu</li>
-            <li>Cykliczne raportowanie (Email, Slack)</li>
-            <li>Alerty o odchyleniach KPI</li>
-            <li>Wizualizacje customowe</li>
-          </ul>
-          <div
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"
-          >
-            <div class="bg-white p-4 rounded shadow">
-              <h3 class="font-semibold mb-2">Pakiet Start</h3>
-              <p>Podstawowe raporty PDF/Excel</p>
-              <p class="font-bold mt-2">od 300 zł</p>
-            </div>
-            <div class="bg-white p-4 rounded shadow">
-              <h3 class="font-semibold mb-2">Pakiet Pro</h3>
-              <p>Dashboard online, alerty</p>
-              <p class="font-bold mt-2">od 550 zł</p>
-            </div>
-            <div class="bg-white p-4 rounded shadow">
-              <h3 class="font-semibold mb-2">Pakiet Premium</h3>
-              <p>Custom Reporting, integracje API</p>
-              <p class="font-bold mt-2">od 900 zł</p>
-            </div>
-          </div>
-        </div>
-      </template>
-
-      <template x-if="panel==='optimization'">
-        <div class="bg-gray-100 p-8 rounded shadow-lg">
-          <h2 class="text-3xl font-bold mb-4 text-gray-700">Optymalizacja</h2>
-          <img
-            src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=800&q=80"
-            class="rounded mb-4"
-          />
-          <ul class="list-disc pl-6 mb-4">
-            <li>Automatyzacja procesów w Excel/Python</li>
-            <li>Integracje z systemami (API, CRM, ERP)</li>
-            <li>Redukcja kosztów manualnych</li>
-            <li>Tworzenie generatorów dokumentów</li>
-            <li>Szkolenia i dokumentacja</li>
-          </ul>
-          <div
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"
-          >
-            <div class="bg-white p-4 rounded shadow">
-              <h3 class="font-semibold mb-2">Pakiet Start</h3>
-              <p>Podstawowa automatyzacja makr</p>
-              <p class="font-bold mt-2">od 400 zł</p>
-            </div>
-            <div class="bg-white p-4 rounded shadow">
-              <h3 class="font-semibold mb-2">Pakiet Pro</h3>
-              <p>Skrypty Python + integracje</p>
-              <p class="font-bold mt-2">od 650 zł</p>
-            </div>
-            <div class="bg-white p-4 rounded shadow">
-              <h3 class="font-semibold mb-2">Pakiet Premium</h3>
-              <p>Zaawansowane workflow, szkolenia</p>
-              <p class="font-bold mt-2">od 1100 zł</p>
-            </div>
-          </div>
-        </div>
-      </template>
-    </section>
-
-    <!-- Sekcje dodatkowe -->
-    <section id="onas" class="container mx-auto px-4 my-16">
-      <h2 class="text-4xl font-bold mb-6">O nas</h2>
-      <p>
-        Jesteśmy zespołem pasjonatów danych, łączymy wiedzę techniczną z
-        biznesową, aby Twoje decyzje były zawsze poparte faktami.
-      </p>
-    </section>
-
-    <section id="cennik" class="container mx-auto px-4 my-16">
-      <h2 class="text-4xl font-bold mb-6">Cennik ogólny</h2>
-      <p class="text-lg">
-        Usługa analizy od 250 zł | Raportowanie od 300 zł | Optymalizacja od 400
-        zł
-      </p>
-    </section>
-
-    <section id="abonament" class="container mx-auto px-4 my-16">
-      <h2 class="text-4xl font-bold mb-6">Abonamenty</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-white p-6 rounded shadow">
-          <h3 class="text-2xl font-semibold mb-2">Miesięczny</h3>
-          <p>Wsparcie, aktualizacje raportów</p>
-          <p class="font-bold text-xl mt-2">499 zł/mies.</p>
-        </div>
-        <div class="bg-white p-6 rounded shadow">
-          <h3 class="text-2xl font-semibold mb-2">Kwartalny</h3>
-          <p>Pełne wdrożenia, konsultacje</p>
-          <p class="font-bold text-xl mt-2">1299 zł/kw.</p>
-        </div>
-        <div class="bg-white p-6 rounded shadow">
-          <h3 class="text-2xl font-semibold mb-2">Roczny</h3>
-          <p>Strategiczne projekty, szkolenia</p>
-          <p class="font-bold text-xl mt-2">4999 zł/rok</p>
+        <div class="text-center">
+          <p class="text-gray-800 text-lg mb-3">
+            <i class="fas fa-check-circle text-green-500 mr-2"></i>
+            <span class="font-bold">Raporty24</span> to zespół łączący praktykę,
+            wiedzę i partnerskie podejście do każdego projektu.
+          </p>
+          <p class="text-gray-600 text-base">
+            Stawiamy na konkret, bezpieczeństwo danych i efekty mierzalne w
+            biznesie.<br />
+            <span class="italic text-gray-400"
+              >Nie przepalamy czasu, dostarczamy realną wartość.</span
+            >
+          </p>
         </div>
       </div>
     </section>
 
-    <section id="dlaczego" class="container mx-auto px-4 my-16">
-      <h2 class="text-4xl font-bold mb-6">Dlaczego Raporty24?</h2>
-      <ul class="list-decimal pl-6 space-y-2 text-lg">
-        <li>Szybka realizacja – pierwszy projekt w 48h</li>
-        <li>Indywidualne podejście do klienta</li>
-        <li>Pełna poufność danych i NDA</li>
-        <li>Wsparcie posprzedażowe 24/7</li>
-      </ul>
+    <!-- CENNIK -->
+    <section id="cennik" class="container mx-auto px-4 py-8">
+      <div class="bg-white rounded-2xl shadow-lg p-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-2">Cennik</h2>
+        <p class="text-gray-600">
+          Każdy projekt wyceniamy indywidualnie – poznaj przykładowe widełki w
+          panelach powyżej lub napisz do nas!
+        </p>
+      </div>
     </section>
 
-    <section id="kontakt" class="container mx-auto px-4 my-16">
-      <h2 class="text-4xl font-bold mb-6">Kontakt</h2>
-      <p class="text-lg">
-        Email:
-        <a href="mailto:kontakt@raporty24.pl" class="text-green-600"
-          >kontakt@raporty24.pl</a
-        >
-      </p>
-      <p class="text-lg">Tel: +48 123 456 789</p>
-    </section>
-
+    <!-- FOOTER -->
     <footer class="text-center py-6 bg-gray-200">© 2025 Raporty24.pl</footer>
+
+    <script>
+      const panelIds = {
+        analytics: "analytics-panel",
+        reporting: "reporting-panel",
+        optimization: "optimization-panel",
+      };
+
+      const contentIds = {
+        analytics: "analytics-panel-content",
+        reporting: "reporting-panel-content",
+        optimization: "optimization-panel-content",
+      };
+
+      function loadPanel(panel) {
+        fetch("sections.html")
+          .then((r) => r.text())
+          .then((html) => {
+            const div = document.createElement("div");
+            div.innerHTML = html;
+            // Czyść wszystkie panele
+            Object.values(contentIds).forEach((id) => {
+              const el = document.getElementById(id);
+              if (el) el.innerHTML = "";
+            });
+            // Wstaw wybrany panel
+            const panelDiv = div.querySelector("#" + panelIds[panel]);
+            if (panelDiv) {
+              document.getElementById(contentIds[panel]).innerHTML =
+                panelDiv.innerHTML;
+            }
+          });
+      }
+    </script>
   </body>
 </html>

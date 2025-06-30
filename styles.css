@@ -1,3 +1,95 @@
-h1 {
-  text-decoration: underline;
+.tech-carousel-wrap {
+  overflow: hidden;
+  width: 100%;
+  background: #f4f7fa;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tech-carousel {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  width: max-content;
+  animation: carousel-move 28s linear infinite;
+}
+
+.tech-carousel img {
+  height: 42px;
+  width: auto;
+  filter: grayscale(100%) brightness(0.9);
+  opacity: 0.85;
+  transition: filter 0.3s, opacity 0.3s, transform 0.2s;
+}
+
+.tech-carousel img:hover {
+  filter: none;
+  opacity: 1;
+  transform: scale(1.09) rotate(-1deg);
+}
+
+@keyframes carousel-move {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsywność – na mobile wolniej, mniejszy odstęp */
+@media (max-width: 700px) {
+  .tech-carousel {
+    gap: 1.2rem;
+    animation-duration: 48s;
+  }
+  .tech-carousel img {
+    height: 28px;
+  }
+}
+
+.tech-carousel-wrap {
+  overflow: hidden;
+  width: 100%;
+  background: #f4f7fa;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tech-carousel {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  animation: carousel-move 20s linear infinite;
+  width: max-content;
+}
+
+.tech-carousel img {
+  height: 42px;
+  filter: grayscale(100%) brightness(0.85);
+  opacity: 0.85;
+  transition: all 0.3s ease;
+}
+
+.tech-carousel img:hover {
+  filter: grayscale(0%) brightness(1);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+@keyframes carousel-move {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 700px) {
+  .tech-carousel {
+    gap: 1rem;
+    animation-duration: 30s;
+  }
+  .tech-carousel img {
+    height: 32px;
+  }
 }
