@@ -1,564 +1,411 @@
 <!-- Analiza -->
-<!-- Analiza -->
-<div id="analytics-panel" style="display: none">
-  <div class="bg-green-50 p-8 rounded-2xl shadow-lg">
-    <h2 class="text-3xl font-bold mb-4 text-green-600 flex items-center gap-2">
-      <i class="fas fa-chart-line"></i>Analiza danych biznesowych
-    </h2>
-    <p class="text-gray-700 text-lg mb-4">
-      Analiza danych to <b>klucz do świadomych decyzji</b> – wyciągamy sens z
-      liczb, żeby pokazać, co naprawdę napędza Twój biznes. <br />
-      Dzięki zaawansowanym narzędziom (Power BI, Python, SQL, Excel) odkryjesz
-      ukryte trendy, zależności i szanse na optymalizację.
+<div id="analytics-panel">
+  <div class="bg-white p-8 rounded-2xl shadow-lg">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-8">
+      <!-- LEWA: punktory -->
+      <ul
+        class="list-disc pl-6 text-gray-700 space-y-2 text-base order-2 md:order-1"
+      >
+        <li>
+          <b>Identyfikacja trendów i sezonowości</b> (analiza czasowa,
+          prognozowanie popytu)
+        </li>
+        <li>
+          <b>Segmentacja klientów</b> – znajdź, kto generuje największy zysk
+        </li>
+        <li>
+          <b>Wykrywanie anomalii i odchyleń</b> (alerty, szybka reakcja na
+          problemy)
+        </li>
+        <li><b>Porównanie regionów, kanałów sprzedaży i produktów</b></li>
+        <li>
+          <b>Łączenie danych z wielu źródeł</b> (Excel, CRM, ERP, API, bazy SQL)
+        </li>
+        <li>
+          <b>Wizualizacja danych</b> – wszystko zrozumiale na wykresach, mapach
+          i dashboardach
+        </li>
+        <li>
+          <b>Analiza kosztów i rentowności</b> – odkryj, gdzie możesz
+          zaoszczędzić
+        </li>
+      </ul>
+      <!-- PRAWA: obrazek z tekstem -->
+      <div
+        class="relative w-full h-52 md:h-60 rounded-2xl overflow-hidden shadow-lg flex items-center justify-center order-1 md:order-2"
+      >
+        <img
+          src="biuro4.webp"
+          alt="Analiza danych"
+          class="w-full h-full object-cover"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6"
+        >
+          <span
+            class="text-white text-2xl md:text-3xl font-bold drop-shadow-lg tracking-wide"
+          >
+            <i class="fas fa-chart-line mr-2"></i>Analiza danych biznesowych
+          </span>
+        </div>
+      </div>
+    </div>
+    <p class="text-gray-700 text-lg mb-8 text-justify">
+      Odkryj pełny potencjał swoich danych! Identyfikujemy trendy, segmentujemy
+      klientów i wykrywamy nieprawidłowości, abyś podejmował trafniejsze decyzje
+      biznesowe. Łączymy dane z różnych źródeł i wizualizujemy je w czytelnych
+      raportach – od prognoz popytu po analizę kosztów.
     </p>
-    <ul class="list-disc pl-6 text-gray-700 space-y-1 mb-4">
-      <li>
-        <b>Identyfikacja trendów i sezonowości</b> (analiza czasowa, predykcja
-        popytu)
-      </li>
-      <li>
-        <b>Segmentacja klientów</b> – znajdź, kto generuje największy zysk
-      </li>
-      <li>
-        <b>Wykrywanie anomalii i odchyleń</b> (alerty, szybka reakcja na
-        problemy)
-      </li>
-      <li><b>Porównanie regionów, kanałów sprzedaży i produktów</b></li>
-      <li>
-        <b>Łączenie danych z wielu źródeł</b> (Excel, CRM, ERP, API, bazy SQL)
-      </li>
-      <li>
-        <b>Wizualizacja danych</b> – wszystko zrozumiale na wykresach, mapach i
-        dashboardach
-      </li>
-      <li>
-        <b>Analiza kosztów i rentowności</b> – odkryj, gdzie możesz zaoszczędzić
-      </li>
-    </ul>
-
-    <!-- Przykłady zastosowań -->
-    <div class="mb-8">
-      <h3
-        class="text-xl font-semibold mb-2 text-green-500 flex items-center gap-2"
-      >
-        <i class="fas fa-lightbulb"></i>Przykładowe usercase
-      </h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div
-          class="bg-white rounded-xl p-5 shadow flex flex-col gap-1 hover:shadow-lg transition"
-        >
-          <div
-            class="text-green-600 font-semibold mb-1 flex items-center gap-1"
-          >
-            <i class="fas fa-balance-scale"></i> Sklep internetowy
-          </div>
-          <div class="text-gray-700">
-            <b>Analiza marży i koszyka zakupowego</b>: Wyszukujemy produkty o
-            najniższej rentowności i tworzymy rekomendacje do promocji i
-            cross-sellingu.
-          </div>
-        </div>
-        <div
-          class="bg-white rounded-xl p-5 shadow flex flex-col gap-1 hover:shadow-lg transition"
-        >
-          <div
-            class="text-green-600 font-semibold mb-1 flex items-center gap-1"
-          >
-            <i class="fas fa-users"></i> Dział HR
-          </div>
-          <div class="text-gray-700">
-            <b>Analiza rotacji pracowników</b>: Przewidujemy, kto jest
-            najbardziej narażony na odejście na podstawie historii absencji i
-            oceny wydajności.
-          </div>
-        </div>
-        <div
-          class="bg-white rounded-xl p-5 shadow flex flex-col gap-1 hover:shadow-lg transition"
-        >
-          <div
-            class="text-green-600 font-semibold mb-1 flex items-center gap-1"
-          >
-            <i class="fas fa-truck"></i> Logistyka
-          </div>
-          <div class="text-gray-700">
-            <b>Prognozowanie opóźnień w dostawach</b>: Analiza danych
-            historycznych pozwala przewidywać opóźnienia i optymalizować trasy.
-          </div>
-        </div>
-        <div
-          class="bg-white rounded-xl p-5 shadow flex flex-col gap-1 hover:shadow-lg transition"
-        >
-          <div
-            class="text-green-600 font-semibold mb-1 flex items-center gap-1"
-          >
-            <i class="fas fa-hand-holding-usd"></i> Finanse
-          </div>
-          <div class="text-gray-700">
-            <b>Analiza płynności finansowej</b>: Tworzymy modele prognozowania
-            przepływów pieniężnych (cash flow), wykrywamy wąskie gardła.
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Case study slider -->
-    <h3 class="text-xl font-semibold mb-2 text-green-600 mt-8">
-      Historie klientów:
-    </h3>
-    <div
-      x-data="{
-        current: 0,
-        slides: [
-          { 
-            title: 'Wykrywanie strat w produkcji', 
-            problem: 'Firma produkcyjna co miesiąc notowała duże niezidentyfikowane straty materiałowe.', 
-            solution: 'Zebraliśmy dane z kilku działów i stworzyliśmy dashboard do monitorowania zużycia surowców. Zidentyfikowaliśmy źródło strat na jednym stanowisku.', 
-            result: 'Zmniejszenie strat o 23% w pierwszym kwartale po wdrożeniu.' 
-          },
-          { 
-            title: 'Analiza efektywności kampanii marketingowej', 
-            problem: 'Nie wiadomo było, która kampania internetowa przynosi najwięcej sprzedaży.', 
-            solution: 'Połączyliśmy dane z Facebook Ads, Google Ads i sklepu. Zrobiliśmy analizę ROI na poziomie pojedynczych reklam.', 
-            result: 'Budżet przesunięty na najefektywniejsze kanały, wzrost konwersji o 17%.' 
-          },
-          { 
-            title: 'Predykcja rotacji pracowników', 
-            problem: 'Duża rotacja w zespole call center, kosztowny proces rekrutacji.', 
-            solution: 'Stworzyliśmy model predykcyjny w Pythonie na podstawie danych kadrowych, absencji i ocen. Ustaliliśmy grupy największego ryzyka.', 
-            result: 'Redukcja kosztów rotacji o 15% rocznie, wdrożone działania prewencyjne.' 
-          }
-        ],
-        next() { this.current = (this.current + 1) % this.slides.length; },
-        prev() { this.current = (this.current - 1 + this.slides.length) % this.slides.length; }
-      }"
-      class="relative overflow-hidden mb-8 bg-white rounded-xl shadow-lg p-6"
+    <!-- Przykładowe usercase -->
+    <h3
+      class="text-xl font-semibold mb-2 text-green-600 flex items-center gap-2"
     >
-      <div class="grid grid-cols-1 gap-6">
-        <template x-for="(slide, i) in slides" :key="i">
-          <div x-show="current === i" class="transition duration-500">
-            <h4
-              class="text-lg font-semibold mb-2 text-green-700"
-              x-text="slide.title"
-            ></h4>
-            <p class="mb-1 text-gray-600">
-              <b>Problem:</b> <span x-text="slide.problem"></span>
-            </p>
-            <p class="mb-1 text-gray-600">
-              <b>Rozwiązanie:</b> <span x-text="slide.solution"></span>
-            </p>
-            <p class="font-bold text-green-600">
-              <b>Rezultat:</b> <span x-text="slide.result"></span>
-            </p>
-          </div>
-        </template>
-      </div>
-      <div class="flex gap-4 mt-4 justify-center">
-        <button
-          @click="prev()"
-          class="bg-green-100 text-green-600 px-3 py-2 rounded-full hover:bg-green-200 transition"
-        >
-          &larr;
-        </button>
-        <button
-          @click="next()"
-          class="bg-green-100 text-green-600 px-3 py-2 rounded-full hover:bg-green-200 transition"
-        >
-          &rarr;
-        </button>
-      </div>
-    </div>
-
-    <!-- Call to action -->
-    <div class="text-center mt-6">
-      <a
-        href="mailto:kontakt@raporty24.pl"
-        class="inline-block bg-gradient-to-r from-green-500 to-blue-400 text-white py-4 px-8 rounded-xl font-bold text-lg shadow-lg hover:brightness-110 transition-all duration-300 transform hover:scale-105 cursor-pointer"
+      <i class="fas fa-lightbulb"></i> Przykładowe usercase
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+      <div
+        class="bg-white rounded-xl p-5 shadow flex flex-col gap-1 hover:shadow-lg transition"
       >
-        Poznaj możliwości analizy danych &rarr;
-      </a>
-      <p class="text-sm text-gray-500 mt-3">
-        Sprawdź na demo, co możesz zyskać, mając dane pod pełną kontrolą!
-      </p>
+        <div class="text-green-600 font-semibold mb-1 flex items-center gap-1">
+          <i class="fas fa-balance-scale"></i> Sklep internetowy
+        </div>
+        <div class="text-gray-700">
+          <b>Analiza marży i koszyka zakupowego</b>: Wyszukujemy produkty o
+          najniższej rentowności i tworzymy rekomendacje do promocji i
+          cross-sellingu.
+        </div>
+      </div>
+      <div
+        class="bg-white rounded-xl p-5 shadow flex flex-col gap-1 hover:shadow-lg transition"
+      >
+        <div class="text-green-600 font-semibold mb-1 flex items-center gap-1">
+          <i class="fas fa-users"></i> Dział HR
+        </div>
+        <div class="text-gray-700">
+          <b>Analiza rotacji pracowników</b>: Przewidujemy, kto jest najbardziej
+          narażony na odejście na podstawie historii absencji i oceny
+          wydajności.
+        </div>
+      </div>
+      <div
+        class="bg-white rounded-xl p-5 shadow flex flex-col gap-1 hover:shadow-lg transition"
+      >
+        <div class="text-green-600 font-semibold mb-1 flex items-center gap-1">
+          <i class="fas fa-truck"></i> Logistyka
+        </div>
+        <div class="text-gray-700">
+          <b>Prognozowanie opóźnień w dostawach</b>: Analiza danych
+          historycznych pozwala przewidywać opóźnienia i optymalizować trasy.
+        </div>
+      </div>
+      <div
+        class="bg-white rounded-xl p-5 shadow flex flex-col gap-1 hover:shadow-lg transition"
+      >
+        <div class="text-green-600 font-semibold mb-1 flex items-center gap-1">
+          <i class="fas fa-hand-holding-usd"></i> Finanse
+        </div>
+        <div class="text-gray-700">
+          <b>Analiza płynności finansowej</b>: Tworzymy modele prognozowania
+          przepływów pieniężnych (cash flow), wykrywamy wąskie gardła.
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- Raportowanie -->
-<!-- Raportowanie -->
-<div id="reporting-panel" style="display: none">
-  <div class="bg-blue-50 p-8 rounded-2xl shadow-lg">
-    <h2 class="text-3xl font-bold mb-4 text-blue-600 flex items-center gap-2">
-      <i class="fas fa-chart-bar"></i>Raportowanie dla biznesu
-    </h2>
-    <p class="text-gray-700 text-lg mb-4">
-      Skuteczne raportowanie to <b>nie tylko tabele i wykresy</b> – to narzędzie
-      do podejmowania decyzji w firmie. Tworzymy przejrzyste, interaktywne i
-      zautomatyzowane raporty, które pozwalają
-      <span class="text-blue-700 font-semibold"
-        >oszczędzać czas, eliminować błędy i widzieć to, co ważne</span
+<div id="reporting-panel">
+  <div class="bg-white p-8 rounded-2xl shadow-lg">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-8">
+      <!-- LEWA: punktory -->
+      <ul
+        class="list-disc pl-6 text-gray-700 space-y-2 text-base order-2 md:order-1"
       >
-      w Twoich danych.
+        <li>
+          <b>Automatyczne raporty cykliczne</b> (mailing, PDF, Excel, Power BI)
+        </li>
+        <li>
+          <b>Interaktywne dashboardy</b> dla zarządu i działów operacyjnych
+        </li>
+        <li>
+          <b>KPI i alerty</b> – szybka informacja o przekroczeniu progów lub
+          ryzyku
+        </li>
+        <li><b>Raporty „na żądanie”</b> – pobierasz tylko to, co potrzebne</li>
+        <li><b>Wersje mobilne i przeglądarkowe</b> (Power BI/online/Teams)</li>
+        <li>
+          <b>Integracje z różnymi źródłami</b>: Excel, SQL, API, Google Sheets
+        </li>
+        <li>
+          <b
+            >Pełna automatyzacja: koniec z ręcznym kopiowaniem i scalaniem
+            plików</b
+          >
+        </li>
+      </ul>
+      <!-- PRAWA: obrazek z tekstem -->
+      <div
+        class="relative w-full h-52 md:h-60 rounded-2xl overflow-hidden shadow-lg flex items-center justify-center order-1 md:order-2"
+      >
+        <img
+          src="biuro4.webp"
+          alt="Raportowanie"
+          class="w-full h-full object-cover"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent flex items-end p-6"
+        >
+          <span
+            class="text-white text-2xl md:text-3xl font-bold drop-shadow-lg tracking-wide"
+          >
+            <i class="fas fa-chart-bar mr-2"></i>Raportowanie dla biznesu
+          </span>
+        </div>
+      </div>
+    </div>
+    <p class="text-gray-700 text-lg mb-8 text-justify">
+      Raporty to nie tylko tabele – to konkretne narzędzia do podejmowania
+      decyzji. Budujemy interaktywne dashboardy i automatyczne raporty, które
+      pozwalają Ci eliminować błędy, reagować na zmiany i widzieć to, co
+      naprawdę ważne – zawsze na czas i w dogodnej formie.
     </p>
-    <ul class="list-disc pl-6 text-gray-700 space-y-1 mb-4">
-      <li>
-        <b>Automatyczne raporty cykliczne</b> (mailing, PDF, Excel, Power BI)
-      </li>
-      <li><b>Interaktywne dashboardy</b> dla zarządu i działów operacyjnych</li>
-      <li>
-        <b>KPI i alerty</b> – szybka informacja o przekroczeniu progów lub
-        ryzyku
-      </li>
-      <li><b>Raporty „na żądanie”</b> – pobierasz tylko to, co potrzebne</li>
-      <li><b>Wersje mobilne i przeglądarkowe</b> (Power BI/online/Teams)</li>
-      <li>
-        <b>Integracje z różnymi źródłami</b>: Excel, SQL, API, Google Sheets
-      </li>
-      <li>
-        <b
-          >Pełna automatyzacja: koniec z ręcznym kopiowaniem i scalaniem
-          plików</b
-        >
-      </li>
-    </ul>
-
-    <!-- Przykłady zastosowań -->
-    <div class="mb-8">
-      <h3
-        class="text-xl font-semibold mb-2 text-blue-500 flex items-center gap-2"
-      >
-        <i class="fas fa-clipboard-list"></i>Przykładowe usercase
-      </h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div
-          class="bg-white rounded-xl p-5 shadow flex flex-col gap-1 hover:shadow-lg transition"
-        >
-          <div class="text-blue-500 font-semibold mb-1 flex items-center gap-1">
-            <i class="fas fa-building"></i> Zarząd firmy
-          </div>
-          <div class="text-gray-700">
-            <b>„Raport zarządczy”</b>: Codzienna automatyczna wysyłka raportu z
-            KPI, dynamiką sprzedaży, kosztami, porównaniem z planem i alertami,
-            jeśli coś przekroczy założony próg.
-          </div>
-        </div>
-        <div
-          class="bg-white rounded-xl p-5 shadow flex flex-col gap-1 hover:shadow-lg transition"
-        >
-          <div class="text-blue-500 font-semibold mb-1 flex items-center gap-1">
-            <i class="fas fa-users-cog"></i> Dział handlowy
-          </div>
-          <div class="text-gray-700">
-            <b>„Dashboard sprzedażowy”</b>: Interaktywny raport online z
-            rankingiem handlowców, statusami leadów i analizą konwersji – zawsze
-            aktualny, dostępny na telefonie.
-          </div>
-        </div>
-        <div
-          class="bg-white rounded-xl p-5 shadow flex flex-col gap-1 hover:shadow-lg transition"
-        >
-          <div class="text-blue-500 font-semibold mb-1 flex items-center gap-1">
-            <i class="fas fa-warehouse"></i> Logistyka i magazyn
-          </div>
-          <div class="text-gray-700">
-            <b>„Raport stanów magazynowych”</b>: Automatyczny raport co rano z
-            informacją o brakach, nadwyżkach, prognozowanym zapotrzebowaniu –
-            zamiast ręcznego liczenia w Excelu.
-          </div>
-        </div>
-        <div
-          class="bg-white rounded-xl p-5 shadow flex flex-col gap-1 hover:shadow-lg transition"
-        >
-          <div class="text-blue-500 font-semibold mb-1 flex items-center gap-1">
-            <i class="fas fa-wallet"></i> Księgowość i finanse
-          </div>
-          <div class="text-gray-700">
-            <b>„Raport płatności i cash flow”</b>: Zintegrowany raport z
-            terminami płatności, monitoringiem przeterminowanych faktur,
-            podsumowaniem cash-flow na dziś i prognozą na 3 miesiące.
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Case study slider -->
-    <h3 class="text-xl font-semibold mb-2 text-blue-600 mt-8">
-      Historie klientów:
-    </h3>
-    <div
-      x-data="{
-        current: 0,
-        slides: [
-          { 
-            title: 'Raporty z Excela do Power BI', 
-            problem: 'Każdy dział tworzył swoje pliki, a dane do raportu tygodniowego kopiowano ręcznie – dużo błędów, brak spójności.', 
-            solution: 'Automatyzacja importu i konsolidacji danych z Excela do Power BI. Wszystko spina się w jeden dashboard, aktualizuje się samo co noc.', 
-            result: 'Czas przygotowania raportu spadł z 5h do 15 minut. Zarząd ma zawsze świeży obraz firmy.' 
-          },
-          { 
-            title: 'Raport mailowy z alertami', 
-            problem: 'Kierownicy musieli ręcznie sprawdzać limity zamówień i pisać do przełożonych przy przekroczeniach.', 
-            solution: 'Automatyczny raport mailowy z kolorowymi alertami, wysyłany codziennie tylko do osób, których dział przekroczył próg.', 
-            result: 'Błyskawiczna reakcja na problemy, mniejszy stres, zero ręcznej roboty.' 
-          },
-          { 
-            title: 'Dashboard sprzedażowy live', 
-            problem: 'Handlowcy nie wiedzieli, kto jest liderem i jaki jest postęp do celu na bieżąco.', 
-            solution: 'Interaktywny dashboard Power BI z rankingiem i alertami, widoczny na TV w biurze oraz na telefonach.', 
-            result: 'Większa motywacja, zdrowa rywalizacja, szybsze domykanie szans sprzedażowych.' 
-          }
-        ],
-        next() { this.current = (this.current + 1) % this.slides.length; },
-        prev() { this.current = (this.current - 1 + this.slides.length) % this.slides.length; }
-      }"
-      class="relative overflow-hidden mb-8 bg-white rounded-xl shadow-lg p-6"
+    <h3
+      class="text-xl font-semibold mb-2 text-blue-600 flex items-center gap-2"
     >
-      <div class="grid grid-cols-1 gap-6">
-        <template x-for="(slide, i) in slides" :key="i">
-          <div x-show="current === i" class="transition duration-500">
-            <h4
-              class="text-lg font-semibold mb-2 text-blue-700"
-              x-text="slide.title"
-            ></h4>
-            <p class="mb-1 text-gray-600">
-              <b>Problem:</b> <span x-text="slide.problem"></span>
-            </p>
-            <p class="mb-1 text-gray-600">
-              <b>Rozwiązanie:</b> <span x-text="slide.solution"></span>
-            </p>
-            <p class="font-bold text-blue-600">
-              <b>Rezultat:</b> <span x-text="slide.result"></span>
-            </p>
-          </div>
-        </template>
-      </div>
-      <div class="flex gap-4 mt-4 justify-center">
-        <button
-          @click="prev()"
-          class="bg-blue-100 text-blue-600 px-3 py-2 rounded-full hover:bg-blue-200 transition"
-        >
-          &larr;
-        </button>
-        <button
-          @click="next()"
-          class="bg-blue-100 text-blue-600 px-3 py-2 rounded-full hover:bg-blue-200 transition"
-        >
-          &rarr;
-        </button>
-      </div>
-    </div>
-
-    <!-- Call to action -->
-    <div class="text-center mt-6">
-      <a
-        href="mailto:kontakt@raporty24.pl"
-        class="inline-block bg-gradient-to-r from-blue-500 to-green-400 text-white py-4 px-8 rounded-xl font-bold text-lg shadow-lg hover:brightness-110 transition-all duration-300 transform hover:scale-105 cursor-pointer"
+      <i class="fas fa-clipboard-list"></i> Przykładowe usercase
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+      <div
+        class="bg-white rounded-xl p-5 shadow flex flex-col gap-1 hover:shadow-lg transition"
       >
-        Zamów bezpłatną konsultację raportowania &rarr;
-      </a>
-      <p class="text-sm text-gray-500 mt-3">
-        Pokażemy Ci na demo, jak może wyglądać Twoje nowe raportowanie!
-      </p>
+        <div class="text-blue-500 font-semibold mb-1 flex items-center gap-1">
+          <i class="fas fa-building"></i> Zarząd firmy
+        </div>
+        <div class="text-gray-700">
+          <b>„Raport zarządczy”</b>: Codzienna automatyczna wysyłka raportu z
+          KPI, dynamiką sprzedaży, kosztami, porównaniem z planem i alertami,
+          jeśli coś przekroczy założony próg.
+        </div>
+      </div>
+      <div
+        class="bg-white rounded-xl p-5 shadow flex flex-col gap-1 hover:shadow-lg transition"
+      >
+        <div class="text-blue-500 font-semibold mb-1 flex items-center gap-1">
+          <i class="fas fa-users-cog"></i> Dział handlowy
+        </div>
+        <div class="text-gray-700">
+          <b>„Dashboard sprzedażowy”</b>: Interaktywny raport online z
+          rankingiem handlowców, statusami leadów i analizą konwersji – zawsze
+          aktualny, dostępny na telefonie.
+        </div>
+      </div>
+      <div
+        class="bg-white rounded-xl p-5 shadow flex flex-col gap-1 hover:shadow-lg transition"
+      >
+        <div class="text-blue-500 font-semibold mb-1 flex items-center gap-1">
+          <i class="fas fa-warehouse"></i> Logistyka i magazyn
+        </div>
+        <div class="text-gray-700">
+          <b>„Raport stanów magazynowych”</b>: Automatyczny raport co rano z
+          informacją o brakach, nadwyżkach, prognozowanym zapotrzebowaniu –
+          zamiast ręcznego liczenia w Excelu.
+        </div>
+      </div>
+      <div
+        class="bg-white rounded-xl p-5 shadow flex flex-col gap-1 hover:shadow-lg transition"
+      >
+        <div class="text-blue-500 font-semibold mb-1 flex items-center gap-1">
+          <i class="fas fa-wallet"></i> Księgowość i finanse
+        </div>
+        <div class="text-gray-700">
+          <b>„Raport płatności i cash flow”</b>: Zintegrowany raport z terminami
+          płatności, monitoringiem przeterminowanych faktur, podsumowaniem
+          cash-flow na dziś i prognozą na 3 miesiące.
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- Optymalizacja -->
-<div id="optimization-panel" style="display: none">
-  <!-- TWÓJ ROZBUDOWANY KOD, ZOSTAJE TAK JAK BYŁ! -->
-  <div
-    class="bg-gradient-to-br from-gray-100 to-gray-200 p-0 md:p-8 rounded-2xl shadow-xl mb-8 overflow-hidden"
-  >
-    <div class="grid grid-cols-1 md:grid-cols-2 items-stretch min-h-[380px]">
-      <div class="flex flex-col justify-center p-6 md:p-10 bg-white/95">
-        <h2 class="text-4xl font-bold mb-4 text-gray-800 tracking-wide">
-          Optymalizacja i analiza procesów w Excelu dla MŚP
-        </h2>
-        <p class="text-gray-700 text-lg leading-relaxed mb-4">
-          Kompleksowa
-          <span class="inline-flex items-center">
-            <i class="fas fa-tools text-green-500 mr-2"></i>optymalizacja Excel
-            dla MŚP </span
-          >,
-          <span class="inline-flex items-center">
-            <i class="fas fa-chart-pie text-blue-500 mr-2"></i>dashboard
-            analityczny dla małych firm </span
-          >, szybkie efekty, konkurencyjne ceny dla małych i średnich firm.
-        </p>
-        <ul class="list-none space-y-1 text-base">
-          <li class="flex items-center">
-            <i class="fas fa-search text-green-500 mr-2"></i> Audyt skoroszytów
-            – wykrywanie błędów i wąskich gardeł
-          </li>
-          <li class="flex items-center">
-            <i class="fas fa-tachometer-alt text-blue-500 mr-2"></i>
-            Interaktywne dashboardy i KPI w Excelu
-          </li>
-          <li class="flex items-center">
-            <i class="fas fa-play-circle text-yellow-500 mr-2"></i>
-            Automatyzacja VBA – makra, formularze, batch-operacje
-          </li>
-          <li class="flex items-center">
-            <i class="fas fa-check-circle text-purple-500 mr-2"></i> Walidacja
-            danych – Data Validation, formatowanie warunkowe
-          </li>
-          <li class="flex items-center">
-            <i class="fas fa-chart-line text-green-500 mr-2"></i> Prognozy
-            popytu i cash-flow – średnie ruchome, alerty
-          </li>
-          <li class="flex items-center">
-            <i class="fas fa-calendar-alt text-blue-500 mr-2"></i> Harmonogramy
-            Gantta – planowanie zasobów
-          </li>
-          <li class="flex items-center">
-            <i class="fas fa-link text-yellow-500 mr-2"></i> Konsolidacja plików
-            (Power Query) – centralne repozytorium
-          </li>
-          <li class="flex items-center">
-            <i class="fas fa-trash-alt text-purple-500 mr-2"></i> Optymalizacja
-            skoroszytów – usuwanie nieużywanych stylów i nazw
-          </li>
-          <li class="flex items-center">
-            <i class="fas fa-graduation-cap text-green-500 mr-2"></i> Szkolenia
-            Excel VBA + wsparcie powdrożeniowe
-          </li>
-        </ul>
-      </div>
-      <div class="relative min-h-[380px]">
+<div id="optimization-panel">
+  <div class="bg-white p-8 rounded-2xl shadow-lg mb-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 items-center mb-8">
+      <!-- LEWA: punktory -->
+      <ul
+        class="list-disc pl-6 text-gray-700 space-y-2 text-base order-2 md:order-1"
+      >
+        <li><b>Audyt skoroszytów</b> – wykrywanie błędów i wąskich gardeł</li>
+        <li><b>Interaktywne dashboardy i KPI</b> w Excelu</li>
+        <li><b>Automatyzacja VBA</b> – makra, formularze, batch-operacje</li>
+        <li>
+          <b>Walidacja danych</b> – Data Validation, formatowanie warunkowe
+        </li>
+        <li><b>Prognozy popytu i cash-flow</b> – średnie ruchome, alerty</li>
+        <li><b>Harmonogramy Gantta</b> – planowanie zasobów</li>
+        <li>
+          <b>Konsolidacja plików (Power Query)</b> – centralne repozytorium
+        </li>
+        <li>
+          <b>Optymalizacja skoroszytów</b> – usuwanie nieużywanych stylów i nazw
+        </li>
+        <li><b>Szkolenia Excel VBA + wsparcie</b></li>
+      </ul>
+      <!-- PRAWA: obrazek z tekstem -->
+      <div
+        class="relative w-full h-52 md:h-60 rounded-2xl overflow-hidden shadow-lg flex items-center justify-center order-1 md:order-2"
+      >
+        <img
+          src="biuro4.webp"
+          alt="Optymalizacja Excel"
+          class="w-full h-full object-cover"
+        />
         <div
-          class="absolute inset-0 bg-center bg-cover"
-          style="
-            background-image: url('biuro1.png');
-            background-size: cover;
-            background-position: center;
-          "
-        ></div>
-      </div>
-    </div>
-    <!-- Studia przypadku -->
-    <h3 class="text-2xl font-semibold mb-4 text-gray-700 mt-8">
-      Przykłady sukcesów
-    </h3>
-    <div
-      x-data="{
-            current: 0,
-            slides: [
-              { title: '1. Ręczne wprowadzanie danych', problem: 'Przepisywanie dziesiątek wierszy ręcznie powodowało literówki i opóźnienia.', solution: 'Formularz VBA z walidacją, listami wyboru i blokadą nieprawidłowych wpisów.', result: 'Błędy spadły do zera, czas wprowadzania danych skrócił się o 60%.' },
-              { title: '2. Klinika skoroszytów', problem: 'Skoroszyty działały bardzo wolno, a przeliczanie było wyłączone.', solution: 'Narzędzie VBA przywracające automatyczne obliczenia, usuwające nieużywane obiekty i kompresujące plik.', result: 'Czas otwierania i przeliczania skrócony o 70%.' },
-              { title: '3. Daty jako tekst', problem: 'Tekstowe daty uniemożliwiały grupowanie w tabelach przestawnych.', solution: 'Makro konwertujące tekstowe daty na typ datowy i odświeżające raporty.', result: 'Grupowanie miesięczne działa natychmiast, analiza trwa milisekundy.' },
-              { title: '4. Brak walidacji danych', problem: 'Różne formaty komórek prowadziły do błędnych obliczeń.', solution: 'Arkusz kontrolny z walidacją i kolorowaniem nieprawidłowych wpisów.', result: 'Błędy formatowania zniknęły, wiarygodność raportów wzrosła o 100%.' },
-              { title: '5. Rozproszona baza danych', problem: 'Dane sprzedaży w wielu plikach utrudniały raporty.', solution: 'Master.xlsx z Power Query łączący wszystkie pliki.', result: 'Raport zbiorczy gotowy w 5 minut zamiast kilku godzin.' }
-            ],
-            prev() { this.current = this.current > 1 ? this.current - 2 : this.slides.length - (2 - this.current); },
-            next() { this.current = this.current < this.slides.length - 2 ? this.current + 2 : (this.current + 2) % this.slides.length - (this.slides.length % 2); }
-          }"
-      class="relative overflow-hidden mb-10 bg-white rounded-xl shadow-lg p-6"
-    >
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <template
-          x-for="i in [current, (current + 1) % slides.length]"
-          :key="i"
+          class="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent flex items-end p-6"
         >
-          <div
-            class="bg-gradient-to-br from-green-50 to-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300"
+          <span
+            class="text-white text-2xl md:text-3xl font-bold drop-shadow-lg tracking-wide"
           >
-            <h3
-              class="text-xl font-semibold mb-2 text-gray-800"
-              x-text="slides[i].title"
-            ></h3>
-            <p class="mb-2 text-gray-600">
-              <strong>Problem:</strong>
-              <span x-text="slides[i].problem"></span>
-            </p>
-            <p class="mb-2 text-gray-600">
-              <strong>Rozwiązanie:</strong>
-              <span x-text="slides[i].solution"></span>
-            </p>
-            <p class="font-bold text-green-600">
-              <strong>Rezultat:</strong>
-              <span x-text="slides[i].result"></span>
-            </p>
-          </div>
-        </template>
-      </div>
-      <button
-        @click="prev()"
-        class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white text-gray-800 p-3 rounded-full shadow-lg hover:bg-green-100 transition"
-      >
-        ←
-      </button>
-      <button
-        @click="next()"
-        class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white text-gray-800 p-3 rounded-full shadow-lg hover:bg-green-100 transition"
-      >
-        →
-      </button>
-    </div>
-    <!-- Cennik -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 mb-10">
-      <div
-        class="bg-white p-6 rounded-xl shadow-lg text-center transform transition-all duration-300 hover:scale-105 hover:bg-gradient-to-br from-green-50 to-white"
-      >
-        <h4 class="font-semibold text-lg mb-2">Dashboard sprzedaży</h4>
-        <div class="border-t border-gray-300 my-2"></div>
-        <p class="text-2xl font-bold text-gray-800 mb-2">już od 800–1 200 zł</p>
-        <p class="text-sm text-gray-500">Tanie rozwiązanie dla MŚP</p>
-      </div>
-      <div
-        class="bg-white p-6 rounded-xl shadow-lg text-center transform transition-all duration-300 hover:scale-105 hover:bg-gradient-to-br from-blue-50 to-white"
-      >
-        <h4 class="font-semibold text-lg mb-2">Formularz VBA</h4>
-        <div class="border-t border-gray-300 my-2"></div>
-        <p class="text-2xl font-bold text-gray-800 mb-2">
-          już od 1 200–1 800 zł
-        </p>
-        <p class="text-sm text-gray-500">Automatyzacja dla firm</p>
-      </div>
-      <div
-        class="bg-white p-6 rounded-xl shadow-lg text-center transform transition-all duration-300 hover:scale-105 hover:bg-gradient-to-br from-yellow-50 to-white"
-      >
-        <h4 class="font-semibold text-lg mb-2">Harmonogram Gantta</h4>
-        <div class="border-t border-gray-300 my-2"></div>
-        <p class="text-2xl font-bold text-gray-800 mb-2">
-          już od 1 000–1 500 zł
-        </p>
-        <p class="text-sm text-gray-500">Planowanie dla MŚP</p>
-      </div>
-      <div
-        class="bg-white p-6 rounded-xl shadow-lg text-center transform transition-all duration-300 hover:scale-105 hover:bg-gradient-to-br from-purple-50 to-white"
-      >
-        <h4 class="font-semibold text-lg mb-2">Konsolidacja (Power Query)</h4>
-        <div class="border-t border-gray-300 my-2"></div>
-        <p class="text-2xl font-bold text-gray-800 mb-2">1 000–1 500 zł</p>
-        <p class="text-sm text-gray-500">Centralizacja danych</p>
-      </div>
-    </div>
-    <!-- Call to Action -->
-    <div class="text-center">
-      <h3 class="text-2xl font-semibold text-gray-700 mb-4">
-        Skontaktuj się z nami!
-      </h3>
-      <div x-data="{ showContact: false }">
-        <a
-          @click="showContact = !showContact"
-          class="inline-block bg-gradient-to-r from-gray-500 to-gray-700 text-white py-4 px-8 rounded-xl font-bold text-lg shadow-lg hover:brightness-110 transition-all duration-300 transform hover:scale-105 cursor-pointer"
-        >
-          Umów bezpłatną konsultację
-        </a>
-        <div x-show="showContact" class="mt-4 text-gray-800">
-          <p>
-            Email:
-            <a href="mailto:kontakt@raporty24.pl" class="text-green-600"
-              >kontakt@raporty24.pl</a
-            >
-          </p>
-          <p>
-            Tel:
-            <a href="tel:+48123456789" class="text-green-600"
-              >+48 123 456 789</a
-            >
-          </p>
+            <i class="fas fa-tools mr-2"></i>Optymalizacja w Excelu dla MŚP
+          </span>
         </div>
       </div>
+    </div>
+    <p class="text-gray-700 text-lg mb-8 text-justify">
+      Popraw wydajność swojej firmy dzięki optymalizacji procesów w Excelu i
+      Power Query. Automatyzujemy raportowanie, tworzymy dashboardy, wdrażamy
+      narzędzia eliminujące błędy i czasochłonne zadania. Szybko, bezpiecznie i
+      z realnym efektem dla biznesu.
+    </p>
+    <h3
+      class="text-xl font-semibold mb-2 text-gray-700 flex items-center gap-2"
+    >
+      <i class="fas fa-bolt"></i> Przykładowe usercase
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+      <div
+        class="bg-white rounded-xl p-5 shadow flex flex-col gap-1 hover:shadow-lg transition"
+      >
+        <div class="text-gray-700 font-semibold mb-1 flex items-center gap-1">
+          <i class="fas fa-play-circle"></i> Formularz VBA
+        </div>
+        <div class="text-gray-700">
+          <b>Automatyzacja wprowadzania danych</b>: Formularze z walidacją
+          eliminują literówki i błędy, przyspieszając pracę o 60%.
+        </div>
+      </div>
+      <div
+        class="bg-white rounded-xl p-5 shadow flex flex-col gap-1 hover:shadow-lg transition"
+      >
+        <div class="text-gray-700 font-semibold mb-1 flex items-center gap-1">
+          <i class="fas fa-link"></i> Konsolidacja plików
+        </div>
+        <div class="text-gray-700">
+          <b>Power Query</b>: Łączymy wiele plików Excel do jednego
+          repozytorium. Zbiorczy raport gotowy w kilka minut.
+        </div>
+      </div>
+      <div
+        class="bg-white rounded-xl p-5 shadow flex flex-col gap-1 hover:shadow-lg transition"
+      >
+        <div class="text-gray-700 font-semibold mb-1 flex items-center gap-1">
+          <i class="fas fa-chart-line"></i> Dashboardy Excel
+        </div>
+        <div class="text-gray-700">
+          <b>KPI i analityka dla zarządu</b>: Przejrzyste wykresy, alerty i
+          szybkie raportowanie dostępne 24/7.
+        </div>
+      </div>
+      <div
+        class="bg-white rounded-xl p-5 shadow flex flex-col gap-1 hover:shadow-lg transition"
+      >
+        <div class="text-gray-700 font-semibold mb-1 flex items-center gap-1">
+          <i class="fas fa-graduation-cap"></i> Szkolenia i wsparcie
+        </div>
+        <div class="text-gray-700">
+          <b>Praktyczne szkolenia Excel</b>: Rozwijamy kompetencje zespołu i
+          zapewniamy wsparcie powdrożeniowe.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Małe firmy -->
+<!-- Małe firmy -->
+<!-- Małe firmy -->
+<div id="male-firmy-panel">
+  <div class="bg-white border-2 border-gray-200 p-8 rounded-2xl shadow-lg mb-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-8">
+      <!-- LEWA: punktory -->
+      <ul
+        class="list-disc pl-6 text-gray-700 space-y-2 text-base order-2 md:order-1"
+      >
+        <li>
+          <b>Nie wiesz, od czego zacząć?</b> Wspólnie odkryjemy potrzeby Twojej
+          firmy.
+        </li>
+        <li>
+          <b>Bezpłatna konsultacja</b> – pokażemy, gdzie możesz oszczędzić czas
+          i pieniądze.
+        </li>
+        <li>
+          <b>Automatyzacja prostych zadań</b> – mniej klikania, więcej czasu dla
+          klientów.
+        </li>
+        <li>
+          <b>Proste raporty i wizualizacje</b> – wszystko czytelnie i „po
+          ludzku”.
+        </li>
+        <li>
+          <b>Wsparcie w rozwoju</b> – od narzędzi Excel po doradztwo operacyjne.
+        </li>
+        <li>
+          <b>Elastyczne rozwiązania</b> – tylko to, czego naprawdę potrzebujesz.
+        </li>
+        <li>
+          <b>Pomoc na każdym etapie</b> – nie musisz być ekspertem od Excela ani
+          BI.
+        </li>
+      </ul>
+      <!-- PRAWA: obrazek z tekstem -->
+      <div
+        class="relative w-full h-52 md:h-60 rounded-2xl overflow-hidden shadow-lg flex items-center justify-center order-1 md:order-2"
+      >
+        <img
+          src="biuro1.webp"
+          alt="Optymalizacja dla małych firm"
+          class="w-full h-full object-cover"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-gray-800/60 to-transparent flex items-end p-6"
+        >
+          <span
+            class="text-white text-2xl md:text-3xl font-bold drop-shadow-lg tracking-wide"
+          >
+            <i class="fas fa-seedling mr-2"></i>Optymalizacja dla małych firm
+          </span>
+        </div>
+      </div>
+    </div>
+    <p class="text-gray-700 text-lg mb-8 text-justify">
+      Masz małą firmę, mnóstwo codziennych spraw i… zero czasu, żeby zastanawiać
+      się nad raportami czy optymalizacją? To normalne – i właśnie od tego
+      jesteśmy!
+      <b>Pomagamy właścicielom, którzy sami nie wiedzą, od czego zacząć.</b>
+      Wspólnie znajdujemy konkretne usprawnienia – od prostych trików w Excelu,
+      przez automatyzację raportów, po lepszą kontrolę kosztów i czasu.
+      <br /><br />
+      Zadzwoń, napisz – możesz przyjść nawet „z niczym”. My zadamy pytania,
+      zrozumiemy Twoje realne potrzeby i znajdziemy rozwiązanie skrojone pod
+      Ciebie.
+    </p>
+    <div class="flex justify-center">
+      <a
+        href="#kontakt"
+        class="bg-gray-500 hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-full shadow-xl text-lg transition duration-200"
+      >
+        Porozmawiajmy – to nic nie kosztuje!
+      </a>
     </div>
   </div>
 </div>
