@@ -1,48 +1,69 @@
 ---
-// Header.astro
+// Header.astro - Wersja Premium Architect z pełnym menu mobilnym
 ---
 
 <header 
-  class="fixed top-0 w-full z-50 border-b border-slate-200/60 bg-white/80 backdrop-blur-md"
+  class="fixed top-0 w-full z-50 border-b border-slate-200/60 bg-white/90 backdrop-blur-xl"
   x-data="{ menuOpen: false }"
 >
-  <nav class="container mx-auto px-4 py-3 md:py-4 flex justify-between items-center">
+  <nav class="container mx-auto px-4 py-3 lg:py-4 flex justify-between items-center">
     <a href="/#hero" class="flex items-center gap-2 group transition-transform hover:scale-105">
-      <img src="/logos.webp" alt="Raporty24" width="160" height="40" class="w-32 md:w-40" />
+      <img src="/logos.webp" alt="Raporty24 - Ekspert Power BI" width="160" height="40" class="w-32 md:w-40" />
     </a>
 
-    <div class="hidden md:flex items-center gap-1 font-medium" id="desktop-menu">
-      <a href="/#oferta" class="nav-link" data-section="oferta">Zakres usług</a>
+    <div class="hidden xl:flex items-center gap-1" id="desktop-menu">
+      <a href="/#oferta" class="nav-link" data-section="oferta">Usługi</a>
       <a href="/#technologie" class="nav-link" data-section="technologie">Technologie</a>
       <a href="/#cennik" class="nav-link" data-section="cennik">Cennik</a>
-      <a href="/#abonament" class="nav-link" data-section="abonament">Subskrypcja</a>
+      <a href="/#abonament" class="nav-link" data-section="abonament">Abonament</a>
       <a href="/#dlaczego" class="nav-link" data-section="dlaczego">Dlaczego my?</a>
       <a href="/#kontakt" class="nav-link" data-section="kontakt">Kontakt</a>
 
-      <div class="ml-4 flex items-center gap-2 border-l border-slate-200 pl-4">
-        <a href="/#demo-section" class="navy-btn-menu" data-section="demo-section">Demo</a>
-        
+      <div class="ml-6 flex items-center gap-3 border-l border-slate-200 pl-6">
+        <a href="/#demo-section" class="navy-btn-menu" data-section="demo-section">Demo JS</a>
         <a href="/blog/" class="green-btn-menu">Blog</a>
         
-        <a href="https://www.tiktok.com/@raporty24" target="_blank" class="text-slate-400 hover:text-[#ff0050] transition-colors ml-2 text-lg">
+        <a href="https://www.tiktok.com/@raporty24" target="_blank" class="text-slate-400 hover:text-[#ff0050] transition-colors ml-2 text-xl">
           <i class="fab fa-tiktok"></i>
         </a>
       </div>
     </div>
 
-    <button class="md:hidden p-2" @click="menuOpen = !menuOpen">
-      <i class="fas fa-bars text-green-700 text-2xl" x-show="!menuOpen"></i>
-      <i class="fas fa-times text-slate-500 text-2xl" x-show="menuOpen" x-cloak></i>
+    <button class="xl:hidden p-2 rounded-xl bg-slate-50 border border-slate-100" @click="menuOpen = !menuOpen" aria-label="Menu">
+      <i class="fas fa-bars text-green-700 text-xl" x-show="!menuOpen"></i>
+      <i class="fas fa-times text-slate-500 text-xl" x-show="menuOpen" x-cloak></i>
     </button>
   </nav>
 
-  <div class="bg-white border-t border-slate-100 md:hidden" x-show="menuOpen" x-cloak x-transition>
-    <nav class="flex flex-col p-4 space-y-2 text-center text-slate-700">
-      <a href="/#oferta" class="py-2" @click="menuOpen=false">Zakres usług</a>
-      <a href="/#cennik" class="py-2" @click="menuOpen=false">Cennik</a>
-      <a href="/#demo-section" class="py-2 font-bold text-[#243356]" @click="menuOpen=false">Demo</a>
-      <a href="/blog/" class="py-2 text-green-600 font-bold" @click="menuOpen=false">Blog</a>
-      <a href="/#kontakt" class="bg-green-600 text-white py-3 rounded-xl font-bold mt-2" @click="menuOpen=false">Bezpłatny Audyt</a>
+  <div 
+    class="fixed inset-x-0 top-[64px] bg-white border-t border-slate-100 shadow-2xl xl:hidden overflow-y-auto max-h-[calc(100vh-64px)]" 
+    x-show="menuOpen" 
+    x-cloak 
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0 -translate-y-4"
+    x-transition:enter-end="opacity-100 translate-y-0"
+  >
+    <nav class="flex flex-col p-6 space-y-1">
+      <a href="/#oferta" class="mobile-nav-link" @click="menuOpen=false">Zakres usług</a>
+      <a href="/#technologie" class="mobile-nav-link" @click="menuOpen=false">Technologie</a>
+      <a href="/#cennik" class="mobile-nav-link" @click="menuOpen=false">Cennik i Audyt</a>
+      <a href="/#abonament" class="mobile-nav-link" @click="menuOpen=false">Subskrypcja (SLA)</a>
+      <a href="/#dlaczego" class="mobile-nav-link" @click="menuOpen=false">Dlaczego my?</a>
+      <a href="/#demo-section" class="mobile-nav-link font-black text-slate-900 border-b border-slate-50" @click="menuOpen=false">Interaktywne Demo</a>
+      
+      <div class="pt-6 pb-4 flex flex-col gap-4">
+        <a href="/blog/" class="text-center py-4 rounded-2xl bg-slate-900 text-white font-black text-xs uppercase tracking-widest" @click="menuOpen=false">
+          Baza wiedzy (Blog)
+        </a>
+        <a href="/#kontakt" class="text-center py-4 rounded-2xl bg-green-600 text-white font-black text-xs uppercase tracking-widest shadow-lg shadow-green-600/20" @click="menuOpen=false">
+          Bezpłatny Audyt danych
+        </a>
+      </div>
+
+      <div class="flex justify-center gap-6 pt-6 border-t border-slate-50">
+        <a href="https://www.tiktok.com/@raporty24" target="_blank" class="text-slate-400 text-2xl"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.linkedin.com/in/raporty-raporty-50a8413a4/" target="_blank" class="text-slate-400 text-2xl"><i class="fab fa-linkedin"></i></a>
+      </div>
     </nav>
   </div>
 </header>
@@ -50,27 +71,26 @@
 <a 
   href="https://www.tiktok.com/@raporty24" 
   target="_blank" 
-  class="fixed bottom-6 right-6 z-[60] flex items-center justify-center w-14 h-14 bg-black text-white rounded-full shadow-2xl hover:scale-110 hover:rotate-6 transition-all duration-300 group"
+  class="fixed bottom-6 right-6 z-[60] flex items-center justify-center w-14 h-14 bg-slate-950 text-white rounded-full shadow-2xl hover:scale-110 transition-all duration-300 group"
 >
-  <i class="fab fa-tiktok text-2xl group-hover:text-[#ff0050] transition-colors"></i>
-  <span class="absolute right-16 bg-white text-black text-[10px] font-bold px-3 py-1 rounded-lg shadow-md border border-slate-100 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+  <i class="fab fa-tiktok text-xl group-hover:text-[#ff0050] transition-colors"></i>
+  <span class="absolute right-16 bg-white text-slate-900 text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-xl shadow-xl border border-slate-100 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
     Triki w 60 sekund! 🚀
   </span>
 </a>
 
 <style>
-  /* NAPRAWA BŁĘDU: Ścieżka do stylów (sprawdź czy masz jedną czy dwie kropki) */
   @reference "../styles/global.css";
 
   [x-cloak] { display: none !important; }
 
+  /* Desktop Links */
   .nav-link {
-    @apply px-3 py-2 text-sm text-slate-500 hover:text-green-600 transition-all relative;
+    @apply px-3 py-2 text-[11px] font-black uppercase tracking-widest text-slate-500 hover:text-green-600 transition-all relative;
   }
 
-  /* Styl dla AKTYWNEGO przycisku w menu */
-  .nav-link.active, .navy-btn-menu.active {
-    @apply text-green-600 font-extrabold;
+  .nav-link.active {
+    @apply text-green-600 font-black;
   }
 
   .nav-link.active::after {
@@ -78,13 +98,18 @@
     @apply absolute bottom-0 left-3 right-3 h-0.5 bg-green-600 rounded-full;
   }
 
-  /* Styl przycisków */
+  /* Mobile Links */
+  .mobile-nav-link {
+    @apply py-4 text-sm font-bold text-slate-600 border-b border-slate-50 flex items-center justify-center hover:text-green-600;
+  }
+
+  /* Buttons */
   .navy-btn-menu {
-    @apply bg-[#243356] text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-[#1d2946] transition-all;
+    @apply bg-slate-900 text-white px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-lg shadow-slate-900/10;
   }
 
   .green-btn-menu {
-    @apply bg-green-600 text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-green-700 shadow-md shadow-green-600/20 transition-all;
+    @apply bg-green-600 text-white px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-green-500 shadow-lg shadow-green-600/20 transition-all;
   }
 </style>
 
@@ -98,7 +123,6 @@
         if (entry.isIntersecting) {
           const id = entry.target.getAttribute('id');
           navLinks.forEach(link => {
-            // Sprawdzamy czy data-section pasuje do ID sekcji
             if (link.getAttribute('data-section') === id) {
               link.classList.add('active');
             } else {
@@ -108,7 +132,7 @@
         }
       });
     }, { 
-      rootMargin: '-20% 0px -70% 0px', // Aktywuje się, gdy sekcja zajmuje górę ekranu
+      rootMargin: '-20% 0px -70% 0px',
       threshold: 0 
     });
 
@@ -118,7 +142,152 @@
     });
   }
 
-  // Obsługa Astro (zarówno zwykłe ładowanie jak i View Transitions)
+  document.addEventListener('astro:page-load', setupScrollSpy);
+  setupScrollSpy();
+</script>---
+// Header.astro - Wersja Premium Architect z pełnym menu mobilnym
+---
+
+<header 
+  class="fixed top-0 w-full z-50 border-b border-slate-200/60 bg-white/90 backdrop-blur-xl"
+  x-data="{ menuOpen: false }"
+>
+  <nav class="container mx-auto px-4 py-3 lg:py-4 flex justify-between items-center">
+    <a href="/#hero" class="flex items-center gap-2 group transition-transform hover:scale-105">
+      <img src="/logos.webp" alt="Raporty24 - Ekspert Power BI" width="160" height="40" class="w-32 md:w-40" />
+    </a>
+
+    <div class="hidden xl:flex items-center gap-1" id="desktop-menu">
+      <a href="/#oferta" class="nav-link" data-section="oferta">Usługi</a>
+      <a href="/#technologie" class="nav-link" data-section="technologie">Technologie</a>
+      <a href="/#cennik" class="nav-link" data-section="cennik">Cennik</a>
+      <a href="/#abonament" class="nav-link" data-section="abonament">Abonament</a>
+      <a href="/#dlaczego" class="nav-link" data-section="dlaczego">Dlaczego my?</a>
+      <a href="/#kontakt" class="nav-link" data-section="kontakt">Kontakt</a>
+
+      <div class="ml-6 flex items-center gap-3 border-l border-slate-200 pl-6">
+        <a href="/#demo-section" class="navy-btn-menu" data-section="demo-section">Demo JS</a>
+        <a href="/blog/" class="green-btn-menu">Blog</a>
+        
+        <a href="https://www.tiktok.com/@raporty24" target="_blank" class="text-slate-400 hover:text-[#ff0050] transition-colors ml-2 text-xl">
+          <i class="fab fa-tiktok"></i>
+        </a>
+      </div>
+    </div>
+
+    <button class="xl:hidden p-2 rounded-xl bg-slate-50 border border-slate-100" @click="menuOpen = !menuOpen" aria-label="Menu">
+      <i class="fas fa-bars text-green-700 text-xl" x-show="!menuOpen"></i>
+      <i class="fas fa-times text-slate-500 text-xl" x-show="menuOpen" x-cloak></i>
+    </button>
+  </nav>
+
+  <div 
+    class="fixed inset-x-0 top-[64px] bg-white border-t border-slate-100 shadow-2xl xl:hidden overflow-y-auto max-h-[calc(100vh-64px)]" 
+    x-show="menuOpen" 
+    x-cloak 
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0 -translate-y-4"
+    x-transition:enter-end="opacity-100 translate-y-0"
+  >
+    <nav class="flex flex-col p-6 space-y-1">
+      <a href="/#oferta" class="mobile-nav-link" @click="menuOpen=false">Zakres usług</a>
+      <a href="/#technologie" class="mobile-nav-link" @click="menuOpen=false">Technologie</a>
+      <a href="/#cennik" class="mobile-nav-link" @click="menuOpen=false">Cennik i Audyt</a>
+      <a href="/#abonament" class="mobile-nav-link" @click="menuOpen=false">Subskrypcja (SLA)</a>
+      <a href="/#dlaczego" class="mobile-nav-link" @click="menuOpen=false">Dlaczego my?</a>
+      <a href="/#demo-section" class="mobile-nav-link font-black text-slate-900 border-b border-slate-50" @click="menuOpen=false">Interaktywne Demo</a>
+      
+      <div class="pt-6 pb-4 flex flex-col gap-4">
+        <a href="/blog/" class="text-center py-4 rounded-2xl bg-slate-900 text-white font-black text-xs uppercase tracking-widest" @click="menuOpen=false">
+          Baza wiedzy (Blog)
+        </a>
+        <a href="/#kontakt" class="text-center py-4 rounded-2xl bg-green-600 text-white font-black text-xs uppercase tracking-widest shadow-lg shadow-green-600/20" @click="menuOpen=false">
+          Bezpłatny Audyt danych
+        </a>
+      </div>
+
+      <div class="flex justify-center gap-6 pt-6 border-t border-slate-50">
+        <a href="https://www.tiktok.com/@raporty24" target="_blank" class="text-slate-400 text-2xl"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.linkedin.com/in/raporty-raporty-50a8413a4/" target="_blank" class="text-slate-400 text-2xl"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<a 
+  href="https://www.tiktok.com/@raporty24" 
+  target="_blank" 
+  class="fixed bottom-6 right-6 z-[60] flex items-center justify-center w-14 h-14 bg-slate-950 text-white rounded-full shadow-2xl hover:scale-110 transition-all duration-300 group"
+>
+  <i class="fab fa-tiktok text-xl group-hover:text-[#ff0050] transition-colors"></i>
+  <span class="absolute right-16 bg-white text-slate-900 text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-xl shadow-xl border border-slate-100 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+    Triki w 60 sekund! 🚀
+  </span>
+</a>
+
+<style>
+  @reference "../styles/global.css";
+
+  [x-cloak] { display: none !important; }
+
+  /* Desktop Links */
+  .nav-link {
+    @apply px-3 py-2 text-[11px] font-black uppercase tracking-widest text-slate-500 hover:text-green-600 transition-all relative;
+  }
+
+  .nav-link.active {
+    @apply text-green-600 font-black;
+  }
+
+  .nav-link.active::after {
+    content: '';
+    @apply absolute bottom-0 left-3 right-3 h-0.5 bg-green-600 rounded-full;
+  }
+
+  /* Mobile Links */
+  .mobile-nav-link {
+    @apply py-4 text-sm font-bold text-slate-600 border-b border-slate-50 flex items-center justify-center hover:text-green-600;
+  }
+
+  /* Buttons */
+  .navy-btn-menu {
+    @apply bg-slate-900 text-white px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-lg shadow-slate-900/10;
+  }
+
+  .green-btn-menu {
+    @apply bg-green-600 text-white px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-green-500 shadow-lg shadow-green-600/20 transition-all;
+  }
+</style>
+
+<script>
+  function setupScrollSpy() {
+    const sections = ['hero', 'oferta', 'technologie', 'cennik', 'abonament', 'dlaczego', 'kontakt', 'demo-section'];
+    const navLinks = document.querySelectorAll('.nav-link, .navy-btn-menu');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            if (link.getAttribute('data-section') === id) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
+        }
+      });
+    }, { 
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0 
+    });
+
+    sections.forEach(id => {
+      const section = document.getElementById(id);
+      if (section) observer.observe(section);
+    });
+  }
+
   document.addEventListener('astro:page-load', setupScrollSpy);
   setupScrollSpy();
 </script>

@@ -1,102 +1,101 @@
 ---
-/* Panels.astro - Slider na mobile, Grid na desktopie */
+// Panels.astro - Wersja Premium Glass z SEO Boosterem
 ---
-<section id="oferta" class="modern-services" x-data="{ activeStep: 0 }">
+<section id="oferta" class="modern-services relative overflow-hidden" x-data="{ activeStep: 0 }">
+  
   <div class="sr-only">
-    <h2>Usługi analityczne i automatyzacja raportów – Katowice, Śląsk</h2>
-    <p>Kompleksowe wsparcie w zakresie Business Intelligence: od analizy danych SQL i Python, przez interaktywne dashboardy Power BI, aż po zaawansowaną automatyzację Excel Power Query i VBA.</p>
+    <h2>Ekspert Excel i Power BI Katowice – Oferta i Cennik</h2>
+    <p>Świadczymy specjalistyczne usługi: tworzenie arkuszy Excel na zamówienie, naprawa uszkodzonych plików, wdrażanie zaawansowanych systemów Power BI oraz pełna automatyzacja raportów biznesowych dla firm ze Śląska.</p>
   </div>
 
-  <div class="container mx-auto px-4">
+  <div class="container mx-auto px-4 relative z-10">
     
-    <header class="max-w-3xl mb-12 lg:mb-16">
-      <span class="eyebrow">Zakres usług</span>
-      <h2 class="display-title">Raportowanie, które pracuje na Ciebie.</h2>
-      <p class="text-xl text-slate-500 mt-6 leading-relaxed">
-        Bez zbędnych tabel i ręcznego przepisywania danych. Dostarczamy czystą analitykę, która wspiera Twoje decyzje każdego dnia.
+    <header class="max-w-3xl mb-16 lg:mb-24">
+      <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20">
+        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-green-600">Full Service BI</span>
+      </div>
+      <h2 class="text-4xl lg:text-6xl font-black tracking-tighter text-slate-900 mb-8 leading-tight">
+        Raportowanie, które <span class="text-green-600">pracuje na Ciebie.</span>
+      </h2>
+      <p class="text-xl text-slate-600 leading-relaxed max-w-2xl">
+        Zapomnij o ręcznym przepisywaniu danych. Oferujemy <strong class="text-slate-900">usługi Power BI</strong> i <strong class="text-slate-900">automatyzację Excel</strong>, które zamieniają godziny pracy w sekundy.
       </p>
     </header>
 
     <div class="relative">
-      
       <div 
         class="services-layout-wrapper" 
         x-ref="track"
         @scroll.debounce.50ms="activeStep = Math.round($refs.track.scrollLeft / ($refs.track.clientWidth * 0.85))"
       >
         
-        <article class="service-item">
-          <div class="sr-only">
-            <h3>Analiza danych biznesowych i Big Data</h3>
-            <p>Modelowanie danych, analiza trendów sprzedażowych oraz segmentacja klientów przy użyciu nowoczesnych narzędzi analitycznych SQL i Python.</p>
-          </div>
-          <div class="slide-content">
-            <div class="slide-icon" aria-hidden="true"><i class="fas fa-chart-line"></i></div>
-            <h3 class="slide-title">Analiza danych</h3>
+        <article class="service-item group">
+          <div class="slide-content glass-card">
+            <div class="slide-icon-wrapper">
+              <i class="fas fa-chart-pie"></i>
+              <div class="icon-glow"></div>
+            </div>
+            <h3 class="slide-title">Usługi Power BI</h3>
             <p class="slide-text">
-              Odkrywamy wzorce tam, gdzie inni widzą tylko rzędy cyfr. Łączymy trendy, sezonowość i segmentację w czytelny obraz Twojego biznesu.
+              Projektujemy interaktywne dashboardy, które aktualizują się same. Tworzymy czytelne wskaźniki KPI dostępne na telefonie i komputerze.
             </p>
             <div class="pill-group">
-              <span class="pill">Trend Analysis</span>
-              <span class="pill">E-commerce</span>
-              <span class="pill">SQL/Python</span>
+              <span class="pill">Dashboardy 24/7</span>
+              <span class="pill">DAX Optimization</span>
+              <span class="pill">Cloud Reports</span>
             </div>
           </div>
         </article>
 
-        <article class="service-item">
-          <div class="sr-only">
-            <h3>Wdrażanie Dashboardów Power BI</h3>
-            <p>Projektowanie interaktywnych wizualizacji danych i wskaźników KPI w Power BI. Raporty dostępne w chmurze i na urządzeniach mobilnych.</p>
-          </div>
-          <div class="slide-content">
-            <div class="slide-icon" aria-hidden="true"><i class="fas fa-chart-pie"></i></div>
-            <h3 class="slide-title">Dashboardy</h3>
-            <p class="slide-text">
-              Koniec z czekaniem na raport. Tworzymy interaktywne dashboardy Power BI, które aktualizują się same i są dostępne na każdym urządzeniu.
-            </p>
-            <div class="pill-group">
-              <span class="pill">Power BI</span>
-              <span class="pill">KPI Design</span>
-              <span class="pill">Real-time</span>
+        <article class="service-item group">
+          <div class="slide-content glass-card">
+            <div class="slide-icon-wrapper">
+              <i class="fas fa-file-excel"></i>
+              <div class="icon-glow"></div>
             </div>
-          </div>
-        </article>
-
-        <article class="service-item">
-          <div class="sr-only">
-            <h3>Automatyzacja Excel, Power Query i VBA</h3>
-            <p>Optymalizacja pracy w Excelu. Tworzenie procesów ETL w Power Query oraz pisanie makr VBA eliminujących ręczne przepisywanie danych.</p>
-          </div>
-          <div class="slide-content">
-            <div class="slide-icon" aria-hidden="true"><i class="fas fa-bolt"></i></div>
-            <h3 class="slide-title">Automatyzacja</h3>
+            <h3 class="slide-title">Tworzenie arkuszy Excel</h3>
             <p class="slide-text">
-              Odzyskaj godziny spędzane w Excelu. Budujemy stabilne procesy Power Query, które eliminują błędy i całkowicie wyręczają Cię w pracy z danymi.
+              Budujemy zaawansowane narzędzia "szyte na miarę". Od prostych tabel po rozbudowane systemy kalkulacyjne i <strong class="text-slate-700">automatyzację raportów</strong>.
             </p>
             <div class="pill-group">
               <span class="pill">Power Query</span>
               <span class="pill">Makra VBA</span>
-              <span class="pill">Data Cleaning</span>
+              <span class="pill">Naprawa plików</span>
             </div>
           </div>
         </article>
 
-        <article class="service-item">
-          <div class="sr-only">
-            <h3>Analityka dla małych i średnich firm (MŚP)</h3>
-            <p>Doradztwo analityczne i wsparcie w podejmowaniu decyzji dla sektora MŚP na Śląsku. Wdrażanie kultury data-driven w mniejszych przedsiębiorstwach.</p>
-          </div>
-          <div class="slide-content bg-slate-900 text-white border-transparent">
-            <div class="slide-icon text-green-500" aria-hidden="true"><i class="fas fa-seedling"></i></div>
-            <h3 class="slide-title text-white">Wsparcie MŚP</h3>
-            <p class="slide-text text-slate-400">
-              Profesjonalna analityka bez korporacyjnych budżetów. Wdrażamy KPI „po ludzku”, dopasowane do skali i potrzeb mniejszych przedsiębiorstw.
+        <article class="service-item group">
+          <div class="slide-content glass-card">
+            <div class="slide-icon-wrapper">
+              <i class="fas fa-microchip"></i>
+              <div class="icon-glow"></div>
+            </div>
+            <h3 class="slide-title">Analiza & Automatyzacja</h3>
+            <p class="slide-text">
+              Łączymy dane z wielu źródeł (SQL, API, ERP). Odkrywamy ukryte trendy i eliminujemy błędy ludzkie dzięki skryptom Python i SQL.
             </p>
-            <div class="mt-auto pt-8">
-              <a href="#kontakt" class="text-green-500 font-bold flex items-center gap-2 group">
-                Bezpłatna konsultacja 
-                <i class="fas fa-arrow-right text-xs transition-transform group-hover:translate-x-2"></i>
+            <div class="pill-group">
+              <span class="pill">Big Data SQL</span>
+              <span class="pill">Python Scripts</span>
+              <span class="pill">ETL Processes</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="service-item group">
+          <div class="slide-content bg-slate-900 text-white border-transparent shadow-2xl shadow-slate-900/40 relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-green-500/20 rounded-full blur-2xl"></div>
+            
+            <div class="slide-icon text-green-500 relative z-10" aria-hidden="true"><i class="fas fa-rocket"></i></div>
+            <h3 class="slide-title text-white relative z-10">Naprawa & Konsultacje</h3>
+            <p class="slide-text text-slate-400 relative z-10">
+              Twój plik Excel wolno działa? Potrzebujesz nagłej pomocy w Power BI? Oferujemy ekspresową <strong class="text-white">naprawę plików Excel</strong> i doradztwo.
+            </p>
+            <div class="mt-auto pt-8 relative z-10">
+              <a href="#kontakt" class="bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-xl text-sm font-bold inline-flex items-center gap-3 transition-all">
+                Darmowa konsultacja 
+                <i class="fas fa-chevron-right text-[10px]"></i>
               </a>
             </div>
           </div>
@@ -104,11 +103,11 @@
 
       </div>
 
-      <div class="flex justify-center gap-2 mt-8 lg:hidden">
+      <div class="flex justify-center gap-3 mt-12 lg:hidden">
         <template x-for="i in [0, 1, 2, 3]">
           <div 
-            class="h-1.5 transition-all duration-300 rounded-full"
-            :class="activeStep === i ? 'w-8 bg-green-600' : 'w-2 bg-slate-200'"
+            class="h-1.5 transition-all duration-500 rounded-full"
+            :class="activeStep === i ? 'w-10 bg-green-600' : 'w-2 bg-slate-200'"
           ></div>
         </template>
       </div>
@@ -117,104 +116,123 @@
 </section>
 
 <style>
-  /* Stylizacja pozostaje bez zmian, zgodnie z prośbą o zachowanie wyglądu */
   .modern-services {
-    padding: 80px 0;
-    background: #ffffff;
+    padding: 120px 0;
+    /* Tło ustawione na transparent, by widzieć kolor z body */
+    background: transparent;
   }
+
   .services-layout-wrapper {
     display: flex;
-    gap: 20px;
+    gap: 24px;
     overflow-x: auto;
-    padding: 20px 0;
+    padding: 20px 0 40px 0;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
   }
+
   .services-layout-wrapper::-webkit-scrollbar { display: none; }
+
   @media (min-width: 1024px) {
     .services-layout-wrapper {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 32px;
+      gap: 40px;
       overflow: visible;
-      padding: 0;
     }
   }
+
   .service-item {
     flex: 0 0 85vw;
     scroll-snap-align: center;
     display: flex;
   }
+
   @media (min-width: 1024px) {
-    .service-item {
-      flex: none;
-      width: 100%;
-    }
+    .service-item { flex: none; width: 100%; }
   }
+
+  /* GLASSMOPHISM EFFECT */
   .slide-content {
-    padding: 40px;
+    padding: 50px;
     width: 100%;
-    border-radius: 32px;
-    background: #f8fafc;
-    border: 1px solid transparent;
-    transition: all 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+    border-radius: 40px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.03);
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
     display: flex;
     flex-direction: column;
   }
+
   .service-item:hover .slide-content {
     background: #ffffff;
-    border-color: #e2e8f0;
-    transform: translateY(-8px);
-    box-shadow: 0 30px 60px -15px rgba(15, 23, 42, 0.08);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 40px 80px -20px rgba(15, 23, 42, 0.12);
+    border-color: rgba(34, 197, 94, 0.3);
   }
+
+  .slide-icon-wrapper {
+    position: relative;
+    width: fit-content;
+    margin-bottom: 32px;
+  }
+
   .slide-icon {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     color: #14923b;
-    margin-bottom: 24px;
-    transition: transform 0.3s ease;
   }
-  .service-item:hover .slide-icon {
-    transform: scale(1.1) rotate(-5deg);
+
+  .icon-glow {
+    position: absolute;
+    inset: -10px;
+    background: rgba(34, 197, 94, 0.2);
+    border-radius: 50%;
+    filter: blur(15px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
+
+  .service-item:hover .icon-glow { opacity: 1; }
+
   .slide-title {
-    font-size: 1.6rem;
-    font-weight: 800;
+    font-size: 1.85rem;
+    font-weight: 900;
     color: #0f172a;
-    margin-bottom: 16px;
-    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    letter-spacing: -0.03em;
   }
+
   .slide-text {
-    font-size: 1.05rem;
-    line-height: 1.65;
-    color: #64748b;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #475569;
   }
+
   .pill-group {
     margin-top: auto;
-    padding-top: 32px;
+    padding-top: 40px;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
   }
+
   .pill {
-    font-size: 0.7rem;
-    font-weight: 700;
+    font-size: 0.75rem;
+    font-weight: 800;
     text-transform: uppercase;
-    padding: 5px 12px;
-    background: rgba(15, 23, 42, 0.04);
+    padding: 6px 14px;
+    background: white;
+    border: 1px solid #f1f5f9;
     color: #64748b;
-    border-radius: 8px;
+    border-radius: 12px;
+    transition: all 0.3s;
   }
-  /* Klasa sr-only do poprawy SEO bez zmiany wyglądu */
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
+
+  .service-item:hover .pill {
+    border-color: #dcfce7;
+    color: #166534;
   }
 </style>

@@ -1,46 +1,100 @@
-<section id="dlaczego" class="py-24 bg-slate-50">
+---
+// Dlaczego.astro - Sekcja Trust & Values w stylu Rounded Dark
+---
+<section id="dlaczego" class="py-24 bg-slate-950 relative overflow-hidden border-t border-white/5">
+  
   <div class="sr-only">
     <h3>Dlaczego warto wybrać Raporty24? Ekspert Power BI i Excel ze Śląska</h3>
-    <p>Jako specjaliści z Katowic oferujemy bezpieczne wdrożenia analityczne zgodne z RODO. Gwarantujemy stabilność raportów biznesowych, wsparcie po-wdrożeniowe oraz najwyższe standardy ochrony informacji biznesowych dla sektora MŚP i dużych przedsiębiorstw.</p>
-    <ul>
-      <li>Indywidualne podejście do analityki danych produkcyjnych</li>
-      <li>Optymalizacja kosztów raportowania w e-commerce</li>
-      <li>Szybka pomoc techniczna i serwis raportów Power BI</li>
-    </ul>
+    <p>
+      Jako <strong>eksperci Power BI i Excel z Katowic</strong>, dostarczamy rozwiązania, które eliminują chaos informacyjny. 
+      Specjalizujemy się w <strong>automatyzacji procesów</strong>, bezpiecznym <strong>wdrażaniu systemów BI</strong> (zgodnie z RODO) 
+      oraz zaawansowanej <strong>analizie danych produkcyjnych i e-commerce</strong>. Gwarantujemy stabilność, wsparcie po-wdrożeniowe 
+      i czystą strukturę <strong>miar DAX</strong>.
+    </p>
   </div>
 
-  <div class="container mx-auto px-4">
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      
       <div>
-        <span class="eyebrow">Nasze wartości</span>
-        <h2 class="display-title mb-8">Dane mają wspierać decyzje, a nie generować pracę.</h2>
-        <p class="text-lg text-slate-600 mb-10">
-          Nie budujemy skomplikowanych systemów, których nikt nie umie obsłużyć. 
-          Dostarczamy narzędzia, które są proste jak młotek i skuteczne jak skalpel.
+        <div class="inline-flex items-center gap-3 mb-6 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20">
+          <span class="flex h-2 w-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]"></span>
+          <span class="text-[10px] font-black uppercase tracking-[0.2em] text-green-400">Dlaczego my?</span>
+        </div>
+        
+        <h2 class="text-5xl lg:text-7xl font-black text-white tracking-tighter mb-8 leading-[0.95]">
+          Twoje dane mają <span class="text-slate-500 italic font-medium">pracować,</span> nie generować pracę.
+        </h2>
+        
+        <p class="text-xl text-slate-400 mb-12 leading-relaxed max-w-xl">
+          Większość firm tonie w tabelkach, zamiast wyciągać z nich wnioski. My budujemy systemy, które są <strong class="text-white">proste jak młotek i skuteczne jak skalpel.</strong> Zamieniamy surowe liczby w przewagę rynkową Twojej firmy.
         </p>
-        <div class="grid grid-cols-2 gap-8">
-          <div class="sr-only">Statystyki wydajności i bezpieczeństwa Raporty24</div>
-          <div>
-            <span class="text-3xl font-bold text-green-600">24h</span>
-            <p class="text-slate-500 text-sm">Średni czas reakcji na zgłoszenie</p>
+
+        <div class="grid grid-cols-2 gap-12 pt-8 border-t border-white/10">
+          <div class="group">
+            <span class="block text-5xl font-black text-green-500 mb-2 tracking-tighter group-hover:scale-110 transition-transform origin-left">12h</span>
+            <p class="text-slate-400 text-xs font-bold uppercase tracking-widest leading-tight">Średni czas reakcji <br/>w modelu SLA</p>
           </div>
-          <div>
-            <span class="text-3xl font-bold text-green-600">100%</span>
-            <p class="text-slate-500 text-sm">Bezpieczeństwa Twoich danych</p>
+          <div class="group">
+            <span class="block text-5xl font-black text-white mb-2 tracking-tighter group-hover:text-green-500 transition-colors">100%</span>
+            <p class="text-slate-400 text-xs font-bold uppercase tracking-widest leading-tight">Zorientowanie na <br/>bezpieczeństwo danych</p>
           </div>
         </div>
       </div>
 
-      <div class="space-y-6">
-        <div class="modern-card !bg-white">
-          <h4 class="font-bold text-lg mb-2">Bezpieczeństwo (RODO)</h4>
-          <p class="text-slate-500">Dbamy o odpowiednie uprawnienia i porządek w dostępie do danych.</p>
+      <div class="space-y-6 lg:space-y-8">
+        
+        <div class="bg-slate-900/40 border border-slate-800 p-8 lg:p-10 rounded-[2.5rem] hover:border-green-500/30 transition-all duration-500 group relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 w-32 h-32 bg-green-500/5 rounded-full blur-2xl group-hover:bg-green-500/10 transition-all"></div>
+          
+          <div class="flex items-start gap-6">
+            <div class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center shrink-0 shadow-xl group-hover:scale-110 transition-transform duration-500">
+              <i class="fas fa-shield-alt text-green-600 text-xl"></i>
+            </div>
+            <div>
+              <h4 class="text-xl font-black text-white mb-3 uppercase tracking-tight">Standardy Enterprise (RODO)</h4>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Dane to najcenniejszy zasób firmy. Projektujemy <strong class="text-white">usługi Power BI</strong> z dbałością o granularne uprawnienia (RLS) i pełną zgodność z RODO. Z nami Twój know-how jest bezpieczny.
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="modern-card !bg-white">
-          <h4 class="font-bold text-lg mb-2">Utrzymanie raportów</h4>
-          <p class="text-slate-500">Nie znikamy po projekcie. Pomagamy, gdy zmieniają się źródła danych.</p>
+
+        <div class="bg-slate-900/40 border border-slate-800 p-8 lg:p-10 rounded-[2.5rem] hover:border-green-500/30 transition-all duration-500 group relative overflow-hidden">
+           <div class="absolute -top-10 -right-10 w-32 h-32 bg-green-500/5 rounded-full blur-2xl group-hover:bg-green-500/10 transition-all"></div>
+           
+           <div class="flex items-start gap-6">
+            <div class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center shrink-0 shadow-xl group-hover:scale-110 transition-transform duration-500">
+              <i class="fas fa-handshake text-green-600 text-xl"></i>
+            </div>
+            <div>
+              <h4 class="text-xl font-black text-white mb-3 uppercase tracking-tight">Partnerstwo po-wdrożeniowe</h4>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Nie znikamy po zakończeniu projektu. Oferujemy stałą opiekę i <strong class="text-white">serwis raportów</strong>. Gdy zmieniają się Twoje źródła danych lub potrzebujesz nowej <strong>funkcji w Excelu</strong> – jesteśmy do Twojej dyspozycji.
+              </p>
+            </div>
+          </div>
         </div>
+
+        <div class="bg-slate-900/40 border border-slate-800 p-8 lg:p-10 rounded-[2.5rem] hover:border-green-500/30 transition-all duration-500 group relative overflow-hidden">
+           <div class="absolute -top-10 -right-10 w-32 h-32 bg-green-500/5 rounded-full blur-2xl group-hover:bg-green-500/10 transition-all"></div>
+           
+           <div class="flex items-start gap-6">
+            <div class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center shrink-0 shadow-xl group-hover:scale-110 transition-transform duration-500">
+              <i class="fas fa-lightbulb text-green-600 text-xl"></i>
+            </div>
+            <div>
+              <h4 class="text-xl font-black text-white mb-3 uppercase tracking-tight">Analityka „Szyta na miarę”</h4>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Każdy biznes jest inny. Dlatego nasze <strong class="text-white">usługi analityczne</strong> dopasowujemy do Twojej skali. Tworzymy narzędzia, które rozwiązują realne problemy, a nie tylko ładnie wyglądają.
+              </p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
+
+  <div class="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-green-500/5 rounded-full blur-[120px] -z-10"></div>
 </section>

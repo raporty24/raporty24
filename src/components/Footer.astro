@@ -1,14 +1,15 @@
 ---
-// Footer.astro
+// Footer.astro - Wersja Premium Architect: SEO & Branding
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-slate-900 text-white pt-20 pb-10">
+<footer class="bg-slate-950 text-white pt-24 pb-12 border-t border-white/5 relative overflow-hidden">
+  
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
-      "name": "Raporty24",
+      "name": "Raporty24 - Ekspert Power BI i Excel",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Katowice",
@@ -16,21 +17,22 @@ const currentYear = new Date().getFullYear();
         "addressCountry": "PL"
       },
       "url": "https://raporty24.pl",
-      "telephone": "+48 123 456 789",
-      "priceRange": "$$",
-      "image": "https://raporty24.pl/logos.webp"
+      "telephone": "+48 784 391 076",
+      "priceRange": "PLN",
+      "image": "https://raporty24.pl/hero.webp",
+      "description": "Profesjonalne usługi Power BI, tworzenie zaawansowanych arkuszy Excel i automatyzacja procesów biznesowych."
     }
   </script>
 
-  <div class="container mx-auto px-4">
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
       
       <div class="lg:col-span-1">
-        <div class="text-2xl font-black tracking-tighter mb-6">
-          RAPORTY<span class="text-green-500">24</span>
+        <div class="text-3xl font-black tracking-tighter mb-8 group cursor-default">
+          RAPORTY<span class="text-green-500 group-hover:shadow-[0_0_20px_#22c55e] transition-all">24</span>
         </div>
-        <p class="text-slate-400 text-sm leading-relaxed mb-6">
-          Tworzymy nowoczesne rozwiązania Business Intelligence. Zamieniamy chaos w danych na przejrzyste dashboardy Power BI i automatyzację Excel.
+        <p class="text-slate-400 text-sm leading-relaxed mb-8 max-w-xs">
+          Projektujemy ekosystemy danych, które zamieniają surowe liczby w precyzyjne decyzje. Twoje <strong>usługi Power BI</strong> i <strong>automatyzacja Excel</strong> w rękach ekspertów.
         </p>
         
         <div class="flex gap-4">
@@ -38,61 +40,69 @@ const currentYear = new Date().getFullYear();
             href="https://www.tiktok.com/@raporty24" 
             target="_blank" 
             rel="noopener" 
-            class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-[#ff0050] transition-colors"
+            class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center hover:bg-[#ff0050] hover:scale-110 transition-all shadow-xl"
             title="TikTok Raporty24"
           >
-            <i class="fab fa-tiktok"></i>
+            <i class="fab fa-tiktok text-slate-950 text-xl"></i>
           </a>
           <a 
             href="https://www.linkedin.com/in/raporty-raporty-50a8413a4/" 
             target="_blank" 
             rel="noopener" 
-            class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-[#0077b5] transition-colors"
+            class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center hover:bg-[#0077b5] hover:scale-110 transition-all shadow-xl"
             title="LinkedIn Raporty24"
           >
-            <i class="fab fa-linkedin-in text-lg"></i>
+            <i class="fab fa-linkedin-in text-slate-950 text-xl"></i>
           </a>
         </div>
       </div>
 
       <div>
-        <h4 class="font-bold mb-6">Usługi</h4>
-        <ul class="space-y-4 text-sm text-slate-400">
-          <li><a href="/#oferta" class="hover:text-green-500 transition">Wdrożenia Power BI</a></li>
-          <li><a href="/#oferta" class="hover:text-green-500 transition">Automatyzacja Excel</a></li>
-          <li><a href="/#oferta" class="hover:text-green-500 transition">Analiza SQL & Python</a></li>
-          <li><a href="/blog/" class="hover:text-green-500 transition">Baza wiedzy / Blog</a></li>
+        <h4 class="text-xs font-black uppercase tracking-[0.3em] text-green-500 mb-8">Ekspertyza</h4>
+        <ul class="space-y-4 text-sm font-bold text-slate-400 uppercase tracking-widest">
+          <li><a href="/#technologie" class="hover:text-white transition-colors">Optymalizacja DAX</a></li>
+          <li><a href="/#technologie" class="hover:text-white transition-colors">Power Query ETL</a></li>
+          <li><a href="/#technologie" class="hover:text-white transition-colors">Makra VBA & Excel</a></li>
+          <li><a href="/#demo-section" class="hover:text-white transition-colors">Systemy JS Demo</a></li>
         </ul>
       </div>
 
       <div>
-        <h4 class="font-bold mb-6">Firma</h4>
-        <ul class="space-y-4 text-sm text-slate-400">
-          <li><a href="/#dlaczego" class="hover:text-green-500 transition">Dlaczego my?</a></li>
-          <li><a href="/#cennik" class="hover:text-green-500 transition">Cennik usług</a></li>
-          <li><a href="/#abonament" class="hover:text-green-500 transition">Subskrypcja raportowa</a></li>
-          <li><a href="/#kontakt" class="hover:text-green-500 transition">Kontakt</a></li>
+        <h4 class="text-xs font-black uppercase tracking-[0.3em] text-slate-500 mb-8">Nawigacja</h4>
+        <ul class="space-y-4 text-sm font-bold text-slate-400 uppercase tracking-widest">
+          <li><a href="/#dlaczego" class="hover:text-white transition-colors">Dlaczego my?</a></li>
+          <li><a href="/#cennik" class="hover:text-white transition-colors">Cennik usług</a></li>
+          <li><a href="/#abonament" class="hover:text-white transition-colors">Subskrypcja</a></li>
+          <li><a href="/#kontakt" class="hover:text-white transition-colors">Kontakt</a></li>
         </ul>
       </div>
 
-      <div>
-        <h4 class="font-bold mb-6 text-green-500">Darmowy Audyt</h4>
-        <p class="text-sm text-slate-400 mb-6">Sprawdź, ile czasu możesz odzyskać dzięki automatyzacji.</p>
-        <a href="#kontakt" class="bg-green-600 hover:bg-green-700 text-white block text-center py-3 rounded-xl font-bold transition-all shadow-lg shadow-green-600/20">
+      <div class="bg-slate-900/50 p-8 rounded-[2rem] border border-slate-800 relative group overflow-hidden">
+        <div class="absolute -top-10 -right-10 w-32 h-32 bg-green-500/5 rounded-full blur-2xl group-hover:bg-green-500/10 transition-all"></div>
+        <h4 class="font-black mb-4 text-white uppercase tracking-tight relative z-10">Darmowy Audyt</h4>
+        <p class="text-xs text-slate-500 mb-8 leading-relaxed relative z-10">Zidentyfikujemy błędy w Twoich raportach i zaproponujemy model automatyzacji.</p>
+        <a href="#kontakt" class="relative z-10 bg-green-600 hover:bg-green-500 text-white block text-center py-4 rounded-xl font-black text-[10px] uppercase tracking-[0.2em] transition-all shadow-xl shadow-green-900/20">
           Rozpocznij teraz
         </a>
       </div>
     </div>
 
-    <div class="border-t border-slate-800 pt-10 flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-slate-500 uppercase tracking-widest font-bold">
-      <div>&copy; {currentYear} Raporty24. Wszystkie prawa zastrzeżone.</div>
-      <div class="flex gap-8">
-        <a href="/prywatnosc" class="hover:text-white transition">Polityka Prywatności</a>
-        <a href="/cookies" class="hover:text-white transition">Cookies</a>
+    <div class="border-t border-white/5 pt-12 flex flex-col md:flex-row justify-between items-center gap-8">
+      <div class="text-[10px] font-bold text-slate-600 uppercase tracking-[0.4em]">
+        &copy; {currentYear} Raporty24. All rights reserved.
       </div>
-      <div class="flex items-center gap-2">
-        Made with <i class="fas fa-heart text-red-500"></i> in <span class="text-white">Katowice, Śląsk</span>
+      
+      <div class="flex items-center gap-8">
+        <div class="flex items-center gap-3 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+          <span class="w-8 h-px bg-slate-800"></span>
+          Data Intelligence Solutions
+        </div>
+        <div class="flex items-center gap-2 text-[10px] font-bold text-slate-600 uppercase tracking-widest">
+          Made in <span class="text-white">Katowice, Śląsk</span>
+        </div>
       </div>
     </div>
   </div>
+
+  <div class="absolute -bottom-1/2 left-1/2 -translate-x-1/2 w-full h-[400px] bg-green-500/5 rounded-full blur-[120px] -z-10"></div>
 </footer>

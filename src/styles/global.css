@@ -12,7 +12,8 @@ html {
 }
 
 body {
-  background-color: #ffffff;
+  /* ZMIANA TŁA TUTAJ */
+  background-color: #f1f5f9 !important;
   color: #0f172a;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
@@ -142,7 +143,7 @@ body {
    ========================= */
 .modern-services {
   padding: 100px 0;
-  background: #ffffff;
+  background: transparent; /* Zmienione na transparent, by prześwitywało tło body */
   overflow: hidden;
 }
 
@@ -169,7 +170,7 @@ body {
   padding: 40px;
   height: 100%;
   border-radius: 32px;
-  background: #f8fafc; /* Lekkie tło zamiast ramy */
+  background: #ffffff; /* Karty zostają białe dla kontrastu */
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
@@ -223,15 +224,14 @@ body {
   display: flex;
   gap: 20px;
   overflow-x: auto;
-  padding: 20px 0; /* padding góra/dół */
+  padding: 20px 0; 
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
 }
 
-/* Trik z "wystającą" kartą na mobile */
 .service-slide {
-  flex: 0 0 82vw; /* Karta zajmuje 82% szerokości, 18% zostaje na podgląd kolejnej */
+  flex: 0 0 82vw; 
   scroll-snap-align: center;
   margin-right: 10px;
 }
@@ -247,14 +247,13 @@ body {
   }
 }
 
-/* Gradient sugerujący scroll (opcjonalne, ale pomocne) */
 @media (max-width: 768px) {
   .services-slider-container::after {
     content: '';
     position: absolute;
     top: 0; right: 0; bottom: 0;
     width: 40px;
-    background: linear-gradient(to left, #ffffff, transparent);
+    background: linear-gradient(to left, #f8fafc, transparent); /* Dopasowane do nowego tła */
     pointer-events: none;
     z-index: 5;
   }
@@ -343,18 +342,15 @@ body {
 .fade-enter { opacity: 0; transform: translateY(10px); }
 .fade-enter-active { opacity: 1; transform: translateY(0); transition: 0.3s; }
 
-/* Styl dla mockupu dashboardu */
 .aspect-\[16\/9\] {
   position: relative;
   overflow: hidden;
 }
 
-/* Subtelny "szklany" efekt na przycisku play */
 .demo-thumb-overlay {
-  background: radial-gradient(circle, rgba(20,146,59,0.1) 0%, rgba(15,23,42,0) 70%);
+  background: radial-gradient(circle, rgba(20,146,59,0.1) 0%, rgba(15, 23, 42, 0) 70%);
 }
 
-/* Ukrycie scrollbara w modalu dla płynności */
 .demo-modal iframe {
   scrollbar-width: none;
 }

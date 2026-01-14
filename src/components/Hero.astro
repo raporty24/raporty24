@@ -1,76 +1,129 @@
-<section id="hero" class="relative bg-white overflow-hidden pt-24 pb-16 lg:pt-32 lg:pb-24">
+---
+// Hero.astro - Wersja Kinowa z nowoczesnym Social Proof
+---
+
+<section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
+  
   <div class="sr-only">
-    <h2>Ekspert Business Intelligence Katowice – Power BI, Excel i Automatyzacja Procesów</h2>
-    <p>Oferujemy profesjonalne wdrożenia Power BI, tworzenie dashboardów menedżerskich oraz automatyzację raportów w Excelu dla firm z Katowic, Śląska i całej Polski.</p>
-    <ul>
-      <li>Raporty sprzedażowe dla E-commerce i Amazon</li>
-      <li>Automatyzacja procesów w produkcji</li>
-      <li>Konsultacje Power Query i DAX</li>
-    </ul>
+    <h2>Ekspert Business Intelligence – Usługi Power BI i Usługi Excel</h2>
+    <p>
+      Specjalizujemy się w: tworzenie arkuszy Excel, automatyzacja raportów, 
+      wdrażanie Power BI Katowice, naprawa plików Excel oraz profesjonalne 
+      dashboardy menedżerskie.
+    </p>
   </div>
 
-  <div class="absolute inset-0 z-0 opacity-[0.15]" 
-       style="background-image: radial-gradient(#cbd5e1 1.5px, transparent 1.5px); background-size: 24px 24px;">
+  <div class="absolute inset-0 z-0">
+    <img 
+      src="/biuro3.webp" 
+      alt="Nowoczesne biuro analizy danych Power BI i Excel" 
+      class="w-full h-full object-cover scale-105 animate-slow-pan"
+    />
+    <div class="absolute inset-0 bg-slate-950/75"></div> <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+    <div class="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] bg-green-500/10 rounded-full blur-[160px] animate-pulse"></div>
   </div>
 
-  <div class="container mx-auto px-4 relative z-10">
-    <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+
+  <div class="container mx-auto px-4 relative z-10 pt-20">
+    <div class="max-w-5xl">
       
-      <div class="lg:col-span-7 flex flex-col">
-        
-        <div class="flex items-center gap-3 mb-6">
-          <span class="px-3 py-1 text-xs font-bold uppercase tracking-widest text-green-700 bg-green-50 rounded-full">
-            Data Intelligence
-          </span>
-          <span class="text-slate-500 text-sm font-medium">Raporty24.pl</span>
-        </div>
-
-        <h1 class="display-title mb-6">
-          Profesjonalne dashboardy <span class="text-green-600">Power BI</span> i automatyzacja <span class="text-green-600">Excel.</span>
-        </h1>
-
-        <p class="text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl">
-          Zamieniamy chaos w arkuszach na przejrzyste, automatyczne raporty. 
-          <strong>Oszczędzaj do 20h tygodniowo</strong> na ręcznej pracy z danymi i podejmuj trafniejsze decyzje.
-        </p>
-
-        <div class="flex flex-col sm:flex-row gap-4 mb-12">
-          <a href="#kontakt" class="green-btn-menu !py-4 !px-8 text-lg shadow-xl shadow-green-600/20 text-center">
-            Umów darmowy audyt
-          </a>
-          <a href="#demo-section" class="flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-slate-700 bg-white border-2 border-slate-100 hover:border-slate-300 transition-colors group">
-            <i class="fas fa-play-circle text-green-600 text-xl group-hover:scale-110 transition-transform"></i>
-            Zobacz demo
-          </a>
-        </div>
-
-        <div class="flex items-center gap-4 pt-6 border-t border-slate-100">
-          <div class="flex -space-x-3">
-            <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200 flex items-center justify-center text-xs font-bold text-slate-500">AB</div>
-            <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-300 flex items-center justify-center text-xs font-bold text-slate-500">MK</div>
-            <div class="w-10 h-10 rounded-full border-2 border-white bg-green-100 flex items-center justify-center text-green-600"><i class="fas fa-check text-sm"></i></div>
-          </div>
-          <div class="text-sm text-slate-500">
-            <span class="font-bold text-slate-900">100+ wdrożonych projektów</span> w e-commerce i produkcji.
-          </div>
-        </div>
+      <div class="inline-flex items-center gap-3 mb-8 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
+        <span class="flex h-2 w-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]"></span>
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-slate-300">Data Excellence & Automation</span>
       </div>
 
-      <div class="lg:col-span-5 relative lg:-mr-8 xl:-mr-16 animate-fade-in">
-        <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl shadow-slate-200/50 border border-slate-100 transform transition-transform hover:scale-[1.01] duration-500">
-          <img 
-            src="/hero.webp" 
-            alt="Dashboard Power BI na laptopie w nowoczesnym biurze" 
-            class="w-full h-auto object-cover"
-            width="800"
-            height="450"
-            fetchpriority="high"
-          />
-        </div>
+      <h1 class="text-5xl lg:text-8xl font-black text-white tracking-tighter mb-8 leading-[1.1] lg:leading-[0.95]">
+        Profesjonalne dashboardy <br/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">Power BI</span> 
+        i automatyzacja <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">Excel.</span>
+      </h1>
+
+      <p class="text-xl lg:text-2xl text-slate-300 mb-12 leading-relaxed max-w-3xl">
+        Zamieniamy chaos w arkuszach na przejrzyste raporty. Oferujemy specjalistyczne 
+        <strong class="text-white">usługi Power BI</strong> oraz profesjonalne 
+        <strong class="text-white">tworzenie arkuszy Excel</strong>. 
+        Oszczędzaj do <span class="text-green-400 font-bold">20h tygodniowo</span>.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-5 mb-20">
+        <a href="#kontakt" class="group bg-green-600 hover:bg-green-500 text-white py-5 px-10 rounded-2xl font-black text-xl shadow-2xl shadow-green-600/30 transition-all hover:-translate-y-1 flex items-center justify-center gap-3">
+          Umów darmowy audyt
+          <i class="fas fa-chevron-right text-sm transition-transform group-hover:translate-x-1"></i>
+        </a>
+        <a href="#demo" class="bg-white/5 hover:bg-white/10 backdrop-blur-md text-white py-5 px-10 rounded-2xl font-bold text-xl border border-white/20 transition-all flex items-center justify-center gap-3">
+          <i class="fas fa-play text-green-500"></i>
+          Zobacz demo
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
         
-        <div class="absolute -top-20 -right-20 w-64 h-64 bg-green-100/50 rounded-full blur-3xl -z-10 pointer-events-none mix-blend-multiply"></div>
+        <div class="relative group">
+          <div class="absolute inset-0 bg-green-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="relative flex items-center gap-5 p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl hover:border-green-500/50 transition-all">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500/20 to-green-600/5 flex items-center justify-center border border-green-500/20 shadow-inner">
+              <i class="fas fa-project-diagram text-green-500 text-2xl"></i>
+            </div>
+            <div>
+              <p class="text-3xl font-black text-white leading-none">100+</p>
+              <p class="text-slate-400 text-xs uppercase font-bold tracking-widest mt-2">Wdrożonych projektów</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative group">
+          <div class="absolute inset-0 bg-green-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="relative flex items-center gap-5 p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl hover:border-green-500/50 transition-all">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500/20 to-green-600/5 flex items-center justify-center border border-green-500/20 shadow-inner">
+              <i class="fas fa-hourglass-half text-green-500 text-2xl"></i>
+            </div>
+            <div>
+              <p class="text-3xl font-black text-white leading-none">20h+</p>
+              <p class="text-slate-400 text-xs uppercase font-bold tracking-widest mt-2">Odzyskanych tygodniowo</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative group">
+          <div class="absolute inset-0 bg-green-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <div class="relative flex items-center gap-5 p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl hover:border-green-500/50 transition-all">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500/20 to-green-600/5 flex items-center justify-center border border-green-500/20 shadow-inner">
+              <i class="fas fa-star text-green-500 text-2xl"></i>
+            </div>
+            <div>
+              <div class="flex gap-1 mb-1">
+                <i class="fas fa-star text-green-500 text-[10px]"></i>
+                <i class="fas fa-star text-green-500 text-[10px]"></i>
+                <i class="fas fa-star text-green-500 text-[10px]"></i>
+                <i class="fas fa-star text-green-500 text-[10px]"></i>
+                <i class="fas fa-star text-green-500 text-[10px]"></i>
+              </div>
+              <p class="text-xl font-black text-white leading-none">Ekspert 5.0</p>
+              <p class="text-slate-400 text-xs uppercase font-bold tracking-widest mt-2">Średnia ocena klientów</p>
+            </div>
+          </div>
+        </div>
+
       </div>
 
     </div>
   </div>
+
+  <div class="absolute right-10 bottom-10 hidden lg:block">
+    <div class="flex flex-col items-center gap-4">
+      <div class="w-px h-24 bg-gradient-to-t from-green-500 to-transparent"></div>
+      <span class="[writing-mode:vertical-lr] text-slate-500 text-[10px] uppercase tracking-[0.5em] font-bold">Zjedź niżej</span>
+    </div>
+  </div>
 </section>
+
+<style>
+  @keyframes slow-pan {
+    0% { transform: scale(1.05) translate(0, 0); }
+    50% { transform: scale(1.1) translate(-1%, -1%); }
+    100% { transform: scale(1.05) translate(0, 0); }
+  }
+  .animate-slow-pan {
+    animation: slow-pan 20s linear infinite;
+  }
+</style>
