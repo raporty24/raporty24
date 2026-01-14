@@ -1,0 +1,156 @@
+<section id="abonament" class="py-24 bg-slate-50/50 scroll-mt-24">
+  <div class="sr-only">
+    <h2>Zewnętrzny analityk danych i outsourcing Power BI dla firm</h2>
+    <p>Oferujemy elastyczne pakiety abonamentowe na obsługę analityczną. Stała opieka eksperta Power BI, optymalizacja raportów Excel oraz wsparcie techniczne w modelu subskrypcyjnym – idealne rozwiązanie dla firm z Katowic i całej Polski szukających oszczędności czasu.</p>
+  </div>
+
+  <div class="container mx-auto px-4">
+    
+    <header class="text-center mb-16">
+      <span class="eyebrow">Stała opieka</span>
+      <h2 class="display-title">Subskrypcja raportowa</h2>
+      <p class="text-xl text-slate-500 mt-6 max-w-2xl mx-auto">
+        Twój zewnętrzny dział danych. Stały dostęp do eksperta Power BI i Excel, bez kosztów pełnego etatu.
+      </p>
+    </header>
+
+    <div class="max-w-4xl mx-auto mb-16">
+      <div class="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 shadow-sm">
+        <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center shrink-0" aria-hidden="true">
+          <i class="fas fa-stopwatch text-blue-600 text-2xl"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-slate-900 mb-1">Gwarancja SLA: Odpowiedź do 12h</h3>
+          <p class="text-slate-600 leading-relaxed">
+            Działamy jak Twój wewnętrzny zespół. Zgłaszasz potrzebę, a my zajmujemy się resztą. 
+            Twoje dashboardy są zawsze aktualne, a błędy naprawiane od ręki.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div x-data="{ active: 'biznes' }" class="grid lg:grid-cols-3 gap-8 items-stretch">
+      
+      <article 
+        @click="active = 'start'"
+        class="modern-card cursor-pointer flex flex-col"
+        :class="active === 'start' ? 'border-slate-300 bg-white shadow-xl scale-[1.02]' : 'opacity-80 bg-white/50'"
+      >
+        <div class="sr-only">
+          <h3>Pakiet Start – Podstawowe wsparcie Excel i BI</h3>
+          <p>Tani abonament analityczny dla małych firm. Obejmuje utrzymanie jednego raportu i konsultacje techniczne.</p>
+        </div>
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-slate-900">Start</h3>
+          <p class="text-slate-500 text-sm mt-1">Dla mniejszych potrzeb i wsparcia</p>
+        </div>
+
+        <div class="mb-8">
+          <div class="text-4xl font-extrabold text-slate-900">od 390 zł<span class="text-lg font-medium text-slate-400">/mc</span></div>
+          <p class="text-green-600 font-bold text-sm mt-2">2h wsparcia + 1 raport</p>
+        </div>
+
+        <ul class="space-y-4 mb-10 grow">
+          <li class="flex gap-3 text-sm text-slate-600"><i class="fas fa-circle text-[6px] mt-2 text-green-500" aria-hidden="true"></i> Konsultacje Excel / BI</li>
+          <li class="flex gap-3 text-sm text-slate-600"><i class="fas fa-circle text-[6px] mt-2 text-green-500" aria-hidden="true"></i> Utrzymanie 1 dashboardu</li>
+          <li class="flex gap-3 text-sm text-slate-600"><i class="fas fa-circle text-[6px] mt-2 text-green-500" aria-hidden="true"></i> Priorytet zgłoszeń 24h</li>
+        </ul>
+
+        <a href="#kontakt" class="block text-center py-4 rounded-xl border-2 border-slate-200 font-bold text-slate-700 hover:border-green-600 hover:text-green-600 transition">
+          Wybierz Start
+        </a>
+      </article>
+
+      <article 
+        @click="active = 'biznes'"
+        class="modern-card cursor-pointer flex flex-col relative border-green-200"
+        :class="active === 'biznes' ? 'bg-white shadow-2xl scale-[1.05] z-10' : 'opacity-80 bg-white/50'"
+      >
+        <div class="sr-only">
+          <h3>Pakiet Biznes – Outsourcing analityczny Power BI</h3>
+          <p>Najpopularniejszy model współpracy. Automatyzacja Power Query i opieka nad dashboardami KPI dla rozwijających się firm.</p>
+        </div>
+        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-green-600 text-white text-[10px] uppercase tracking-widest font-black px-4 py-1.5 rounded-full">
+          Najpopularniejszy
+        </div>
+
+        <div class="mb-8 mt-2">
+          <h3 class="text-xl font-bold text-slate-900">Biznes</h3>
+          <p class="text-slate-500 text-sm mt-1">Aktywny rozwój analityki</p>
+        </div>
+
+        <div class="mb-8">
+          <div class="text-4xl font-extrabold text-slate-900">od 890 zł<span class="text-lg font-medium text-slate-400">/mc</span></div>
+          <p class="text-green-600 font-bold text-sm mt-2">6h wsparcia + 3 raporty</p>
+        </div>
+
+        <ul class="space-y-4 mb-10 grow">
+          <li class="flex gap-3 text-sm text-slate-600"><i class="fas fa-circle text-[6px] mt-2 text-green-500" aria-hidden="true"></i> 6h prac eksperckich</li>
+          <li class="flex gap-3 text-sm text-slate-600"><i class="fas fa-circle text-[6px] mt-2 text-green-500" aria-hidden="true"></i> Do 3 dashboardów KPI</li>
+          <li class="flex gap-3 text-sm text-slate-600"><i class="fas fa-circle text-[6px] mt-2 text-green-500" aria-hidden="true"></i> Automatyzacja Power Query</li>
+          <li class="flex gap-3 text-sm text-slate-600"><i class="fas fa-circle text-[6px] mt-2 text-green-500" aria-hidden="true"></i> SLA: Odpowiedź w 12h</li>
+        </ul>
+
+        <a href="#kontakt" class="green-btn-menu w-full text-center py-4">
+          Wybierz Biznes
+        </a>
+      </article>
+
+      <article 
+        @click="active = 'pro'"
+        class="modern-card cursor-pointer flex flex-col"
+        :class="active === 'pro' ? 'border-slate-300 bg-white shadow-xl scale-[1.02]' : 'opacity-80 bg-white/50'"
+      >
+        <div class="sr-only">
+          <h3>Pakiet Pro – Zaawansowany dział danych (Outsourcing IT/BI)</h3>
+          <p>Rozwiązanie dla dużych zbiorów danych (Big Data). Optymalizacja SQL, dedykowany opiekun i nielimitowane wdrożenia raportów.</p>
+        </div>
+        <div class="mb-8">
+          <h3 class="text-xl font-bold text-slate-900">Pro</h3>
+          <p class="text-slate-500 text-sm mt-1">Dla dużych zbiorów i procesów</p>
+        </div>
+
+        <div class="mb-8">
+          <div class="text-4xl font-extrabold text-slate-900">od 1790 zł<span class="text-lg font-medium text-slate-400">/mc</span></div>
+          <p class="text-green-600 font-bold text-sm mt-2">12h wsparcia + nielimitowane raporty</p>
+        </div>
+
+        <ul class="space-y-4 mb-10 grow">
+          <li class="flex gap-3 text-sm text-slate-600"><i class="fas fa-circle text-[6px] mt-2 text-green-500" aria-hidden="true"></i> 12h prac i wdrożeń</li>
+          <li class="flex gap-3 text-sm text-slate-600"><i class="fas fa-circle text-[6px] mt-2 text-green-500" aria-hidden="true"></i> Dowolna liczba raportów</li>
+          <li class="flex gap-3 text-sm text-slate-600"><i class="fas fa-circle text-[6px] mt-2 text-green-500" aria-hidden="true"></i> Optymalizacja baz SQL</li>
+          <li class="flex gap-3 text-sm text-slate-600"><i class="fas fa-circle text-[6px] mt-2 text-green-500" aria-hidden="true"></i> Dedykowany opiekun</li>
+        </ul>
+
+        <a href="#kontakt" class="block text-center py-4 rounded-xl border-2 border-slate-900 font-bold text-slate-900 hover:bg-slate-900 hover:text-white transition">
+          Wybierz Pro
+        </a>
+      </article>
+    </div>
+
+    <div class="mt-24">
+      <div class="sr-only">
+        <h4>Proces współpracy w modelu subskrypcyjnym (SLA)</h4>
+        <p>Nasza praca opiera się na prostym modelu: zgłoszenie potrzeby biznesowej, realizacja zadania zgodnie z gwarantowanym czasem reakcji SLA i dostarczenie efektu końcowego w formie zaktualizowanych danych.</p>
+      </div>
+      <h3 class="text-center font-bold text-slate-900 mb-12">Jak to działa w praktyce?</h3>
+      <div class="grid md:grid-cols-3 gap-12">
+        <div class="text-center">
+          <div class="text-4xl font-black text-slate-100 mb-4" aria-hidden="true">01</div>
+          <h4 class="font-bold mb-2">Zgłaszasz temat</h4>
+          <p class="text-slate-500 text-sm">Przez mail lub dedykowany kanał. Raport, poprawka lub nowa funkcja.</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl font-black text-slate-100 mb-4" aria-hidden="true">02</div>
+          <h4 class="font-bold mb-2">Działamy w SLA</h4>
+          <p class="text-slate-500 text-sm">Masz gwarancję reakcji (np. 12h) i priorytet w kolejce zadań.</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl font-black text-slate-100 mb-4" aria-hidden="true">03</div>
+          <h4 class="font-bold mb-2">Dowozimy efekt</h4>
+          <p class="text-slate-500 text-sm">Wdrażamy zmianę, sprawdzamy dane i sugerujemy dalsze usprawnienia.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

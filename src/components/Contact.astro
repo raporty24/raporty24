@@ -1,0 +1,112 @@
+<section id="kontakt" class="py-24 bg-white scroll-mt-24">
+  <div class="container mx-auto px-4">
+    
+    <header class="text-center mb-16">
+      <span class="eyebrow">Kontakt</span>
+      <h2 class="display-title">Gotowy na automatyzację?</h2>
+      <p class="text-xl text-slate-500 mt-6">Odpowiadamy zwykle w ciągu kilku godzin.</p>
+    </header>
+
+    <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 items-start">
+      
+      <div class="space-y-10">
+        <div>
+          <h3 class="text-2xl font-bold text-slate-900 mb-6">Bezpośrednie dane</h3>
+          <div class="space-y-6">
+            <a href="mailto:biuro@raporty24.pl" class="group flex items-center gap-4 text-lg text-slate-600 hover:text-green-600 transition">
+              <div class="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center group-hover:bg-green-50 transition">
+                <i class="fas fa-envelope text-slate-400 group-hover:text-green-600"></i>
+              </div>
+              <span class="font-semibold">biuro@raporty24.pl</span>
+            </a>
+            
+            <a href="tel:+48784391076" class="group flex items-center gap-4 text-lg text-slate-600 hover:text-green-600 transition">
+              <div class="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center group-hover:bg-green-50 transition">
+                <i class="fas fa-phone text-slate-400 group-hover:text-green-600"></i>
+              </div>
+              <span class="font-semibold">+48 784 391 076</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="p-8 bg-slate-50 rounded-3xl space-y-4">
+          <h4 class="font-bold text-slate-900 flex items-center gap-2">
+            <i class="fas fa-shield-alt text-green-600"></i> Twoje dane są bezpieczne
+          </h4>
+          <p class="text-slate-500 text-sm leading-relaxed">
+            Szanujemy Twój czas i prywatność. Nie wysyłamy spamu, a dane z formularza służą nam wyłącznie do przygotowania oferty dla Ciebie.
+          </p>
+        </div>
+      </div>
+
+      <div class="bg-white border border-slate-100 shadow-2xl shadow-slate-200/50 rounded-3xl p-8 md:p-10">
+        <form
+          name="kontakt"
+          method="POST"
+          data-netlify="true"
+          action="/thanks"
+          netlify-honeypot="bot-field"
+          class="space-y-6"
+        >
+          <input type="hidden" name="form-name" value="kontakt" />
+          <p class="hidden"><label>Bot field: <input name="bot-field" /></label></p>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="space-y-2">
+              <label class="text-sm font-bold text-slate-700 ml-1">Imię i nazwisko*</label>
+              <input
+                type="text"
+                name="name"
+                required
+                placeholder="Jan Kowalski"
+                class="w-full px-5 py-3 rounded-xl border border-slate-200 bg-white focus:border-green-500 focus:ring-4 focus:ring-green-500/5 outline-none transition"
+              />
+            </div>
+            <div class="space-y-2">
+              <label class="text-sm font-bold text-slate-700 ml-1">Email*</label>
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder="jan@firma.pl"
+                class="w-full px-5 py-3 rounded-xl border border-slate-200 bg-white focus:border-green-500 focus:ring-4 focus:ring-green-500/5 outline-none transition"
+              />
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <label class="text-sm font-bold text-slate-700 ml-1">Temat*</label>
+            <select
+              name="temat"
+              required
+              class="w-full px-5 py-3 rounded-xl border border-slate-200 bg-white focus:border-green-500 focus:ring-4 focus:ring-green-500/5 outline-none transition appearance-none"
+            >
+              <option value="" disabled selected>Wybierz cel rozmowy</option>
+              <option value="wycena">Wycena usługi / Projekt</option>
+              <option value="abonament">Abonament / Stałe wsparcie</option>
+              <option value="szkolenie">Szkolenia Power BI / Excel</option>
+              <option value="wspolpraca">Współpraca B2B</option>
+              <option value="inne">Inne</option>
+            </select>
+          </div>
+
+          <div class="space-y-2">
+            <label class="text-sm font-bold text-slate-700 ml-1">Wiadomość*</label>
+            <textarea
+              name="wiadomosc"
+              required
+              rows="4"
+              placeholder="Opisz krótko swój problem lub proces, który chcesz zautomatyzować..."
+              class="w-full px-5 py-3 rounded-xl border border-slate-200 bg-white focus:border-green-500 focus:ring-4 focus:ring-green-500/5 outline-none transition resize-none"
+            ></textarea>
+          </div>
+
+          <button type="submit" class="green-btn-menu w-full py-4 text-lg shadow-xl shadow-green-600/20 hover:shadow-green-600/30">
+            Wyślij wiadomość
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>

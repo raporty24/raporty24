@@ -1,0 +1,7 @@
+# Pozwól wszystkim robotom na indeksowanie strony
+User-agent: *
+Allow: /
+
+# Wskaż robotom mapy Twojej witryny
+Sitemap: https://raporty24.pl/sitemap-index.xml
+Sitemap: https://raporty24.pl/rss.xml

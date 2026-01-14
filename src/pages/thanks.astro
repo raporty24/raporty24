@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout 
+  title="Dziękujemy! | Raporty24" 
+  description="Twoja wiadomość została wysłana pomyślnie. Skontaktujemy się z Tobą wkrótce."
+>
+  <div x-data="app">
+    <Header />
+    
+    <main class="min-h-[70vh] flex items-center justify-center bg-white py-20">
+      <div class="container mx-auto px-4 text-center">
+        
+        <div class="w-24 h-24 bg-green-50 text-green-600 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-sm">
+          <i class="fas fa-check text-4xl"></i>
+        </div>
+
+        <span class="eyebrow">Wysłano pomyślnie</span>
+        <h1 class="display-title mt-4">Dziękujemy za wiadomość!</h1>
+        
+        <p class="text-xl text-slate-500 mt-6 max-w-xl mx-auto">
+          Otrzymaliśmy Twoje zapytanie. Nasz zespół przeanalizuje je i odpowie 
+          <span class="text-slate-900 font-bold">w ciągu najbliższych kilku godzin.</span>
+        </p>
+
+        <div class="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/" class="green-btn-menu px-10 py-4 text-lg">
+            Wróć do strony głównej
+          </a>
+          <a href="https://www.linkedin.com/in/raporty-raporty-50a8413a4/" target="_blank" class="border-2 border-slate-200 px-10 py-4 rounded-xl font-bold text-slate-700 hover:bg-slate-50 transition">
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <Footer />
+  </div>
+</BaseLayout>

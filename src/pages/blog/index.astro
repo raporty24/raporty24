@@ -1,0 +1,146 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+// Pobieramy wszystkie posty i sortujemy od najnowszego
+const allPosts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+// 1. Wyciągamy unikalne KATEGORIE
+const categories = ['Wszystkie', ...new Set(allPosts.map((post) => post.data.category))];
+
+// 2. Wyciągamy unikalne TAGI (Narzędzia)
+// Najpierw bierzemy wszystkie tablice tagów, spłaszczamy je (flat), a potem robimy Set unikalnych
+const allTags = allPosts.flatMap(post => post.data.tags || []);
+const tags = ['Wszystkie', ...new Set(allTags)];
+---
+
+<BaseLayout title="Blog Analityczny | Raporty24" description="Porady, tutoriale i wiedza o Power BI, Excelu i automatyzacji procesów biznesowych.">
+  <div x-data="{ 
+    selectedCategory: 'Wszystkie', 
+    selectedTag: 'Wszystkie',
+    isVisible(postCat, postTags) {
+        const catMatch = this.selectedCategory === 'Wszystkie' || this.selectedCategory === postCat;
+        // Sprawdzamy czy tag jest 'Wszystkie' LUB czy tablica tagów posta zawiera wybrany tag
+        const tagMatch = this.selectedTag === 'Wszystkie' || (postTags && postTags.includes(this.selectedTag));
+        return catMatch && tagMatch;
+    }
+  }">
+    <Header />
+    
+    <main class="py-24 bg-white">
+      <div class="container mx-auto px-4">
+        <header class="text-center mb-16">
+          <span class="eyebrow">Baza wiedzy</span>
+          <h1 class="display-title">Blog Analityczny</h1>
+          <p class="text-xl text-slate-500 mt-6 max-w-2xl mx-auto">
+            Praktyczne wskazówki jak pracować mądrzej z danymi, oszczędzać czas i podejmować lepsze decyzje.
+          </p>
+        </header>
+
+        <div class="mb-16 max-w-4xl mx-auto">
+          
+          <div class="mb-8 text-center">
+            <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Zagadnienia</h3>
+            <div class="flex flex-wrap justify-center gap-3">
+              {categories.map(cat => (
+                <button 
+                  @click={`selectedCategory = '${cat}'`}
+                  :class={`selectedCategory === '${cat}' ? 'bg-green-600 text-white shadow-md shadow-green-600/20' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'`}
+                  class="px-5 py-2 rounded-xl font-bold transition-all text-sm"
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div class="text-center">
+             <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Narzędzia</h3>
+             <div class="flex flex-wrap justify-center gap-2">
+               {tags.map(tag => (
+                 <button 
+                   @click={`selectedTag = '${tag}'`}
+                   :class={`selectedTag === '${tag}' ? 'bg-slate-800 text-white shadow-md' : 'bg-white border-2 border-slate-100 text-slate-500 hover:border-slate-300'`}
+                   class="px-4 py-1.5 rounded-full font-semibold transition-all text-xs"
+                 >
+                   #{tag}
+                 </button>
+               ))}
+             </div>
+           </div>
+
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          {allPosts.map((post) => {
+            // Przygotowujemy tagi jako string JS do przekazania do funkcji Alpine
+            const tagsJsArray = post.data.tags ? `['${post.data.tags.join("','")}']` : '[]';
+            
+            return (
+            <article 
+            
+              x-show={`isVisible('${post.data.category}', ${tagsJsArray})`}
+              x-transition.opacity.duration.300ms
+              class="group flex flex-col h-full bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300"
+            >
+              <a href={`/blog/${post.slug}`} class="block overflow-hidden aspect-video bg-slate-100 relative">
+                <img 
+                  src={post.data.image} 
+                  alt={post.data.title}
+                  class="w-full h-full object-cover transition duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                 <div class="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/10 transition-all duration-300"></div>
+              </a>
+              
+              <div class="p-6 flex flex-col flex-grow">
+                <div class="flex items-center gap-3 mb-4">
+                  <span class="text-[10px] font-black uppercase tracking-widest text-green-700 bg-green-50 px-2.5 py-1 rounded-md">
+                    {post.data.category}
+                  </span>
+                  <span class="text-xs text-slate-400">{post.data.pubDate.toLocaleDateString('pl-PL')}</span>
+                </div>
+
+                <h2 class="text-xl font-bold mb-3 text-slate-900 leading-tight group-hover:text-green-600 transition-colors">
+                  <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+                </h2>
+                <p class="text-slate-500 text-sm line-clamp-3 mb-6">{post.data.description}</p>
+                
+                <div class="mt-auto flex items-center justify-between border-t border-slate-50 pt-4">
+                  <div class="flex gap-1">
+                    {post.data.tags?.slice(0, 2).map(tag => (
+                      <span class="text-[9px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full">#{tag}</span>
+                    ))}
+                  </div>
+                  <a href={`/blog/${post.slug}`} class="text-green-600 font-bold text-sm flex items-center gap-2 group/link">
+                    Czytaj <i class="fas fa-arrow-right text-[10px] transition-transform group-hover/link:translate-x-1"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+          )})}
+        </div>
+
+        <div 
+            x-show="!$el.querySelector('.grid').children.length" 
+            x-cloak
+            class="text-center py-20 text-slate-500"
+        >
+            Nie znaleziono artykułów spełniających oba kryteria. Spróbuj zmienić filtry.
+        </div>
+
+      </div>
+    </main>
+
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style>
+  /* Ukrywa elementy zanim Alpine się załaduje, żeby nie mrugały */
+  [x-cloak] { display: none !important; }
+</style>

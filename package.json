@@ -1,18 +1,22 @@
 {
-  "name": "html-css",
-  "version": "1.0.0",
-  "description": "A template for HTML and CSS",
-  "main": "index.html",
+  "name": "temporary",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "start": "serve"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "keywords": [
-    "html",
-    "css"
-  ],
-  "author": "Ives van Hoorne",
-  "license": "MIT",
+  "dependencies": {
+    "@astrojs/rss": "^4.0.14",
+    "@astrojs/sitemap": "^3.6.1",
+    "@tailwindcss/vite": "^4.1.18",
+    "alpinejs": "^3.15.3",
+    "astro": "^5.16.7",
+    "tailwindcss": "^4.1.18"
+  },
   "devDependencies": {
-    "serve": "11.2.0"
+    "@tailwindcss/typography": "^0.5.19"
   }
 }

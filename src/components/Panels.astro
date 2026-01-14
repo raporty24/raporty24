@@ -1,0 +1,220 @@
+---
+/* Panels.astro - Slider na mobile, Grid na desktopie */
+---
+<section id="oferta" class="modern-services" x-data="{ activeStep: 0 }">
+  <div class="sr-only">
+    <h2>Usługi analityczne i automatyzacja raportów – Katowice, Śląsk</h2>
+    <p>Kompleksowe wsparcie w zakresie Business Intelligence: od analizy danych SQL i Python, przez interaktywne dashboardy Power BI, aż po zaawansowaną automatyzację Excel Power Query i VBA.</p>
+  </div>
+
+  <div class="container mx-auto px-4">
+    
+    <header class="max-w-3xl mb-12 lg:mb-16">
+      <span class="eyebrow">Zakres usług</span>
+      <h2 class="display-title">Raportowanie, które pracuje na Ciebie.</h2>
+      <p class="text-xl text-slate-500 mt-6 leading-relaxed">
+        Bez zbędnych tabel i ręcznego przepisywania danych. Dostarczamy czystą analitykę, która wspiera Twoje decyzje każdego dnia.
+      </p>
+    </header>
+
+    <div class="relative">
+      
+      <div 
+        class="services-layout-wrapper" 
+        x-ref="track"
+        @scroll.debounce.50ms="activeStep = Math.round($refs.track.scrollLeft / ($refs.track.clientWidth * 0.85))"
+      >
+        
+        <article class="service-item">
+          <div class="sr-only">
+            <h3>Analiza danych biznesowych i Big Data</h3>
+            <p>Modelowanie danych, analiza trendów sprzedażowych oraz segmentacja klientów przy użyciu nowoczesnych narzędzi analitycznych SQL i Python.</p>
+          </div>
+          <div class="slide-content">
+            <div class="slide-icon" aria-hidden="true"><i class="fas fa-chart-line"></i></div>
+            <h3 class="slide-title">Analiza danych</h3>
+            <p class="slide-text">
+              Odkrywamy wzorce tam, gdzie inni widzą tylko rzędy cyfr. Łączymy trendy, sezonowość i segmentację w czytelny obraz Twojego biznesu.
+            </p>
+            <div class="pill-group">
+              <span class="pill">Trend Analysis</span>
+              <span class="pill">E-commerce</span>
+              <span class="pill">SQL/Python</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="service-item">
+          <div class="sr-only">
+            <h3>Wdrażanie Dashboardów Power BI</h3>
+            <p>Projektowanie interaktywnych wizualizacji danych i wskaźników KPI w Power BI. Raporty dostępne w chmurze i na urządzeniach mobilnych.</p>
+          </div>
+          <div class="slide-content">
+            <div class="slide-icon" aria-hidden="true"><i class="fas fa-chart-pie"></i></div>
+            <h3 class="slide-title">Dashboardy</h3>
+            <p class="slide-text">
+              Koniec z czekaniem na raport. Tworzymy interaktywne dashboardy Power BI, które aktualizują się same i są dostępne na każdym urządzeniu.
+            </p>
+            <div class="pill-group">
+              <span class="pill">Power BI</span>
+              <span class="pill">KPI Design</span>
+              <span class="pill">Real-time</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="service-item">
+          <div class="sr-only">
+            <h3>Automatyzacja Excel, Power Query i VBA</h3>
+            <p>Optymalizacja pracy w Excelu. Tworzenie procesów ETL w Power Query oraz pisanie makr VBA eliminujących ręczne przepisywanie danych.</p>
+          </div>
+          <div class="slide-content">
+            <div class="slide-icon" aria-hidden="true"><i class="fas fa-bolt"></i></div>
+            <h3 class="slide-title">Automatyzacja</h3>
+            <p class="slide-text">
+              Odzyskaj godziny spędzane w Excelu. Budujemy stabilne procesy Power Query, które eliminują błędy i całkowicie wyręczają Cię w pracy z danymi.
+            </p>
+            <div class="pill-group">
+              <span class="pill">Power Query</span>
+              <span class="pill">Makra VBA</span>
+              <span class="pill">Data Cleaning</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="service-item">
+          <div class="sr-only">
+            <h3>Analityka dla małych i średnich firm (MŚP)</h3>
+            <p>Doradztwo analityczne i wsparcie w podejmowaniu decyzji dla sektora MŚP na Śląsku. Wdrażanie kultury data-driven w mniejszych przedsiębiorstwach.</p>
+          </div>
+          <div class="slide-content bg-slate-900 text-white border-transparent">
+            <div class="slide-icon text-green-500" aria-hidden="true"><i class="fas fa-seedling"></i></div>
+            <h3 class="slide-title text-white">Wsparcie MŚP</h3>
+            <p class="slide-text text-slate-400">
+              Profesjonalna analityka bez korporacyjnych budżetów. Wdrażamy KPI „po ludzku”, dopasowane do skali i potrzeb mniejszych przedsiębiorstw.
+            </p>
+            <div class="mt-auto pt-8">
+              <a href="#kontakt" class="text-green-500 font-bold flex items-center gap-2 group">
+                Bezpłatna konsultacja 
+                <i class="fas fa-arrow-right text-xs transition-transform group-hover:translate-x-2"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="flex justify-center gap-2 mt-8 lg:hidden">
+        <template x-for="i in [0, 1, 2, 3]">
+          <div 
+            class="h-1.5 transition-all duration-300 rounded-full"
+            :class="activeStep === i ? 'w-8 bg-green-600' : 'w-2 bg-slate-200'"
+          ></div>
+        </template>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Stylizacja pozostaje bez zmian, zgodnie z prośbą o zachowanie wyglądu */
+  .modern-services {
+    padding: 80px 0;
+    background: #ffffff;
+  }
+  .services-layout-wrapper {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 20px 0;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .services-layout-wrapper::-webkit-scrollbar { display: none; }
+  @media (min-width: 1024px) {
+    .services-layout-wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      overflow: visible;
+      padding: 0;
+    }
+  }
+  .service-item {
+    flex: 0 0 85vw;
+    scroll-snap-align: center;
+    display: flex;
+  }
+  @media (min-width: 1024px) {
+    .service-item {
+      flex: none;
+      width: 100%;
+    }
+  }
+  .slide-content {
+    padding: 40px;
+    width: 100%;
+    border-radius: 32px;
+    background: #f8fafc;
+    border: 1px solid transparent;
+    transition: all 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+  }
+  .service-item:hover .slide-content {
+    background: #ffffff;
+    border-color: #e2e8f0;
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px -15px rgba(15, 23, 42, 0.08);
+  }
+  .slide-icon {
+    font-size: 2.2rem;
+    color: #14923b;
+    margin-bottom: 24px;
+    transition: transform 0.3s ease;
+  }
+  .service-item:hover .slide-icon {
+    transform: scale(1.1) rotate(-5deg);
+  }
+  .slide-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .slide-text {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: #64748b;
+  }
+  .pill-group {
+    margin-top: auto;
+    padding-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .pill {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    background: rgba(15, 23, 42, 0.04);
+    color: #64748b;
+    border-radius: 8px;
+  }
+  /* Klasa sr-only do poprawy SEO bez zmiany wyglądu */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+</style>
