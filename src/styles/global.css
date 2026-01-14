@@ -153,7 +153,6 @@ body {
   overflow-x: auto;
   padding: 40px 20px;
   margin: 0 -20px;
-  scroll-snap-type: x mandatory;
   scrollbar-width: none;
 }
 
@@ -225,7 +224,6 @@ body {
   gap: 20px;
   overflow-x: auto;
   padding: 20px 0; 
-  scroll-snap-type: x mandatory;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
 }
