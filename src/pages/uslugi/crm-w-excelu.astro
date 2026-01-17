@@ -1,0 +1,125 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import HeroService from "../../components/HeroService.astro";
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+
+// SEO Setup dla konkretnej usługi
+const title = "CRM w Excelu – System zarządzania sprzedażą i bazą klientów | Raporty24";
+const description = "Zbudujemy dla Ciebie dedykowany CRM w Excelu. Baza klientów, lejek sprzedaży, automatyczne przypomnienia i raporty KPI bez abonamentu. Sprawdź ofertę!";
+
+export const service = {
+  title: "CRM w Excelu",
+  order: 10,
+  menu: true,
+  category: "Excel", // opcjonalnie (do grupowania)
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <div x-data="app" x-cloak>
+    <Header />
+    
+    <HeroService 
+      title="Dedykowany system" 
+      highlight="CRM w Excelu" 
+      subtitle="Zapanuj nad chaosem w sprzedaży. Budujemy profesjonalne systemy CRM w środowisku Excel, które są w 100% dopasowane do Twojego procesu biznesowego."
+    />
+
+    <section class="py-24 bg-slate-950 text-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center mb-16">
+          <h2 class="text-4xl lg:text-5xl font-black uppercase tracking-tighter mb-6">Dlaczego warto wybrać <span class="text-green-500">CRM w Excelu?</span></h2>
+          <p class="text-xl text-slate-400">Dla wielu firm standardowe systemy CRM (SaaS) są zbyt skomplikowane i generują wysokie koszty stałe. Nasze rozwiązanie to brak abonamentu i pełna własność narzędzia.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
+            <i class="fas fa-wallet text-3xl text-green-500 mb-6"></i>
+            <h3 class="text-xl font-bold mb-4">Zero opłat miesięcznych</h3>
+            <p class="text-slate-400 text-sm">Płacisz raz za wdrożenie. Narzędzie należy do Ciebie, bez względu na liczbę użytkowników czy rekordów.</p>
+          </div>
+          <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
+            <i class="fas fa-drafting-dot-roller text-3xl text-green-500 mb-6"></i>
+            <h3 class="text-xl font-bold mb-4">100% dopasowania</h3>
+            <p class="text-slate-400 text-sm">To my dopasowujemy arkusz do Twojego lejka sprzedaży, a nie Ty do sztywnego systemu.</p>
+          </div>
+          <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
+            <i class="fas fa-bolt text-3xl text-green-500 mb-6"></i>
+            <h3 class="text-xl font-bold mb-4">Szybkie wdrożenie</h3>
+            <p class="text-slate-400 text-sm">Działający system otrzymujesz w kilka dni, a nie tygodni. Twoje dane z obecnych plików importujemy automatycznie.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 bg-white text-slate-900">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row gap-16 items-center">
+          <div class="lg:w-1/2">
+            <h2 class="text-4xl font-black uppercase tracking-tighter mb-8 leading-none">Co zawiera Twój <br/><span class="text-green-600">nowy system CRM?</span></h2>
+            <ul class="space-y-6">
+              <li class="flex gap-4">
+                <i class="fas fa-check-circle text-green-600 text-2xl"></i>
+                <div>
+                  <h4 class="font-bold text-lg">Centralna baza klientów i kontaktów</h4>
+                  <p class="text-slate-500 text-sm">Pełna ewidencja firm, osób kontaktowych, numerów telefonów i adresów e-mail w jednym miejscu.</p>
+                </div>
+              </li>
+              <li class="flex gap-4">
+                <i class="fas fa-check-circle text-green-600 text-2xl"></i>
+                <div>
+                  <h4 class="font-bold text-lg">Interaktywny Lejek Sprzedaży (Pipeline)</h4>
+                  <p class="text-slate-500 text-sm">Zarządzanie szansami sprzedaży na każdym etapie: od leada, przez ofertę, po wygraną transakcję.</p>
+                </div>
+              </li>
+              <li class="flex gap-4">
+                <i class="fas fa-check-circle text-green-600 text-2xl"></i>
+                <div>
+                  <h4 class="font-bold text-lg">Historia aktywności i follow-up</h4>
+                  <p class="text-slate-500 text-sm">Notatki ze spotkań, daty ostatniego kontaktu i automatyczne przypomnienia o kolejnych zadaniach.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="lg:w-1/2 bg-slate-950 p-12 rounded-[50px] shadow-2xl relative">
+            <div class="absolute -top-6 -left-6 bg-green-500 text-white px-6 py-3 rounded-2xl font-black uppercase text-xs tracking-widest shadow-xl">
+              Analityka na żywo
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-6">Dashboard Handlowca</h3>
+            <p class="text-slate-400 mb-8 text-sm leading-relaxed">System automatycznie generuje raporty: ile leadów wpadło w miesiącu, jaka jest wartość ofert w lejku i jaka jest konwersja Twojego zespołu.</p>
+            <div class="space-y-4">
+               <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden"><div class="w-3/4 h-full bg-green-500"></div></div>
+               <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden"><div class="w-1/2 h-full bg-green-500"></div></div>
+               <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden"><div class="w-5/6 h-full bg-green-500"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 bg-slate-950 text-white">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <h2 class="text-3xl lg:text-4xl font-black mb-12 uppercase tracking-tight text-center">Pytania i odpowiedzi (FAQ)</h2>
+        <div class="grid gap-4">
+          {[
+            { q: "Czy wielu użytkowników może pracować w CRM jednocześnie?", a: "Tak. Korzystając z Microsoft 365 i usługi OneDrive/SharePoint, wielu handlowców może edytować plik w tym samym czasie." },
+            { q: "Czy moje dane są bezpieczne i zgodne z RODO?", a: "Tak, dane są przechowywane na Twojej infrastrukturze firmowej. Wprowadzamy odpowiednie walidacje i zabezpieczenia dostępu do pliku." },
+            { q: "Co jeśli będę chciał się przenieść do innego systemu?", a: "Dane z Excela są łatwo eksportowalne do formatów CSV/XLSX, co pozwala na bezproblemową migrację do dowolnego systemu SaaS w przyszłości." },
+            { q: "Czy CRM w Excelu posiada historię kontaktu?", a: "Tak, projektujemy dedykowane moduły notatek i zdarzeń, które pozwalają śledzić każdą interakcję z klientem w czasie." },
+            { q: "Czy mogę dodawać własne kolumny i pola?", a: "Oczywiście. To jedna z największych zalet Excela – system rośnie wraz z Twoimi potrzebami." }
+          ].map(item => (
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+              <h4 class="font-bold text-green-400 mb-2">{item.q}</h4>
+              <p class="text-slate-400 text-sm">{item.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <Contact />
+    <Footer />
+  </div>
+</BaseLayout>

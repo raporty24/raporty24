@@ -1,0 +1,141 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import HeroService from "../../components/HeroService.astro";
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+
+// SEO Setup
+const title = "Excel na zamówienie – Tworzenie profesjonalnych arkuszy dla firm";
+const description = "Zleć stworzenie dedykowanego arkusza Excel. Budujemy kalkulatory, generatory ofert i automaty VBA dopasowane do Twojego biznesu. Wyceń swój plik w 24h!";
+
+export const service = {
+  title: "Excel na zamówienie",
+  order: 10,
+  menu: true,
+  category: "Excel", // opcjonalnie (do grupowania)
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <div x-data="app" x-cloak>
+    <Header />
+    
+    <HeroService
+      title="Dedykowany" 
+      highlight="Excel na zamówienie" 
+      subtitle="Budujemy narzędzia, które pracują za Ciebie. Od prostych kalkulatorów po zaawansowane systemy automatyzacji procesów biznesowych."
+    />
+
+    <section class="py-24 bg-white text-slate-900">
+      <div class="container mx-auto px-4">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <h2 class="text-4xl font-black uppercase tracking-tighter mb-8 leading-none">
+              Twój Excel wolno działa lub <br/> <span class="text-green-600">wymaga ręcznej pracy?</span>
+            </h2>
+            <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+              Większość firm traci do 20 godzin tygodniowo na ręczne przepisywanie danych i naprawianie błędnych formuł. Nasze <strong>arkusze na zamówienie</strong> eliminują te problemy, wprowadzając automatyzację tam, gdzie do tej pory był chaos.
+            </p>
+            <ul class="space-y-4">
+              <li class="flex items-center gap-3 font-bold"><i class="fas fa-check-circle text-green-500"></i> Zero błędów w obliczeniach</li>
+              <li class="flex items-center gap-3 font-bold"><i class="fas fa-check-circle text-green-500"></i> Błyskawiczne generowanie dokumentów</li>
+              <li class="flex items-center gap-3 font-bold"><i class="fas fa-check-circle text-green-500"></i> Interfejs zrozumiały dla każdego pracownika</li>
+            </ul>
+          </div>
+          <div class="bg-slate-50 p-10 rounded-[40px] border border-slate-200">
+            <h3 class="text-2xl font-black mb-6 uppercase">Co możemy dla Ciebie stworzyć?</h3>
+            <div class="grid gap-4">
+              <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-green-500">
+                <span class="font-bold block">Kalkulatory i kosztorysy</span>
+                <span class="text-xs text-slate-500">Precyzyjne wyceny usług i produktów w kilka sekund.</span>
+              </div>
+              <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-green-500">
+                <span class="font-bold block">Generatory dokumentów</span>
+                <span class="text-xs text-slate-500">Automatyczne tworzenie ofert, umów i faktur do PDF.</span>
+              </div>
+              <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-green-500">
+                <span class="font-bold block">Grafiki i magazyn</span>
+                <span class="text-xs text-slate-500">Ewidencja czasu pracy i stanów magazynowych.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 bg-slate-950 text-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-black uppercase tracking-tighter mb-16 text-center">Standard profesjonalnego arkusza</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+            <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-6">
+              <i class="fas fa-code text-green-500"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-4">Automatyzacja VBA</h4>
+            <p class="text-slate-400 text-sm leading-relaxed">Piszemy dedykowane makra, które wykonują powtarzalne czynności za kliknięciem jednego przycisku.</p>
+          </div>
+          <div class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+            <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-6">
+              <i class="fas fa-filter text-green-500"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-4">Power Query</h4>
+            <p class="text-slate-400 text-sm leading-relaxed">Łączymy dane z wielu źródeł (CSV, PDF, SQL) w jeden czysty i zawsze aktualny raport.</p>
+          </div>
+          <div class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+            <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-6">
+              <i class="fas fa-shield-alt text-green-500"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-4">Bezpieczeństwo</h4>
+            <p class="text-slate-400 text-sm leading-relaxed">Blokujemy edycję formuł, wprowadzamy walidację danych i chronimy Twoje know-how.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 bg-slate-50 text-slate-900">
+      <div class="container mx-auto px-4 max-w-5xl">
+        <h2 class="text-4xl font-black uppercase tracking-tighter mb-16 text-center">3 kroki do Twojego arkusza</h2>
+        <div class="grid md:grid-cols-3 gap-12">
+          <div class="text-center">
+            <span class="text-6xl font-black text-green-200 block mb-4">01</span>
+            <h5 class="font-bold text-xl mb-2">Bezpłatny Audyt</h5>
+            <p class="text-slate-500 text-sm">Analizujemy Twoje potrzeby i obecne pliki. Proponujemy najlepsze rozwiązanie.</p>
+          </div>
+          <div class="text-center">
+            <span class="text-6xl font-black text-green-200 block mb-4">02</span>
+            <h5 class="font-bold text-xl mb-2">Budowa Narzędzia</h5>
+            <p class="text-slate-500 text-sm">Tworzymy arkusz, testujemy go na Twoich danych i wprowadzamy poprawki.</p>
+          </div>
+          <div class="text-center">
+            <span class="text-6xl font-black text-green-200 block mb-4">03</span>
+            <h5 class="font-bold text-xl mb-2">Wdrożenie i Support</h5>
+            <p class="text-slate-500 text-sm">Przekazujemy gotowy plik z instrukcją i zapewniamy wsparcie techniczne.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 bg-slate-950 text-white">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <h2 class="text-3xl font-black mb-12 uppercase tracking-tight border-l-4 border-green-500 pl-6">Najczęściej zadawane pytania</h2>
+        <div class="space-y-4">
+          {[
+            { q: "Ile kosztuje stworzenie arkusza w Excelu na zamówienie?", a: "Cena zależy od skomplikowania projektu. Proste kalkulatory zaczynają się od kilkuset złotych, zaawansowane systemy automatyzacji wyceniamy indywidualnie po audycie." },
+            { q: "Czy plik będzie działał na starszych wersjach Excela?", a: "Standardowo projektujemy pod Microsoft 365, ale na życzenie dostosowujemy pliki do wersji 2016, 2019 lub 2021." },
+            { q: "Ile trwa tworzenie arkusza na zlecenie?", a: "Mniejsze projekty realizujemy w 3-5 dni roboczych. Złożone systemy wymagają zazwyczaj od 2 do 4 tygodni." },
+            { q: "Czy oferujecie wsparcie po zakończeniu zlecenia?", a: "Tak, na każdy arkusz udzielamy gwarancji technicznej i oferujemy płatną opiekę powdrożeniową (SLA)." }
+          ].map(item => (
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-green-500/30 transition-all">
+              <h4 class="font-bold text-green-400 mb-2">{item.q}</h4>
+              <p class="text-slate-400 text-sm leading-relaxed">{item.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <Contact />
+    <Footer />
+  </div>
+</BaseLayout>

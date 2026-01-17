@@ -1,0 +1,66 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import HeroService from "../../components/HeroService.astro";
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+
+const title = "Makra VBA na zamówienie – Programowanie i Automatyzacja Excel | Raporty24";
+const description = "Zleć profesjonalne makra VBA. Automatyzacja procesów, generowanie PDF, integracje i dedykowane funkcje w Excelu. Sprawdź nasze realizacje!";
+
+export const service = {
+  title: "Makra VBA",
+  order: 10,
+  menu: true,
+  category: "Excel", // opcjonalnie (do grupowania)
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <div x-data="app" x-cloak>
+    <Header />
+    <HeroService 
+      title="Zaawansowane" 
+      highlight="Makra VBA na zamówienie" 
+      subtitle="Tam, gdzie kończą się możliwości standardowych formuł, zaczyna się VBA. Tworzymy inteligentne skrypty, które wykonują wielogodzinną pracę w kilka sekund."
+    />
+
+    <section class="py-24 bg-slate-950 text-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mb-16">
+          <h2 class="text-4xl font-black uppercase mb-6">Automatyzacja <span class="text-green-500">bez limitów</span></h2>
+          <p class="text-slate-400">VBA (Visual Basic for Applications) pozwala nam "nauczyć" Excela wykonywania niemal każdej czynności: od sterowania innymi aplikacjami, po budowę skomplikowanych formularzy wprowadzania danych.</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
+            <h4 class="font-bold text-xl mb-4 text-green-400">Interaktywne Formularze</h4>
+            <p class="text-sm text-slate-400">Tworzymy okna dialogowe (UserForms), które wymuszają poprawność wpisywanych danych i prowadzą użytkownika za rękę.</p>
+          </div>
+          <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
+            <h4 class="font-bold text-xl mb-4 text-green-400">Generowanie Dokumentów</h4>
+            <p class="text-sm text-slate-400">Jeden przycisk wystarczy, by Excel przygotował 50 spersonalizowanych ofert w PDF i wysłał je mailem do klientów.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 bg-white text-slate-900">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <h2 class="text-3xl font-black mb-12 uppercase text-center">FAQ – Programowanie VBA</h2>
+        <div class="space-y-4">
+          <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+            <h4 class="font-bold mb-2">Czy makra są bezpieczne?</h4>
+            <p class="text-slate-500 text-sm">Tak. Każde napisane przez nas makro jest transparentne i podpisane. Pomagamy również skonfigurować uprawnienia w Twojej firmie, aby makra działały bez problemów.</p>
+          </div>
+          <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+            <h4 class="font-bold mb-2">VBA czy Power Query – co wybrać?</h4>
+            <p class="text-slate-500 text-sm">Do czyszczenia danych polecamy Power Query. Jeśli jednak potrzebujesz "akcji" (np. zapisu pliku, otwarcia Outlooka, interakcji z użytkownikiem) – niezbędne są makra VBA.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Contact />
+    <Footer />
+  </div>
+</BaseLayout>

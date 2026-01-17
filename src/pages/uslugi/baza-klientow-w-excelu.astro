@@ -1,0 +1,82 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import HeroService from "../../components/HeroService.astro";
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+
+const title = "Baza Klientów w Excelu – Rejestr i Porządek w Danych | Raporty24";
+const description = "Uporządkuj dane swoich klientów. Budujemy profesjonalne bazy kontaktów w Excelu z walidacją NIP, e-mail i automatycznymi raportami. Koniec z duplikatami!";
+
+export const service = {
+  title: "Baza klientów w Excelu",
+  order: 10,
+  menu: true,
+  category: "Excel", // opcjonalnie (do grupowania)
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <div x-data="app" x-cloak>
+    <Header />
+    
+    <HeroService 
+      title="Bezpieczna i czysta" 
+      highlight="Baza Klientów w Excelu" 
+      subtitle="Koniec z bałaganem w kontaktach. Budujemy inteligentne rejestry klientów, które pilnują poprawności danych i ułatwiają codzienną pracę."
+    />
+
+    <section class="py-24 bg-slate-950 text-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-black uppercase tracking-tighter mb-16 text-center">Stop <span class="text-green-500">bałaganowi w danych</span></h2>
+        <div class="grid md:grid-cols-2 gap-12">
+          <div class="flex gap-6">
+            <div class="shrink-0 w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 border border-red-500/20">
+              <i class="fas fa-times"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-xl mb-2 text-white">Duplikaty i błędy</h4>
+              <p class="text-slate-400 text-sm leading-relaxed">Ręczne wpisywanie często kończy się tym samym klientem wpisanym pod trzema różnymi nazwami. Nasze mechanizmy blokują powstawanie duplikatów.</p>
+            </div>
+          </div>
+          <div class="flex gap-6">
+            <div class="shrink-0 w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 border border-red-500/20">
+              <i class="fas fa-times"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-xl mb-2 text-white">Nieaktualne informacje</h4>
+              <p class="text-slate-400 text-sm leading-relaxed">Bez struktury trudno o historię zmian. My wprowadzamy logi aktywności i jasne statusy relacji z klientem.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 bg-white text-slate-900">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mb-16">
+          <h2 class="text-4xl font-black uppercase tracking-tighter mb-6">Co wyróżnia <span class="text-green-600">nasze bazy?</span></h2>
+          <p class="text-lg text-slate-600">Tworzymy systemy ewidencji, które są odporne na błędy użytkownika i dostarczają gotowych odpowiedzi biznesowych.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="p-8 rounded-3xl bg-slate-50 border border-slate-200">
+            <h5 class="font-bold text-lg mb-4">Walidacja danych</h5>
+            <p class="text-slate-500 text-xs">Automatyczne sprawdzanie poprawności NIP, numerów telefonów i formatów adresów e-mail przy wpisie.</p>
+          </div>
+          <div class="p-8 rounded-3xl bg-slate-50 border border-slate-200">
+            <h5 class="font-bold text-lg mb-4">Wyszukiwanie 360°</h5>
+            <p class="text-slate-500 text-xs">Wyszukiwarki typu "instant" – znajdziesz klienta, ofertę lub notatkę w ułamku sekundy.</p>
+          </div>
+          <div class="p-8 rounded-3xl bg-slate-50 border border-slate-200">
+            <h5 class="font-bold text-lg mb-4">Zgodność RODO</h5>
+            <p class="text-slate-500 text-xs">Projektujemy strukturę, która ułatwia ewidencję zgód i bezpieczne przechowywanie danych kontaktowych.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Contact />
+    <Footer />
+  </div>
+</BaseLayout>

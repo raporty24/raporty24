@@ -1,16 +1,16 @@
 ---
-// Hero.astro - Wersja Kinowa z nowoczesnym Social Proof
+// src/components/Hero.astro
+const { 
+  title = "Profesjonalne dashboardy", 
+  highlight = "Power BI", 
+  subtitle = "Zamieniamy chaos w arkuszach na przejrzyste raporty." 
+} = Astro.props;
 ---
 
-<section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
+<section id="hero" class="relative min-h-screen flex items-center overflow-hidden bg-slate-950">
   
   <div class="sr-only">
     <h2>Ekspert Business Intelligence – Usługi Power BI i Usługi Excel</h2>
-    <p>
-      Specjalizujemy się w: tworzenie arkuszy Excel, automatyzacja raportów, 
-      wdrażanie Power BI Katowice, naprawa plików Excel oraz profesjonalne 
-      dashboardy menedżerskie.
-    </p>
   </div>
 
   <div class="absolute inset-0 z-0">
@@ -19,14 +19,48 @@
       alt="Nowoczesne biuro analizy danych Power BI i Excel" 
       class="w-full h-full object-cover scale-105 animate-slow-pan"
     />
-    <div class="absolute inset-0 bg-slate-950/75"></div> <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
-    <div class="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] bg-green-500/10 rounded-full blur-[160px] animate-pulse"></div>
+    <div class="absolute inset-0 bg-slate-950/70"></div> 
+    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
   </div>
 
+  <div class="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+    <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1440 800">
+      <defs>
+        <pattern id="gridPattern" width="60" height="60" patternUnits="userSpaceOnUse">
+          <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" stroke-opacity="0.05" stroke-width="0.5"/>
+        </pattern>
+        <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#22c55e" stop-opacity="0" />
+            <stop offset="50%" stop-color="#4ade80" stop-opacity="1" />
+            <stop offset="100%" stop-color="#22c55e" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+
+      <rect width="100%" height="100%" fill="url(#gridPattern)" />
+
+      <path
+        d="M-100,600 L400,350 L700,550 L1100,250 L1540,450"
+        fill="none"
+        stroke="#22c55e"
+        stroke-width="1"
+        opacity="0.2"
+        stroke-linejoin="round"
+      />
+
+      <path
+        class="neon-flow"
+        d="M-100,600 L400,350 L700,550 L1100,250 L1540,450"
+        fill="none"
+        stroke="url(#neonGradient)"
+        stroke-width="4"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </div>
 
   <div class="container mx-auto px-4 relative z-10 pt-20">
     <div class="max-w-5xl">
-      
       <div class="inline-flex items-center gap-3 mb-8 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
         <span class="flex h-2 w-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]"></span>
         <span class="text-xs font-bold uppercase tracking-[0.2em] text-slate-300">Data Excellence & Automation</span>
@@ -57,73 +91,57 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-        
-        <div class="relative group">
-          <div class="absolute inset-0 bg-green-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-          <div class="relative flex items-center gap-5 p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl hover:border-green-500/50 transition-all">
-            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500/20 to-green-600/5 flex items-center justify-center border border-green-500/20 shadow-inner">
-              <i class="fas fa-project-diagram text-green-500 text-2xl"></i>
-            </div>
-            <div>
-              <p class="text-3xl font-black text-white leading-none">100+</p>
-              <p class="text-slate-400 text-xs uppercase font-bold tracking-widest mt-2">Wdrożonych projektów</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative group">
-          <div class="absolute inset-0 bg-green-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-          <div class="relative flex items-center gap-5 p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl hover:border-green-500/50 transition-all">
-            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500/20 to-green-600/5 flex items-center justify-center border border-green-500/20 shadow-inner">
-              <i class="fas fa-hourglass-half text-green-500 text-2xl"></i>
-            </div>
-            <div>
-              <p class="text-3xl font-black text-white leading-none">20h+</p>
-              <p class="text-slate-400 text-xs uppercase font-bold tracking-widest mt-2">Odzyskanych tygodniowo</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="relative group">
-          <div class="absolute inset-0 bg-green-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-          <div class="relative flex items-center gap-5 p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl hover:border-green-500/50 transition-all">
-            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500/20 to-green-600/5 flex items-center justify-center border border-green-500/20 shadow-inner">
-              <i class="fas fa-star text-green-500 text-2xl"></i>
-            </div>
-            <div>
-              <div class="flex gap-1 mb-1">
-                <i class="fas fa-star text-green-500 text-[10px]"></i>
-                <i class="fas fa-star text-green-500 text-[10px]"></i>
-                <i class="fas fa-star text-green-500 text-[10px]"></i>
-                <i class="fas fa-star text-green-500 text-[10px]"></i>
-                <i class="fas fa-star text-green-500 text-[10px]"></i>
+        {[
+          { icon: 'fa-project-diagram', val: '100+', label: 'Wdrożonych projektów' },
+          { icon: 'fa-hourglass-half', val: '20h+', label: 'Odzyskanych tygodniowo' },
+          { icon: 'fa-star', val: 'Ekspert 5.0', label: 'Średnia ocena klientów', stars: true }
+        ].map((stat) => (
+          <div class="relative group">
+            <div class="absolute inset-0 bg-green-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div class="relative flex items-center gap-5 p-6 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl hover:border-green-500/50 transition-all">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500/20 to-green-600/5 flex items-center justify-center border border-green-500/20 shadow-inner">
+                <i class={`fas ${stat.icon} text-green-500 text-2xl`}></i>
               </div>
-              <p class="text-xl font-black text-white leading-none">Ekspert 5.0</p>
-              <p class="text-slate-400 text-xs uppercase font-bold tracking-widest mt-2">Średnia ocena klientów</p>
+              <div>
+                {stat.stars && <div class="flex gap-1 mb-1 text-green-500 text-[10px]"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>}
+                <p class="text-3xl font-black text-white leading-none">{stat.val}</p>
+                <p class="text-slate-400 text-xs uppercase font-bold tracking-widest mt-2">{stat.label}</p>
+              </div>
             </div>
           </div>
-        </div>
-
+        ))}
       </div>
-
-    </div>
-  </div>
-
-  <div class="absolute right-10 bottom-10 hidden lg:block">
-    <div class="flex flex-col items-center gap-4">
-      <div class="w-px h-24 bg-gradient-to-t from-green-500 to-transparent"></div>
-      <span class="[writing-mode:vertical-lr] text-slate-500 text-[10px] uppercase tracking-[0.5em] font-bold">Zjedź niżej</span>
     </div>
   </div>
 </section>
 
 <style>
+  /* --- Animacja Płynącego Neonu (Bez zmian w logice) --- */
+  
+  .neon-flow {
+    /* Tworzymy krótki odcinek (400px) i długą przerwę (2500px) */
+    stroke-dasharray: 400 2500;
+    /* Startujemy z przesunięciem, żeby neon wjeżdżał z lewej */
+    stroke-dashoffset: 2900;
+    /* Płynna, nieskończona pętla */
+    animation: flowLight 6s linear infinite;
+    will-change: stroke-dashoffset;
+    /* Efekt świecenia (Glow) */
+    filter: drop-shadow(0px 0px 8px rgba(74, 222, 128, 0.8));
+  }
+
+  @keyframes flowLight {
+    to { stroke-dashoffset: -400; }
+  }
+
+  /* Pozostałe animacje tła */
   @keyframes slow-pan {
-    0% { transform: scale(1.05) translate(0, 0); }
-    50% { transform: scale(1.1) translate(-1%, -1%); }
-    100% { transform: scale(1.05) translate(0, 0); }
+    0% { transform: translate3d(0, 0, 0) scale(1.05); }
+    50% { transform: translate3d(-1%, -1%, 0) scale(1.1); }
+    100% { transform: translate3d(0, 0, 0) scale(1.05); }
   }
   .animate-slow-pan {
-    animation: slow-pan 20s linear infinite;
+    animation: slow-pan 25s linear infinite;
+    will-change: transform;
   }
 </style>

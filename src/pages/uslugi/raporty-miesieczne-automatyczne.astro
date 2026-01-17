@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import HeroService from "../../components/HeroService.astro";
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+
+const title = "Automatyczne raporty miesięczne – Oszczędność czasu dla zarządu | Raporty24";
+const description = "Zamień dni pracy nad raportem miesięcznym w kilka sekund. Automatyzacja zestawień w Excelu i Power BI. Sprawdź, jak to działa!";
+
+export const service = {
+  title: "Automatyczne raporty miesięczne",
+  order: 10,
+  menu: true,
+  category: "Excel", // opcjonalnie (do grupowania)
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <div x-data="app" x-cloak>
+    <Header />
+    <HeroService 
+      title="Błyskawiczne" 
+      highlight="Raporty Miesięczne" 
+      subtitle="Koniec z gorączką na koniec miesiąca. Budujemy automaty, które same agregują dane z całego okresu i generują gotowy raport z komentarzem w PDF lub Power BI."
+    />
+
+    <section class="py-24 bg-slate-950 text-white">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+           <div>
+              <h2 class="text-4xl font-black uppercase mb-8">Czas raportu: <br/><span class="text-green-500 text-5xl">4h &rarr; 10 min</span></h2>
+              <p class="text-slate-400 mb-6">Większość raportów miesięcznych to te same, powtarzalne czynności. My zamieniamy je w proces, który wymaga jedynie kliknięcia 'Odśwież'.</p>
+              <ul class="space-y-4 italic text-slate-300">
+                <li>• Porównania Miesiąc do Miesiąca (M/M)</li>
+                <li>• Analiza odchyleń od budżetu</li>
+                <li>• Automatyczne wykresy trendów</li>
+              </ul>
+           </div>
+           <div class="bg-white/5 p-10 rounded-3xl border border-white/10 text-center">
+              <i class="fas fa-history text-6xl text-green-500 mb-6"></i>
+              <p class="text-lg">Odzyskaj 12 dni w skali roku, które marnujesz na ręczne zestawienia.</p>
+           </div>
+        </div>
+      </div>
+    </section>
+
+    <Contact />
+    <Footer />
+  </div>
+</BaseLayout>

@@ -1,0 +1,79 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import HeroService from "../../components/HeroService.astro";
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+
+const title = "Optymalizacja Excela – Przyspieszanie wolnych plików i naprawa | Raporty24";
+const description = "Twój Excel wolno działa? Zawiesza się? Oferujemy profesjonalną optymalizację, czyszczenie plików i przyspieszanie formuł. Przywróć płynność pracy!";
+
+export const service = {
+  title: "Optymalizacja Excela",
+  order: 10,
+  menu: true,
+  category: "Excel", // opcjonalnie (do grupowania)
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <div x-data="app" x-cloak>
+    <Header />
+    <HeroService 
+      title="Błyskawiczna" 
+      highlight="Optymalizacja Excela" 
+      subtitle="Naprawiamy 'nieużywalne' pliki. Jeśli Twój arkusz otwiera się minutami lub zawiesza przy każdym kliknięciu – wiemy jak temu zaradzić."
+    />
+
+    <section class="py-24 bg-slate-950 text-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-black uppercase tracking-tighter mb-16">Dlaczego <span class="text-green-500">twój plik muli?</span></h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="p-6 border-l-2 border-red-500 bg-white/5">
+            <h4 class="font-bold mb-2 italic text-red-400">Zbyt wiele formatowania</h4>
+            <p class="text-slate-400 text-sm">Nadmiar kolorów i obramowań potrafi 'ważyć' więcej niż same dane.</p>
+          </div>
+          <div class="p-6 border-l-2 border-red-500 bg-white/5">
+            <h4 class="font-bold mb-2 italic text-red-400">Niewydajne formuły</h4>
+            <p class="text-slate-400 text-sm">Zastępujemy ciężkie funkcje (np. WYSZUKAJ.PIONOWO) szybszymi odpowiednikami.</p>
+          </div>
+          <div class="p-6 border-l-2 border-red-500 bg-white/5">
+            <h4 class="font-bold mb-2 italic text-red-400">Zbędne obiekty</h4>
+            <p class="text-slate-400 text-sm">Ukryte kształty i grafiki to częsty powód 'puchnięcia' plików XLSX.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 bg-white text-slate-900">
+      <div class="container mx-auto px-4 max-w-5xl">
+        <div class="flex flex-col lg:flex-row gap-16">
+          <div class="lg:w-1/2">
+            <h2 class="text-4xl font-black uppercase mb-8">Nasz Proces <span class="text-green-600">Naprawczy</span></h2>
+            <div class="space-y-4">
+              <div class="flex gap-4">
+                <span class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold">1</span>
+                <p class="text-sm">Audyt architektury i identyfikacja 'wąskich gardeł'.</p>
+              </div>
+              <div class="flex gap-4">
+                <span class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold">2</span>
+                <p class="text-sm">Przebudowa modelu danych na Power Query (odchudzenie pliku).</p>
+              </div>
+              <div class="flex gap-4">
+                <span class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold">3</span>
+                <p class="text-sm">Finalne testy wydajności i oddanie błyskawicznego arkusza.</p>
+              </div>
+            </div>
+          </div>
+          <div class="lg:w-1/2 p-8 bg-slate-900 rounded-3xl text-white">
+            <h4 class="text-2xl font-bold mb-4">Efekt?</h4>
+            <p class="text-slate-400">Redukcja wagi pliku nawet o <span class="text-green-500 font-bold">90%</span> i skrócenie czasu odświeżania z kilku minut do <span class="text-green-500 font-bold">kilku sekund</span>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Contact />
+    <Footer />
+  </div>
+</BaseLayout>

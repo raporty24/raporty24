@@ -1,0 +1,58 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import HeroService from "../../components/HeroService.astro";
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+
+const title = "Raporty Serwisowe i Analiza SLA – Dashboardy dla Serwisu | Raporty24";
+const description = "Monitoruj wydajność swojego serwisu. Raporty SLA, czas reakcji, obłożenie techników i analiza usterek. Profesjonalne dashboardy w Power BI i Excel.";
+
+export const service = {
+  title: "Raporty serwisowe",
+  order: 10,
+  menu: true,
+  category: "Excel", // opcjonalnie (do grupowania)
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <div x-data="app" x-cloak>
+    <Header />
+    <HeroService 
+      title="Wydajny" 
+      highlight="Serwis i Raportowanie SLA" 
+      subtitle="Zapanuj nad zgłoszeniami. Budujemy dedykowane raporty serwisowe, które pokazują czarno na białym, jak Twój zespół radzi sobie z realizacją umów serwisowych."
+    />
+
+    <section class="py-24 bg-slate-950 text-white text-center">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <h2 class="text-4xl font-black uppercase mb-12">Kluczowe <span class="text-green-500">wskaźniki serwisu</span></h2>
+        <div class="grid md:grid-cols-2 gap-8 text-left">
+           <div class="p-8 bg-white/5 rounded-2xl border border-white/10">
+              <h4 class="font-bold text-xl mb-2">SLA Compliance</h4>
+              <p class="text-slate-400 text-sm">Jaki procent zgłoszeń został zamknięty w umownym czasie? Raportujemy odchylenia i zagrożenia.</p>
+           </div>
+           <div class="p-8 bg-white/5 rounded-2xl border border-white/10">
+              <h4 class="font-bold text-xl mb-2">Analiza Powtarzalności</h4>
+              <p class="text-slate-400 text-sm">Które urządzenia psują się najczęściej? Pomagamy zidentyfikować wady seryjne i optymalizować części zamienne.</p>
+           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 bg-white text-slate-900">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-black mb-12 uppercase text-center">Dla kogo budujemy raporty serwisowe?</h2>
+        <div class="flex flex-wrap justify-center gap-4">
+          {['Serwisy IT', 'Firmy produkcyjne', 'Utrzymanie ruchu', 'Serwisy AGD/RTV', 'Firmy medyczne'].map(t => (
+            <span class="px-6 py-3 bg-slate-100 rounded-full font-bold text-slate-600 border border-slate-200">{t}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <Contact />
+    <Footer />
+  </div>
+</BaseLayout>

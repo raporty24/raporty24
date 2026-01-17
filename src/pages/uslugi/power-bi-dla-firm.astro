@@ -1,0 +1,60 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import HeroService from "../../components/HeroService.astro";
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+
+const title = "Power BI dla firm – Profesjonalne wdrożenie i konsulting | Raporty24";
+const description = "Wdrożenie Power BI w Twojej firmie od A do Z. Budujemy architekturę danych, szkolimy zespoły i dostarczamy gotowe dashboardy zarządcze.";
+
+export const service = {
+  title: "Power BI dla firm",
+  order: 10,
+  menu: true,
+  category: "Excel", // opcjonalnie (do grupowania)
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <div x-data="app" x-cloak>
+    <Header />
+    <HeroService 
+      title="Kompleksowe" 
+      highlight="Wdrożenie Power BI dla Firm" 
+      subtitle="Nie tylko rysujemy wykresy. Budujemy fundament analityczny Twojej firmy, łącząc dane z ERP, CRM i arkuszy Excel w jedną, wiarygodną całość."
+    />
+
+    <section class="py-24 bg-white text-slate-900">
+      <div class="container mx-auto px-4 max-w-5xl">
+        <h2 class="text-4xl font-black uppercase mb-16 tracking-tighter">Plan wdrożenia <span class="text-green-600">krok po kroku</span></h2>
+        <div class="space-y-12">
+          <div class="flex gap-8">
+            <div class="text-4xl font-black text-green-200">01</div>
+            <div>
+              <h4 class="text-xl font-bold mb-2">Audyt źródeł i architektura</h4>
+              <p class="text-slate-500">Sprawdzamy, gdzie są Twoje dane i jak je najbezpieczniej połączyć w stabilny model.</p>
+            </div>
+          </div>
+          <div class="flex gap-8 border-y border-slate-100 py-12">
+            <div class="text-4xl font-black text-green-200">02</div>
+            <div>
+              <h4 class="text-xl font-bold mb-2">Budowa modelu i miar DAX</h4>
+              <p class="text-slate-500">Tworzymy serce raportu – obliczenia KPI, które zawsze podają poprawne wyniki finansowe i operacyjne.</p>
+            </div>
+          </div>
+          <div class="flex gap-8">
+            <div class="text-4xl font-black text-green-200">03</div>
+            <div>
+              <h4 class="text-xl font-bold mb-2">Projekt Dashboardów i Szkolenie</h4>
+              <p class="text-slate-500">Oddajemy gotowe, interaktywne widoki i uczymy Twój zespół, jak z nich efektywnie korzystać.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Contact />
+    <Footer />
+  </div>
+</BaseLayout>

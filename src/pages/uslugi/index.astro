@@ -1,0 +1,138 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import HeroService from "../../components/HeroService.astro";
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+
+// Meta dane pod SEO
+const pageTitle = "Usługi Excel i Power BI – Automatyzacja i Dashboardy dla Firm";
+const pageDescription = "Kompleksowe usługi Business Intelligence: tworzenie arkuszy Excel na zamówienie, systemy CRM w Excelu oraz profesjonalne dashboardy Power BI. Sprawdź naszą ofertę!";
+
+export const service = {
+  title: "Wszystkie usługi",
+  order: 0,
+  menu: false,
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <div x-data="app" x-cloak>
+    <Header />
+    
+ <HeroService 
+  title="Dedykowany system" 
+  highlight="CRM w Excelu" 
+  subtitle="Budujemy proste i skuteczne bazy klientów dopasowane do Twojej firmy." />
+
+    <section class="py-24 bg-white text-slate-900">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mb-16">
+          <h2 class="text-4xl lg:text-5xl font-black tracking-tighter mb-6 uppercase">Ekosystem Microsoft Excel</h2>
+          <p class="text-xl text-slate-600">Tworzymy narzędzia, które oszczędzają Twój czas. Wykorzystujemy Power Query i VBA, by zamienić arkusze w automatyczne aplikacje biznesowe.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <a href="/uslugi/excel-na-zamowienie" class="group p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:shadow-2xl hover:border-green-500 transition-all">
+            <h3 class="text-2xl font-bold mb-4 group-hover:text-green-600">Excel na zamówienie</h3>
+            <p class="text-slate-500 mb-6 text-sm">Budowa arkuszy od zera: kalkulatory, formularze, generatory ofert i dokumentacja na zlecenie.</p>
+            <span class="text-green-600 font-bold text-xs uppercase tracking-widest">Sprawdź ofertę →</span>
+          </a>
+          <a href="/uslugi/automatyzacja-excel-power-query" class="group p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:shadow-2xl hover:border-green-500 transition-all">
+            <h3 class="text-2xl font-bold mb-4 group-hover:text-green-600">Automatyzacja Power Query</h3>
+            <p class="text-slate-500 mb-6 text-sm">Łączenie danych z wielu plików i systemów. Koniec z ręcznym kopiowaniem i poprawianiem błędów.</p>
+            <span class="text-green-600 font-bold text-xs uppercase tracking-widest">Oszczędź czas →</span>
+          </a>
+          <a href="/uslugi/optymalizacja-excela" class="group p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:shadow-2xl hover:border-green-500 transition-all">
+            <h3 class="text-2xl font-bold mb-4 group-hover:text-green-600">Optymalizacja i Naprawa</h3>
+            <p class="text-slate-500 mb-6 text-sm">Twój Excel wolno działa? Przyspieszamy pliki, czyścimy formuły i naprawiamy uszkodzone skoroszyty.</p>
+            <span class="text-green-600 font-bold text-xs uppercase tracking-widest">Napraw plik →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 bg-slate-950 text-white relative overflow-hidden">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mb-16 relative z-10">
+          <h2 class="text-4xl lg:text-5xl font-black tracking-tighter mb-6 uppercase">Systemy Sprzedaży i CRM</h2>
+          <p class="text-xl text-slate-400">Zarządzaj bazą klientów i lejkiem sprzedaży bez drogich abonamentów. Skalowalne rozwiązania w środowisku Excel.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 relative z-10">
+          <div class="p-10 rounded-[40px] bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all">
+            <h3 class="text-3xl font-bold mb-4">CRM w Excelu</h3>
+            <p class="text-slate-400 mb-8">Kompletny system: baza kontaktów, historia relacji, automatyczne przypomnienia o zadaniach i raporty konwersji.</p>
+            <a href="/uslugi/crm-w-excelu" class="inline-block bg-green-600 hover:bg-green-500 px-8 py-3 rounded-xl font-bold transition-all">Szczegóły systemu</a>
+          </div>
+          <div class="p-10 rounded-[40px] bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all">
+            <h3 class="text-3xl font-bold mb-4">Lejek Sprzedaży</h3>
+            <p class="text-slate-400 mb-8">Zarządzanie pipeline'em. Prognozowanie przychodów, analiza etapów sprzedaży i wydajności handlowców.</p>
+            <a href="/uslugi/lejek-sprzedazy-w-excelu" class="inline-block border border-white/20 hover:bg-white/5 px-8 py-3 rounded-xl font-bold transition-all">Analiza Pipeline</a>
+          </div>
+        </div>
+      </div>
+      <div class="absolute top-1/2 right-0 w-[500px] h-[500px] bg-green-500/10 rounded-full blur-[120px]"></div>
+    </section>
+
+    <section class="py-24 bg-slate-50 text-slate-900">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row gap-16 items-center">
+          <div class="lg:w-1/2">
+            <h2 class="text-4xl lg:text-6xl font-black tracking-tighter mb-8 uppercase leading-none">Analityka<br/><span class="text-green-600">Power BI</span></h2>
+            <div class="space-y-6">
+              <div class="flex gap-4">
+                <div class="w-12 h-12 shrink-0 bg-green-100 rounded-xl flex items-center justify-center text-green-600 font-bold">01</div>
+                <div>
+                  <h4 class="font-bold text-xl mb-1">Dashboardy Menedżerskie</h4>
+                  <p class="text-slate-500 text-sm">Wizualizacja KPI na żywo. Finanse, sprzedaż i operacje na jednym ekranie.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div class="w-12 h-12 shrink-0 bg-green-100 rounded-xl flex items-center justify-center text-green-600 font-bold">02</div>
+                <div>
+                  <h4 class="font-bold text-xl mb-1">Wdrożenia i Consulting</h4>
+                  <p class="text-slate-500 text-sm">Budujemy architekturę danych, która "rozmawia" z Twoim ERP i systemami SQL.</p>
+                </div>
+              </div>
+            </div>
+            <a href="/uslugi/dashboardy-power-bi" class="mt-12 inline-block bg-slate-900 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-slate-800 transition-all">Wszystkie usługi Power BI</a>
+          </div>
+          <div class="lg:w-1/2 grid grid-cols-2 gap-4">
+            <div class="aspect-square bg-white rounded-3xl border border-slate-200 p-8 shadow-sm flex flex-col justify-between">
+              <i class="fas fa-chart-pie text-3xl text-green-500"></i>
+              <span class="font-bold text-slate-800">Wizualizacja Danych</span>
+            </div>
+            <div class="aspect-square bg-slate-900 rounded-3xl p-8 shadow-sm flex flex-col justify-between">
+              <i class="fas fa-database text-3xl text-green-500"></i>
+              <span class="font-bold text-white">Modelowanie DAX</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 bg-slate-950 text-white border-t border-white/5">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <h2 class="text-3xl lg:text-4xl font-black mb-12 text-center">W czym jeszcze możemy pomóc?</h2>
+        <div class="grid gap-4">
+          <a href="/uslugi/raporty-serwisowe" class="p-6 bg-white/5 rounded-2xl border border-white/5 hover:border-green-500/50 flex justify-between items-center group">
+            <span class="font-bold group-hover:text-green-400">Raporty serwisowe i SLA</span>
+            <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+          <a href="/uslugi/raporty-miesieczne-automatyczne" class="p-6 bg-white/5 rounded-2xl border border-white/5 hover:border-green-500/50 flex justify-between items-center group">
+            <span class="font-bold group-hover:text-green-400">Automatyczne raporty miesięczne</span>
+            <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+          <a href="/uslugi/pobieranie-emaili-do-excela" class="p-6 bg-white/5 rounded-2xl border border-white/5 hover:border-green-500/50 flex justify-between items-center group">
+            <span class="font-bold group-hover:text-green-400">Import danych z wiadomości e-mail</span>
+            <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <Contact />
+    <Footer />
+  </div>
+</BaseLayout>

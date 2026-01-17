@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import HeroService from "../../components/HeroService.astro";
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+
+const title = "Analityczne Raporty Power BI – Szczegółowa analiza danych | Raporty24";
+const description = "Budujemy zaawansowane raporty Power BI z funkcjami drill-down. Analizuj dane na każdym poziomie szczegółowości. Sprawdź!";
+
+export const service = {
+  title: "Raporty Power BI",
+  order: 10,
+  menu: true,
+  category: "Excel", // opcjonalnie (do grupowania)
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <div x-data="app" x-cloak>
+    <Header />
+    <HeroService 
+      title="Operacyjne" 
+      highlight="Raporty Power BI" 
+      subtitle="Zejdź do poziomu pojedynczej transakcji. Tworzymy raporty analityczne, które pozwalają na głęboką analizę przyczyn Twoich wyników (Root Cause Analysis)."
+    />
+
+    <section class="py-24 bg-slate-950 text-white">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+          <div class="p-10 rounded-[50px] bg-white/5 border border-white/10">
+            <h3 class="text-3xl font-bold mb-6">Analiza Drill-Down</h3>
+            <p class="text-slate-400 text-lg">Widzisz ogólny wynik sprzedaży? Kliknij w region, potem w miasto, a na końcu w konkretnego handlowca. Wszystko w jednym widoku.</p>
+          </div>
+          <div>
+            <h2 class="text-4xl font-black uppercase mb-8 tracking-tighter text-green-500">Raportowanie 360°</h2>
+            <ul class="space-y-4">
+              <li class="flex items-center gap-3"><i class="fas fa-chevron-right text-green-500"></i> Dynamiczne filtrowanie dat</li>
+              <li class="flex items-center gap-3"><i class="fas fa-chevron-right text-green-500"></i> Eksport widoków do PDF/PPT</li>
+              <li class="flex items-center gap-3"><i class="fas fa-chevron-right text-green-500"></i> Dostęp przez przeglądarkę WWW</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Contact />
+    <Footer />
+  </div>
+</BaseLayout>

@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import HeroService from "../../components/HeroService.astro";
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+
+const title = "Pobieranie danych z e-maili do Excela – Automatyzacja załączników | Raporty24";
+const description = "Automatyczne pobieranie danych z wiadomości e-mail i załączników (CSV, XLSX) bezpośrednio do Excela. Koniec z ręcznym zapisywaniem plików!";
+
+export const service = {
+  title: "Automatyczne pobieranie email do Excela",
+  order: 10,
+  menu: true,
+  category: "Excel", // opcjonalnie (do grupowania)
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <div x-data="app" x-cloak>
+    <Header />
+    <HeroService 
+      title="Automatyczne" 
+      highlight="Pobieranie danych z E-maili" 
+      subtitle="Zamień tysiące wiadomości w jeden uporządkowany raport. Budujemy systemy, które same skanują skrzynkę, wyciągają załączniki i agregują dane w Excelu."
+    />
+
+    <section class="py-24 bg-slate-950 text-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-black uppercase mb-16 tracking-tighter text-center">Co możemy <span class="text-green-500">zautomatyzować?</span></h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
+            <h4 class="text-xl font-bold mb-4 text-green-400">Import załączników CSV/XLSX</h4>
+            <p class="text-slate-400 text-sm">System sam wykrywa nowe maile od dostawców lub systemów, pobiera załączniki i dołącza je do bazy głównej bez Twojej ingerencji.</p>
+          </div>
+          <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
+            <h4 class="text-xl font-bold mb-4 text-green-400">Wyciąganie treści z treści maila</h4>
+            <p class="text-slate-400 text-sm">Jeśli otrzymujesz powtarzalne powiadomienia (np. z formularzy WWW), możemy wyciągnąć z nich konkretne pola i zapisać w tabeli.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 bg-white text-slate-900">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <h2 class="text-3xl font-black mb-12 uppercase text-center">FAQ – Dane z maili</h2>
+        <div class="space-y-4 text-left">
+          <div class="p-6 bg-slate-50 rounded-xl border border-slate-200">
+            <h5 class="font-bold mb-2 italic">Czy system obsługuje Outlooka i Gmaila?</h5>
+            <p class="text-slate-500 text-sm">Tak, integrujemy się z najpopularniejszymi klientami poczty, wykorzystując bezpieczne protokoły lub Power Automate.</p>
+          </div>
+          <div class="p-6 bg-slate-50 rounded-xl border border-slate-200">
+            <h5 class="font-bold mb-2 italic">Co jeśli załącznik ma inny układ kolumn?</h5>
+            <p class="text-slate-500 text-sm">Przez Power Query budujemy mechanizmy walidacji, które rozpoznają układ i dopasowują dane do Twojego standardu raportowego.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Contact />
+    <Footer />
+  </div>
+</BaseLayout>
