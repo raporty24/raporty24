@@ -1,0 +1,135 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import HeroService from "../../components/HeroService.astro";
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+
+// SEO Setup - uderzamy w najcięższe frazy finansowe + CHMURA
+const title = "Finanse w Excelu i Google Sheets – Cashflow i Budżetowanie | Raporty24";
+const description = "Zapanuj nad płynnością finansową w chmurze. Tworzymy modele cashflow i budżet firmowy w Excelu oraz Google Sheets. Bezpieczna analityka biznesowa online.";
+
+export const service = {
+  title: "Finanse i Controlling",
+  order: 20,
+  menu: true,
+  category: "Excel",
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <div x-data="app" x-cloak>
+    <Header />
+    
+    <HeroService 
+      title="Systemy finansowe" 
+      highlight="w Excelu i Chmurze" 
+      subtitle="Przekształć dane finansowe w czytelne raporty online. Budujemy bezpieczne systemy do kontroli cashflow i budżetowania w środowisku Excel (SharePoint) oraz Google Sheets."
+    />
+
+    <section class="py-24 bg-slate-950 text-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center mb-16">
+          <h2 class="text-4xl lg:text-5xl font-black uppercase tracking-tighter mb-6">Finanse <span class="text-green-500">dostępne z każdego miejsca</span></h2>
+          <p class="text-xl text-slate-400">Jako profesjonalna <strong>firma analityczna</strong> wiemy, że zespół finansowy musi pracować wspólnie. Nasz <strong>program do zarządzania firmą</strong> w obszarze finansów pozwala na jednoczesną edycję budżetu przez wielu użytkowników dzięki technologii chmurowej.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-green-500/50 transition-all group">
+            <i class="fas fa-cloud-upload-alt text-3xl text-green-500 mb-6 group-hover:scale-110 transition-transform"></i>
+            <h4 class="text-xl font-bold mb-4 uppercase tracking-tight italic">Cashflow Online</h4>
+            <p class="text-slate-400 text-sm">Profesjonalny <strong>cashflow excel</strong> działający na OneDrive lub natywny <strong>cashflow w Google Sheets</strong>. Śledź płynność finansową w czasie rzeczywistym, gdziekolwiek jesteś.</p>
+          </div>
+          <div class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-green-500/50 transition-all group">
+            <i class="fas fa-users-cog text-3xl text-green-500 mb-6 group-hover:scale-110 transition-transform"></i>
+            <h4 class="text-xl font-bold mb-4 uppercase tracking-tight italic">Wspólne Budżetowanie</h4>
+            <p class="text-slate-400 text-sm">Twój <strong>budżet firmowy excel</strong> w chmurze Microsoft 365 pozwala wielu działom wprowadzać koszty jednocześnie, bez tworzenia dziesiątek kopii plików.</p>
+          </div>
+          <div class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-green-500/50 transition-all group">
+            <i class="fas fa-chart-area text-3xl text-green-500 mb-6 group-hover:scale-110 transition-transform"></i>
+            <h4 class="text-xl font-bold mb-4 uppercase tracking-tight italic">Raporty w Chmurze</h4>
+            <p class="text-slate-400 text-sm">Przekształcamy <strong>rachunek przepływów pieniężnych</strong> w interaktywne dashboardy dostępne przez przeglądarkę. Profesjonalne <strong>usługi dla firm excel</strong> na najwyższym poziomie.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 bg-white text-slate-900">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col lg:flex-row gap-16 items-center">
+          <div class="lg:w-1/2">
+            <h2 class="text-4xl font-black uppercase tracking-tighter mb-8 leading-none">Precyzja <br/><span class="text-green-600">Arkuszy Google i Excela</span></h2>
+            <ul class="space-y-6">
+              <li class="flex gap-4">
+                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center">
+                    <i class="fab fa-google text-green-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-lg italic uppercase">Automatyzacja Google Sheets</h4>
+                  <p class="text-slate-500 text-sm leading-relaxed italic">Piszemy skrypty Apps Script, które automatycznie pobierają dane do Twoich finansów w Google Sheets. Idealne rozwiązanie dla nowoczesnych firm online.</p>
+                </div>
+              </li>
+              <li class="flex gap-4">
+                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center">
+                    <i class="fas fa-database text-green-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-lg italic uppercase">Power Query w SharePoint</h4>
+                  <p class="text-slate-500 text-sm leading-relaxed italic">Łączymy Excela z Twoim bankiem i systemem księgowym w chmurze. Twój <strong>przepływy pieniężne wzór excel</strong> aktualizuje się automatycznie po każdym odświeżeniu.</p>
+                </div>
+              </li>
+              <li class="flex gap-4">
+                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center">
+                    <i class="fas fa-user-shield text-green-600"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-lg italic uppercase">Bezpieczeństwo i RODO</h4>
+                  <p class="text-slate-500 text-sm leading-relaxed italic">Zarządzaj dostępem do wrażliwych danych finansowych. Nasza <strong>analityka biznesowa</strong> dba o to, by tylko uprawnione osoby widziały wyniki firmy.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="lg:w-1/2 bg-slate-950 p-12 rounded-[50px] shadow-2xl relative overflow-hidden group">
+            <div class="absolute -top-6 -left-6 bg-green-600 text-white px-6 py-3 rounded-2xl font-black uppercase text-xs tracking-widest shadow-xl">
+              Financial Cloud
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-6">Konsolidacja Online</h3>
+            <p class="text-slate-400 mb-8 text-sm leading-relaxed">Jako Twoja <strong>firma analityczna</strong> budujemy systemy, które w chmurze łączą dane z wielu oddziałów. Widzisz stan finansów całej grupy w jednym arkuszu.</p>
+            <div class="space-y-6">
+               <div>
+                  <div class="flex justify-between text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em] mb-2"><span>Płynność (Quick Ratio)</span><span>1.8</span></div>
+                  <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden"><div class="w-[70%] h-full bg-green-500 shadow-[0_0_15px_#22c55e]"></div></div>
+               </div>
+               <div>
+                  <div class="flex justify-between text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em] mb-2"><span>Dostępny kapitał</span><span>85%</span></div>
+                  <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden"><div class="w-[85%] h-full bg-green-400 shadow-[0_0_15px_#4ade80]"></div></div>
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 bg-slate-950 text-white border-t border-white/5">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <h2 class="text-3xl lg:text-4xl font-black mb-12 uppercase tracking-tight text-center italic text-white">Finanse w Chmurze – FAQ</h2>
+        <div class="grid gap-6">
+          {[
+            { q: "Czy Google Sheets jest wystarczająco bezpieczny dla finansów?", a: "Tak. Google Sheets oferuje zaawansowane szyfrowanie i logi aktywności. To świetna alternatywa dla Excela, jeśli zależy Ci na natywnej pracy w chmurze." },
+            { q: "Czy mogę zablokować wybrane dane przed edycją?", a: "Oczywiście. Zarówno w Excelu (SharePoint), jak i w Google Sheets wdrażamy precyzyjne uprawnienia, chroniąc kluczowe formuły i dane przed przypadkową zmianą." },
+            { q: "Czy w chmurze zadziałają makra?", a: "W Google Sheets używamy Apps Script, który działa w chmurze bez zarzutu. W Excelu Online makra VBA mają ograniczenia, dlatego projektujemy je tak, by kluczowe funkcje działały w modelu danych." },
+            { q: "Jakie są koszty wdrożenia cashflow online?", a: "Cena zależy od liczby źródeł danych. Płacisz raz za projekt – nie ma żadnych miesięcznych opłat za korzystanie z Twojego nowego systemu finansowego." }
+          ].map(item => (
+            <div class="p-8 rounded-[2rem] bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+              <h4 class="font-bold text-green-400 mb-3 text-lg">{item.q}</h4>
+              <p class="text-slate-400 text-sm leading-relaxed">{item.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <Contact />
+    <Footer />
+  </div>
+</BaseLayout>
