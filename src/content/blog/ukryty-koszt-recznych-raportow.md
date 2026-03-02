@@ -47,4 +47,4 @@ Automatyzacja raportowania (np. w Power Query lub Power BI) to zazwyczaj jednora
 **Chcesz policzyć, ile Twoja firma może zaoszczędzić?**
 Skontaktuj się z nami. Podczas krótkiej rozmowy oszacujemy potencjał automatyzacji w Twoim biznesie.
 
-[👉 Porozmawiajmy o Twoich danych](#kontakt)
+[👉 Porozmawiajmy o Twoich danych](https://raporty24.pl/#kontakt)

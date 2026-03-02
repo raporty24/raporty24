@@ -83,7 +83,7 @@ Współpraca z Raporty24 to nie tylko arkusz, to bezpieczeństwo procesów w Two
 Jeśli czujesz, że koszty paliwa i serwisów wymykają się spod kontroli, chętnie przeanalizujemy Twoje obecne arkusze. Podpowiemy Ci, które procesy można zautomatyzować "od ręki", abyś przestał tracić czas na ręczne przepisywanie danych.
   <br/>
 
-[👉 **Umów się na bezpłatną konsultację i audyt Twoich raportów**](#kontakt)
+[👉 **Umów się na bezpłatną konsultację i audyt Twoich raportów**](https://raporty24.pl/#kontakt)
   <br/>
 
 *Konsultacja jest niezobowiązująca. Realizujemy projekty zdalnie dla firm z całej Polski oraz stacjonarnie na Śląsku.*

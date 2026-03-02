@@ -39,6 +39,6 @@ Często pytacie mnie: "Czy Excel wystarczy, czy potrzebuję Power BI?". Odpowied
 * **Excel** jest idealny do tabelarycznych zestawień i szybkiej ad-hoc analizy.
 * **Power BI** wygrywa, gdy potrzebujesz interaktywnych dashboardów na telefon i chcesz dzielić się raportami z całym zespołem bez wysyłania plików mailem.
 
-> **Chcesz sprawdzić, ile czasu możesz zaoszczędzić w swojej firmie?** [Umów się na darmowy audyt danych](#kontakt) – przeanalizujemy Twoje obecne raporty i zaproponujemy konkretne usprawnienia.
+> **Chcesz sprawdzić, ile czasu możesz zaoszczędzić w swojej firmie?** [Umów się na darmowy audyt danych](https://raporty24.pl/#kontakt) – przeanalizujemy Twoje obecne raporty i zaproponujemy konkretne usprawnienia.
 
 ---

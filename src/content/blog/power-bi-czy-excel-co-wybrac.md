@@ -42,4 +42,4 @@ Największa różnica? **Interaktywność.** W Power BI kliknięcie na słupek s
 **Nie wiesz, czy Twoja firma jest gotowa na Power BI?**
 Nie musisz zgadywać. Przeanalizujemy Twoje obecne raporty i powiemy Ci szczerze, czy wdrożenie BI przyniesie Ci realny zwrot z inwestycji.
 
-[👉 Umów się na darmową konsultację](#kontakt)
+[👉 Umów się na darmową konsultację](https://raporty24.pl/#kontakt)

@@ -164,7 +164,7 @@ Jeśli Twoje raporty nadal powstają ręcznie, chętnie przeanalizujemy Twoje ob
 
 <br/>
 
-[👉 **Umów się na bezpłatną konsultację i audyt Twoich raportów**](#kontakt)
+[👉 **Umów się na bezpłatną konsultację i audyt Twoich raportów**](https://raporty24.pl/#kontakt)
 
 <br/>
 

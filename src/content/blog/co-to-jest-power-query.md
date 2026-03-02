@@ -39,4 +39,4 @@ Power Query to pierwszy, najważniejszy krok do bycia "data-driven". To fundamen
 **Chcesz wdrożyć Power Query w swoich raportach?**
 Nie musisz uczyć się wszystkiego sam. Pomożemy Ci zbudować pierwsze zautomatyzowane procesy i przeszkolimy Twój zespół.
 
-[👉 Sprawdź naszą ofertę automatyzacji](#kontakt)
+[👉 Sprawdź naszą ofertę automatyzacji](https://raporty24.pl/#kontakt)

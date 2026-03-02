@@ -58,4 +58,4 @@ Wdrożenie stabilnego systemu składa się z czterech fundamentów:
 
 Zamiast pisać ogłoszenia typu "**zlecę excel**", postaw na sprawdzone rozwiązania. Podpowiemy Ci, jak wdrożyć automatyzację, która zwróci Ci kilka godzin wolnego czasu w każdym tygodniu. Świadczymy usługi na terenie **całej Polski (zdalnie)** oraz stacjonarnie na **Śląsku**.
 
-[👉 Umów się na bezpłatną konsultację i wycenę](#kontakt)
+[👉 Umów się na bezpłatną konsultację i wycenę](https://raporty24.pl/#kontakt)
