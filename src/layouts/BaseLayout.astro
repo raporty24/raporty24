@@ -1,7 +1,16 @@
 ---
 import "../styles/global.css";
 
-const { title, description } = Astro.props;
+const { 
+  title, 
+  description, 
+  image = "/biuro3.webp", 
+  url = "https://raporty24.pl/" 
+} = Astro.props;
+
+// Tworzymy pełny adres URL dla obrazka, aby Facebook go widział
+const siteUrl = "https://raporty24.pl";
+const ogImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
 ---
 
 <!doctype html>
