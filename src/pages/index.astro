@@ -12,11 +12,19 @@ import Subscription from "../components/Subscription.astro";
 import WhyUs from "../components/WhyUs.astro";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
+
+// Definiujemy dane dla strony głównej
+const title = "Firma analityczna | Dashboardy Power BI, Excel i Chatboty AI";
+const description = "Firma analityczna i analityka biznesowa. Tworzymy profesjonalne dashboardy Power BI, dedykowany program do zarządzania firmą oraz AI: chatboty do danych i raportów. Kompleksowe usługi dla firm excel. Szukasz wykonawcy na zlecę excel? Sprawdź!";
+const image = "/biuro3.webp"; // Twoja główna grafika (ta z SQL)
+const url = "https://raporty24.pl/";
 ---
 
-<BaseLayout
-  title="Firma analityczna | Dashboardy Power BI, Excel i Chatboty AI"
-  description="Firma analityczna i analityka biznesowa. Tworzymy profesjonalne dashboardy Power BI, dedykowany program do zarządzania firmą oraz AI: chatboty do danych i raportów. Kompleksowe usługi dla firm excel. Szukasz wykonawcy na zlecę excel? Sprawdź!"
+<BaseLayout 
+  title={title} 
+  description={description} 
+  image={image} 
+  url={url}
 >
     <div x-data="app" x-cloak>
     <Header />

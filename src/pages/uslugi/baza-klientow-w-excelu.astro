@@ -8,6 +8,9 @@ import Footer from "../../components/Footer.astro";
 const title = "Baza Klientów w Excelu – Rejestr i Porządek w Danych | Raporty24";
 const description = "Uporządkuj dane swoich klientów. Budujemy profesjonalne bazy kontaktów w Excelu z walidacją NIP, e-mail i automatycznymi raportami. Koniec z duplikatami!";
 
+const ogImage = "/biuro3.webp"; // Możesz tu dać dedykowaną grafikę bazy klientów, jeśli ją masz
+const currentUrl = "https://raporty24.pl/uslugi/baza-klientow-w-excelu/"; // upewnij się, że taki jest slug tej strony
+
 export const service = {
   title: "Baza klientów w Excelu",
   order: 10,
@@ -16,7 +19,7 @@ export const service = {
 };
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
   <div x-data="app" x-cloak>
     <Header />
     

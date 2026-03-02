@@ -8,6 +8,10 @@ import Footer from "../../components/Footer.astro";
 // Meta dane pod SEO
 const pageTitle = "Usługi Excel i Power BI – Automatyzacja i Dashboardy dla Firm";
 const pageDescription = "Kompleksowe usługi Business Intelligence: tworzenie arkuszy Excel na zamówienie, systemy CRM w Excelu oraz profesjonalne dashboardy Power BI. Sprawdź naszą ofertę!";
+// 1. DODAJ TE DWIE LINIE:
+const ogImage = "/biuro3.webp"; // Możesz tu dać dedykowaną grafikę bazy klientów, jeśli ją masz
+const currentUrl = "https://raporty24.pl/uslugi/"; // upewnij się, że taki jest slug tej strony
+
 
 export const service = {
   title: "Wszystkie usługi",
@@ -16,7 +20,7 @@ export const service = {
 };
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
+<BaseLayout title={pageTitle} description={pageDescription} image={ogImage} url={currentUrl}>
   <div x-data="app" x-cloak>
     <Header />
     

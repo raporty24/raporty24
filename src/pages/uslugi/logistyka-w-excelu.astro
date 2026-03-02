@@ -8,7 +8,9 @@ import Footer from "../../components/Footer.astro";
 // SEO Setup - Precyzyjne uderzenie w logistykę i magazyn
 const title = "Zarządzanie flotą i magazynem w Excelu | Logistyka | Raporty24";
 const description = "Odzyskaj kontrolę nad transportem. Oferujemy profesjonalne zarządzanie flotą samochodową w excelu, program magazynowy oraz harmonogram produkcji. Sprawdź!";
-
+// 1. DODAJ TE DWIE LINIE:
+const ogImage = "/biuro3.webp"; // Możesz tu dać dedykowaną grafikę bazy klientów, jeśli ją masz
+const currentUrl = "https://raporty24.pl/uslugi/logistyka-w-excelu/"; // upewnij się, że taki jest slug tej strony
 export const service = {
   title: "Logistyka i Magazyn",
   order: 15,
@@ -17,7 +19,7 @@ export const service = {
 };
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
   <div x-data="app" x-cloak>
     <Header />
     

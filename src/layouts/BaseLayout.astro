@@ -34,14 +34,15 @@ const ogImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
 
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
-    <link rel="canonical" href="https://raporty24.pl/" />
+    <link rel="canonical" href={url} />
 
     <meta property="og:title" content={title} />
     {description && <meta property="og:description" content={description} />}
-    <meta property="og:url" content="https://raporty24.pl/" />
+    <meta property="og:url" content={url} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://raporty24.pl/og-image.png" />
-
+  <meta property="og:image" content={`https://raporty24.pl${image}`} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
     <script defer src="/scripts/site.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 

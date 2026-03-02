@@ -7,6 +7,9 @@ import Footer from "../../components/Footer.astro";
 
 const title = "Lejek Sprzedaży w Excelu – Analiza Pipeline i Prognozowanie | Raporty24";
 const description = "Zbudujemy dla Ciebie profesjonalny lejek sprzedaży w Excelu. Monitoruj konwersję na każdym etapie, prognozuj przychody i analizuj wąskie gardła w procesie.";
+// 1. DODAJ TE DWIE LINIE:
+const ogImage = "/biuro3.webp"; // Możesz tu dać dedykowaną grafikę bazy klientów, jeśli ją masz
+const currentUrl = "https://raporty24.pl/uslugi/lejek-sprzedazy-w-excelu/"; // upewnij się, że taki jest slug tej strony
 
 export const service = {
   title: "Lejek sprzedaży w Excelu",
@@ -16,7 +19,7 @@ export const service = {
 };
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
   <div x-data="app" x-cloak>
     <Header />
     

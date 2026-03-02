@@ -8,6 +8,9 @@ import Footer from "../../components/Footer.astro";
 const title = "Optymalizacja Excela – Przyspieszanie wolnych plików i naprawa | Raporty24";
 const description = "Twój Excel wolno działa? Zawiesza się? Oferujemy profesjonalną optymalizację, czyszczenie plików i przyspieszanie formuł. Przywróć płynność pracy!";
 
+// 1. DODAJ TE DWIE LINIE:
+const ogImage = "/biuro3.webp"; // Możesz tu dać dedykowaną grafikę bazy klientów, jeśli ją masz
+const currentUrl = "https://raporty24.pl/uslugi/optymalizacja-excela/"; // upewnij się, że taki jest slug tej strony
 export const service = {
   title: "Optymalizacja Excela",
   order: 10,
@@ -16,7 +19,7 @@ export const service = {
 };
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
   <div x-data="app" x-cloak>
     <Header />
     <HeroService 

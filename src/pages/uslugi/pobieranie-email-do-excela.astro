@@ -9,6 +9,10 @@ import Footer from "../../components/Footer.astro";
 const title = "Pobieranie danych z e-maili do Excela i Google Sheets | Raporty24";
 const description = "Automatyzacja załączników i treści wiadomości. Oferujemy automatyczne pobieranie danych z e-mail (CSV, XLSX) do Excela. Koniec z ręcznym przepisywaniem danych!";
 
+// 1. DODAJ TE DWIE LINIE:
+const ogImage = "/biuro3.webp"; // Możesz tu dać dedykowaną grafikę bazy klientów, jeśli ją masz
+const currentUrl = "https://raporty24.pl/uslugi/pobieranie-email-do-excela/"; // upewnij się, że taki jest slug tej strony
+
 export const service = {
   title: "Automatyczne pobieranie email",
   order: 10,
@@ -17,7 +21,7 @@ export const service = {
 };
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
   <div x-data="app" x-cloak>
     <Header />
     

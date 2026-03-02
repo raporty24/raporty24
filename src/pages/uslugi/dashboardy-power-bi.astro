@@ -9,6 +9,9 @@ import Footer from "../../components/Footer.astro";
 const title = "Dashboardy Power BI – Raporty menedżerskie i wizualizacja KPI | Raporty24";
 const description = "Tworzymy profesjonalne dashboardy Power BI dla firm. Łączymy dane z Excel, SQL i systemów ERP w jeden czytelny raport na żywo. Sprawdź nasze wdrożenia!";
 
+
+const ogImage = "/biuro3.webp"; // Możesz tu dać dedykowaną grafikę bazy klientów, jeśli ją masz
+const currentUrl = "https://raporty24.pl/uslugi/dashboardy-power-bi/"; // upewnij się, że taki jest slug tej strony
 export const service = {
   title: "Dashboardy Power Bi",
   order: 10,
@@ -17,7 +20,7 @@ export const service = {
 };
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
   <div x-data="app" x-cloak>
     <Header />
     

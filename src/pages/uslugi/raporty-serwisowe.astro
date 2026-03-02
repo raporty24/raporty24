@@ -7,7 +7,9 @@ import Footer from "../../components/Footer.astro";
 
 const title = "Raporty Serwisowe i Analiza SLA – Dashboardy dla Serwisu | Raporty24";
 const description = "Monitoruj wydajność swojego serwisu. Raporty SLA, czas reakcji, obłożenie techników i analiza usterek. Profesjonalne dashboardy w Power BI i Excel.";
-
+// 1. DODAJ TE DWIE LINIE:
+const ogImage = "/biuro3.webp"; // Możesz tu dać dedykowaną grafikę bazy klientów, jeśli ją masz
+const currentUrl = "https://raporty24.pl/uslugi/raporty-serwisowe/"; // upewnij się, że taki jest slug tej strony
 export const service = {
   title: "Raporty serwisowe",
   order: 10,
@@ -16,7 +18,7 @@ export const service = {
 };
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
   <div x-data="app" x-cloak>
     <Header />
     <HeroService 

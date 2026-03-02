@@ -11,9 +11,15 @@ const allPosts = (await getCollection('blog')).sort(
 const categories = ['Wszystkie', ...new Set(allPosts.map((post) => post.data.category))];
 const allTags = allPosts.flatMap(post => post.data.tags || []);
 const tags = ['Wszystkie', ...new Set(allTags)];
+
+// DODAJEMY DANE DLA STRONY LISTY BLOGA
+const title = "Blog Analityczny | Raporty24";
+const description = "Porady i wiedza o Power BI, Excelu i automatyzacji.";
+const url = "https://raporty24.pl/blog/"; // Poprawny link do listy wpisów
+const image = "/biuro3.webp"; // Domyślna grafika dla listy bloga
 ---
 
-<BaseLayout title="Blog Analityczny | Raporty24" description="Porady i wiedza o Power BI, Excelu i automatyzacji.">
+<BaseLayout title={title} description={description} url={url} image={image}>
   <div x-data="{ 
     selectedCategory: 'Wszystkie', 
     selectedTag: 'Wszystkie'

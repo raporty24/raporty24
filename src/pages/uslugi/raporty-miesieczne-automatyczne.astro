@@ -8,6 +8,9 @@ import Footer from "../../components/Footer.astro";
 const title = "Automatyczne raporty miesięczne – Oszczędność czasu dla zarządu | Raporty24";
 const description = "Zamień dni pracy nad raportem miesięcznym w kilka sekund. Automatyzacja zestawień w Excelu i Power BI. Sprawdź, jak to działa!";
 
+// 1. DODAJ TE DWIE LINIE:
+const ogImage = "/biuro3.webp"; // Możesz tu dać dedykowaną grafikę bazy klientów, jeśli ją masz
+const currentUrl = "https://raporty24.pl/uslugi/raporty-miesieczne-automatyczne/"; // upewnij się, że taki jest slug tej strony
 export const service = {
   title: "Automatyczne raporty miesięczne",
   order: 10,
@@ -16,7 +19,7 @@ export const service = {
 };
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
   <div x-data="app" x-cloak>
     <Header />
     <HeroService 

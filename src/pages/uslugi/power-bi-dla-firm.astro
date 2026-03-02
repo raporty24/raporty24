@@ -7,6 +7,8 @@ import Footer from "../../components/Footer.astro";
 
 const title = "Power BI dla firm – Profesjonalne wdrożenie i konsulting | Raporty24";
 const description = "Wdrożenie Power BI w Twojej firmie od A do Z. Budujemy architekturę danych, szkolimy zespoły i dostarczamy gotowe dashboardy zarządcze.";
+const ogImage = "/biuro3.webp"; // Możesz tu dać dedykowaną grafikę bazy klientów, jeśli ją masz
+const currentUrl = "https://raporty24.pl/uslugi/power-bi-dla-firm/"; // upewnij się, że taki jest slug tej strony
 
 export const service = {
   title: "Power BI dla firm",
@@ -16,7 +18,7 @@ export const service = {
 };
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
   <div x-data="app" x-cloak>
     <Header />
     <HeroService 

@@ -9,6 +9,9 @@ import Footer from "../../components/Footer.astro";
 const title = "CRM w Excelu i Google Sheets – Program do zarządzania firmą | Raporty24";
 const description = "Szukasz alternatywy dla drogich systemów? Budujemy dedykowany CRM w Excelu i Google Sheets. Profesjonalny program do zarządzania firmą i sprzedażą w chmurze.";
 
+const ogImage = "/biuro3.webp"; // Możesz tu dać dedykowaną grafikę bazy klientów, jeśli ją masz
+const currentUrl = "https://raporty24.pl/uslugi/crm-w-excelu/"; // upewnij się, że taki jest slug tej strony
+
 export const service = {
   title: "CRM w Excelu i Google Sheets",
   order: 10,
@@ -17,7 +20,7 @@ export const service = {
 };
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
   <div x-data="app" x-cloak>
     <Header />
     

@@ -8,7 +8,9 @@ import Footer from "../../components/Footer.astro";
 // SEO Setup - uderzamy w najcięższe frazy finansowe + CHMURA
 const title = "Finanse w Excelu i Google Sheets – Cashflow i Budżetowanie | Raporty24";
 const description = "Zapanuj nad płynnością finansową w chmurze. Tworzymy modele cashflow i budżet firmowy w Excelu oraz Google Sheets. Bezpieczna analityka biznesowa online.";
-
+// 1. DODAJ TE DWIE LINIE:
+const ogImage = "/biuro3.webp"; // Możesz tu dać dedykowaną grafikę bazy klientów, jeśli ją masz
+const currentUrl = "https://raporty24.pl/uslugi/finanse-w-excelu/"; // upewnij się, że taki jest slug tej strony
 export const service = {
   title: "Finanse i Controlling",
   order: 20,
@@ -17,7 +19,7 @@ export const service = {
 };
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
   <div x-data="app" x-cloak>
     <Header />
     
