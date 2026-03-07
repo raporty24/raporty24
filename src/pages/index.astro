@@ -10,6 +10,7 @@ import Demo from "../components/Demo.astro";
 import Pricing from "../components/Pricing.astro";
 import Subscription from "../components/Subscription.astro";
 import WhyUs from "../components/WhyUs.astro";
+import FreeAuditCTA from "../components/FreeAuditCTA.astro";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
 
@@ -18,6 +19,36 @@ const title = "Firma analityczna | Dashboardy Power BI, Excel i Chatboty AI";
 const description = "Firma analityczna i analityka biznesowa. Tworzymy profesjonalne dashboardy Power BI, dedykowany program do zarządzania firmą oraz AI: chatboty do danych i raportów. Kompleksowe usługi dla firm excel. Szukasz wykonawcy na zlecę excel? Sprawdź!";
 const image = "/biuro3.webp"; // Twoja główna grafika (ta z SQL)
 const url = "https://raporty24.pl/";
+const homeFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Ile trwa wycena i od czego zależy koszt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Zwykle odpisujemy w 24h w dni robocze. Koszt zależy od źródeł danych, złożoności modelu i oczekiwanego efektu (Excel „1 klik”, dashboardy KPI Power BI, integracje). Start od 400 zł."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy mogę liczyć na wsparcie po wdrożeniu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak. Możesz działać projektowo albo w modelu subskrypcji (SLA): utrzymanie odświeżeń, poprawki, rozwój KPI i priorytety zgłoszeń."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy mogę wysłać zanonimizowane dane do wyceny?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak. Do wyceny często wystarczą screeny lub próbka danych bez danych wrażliwych. W razie potrzeby możemy podpisać NDA."
+      }
+    }
+  ]
+};
 ---
 
 <BaseLayout 
@@ -25,6 +56,7 @@ const url = "https://raporty24.pl/";
   description={description} 
   image={image} 
   url={url}
+  structuredData={homeFaqSchema}
 >
     <div x-data="app" x-cloak>
     <Header />
@@ -37,6 +69,7 @@ const url = "https://raporty24.pl/";
     <Pricing />
     <Subscription />
     <WhyUs />
+<FreeAuditCTA />
     <Contact />
     <Footer />
       </div>

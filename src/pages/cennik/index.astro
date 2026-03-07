@@ -1,0 +1,259 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+// SEO: Oryginalne treści nasycone frazami pod Google
+const cennikSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "Cennik Raporty24 - Excel, Power BI, Automatyzacje",
+      "provider": { "@type": "LocalBusiness", "name": "Raporty24" },
+      "description": "Cennik usług Raporty24: Excel na zamówienie, automatyzacja raportów (Power Query/VBA), integracje danych oraz dashboardy Power BI.",
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "PLN",
+        "lowPrice": "400",
+        "offerCount": "4"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Czy da się podać sztywną cenę z góry?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dla małych tematów tak (od 400 zł). W projektach automatyzacji i BI cena zależy od źródeł danych i jakości danych, dlatego robimy wycenę po audycie."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Co muszę przygotować do wyceny?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Najczęściej wystarczą: opis celu raportu, skąd są dane (Excel/CSV/SQL/ERP) oraz przykładowy plik do audytu."
+          }
+        }
+      ]
+    }
+  ]
+};
+
+const title = "Cennik Usług BI & Excel | Wycena Automatyzacji | Raporty24";
+const description = "Cennik usług Raporty24: Excel na zamówienie, automatyzacja raportów (Power Query/VBA), integracje danych oraz dashboardy Power BI. Start od 400 zł.";
+---
+
+<BaseLayout title={title} description={description} structuredData={cennikSchema}>
+  <div x-data="app" class="antialiased text-slate-900 bg-white">
+    <Header />
+
+    <main class="pt-20 text-left">
+      <section class="relative overflow-hidden py-24 lg:py-44 bg-slate-50 border-b border-slate-100">
+        
+        <div class="absolute inset-0 z-0 opacity-30 [mask-image:linear-gradient(to_bottom,black,transparent)]">
+          <div class="absolute inset-0 bg-[radial-gradient(#cbd5e1_1.5px,transparent_1.5px)] [background-size:24px_24px]"></div>
+        </div>
+
+        <div class="absolute inset-0 z-0 pointer-events-none">
+          <div class="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-[120px]"></div>
+          <div class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-emerald-100/40 rounded-full blur-[100px]"></div>
+        </div>
+
+        <div class="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-400/40 to-transparent z-0"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+          <div class="max-w-4xl">
+            <span class="inline-flex items-center px-4 py-1.5 rounded-md text-[10px] font-black bg-white text-slate-500 uppercase tracking-[0.3em] mb-8 border border-slate-200 shadow-sm">
+              Oferta i wycena
+            </span>
+            <h1 class="text-5xl md:text-8xl font-black leading-[1.05] tracking-tight mb-8 uppercase text-slate-950">
+              Cennik <span class="text-emerald-600">usług</span>
+            </h1>
+            
+            <p class="text-xl text-slate-600 max-w-3xl leading-relaxed mb-12 font-medium">
+              Tworzymy narzędzia, które oszczędzają czas i eliminują błędy: <strong>Excel na zamówienie</strong>, 
+              <strong>automatyzacja raportów w Power Query/VBA</strong>, integracje danych (CSV/SQL/ERP/API) oraz 
+              <strong>dashboardy Power BI</strong>.
+            </p>
+
+            <div class="inline-block p-8 rounded-3xl border border-slate-200 bg-white shadow-2xl shadow-slate-200/50">
+              <p class="text-2xl font-black text-slate-900 uppercase tracking-tight">
+                Start od <span class="text-emerald-600">400 zł</span>
+              </p>
+              <p class="mt-2 text-slate-500 text-sm font-bold uppercase tracking-widest">Szybka pomoc / mała automatyzacja</p>
+              
+              <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                <a href="/#kontakt" class="px-10 py-5 bg-emerald-600 hover:bg-emerald-500 text-white font-black rounded-xl transition-all shadow-xl shadow-emerald-200 uppercase tracking-tighter text-lg">
+                  Darmowa wycena (24h)
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-20 container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            { t: "Szybka pomoc", d: "Formuły, naprawa plików, porządkowanie, drobne automatyzacje. Szybko i konkretnie." },
+            { t: "Automatyzacje", d: "Power Query, VBA, raport „1 klik”, integracje danych i odświeżanie." },
+            { t: "Power BI", d: "Dashboardy, modele danych, DAX, publikacja, role i bezpieczeństwo." }
+          ].map(item => (
+            <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 flex flex-col gap-2">
+              <p class="font-black text-slate-950 uppercase tracking-tight text-lg">{item.t}</p>
+              <p class="text-sm text-slate-500 font-medium leading-relaxed">{item.d}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="container mx-auto px-4 py-14">
+        <h2 class="text-4xl font-black text-slate-950 uppercase tracking-tighter mb-4">Przykładowe widełki cenowe</h2>
+        <p class="text-slate-500 max-w-4xl text-lg font-medium mb-12">
+          To orientacyjne zakresy. Finalną cenę ustalamy po krótkim audycie: źródła danych, liczba raportów i poziom automatyzacji.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="p-10 rounded-[2.5rem] border border-slate-200 bg-white flex flex-col hover:border-emerald-300 shadow-sm hover:shadow-2xl transition-all group">
+            <h3 class="text-xl font-black uppercase mb-1 text-slate-950">Szybka pomoc</h3>
+            <p class="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-8">Start od 400 zł</p>
+            <div class="mb-10 text-4xl font-black text-slate-950 tracking-tighter">400–900 zł</div>
+            <ul class="space-y-4 mb-10 text-sm font-bold text-slate-700 flex-grow">
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> poprawa formuł i logiki</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> porządkowanie arkusza</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> proste automatyzacje</li>
+            </ul>
+            <a href="/#kontakt" class="py-4 text-center border-2 border-slate-900 rounded-xl font-black uppercase text-xs hover:bg-slate-900 hover:text-white transition-all">Zapytaj o termin</a>
+          </div>
+
+          <div class="p-10 rounded-[3rem] bg-emerald-600 text-white shadow-2xl flex flex-col transform lg:-translate-y-8 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl"></div>
+            <h3 class="text-xl font-black uppercase mb-1">Automatyzacja</h3>
+            <p class="text-emerald-200 text-[10px] font-black uppercase tracking-widest mb-8 text-white">Power Query / Integracje</p>
+            <div class="mb-10 text-4xl font-black tracking-tighter">900–3500 zł</div>
+            <ul class="space-y-4 mb-10 text-sm font-black text-white flex-grow">
+              <li>• raport „1 klik”: import → czyszczenie</li>
+              <li>• łączenie plików (CSV/XLSX)</li>
+              <li>• harmonogram i odświeżanie</li>
+              <li>• pobieranie (SQL/ERP/API)*</li>
+            </ul>
+            <a href="/#kontakt" class="py-4 text-center bg-slate-950 text-white rounded-xl font-black uppercase text-xs hover:bg-black transition-all">Wycena (24h)</a>
+          </div>
+
+          <div class="p-10 rounded-[2.5rem] border border-slate-200 bg-white flex flex-col hover:border-emerald-300 shadow-sm hover:shadow-2xl transition-all">
+            <h3 class="text-xl font-black uppercase mb-1 text-slate-950">Excel System</h3>
+            <p class="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-8">Mini-system / CRM</p>
+            <div class="mb-10 text-4xl font-black text-slate-900 tracking-tighter">2–9 tys. zł</div>
+            <ul class="space-y-4 mb-10 text-sm font-bold text-slate-700 flex-grow">
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> struktura i formularze</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> kontrola uprawnień</li>
+              <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> dashboard + raportowanie</li>
+            </ul>
+            <a href="/#kontakt" class="py-4 text-center border-2 border-slate-900 rounded-xl font-black uppercase text-xs hover:bg-slate-900 hover:text-white transition-all">Opisz projekt</a>
+          </div>
+
+          <div class="p-10 rounded-[2.5rem] border border-slate-200 bg-white flex flex-col hover:border-emerald-300 shadow-sm hover:shadow-2xl transition-all text-left">
+            <h3 class="text-xl font-black uppercase mb-1 text-slate-950">Power BI</h3>
+            <p class="text-slate-400 text-[10px] font-black uppercase tracking-widest mb-8">Wdrożenia / DAX</p>
+            <div class="mb-10 text-4xl font-black text-slate-900 tracking-tighter">od 3 tys. zł</div>
+            <p class="text-[11px] text-slate-500 font-bold mb-10 flex-grow leading-relaxed uppercase">
+              Koszt zależy od liczby źródeł, miar (DAX) i bezpieczeństwa. Licencje Power BI rozliczane osobno wg cennika MS.
+            </p>
+            <a href="/#kontakt" class="py-4 text-center border-2 border-slate-900 rounded-xl font-black uppercase text-xs hover:bg-slate-900 hover:text-white transition-all">Wycena BI</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-24 bg-slate-50 border-y border-slate-200">
+        <div class="container mx-auto px-4 max-w-5xl">
+          <h2 class="text-3xl font-black uppercase tracking-tight mb-4 text-slate-950">Co wpływa na cenę (i dlaczego wycena bywa różna)?</h2>
+          <p class="text-slate-600 mb-12 font-medium">W automatyzacjach i BI najwięcej kosztuje nie „ładny wykres”, tylko poprawny proces danych.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              { t: "1) Źródła danych", d: "Excel/CSV, SQL, ERP, API, e-maile i załączniki — każde źródło ma inną złożoność." },
+              { t: "2) Jakość danych", d: "Braki, duplikaty i formaty zwiększają nakład walidacji i czyszczenia." },
+              { t: "3) Częstotliwość", d: "Jednorazowy raport vs raport dzienny/tygodniowy z automatycznym odświeżaniem." },
+              { t: "4) Bezpieczeństwo", d: "Role (RLS), widoczność danych i uprawnienia użytkowników (Power BI)." }
+            ].map(item => (
+              <div class="p-8 bg-white rounded-3xl border border-slate-100 flex gap-6 shadow-sm hover:shadow-md transition-shadow">
+                 <span class="text-4xl font-black text-emerald-200 tracking-tighter shrink-0">0{item.t.charAt(0)}</span>
+                 <div>
+                    <p class="font-black text-slate-950 uppercase text-sm tracking-widest mb-2">{item.t}</p>
+                    <p class="text-sm text-slate-500 font-medium leading-relaxed">{item.d}</p>
+                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="py-24 container mx-auto px-4">
+        <div class="bg-white border-2 border-slate-100 p-10 lg:p-16 rounded-[3.5rem] shadow-2xl shadow-slate-200/50">
+          <h2 class="text-3xl font-black uppercase tracking-tighter mb-4 text-slate-950">Jak wygląda wycena (bez stresu i niespodzianek)?</h2>
+          <p class="text-slate-500 max-w-4xl text-lg mb-12 font-medium">
+            Żeby wycena była uczciwa, robimy krótki audyt. Wystarczy opis + próbka danych. <strong class="text-slate-900">Zawsze podpisujemy umowę o poufności (NDA).</strong>
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {[
+              { n: "1", d: "Opisujesz problem: co raportujesz i gdzie „boli”" },
+              { n: "2", d: "Podajesz źródła danych + częstotliwość" },
+              { n: "3", d: "Dostajesz zakres + termin + wycenę" },
+              { n: "4", d: "Realizacja + przekazanie + instrukcja" }
+            ].map(step => (
+              <div class="flex flex-col gap-4">
+                <span class="text-5xl font-black text-emerald-100 leading-none tracking-tighter">{step.n}</span>
+                <p class="text-sm font-bold text-slate-800 leading-relaxed">{step.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="py-24 container mx-auto px-4 max-w-4xl">
+        <h2 class="text-4xl font-black text-center uppercase tracking-tight mb-16 text-slate-950">FAQ – Pytania o koszty</h2>
+        <div class="space-y-4 text-left">
+          {[
+            { q: "Czy da się podać sztywną cenę „z góry”?", a: "Dla małych tematów tak (od 400 zł). W projektach automatyzacji cena zależy od źródeł i jakości plików. Dlatego robimy wycenę po audycie." },
+            { q: "Co muszę przygotować do wyceny?", a: "Opis celu raportu, skąd są dane (Excel/CSV/SQL/ERP) oraz przykładowy plik (może być zanonimizowany)." },
+            { q: "Co z poufnością danych (NDA)?", a: "Współpracę opieramy na zaufaniu i pełnym bezpieczeństwie. Z każdym Klientem podpisujemy Umowę o poufności (NDA - Non-Disclosure Agreement), co gwarantuje pełną ochronę informacji biznesowych." }
+          ].map(faq => (
+            <details class="group bg-white border border-slate-200 rounded-3xl p-8 hover:bg-slate-50 transition-all cursor-pointer">
+              <summary class="list-none flex justify-between items-center font-black text-slate-950 text-lg uppercase tracking-tight">
+                {faq.q}
+                <span class="text-emerald-500 group-open:rotate-180 transition-transform font-black text-2xl leading-none">↓</span>
+              </summary>
+              <p class="mt-6 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-6 font-medium">{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+          <div class="bg-slate-950 rounded-[4rem] p-16 lg:p-24 text-center text-white relative overflow-hidden shadow-2xl">
+             <div class="absolute top-0 right-0 w-96 h-96 bg-emerald-600/20 rounded-full blur-[100px]"></div>
+             <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-600/10 rounded-full blur-[100px]"></div>
+             
+             <div class="relative z-10">
+                <h2 class="text-4xl md:text-6xl font-black mb-8 uppercase leading-tight tracking-tight">Chcesz konkretną <br/> wycenę w 24h?</h2>
+                <p class="text-slate-400 text-xl max-w-2xl mx-auto mb-12 font-medium">Napisz, co raportujesz, skąd są dane i jak często ma się odświeżać. Odpowiemy z zakresem i wyceną.</p>
+                <a href="/#kontakt" class="inline-block px-12 py-6 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-2xl rounded-2xl transition-all hover:scale-105 shadow-[0_0_50px_rgba(16,185,129,0.3)] uppercase tracking-tighter">Wyceń mój temat</a>
+             </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </div>
+</BaseLayout>
+
+<style is:global>
+  html { scroll-behavior: smooth; }
+  body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+</style>

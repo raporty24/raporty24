@@ -1,0 +1,242 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+
+const title = "Kontakt | Raporty24 – Wycena w 24h (Excel, Power BI, Automatyzacje)";
+const description =
+  "Skontaktuj się z Raporty24. Wycena w 24h: Excel na zamówienie, automatyzacja raportów (Power Query/VBA) oraz dashboardy Power BI. Napisz, co raportujesz i skąd są dane.";
+
+const image = "/biuro3.webp";
+const url = "https://raporty24.pl/kontakt/";
+---
+
+<BaseLayout title={title} description={description} image={image} url={url}>
+  <div x-data="app" x-cloak>
+    <Header />
+
+    <!-- HERO -->
+    <section class="relative overflow-hidden pt-24">
+      <div class="absolute inset-0">
+        <div class="absolute inset-0 bg-gradient-to-br from-green-50 via-white to-emerald-50"></div>
+
+        <svg
+          class="absolute -top-24 -right-24 opacity-[0.18]"
+          width="540"
+          height="540"
+          viewBox="0 0 540 540"
+          fill="none"
+          aria-hidden="true"
+        >
+          <defs>
+            <pattern id="dotsKontakt" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="2" fill="currentColor" />
+            </pattern>
+          </defs>
+          <rect width="540" height="540" fill="url(#dotsKontakt)" class="text-green-300"></rect>
+        </svg>
+
+        <div class="absolute -left-24 top-14 h-80 w-80 rounded-full bg-green-200/40 blur-3xl"></div>
+        <div class="absolute right-0 top-24 h-80 w-80 rounded-full bg-emerald-200/40 blur-3xl"></div>
+      </div>
+
+      <div class="relative container mx-auto px-4 py-16">
+        <div class="max-w-4xl mx-auto text-center">
+          <span class="eyebrow">Kontakt i wycena</span>
+          <h1 class="display-title mt-4">Skontaktuj się z nami</h1>
+
+          <p class="text-xl text-slate-600 mt-6">
+            Napisz, co raportujesz i skąd są dane — przygotujemy propozycję rozwiązania oraz <strong>wycenę w 24h</strong>.
+            Realizujemy: <strong>Excel na zamówienie</strong>, <strong>automatyzacje Power Query/VBA</strong> i <strong>Power BI</strong>.
+          </p>
+
+          <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
+            <div class="p-6 rounded-2xl border border-slate-200 bg-white/80 backdrop-blur">
+              <p class="font-bold text-slate-900">Wycena w 24h</p>
+              <p class="mt-2 text-slate-600 text-sm">
+                Najczęściej wystarczy opis + screeny lub próbka danych (może być zanonimizowana).
+              </p>
+            </div>
+            <div class="p-6 rounded-2xl border border-slate-200 bg-white/80 backdrop-blur">
+              <p class="font-bold text-slate-900">Start od 400 zł</p>
+              <p class="mt-2 text-slate-600 text-sm">
+                Szybka pomoc i poprawki. Większe projekty wyceniamy po krótkim audycie.
+              </p>
+            </div>
+            <div class="p-6 rounded-2xl border border-slate-200 bg-white/80 backdrop-blur">
+              <p class="font-bold text-slate-900">Zdalnie w całej Polsce</p>
+              <p class="mt-2 text-slate-600 text-sm">
+                Współpraca online: Teams/Meet, bezpieczne przekazanie danych, dokumentacja i instrukcja.
+              </p>
+            </div>
+          </div>
+
+          <!-- ZMIANA: prowadź do formularza, ale zróbmy kompatybilność i z #formularz i #kontakt -->
+          <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#formularz" class="green-btn-menu px-10 py-4 text-lg text-center">
+              Przejdź do formularza
+            </a>
+            <a href="/cennik/" class="border-2 border-slate-200 px-10 py-4 rounded-xl font-bold text-slate-700 hover:bg-slate-50 transition text-center">
+              Zobacz cennik
+            </a>
+            <a href="/subskrypcja/" class="border-2 border-slate-200 px-10 py-4 rounded-xl font-bold text-slate-700 hover:bg-slate-50 transition text-center">
+              Subskrypcja (SLA)
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SZYBKI KONTAKT -->
+    <section class="py-14 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="rounded-2xl border border-slate-200 p-7 bg-slate-50">
+            <p class="text-xs font-black uppercase tracking-[0.25em] text-slate-500">Telefon</p>
+            <p class="mt-3 text-2xl font-black text-slate-900">+48 784 391 076</p>
+            <p class="mt-2 text-slate-600 text-sm">Jeśli temat jest pilny — zadzwoń. Oddzwonimy, jeśli nie odbierzemy.</p>
+            <a
+              href="tel:+48784391076"
+              class="mt-6 inline-block bg-slate-900 text-white px-8 py-3 rounded-xl font-black uppercase tracking-widest text-xs hover:bg-slate-800 transition-all"
+            >
+              Zadzwoń
+            </a>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 p-7 bg-slate-50">
+            <p class="text-xs font-black uppercase tracking-[0.25em] text-slate-500">E-mail</p>
+            <p class="mt-3 text-2xl font-black text-slate-900">kontakt@raporty24.pl</p>
+            <p class="mt-2 text-slate-600 text-sm">Wyślij opis + (opcjonalnie) próbkę danych. Możesz zanonimizować.</p>
+            <a
+              href="mailto:kontakt@raporty24.pl?subject=Wycena%20-%20Raporty24&body=Opis%20tematu%3A%0A%0AZrodla%20danych%3A%0A%0ACzestotliwosc%20raportowania%3A%0A%0AOczekiwany%20efekt%3A%0A"
+              class="mt-6 inline-block bg-slate-900 text-white px-8 py-3 rounded-xl font-black uppercase tracking-widest text-xs hover:bg-slate-800 transition-all"
+            >
+              Napisz e-mail
+            </a>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 p-7 bg-green-50">
+            <p class="text-xs font-black uppercase tracking-[0.25em] text-green-700">Wycena (najlepsza opcja)</p>
+            <p class="mt-3 text-2xl font-black text-slate-900">Darmowa konsultacja</p>
+            <p class="mt-2 text-slate-700 text-sm">
+              Opisz problem, a my zaproponujemy kierunek i widełki kosztów. To przyspiesza decyzję i eliminuje domysły.
+            </p>
+            <a
+              href="#formularz"
+              class="mt-6 inline-block green-btn-menu px-8 py-3 rounded-xl font-black uppercase tracking-widest text-xs text-center"
+            >
+              Wypełnij formularz
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- JAK PRZYGOTOWAĆ WYCENĘ -->
+    <section class="py-16 bg-slate-950 text-white">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl">
+          <h2 class="text-3xl lg:text-4xl font-black tracking-tighter uppercase">Co przygotować, żeby wycena była szybka i trafna?</h2>
+          <p class="mt-4 text-slate-300 text-lg">
+            Im lepiej opiszemy źródła danych i efekt końcowy, tym szybciej dostaniesz konkretną propozycję i koszt.
+          </p>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
+            <h3 class="text-xl font-bold">1) Źródła danych</h3>
+            <p class="mt-3 text-slate-300 text-sm">
+              Excel/CSV, SQL, ERP, API, e-maile/załączniki — napisz skąd są dane i czy masz dostęp (login/eksport).
+            </p>
+          </div>
+          <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
+            <h3 class="text-xl font-bold">2) Częstotliwość</h3>
+            <p class="mt-3 text-slate-300 text-sm">
+              Jednorazowo, dziennie, tygodniowo, miesięcznie? Czy raport ma się sam odświeżać „1 klik”?
+            </p>
+          </div>
+          <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
+            <h3 class="text-xl font-bold">3) Oczekiwany efekt</h3>
+            <p class="mt-3 text-slate-300 text-sm">
+              Co ma być na końcu: dashboard KPI, raport PDF/Excel, aplikacja w Excelu (CRM/lejek), automatyczny import danych?
+            </p>
+          </div>
+          <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
+            <h3 class="text-xl font-bold">4) Próbka danych (opcjonalnie)</h3>
+            <p class="mt-3 text-slate-300 text-sm">
+              Możesz wysłać plik zanonimizowany lub screeny. Czasem to skraca wycenę z godzin do minut.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-10 rounded-2xl bg-white/5 border border-white/10 p-8">
+          <p class="font-bold">Najczęstszy scenariusz:</p>
+          <p class="mt-2 text-slate-300 text-sm">
+            Wysyłasz opis + dane → my odpisujemy z zakresem, terminem i wyceną → potwierdzamy → realizacja + instrukcja.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULARZ (Twój komponent) -->
+    <section id="formularz" class="py-24 bg-white">
+      <div class="container mx-auto px-4">
+      
+
+        <!-- DODANE: drugi anchor dla kompatybilności linków #kontakt -->
+        <div id="kontakt"></div>
+
+        <Contact />
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-2xl font-black tracking-tighter uppercase text-slate-900">FAQ</h2>
+
+        <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <details class="rounded-xl border border-slate-200 p-5 bg-white">
+            <summary class="font-bold cursor-pointer">Czy mogę wysłać zanonimizowane dane?</summary>
+            <p class="mt-3 text-slate-600">
+              Tak. W większości przypadków wystarczy próbka danych bez danych wrażliwych albo screeny. Możemy też podpisać NDA.
+            </p>
+          </details>
+
+          <details class="rounded-xl border border-slate-200 p-5 bg-white">
+            <summary class="font-bold cursor-pointer">Ile trwa wycena?</summary>
+            <p class="mt-3 text-slate-600">
+              Zwykle odpisujemy w 24h w dni robocze. Przy większych projektach możemy dopytać o kilka szczegółów.
+            </p>
+          </details>
+
+          <details class="rounded-xl border border-slate-200 p-5 bg-white">
+            <summary class="font-bold cursor-pointer">Czy realizujecie jednorazowe projekty i stałą opiekę?</summary>
+            <p class="mt-3 text-slate-600">
+              Tak. Projekty jednorazowe są w cenniku, a stałe wsparcie i rozwój realizujemy w modelu subskrypcji (SLA).
+            </p>
+          </details>
+
+          <details class="rounded-xl border border-slate-200 p-5 bg-white">
+            <summary class="font-bold cursor-pointer">Czy możecie zacząć od małej poprawki?</summary>
+            <p class="mt-3 text-slate-600">
+              Tak — startujemy nawet od szybkiej pomocy (od 400 zł). To często najlepszy sposób, żeby sprawdzić współpracę.
+            </p>
+          </details>
+        </div>
+
+        <div class="mt-10 text-center">
+          <a href="/cennik/" class="inline-block border-2 border-slate-200 px-10 py-4 rounded-xl font-black text-slate-800 hover:bg-white transition">
+            Zobacz cennik
+          </a>
+          <a href="/subskrypcja/" class="inline-block ml-0 mt-3 sm:ml-3 sm:mt-0 green-btn-menu px-10 py-4 rounded-xl font-black text-center">
+            Zobacz subskrypcję
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </div>
+</BaseLayout>

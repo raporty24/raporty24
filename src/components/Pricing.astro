@@ -1,100 +1,111 @@
 ---
-// Cennik.astro - Wersja Rounded Dark: Połączenie stylu Soft z klimatem Premium
+// Cennik (HOME teaser) – krótsza wersja, odsyła do /cennik/
 ---
-<section id="cennik" class="py-24 bg-slate-950 relative overflow-hidden border-t border-white/5">
-  
-  <div class="sr-only">
-    <h2>Cennik Power BI i Excel – Usługi Analityczne Katowice</h2>
-    <p>
-      Sprawdź ile kosztuje <strong>tworzenie zaawansowanych arkuszy Excel</strong>, 
-      wdrożenie <strong>usług Power BI</strong> oraz <strong>optymalizacja DAX</strong>. 
-      Oferujemy: darmowy audyt danych, <strong>naprawę plików Excel</strong>, 
-      konfigurację <strong>tabel przestawnych</strong> oraz automatyczne 
-      <strong>pobieranie danych z e-maili</strong>.
-    </p>
-  </div>
 
+<section id="cennik" class="py-24 bg-slate-950 relative overflow-hidden border-t border-white/5">
   <div class="container mx-auto px-4 relative z-10">
-    
-    <header class="max-w-4xl mb-20">
+
+    <header class="max-w-4xl mb-16">
       <div class="inline-flex items-center gap-3 mb-6 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20">
         <span class="flex h-2 w-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]"></span>
-        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-green-400">Transparent Pricing</span>
+        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-green-400">Cennik (skrót)</span>
       </div>
-      <h2 class="text-5xl lg:text-7xl font-black tracking-tighter text-white mb-8 leading-[0.95]">
+
+      <h2 class="text-5xl lg:text-7xl font-black tracking-tighter text-white mb-6 leading-[0.95]">
         Inwestycja, która <br/><span class="text-slate-500 italic">się zwraca.</span>
       </h2>
+
       <p class="text-xl text-slate-400 max-w-2xl leading-relaxed">
-        Przejrzyste zasady bez ukrytych kosztów. Wybierz model współpracy, który najlepiej odpowiada potrzebom Twojego biznesu.
+        Start od <strong class="text-white">400 zł</strong>. Poniżej szybki skrót – pełny cennik i zakresy cenowe znajdziesz na osobnej stronie.
       </p>
+
+      <div class="mt-8 flex flex-col sm:flex-row gap-4">
+        <a href="/cennik/" class="bg-green-600 hover:bg-green-500 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-xs transition-all shadow-xl shadow-green-900/20 text-center">
+          Zobacz pełny cennik
+        </a>
+        <a href="/kontakt/#formularz" class="border-2 border-white/15 hover:border-white/30 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-xs transition-all text-center">
+          Wyceń w 24h
+        </a>
+      </div>
     </header>
 
     <div class="grid md:grid-cols-3 gap-8 items-stretch">
-      
+
+      <!-- 1: Szybka pomoc -->
       <div class="bg-slate-900/40 border border-slate-800 p-10 lg:p-12 rounded-[2.5rem] hover:bg-slate-900/60 hover:border-green-500/30 transition-all duration-500 group flex flex-col">
         <div class="flex flex-col h-full">
-          <span class="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-4 block">Discovery</span>
-          <h3 class="text-2xl font-black text-white mb-2 uppercase tracking-tight">Audyt & Plan</h3>
-          <div class="text-5xl font-black text-green-500 mb-8 tracking-tighter">0 zł</div>
+          <span class="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-4 block">Szybka pomoc</span>
+          <h3 class="text-2xl font-black text-white mb-2 uppercase tracking-tight">Start</h3>
+          <div class="text-5xl font-black text-green-500 mb-8 tracking-tighter">od 400 zł</div>
+
           <p class="text-slate-400 mb-10 text-sm leading-relaxed">
-            Darmowa diagnoza Twoich procesów. Sprawdzamy <strong class="text-slate-200">źródła danych</strong> i planujemy architekturę raportów.
+            Dla tematów „tu i teraz”: poprawki w Excelu, szybkie automatyzacje, uporządkowanie danych, optymalizacja pliku.
           </p>
+
           <ul class="space-y-4 text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-12 grow">
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> Analiza Power Query</li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> Struktura Miar KPI</li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> Wycena projektu</li>
+            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> Naprawa pliku / formuł</li>
+            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> Szybka automatyzacja</li>
+            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> Porządkowanie danych</li>
           </ul>
-          <a href="#kontakt" class="block text-center py-4 rounded-2xl border-2 border-slate-800 text-white font-black text-xs uppercase tracking-widest hover:bg-white hover:text-slate-950 transition-all duration-300">
-            Rozpocznij audyt
+
+          <a href="/kontakt/#formularz" class="block text-center py-4 rounded-2xl border-2 border-slate-800 text-white font-black text-xs uppercase tracking-widest hover:bg-white hover:text-slate-950 transition-all duration-300">
+            Zapytaj o termin
           </a>
         </div>
       </div>
 
+      <!-- 2: Projekty -->
       <div class="bg-slate-900 border border-green-500/30 p-10 lg:p-12 rounded-[2.5rem] relative group overflow-hidden shadow-2xl shadow-green-900/20 scale-[1.05] z-10 flex flex-col">
         <div class="absolute -top-20 -right-20 w-40 h-40 bg-green-500/10 rounded-full blur-3xl group-hover:bg-green-500/20 transition-all"></div>
-        
+
         <div class="flex flex-col h-full relative z-10">
-          <span class="text-[10px] font-black text-green-400 uppercase tracking-widest mb-4 block">Full Implementation</span>
-          <h3 class="text-2xl font-black text-white mb-2 uppercase tracking-tight">System Raportowy</h3>
-          <div class="text-5xl font-black text-white mb-8 tracking-tighter">od 250 zł</div>
+          <span class="text-[10px] font-black text-green-400 uppercase tracking-widest mb-4 block">Projekty</span>
+          <h3 class="text-2xl font-black text-white mb-2 uppercase tracking-tight">Wdrożenie / System</h3>
+          <div class="text-5xl font-black text-white mb-8 tracking-tighter">wycena po audycie</div>
+
           <p class="text-slate-400 mb-10 text-sm leading-relaxed">
-            Kompletne <strong class="text-white">wdrożenie Power BI</strong> lub <strong class="text-white">arkusza Excel</strong>. Zawiera automatyczne <strong class="text-white">połączenia z e-mail</strong> i bazami danych.
+            Excel na zamówienie, raport „1 klik”, integracje danych lub dashboardy Power BI. Dostajesz zakres, termin i koszt po krótkim audycie.
           </p>
+
           <ul class="space-y-4 text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-12 grow">
-            <li class="flex items-center gap-3"><i class="fas fa-bolt text-green-500"></i> Interaktywne Fragmentatory</li>
-            <li class="flex items-center gap-3"><i class="fas fa-bolt text-green-500"></i> Modelowanie DAX</li>
-            <li class="flex items-center gap-3"><i class="fas fa-bolt text-green-500"></i> Pobieranie z załączników</li>
+            <li class="flex items-center gap-3"><i class="fas fa-bolt text-green-500"></i> Automatyzacja Power Query</li>
+            <li class="flex items-center gap-3"><i class="fas fa-bolt text-green-500"></i> Model danych / DAX</li>
+            <li class="flex items-center gap-3"><i class="fas fa-bolt text-green-500"></i> Dashboard KPI</li>
           </ul>
-          <a href="#kontakt" class="block text-center py-5 bg-green-600 rounded-2xl text-white font-black text-xs uppercase tracking-[0.2em] shadow-xl shadow-green-900/40 hover:bg-green-500 hover:-translate-y-1 transition-all duration-300">
-            Zamów Projekt
+
+          <a href="/cennik/" class="block text-center py-5 bg-green-600 rounded-2xl text-white font-black text-xs uppercase tracking-[0.2em] shadow-xl shadow-green-900/40 hover:bg-green-500 hover:-translate-y-1 transition-all duration-300">
+            Zobacz zakresy cenowe
           </a>
         </div>
       </div>
 
+      <!-- 3: Optymalizacja -->
       <div class="bg-slate-900/40 border border-slate-800 p-10 lg:p-12 rounded-[2.5rem] hover:bg-slate-900/60 hover:border-green-500/30 transition-all duration-500 group flex flex-col">
         <div class="flex flex-col h-full">
-          <span class="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-4 block">Maintenance</span>
-          <h3 class="text-2xl font-black text-white mb-2 uppercase tracking-tight">Optymalizacja</h3>
-          <div class="text-5xl font-black text-white mb-8 tracking-tighter">od 190 zł</div>
+          <span class="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-4 block">Optymalizacja</span>
+          <h3 class="text-2xl font-black text-white mb-2 uppercase tracking-tight">Naprawa i wydajność</h3>
+          <div class="text-5xl font-black text-white mb-8 tracking-tighter">od 400 zł</div>
+
           <p class="text-slate-400 mb-10 text-sm leading-relaxed">
-            Ekspercka <strong class="text-slate-200">naprawa plików Excel</strong> oraz <strong class="text-slate-200">optymalizacja DAX</strong>. Przyspieszamy raporty, które "wiszą".
+            Przyspieszamy arkusze i raporty: czyszczenie, uproszczenie logiki, stabilizacja odświeżania, porządek w modelu.
           </p>
+
           <ul class="space-y-4 text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-12 grow">
-            <li class="flex items-center gap-3"><i class="fas fa-sync text-green-500"></i> Tabele Przestawne Fix</li>
-            <li class="flex items-center gap-3"><i class="fas fa-sync text-green-500"></i> Przyspieszanie VBA/M</li>
-            <li class="flex items-center gap-3"><i class="fas fa-sync text-green-500"></i> Konsolidacja Danych</li>
+            <li class="flex items-center gap-3"><i class="fas fa-sync text-green-500"></i> Optymalizacja Power Query</li>
+            <li class="flex items-center gap-3"><i class="fas fa-sync text-green-500"></i> Uporządkowanie formuł</li>
+            <li class="flex items-center gap-3"><i class="fas fa-sync text-green-500"></i> Stabilność raportów</li>
           </ul>
-          <a href="#kontakt" class="block text-center py-4 rounded-2xl border-2 border-slate-800 text-white font-black text-xs uppercase tracking-widest hover:bg-slate-800 transition-all duration-300">
-            Popraw swój plik
+
+          <a href="/uslugi/optymalizacja-excela/" class="block text-center py-4 rounded-2xl border-2 border-slate-800 text-white font-black text-xs uppercase tracking-widest hover:bg-slate-800 transition-all duration-300">
+            Zobacz usługę
           </a>
         </div>
       </div>
 
     </div>
 
-    <p class="mt-16 text-center text-slate-600 text-[10px] font-bold uppercase tracking-[0.3em] opacity-50">
-      * Ceny netto. Ostateczna wycena zależy od skomplikowania modelu danych i liczby źródeł.
+    <p class="mt-14 text-center text-slate-600 text-[10px] font-bold uppercase tracking-[0.3em] opacity-50">
+      * Skrót na stronie głównej. Pełne widełki cenowe, zakresy i FAQ znajdziesz na /cennik/.
     </p>
-
   </div>
 </section>

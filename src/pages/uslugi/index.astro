@@ -1,142 +1,223 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
-import HeroService from "../../components/HeroService.astro";
 import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
 
 // Meta dane pod SEO
 const pageTitle = "Usługi Excel i Power BI – Automatyzacja i Dashboardy dla Firm";
 const pageDescription = "Kompleksowe usługi Business Intelligence: tworzenie arkuszy Excel na zamówienie, systemy CRM w Excelu oraz profesjonalne dashboardy Power BI. Sprawdź naszą ofertę!";
-// 1. DODAJ TE DWIE LINIE:
-const ogImage = "/biuro3.webp"; // Możesz tu dać dedykowaną grafikę bazy klientów, jeśli ją masz
-const currentUrl = "https://raporty24.pl/uslugi/"; // upewnij się, że taki jest slug tej strony
+const ogImage = "/biuro3.webp";
+const currentUrl = "https://raporty24.pl/uslugi/";
 
+// Pobieranie usług
+const servicePages = await Astro.glob("./*.astro");
+const allServices = servicePages
+  .filter((p) => !p.file.includes("/index.astro"))
+  .map((p) => {
+    const slug = p.file.split("/").pop().replace(".astro", "");
+    const meta = p.module?.service ?? {};
+    return {
+      slug,
+      href: `/uslugi/${slug}/`,
+      title: meta.title ?? slug.replaceAll("-", " "),
+      order: typeof meta.order === "number" ? meta.order : 999,
+      menu: meta.menu ?? true,
+      description: meta.description ?? "",
+      group: meta.group ?? "", 
+    };
+  })
+  .sort((a, b) => a.order - b.order || a.title.localeCompare(b.title));
 
-export const service = {
-  title: "Wszystkie usługi",
-  order: 0,
-  menu: false,
+const visibleServices = allServices.filter((s) => s.menu !== false);
+
+// Dane strukturalne dla Google (Service List)
+const servicesSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Usługi Raporty24",
+  "itemListElement": visibleServices.map((s, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "url": `https://raporty24.pl${s.href}`,
+    "name": s.title
+  }))
 };
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription} image={ogImage} url={currentUrl}>
-  <div x-data="app" x-cloak>
+<BaseLayout title={pageTitle} description={pageDescription} image={ogImage} url={currentUrl} structuredData={servicesSchema}>
+  <div x-data="app">
     <Header />
-    
- <HeroService 
-  title="Dedykowany system" 
-  highlight="CRM w Excelu" 
-  subtitle="Budujemy proste i skuteczne bazy klientów dopasowane do Twojej firmy." />
 
-    <section class="py-24 bg-white text-slate-900">
-      <div class="container mx-auto px-4">
-        <div class="max-w-3xl mb-16">
-          <h2 class="text-4xl lg:text-5xl font-black tracking-tighter mb-6 uppercase">Ekosystem Microsoft Excel</h2>
-          <p class="text-xl text-slate-600">Tworzymy narzędzia, które oszczędzają Twój czas. Wykorzystujemy Power Query i VBA, by zamienić arkusze w automatyczne aplikacje biznesowe.</p>
+    <main class="pt-20">
+      <section class="relative overflow-hidden py-24 lg:py-40 bg-slate-950 text-white">
+        <div class="absolute inset-0 z-0 opacity-30">
+          <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1.5px,transparent_1.5px)] [background-size:32px_32px]"></div>
+          <div class="absolute top-1/2 left-0 w-full h-px bg-emerald-500/20"></div>
         </div>
+        <div class="absolute top-0 right-0 w-96 h-96 bg-emerald-600/10 rounded-full blur-[120px]"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+          <div class="max-w-4xl">
+            <span class="inline-block px-4 py-1.5 rounded-md text-[10px] font-black bg-emerald-500/10 text-emerald-400 uppercase tracking-[0.3em] mb-8 border border-emerald-500/20">
+              Katalog rozwiązań
+            </span>
+            <h1 class="text-5xl md:text-8xl font-black leading-[1.05] tracking-tight mb-8 uppercase">
+              Automatyzacja <br/> <span class="text-emerald-500">i Analityka.</span>
+            </h1>
+            <p class="text-xl text-slate-400 max-w-2xl leading-relaxed mb-10 font-medium">
+              Od prostych poprawek w arkuszach, przez zaawansowane systemy CRM, aż po korporacyjne dashboardy Power BI. Wybierz obszar, który chcesz usprawnić.
+            </p>
+            <div class="flex gap-4">
+               <a href="#wszystkie" class="px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-black rounded-xl transition-all uppercase tracking-tighter">Pełna lista usług</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-24 bg-white text-slate-900 relative overflow-hidden">
+        <div class="container mx-auto px-4">
+          <div class="flex flex-col lg:flex-row justify-between items-end mb-16 gap-6">
+            <div class="max-w-3xl">
+              <h2 class="text-4xl lg:text-6xl font-black tracking-tighter mb-6 uppercase text-slate-950">Ekosystem Microsoft Excel</h2>
+              <p class="text-xl text-slate-600 font-medium">
+                Tworzymy narzędzia, które oszczędzają Twój czas. Wykorzystujemy Power Query i VBA, by zamienić arkusze w automatyczne aplikacje biznesowe.
+              </p>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { title: "Excel na zamówienie", desc: "Budowa arkuszy od zera: kalkulatory, formularze, generatory ofert i dokumentacja na zlecenie.", href: "/uslugi/excel-na-zamowienie/", cta: "Sprawdź ofertę" },
+              { title: "Automatyzacja Power Query", desc: "Łączenie danych z wielu plików i systemów. Koniec z ręcznym kopiowaniem i poprawianiem błędów.", href: "/uslugi/automatyzacja-excel-power-query/", cta: "Oszczędź czas" },
+              { title: "Optymalizacja i naprawa", desc: "Twój Excel wolno działa? Przyspieszamy pliki, czyścimy formuły i naprawiamy uszkodzone skoroszyty.", href: "/uslugi/optymalizacja-excela/", cta: "Napraw plik" }
+            ].map(item => (
+              <a href={item.href} class="group p-10 rounded-[2.5rem] border border-slate-100 bg-slate-50 hover:bg-white hover:border-emerald-500 hover:shadow-2xl transition-all duration-300">
+                <h3 class="text-2xl font-black mb-4 uppercase tracking-tight group-hover:text-emerald-600">{item.title}</h3>
+                <p class="text-slate-500 mb-8 text-sm leading-relaxed font-medium">{item.desc}</p>
+                <span class="text-emerald-600 font-black text-xs uppercase tracking-widest flex items-center gap-2">
+                  {item.cta} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="py-24 bg-slate-950 text-white relative">
+        <div class="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:40px_40px]"></div>
         
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <a href="/uslugi/excel-na-zamowienie" class="group p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:shadow-2xl hover:border-green-500 transition-all">
-            <h3 class="text-2xl font-bold mb-4 group-hover:text-green-600">Excel na zamówienie</h3>
-            <p class="text-slate-500 mb-6 text-sm">Budowa arkuszy od zera: kalkulatory, formularze, generatory ofert i dokumentacja na zlecenie.</p>
-            <span class="text-green-600 font-bold text-xs uppercase tracking-widest">Sprawdź ofertę →</span>
-          </a>
-          <a href="/uslugi/automatyzacja-excel-power-query" class="group p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:shadow-2xl hover:border-green-500 transition-all">
-            <h3 class="text-2xl font-bold mb-4 group-hover:text-green-600">Automatyzacja Power Query</h3>
-            <p class="text-slate-500 mb-6 text-sm">Łączenie danych z wielu plików i systemów. Koniec z ręcznym kopiowaniem i poprawianiem błędów.</p>
-            <span class="text-green-600 font-bold text-xs uppercase tracking-widest">Oszczędź czas →</span>
-          </a>
-          <a href="/uslugi/optymalizacja-excela" class="group p-8 rounded-3xl bg-slate-50 border border-slate-200 hover:shadow-2xl hover:border-green-500 transition-all">
-            <h3 class="text-2xl font-bold mb-4 group-hover:text-green-600">Optymalizacja i Naprawa</h3>
-            <p class="text-slate-500 mb-6 text-sm">Twój Excel wolno działa? Przyspieszamy pliki, czyścimy formuły i naprawiamy uszkodzone skoroszyty.</p>
-            <span class="text-green-600 font-bold text-xs uppercase tracking-widest">Napraw plik →</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-24 bg-slate-950 text-white relative overflow-hidden">
-      <div class="container mx-auto px-4">
-        <div class="max-w-3xl mb-16 relative z-10">
-          <h2 class="text-4xl lg:text-5xl font-black tracking-tighter mb-6 uppercase">Systemy Sprzedaży i CRM</h2>
-          <p class="text-xl text-slate-400">Zarządzaj bazą klientów i lejkiem sprzedaży bez drogich abonamentów. Skalowalne rozwiązania w środowisku Excel.</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-12 relative z-10">
-          <div class="p-10 rounded-[40px] bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all">
-            <h3 class="text-3xl font-bold mb-4">CRM w Excelu</h3>
-            <p class="text-slate-400 mb-8">Kompletny system: baza kontaktów, historia relacji, automatyczne przypomnienia o zadaniach i raporty konwersji.</p>
-            <a href="/uslugi/crm-w-excelu" class="inline-block bg-green-600 hover:bg-green-500 px-8 py-3 rounded-xl font-bold transition-all">Szczegóły systemu</a>
+        <div class="container mx-auto px-4 relative z-10">
+          <div class="max-w-3xl mb-16">
+            <h2 class="text-4xl lg:text-6xl font-black tracking-tighter mb-6 uppercase">Systemy Sprzedaży i CRM</h2>
+            <p class="text-xl text-slate-400 font-medium">Zarządzaj bazą klientów i lejkiem sprzedaży bez drogich abonamentów. Skalowalne rozwiązania w środowisku Excel.</p>
           </div>
-          <div class="p-10 rounded-[40px] bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-all">
-            <h3 class="text-3xl font-bold mb-4">Lejek Sprzedaży</h3>
-            <p class="text-slate-400 mb-8">Zarządzanie pipeline'em. Prognozowanie przychodów, analiza etapów sprzedaży i wydajności handlowców.</p>
-            <a href="/uslugi/lejek-sprzedazy-w-excelu" class="inline-block border border-white/20 hover:bg-white/5 px-8 py-3 rounded-xl font-bold transition-all">Analiza Pipeline</a>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="p-12 rounded-[3rem] bg-white/5 border border-white/10 backdrop-blur-md hover:border-emerald-500/50 transition-all group">
+              <h3 class="text-3xl font-black mb-4 uppercase tracking-tighter">CRM w Excelu</h3>
+              <p class="text-slate-400 mb-10 leading-relaxed font-medium">Kompletny system: baza kontaktów, historia relacji, automatyczne przypomnienia o zadaniach i raporty konwersji.</p>
+              <a href="/uslugi/crm-w-excelu/" class="inline-block bg-emerald-600 hover:bg-emerald-500 px-10 py-4 rounded-xl font-black uppercase tracking-tighter transition-all shadow-lg shadow-emerald-900/40">Szczegóły systemu</a>
+            </div>
+
+            <div class="p-12 rounded-[3rem] bg-white/5 border border-white/10 backdrop-blur-md hover:border-emerald-500/50 transition-all group">
+              <h3 class="text-3xl font-black mb-4 uppercase tracking-tighter">Lejek sprzedaży</h3>
+              <p class="text-slate-400 mb-10 leading-relaxed font-medium">Zarządzanie pipeline'em. Prognozowanie przychodów, analiza etapów sprzedaży i wydajności handlowców.</p>
+              <a href="/uslugi/lejek-sprzedazy-w-excelu/" class="inline-block border-2 border-white/10 hover:bg-white text-white hover:text-slate-950 px-10 py-4 rounded-xl font-black uppercase tracking-tighter transition-all">Analiza pipeline</a>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="absolute top-1/2 right-0 w-[500px] h-[500px] bg-green-500/10 rounded-full blur-[120px]"></div>
-    </section>
+      </section>
 
-    <section class="py-24 bg-slate-50 text-slate-900">
-      <div class="container mx-auto px-4">
-        <div class="flex flex-col lg:flex-row gap-16 items-center">
-          <div class="lg:w-1/2">
-            <h2 class="text-4xl lg:text-6xl font-black tracking-tighter mb-8 uppercase leading-none">Analityka<br/><span class="text-green-600">Power BI</span></h2>
-            <div class="space-y-6">
-              <div class="flex gap-4">
-                <div class="w-12 h-12 shrink-0 bg-green-100 rounded-xl flex items-center justify-center text-green-600 font-bold">01</div>
-                <div>
-                  <h4 class="font-bold text-xl mb-1">Dashboardy Menedżerskie</h4>
-                  <p class="text-slate-500 text-sm">Wizualizacja KPI na żywo. Finanse, sprzedaż i operacje na jednym ekranie.</p>
+      <section class="py-24 bg-slate-50 text-slate-900">
+        <div class="container mx-auto px-4">
+          <div class="flex flex-col lg:flex-row gap-20 items-center text-left">
+            <div class="lg:w-1/2">
+              <h2 class="text-5xl lg:text-7xl font-black tracking-tighter mb-8 uppercase leading-[0.9]">
+                Analityka<br /><span class="text-emerald-600">Power BI</span>
+              </h2>
+
+              <div class="space-y-8 mt-12">
+                <div class="flex gap-6">
+                  <div class="w-14 h-14 shrink-0 bg-white border border-slate-200 rounded-2xl flex items-center justify-center text-slate-900 font-black text-xl shadow-sm">01</div>
+                  <div>
+                    <h4 class="font-black text-xl mb-2 uppercase tracking-tight">Dashboardy menedżerskie</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed font-medium">Wizualizacja KPI na żywo. Finanse, sprzedaż i operacje skonsolidowane na jednym ekranie.</p>
+                  </div>
+                </div>
+
+                <div class="flex gap-6">
+                  <div class="w-14 h-14 shrink-0 bg-white border border-slate-200 rounded-2xl flex items-center justify-center text-slate-900 font-black text-xl shadow-sm">02</div>
+                  <div>
+                    <h4 class="font-black text-xl mb-2 uppercase tracking-tight">Wdrożenia i consulting</h4>
+                    <p class="text-slate-500 text-sm leading-relaxed font-medium">Budujemy architekturę danych, która automatycznie pobiera dane z Twojego ERP i systemów SQL.</p>
+                  </div>
                 </div>
               </div>
-              <div class="flex gap-4">
-                <div class="w-12 h-12 shrink-0 bg-green-100 rounded-xl flex items-center justify-center text-green-600 font-bold">02</div>
-                <div>
-                  <h4 class="font-bold text-xl mb-1">Wdrożenia i Consulting</h4>
-                  <p class="text-slate-500 text-sm">Budujemy architekturę danych, która "rozmawia" z Twoim ERP i systemami SQL.</p>
-                </div>
+
+              <a href="/uslugi/dashboardy-power-bi/" class="mt-12 inline-block bg-slate-950 text-white px-12 py-5 rounded-2xl font-black uppercase tracking-tighter hover:bg-emerald-600 transition-all shadow-xl">
+                Poznaj możliwości Power BI
+              </a>
+            </div>
+
+            <div class="lg:w-1/2 grid grid-cols-2 gap-6 w-full">
+              <div class="aspect-square bg-white rounded-[2.5rem] border border-slate-100 p-10 shadow-xl flex flex-col justify-between group hover:border-emerald-500 transition-all">
+                <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg></div>
+                <span class="font-black text-slate-900 uppercase tracking-tighter text-lg">Wizualizacja danych</span>
+              </div>
+              <div class="aspect-square bg-slate-900 rounded-[2.5rem] p-10 shadow-xl flex flex-col justify-between transform lg:translate-y-12">
+                <div class="w-12 h-12 bg-emerald-500 text-white rounded-xl flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg></div>
+                <span class="font-black text-white uppercase tracking-tighter text-lg">Modelowanie DAX</span>
               </div>
             </div>
-            <a href="/uslugi/dashboardy-power-bi" class="mt-12 inline-block bg-slate-900 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-slate-800 transition-all">Wszystkie usługi Power BI</a>
-          </div>
-          <div class="lg:w-1/2 grid grid-cols-2 gap-4">
-            <div class="aspect-square bg-white rounded-3xl border border-slate-200 p-8 shadow-sm flex flex-col justify-between">
-              <i class="fas fa-chart-pie text-3xl text-green-500"></i>
-              <span class="font-bold text-slate-800">Wizualizacja Danych</span>
-            </div>
-            <div class="aspect-square bg-slate-900 rounded-3xl p-8 shadow-sm flex flex-col justify-between">
-              <i class="fas fa-database text-3xl text-green-500"></i>
-              <span class="font-bold text-white">Modelowanie DAX</span>
-            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="py-24 bg-slate-950 text-white border-t border-white/5">
-      <div class="container mx-auto px-4 max-w-4xl">
-        <h2 class="text-3xl lg:text-4xl font-black mb-12 text-center">W czym jeszcze możemy pomóc?</h2>
-        <div class="grid gap-4">
-          <a href="/uslugi/raporty-serwisowe" class="p-6 bg-white/5 rounded-2xl border border-white/5 hover:border-green-500/50 flex justify-between items-center group">
-            <span class="font-bold group-hover:text-green-400">Raporty serwisowe i SLA</span>
-            <i class="fas fa-arrow-right text-xs"></i>
-          </a>
-          <a href="/uslugi/raporty-miesieczne-automatyczne" class="p-6 bg-white/5 rounded-2xl border border-white/5 hover:border-green-500/50 flex justify-between items-center group">
-            <span class="font-bold group-hover:text-green-400">Automatyczne raporty miesięczne</span>
-            <i class="fas fa-arrow-right text-xs"></i>
-          </a>
-          <a href="/uslugi/pobieranie-emaili-do-excela" class="p-6 bg-white/5 rounded-2xl border border-white/5 hover:border-green-500/50 flex justify-between items-center group">
-            <span class="font-bold group-hover:text-green-400">Import danych z wiadomości e-mail</span>
-            <i class="fas fa-arrow-right text-xs"></i>
-          </a>
+      <section id="wszystkie" class="py-24 bg-white text-slate-900 border-t border-slate-100">
+        <div class="container mx-auto px-4">
+          <div class="max-w-3xl mb-16">
+            <h2 class="text-4xl lg:text-5xl font-black tracking-tighter mb-5 uppercase">Wszystkie usługi</h2>
+            <p class="text-xl text-slate-600 font-medium">
+              Każde z naszych rozwiązań zostało zaprojektowane, aby rozwiązywać konkretne problemy biznesowe.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {visibleServices.map((s) => (
+              <a href={s.href} class="group p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-xl hover:border-emerald-500 transition-all flex flex-col">
+                <h3 class="text-base font-black uppercase tracking-tight text-slate-900 group-hover:text-emerald-700 leading-tight mb-3">{s.title}</h3>
+                <p class="text-slate-500 text-xs font-medium leading-relaxed flex-grow">
+                  {s.description || "Szczegółowy zakres prac oraz przykłady zastosowań dla Twojej firmy."}
+                </p>
+                <div class="mt-4 pt-4 border-t border-slate-100 text-emerald-600 font-black text-[10px] uppercase tracking-[0.2em] flex items-center justify-between">
+                  Zobacz szczegóły <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <div class="mt-16 rounded-[3rem] bg-slate-950 p-10 lg:p-16 flex flex-col lg:flex-row items-center justify-between gap-8 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-600/10 rounded-full blur-3xl"></div>
+            <div class="relative z-10 text-center lg:text-left">
+              <h3 class="text-3xl font-black text-white uppercase tracking-tight">Nie wiesz, od czego zacząć?</h3>
+              <p class="mt-3 text-slate-400 font-medium max-w-xl">Opisz swój proces raportowy, a my podpowiemy najlepszy kierunek automatyzacji i przygotujemy bezpłatną wycenę.</p>
+            </div>
+            <a href="/#kontakt" class="relative z-10 px-10 py-5 bg-emerald-600 hover:bg-emerald-500 text-white font-black rounded-2xl transition-all shadow-xl shadow-emerald-900/40 uppercase tracking-tighter text-lg">
+              Darmowy audyt danych
+            </a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <Contact />
+      <Contact />
+    </main>
+
     <Footer />
   </div>
 </BaseLayout>
+
+<style is:global>
+  html { scroll-behavior: smooth; }
+  body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+</style>

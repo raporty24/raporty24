@@ -7,6 +7,7 @@ import Footer from "../components/Footer.astro";
 <BaseLayout 
   title="Dziękujemy! | Raporty24" 
   description="Twoja wiadomość została wysłana pomyślnie. Skontaktujemy się z Tobą wkrótce."
+  noindex={true}
 >
   <div x-data="app">
     <Header />
@@ -26,11 +27,41 @@ import Footer from "../components/Footer.astro";
           <span class="text-slate-900 font-bold">w ciągu najbliższych kilku godzin.</span>
         </p>
 
+        {/* Co dalej */}
+        <div class="mt-10 max-w-2xl mx-auto">
+          <h2 class="text-lg font-bold text-slate-900">Co możesz zrobić teraz?</h2>
+          <p class="text-slate-600 mt-2">
+            Jeśli chcesz, możesz od razu zobaczyć zakres usług albo skontaktować się z nami szybciej telefonicznie.
+          </p>
+
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <a href="/uslugi/" class="border-2 border-slate-200 px-6 py-4 rounded-xl font-bold text-slate-800 hover:bg-slate-50 transition">
+              Zobacz usługi
+            </a>
+            <a href="/uslugi/excel-na-zamowienie/" class="border-2 border-slate-200 px-6 py-4 rounded-xl font-bold text-slate-800 hover:bg-slate-50 transition">
+              Excel na zamówienie
+            </a>
+            <a href="/blog/" class="border-2 border-slate-200 px-6 py-4 rounded-xl font-bold text-slate-800 hover:bg-slate-50 transition">
+              Czytaj blog
+            </a>
+          </div>
+
+          {/* Szybki kontakt */}
+          <div class="mt-8 text-slate-600">
+            <p class="font-bold text-slate-900">Chcesz szybciej?</p>
+            <p class="mt-2">
+              Napisz: <a class="underline font-bold" href="mailto:kontakt@raporty24.pl">kontakt@raporty24.pl</a>
+              lub zadzwoń: <a class="underline font-bold" href="tel:+48784391076">+48 784 391 076</a>
+            </p>
+          </div>
+        </div>
+
         <div class="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
           <a href="/" class="green-btn-menu px-10 py-4 text-lg">
             Wróć do strony głównej
           </a>
-          <a href="https://www.linkedin.com/in/raporty-raporty-50a8413a4/" target="_blank" class="border-2 border-slate-200 px-10 py-4 rounded-xl font-bold text-slate-700 hover:bg-slate-50 transition">
+          <a href="https://www.linkedin.com/in/raporty-raporty-50a8413a4/" target="_blank" rel="noopener noreferrer"
+             class="border-2 border-slate-200 px-10 py-4 rounded-xl font-bold text-slate-700 hover:bg-slate-50 transition">
             LinkedIn
           </a>
         </div>

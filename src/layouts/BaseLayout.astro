@@ -5,16 +5,53 @@ const {
   title, 
   description, 
   image = "/biuro3.webp", 
-  url = "https://raporty24.pl/" 
+  url, // <- USUŃ domyślną stronę główną
+  structuredData = null
 } = Astro.props;
 
+
+// Twoje stałe dane firmy (LocalBusiness)
+const businessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Raporty24 - Ekspert Power BI i Excel",
+  "url": "https://raporty24.pl",
+  "logo": "https://raporty24.pl/hero.webp",
+  "image": "https://raporty24.pl/hero.webp",
+  "telephone": "+48784391076",
+  "priceRange": "od 400 zł", // Poprawiłem przecinek, którego brakowało
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Katowice",
+    "addressRegion": "Slask",
+    "postalCode": "40-860",
+    "addressCountry": "PL"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "50.2649",
+    "longitude": "19.0238"
+  },
+  "description": "Profesjonalne usługi Power BI, tworzenie zaawansowanych arkuszy Excel i automatyzacja procesów biznesowych. Współpraca zdalna dla firm z całej Polski.",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
+    ],
+    "opens": "08:00",
+    "closes": "22:00"
+  }
+};
 // Tworzymy pełny adres URL dla obrazka, aby Facebook go widział
 const siteUrl = "https://raporty24.pl";
+// ✅ canonical liczy się automatycznie z aktualnej ścieżki
+const canonicalUrl = url ?? new URL(Astro.url.pathname, siteUrl).toString();
+
 const ogImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
 ---
 
 <!doctype html>
-<html lang="pl">
+<html lang="pl" class="scroll-smooth">
   <head>
 <link rel="icon" type="image/png" href="/favicon.png" />
 
@@ -34,15 +71,23 @@ const ogImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
 
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
-    <link rel="canonical" href={url} />
+   <script type="application/ld+json" set:html={JSON.stringify(businessSchema)} />
+
+    {structuredData && (
+      <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    )}
+   
+    <link rel="canonical" href={canonicalUrl} />
 
     <meta property="og:title" content={title} />
     {description && <meta property="og:description" content={description} />}
-    <meta property="og:url" content={url} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:type" content="website" />
-  <meta property="og:image" content={`https://raporty24.pl${image}`} />
+  <meta property="og:image" content={ogImageUrl} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
+
+
     <script defer src="/scripts/site.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
