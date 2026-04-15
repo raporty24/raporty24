@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PentaFlowBI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Alpine.js MUSI być załadowane jako defer! -->
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <style>
+    .fade-in { animation: fadeIn 1s; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px);}
+      to   { opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body class="bg-gray-50" x-data="{ panel: 'analytics' }">
+
+  <!-- HERO -->
+  <section class="relative flex flex-col items-center justify-center min-h-[350px] bg-gradient-to-r from-green-400/80 via-blue-400/70 to-gray-600/80 text-white mb-10">
+    <h1 class="text-5xl font-extrabold mb-4 drop-shadow-xl fade-in">PentaFlowBI</h1>
+    <p class="text-xl mb-8 fade-in">Analiza danych: poznaj swój biznes od podszewki.</p>
+    <!-- TABS -->
+    <div class="inline-flex bg-white/90 rounded-full shadow-lg p-1 fade-in">
+      <button
+        @click="panel = 'analytics'"
+        :class="panel === 'analytics' ? 'bg-green-400 text-white scale-105 shadow-lg' : 'text-gray-700 hover:bg-green-100'"
+        class="transition-all duration-200 px-6 py-2 font-semibold rounded-full outline-none"
+      >Analiza</button>
+      <button
+        @click="panel = 'reporting'"
+        :class="panel === 'reporting' ? 'bg-blue-400 text-white scale-105 shadow-lg' : 'text-gray-700 hover:bg-blue-100'"
+        class="transition-all duration-200 px-6 py-2 font-semibold rounded-full outline-none"
+      >Raportowanie</button>
+      <button
+        @click="panel = 'optimization'"
+        :class="panel === 'optimization' ? 'bg-gray-600 text-white scale-105 shadow-lg' : 'text-gray-700 hover:bg-gray-200'"
+        class="transition-all duration-200 px-6 py-2 font-semibold rounded-full outline-none"
+      >Optymalizacja</button>
+    </div>
+  </section>
+
+  <section class="flex justify-center space-x-6 mb-12 fade-in">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python" class="h-10">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Pandas_logo.svg" alt="Pandas" class="h-10">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Jupyter_logo.svg" alt="Jupyter" class="h-10">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Microsoft_Office_Excel_%282018–present%29.svg" alt="Excel" class="h-10">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/Power_bi_logo_black.svg" alt="PowerBI" class="h-10">
+  </section>
+
+  <!-- PANELE -->
+  <main class="container mx-auto px-4 mb-20">
+    <template x-if="panel==='analytics'">
+      <section class="rounded-xl px-4 py-10 mb-12 bg-green-50 shadow-lg fade-in">
+        <h2 class="text-3xl font-bold mb-6 text-center">Dlaczego analiza danych?</h2>
+        <ul class="list-disc list-inside space-y-2 text-gray-800 max-w-3xl mx-auto">
+          <li>Lepsze decyzje dzięki wglądowi w kluczowe wskaźniki.</li>
+          <li>Wykrywanie trendów i wzorców w danych historycznych.</li>
+        </ul>
+      </section>
+    </template>
+    <template x-if="panel==='reporting'">
+      <section class="rounded-xl px-4 py-10 mb-12 bg-blue-50 shadow-lg fade-in">
+        <h2 class="text-3xl font-bold mb-6 text-center">Raportowanie</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="p-6 bg-white rounded shadow hover:shadow-lg transition">
+            <h3 class="text-xl font-semibold mb-2">Szybkie raporty</h3>
+            <p>Sprzedażowe, finansowe, prognozy – gotowe w kilka chwil.</p>
+          </div>
+        </div>
+      </section>
+    </template>
+    <template x-if="panel==='optimization'">
+      <section class="rounded-xl px-4 py-10 mb-12 bg-gray-50 shadow-lg fade-in">
+        <h2 class="text-3xl font-bold mb-6 text-center">Optymalizacja procesów</h2>
+        <ul class="list-disc list-inside space-y-2 text-gray-800 max-w-3xl mx-auto">
+          <li>Automatyzacja zadań w Excelu i skryptach Python.</li>
+        </ul>
+      </section>
+    </template>
+  </main>
+
+</body>
+</html>

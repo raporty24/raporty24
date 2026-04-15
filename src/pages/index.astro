@@ -15,8 +15,10 @@ import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
 
 // Definiujemy dane dla strony głównej
-const title = "Firma analityczna | Dashboardy Power BI, Excel i Chatboty AI";
-const description = "Firma analityczna i analityka biznesowa. Tworzymy profesjonalne dashboardy Power BI, dedykowany program do zarządzania firmą oraz AI: chatboty do danych i raportów. Kompleksowe usługi dla firm excel. Szukasz wykonawcy na zlecę excel? Sprawdź!";
+const title = "Automatyzacja raportów i danych – Excel, Power BI, AI";
+const description = "Oszczędź do 20h pracy miesięcznie. Tworzymy raporty Excel na zamówienie, makra VBA oraz dashboardy Power BI. Nowoczesna analityka biznesowa i chatboty AI do danych.";
+//const title = "Firma analityczna | Dashboardy Power BI, Excel i Chatboty AI";
+//const description = "Firma analityczna i analityka biznesowa. Tworzymy profesjonalne dashboardy Power BI, dedykowany program do zarządzania firmą oraz AI: chatboty do danych i raportów. Kompleksowe usługi dla firm excel. Szukasz wykonawcy na zlecę excel? Sprawdź!";
 const image = "/biuro3.webp"; // Twoja główna grafika (ta z SQL)
 const url = "https://raporty24.pl/";
 const homeFaqSchema = {
@@ -74,3 +76,23 @@ const homeFaqSchema = {
     <Footer />
       </div>
 </BaseLayout>
+
+<style is:global>
+  /* Wyłączenie efektów, które duszą procesor graficzny */
+  * {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Wymuszenie płynności na zdjęciach */
+  img {
+    transform: translateZ(0);
+    will-change: transform;
+    content-visibility: auto;
+  }
+
+  /* Wyłączenie ciężkich animacji */
+  .animate-slow-pan, .neon-flow {
+    animation: none !important;
+  }
+</style>
