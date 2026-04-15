@@ -1,30 +1,39 @@
 ---
-// src/components/Hero.astro - Wersja "Cyber-Analytic"
+// src/components/Hero.astro - Wersja "Animated Blueprint" (v4: Subtelna Dynamika)
 const {
   title = "EKSPERT EXCEL & POWER BI",
   highlight = "AUTOMATYZACJA 2026",
-  headline = "ZAUTOMATYZUJ RAPORTY W EXCELU.", // Możesz tu dać {highlightWord: 'EXCELU.'}
 } = Astro.props;
 ---
 
 <section id="hero" class="relative min-h-[90vh] flex items-center overflow-hidden bg-slate-950 text-white">
   
-  <div class="absolute inset-0 z-0 opacity-[0.05]" style="background-image: linear-gradient(0deg, transparent 24%, #16a34a 25%, #16a34a 26%, transparent 27%, transparent 74%, #16a34a 75%, #16a34a 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, #16a34a 25%, #16a34a 26%, transparent 27%, transparent 74%, #16a34a 75%, #16a34a 76%, transparent 77%, transparent); background-size: 60px 60px;">
+  <div class="absolute inset-0 z-0 overflow-hidden">
+    
+    <div class="absolute inset-0 opacity-20 z-10" 
+         style="background-image: linear-gradient(#4ade8020 1px, transparent 1px), linear-gradient(90deg, #4ade8020 1px, transparent 1px); background-size: 80px 80px;">
+    </div>
+    
+    <div class="absolute inset-0 z-20 pointer-events-none overflow-hidden">
+        <div class="scanner-line"></div>
+    </div>
+    
+    <div class="absolute inset-0 opacity-30 z-0" style="background-image: radial-gradient(at 10% 20%, #16a34a 0px, transparent 65%), radial-gradient(at 80% 50%, #4ade8040 0px, transparent 60%); background-size: 100% 100%;"></div>
   </div>
   
-  <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent z-0"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent z-10"></div>
 
-  <div class="container mx-auto px-4 relative z-10 pt-20">
+  <div class="container mx-auto px-4 relative z-20 pt-20">
     <div class="max-w-6xl">
       
       <div class="inline-flex items-center gap-3 mb-12 px-4 py-2 rounded-full bg-slate-900/50 border border-white/10 backdrop-blur-sm">
-        <span class="flex h-3 w-3 rounded-full bg-green-500 shadow-[0_0_15px_#22c55e]"></span>
+        <span class="flex h-3 w-3 rounded-full bg-green-500 shadow-[0_0_15px_#22c55e] animate-pulse"></span>
         <span class="text-xs font-black uppercase tracking-[0.3em] text-green-400">
           {title} • <span class="text-slate-300">{highlight}</span>
         </span>
       </div>
 
-      <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-10 leading-[0.95] max-w-5xl">
+      <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-10 leading-[0.95] max-w-5xl uppercase">
         Przestań marnować czas. <br/> 
         Automatyzujemy raporty w <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">Excelu</span>.
       </h1>
@@ -34,27 +43,26 @@ const {
       </p>
 
       <div class="grid md:grid-cols-3 gap-6 mb-16">
-        
-        <div class="p-8 rounded-3xl bg-slate-900 border border-slate-800 hover:border-green-500/30 transition-colors">
+        <div class="p-8 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-green-500/50 transition-all group backdrop-blur-sm">
           <div class="flex items-center gap-4 mb-5">
-             <i class="fas fa-file-excel text-green-500 text-2xl"></i>
+             <i class="fas fa-file-excel text-green-500 text-2xl group-hover:scale-110 transition-transform"></i>
              <h4 class="text-lg font-bold text-white uppercase tracking-wider">Makra & VBA</h4>
           </div>
           <p class="text-slate-400 text-sm leading-relaxed">Automatyzacja procesów jednym kliknięciem. Stabilne i bezpieczne makra.</p>
         </div>
 
-        <div class="p-8 rounded-3xl bg-slate-900 border border-slate-800 hover:border-green-500/30 transition-colors">
+        <div class="p-8 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-green-500/50 transition-all group backdrop-blur-sm">
           <div class="flex items-center gap-4 mb-5">
-             <i class="fas fa-chart-pie text-green-500 text-2xl"></i>
+             <i class="fas fa-chart-pie text-green-500 text-2xl group-hover:scale-110 transition-transform"></i>
              <h4 class="text-lg font-bold text-white uppercase tracking-wider">KPI Dashboardy</h4>
           </div>
           <p class="text-slate-400 text-sm leading-relaxed">Interaktywne raporty menedżerskie w Power BI, dostępne 24/7 na każdym urządzeniu.</p>
         </div>
 
-        <div class="p-8 rounded-3xl bg-slate-900 border border-slate-800 hover:border-green-500/30 transition-colors">
+        <div class="p-8 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-indigo-400/50 transition-all group backdrop-blur-sm">
           <div class="flex items-center gap-4 mb-5">
-             <i class="fas fa-robot text-green-500 text-2xl"></i>
-             <h4 class="text-lg font-bold text-white uppercase tracking-wider">AI & Chatboty</h4>
+             <i class="fas fa-robot text-indigo-400 text-2xl group-hover:scale-110 transition-transform"></i>
+             <h4 class="text-lg font-bold text-white uppercase tracking-wider text-indigo-100">AI & Chatboty</h4>
           </div>
           <p class="text-slate-400 text-sm leading-relaxed italic border-l-2 border-indigo-500/30 pl-4">Zadawaj pytania swoim danym w języku naturalnym. Nowoczesna analiza danych.</p>
         </div>
@@ -65,11 +73,33 @@ const {
           Wyceń swój projekt
           <i class="fas fa-chevron-right text-sm transition-transform group-hover:translate-x-1"></i>
         </a>
-
-        <a href="#oferta" class="bg-slate-800 hover:bg-slate-700 text-white py-6 px-10 rounded-2xl font-bold text-xl border border-white/10 transition-colors flex items-center justify-center text-center">
-          Zobacz ofertę
-        </a>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  /* ANIMACJA SKANERA (Laser Line) */
+  .scanner-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #22c55e, transparent);
+    opacity: 0.5;
+    animation: scan 8s linear infinite;
+    will-change: transform;
+    z-index: 25;
+  }
+
+  @keyframes scan {
+    0% { transform: translateY(-100px); }
+    100% { transform: translateY(100vh); }
+  }
+
+  /* Optymalizacja wydajności */
+  section {
+    content-visibility: auto;
+  }
+</style>
