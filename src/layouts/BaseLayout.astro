@@ -5,12 +5,10 @@ const {
   title, 
   description, 
   image = "/logo.webp", 
-  url, // <- USUŃ domyślną stronę główną
-  structuredData = null
+  url, 
+  structuredData = null 
 } = Astro.props;
 
-
-// Twoje stałe dane firmy (LocalBusiness)
 const businessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -19,7 +17,7 @@ const businessSchema = {
   "logo": "https://raporty24.pl/logo.webp",
   "image": "https://raporty24.pl/logo.webp",
   "telephone": "+48784391076",
-  "priceRange": "od 400 zł", // Poprawiłem przecinek, którego brakowało
+  "priceRange": "od 400 zł",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Katowice",
@@ -32,72 +30,63 @@ const businessSchema = {
     "latitude": "50.2649",
     "longitude": "19.0238"
   },
-  "description": "Profesjonalne usługi Power BI, tworzenie zaawansowanych arkuszy Excel i automatyzacja procesów biznesowych. Współpraca zdalna dla firm z całej Polski.",
+  "description": "Profesjonalne usługi Power BI, tworzenie zaawansowanych arkuszy Excel i automatyzacja procesów biznesowych.",
   "openingHoursSpecification": {
     "@type": "OpeningHoursSpecification",
-    "dayOfWeek": [
-      "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
-    ],
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
     "opens": "08:00",
     "closes": "22:00"
   }
 };
-// Tworzymy pełny adres URL dla obrazka, aby Facebook go widział
-const siteUrl = "https://raporty24.pl";
-// ✅ canonical liczy się automatycznie z aktualnej ścieżki
-const canonicalUrl = url ?? new URL(Astro.url.pathname, siteUrl).toString();
 
+const siteUrl = "https://raporty24.pl";
+const canonicalUrl = url ?? new URL(Astro.url.pathname, siteUrl).toString();
 const ogImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
 ---
 
 <!doctype html>
 <html lang="pl" class="scroll-smooth">
   <head>
-<link rel="icon" type="image/png" href="/favicon.png" />
-
-<link rel="apple-touch-icon" href="/favicon.png" />
-
-<link rel="icon" sizes="192x192" href="/favicon.png">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
 
-       <script async src="https://www.googletagmanager.com/gtag/js?id=G-B6RVGF640J"></script>
-  <script is:inline data-astro-rerun>
-  document.addEventListener('astro:page-load', () => {
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-B6RVGF640J');
-  }, { once: false });
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B6RVGF640J"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-B6RVGF640J');
+
+      document.addEventListener('astro:page-load', () => {
+        gtag('event', 'page_view', {
+          page_title: document.title,
+          page_location: window.location.href,
+          page_path: window.location.pathname
+        });
+      });
+    </script>
 
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
-   <script type="application/ld+json" set:html={JSON.stringify(businessSchema)} />
-
+    
+    <script type="application/ld+json" set:html={JSON.stringify(businessSchema)} />
     {structuredData && (
       <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     )}
-   
+    
     <link rel="canonical" href={canonicalUrl} />
-
     <meta property="og:title" content={title} />
-    {description && <meta property="og:description" content={description} />}
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:type" content="website" />
-  <meta property="og:image" content={ogImageUrl} />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-
+    <meta property="og:image" content={ogImageUrl} />
 
     <script defer src="/scripts/site.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   </head>
-
   <body class="bg-white antialiased">
     <slot />
   </body>
 </html>
-
