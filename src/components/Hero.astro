@@ -1,8 +1,8 @@
 ---
-// src/components/Hero.astro - Wersja "Animated Blueprint" (v4: Subtelna Dynamika)
+// src/components/Hero.astro - Wersja B2B Premium (Z przywróconym Power BI)
 const {
-  title = "EKSPERT EXCEL & POWER BI",
-  highlight = "AUTOMATYZACJA 2026",
+  title = "DATA & AI CONSULTING",
+  highlight = "GWARANCJA NDA",
 } = Astro.props;
 ---
 
@@ -34,44 +34,45 @@ const {
       </div>
 
       <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-10 leading-[0.95] max-w-5xl uppercase">
-        Przestań marnować czas. <br/> 
-        Automatyzujemy raporty w <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">Excelu</span>.
+        Zautomatyzuj dane. <br/> 
+        Odzyskaj <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">40h w miesiącu</span>.
       </h1>
 
       <p class="text-2xl text-slate-300 mb-16 leading-relaxed max-w-4xl italic border-l-2 border-green-500/30 pl-8">
-        Zamiast ręcznie kopiować dane, otrzymujesz gotowe analizy w sekundy. <strong class="text-white">Odzyskaj 20 godzin pracy miesięcznie.</strong> Wyceniamy Twój projekt w 24h.
+        Budujemy dedykowane systemy Excel, interaktywne dashboardy <strong class="text-white">Power BI</strong> oraz integracje z AI. Koniec z ręcznym przepisywaniem raportów. Otrzymaj bezpłatny audyt.
       </p>
 
       <div class="grid md:grid-cols-3 gap-6 mb-16">
         <div class="p-8 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-green-500/50 transition-all group backdrop-blur-sm">
           <div class="flex items-center gap-4 mb-5">
              <i class="fas fa-file-excel text-green-500 text-2xl group-hover:scale-110 transition-transform"></i>
-             <h4 class="text-lg font-bold text-white uppercase tracking-wider">Makra & VBA</h4>
+             <h4 class="text-lg font-bold text-white uppercase tracking-wider">Makra & Excel</h4>
           </div>
-          <p class="text-slate-400 text-sm leading-relaxed">Automatyzacja procesów jednym kliknięciem. Stabilne i bezpieczne makra.</p>
+          <p class="text-slate-400 text-sm leading-relaxed">Automatyzacja procesów (Flota, CRM) jednym kliknięciem. Stabilnie i bezbłędnie.</p>
         </div>
 
-        <div class="p-8 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-green-500/50 transition-all group backdrop-blur-sm">
-          <div class="flex items-center gap-4 mb-5">
-             <i class="fas fa-chart-pie text-green-500 text-2xl group-hover:scale-110 transition-transform"></i>
-             <h4 class="text-lg font-bold text-white uppercase tracking-wider">KPI Dashboardy</h4>
+        <div class="p-8 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-yellow-500/50 transition-all group backdrop-blur-sm relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 w-20 h-20 bg-yellow-500/10 rounded-full blur-2xl"></div>
+          <div class="flex items-center gap-4 mb-5 relative z-10">
+             <i class="fas fa-chart-bar text-yellow-500 text-2xl group-hover:scale-110 transition-transform"></i>
+             <h4 class="text-lg font-bold text-white uppercase tracking-wider">Raporty Power BI</h4>
           </div>
-          <p class="text-slate-400 text-sm leading-relaxed">Interaktywne raporty menedżerskie w Power BI, dostępne 24/7 na każdym urządzeniu.</p>
+          <p class="text-slate-400 text-sm leading-relaxed relative z-10">Interaktywne dashboardy menedżerskie. Wyniki finansowe Twojej firmy na żywo w telefonie.</p>
         </div>
 
         <div class="p-8 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-indigo-400/50 transition-all group backdrop-blur-sm">
           <div class="flex items-center gap-4 mb-5">
              <i class="fas fa-robot text-indigo-400 text-2xl group-hover:scale-110 transition-transform"></i>
-             <h4 class="text-lg font-bold text-white uppercase tracking-wider text-indigo-100">AI & Chatboty</h4>
+             <h4 class="text-lg font-bold text-white uppercase tracking-wider text-indigo-100">Integracje z AI</h4>
           </div>
-          <p class="text-slate-400 text-sm leading-relaxed italic border-l-2 border-indigo-500/30 pl-4">Zadawaj pytania swoim danym w języku naturalnym. Nowoczesna analiza danych.</p>
+          <p class="text-slate-400 text-sm leading-relaxed italic border-l-2 border-indigo-500/30 pl-4">Łączymy Excela z ChatGPT (API). Automatyczna analiza setek tekstów i faktur.</p>
         </div>
       </div>
 
       <div class="flex flex-col sm:flex-row gap-6 mb-16">
-        <a href="/kontakt/#formularz" class="group bg-green-600 hover:bg-green-500 text-white py-6 px-14 rounded-2xl font-black text-2xl shadow-[0_20px_50px_rgba(34,197,94,0.3)] transition-all hover:-translate-y-1 flex items-center justify-center gap-3 text-center tracking-tight">
-          Wyceń swój projekt
-          <i class="fas fa-chevron-right text-sm transition-transform group-hover:translate-x-1"></i>
+        <a href="/kontakt/" class="group bg-green-600 hover:bg-green-500 text-white py-6 px-14 rounded-2xl font-black text-2xl shadow-[0_20px_50px_rgba(34,197,94,0.3)] transition-all hover:-translate-y-1 flex items-center justify-center gap-3 text-center tracking-tight">
+          Odbierz darmową wycenę (24h)
+          <i class="fas fa-arrow-right text-sm transition-transform group-hover:translate-x-1"></i>
         </a>
       </div>
     </div>
