@@ -75,6 +75,7 @@ const services = Object.keys(modules)
         </div>
       </div>
 
+      <a href="/realizacje/" class="nav-link" data-section="realizacje">Realizacje</a>
       <a href="/#technologie" class="nav-link" data-section="technologie">Technologie</a>
       <a href="/cennik/" class="nav-link" >Cennik</a>
       <a href="/subskrypcja/" class="nav-link" >Subskrypcja</a>
@@ -121,6 +122,7 @@ const services = Object.keys(modules)
         </div>
       </div>
 
+      <a href="/realizacje/" class="mobile-nav-link" @click="menuOpen=false">Realizacje</a>
       <a href="/#technologie" class="mobile-nav-link" @click="menuOpen=false">Technologie</a>
       <a href="/#cennik" class="mobile-nav-link" @click="menuOpen=false">Cennik i Audyt</a>
       <a href="/#abonament" class="mobile-nav-link" @click="menuOpen=false">Subskrypcja (SLA)</a>
@@ -185,7 +187,7 @@ const services = Object.keys(modules)
 
 <script>
   function setupScrollSpy() {
-    const sections = ['hero', 'oferta', 'technologie', 'cennik', 'abonament', 'dlaczego', 'kontakt', 'demo-section'];
+    const sections = ['hero', 'oferta', 'realizacje', 'technologie', 'cennik', 'abonament', 'dlaczego', 'kontakt', 'demo-section'];
     const navLinks = document.querySelectorAll('.nav-link, .navy-btn-menu');
 
     const observer = new IntersectionObserver((entries) => {
