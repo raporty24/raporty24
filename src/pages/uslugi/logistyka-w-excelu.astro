@@ -5,129 +5,465 @@ import HeroService from "../../components/HeroService.astro";
 import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
 
-// SEO Setup - Precyzyjne uderzenie w logistykę i magazyn
-const title = "Zarządzanie flotą i magazynem w Excelu | Logistyka | Raporty24";
-const description = "Odzyskaj kontrolę nad transportem. Oferujemy profesjonalne zarządzanie flotą samochodową w excelu, program magazynowy oraz harmonogram produkcji. Sprawdź!";
-// 1. DODAJ TE DWIE LINIE:
-const ogImage = "/biuro3.webp"; // Możesz tu dać dedykowaną grafikę bazy klientów, jeśli ją masz
-const currentUrl = "https://raporty24.pl/uslugi/logistyka-w-excelu/"; // upewnij się, że taki jest slug tej strony
+const title = "Logistyka w Excelu | Zarządzanie flotą, trasy i koszty transportu";
+const description =
+  "Tworzymy narzędzia Excel dla logistyki: zarządzanie flotą samochodową, planowanie tras, koszty paliwa, raporty transportowe, magazyn i harmonogramy.";
+const ogImage = "/biuro3.webp";
+const currentUrl = "https://raporty24.pl/uslugi/logistyka-w-excelu/";
+
 export const service = {
-  title: "Logistyka i Magazyn",
+  title: "Logistyka w Excelu",
   order: 15,
   menu: true,
   category: "Excel",
+  description:
+    "Narzędzia Excel dla logistyki: zarządzanie flotą, planowanie tras, koszty transportu, raporty operacyjne, magazyn i harmonogramy.",
+};
+
+const fleetFeatures = [
+  {
+    title: "Zarządzanie flotą",
+    description:
+      "Ewidencja pojazdów, przypomnienia o serwisach, przeglądach, ubezpieczeniach, kosztach i przypisaniu aut do kierowców.",
+    icon: "fas fa-truck-moving",
+  },
+  {
+    title: "Koszty paliwa i eksploatacji",
+    description:
+      "Porównywanie danych z kart paliwowych, przebiegów, faktur, tras i kosztów utrzymania pojazdów.",
+    icon: "fas fa-gas-pump",
+  },
+  {
+    title: "Planowanie tras",
+    description:
+      "Narzędzia wspierające wybór trasy, kontrolę parametrów pojazdu, ograniczeń, dystansów i kosztów przejazdu.",
+    icon: "fas fa-route",
+  },
+  {
+    title: "Raporty floty",
+    description:
+      "Raporty miesięczne, KPI, rentowność pojazdów, koszty na kilometr, wykorzystanie aut i zestawienia dla zarządu.",
+    icon: "fas fa-chart-line",
+  },
+];
+
+const logisticsAreas = [
+  {
+    title: "Transport",
+    description:
+      "Planowanie tras, kontrola kosztów, raporty kierowców, paliwo, serwisy i zestawienia pojazdów.",
+  },
+  {
+    title: "Magazyn",
+    description:
+      "Stany magazynowe, rotacja towaru, minimum magazynowe, inwentaryzacja i porządkowanie danych z wielu plików.",
+  },
+  {
+    title: "Produkcja",
+    description:
+      "Harmonogramy pracy, obłożenie stanowisk, kolejki zleceń, kontrola terminów i raporty wykonania.",
+  },
+  {
+    title: "Raportowanie",
+    description:
+      "Automatyczne raporty Excel i Power BI z danych logistycznych, magazynowych, flotowych albo produkcyjnych.",
+  },
+];
+
+const useCases = [
+  "zarządzanie flotą samochodową w Excelu",
+  "raport kosztów paliwa i eksploatacji pojazdów",
+  "planowanie tras według parametrów pojazdu",
+  "kontrola terminów serwisów, przeglądów i ubezpieczeń",
+  "raport floty Excel dla zarządu lub działu transportu",
+  "łączenie danych z GPS, ERP, kart paliwowych i plików CSV",
+  "program magazynowy w Excelu z kontrolą stanów",
+  "harmonogram produkcji i obciążenia stanowisk",
+];
+
+const process = [
+  {
+    step: "01",
+    title: "Analiza procesu",
+    description:
+      "Ustalamy, co dziś jest prowadzone ręcznie: flota, trasy, magazyn, paliwo, harmonogramy, raporty albo pliki od dostawców.",
+  },
+  {
+    step: "02",
+    title: "Projekt narzędzia",
+    description:
+      "Dobieramy strukturę arkuszy, formularzy, importów, raportów i automatyzacji. Ustalamy, czy wystarczy Excel, czy lepszy będzie Python, API albo Power BI.",
+  },
+  {
+    step: "03",
+    title: "Automatyzacja",
+    description:
+      "Budujemy plik, makra VBA, Power Query, skrypty, walidacje, importy danych i raporty dopasowane do pracy zespołu.",
+  },
+  {
+    step: "04",
+    title: "Wdrożenie",
+    description:
+      "Testujemy narzędzie na realnych danych, przekazujemy instrukcję i możemy rozbudowywać system o kolejne raporty lub integracje.",
+  },
+];
+
+const faqs = [
+  {
+    question: "Czy można zrobić zarządzanie flotą samochodową w Excelu?",
+    answer:
+      "Tak. Excel dobrze sprawdza się jako narzędzie do ewidencji pojazdów, kosztów paliwa, serwisów, przeglądów, ubezpieczeń, przebiegów i raportów floty. Przy większej liczbie danych można połączyć go z Power Query, VBA, Pythonem lub Power BI.",
+  },
+  {
+    question: "Czy Excel nadaje się do planowania tras?",
+    answer:
+      "Tak, jeśli proces ma jasne reguły. Możemy przygotować narzędzie, które uwzględnia parametry pojazdu, ograniczenia, koszty, dystans, dane z plików i ręczne decyzje spedytora.",
+  },
+  {
+    question: "Czy można pobierać dane z GPS albo kart paliwowych?",
+    answer:
+      "Tak. Jeśli dane są dostępne jako Excel, CSV, API albo eksport z systemu, można je automatycznie pobierać, porządkować i łączyć z raportem floty.",
+  },
+  {
+    question: "Czy program magazynowy w Excelu ma sens?",
+    answer:
+      "Tak, szczególnie dla mniejszych procesów, działów pomocniczych albo firm, które nie chcą wdrażać dużego systemu WMS. Można przygotować kontrolę stanów, minimum magazynowe, inwentaryzację, PZ/WZ i raporty.",
+  },
+  {
+    question: "Czy takie narzędzie zastępuje TMS lub WMS?",
+    answer:
+      "Nie zawsze. Czasem zastępuje prosty system, a czasem działa obok TMS, WMS, ERP lub GPS jako raport, kalkulator albo narzędzie wspierające decyzje.",
+  },
+];
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Logistyka w Excelu",
+  provider: {
+    "@type": "Organization",
+    name: "Raporty24",
+    url: "https://raporty24.pl/",
+  },
+  areaServed: "Polska",
+  serviceType:
+    "Zarządzanie flotą samochodową w Excelu, planowanie tras, raporty floty, koszty transportu, magazyn w Excelu",
+  url: currentUrl,
+  description,
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
 };
 ---
 
 <BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
   <div x-data="app" x-cloak>
     <Header />
-    
-    <HeroService 
-      title="Dedykowany program" 
-      highlight="Logistyka w Excelu" 
-      subtitle="Koniec z chaosem w arkuszach i drogimi abonamentami. Jako firma analityczna budujemy zaawansowane narzędzia do zarządzania flotą, magazynem i produkcją."
+
+    <HeroService
+      title="Logistyka"
+      highlight="w Excelu"
+      subtitle="Tworzymy narzędzia do zarządzania flotą, planowania tras, kontroli kosztów transportu, magazynu i raportów operacyjnych w Excelu, Power Query, VBA, Pythonie i Power BI."
     />
 
-    <section class="py-24 bg-slate-950 text-white">
+    <section class="bg-white py-24 text-slate-950">
       <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center mb-16">
-          <h2 class="text-4xl lg:text-5xl font-black uppercase tracking-tighter mb-6">Transport i Magazyn <span class="text-green-500">bez limitów</span></h2>
-          <p class="text-xl text-slate-400">Standardowe systemy TMS/WMS są sztywne i drogie. Nasze <strong>usługi dla firm excel</strong> to pełna elastyczność. Jeśli chcesz <strong>zlecić excel</strong> ekspertom, którzy rozumieją łańcuch dostaw – jesteśmy do Twojej dyspozycji.</p>
-        </div>
-        
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-green-500/50 transition-all group">
-            <i class="fas fa-truck-moving text-3xl text-green-500 mb-6 group-hover:scale-110 transition-transform"></i>
-            <h4 class="text-xl font-bold mb-4 uppercase tracking-tight">Zarządzanie Flotą</h4>
-            <p class="text-slate-400 text-sm">Kompleksowe <strong>zarządzanie flotą samochodową w excelu</strong>. Automatyczne rozliczanie paliwa, kontrola kosztów eksploatacji i przypomnienia o serwisach w jednym systemie.</p>
+        <div class="grid gap-16 lg:grid-cols-2 lg:items-center">
+          <div>
+            <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+              Zarządzanie flotą samochodową Excel
+            </span>
+
+            <h2 class="mb-8 text-4xl font-black uppercase leading-tight tracking-tighter md:text-6xl">
+              Flota, trasy i koszty transportu w jednym uporządkowanym narzędziu.
+            </h2>
+
+            <div class="space-y-6 text-lg leading-relaxed text-slate-600">
+              <p>
+                W wielu firmach dane logistyczne są rozproszone: część jest w Excelu,
+                część w GPS, część w ERP, część w kartach paliwowych, a część w wiadomościach
+                od kierowców lub spedytorów.
+              </p>
+
+              <p>
+                Tworzymy <strong>narzędzia Excel dla logistyki</strong>, które pomagają
+                porządkować dane, kontrolować koszty, planować trasy i przygotowywać raporty
+                floty bez ręcznego składania wielu plików.
+              </p>
+            </div>
+
+            <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+              <a
+                href="#kontakt"
+                class="inline-flex items-center justify-center gap-3 rounded-2xl bg-green-600 px-8 py-5 text-sm font-black uppercase tracking-widest text-white transition-all hover:-translate-y-1 hover:bg-green-500"
+              >
+                Zapytaj o narzędzie
+                <i class="fas fa-arrow-right text-xs"></i>
+              </a>
+
+              <a
+                href="/realizacje/#system-planowania-tras"
+                class="inline-flex items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white px-8 py-5 text-sm font-black uppercase tracking-widest text-slate-950 transition-all hover:-translate-y-1 hover:border-green-500"
+              >
+                Zobacz realizację
+              </a>
+            </div>
           </div>
-          <div class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-green-500/50 transition-all group">
-            <i class="fas fa-warehouse text-3xl text-green-500 mb-6 group-hover:scale-110 transition-transform"></i>
-            <h4 class="text-xl font-bold mb-4 uppercase tracking-tight">Program Magazynowy</h4>
-            <p class="text-slate-400 text-sm">Intuicyjny <strong>program magazynowy excel</strong>. Śledzenie rotacji towaru, automatyczne generowanie dokumentów PZ/WZ i pełna kontrola nad stanami minimalnymi.</p>
-          </div>
-          <div class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-green-500/50 transition-all group">
-            <i class="fas fa-stream text-3xl text-green-500 mb-6 group-hover:scale-110 transition-transform"></i>
-            <h4 class="text-xl font-bold mb-4 uppercase tracking-tight">Planowanie Produkcji</h4>
-            <p class="text-slate-400 text-sm">Dynamiczny <strong>harmonogram produkcji excel</strong>. Zarządzanie obłożeniem linii, kontrola wydajności pracowników (OEE) i eliminacja wąskich gardeł.</p>
+
+          <div class="rounded-[3rem] border border-slate-100 bg-slate-50 p-8 shadow-xl shadow-slate-200/60">
+            <h3 class="mb-6 text-2xl font-black uppercase tracking-tight text-slate-950">
+              Co można kontrolować?
+            </h3>
+
+            <div class="space-y-4">
+              {
+                useCases.slice(0, 6).map((item) => (
+                  <div class="flex items-start gap-4 rounded-2xl bg-white p-5 shadow-sm">
+                    <div class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-500 text-[10px] text-white">
+                      <i class="fas fa-check"></i>
+                    </div>
+
+                    <p class="font-bold leading-relaxed text-slate-700">{item}</p>
+                  </div>
+                ))
+              }
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="py-24 bg-white text-slate-900">
+    <section class="bg-slate-950 py-24 text-white">
       <div class="container mx-auto px-4">
-        <div class="flex flex-col lg:flex-row gap-16 items-center">
-          <div class="lg:w-1/2">
-            <h2 class="text-4xl font-black uppercase tracking-tighter mb-8 leading-none italic">Analityka, która <br/><span class="text-green-600">optymalizuje koszty</span></h2>
-            <ul class="space-y-6">
-              <li class="flex gap-4">
-                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center">
-                    <i class="fas fa-barcode text-green-600"></i>
+        <div class="mb-16 max-w-4xl">
+          <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-400">
+            Flota i transport
+          </span>
+
+          <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+            Zarządzanie flotą samochodową w Excelu bez ręcznego chaosu.
+          </h2>
+
+          <p class="text-lg font-medium leading-relaxed text-slate-400 md:text-xl">
+            Narzędzie może działać jako rozbudowany arkusz, aplikacja desktopowa, raport
+            Power BI albo proces łączący dane z wielu źródeł.
+          </p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {
+            fleetFeatures.map((item) => (
+              <article class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 transition-all hover:-translate-y-1 hover:border-green-500/50 hover:bg-white/[0.08]">
+                <div class="mb-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-500/10 text-green-400">
+                  <i class={`${item.icon} text-xl`}></i>
                 </div>
-                <div>
-                  <h4 class="font-bold text-lg italic">Inwentaryzacja Excel</h4>
-                  <p class="text-slate-500 text-sm leading-relaxed">Szybka i bezbłędna <strong>inwentaryzacja excel</strong>. Porównuj stany fizyczne z systemowymi, wyłapuj braki i generuj raporty różnic jednym kliknięciem.</p>
+
+                <h3 class="mb-4 text-2xl font-black uppercase leading-tight tracking-tight text-white">
+                  {item.title}
+                </h3>
+
+                <p class="text-sm font-medium leading-relaxed text-slate-400">
+                  {item.description}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-24 text-slate-950">
+      <div class="container mx-auto px-4">
+        <div class="mb-16 max-w-4xl">
+          <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+            Planowanie tras i koszty
+          </span>
+
+          <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+            Raport floty Excel może pokazać, gdzie uciekają pieniądze.
+          </h2>
+
+          <p class="text-lg font-medium leading-relaxed text-slate-600 md:text-xl">
+            Koszty paliwa, serwisu, tras, postojów i wykorzystania pojazdów często są widoczne
+            dopiero wtedy, gdy dane zostaną połączone w jednym modelu.
+          </p>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div class="grid gap-4 md:grid-cols-2">
+            {
+              useCases.map((item) => (
+                <div class="flex items-start gap-4 rounded-2xl border border-slate-100 bg-slate-50 p-6">
+                  <div class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-950 text-[10px] text-green-400">
+                    <i class="fas fa-check"></i>
+                  </div>
+
+                  <p class="font-bold leading-relaxed text-slate-700">{item}</p>
                 </div>
-              </li>
-              <li class="flex gap-4">
-                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center">
-                    <i class="fas fa-route text-green-600"></i>
-                </div>
-                <div>
-                  <h4 class="font-bold text-lg italic">Optymalizacja Tras i Paliwa</h4>
-                  <p class="text-slate-500 text-sm leading-relaxed">Automatyzujemy pobieranie danych z kart paliwowych (CSV/XLS). Nasza <strong>analityka biznesowa</strong> wskaże Ci, gdzie uciekają pieniądze w Twoim transporcie.</p>
-                </div>
-              </li>
-              <li class="flex gap-4">
-                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center">
-                    <i class="fas fa-microchip text-green-600"></i>
-                </div>
-                <div>
-                  <h4 class="font-bold text-lg italic">Integracja Power Query</h4>
-                  <p class="text-slate-500 text-sm leading-relaxed">Łączymy dane z Twojego ERP, GPS i plików dostawców. Tworzymy jedno, spójne źródło prawdy dla całej logistyki.</p>
-                </div>
-              </li>
-            </ul>
+              ))
+            }
           </div>
-          <div class="lg:w-1/2 bg-slate-950 p-12 rounded-[50px] shadow-2xl relative overflow-hidden group">
-            <div class="absolute -top-10 -right-10 w-40 h-40 bg-green-500/10 rounded-full blur-3xl group-hover:bg-green-500/20 transition-all"></div>
-            <div class="absolute -top-6 -left-6 bg-green-600 text-white px-6 py-3 rounded-2xl font-black uppercase text-xs tracking-widest shadow-xl">
-              Control Tower
-            </div>
-            <h3 class="text-2xl font-bold text-white mb-6">Logistyczny Panel Dowodzenia</h3>
-            <p class="text-slate-400 mb-8 text-sm leading-relaxed">Jako <strong>firma analityczna</strong> projektujemy kokpity, które pokazują kluczowe KPI: rentowność aut, wykorzystanie powierzchni oraz wydajność zmianową.</p>
+
+          <div class="rounded-[3rem] bg-slate-950 p-8 text-white lg:p-10">
+            <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-400">
+              Control tower
+            </span>
+
+            <h3 class="mb-6 text-3xl font-black uppercase tracking-tight">
+              Logistyczny panel dowodzenia
+            </h3>
+
+            <p class="mb-8 text-sm font-medium leading-relaxed text-slate-400">
+              Możemy przygotować widok KPI dla floty, tras, kosztów, magazynu albo produkcji.
+              Dane mogą pochodzić z Excela, CSV, ERP, GPS, kart paliwowych albo API.
+            </p>
+
             <div class="space-y-6">
-               <div>
-                  <div class="flex justify-between text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em] mb-2"><span>Efektywność Floty</span><span>91%</span></div>
-                  <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden"><div class="w-[91%] h-full bg-green-500 shadow-[0_0_15px_#22c55e]"></div></div>
-               </div>
-               <div>
-                  <div class="flex justify-between text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em] mb-2"><span>Optymalizacja Magazynu</span><span>78%</span></div>
-                  <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden"><div class="w-[78%] h-full bg-green-400 shadow-[0_0_15px_#4ade80]"></div></div>
-               </div>
+              <div>
+                <div class="mb-2 flex justify-between text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
+                  <span>Koszt na kilometr</span>
+                  <span>KPI</span>
+                </div>
+                <div class="h-2 w-full overflow-hidden rounded-full bg-white/10">
+                  <div class="h-full w-[82%] bg-green-500 shadow-[0_0_15px_#22c55e]"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="mb-2 flex justify-between text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
+                  <span>Wykorzystanie floty</span>
+                  <span>Raport</span>
+                </div>
+                <div class="h-2 w-full overflow-hidden rounded-full bg-white/10">
+                  <div class="h-full w-[74%] bg-green-400 shadow-[0_0_15px_#4ade80]"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="mb-2 flex justify-between text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">
+                  <span>Terminowość serwisów</span>
+                  <span>Alerty</span>
+                </div>
+                <div class="h-2 w-full overflow-hidden rounded-full bg-white/10">
+                  <div class="h-full w-[91%] bg-cyan-400 shadow-[0_0_15px_#22d3ee]"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="py-24 bg-slate-950 text-white border-t border-white/5">
-      <div class="container mx-auto px-4 max-w-4xl text-center">
-        <h2 class="text-3xl lg:text-4xl font-black mb-12 uppercase tracking-tight italic">Eksperckie FAQ</h2>
-        <div class="grid gap-6 text-left">
-          {[
-            { q: "Czy Excel poradzi sobie z dużą bazą towarową?", a: "Zdecydowanie tak. Dzięki zastosowaniu Power Query i modelu danych, Twój program magazynowy excel zachowuje pełną wydajność nawet przy tysiącach indeksów." },
-            { q: "Czy mogę zintegrować arkusz z moim GPS?", a: "Tak, oferujemy automatyczne pobieranie danych z systemów telematycznych. Twoje zarządzanie flotą samochodową w excelu będzie zasilane danymi w czasie rzeczywistym." },
-            { q: "Jakie są korzyści z harmonogramu produkcji w Excelu?", a: "Główną zaletą jest elastyczność. W przeciwieństwie do sztywnych systemów MES, nasz harmonogram produkcji dopasujemy do Twoich specyficznych maszyn i procesów." },
-            { q: "Czy wdrożenie odbywa się zdalnie?", a: "Tak, realizujemy projekty zdalnie w całej Polsce. Oferujemy wsparcie online, szkolenia dla magazynierów oraz pełną opiekę po-wdrożeniową." }
-          ].map(item => (
-            <div class="p-8 rounded-[2rem] bg-white/5 border border-white/10 hover:border-green-500/30 transition-all">
-              <h4 class="font-bold text-green-400 mb-3 text-lg">{item.q}</h4>
-              <p class="text-slate-400 text-sm leading-relaxed">{item.a}</p>
-            </div>
-          ))}
+    <section class="bg-slate-50 py-24 text-slate-950">
+      <div class="container mx-auto px-4">
+        <div class="mb-16 max-w-4xl">
+          <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+            Magazyn, produkcja i raporty
+          </span>
+
+          <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+            Nie tylko transport — Excel może wspierać cały proces operacyjny.
+          </h2>
+
+          <p class="text-lg font-medium leading-relaxed text-slate-600 md:text-xl">
+            Jeśli dane z logistyki łączą się z magazynem, produkcją albo sprzedażą, narzędzie
+            może objąć kilka obszarów jednocześnie.
+          </p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {
+            logisticsAreas.map((item) => (
+              <article class="rounded-[2rem] border border-slate-100 bg-white p-7 transition-all hover:-translate-y-1 hover:border-green-500/30 hover:shadow-xl">
+                <h3 class="mb-4 text-2xl font-black uppercase tracking-tight text-slate-950">
+                  {item.title}
+                </h3>
+
+                <p class="text-sm font-medium leading-relaxed text-slate-600">
+                  {item.description}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-24 text-slate-950">
+      <div class="container mx-auto px-4">
+        <div class="mb-16 max-w-4xl">
+          <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+            Proces
+          </span>
+
+          <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+            Jak wygląda wdrożenie narzędzia dla logistyki?
+          </h2>
+
+          <p class="text-lg font-medium leading-relaxed text-slate-600 md:text-xl">
+            Najpierw porządkujemy proces i źródła danych. Dopiero potem wybieramy technologię:
+            Excel, VBA, Power Query, Python, API albo Power BI.
+          </p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {
+            process.map((item) => (
+              <article class="rounded-[2rem] border border-slate-100 bg-slate-50 p-7 transition-all hover:-translate-y-1 hover:border-green-500/30 hover:bg-white hover:shadow-xl">
+                <div class="mb-6 text-5xl font-black tracking-tighter text-green-600">
+                  {item.step}
+                </div>
+
+                <h3 class="mb-4 text-2xl font-black uppercase tracking-tight text-slate-950">
+                  {item.title}
+                </h3>
+
+                <p class="text-sm font-medium leading-relaxed text-slate-600">
+                  {item.description}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-slate-950 py-24 text-white">
+      <div class="container mx-auto px-4">
+        <div class="mb-14 max-w-4xl">
+          <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-400">
+            FAQ
+          </span>
+
+          <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+            Najczęstsze pytania o logistykę w Excelu
+          </h2>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-2">
+          {
+            faqs.map((item) => (
+              <article class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 transition-all hover:border-green-500/40">
+                <h3 class="mb-4 text-xl font-black uppercase tracking-tight text-green-400">
+                  {item.question}
+                </h3>
+
+                <p class="text-sm font-medium leading-relaxed text-slate-400">
+                  {item.answer}
+                </p>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -135,4 +471,7 @@ export const service = {
     <Contact />
     <Footer />
   </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 </BaseLayout>
