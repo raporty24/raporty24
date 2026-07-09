@@ -1,0 +1,412 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import HeroService from "../../components/HeroService.astro";
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+
+const title = "Skrypty Python dla firm | Automatyzacja, API, pliki i aplikacje";
+const description =
+  "Tworzymy skrypty Python dla firm: automatyzacja pracy z plikami, integracje API, eksport danych, aplikacje desktopowe, raporty i narzędzia wspierające procesy biznesowe.";
+const ogImage = "/biuro3.webp";
+const currentUrl = "https://raporty24.pl/uslugi/skrypty-python/";
+
+export const service = {
+  title: "Skrypty Python",
+  order: 30,
+  menu: true,
+  category: "Automatyzacja",
+};
+
+const examples = [
+  {
+    title: "Przetwarzanie plików",
+    description:
+      "Automatyczne łączenie, czyszczenie, porównywanie i eksportowanie danych z plików Excel, CSV, XML, PDF lub TXT.",
+    icon: "fas fa-file-code",
+  },
+  {
+    title: "Integracje API",
+    description:
+      "Pobieranie i wysyłanie danych między systemami: CRM, ERP, platformy sprzedażowe, systemy księgowe, magazynowe lub raportowe.",
+    icon: "fas fa-plug",
+  },
+  {
+    title: "Aplikacje desktopowe",
+    description:
+      "Proste programy dla Windows z przyjaznym interfejsem, które uruchamiają proces bez ręcznego wpisywania komend.",
+    icon: "fas fa-desktop",
+  },
+  {
+    title: "Eksporty i raporty",
+    description:
+      "Automatyczne generowanie raportów, zestawień, plików wynikowych, podsumowań i danych gotowych do Excela lub Power BI.",
+    icon: "fas fa-chart-line",
+  },
+];
+
+const useCases = [
+  "pobieranie danych z API do Excela lub CSV",
+  "łączenie wielu plików w jeden raport",
+  "czyszczenie i porządkowanie danych przed analizą",
+  "automatyczne generowanie raportów miesięcznych",
+  "eksport danych z systemu do plików Excel, CSV lub XML",
+  "porównywanie cenników, zamówień, faktur lub stanów magazynowych",
+  "lokalne aplikacje desktopowe dla pracowników firmy",
+  "automatyzacja powtarzalnych zadań biurowych",
+];
+
+const process = [
+  {
+    step: "01",
+    title: "Opis procesu",
+    description:
+      "Najpierw ustalamy, co jest dziś robione ręcznie: pliki, źródła danych, systemy, częstotliwość i efekt końcowy.",
+  },
+  {
+    step: "02",
+    title: "Dobór rozwiązania",
+    description:
+      "Sprawdzamy, czy wystarczy prosty skrypt, aplikacja desktopowa, integracja API, raport Excel, baza danych albo połączenie kilku narzędzi.",
+  },
+  {
+    step: "03",
+    title: "Budowa automatyzacji",
+    description:
+      "Tworzymy skrypt lub aplikację, dodajemy walidację danych, obsługę błędów, eksporty i przejrzysty sposób uruchamiania.",
+  },
+  {
+    step: "04",
+    title: "Testy i przekazanie",
+    description:
+      "Testujemy narzędzie na realnych przykładach, poprawiamy wyjątki i przekazujemy gotowe rozwiązanie z instrukcją użycia.",
+  },
+];
+
+const faqs = [
+  {
+    question: "Czy skrypt Python może działać bez instalowania Pythona?",
+    answer:
+      "Tak. W wielu przypadkach można przygotować gotowy plik .exe dla Windows, który działa bez ręcznego uruchamiania kodu. To dobre rozwiązanie dla użytkowników nietechnicznych.",
+  },
+  {
+    question: "Czy Python może łączyć się z Excelem?",
+    answer:
+      "Tak. Python dobrze sprawdza się przy łączeniu, czyszczeniu, filtrowaniu i generowaniu plików Excel, CSV lub XML. Może też przygotowywać dane do dalszej analizy w Power BI.",
+  },
+  {
+    question: "Czy można połączyć skrypt z API?",
+    answer:
+      "Tak. Możemy zbudować integrację API, która pobiera dane z jednego systemu, przetwarza je i wysyła do innego narzędzia albo zapisuje jako raport.",
+  },
+  {
+    question: "Czy taki skrypt jest bezpieczny dla danych firmy?",
+    answer:
+      "Rozwiązanie może działać lokalnie na komputerze lub w środowisku firmy, bez wysyłania danych do zewnętrznych serwerów. Zakres bezpieczeństwa ustalamy przed wdrożeniem.",
+  },
+];
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Skrypty Python dla firm",
+  provider: {
+    "@type": "Organization",
+    name: "Raporty24",
+    url: "https://raporty24.pl/",
+  },
+  areaServed: "Polska",
+  serviceType:
+    "Skrypty Python, automatyzacja procesów, integracje API, aplikacje desktopowe, przetwarzanie plików",
+  url: currentUrl,
+  description,
+};
+---
+
+<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
+  <div x-data="app" x-cloak>
+    <Header />
+
+    <HeroService
+      title="Skrypty Python"
+      highlight="dla firm"
+      subtitle="Tworzymy skrypty, integracje API i aplikacje desktopowe, które automatyzują pracę z plikami, raportami, eksportami danych i powtarzalnymi procesami."
+    />
+
+    <section class="bg-white py-24 text-slate-950">
+      <div class="container mx-auto px-4">
+        <div class="grid gap-16 lg:grid-cols-2 lg:items-center">
+          <div>
+            <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+              Automatyzacja Python
+            </span>
+
+            <h2 class="mb-8 text-4xl font-black uppercase leading-tight tracking-tighter md:text-6xl">
+              Gdy Excel to za mało, Python przejmuje powtarzalną pracę.
+            </h2>
+
+            <div class="space-y-6 text-lg leading-relaxed text-slate-600">
+              <p>
+                W wielu firmach część pracy nadal polega na ręcznym pobieraniu plików,
+                kopiowaniu danych, poprawianiu formatów, łączeniu raportów i wysyłaniu
+                wyników dalej.
+              </p>
+
+              <p>
+                Tworzymy <strong>skrypty Python dla firm</strong>, które automatyzują takie
+                zadania: przetwarzają pliki, pobierają dane z API, generują raporty,
+                przygotowują eksporty i mogą działać jako proste aplikacje desktopowe.
+              </p>
+            </div>
+
+            <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+              <a
+                href="#kontakt"
+                class="inline-flex items-center justify-center gap-3 rounded-2xl bg-green-600 px-8 py-5 text-sm font-black uppercase tracking-widest text-white transition-all hover:-translate-y-1 hover:bg-green-500"
+              >
+                Zapytaj o skrypt
+                <i class="fas fa-arrow-right text-xs"></i>
+              </a>
+
+              <a
+                href="/realizacje/#skrypty-python-api"
+                class="inline-flex items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white px-8 py-5 text-sm font-black uppercase tracking-widest text-slate-950 transition-all hover:-translate-y-1 hover:border-green-500"
+              >
+                Zobacz przykład
+              </a>
+            </div>
+          </div>
+
+          <div class="rounded-[3rem] border border-slate-100 bg-slate-50 p-8 shadow-xl shadow-slate-200/60">
+            <h3 class="mb-6 text-2xl font-black uppercase tracking-tight text-slate-950">
+              Co można zautomatyzować?
+            </h3>
+
+            <div class="space-y-4">
+              {
+                useCases.slice(0, 6).map((item) => (
+                  <div class="flex items-start gap-4 rounded-2xl bg-white p-5 shadow-sm">
+                    <div class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-500 text-[10px] text-white">
+                      <i class="fas fa-check"></i>
+                    </div>
+
+                    <p class="font-bold leading-relaxed text-slate-700">{item}</p>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-slate-950 py-24 text-white">
+      <div class="container mx-auto px-4">
+        <div class="mb-16 max-w-3xl">
+          <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-400">
+            Przykłady zastosowań
+          </span>
+
+          <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+            Jakie narzędzia tworzymy w Pythonie?
+          </h2>
+
+          <p class="text-lg leading-relaxed text-slate-400">
+            Nie każdy projekt wymaga dużego systemu. Często wystarczy dobrze zaprojektowany
+            skrypt, aplikacja desktopowa albo integracja API, która usuwa ręczne kroki z procesu.
+          </p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {
+            examples.map((item) => (
+              <article class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 transition-all hover:-translate-y-1 hover:border-green-500/50 hover:bg-white/[0.08]">
+                <div class="mb-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-500/10 text-green-400">
+                  <i class={`${item.icon} text-xl`}></i>
+                </div>
+
+                <h3 class="mb-4 text-2xl font-black uppercase leading-tight tracking-tight text-white">
+                  {item.title}
+                </h3>
+
+                <p class="text-sm font-medium leading-relaxed text-slate-400">
+                  {item.description}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-24 text-slate-950">
+      <div class="container mx-auto px-4">
+        <div class="mb-16 max-w-3xl">
+          <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+            Typowe procesy
+          </span>
+
+          <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+            Python dobrze sprawdza się tam, gdzie jest dużo plików i reguł.
+          </h2>
+
+          <p class="text-lg leading-relaxed text-slate-600">
+            Najlepsze efekty daje automatyzacja zadań, które są powtarzalne, mają jasny
+            wynik i zajmują pracownikom czas każdego dnia, tygodnia albo miesiąca.
+          </p>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-2">
+          {
+            useCases.map((item) => (
+              <div class="flex items-start gap-4 rounded-2xl border border-slate-100 bg-slate-50 p-6">
+                <div class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-950 text-[10px] text-green-400">
+                  <i class="fas fa-check"></i>
+                </div>
+
+                <p class="font-bold leading-relaxed text-slate-700">{item}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-slate-50 py-24 text-slate-950">
+      <div class="container mx-auto px-4">
+        <div class="mb-16 max-w-3xl">
+          <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+            Proces
+          </span>
+
+          <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+            Jak wygląda wdrożenie?
+          </h2>
+
+          <p class="text-lg leading-relaxed text-slate-600">
+            Zaczynamy od procesu biznesowego, nie od kodu. Najpierw ustalamy, co ma być
+            automatyzowane i jaki wynik ma dostać użytkownik.
+          </p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {
+            process.map((item) => (
+              <article class="rounded-[2rem] border border-slate-100 bg-white p-7 transition-all hover:-translate-y-1 hover:border-green-500/30 hover:shadow-xl">
+                <div class="mb-6 text-5xl font-black tracking-tighter text-green-600">
+                  {item.step}
+                </div>
+
+                <h3 class="mb-4 text-2xl font-black uppercase tracking-tight text-slate-950">
+                  {item.title}
+                </h3>
+
+                <p class="text-sm font-medium leading-relaxed text-slate-600">
+                  {item.description}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-24 text-slate-950">
+      <div class="container mx-auto px-4">
+        <div class="grid gap-16 lg:grid-cols-2 lg:items-start">
+          <div>
+            <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+              Bezpieczeństwo i wygoda
+            </span>
+
+            <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+              Skrypt nie musi być trudny dla użytkownika.
+            </h2>
+
+            <p class="mb-8 text-lg leading-relaxed text-slate-600">
+              Narzędzie może działać jako prosty program z przyciskiem, formularzem,
+              wyborem pliku i komunikatem po zakończeniu. Użytkownik nie musi znać Pythona,
+              terminala ani struktury kodu.
+            </p>
+
+            <div class="rounded-[2rem] bg-slate-950 p-8 text-white">
+              <h3 class="mb-4 text-2xl font-black uppercase tracking-tight">
+                Możliwe formy wdrożenia
+              </h3>
+
+              <p class="text-sm font-medium leading-relaxed text-slate-400">
+                Skrypt Python, plik .exe dla Windows, aplikacja desktopowa, automatyczny
+                eksport danych, integracja API albo narzędzie wspierające pracę z Excelem.
+              </p>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+              <h3 class="mb-2 text-xl font-black uppercase tracking-tight">Lokalnie na komputerze</h3>
+              <p class="text-sm font-medium leading-relaxed text-slate-600">
+                Narzędzie może działać na komputerze użytkownika lub w środowisku firmy.
+              </p>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+              <h3 class="mb-2 text-xl font-black uppercase tracking-tight">Bez terminala</h3>
+              <p class="text-sm font-medium leading-relaxed text-slate-600">
+                Możemy przygotować prosty interfejs, żeby użytkownik wybierał pliki i klikał przycisk.
+              </p>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+              <h3 class="mb-2 text-xl font-black uppercase tracking-tight">Z obsługą błędów</h3>
+              <p class="text-sm font-medium leading-relaxed text-slate-600">
+                Program może sprawdzać brakujące kolumny, złe formaty, puste dane i problemy połączenia.
+              </p>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+              <h3 class="mb-2 text-xl font-black uppercase tracking-tight">Z eksportem wyników</h3>
+              <p class="text-sm font-medium leading-relaxed text-slate-600">
+                Wynik może trafiać do Excel, CSV, XML, PDF, bazy danych albo innego systemu.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-slate-50 py-24 text-slate-950">
+      <div class="container mx-auto px-4">
+        <div class="mb-14 max-w-3xl">
+          <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+            FAQ
+          </span>
+
+          <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+            Najczęstsze pytania
+          </h2>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-2">
+          {
+            faqs.map((item) => (
+              <article class="rounded-[2rem] border border-slate-100 bg-white p-7">
+                <h3 class="mb-4 text-xl font-black uppercase tracking-tight text-slate-950">
+                  {item.question}
+                </h3>
+
+                <p class="text-sm font-medium leading-relaxed text-slate-600">
+                  {item.answer}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <Contact />
+    <Footer />
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+</BaseLayout>

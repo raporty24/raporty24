@@ -1,15 +1,25 @@
 ---
-// Header.astro - Wersja Pełna (Przywrócone sekcje + UX Pro Dropdown)
+// Header.astro - menu główne Raporty24
 const modules = import.meta.glob("../pages/uslugi/*.astro", { eager: true });
 
-const TITLE_MAP = {
+type ServiceLink = {
+  slug: string;
+  href: string;
+  title: string;
+};
+
+const TITLE_MAP: Record<string, string> = {
   "arkusze-kalkulacyjne-za-zamowienie": "Arkusze na zamówienie",
   "automatyzacja-excel-power-query": "Automatyzacja Power Query",
   "baza-klientow-w-excelu": "Baza klientów",
+  "kalkulatory-produktowe": "Kalkulatory produktowe",
   "crm-w-excelu": "System CRM",
   "dashboardy-power-bi": "Dashboardy Power BI",
-  "excel-na-zamowienie": "Excel na zamówienie",
+  "excel-na-zamowienie": "Arkusze Excel na zamówienie",
+  "skrypty-python": "Skrypty Python",
+  "integracje-api": "Integracje API",
   "lejek-sprzedazy-w-excelu": "Lejek sprzedaży",
+  "logistyka-w-excelu": "Logistyka i trasy",
   "makra-vba": "Makra VBA",
   "optymalizacja-dax-power-bi": "Optymalizacja DAX",
   "optymalizacja-excela": "Optymalizacja Excela",
@@ -26,190 +36,381 @@ function fileToSlug(filePath: string) {
 }
 
 const services = Object.keys(modules)
-  .map((file) => {
+  .map((file): ServiceLink | null => {
     const slug = fileToSlug(file);
-    if (!slug || slug === "index") return null;
+
+    if (!slug || slug === "index") {
+      return null;
+    }
+
     return {
       slug,
-      href: `/uslugi/${slug}`,
+      href: `/uslugi/${slug}/`,
       title: TITLE_MAP[slug] ?? slug.replace(/-/g, " "),
     };
   })
-  .filter(Boolean)
-  .sort((a, b) => a!.title.localeCompare(b!.title, "pl"));
+  .filter((service): service is ServiceLink => Boolean(service))
+  .sort((a, b) => a.title.localeCompare(b.title, "pl"));
 ---
 
-<header 
-  class="fixed top-0 w-full z-50 border-b border-slate-200/60 bg-white/90 backdrop-blur-xl"
+<header
+  class="fixed top-0 z-50 w-full border-b border-slate-200/60 bg-white/90 backdrop-blur-xl"
   x-data="{ menuOpen: false, servicesOpen: false }"
 >
-  <nav class="container mx-auto px-4 py-3 lg:py-4 flex justify-between items-center">
-    <a href="/#hero" class="flex items-center gap-2 group transition-transform hover:scale-105">
-      <img src="/logo.webp" alt="Raporty24" width="160" height="40" class="w-32 md:w-40" />
+  <nav class="container mx-auto flex items-center justify-between px-4 py-3 lg:py-4">
+    <a
+      href="/"
+      class="flex items-center gap-2 transition-transform hover:scale-105"
+      aria-label="Raporty24 - strona główna"
+    >
+      <img
+        src="/logo.webp"
+        alt="Raporty24"
+        width="160"
+        height="40"
+        class="w-32 md:w-40"
+      />
     </a>
 
-    <div class="hidden xl:flex items-center gap-1" id="desktop-menu">
-      
-      <div class="relative group" @mouseenter="servicesOpen = true" @mouseleave="servicesOpen = false">
-        <a href="/uslugi/" class="nav-link flex items-center gap-1" :class="servicesOpen ? 'text-green-600' : ''">
+    <div class="hidden items-center gap-1 xl:flex" id="desktop-menu">
+      <div
+        class="relative"
+        @mouseenter="servicesOpen = true"
+        @mouseleave="servicesOpen = false"
+      >
+        <a
+          href="/uslugi/"
+          class="nav-link flex items-center gap-1"
+          :class="servicesOpen ? 'text-green-600' : ''"
+        >
           Usługi
-          <i class="fas fa-chevron-down text-[8px] transition-transform" :class="servicesOpen ? 'rotate-180' : ''"></i>
+          <i
+            class="fas fa-chevron-down text-[8px] transition-transform"
+            :class="servicesOpen ? 'rotate-180' : ''"
+          ></i>
         </a>
 
-        <div 
-          x-show="servicesOpen" 
+        <div
+          x-show="servicesOpen"
           x-cloak
           x-transition:enter="transition ease-out duration-200"
           x-transition:enter-start="opacity-0 translate-y-2"
           x-transition:enter-end="opacity-100 translate-y-0"
-          class="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[600px]" 
+          class="absolute left-1/2 top-full w-[620px] -translate-x-1/2 pt-4"
         >
-          <div class="bg-white border border-slate-100 shadow-2xl rounded-3xl p-6 grid grid-cols-2 gap-x-8 gap-y-2">
-            <a href="/uslugi/" class="col-span-2 dropdown-link border-b border-slate-50 mb-2 pb-2 text-green-600 font-black">
-              Wszystkie usługi <i class="fas fa-arrow-right ml-2 text-[8px]"></i>
+          <div
+            class="grid grid-cols-2 gap-x-8 gap-y-2 rounded-3xl border border-slate-100 bg-white p-6 shadow-2xl"
+          >
+            <a
+              href="/uslugi/"
+              class="dropdown-link col-span-2 mb-2 border-b border-slate-50 pb-3 font-black text-green-600"
+            >
+              Wszystkie usługi
+              <i class="fas fa-arrow-right ml-2 text-[8px]"></i>
             </a>
-            {services.map((s) => (
-              <a href={s!.href} class="dropdown-link whitespace-nowrap">{s!.title}</a>
-            ))}
+
+            {
+              services.map((service) => (
+                <a href={service.href} class="dropdown-link whitespace-nowrap">
+                  {service.title}
+                </a>
+              ))
+            }
           </div>
         </div>
       </div>
 
-      <a href="/realizacje/" class="nav-link" data-section="realizacje">Realizacje</a>
-      <a href="/#technologie" class="nav-link" data-section="technologie">Technologie</a>
-      <a href="/cennik/" class="nav-link" >Cennik</a>
-      <a href="/subskrypcja/" class="nav-link" >Subskrypcja</a>
-      <a href="/#dlaczego" class="nav-link" data-section="dlaczego">Dlaczego my?</a>
-      <a href="/#free-audit" class="nav-link" data-section="dlaczego">Darmowy audyt</a>
-      <a href="/kontakt/" class="nav-link" data-section="kontakt">Kontakt</a>
+      <a href="/realizacje/" class="nav-link" data-section="realizacje">
+        Realizacje
+      </a>
+
+      <a href="/cennik/" class="nav-link">
+        Cennik
+      </a>
+
+      <a href="/blog/" class="nav-link">
+        Blog
+      </a>
+
+      <a href="/subskrypcja/" class="nav-link">
+        Subskrypcja
+      </a>
+
+      <a href="/#dlaczego" class="nav-link" data-section="dlaczego">
+        Dlaczego my?
+      </a>
+
+      <a href="/kontakt/" class="nav-link" data-section="kontakt">
+        Kontakt
+      </a>
 
       <div class="ml-6 flex items-center gap-3 border-l border-slate-200 pl-6">
-        <a href="/#demo-section" class="navy-btn-menu" data-section="demo-section">Demo JS</a>
-        <a href="/blog/" class="green-btn-menu">Blog</a>
-        
-        <a href="https://www.tiktok.com/@raporty24" target="_blank" class="text-slate-400 hover:text-[#ff0050] transition-colors ml-2 text-xl">
+        <a
+          href="/#demo-section"
+          class="navy-btn-menu"
+          data-section="demo-section"
+        >
+          Demo automatyzacji
+        </a>
+
+        <a href="/kontakt/" class="green-btn-menu">
+          Darmowa wycena
+        </a>
+
+        <a
+          href="https://www.tiktok.com/@raporty24"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="ml-2 text-xl text-slate-400 transition-colors hover:text-[#ff0050]"
+          aria-label="Raporty24 na TikToku"
+        >
           <i class="fab fa-tiktok"></i>
         </a>
       </div>
     </div>
 
-    <button class="xl:hidden p-2 rounded-xl bg-slate-50 border border-slate-100" @click="menuOpen = !menuOpen">
-      <i class="fas fa-bars text-green-700 text-xl" x-show="!menuOpen"></i>
-      <i class="fas fa-times text-slate-500 text-xl" x-show="menuOpen" x-cloak></i>
+    <button
+      class="rounded-xl border border-slate-100 bg-slate-50 p-2 xl:hidden"
+      type="button"
+      @click="menuOpen = !menuOpen"
+      :aria-expanded="menuOpen ? 'true' : 'false'"
+      aria-controls="mobile-menu"
+      aria-label="Otwórz lub zamknij menu"
+    >
+      <i class="fas fa-bars text-xl text-green-700" x-show="!menuOpen"></i>
+      <i class="fas fa-times text-xl text-slate-500" x-show="menuOpen" x-cloak></i>
     </button>
   </nav>
 
-  <div 
-    class="fixed inset-x-0 top-[64px] bg-white border-t border-slate-100 shadow-2xl xl:hidden overflow-y-auto max-h-[calc(100vh-64px)]" 
-    x-show="menuOpen" 
-    x-cloak 
+  <div
+    id="mobile-menu"
+    class="fixed inset-x-0 top-[64px] max-h-[calc(100vh-64px)] overflow-y-auto border-t border-slate-100 bg-white shadow-2xl xl:hidden"
+    x-show="menuOpen"
+    x-cloak
     x-transition:enter="transition ease-out duration-300"
     x-transition:enter-start="opacity-0 -translate-y-4"
     x-transition:enter-end="opacity-100 translate-y-0"
   >
-    <nav class="flex flex-col p-6 space-y-1">
+    <nav class="flex flex-col space-y-1 p-6">
       <div x-data="{ subMenuOpen: false }">
-        <button @click="subMenuOpen = !subMenuOpen" class="mobile-nav-link w-full flex justify-between items-center text-green-600">
+        <button
+          type="button"
+          @click="subMenuOpen = !subMenuOpen"
+          class="mobile-nav-link flex w-full items-center justify-between text-green-600"
+        >
           Zakres usług
-          <i class="fas fa-chevron-down transition-transform" :class="subMenuOpen ? 'rotate-180' : ''"></i>
+          <i
+            class="fas fa-chevron-down transition-transform"
+            :class="subMenuOpen ? 'rotate-180' : ''"
+          ></i>
         </button>
 
-        <div x-show="subMenuOpen" class="bg-slate-50 rounded-2xl my-2 grid grid-cols-1 py-2">
-          <a href="/uslugi/" class="mobile-nav-sublink font-black text-green-600">Wszystkie usługi</a>
-          {services.map((s) => (
-            <a href={s!.href} class="mobile-nav-sublink" @click="menuOpen=false">{s!.title}</a>
-          ))}
+        <div
+          x-show="subMenuOpen"
+          x-cloak
+          class="my-2 grid grid-cols-1 rounded-2xl bg-slate-50 py-2"
+        >
+          <a
+            href="/uslugi/"
+            class="mobile-nav-sublink font-black text-green-600"
+            @click="menuOpen = false"
+          >
+            Wszystkie usługi
+          </a>
+
+          {
+            services.map((service) => (
+              <a
+                href={service.href}
+                class="mobile-nav-sublink"
+                @click="menuOpen = false"
+              >
+                {service.title}
+              </a>
+            ))
+          }
         </div>
       </div>
 
-      <a href="/realizacje/" class="mobile-nav-link" @click="menuOpen=false">Realizacje</a>
-      <a href="/#technologie" class="mobile-nav-link" @click="menuOpen=false">Technologie</a>
-      <a href="/#cennik" class="mobile-nav-link" @click="menuOpen=false">Cennik i Audyt</a>
-      <a href="/#abonament" class="mobile-nav-link" @click="menuOpen=false">Subskrypcja (SLA)</a>
-      <a href="/#dlaczego" class="mobile-nav-link" @click="menuOpen=false">Dlaczego my?</a>
-      <a href="/#demo-section" class="mobile-nav-link font-black text-slate-900" @click="menuOpen=false">Interaktywne Demo</a>
-      
-      <div class="pt-6 pb-4 flex flex-col gap-4">
-        <a href="/blog/" class="text-center py-4 rounded-2xl bg-slate-900 text-white font-black text-xs uppercase tracking-widest" @click="menuOpen=false">
-          Baza wiedzy (Blog)
+      <a href="/realizacje/" class="mobile-nav-link" @click="menuOpen = false">
+        Realizacje
+      </a>
+
+      <a href="/cennik/" class="mobile-nav-link" @click="menuOpen = false">
+        Cennik
+      </a>
+
+      <a href="/blog/" class="mobile-nav-link" @click="menuOpen = false">
+        Blog
+      </a>
+
+     
+
+      <a href="/subskrypcja/" class="mobile-nav-link" @click="menuOpen = false">
+        Subskrypcja
+      </a>
+
+      <a href="/#dlaczego" class="mobile-nav-link" @click="menuOpen = false">
+        Dlaczego my?
+      </a>
+
+      <a
+        href="/#demo-section"
+        class="mobile-nav-link font-black text-slate-900"
+        @click="menuOpen = false"
+      >
+        Demo automatyzacji
+      </a>
+
+      <div class="flex flex-col gap-4 pb-4 pt-6">
+        <a
+          href="/realizacje/"
+          class="rounded-2xl bg-slate-900 py-4 text-center text-xs font-black uppercase tracking-widest text-white"
+          @click="menuOpen = false"
+        >
+          Zobacz realizacje
         </a>
-        <a href="/#kontakt" class="text-center py-4 rounded-2xl bg-green-600 text-white font-black text-xs uppercase tracking-widest" @click="menuOpen=false">
-          Bezpłatny Audyt
+
+        <a
+          href="/kontakt/"
+          class="rounded-2xl bg-green-600 py-4 text-center text-xs font-black uppercase tracking-widest text-white"
+          @click="menuOpen = false"
+        >
+          Bezpłatna wycena
         </a>
       </div>
 
-      <div class="flex justify-center gap-6 pt-6 border-t border-slate-50">
-        <a href="https://www.tiktok.com/@raporty24" target="_blank" class="text-slate-400 text-2xl"><i class="fab fa-tiktok"></i></a>
-        <a href="https://www.linkedin.com/in/raporty-raporty-50a8413a4/" target="_blank" class="text-slate-400 text-2xl"><i class="fab fa-linkedin"></i></a>
+      <div class="flex justify-center gap-6 border-t border-slate-50 pt-6">
+        <a
+          href="https://www.tiktok.com/@raporty24"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-2xl text-slate-400"
+          aria-label="Raporty24 na TikToku"
+        >
+          <i class="fab fa-tiktok"></i>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/raporty-raporty-50a8413a4/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-2xl text-slate-400"
+          aria-label="Raporty24 na LinkedIn"
+        >
+          <i class="fab fa-linkedin"></i>
+        </a>
       </div>
     </nav>
   </div>
 </header>
 
-<a 
-  href="https://www.tiktok.com/@raporty24" 
-  target="_blank" 
-  class="fixed bottom-6 right-6 z-[60] flex items-center justify-center w-14 h-14 bg-slate-950 text-white rounded-full shadow-2xl hover:scale-110 transition-all duration-300 group"
+<a
+  href="https://www.tiktok.com/@raporty24"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="fixed bottom-6 right-6 z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-slate-950 text-white shadow-2xl transition-all duration-300 hover:scale-110"
+  aria-label="Raporty24 na TikToku"
 >
-  <i class="fab fa-tiktok text-xl group-hover:text-[#ff0050] transition-colors"></i>
-  <span class="absolute right-16 bg-white text-slate-900 text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-xl shadow-xl border border-slate-100 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-    Triki w 60 sekund! 🚀
-  </span>
+  <i class="fab fa-tiktok text-xl transition-colors hover:text-[#ff0050]"></i>
 </a>
 
 <style>
   @reference "../styles/global.css";
-  [x-cloak] { display: none !important; }
+
+  [x-cloak] {
+    display: none !important;
+  }
 
   .nav-link {
-    @apply px-3 py-2 text-[11px] font-black uppercase tracking-widest text-slate-500 hover:text-green-600 transition-all relative;
+    @apply relative px-3 py-2 text-[11px] font-black uppercase tracking-widest text-slate-500 transition-all hover:text-green-600;
   }
+
   .nav-link.active::after {
-    content: '';
-    @apply absolute bottom-0 left-3 right-3 h-0.5 bg-green-600 rounded-full;
+    content: "";
+    @apply absolute bottom-0 left-3 right-3 h-0.5 rounded-full bg-green-600;
   }
+
   .dropdown-link {
-    @apply px-4 py-2 text-[10px] font-bold uppercase tracking-wider text-slate-600 hover:text-green-600 hover:bg-green-50/50 rounded-xl transition-all;
+    @apply rounded-xl px-4 py-2 text-[10px] font-bold uppercase tracking-wider text-slate-600 transition-all hover:bg-green-50/50 hover:text-green-600;
   }
+
   .mobile-nav-link {
-    @apply py-4 text-sm font-bold text-slate-600 border-b border-slate-50 flex items-center justify-center hover:text-green-600;
+    @apply flex items-center justify-center border-b border-slate-50 py-4 text-sm font-bold text-slate-600 hover:text-green-600;
   }
+
   .mobile-nav-sublink {
-    @apply block py-3 px-6 text-xs font-bold text-slate-500 hover:text-green-600;
+    @apply block px-6 py-3 text-xs font-bold text-slate-500 hover:text-green-600;
   }
+
   .navy-btn-menu {
-    @apply bg-slate-900 text-white px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all;
+    @apply rounded-full bg-slate-900 px-6 py-2.5 text-[10px] font-black uppercase tracking-widest text-white transition-all hover:bg-slate-800;
   }
+
   .green-btn-menu {
-    @apply bg-green-600 text-white px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-green-500 transition-all;
+    @apply rounded-full bg-green-600 px-6 py-2.5 text-[10px] font-black uppercase tracking-widest text-white transition-all hover:bg-green-500;
   }
 </style>
 
 <script>
-  function setupScrollSpy() {
-    const sections = ['hero', 'oferta', 'realizacje', 'technologie', 'cennik', 'abonament', 'dlaczego', 'kontakt', 'demo-section'];
-    const navLinks = document.querySelectorAll('.nav-link, .navy-btn-menu');
+  let scrollSpyObserver = null;
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          navLinks.forEach(link => {
-            if (link.getAttribute('data-section') === id) {
-              link.classList.add('active');
+  function setupScrollSpy() {
+    if (scrollSpyObserver) {
+      scrollSpyObserver.disconnect();
+    }
+
+    const sections = [
+      "hero",
+      "oferta",
+      "realizacje",
+      "cennik",
+      "abonament",
+      "dlaczego",
+      "kontakt",
+      "demo-section",
+    ];
+
+    const navLinks = document.querySelectorAll(".nav-link, .navy-btn-menu");
+
+    scrollSpyObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          const id = entry.target.getAttribute("id");
+
+          navLinks.forEach((link) => {
+            if (link.getAttribute("data-section") === id) {
+              link.classList.add("active");
             } else {
-              link.classList.remove('active');
+              link.classList.remove("active");
             }
           });
-        }
-      });
-    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+        });
+      },
+      {
+        rootMargin: "-20% 0px -70% 0px",
+        threshold: 0,
+      }
+    );
 
-    sections.forEach(id => {
+    sections.forEach((id) => {
       const section = document.getElementById(id);
-      if (section) observer.observe(section);
+
+      if (section) {
+        scrollSpyObserver.observe(section);
+      }
     });
   }
-  document.addEventListener('astro:page-load', setupScrollSpy);
-  setupScrollSpy();
+
+  document.addEventListener("astro:page-load", setupScrollSpy);
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupScrollSpy);
+  } else {
+    setupScrollSpy();
+  }
 </script>

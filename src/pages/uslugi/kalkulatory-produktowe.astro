@@ -1,0 +1,376 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import HeroService from "../../components/HeroService.astro";
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+
+const title = "Kalkulatory produktowe i ofertowe dla firm | Excel, wyceny B2B";
+const description =
+  "Tworzymy kalkulatory produktowe, kalkulatory ofertowe, konfiguratory produktów i formularze zamówień B2B w Excelu, aplikacjach desktopowych i narzędziach online.";
+const ogImage = "/biuro3.webp";
+const currentUrl = "https://raporty24.pl/uslugi/kalkulatory-produktowe/";
+
+export const service = {
+  title: "Kalkulatory produktowe",
+  order: 20,
+  menu: true,
+  category: "Automatyzacja",
+};
+
+const examples = [
+  {
+    title: "Kalkulator ofertowy",
+    description:
+      "Handlowiec wybiera wariant produktu, ilość, dodatki i rabaty, a narzędzie automatycznie liczy cenę oraz przygotowuje dane do oferty.",
+    icon: "fas fa-file-signature",
+  },
+  {
+    title: "Kalkulator wyceny produktu",
+    description:
+      "System przelicza koszt produktu na podstawie parametrów, materiałów, marży, transportu, waluty albo innych reguł firmowych.",
+    icon: "fas fa-calculator",
+  },
+  {
+    title: "Konfigurator produktu",
+    description:
+      "Klient lub pracownik wybiera opcje produktu, a narzędzie pilnuje poprawnych kombinacji i pokazuje gotowe podsumowanie.",
+    icon: "fas fa-sliders-h",
+  },
+  {
+    title: "Formularz zamówienia B2B",
+    description:
+      "Zamówienia zebrane w jednym narzędziu: produkty, ilości, ceny, dane klienta, eksport do Excel, CSV, PDF albo systemu firmy.",
+    icon: "fas fa-clipboard-list",
+  },
+];
+
+const benefits = [
+  "mniej pomyłek w cenach i rabatach",
+  "szybsze przygotowanie oferty dla klienta",
+  "jednolite zasady wyceny dla całego zespołu",
+  "automatyczne podsumowania, eksporty i raporty",
+  "możliwość rozbudowy o Excel, PDF, API lub bazę danych",
+];
+
+const process = [
+  {
+    step: "01",
+    title: "Analiza zasad wyceny",
+    description:
+      "Spisujemy, od czego zależy cena: warianty, ilości, marże, rabaty, transport, waluty, progi cenowe i wyjątki.",
+  },
+  {
+    step: "02",
+    title: "Projekt kalkulatora",
+    description:
+      "Ustalamy, czy najlepszy będzie Excel, aplikacja desktopowa, formularz online, baza danych albo integracja z innym systemem.",
+  },
+  {
+    step: "03",
+    title: "Budowa i testy",
+    description:
+      "Tworzymy narzędzie, testujemy scenariusze i zabezpieczamy formuły lub logikę przed przypadkowymi zmianami.",
+  },
+  {
+    step: "04",
+    title: "Wdrożenie i rozwój",
+    description:
+      "Przekazujemy gotowy kalkulator, instrukcję i możliwość dalszej rozbudowy o raporty, eksporty, PDF, API lub Power BI.",
+  },
+];
+
+const faqs = [
+  {
+    question: "Czy kalkulator może działać w Excelu?",
+    answer:
+      "Tak. Dla wielu firm Excel jest najlepszym startem, bo zespół już go zna. Możemy przygotować kalkulator z formularzami, walidacją danych, zabezpieczonymi formułami, makrami VBA albo Power Query.",
+  },
+  {
+    question: "Czy można zrobić kalkulator jako osobną aplikację?",
+    answer:
+      "Tak. Jeśli Excel jest za mało wygodny albo plik ma być używany przez wiele osób, możemy przygotować prostą aplikację desktopową lub rozwiązanie oparte o formularz i bazę danych.",
+  },
+  {
+    question: "Czy kalkulator może generować ofertę PDF?",
+    answer:
+      "Tak. Kalkulator może generować podsumowanie, plik PDF, arkusz Excel, CSV albo dane gotowe do wklejenia do systemu sprzedażowego.",
+  },
+  {
+    question: "Ile kosztuje taki kalkulator?",
+    answer:
+      "Cena zależy od liczby reguł, wariantów produktu, eksportów i integracji. Prosty kalkulator w Excelu zwykle jest tańszy niż aplikacja z bazą danych lub API.",
+  },
+];
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Kalkulatory produktowe i ofertowe dla firm",
+  provider: {
+    "@type": "Organization",
+    name: "Raporty24",
+    url: "https://raporty24.pl/",
+  },
+  areaServed: "Polska",
+  serviceType:
+    "Kalkulatory produktowe, kalkulatory ofertowe, konfiguratory produktów, formularze zamówień B2B",
+  url: currentUrl,
+  description,
+};
+---
+
+<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
+  <div x-data="app" x-cloak>
+    <Header />
+
+    <HeroService
+      title="Kalkulatory"
+      highlight="produktowe i ofertowe"
+      subtitle="Tworzymy kalkulatory wyceny, konfiguratory produktów i formularze zamówień B2B, które pomagają szybciej liczyć ceny, ograniczać błędy i automatyzować przygotowanie ofert."
+    />
+
+    <section class="bg-white py-24 text-slate-950">
+      <div class="container mx-auto px-4">
+        <div class="grid gap-16 lg:grid-cols-2 lg:items-center">
+          <div>
+            <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+              Kalkulator wyceny produktu
+            </span>
+
+            <h2 class="mb-8 text-4xl font-black uppercase leading-tight tracking-tighter md:text-6xl">
+              Gdy oferta zależy od wielu parametrów, Excel przestaje wystarczać.
+            </h2>
+
+            <div class="space-y-6 text-lg leading-relaxed text-slate-600">
+              <p>
+                W wielu firmach wycena produktu nadal powstaje ręcznie: ktoś sprawdza
+                cennik, przelicza warianty, dodaje rabat, poprawia marżę, dopisuje transport
+                i składa ofertę w osobnym pliku.
+              </p>
+
+              <p>
+                To działa do czasu. Im więcej produktów, wyjątków i handlowców, tym większe
+                ryzyko błędu. Dlatego tworzymy <strong>kalkulatory produktowe</strong>,
+                <strong> kalkulatory ofertowe</strong> i <strong>konfiguratory produktów</strong>,
+                które porządkują reguły wyceny i prowadzą użytkownika krok po kroku.
+              </p>
+            </div>
+
+            <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+              <a
+                href="#kontakt"
+                class="inline-flex items-center justify-center gap-3 rounded-2xl bg-green-600 px-8 py-5 text-sm font-black uppercase tracking-widest text-white transition-all hover:-translate-y-1 hover:bg-green-500"
+              >
+                Zapytaj o kalkulator
+                <i class="fas fa-arrow-right text-xs"></i>
+              </a>
+
+              <a
+                href="/realizacje/#kalkulatory-produktowe"
+                class="inline-flex items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white px-8 py-5 text-sm font-black uppercase tracking-widest text-slate-950 transition-all hover:-translate-y-1 hover:border-green-500"
+              >
+                Zobacz przykład
+              </a>
+            </div>
+          </div>
+
+          <div class="rounded-[3rem] border border-slate-100 bg-slate-50 p-8 shadow-xl shadow-slate-200/60">
+            <h3 class="mb-6 text-2xl font-black uppercase tracking-tight text-slate-950">
+              Co może liczyć kalkulator?
+            </h3>
+
+            <div class="space-y-4">
+              {
+                benefits.map((benefit) => (
+                  <div class="flex items-start gap-4 rounded-2xl bg-white p-5 shadow-sm">
+                    <div class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-500 text-[10px] text-white">
+                      <i class="fas fa-check"></i>
+                    </div>
+                    <p class="font-bold leading-relaxed text-slate-700">{benefit}</p>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-slate-950 py-24 text-white">
+      <div class="container mx-auto px-4">
+        <div class="mb-16 max-w-3xl">
+          <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-400">
+            Przykłady zastosowań
+          </span>
+
+          <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+            Jakie kalkulatory tworzymy?
+          </h2>
+
+          <p class="text-lg leading-relaxed text-slate-400">
+            Projektujemy narzędzia pod konkretny proces firmy. Mogą działać w Excelu,
+            jako aplikacja desktopowa albo jako prosty formularz z eksportem danych.
+          </p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {
+            examples.map((item) => (
+              <article class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 transition-all hover:-translate-y-1 hover:border-green-500/50 hover:bg-white/[0.08]">
+                <div class="mb-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-500/10 text-green-400">
+                  <i class={`${item.icon} text-xl`}></i>
+                </div>
+
+                <h3 class="mb-4 text-2xl font-black uppercase leading-tight tracking-tight text-white">
+                  {item.title}
+                </h3>
+
+                <p class="text-sm font-medium leading-relaxed text-slate-400">
+                  {item.description}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-24 text-slate-950">
+      <div class="container mx-auto px-4">
+        <div class="mb-16 max-w-3xl">
+          <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+            Proces
+          </span>
+
+          <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+            Jak wygląda wdrożenie?
+          </h2>
+
+          <p class="text-lg leading-relaxed text-slate-600">
+            Najpierw porządkujemy logikę wyceny, potem dopiero wybieramy technologię.
+            Dzięki temu narzędzie jest dopasowane do procesu, a nie odwrotnie.
+          </p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {
+            process.map((item) => (
+              <article class="rounded-[2rem] border border-slate-100 bg-slate-50 p-7 transition-all hover:-translate-y-1 hover:border-green-500/30 hover:bg-white hover:shadow-xl">
+                <div class="mb-6 text-5xl font-black tracking-tighter text-green-600">
+                  {item.step}
+                </div>
+
+                <h3 class="mb-4 text-2xl font-black uppercase tracking-tight text-slate-950">
+                  {item.title}
+                </h3>
+
+                <p class="text-sm font-medium leading-relaxed text-slate-600">
+                  {item.description}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-slate-50 py-24 text-slate-950">
+      <div class="container mx-auto px-4">
+        <div class="grid gap-16 lg:grid-cols-2 lg:items-start">
+          <div>
+            <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+              Technologie
+            </span>
+
+            <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+              Excel, aplikacja czy integracja?
+            </h2>
+
+            <p class="mb-8 text-lg leading-relaxed text-slate-600">
+              Nie każdy kalkulator musi być dużym systemem. Czasem najlepszy jest dobrze
+              zabezpieczony Excel, a czasem wygodniejsza będzie aplikacja desktopowa,
+              formularz z bazą danych albo integracja API.
+            </p>
+
+            <div class="rounded-[2rem] bg-slate-950 p-8 text-white">
+              <h3 class="mb-4 text-2xl font-black uppercase tracking-tight">
+                Dobieramy narzędzie do procesu
+              </h3>
+
+              <p class="text-sm font-medium leading-relaxed text-slate-400">
+                Możemy przygotować rozwiązanie w Excelu, VBA, Power Query, Pythonie,
+                aplikacji desktopowej albo połączyć kalkulator z istniejącym systemem firmy.
+              </p>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div class="rounded-2xl border border-slate-200 bg-white p-6">
+              <h3 class="mb-2 text-xl font-black uppercase tracking-tight">Excel / VBA</h3>
+              <p class="text-sm font-medium leading-relaxed text-slate-600">
+                Dobre rozwiązanie, gdy kalkulator ma działać lokalnie i być łatwy dla zespołu.
+              </p>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 bg-white p-6">
+              <h3 class="mb-2 text-xl font-black uppercase tracking-tight">Python / aplikacja desktopowa</h3>
+              <p class="text-sm font-medium leading-relaxed text-slate-600">
+                Lepsze przy większej liczbie reguł, plików, eksportów i bardziej zamkniętym interfejsie.
+              </p>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 bg-white p-6">
+              <h3 class="mb-2 text-xl font-black uppercase tracking-tight">API / baza danych</h3>
+              <p class="text-sm font-medium leading-relaxed text-slate-600">
+                Przydatne, gdy kalkulator ma pobierać dane z systemu, zapisywać zamówienia albo działać dla wielu osób.
+              </p>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 bg-white p-6">
+              <h3 class="mb-2 text-xl font-black uppercase tracking-tight">PDF / CSV / XML</h3>
+              <p class="text-sm font-medium leading-relaxed text-slate-600">
+                Kalkulator może generować oferty, podsumowania, eksporty i pliki gotowe do dalszej pracy.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-24 text-slate-950">
+      <div class="container mx-auto px-4">
+        <div class="mb-14 max-w-3xl">
+          <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+            FAQ
+          </span>
+
+          <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+            Najczęstsze pytania
+          </h2>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-2">
+          {
+            faqs.map((item) => (
+              <article class="rounded-[2rem] border border-slate-100 bg-slate-50 p-7">
+                <h3 class="mb-4 text-xl font-black uppercase tracking-tight text-slate-950">
+                  {item.question}
+                </h3>
+
+                <p class="text-sm font-medium leading-relaxed text-slate-600">
+                  {item.answer}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <Contact />
+    <Footer />
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+</BaseLayout>

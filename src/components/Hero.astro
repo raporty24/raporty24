@@ -1,142 +1,107 @@
 ---
-// src/components/Hero.astro - Wersja B2B Premium (Z przywróconym Power BI)
+// src/components/Hero.astro - skromny hero B2B
 const {
   title = "DATA & AI CONSULTING",
-  highlight = "GWARANCJA NDA",
+  highlight = "EXCEL • POWER BI • PYTHON • API",
 } = Astro.props;
 ---
 
 <section
   id="hero"
-  class="relative min-h-[95vh] flex items-center overflow-hidden bg-slate-950 text-white"
+  class="relative flex min-h-[88vh] items-center overflow-hidden bg-slate-950 text-white"
 >
   <div class="absolute inset-0 z-0 overflow-hidden">
     <div
-      class="absolute inset-0 opacity-20 z-10"
+      class="absolute inset-0 z-10 opacity-20"
       style="background-image: linear-gradient(#4ade8020 1px, transparent 1px), linear-gradient(90deg, #4ade8020 1px, transparent 1px); background-size: 80px 80px;"
     >
     </div>
 
-    <div class="absolute inset-0 z-20 pointer-events-none overflow-hidden">
+    <div class="pointer-events-none absolute inset-0 z-20 overflow-hidden">
       <div class="scanner-line"></div>
     </div>
 
     <div
-      class="absolute inset-0 opacity-30 z-0"
+      class="absolute inset-0 z-0 opacity-30"
       style="background-image: radial-gradient(at 10% 20%, #16a34a 0px, transparent 65%), radial-gradient(at 80% 50%, #4ade8040 0px, transparent 60%); background-size: 100% 100%;"
     >
     </div>
   </div>
 
-  <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent z-10"></div>
+  <div class="absolute inset-0 z-10 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
 
-  <div class="container mx-auto px-4 relative z-20 pt-24 pb-12">
-    <div class="max-w-6xl">
+  <div class="container relative z-20 mx-auto px-4 pt-20">
+    <div class="max-w-5xl">
       <div
-        class="inline-flex items-center gap-3 mb-10 px-4 py-2 rounded-full bg-slate-900/50 border border-white/10 backdrop-blur-sm"
+        class="mb-12 inline-flex items-center gap-3 rounded-full border border-white/10 bg-slate-900/50 px-4 py-2 backdrop-blur-sm"
       >
-        <span class="flex h-3 w-3 rounded-full bg-green-500 shadow-[0_0_15px_#22c55e] animate-pulse"></span>
+        <span class="flex h-3 w-3 rounded-full bg-green-500 shadow-[0_0_15px_#22c55e] animate-pulse">
+        </span>
+
         <span class="text-xs font-black uppercase tracking-[0.3em] text-green-400">
           {title} • <span class="text-slate-300">{highlight}</span>
         </span>
       </div>
 
-      <h1 class="text-5xl md:text-8xl font-black tracking-tighter mb-8 leading-[0.95] max-w-5xl uppercase">
+      <h1
+        class="mb-10 max-w-5xl text-5xl font-black uppercase leading-[0.95] tracking-tighter md:text-8xl"
+      >
         Zautomatyzuj dane. <br />
-        Odzyskaj <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">40h w miesiącu</span>.
+        Odzyskaj
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">
+          czas w firmie.
+        </span>
       </h1>
 
-      <p class="text-xl md:text-2xl text-slate-300 mb-12 leading-relaxed max-w-4xl italic border-l-2 border-green-500/30 pl-8">
-        Budujemy dedykowane systemy Excel, interaktywne dashboardy <strong class="text-white">Power BI</strong> oraz integracje z AI. Koniec z ręcznym przepisywaniem raportów. Otrzymaj bezpłatny audyt.
+      <p
+        class="mb-14 max-w-3xl border-l-2 border-green-500/30 pl-8 text-xl italic leading-relaxed text-slate-300 md:text-2xl"
+      >
+        Tworzymy automatyzacje Excel, dashboardy Power BI, skrypty Python i integracje API,
+        które zastępują ręczne raportowanie i powtarzalną pracę z danymi.
       </p>
 
-      <div class="grid md:grid-cols-3 gap-6 mb-14">
-        <div class="p-8 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-green-500/50 transition-all group backdrop-blur-sm">
-          <div class="flex items-center gap-4 mb-4">
-            <i class="fas fa-file-excel text-green-500 text-2xl group-hover:scale-110 transition-transform"></i>
-            <h4 class="text-lg font-bold text-white uppercase tracking-wider">
-              Makra &amp; Excel
-            </h4>
-          </div>
-          <p class="text-slate-400 text-sm leading-relaxed">
-            Automatyzacja procesów (Flota, CRM) jednym kliknięciem. Stabilnie i bezbłędnie.
-          </p>
-        </div>
-
-        <div class="p-8 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-yellow-500/50 transition-all group backdrop-blur-sm relative overflow-hidden">
-          <div class="absolute -top-10 -right-10 w-20 h-20 bg-yellow-500/10 rounded-full blur-2xl"></div>
-          <div class="flex items-center gap-4 mb-4 relative z-10">
-            <i class="fas fa-chart-bar text-yellow-500 text-2xl group-hover:scale-110 transition-transform"></i>
-            <h4 class="text-lg font-bold text-white uppercase tracking-wider">
-              Raporty Power BI
-            </h4>
-          </div>
-          <p class="text-slate-400 text-sm leading-relaxed relative z-10">
-            Interaktywne dashboardy menedżerskie. Wyniki finansowe Twojej firmy na żywo w telefonie.
-          </p>
-        </div>
-
-        <div class="p-8 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-indigo-400/50 transition-all group backdrop-blur-sm">
-          <div class="flex items-center gap-4 mb-4">
-            <i class="fas fa-robot text-indigo-400 text-2xl group-hover:scale-110 transition-transform"></i>
-            <h4 class="text-lg font-bold text-white uppercase tracking-wider text-indigo-100">
-              Integracje z AI
-            </h4>
-          </div>
-          <p class="text-slate-400 text-sm leading-relaxed">
-            Łączymy Excela z ChatGPT (API). Automatyczna analiza setek tekstów i faktur.
-          </p>
-        </div>
-      </div>
-
-      <div class="flex flex-col sm:flex-row gap-5 items-stretch sm:items-center">
+      <div class="flex flex-col gap-6 sm:flex-row">
         <a
           href="/kontakt/"
-          class="group bg-green-600 hover:bg-green-500 text-white py-5 px-10 rounded-2xl font-black text-xl shadow-[0_15px_40px_rgba(34,197,94,0.3)] transition-all hover:-translate-y-1 flex items-center justify-center gap-3 text-center tracking-tight"
+          class="group flex items-center justify-center gap-3 rounded-2xl bg-green-600 px-12 py-6 text-center text-xl font-black tracking-tight text-white shadow-[0_20px_50px_rgba(34,197,94,0.3)] transition-all hover:-translate-y-1 hover:bg-green-500"
         >
-          Odbierz darmową wycenę (24h)
+          Odbierz darmową wycenę
           <i class="fas fa-arrow-right text-sm transition-transform group-hover:translate-x-1"></i>
         </a>
 
         <a
           href="/realizacje/"
-          class="group border border-white/10 bg-white/5 hover:bg-white hover:text-slate-950 text-white py-5 px-8 rounded-2xl font-black text-lg transition-all hover:-translate-y-1 flex items-center justify-center gap-3 text-center tracking-tight backdrop-blur-sm"
+          class="group flex items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/10 px-10 py-6 text-center text-lg font-black tracking-tight text-white transition-all hover:-translate-y-1 hover:bg-white hover:text-slate-950"
         >
-          Zobacz nasze realizacje
+          Zobacz realizacje
           <i class="fas fa-laptop-code text-sm transition-transform group-hover:translate-x-1"></i>
         </a>
       </div>
-
     </div>
   </div>
 </section>
 
 <style>
-  /* ANIMACJA SKANERA (Laser Line) */
   .scanner-line {
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 25;
     width: 100%;
     height: 2px;
     background: linear-gradient(90deg, transparent, #22c55e, transparent);
     opacity: 0.5;
     animation: scan 8s linear infinite;
     will-change: transform;
-    z-index: 25;
   }
 
   @keyframes scan {
     0% {
       transform: translateY(-100px);
     }
+
     100% {
       transform: translateY(100vh);
     }
-  }
-
-  /* Optymalizacja wydajności */
-  section {
-    content-visibility: auto;
   }
 </style>

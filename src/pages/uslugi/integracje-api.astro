@@ -1,0 +1,412 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import HeroService from "../../components/HeroService.astro";
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+
+const title = "Integracje API dla firm | Automatyzacja danych i systemów";
+const description =
+  "Tworzymy integracje API dla firm: pobieranie danych z systemów, eksporty do Excela, połączenia CRM, ERP, platform sprzedażowych, raportów i aplikacji firmowych.";
+const ogImage = "/biuro3.webp";
+const currentUrl = "https://raporty24.pl/uslugi/integracje-api/";
+
+export const service = {
+  title: "Integracje API",
+  order: 35,
+  menu: true,
+  category: "Automatyzacja",
+};
+
+const examples = [
+  {
+    title: "API do Excela",
+    description:
+      "Pobieranie danych z API i zapis do Excel, CSV lub XML, bez ręcznego eksportowania plików z systemu.",
+    icon: "fas fa-file-excel",
+  },
+  {
+    title: "Połączenie systemów",
+    description:
+      "Przekazywanie danych między CRM, ERP, sklepem, systemem magazynowym, księgowością lub raportami.",
+    icon: "fas fa-link",
+  },
+  {
+    title: "Automatyczne eksporty",
+    description:
+      "Cykliczne pobieranie, czyszczenie i przygotowywanie danych do raportów, Power BI albo dalszej obróbki.",
+    icon: "fas fa-cloud-download-alt",
+  },
+  {
+    title: "Aplikacje z API",
+    description:
+      "Proste aplikacje desktopowe lub formularze, które łączą się z API i wykonują proces za użytkownika.",
+    icon: "fas fa-desktop",
+  },
+];
+
+const useCases = [
+  "pobieranie danych z API do Excela",
+  "łączenie systemu sprzedażowego z raportami",
+  "automatyczne eksporty zamówień, faktur lub stanów magazynowych",
+  "integracja CRM, ERP, sklepu internetowego lub platformy B2B",
+  "wysyłanie danych z formularza do systemu firmy",
+  "przygotowanie danych pod dashboard Power BI",
+  "sprawdzanie statusów zamówień, płatności lub przesyłek",
+  "automatyzacja zadań, które dziś wymagają ręcznego logowania do systemów",
+];
+
+const process = [
+  {
+    step: "01",
+    title: "Analiza źródeł danych",
+    description:
+      "Sprawdzamy, z jakimi systemami trzeba się połączyć, jakie dane są potrzebne i czy API daje dostęp do wymaganych informacji.",
+  },
+  {
+    step: "02",
+    title: "Projekt przepływu",
+    description:
+      "Ustalamy, skąd dane mają być pobierane, gdzie mają trafić, w jakim formacie i jak często proces ma się uruchamiać.",
+  },
+  {
+    step: "03",
+    title: "Budowa integracji",
+    description:
+      "Tworzymy połączenie API, obsługę autoryzacji, walidację danych, logikę przetwarzania i eksport do wybranego formatu.",
+  },
+  {
+    step: "04",
+    title: "Testy i wdrożenie",
+    description:
+      "Testujemy integrację na rzeczywistych przykładach, obsługujemy błędy i przekazujemy gotowe narzędzie do pracy.",
+  },
+];
+
+const faqs = [
+  {
+    question: "Czy można pobierać dane z API do Excela?",
+    answer:
+      "Tak. Możemy przygotować integrację, która pobiera dane z API i zapisuje je do pliku Excel, CSV, XML albo przygotowuje dane do dalszej analizy w Power BI.",
+  },
+  {
+    question: "Czy integracja API może działać automatycznie?",
+    answer:
+      "Tak. Proces może być uruchamiany ręcznie przez użytkownika albo automatycznie według ustalonego harmonogramu, jeśli środowisko firmy na to pozwala.",
+  },
+  {
+    question: "Czy można połączyć kilka systemów?",
+    answer:
+      "Tak. Integracja może pobierać dane z jednego systemu, przetwarzać je i przekazywać do innego narzędzia, raportu, pliku lub aplikacji.",
+  },
+  {
+    question: "Czy dane muszą trafiać na zewnętrzny serwer?",
+    answer:
+      "Nie zawsze. Wiele rozwiązań może działać lokalnie lub w środowisku firmy. Sposób działania ustalamy na początku, zależnie od wymagań bezpieczeństwa.",
+  },
+];
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Integracje API dla firm",
+  provider: {
+    "@type": "Organization",
+    name: "Raporty24",
+    url: "https://raporty24.pl/",
+  },
+  areaServed: "Polska",
+  serviceType:
+    "Integracje API, automatyzacja danych, pobieranie danych z API, eksporty do Excela, połączenia systemów firmowych",
+  url: currentUrl,
+  description,
+};
+---
+
+<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
+  <div x-data="app" x-cloak>
+    <Header />
+
+    <HeroService
+      title="Integracje API"
+      highlight="dla firm"
+      subtitle="Łączymy systemy, pobieramy dane z API i automatyzujemy eksporty do Excela, CSV, XML, Power BI albo aplikacji firmowych."
+    />
+
+    <section class="bg-white py-24 text-slate-950">
+      <div class="container mx-auto px-4">
+        <div class="grid gap-16 lg:grid-cols-2 lg:items-center">
+          <div>
+            <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+              Automatyzacja API
+            </span>
+
+            <h2 class="mb-8 text-4xl font-black uppercase leading-tight tracking-tighter md:text-6xl">
+              Dane nie muszą być ręcznie eksportowane z każdego systemu.
+            </h2>
+
+            <div class="space-y-6 text-lg leading-relaxed text-slate-600">
+              <p>
+                W wielu firmach pracownicy codziennie logują się do systemów, pobierają
+                pliki, kopiują dane do Excela i dopiero wtedy przygotowują raport albo
+                zestawienie.
+              </p>
+
+              <p>
+                Tworzymy <strong>integracje API dla firm</strong>, które automatycznie
+                pobierają dane, porządkują je i przekazują dalej: do Excela, CSV, XML,
+                Power BI, aplikacji desktopowej albo innego systemu.
+              </p>
+            </div>
+
+            <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+              <a
+                href="#kontakt"
+                class="inline-flex items-center justify-center gap-3 rounded-2xl bg-green-600 px-8 py-5 text-sm font-black uppercase tracking-widest text-white transition-all hover:-translate-y-1 hover:bg-green-500"
+              >
+                Zapytaj o integrację
+                <i class="fas fa-arrow-right text-xs"></i>
+              </a>
+
+              <a
+                href="/uslugi/skrypty-python/"
+                class="inline-flex items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white px-8 py-5 text-sm font-black uppercase tracking-widest text-slate-950 transition-all hover:-translate-y-1 hover:border-green-500"
+              >
+                Zobacz też Python
+              </a>
+            </div>
+          </div>
+
+          <div class="rounded-[3rem] border border-slate-100 bg-slate-50 p-8 shadow-xl shadow-slate-200/60">
+            <h3 class="mb-6 text-2xl font-black uppercase tracking-tight text-slate-950">
+              Co można połączyć przez API?
+            </h3>
+
+            <div class="space-y-4">
+              {
+                useCases.slice(0, 6).map((item) => (
+                  <div class="flex items-start gap-4 rounded-2xl bg-white p-5 shadow-sm">
+                    <div class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-500 text-[10px] text-white">
+                      <i class="fas fa-check"></i>
+                    </div>
+
+                    <p class="font-bold leading-relaxed text-slate-700">{item}</p>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-slate-950 py-24 text-white">
+      <div class="container mx-auto px-4">
+        <div class="mb-16 max-w-3xl">
+          <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-400">
+            Przykłady zastosowań
+          </span>
+
+          <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+            Jakie integracje API tworzymy?
+          </h2>
+
+          <p class="text-lg leading-relaxed text-slate-400">
+            Najczęściej chodzi o usunięcie ręcznego pobierania plików, kopiowania danych
+            i przepisywania informacji między systemami.
+          </p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {
+            examples.map((item) => (
+              <article class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 transition-all hover:-translate-y-1 hover:border-green-500/50 hover:bg-white/[0.08]">
+                <div class="mb-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-500/10 text-green-400">
+                  <i class={`${item.icon} text-xl`}></i>
+                </div>
+
+                <h3 class="mb-4 text-2xl font-black uppercase leading-tight tracking-tight text-white">
+                  {item.title}
+                </h3>
+
+                <p class="text-sm font-medium leading-relaxed text-slate-400">
+                  {item.description}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-24 text-slate-950">
+      <div class="container mx-auto px-4">
+        <div class="mb-16 max-w-3xl">
+          <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+            Typowe procesy
+          </span>
+
+          <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+            Integracja API najlepiej działa tam, gdzie dane są powtarzalne.
+          </h2>
+
+          <p class="text-lg leading-relaxed text-slate-600">
+            API ma sens wtedy, gdy firma regularnie potrzebuje tych samych danych:
+            zamówień, faktur, produktów, stanów magazynowych, klientów, statusów albo raportów.
+          </p>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-2">
+          {
+            useCases.map((item) => (
+              <div class="flex items-start gap-4 rounded-2xl border border-slate-100 bg-slate-50 p-6">
+                <div class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-950 text-[10px] text-green-400">
+                  <i class="fas fa-check"></i>
+                </div>
+
+                <p class="font-bold leading-relaxed text-slate-700">{item}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-slate-50 py-24 text-slate-950">
+      <div class="container mx-auto px-4">
+        <div class="mb-16 max-w-3xl">
+          <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+            Proces
+          </span>
+
+          <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+            Jak wygląda wdrożenie?
+          </h2>
+
+          <p class="text-lg leading-relaxed text-slate-600">
+            Najpierw sprawdzamy, czy API daje dostęp do potrzebnych danych. Dopiero potem
+            projektujemy automatyzację, eksport albo połączenie systemów.
+          </p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {
+            process.map((item) => (
+              <article class="rounded-[2rem] border border-slate-100 bg-white p-7 transition-all hover:-translate-y-1 hover:border-green-500/30 hover:shadow-xl">
+                <div class="mb-6 text-5xl font-black tracking-tighter text-green-600">
+                  {item.step}
+                </div>
+
+                <h3 class="mb-4 text-2xl font-black uppercase tracking-tight text-slate-950">
+                  {item.title}
+                </h3>
+
+                <p class="text-sm font-medium leading-relaxed text-slate-600">
+                  {item.description}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-24 text-slate-950">
+      <div class="container mx-auto px-4">
+        <div class="grid gap-16 lg:grid-cols-2 lg:items-start">
+          <div>
+            <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+              Dane i bezpieczeństwo
+            </span>
+
+            <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+              Integracja może działać lokalnie albo w środowisku firmy.
+            </h2>
+
+            <p class="mb-8 text-lg leading-relaxed text-slate-600">
+              Nie każda automatyzacja wymaga zewnętrznego serwera. W wielu przypadkach
+              narzędzie może działać lokalnie, pobierać dane z API i zapisywać wynik
+              do pliku lub systemu wskazanego przez firmę.
+            </p>
+
+            <div class="rounded-[2rem] bg-slate-950 p-8 text-white">
+              <h3 class="mb-4 text-2xl font-black uppercase tracking-tight">
+                Przed wdrożeniem ustalamy dostęp
+              </h3>
+
+              <p class="text-sm font-medium leading-relaxed text-slate-400">
+                Potrzebne mogą być tokeny API, dokumentacja, konto testowe, zakres danych,
+                format wyniku i zasady bezpieczeństwa po stronie firmy.
+              </p>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+              <h3 class="mb-2 text-xl font-black uppercase tracking-tight">Autoryzacja API</h3>
+              <p class="text-sm font-medium leading-relaxed text-slate-600">
+                Obsługujemy tokeny, klucze API, nagłówki, parametry zapytań i podstawowe modele dostępu.
+              </p>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+              <h3 class="mb-2 text-xl font-black uppercase tracking-tight">Walidacja danych</h3>
+              <p class="text-sm font-medium leading-relaxed text-slate-600">
+                Integracja może sprawdzać brakujące pola, błędne formaty, puste odpowiedzi i limity API.
+              </p>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+              <h3 class="mb-2 text-xl font-black uppercase tracking-tight">Eksport wyników</h3>
+              <p class="text-sm font-medium leading-relaxed text-slate-600">
+                Dane mogą trafiać do Excel, CSV, XML, JSON, Power BI albo aplikacji desktopowej.
+              </p>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+              <h3 class="mb-2 text-xl font-black uppercase tracking-tight">Obsługa błędów</h3>
+              <p class="text-sm font-medium leading-relaxed text-slate-600">
+                Dodajemy komunikaty, logi i zabezpieczenia, żeby użytkownik wiedział, co się wydarzyło.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-slate-50 py-24 text-slate-950">
+      <div class="container mx-auto px-4">
+        <div class="mb-14 max-w-3xl">
+          <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+            FAQ
+          </span>
+
+          <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+            Najczęstsze pytania
+          </h2>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-2">
+          {
+            faqs.map((item) => (
+              <article class="rounded-[2rem] border border-slate-100 bg-white p-7">
+                <h3 class="mb-4 text-xl font-black uppercase tracking-tight text-slate-950">
+                  {item.question}
+                </h3>
+
+                <p class="text-sm font-medium leading-relaxed text-slate-600">
+                  {item.answer}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <Contact />
+    <Footer />
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+</BaseLayout>

@@ -3,9 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import Panels from "../components/Panels.astro";
-
-import Technologies from "../components/Technologies.astro";
-import About from "../components/About.astro";
+import SelectedRealizations from "../components/SelectedRealizations.astro";
 import Demo from "../components/Demo.astro";
 import Pricing from "../components/Pricing.astro";
 import Subscription from "../components/Subscription.astro";
@@ -14,58 +12,19 @@ import FreeAuditCTA from "../components/FreeAuditCTA.astro";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
 
-// ZOPTYMALIZOWANE SEO - Nastawione na CTR, korzyść biznesową i spójność cenową
-const title = "Automatyzacja Excel, Power BI i AI | Odzyskaj 40h w miesiącu";
-const description = "Twój zespół traci czas na ręczne raporty? Wdrażamy dedykowane systemy Excel, makra VBA oraz dashboardy Power BI dla firm. Gwarancja NDA i darmowa wycena w 24h!";
-const image = "/biuro3.webp"; 
+const title = "Automatyzacja Excel, Power BI, Python i API dla firm | Raporty24";
+const description =
+  "Tworzymy automatyzacje Excel, dashboardy Power BI, skrypty Python, integracje API, kalkulatory ofertowe i aplikacje dla firm. Darmowa wycena w 24h.";
+const image = "/biuro3.webp";
 const url = "https://raporty24.pl/";
-
-const homeFaqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Ile trwa wycena i od czego zależy koszt?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Zwykle odpisujemy w 24h w dni robocze. Koszt zależy od źródeł danych, złożoności procesów i oczekiwanego efektu (np. szybkie makro VBA, kompleksowy system CRM w Excelu czy dashboard Power BI). Projekty zaczynamy od 490 zł netto."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Czy mogę liczyć na wsparcie po wdrożeniu?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Tak. Udzielamy gwarancji na nasze wdrożenia. Możesz działać projektowo albo w modelu stałej subskrypcji (SLA), co zapewnia utrzymanie odświeżeń, szybkie poprawki i najwyższy priorytet zgłoszeń."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Czy moje dane firmowe będą u Was bezpieczne?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Bezpieczeństwo to nasz priorytet. Do darmowej wyceny wystarczy nam sam zarys problemu, a przed przesłaniem jakichkolwiek plików roboczych zawsze podpisujemy wiążącą umowę o zachowaniu poufności (NDA)."
-      }
-    }
-  ]
-};
 ---
 
-<BaseLayout 
-  title={title} 
-  description={description} 
-  image={image} 
-  url={url}
-  structuredData={homeFaqSchema}
->
-    <div x-data="app" x-cloak>
+<BaseLayout title={title} description={description} image={image} url={url}>
+  <div x-data="app" x-cloak>
     <Header />
     <Hero />
     <Panels />
-
-    <Technologies />
-  
+    <SelectedRealizations />
     <Demo />
     <Pricing />
     <Subscription />
@@ -73,25 +32,23 @@ const homeFaqSchema = {
     <FreeAuditCTA />
     <Contact />
     <Footer />
-      </div>
+  </div>
 </BaseLayout>
 
 <style is:global>
-  /* Wyłączenie efektów, które duszą procesor graficzny */
   * {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
 
-  /* Wymuszenie płynności na zdjęciach */
   img {
     transform: translateZ(0);
     will-change: transform;
     content-visibility: auto;
   }
 
-  /* Wyłączenie ciężkich animacji */
-  .animate-slow-pan, .neon-flow {
+  .animate-slow-pan,
+  .neon-flow {
     animation: none !important;
   }
 </style>

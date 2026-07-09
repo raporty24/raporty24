@@ -1,0 +1,412 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import HeroService from "../../components/HeroService.astro";
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+
+const title = "KSeF do Excela | Pobieranie faktur z KSeF, Excel, CSV, XML";
+const description =
+  "Tworzymy narzędzia do pobierania faktur z KSeF, eksportu danych do Excela, CSV i XML oraz porządkowania dokumentów dla księgowości i firm.";
+const ogImage = "/biuro3.webp";
+const currentUrl = "https://raporty24.pl/uslugi/ksef-do-excela/";
+
+export const service = {
+  title: "KSeF do Excela",
+  order: 25,
+  menu: true,
+  category: "KSeF",
+};
+
+const examples = [
+  {
+    title: "Eksport faktur z KSeF",
+    description:
+      "Pobieranie danych z KSeF i zapis do plików Excel, CSV lub XML, zależnie od potrzeb księgowości albo działu finansowego.",
+    icon: "fas fa-file-invoice",
+  },
+  {
+    title: "Lokalna aplikacja desktopowa",
+    description:
+      "Program dla Windows, który może działać lokalnie w firmie, bez ręcznego kopiowania danych między systemami.",
+    icon: "fas fa-desktop",
+  },
+  {
+    title: "Porządkowanie dokumentów",
+    description:
+      "Filtrowanie, grupowanie i przygotowanie faktur do dalszej analizy, raportowania albo importu do innych narzędzi.",
+    icon: "fas fa-folder-open",
+  },
+  {
+    title: "Raporty i zestawienia",
+    description:
+      "Zestawienia sprzedaży, zakupów, kontrahentów, kwot, korekt i okresów rozliczeniowych w czytelnym formacie.",
+    icon: "fas fa-chart-line",
+  },
+];
+
+const useCases = [
+  "pobieranie faktur z KSeF do Excela",
+  "eksport danych z KSeF do CSV lub XML",
+  "wyszukiwanie faktur po dacie, kontrahencie, NIP lub kwocie",
+  "podgląd pozycji faktury bez ręcznego otwierania wielu plików",
+  "porządkowanie faktur sprzedaży i zakupu",
+  "przygotowanie danych dla księgowości",
+  "lokalna aplikacja desktopowa dla Windows",
+  "obsługa wielu NIP-ów lub jednostek firmowych",
+];
+
+const process = [
+  {
+    step: "01",
+    title: "Zakres danych",
+    description:
+      "Ustalamy, jakie faktury mają być pobierane, po jakich filtrach, dla ilu NIP-ów i w jakim formacie wynik ma trafić do użytkownika.",
+  },
+  {
+    step: "02",
+    title: "Projekt aplikacji",
+    description:
+      "Dobieramy formę narzędzia: Excel, skrypt, aplikacja desktopowa, eksport CSV/XML albo połączenie z innym systemem.",
+  },
+  {
+    step: "03",
+    title: "Budowa i testy",
+    description:
+      "Tworzymy mechanizm pobierania, filtrowania, walidacji i eksportu danych. Testujemy scenariusze na przykładach.",
+  },
+  {
+    step: "04",
+    title: "Wdrożenie",
+    description:
+      "Przekazujemy gotowe narzędzie, instrukcję użycia i możliwość dalszej rozbudowy o raporty, Power BI, integracje lub automatyzację.",
+  },
+];
+
+const faqs = [
+  {
+    question: "Czy dane z KSeF można eksportować do Excela?",
+    answer:
+      "Tak. Można przygotować narzędzie, które pobiera dane z KSeF i zapisuje je w strukturze wygodnej do dalszej pracy w Excelu, CSV albo XML.",
+  },
+  {
+    question: "Czy program może działać lokalnie?",
+    answer:
+      "Tak. W wielu przypadkach narzędzie może działać lokalnie na komputerze lub w środowisku firmy. To dobre rozwiązanie, gdy dane nie powinny trafiać na zewnętrzny serwer.",
+  },
+  {
+    question: "Czy można obsłużyć wiele NIP-ów?",
+    answer:
+      "Tak. Narzędzie można zaprojektować tak, aby obsługiwało wiele NIP-ów, tokenów lub jednostek firmowych, zależnie od procesu klienta.",
+  },
+  {
+    question: "Czy to jest gotowy system księgowy?",
+    answer:
+      "Nie. Tworzymy narzędzia wspierające pobieranie, eksport, porządkowanie i analizę danych. Nie zastępuje to pełnego systemu księgowego ani doradztwa podatkowego.",
+  },
+];
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "KSeF do Excela",
+  provider: {
+    "@type": "Organization",
+    name: "Raporty24",
+    url: "https://raporty24.pl/",
+  },
+  areaServed: "Polska",
+  serviceType:
+    "KSeF do Excela, pobieranie faktur z KSeF, eksport faktur do Excel, CSV i XML, aplikacje desktopowe dla księgowości",
+  url: currentUrl,
+  description,
+};
+---
+
+<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
+  <div x-data="app" x-cloak>
+    <Header />
+
+    <HeroService
+      title="KSeF"
+      highlight="do Excela"
+      subtitle="Tworzymy narzędzia do pobierania faktur z KSeF, eksportu danych do Excel, CSV i XML oraz porządkowania dokumentów dla księgowości i firm."
+    />
+
+    <section class="bg-white py-24 text-slate-950">
+      <div class="container mx-auto px-4">
+        <div class="grid gap-16 lg:grid-cols-2 lg:items-center">
+          <div>
+            <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+              Program do pobierania faktur z KSeF
+            </span>
+
+            <h2 class="mb-8 text-4xl font-black uppercase leading-tight tracking-tighter md:text-6xl">
+              Faktury z KSeF nie muszą być ręcznie porządkowane w arkuszach.
+            </h2>
+
+            <div class="space-y-6 text-lg leading-relaxed text-slate-600">
+              <p>
+                W wielu firmach dane z faktur są później potrzebne w Excelu, raportach,
+                zestawieniach, analizach lub procesach księgowych. Problem zaczyna się wtedy,
+                gdy trzeba je ręcznie pobierać, filtrować, porównywać i układać w odpowiednim formacie.
+              </p>
+
+              <p>
+                Tworzymy <strong>narzędzia KSeF do Excela</strong>, które pomagają pobierać
+                faktury, filtrować dane, eksportować je do Excel, CSV albo XML i przygotować
+                do dalszej pracy w firmie.
+              </p>
+            </div>
+
+            <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+              <a
+                href="#kontakt"
+                class="inline-flex items-center justify-center gap-3 rounded-2xl bg-green-600 px-8 py-5 text-sm font-black uppercase tracking-widest text-white transition-all hover:-translate-y-1 hover:bg-green-500"
+              >
+                Zapytaj o narzędzie KSeF
+                <i class="fas fa-arrow-right text-xs"></i>
+              </a>
+
+              <a
+                href="/realizacje/#ksef-exporter-pro"
+                class="inline-flex items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white px-8 py-5 text-sm font-black uppercase tracking-widest text-slate-950 transition-all hover:-translate-y-1 hover:border-green-500"
+              >
+                Zobacz realizację
+              </a>
+            </div>
+          </div>
+
+          <div class="rounded-[3rem] border border-slate-100 bg-slate-50 p-8 shadow-xl shadow-slate-200/60">
+            <h3 class="mb-6 text-2xl font-black uppercase tracking-tight text-slate-950">
+              Co może robić narzędzie?
+            </h3>
+
+            <div class="space-y-4">
+              {
+                useCases.slice(0, 6).map((item) => (
+                  <div class="flex items-start gap-4 rounded-2xl bg-white p-5 shadow-sm">
+                    <div class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-500 text-[10px] text-white">
+                      <i class="fas fa-check"></i>
+                    </div>
+
+                    <p class="font-bold leading-relaxed text-slate-700">{item}</p>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-slate-950 py-24 text-white">
+      <div class="container mx-auto px-4">
+        <div class="mb-16 max-w-3xl">
+          <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-400">
+            Zastosowania
+          </span>
+
+          <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+            KSeF, Excel, CSV, XML i raporty w jednym procesie.
+          </h2>
+
+          <p class="text-lg leading-relaxed text-slate-400">
+            Narzędzie może być proste albo rozbudowane. Najważniejsze, żeby skracało pracę
+            użytkownika i dawało dane w formacie, którego naprawdę potrzebuje firma.
+          </p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {
+            examples.map((item) => (
+              <article class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 transition-all hover:-translate-y-1 hover:border-green-500/50 hover:bg-white/[0.08]">
+                <div class="mb-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-500/10 text-green-400">
+                  <i class={`${item.icon} text-xl`}></i>
+                </div>
+
+                <h3 class="mb-4 text-2xl font-black uppercase leading-tight tracking-tight text-white">
+                  {item.title}
+                </h3>
+
+                <p class="text-sm font-medium leading-relaxed text-slate-400">
+                  {item.description}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-24 text-slate-950">
+      <div class="container mx-auto px-4">
+        <div class="mb-16 max-w-3xl">
+          <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+            Typowe funkcje
+          </span>
+
+          <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+            Jakie dane można przygotować z KSeF?
+          </h2>
+
+          <p class="text-lg leading-relaxed text-slate-600">
+            Zakres zależy od procesu firmy. Najczęściej chodzi o szybkie pobranie,
+            przefiltrowanie i eksport danych do dalszej pracy w księgowości, analizie albo raportach.
+          </p>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-2">
+          {
+            useCases.map((item) => (
+              <div class="flex items-start gap-4 rounded-2xl border border-slate-100 bg-slate-50 p-6">
+                <div class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-950 text-[10px] text-green-400">
+                  <i class="fas fa-check"></i>
+                </div>
+
+                <p class="font-bold leading-relaxed text-slate-700">{item}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-slate-50 py-24 text-slate-950">
+      <div class="container mx-auto px-4">
+        <div class="mb-16 max-w-3xl">
+          <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+            Proces
+          </span>
+
+          <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+            Jak wygląda wdrożenie?
+          </h2>
+
+          <p class="text-lg leading-relaxed text-slate-600">
+            Najpierw ustalamy, jakie dane są potrzebne i jak ma wyglądać wynik. Dopiero
+            potem dobieramy formę narzędzia: Excel, skrypt, aplikację desktopową lub integrację.
+          </p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {
+            process.map((item) => (
+              <article class="rounded-[2rem] border border-slate-100 bg-white p-7 transition-all hover:-translate-y-1 hover:border-green-500/30 hover:shadow-xl">
+                <div class="mb-6 text-5xl font-black tracking-tighter text-green-600">
+                  {item.step}
+                </div>
+
+                <h3 class="mb-4 text-2xl font-black uppercase tracking-tight text-slate-950">
+                  {item.title}
+                </h3>
+
+                <p class="text-sm font-medium leading-relaxed text-slate-600">
+                  {item.description}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white py-24 text-slate-950">
+      <div class="container mx-auto px-4">
+        <div class="grid gap-16 lg:grid-cols-2 lg:items-start">
+          <div>
+            <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+              Bezpieczeństwo danych
+            </span>
+
+            <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+              Narzędzie może działać lokalnie w środowisku firmy.
+            </h2>
+
+            <p class="mb-8 text-lg leading-relaxed text-slate-600">
+              Przy projektach związanych z fakturami ważne jest, gdzie trafiają dane i kto ma
+              do nich dostęp. Dlatego narzędzie można przygotować tak, aby działało lokalnie
+              albo zgodnie z wymaganiami środowiska IT klienta.
+            </p>
+
+            <div class="rounded-[2rem] bg-slate-950 p-8 text-white">
+              <h3 class="mb-4 text-2xl font-black uppercase tracking-tight">
+                Przed wdrożeniem ustalamy zakres dostępu
+              </h3>
+
+              <p class="text-sm font-medium leading-relaxed text-slate-400">
+                Potrzebne mogą być tokeny, środowisko testowe, przykładowe faktury, lista NIP-ów,
+                format eksportu i wymagania dotyczące przechowywania danych.
+              </p>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+              <h3 class="mb-2 text-xl font-black uppercase tracking-tight">Excel</h3>
+              <p class="text-sm font-medium leading-relaxed text-slate-600">
+                Dane mogą być zapisywane do arkuszy, tabel i raportów gotowych do dalszej analizy.
+              </p>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+              <h3 class="mb-2 text-xl font-black uppercase tracking-tight">CSV / XML</h3>
+              <p class="text-sm font-medium leading-relaxed text-slate-600">
+                Eksport może być przygotowany w formacie wygodnym dla księgowości albo innych systemów.
+              </p>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+              <h3 class="mb-2 text-xl font-black uppercase tracking-tight">Aplikacja desktopowa</h3>
+              <p class="text-sm font-medium leading-relaxed text-slate-600">
+                Program może mieć prosty interfejs, filtry, przyciski i komunikaty dla użytkownika.
+              </p>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+              <h3 class="mb-2 text-xl font-black uppercase tracking-tight">Raportowanie</h3>
+              <p class="text-sm font-medium leading-relaxed text-slate-600">
+                Dane z faktur można później wykorzystać w Excelu, Power BI lub raportach cyklicznych.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-slate-50 py-24 text-slate-950">
+      <div class="container mx-auto px-4">
+        <div class="mb-14 max-w-3xl">
+          <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+            FAQ
+          </span>
+
+          <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+            Najczęstsze pytania
+          </h2>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-2">
+          {
+            faqs.map((item) => (
+              <article class="rounded-[2rem] border border-slate-100 bg-white p-7">
+                <h3 class="mb-4 text-xl font-black uppercase tracking-tight text-slate-950">
+                  {item.question}
+                </h3>
+
+                <p class="text-sm font-medium leading-relaxed text-slate-600">
+                  {item.answer}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <Contact />
+    <Footer />
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+</BaseLayout>
