@@ -1,111 +1,272 @@
 ---
-// Cennik (HOME teaser) – Wersja B2B nastawiona na Zwrot z Inwestycji (ROI)
+// Cennik HOME teaser — spójny z pełnym cennikiem /cennik/
+const offers = [
+  {
+    label: "Najłatwiejszy start",
+    title: "Raport lub kalkulator",
+    price: "od 900 zł",
+    description:
+      "Dla firm, które chcą szybciej liczyć koszty, przygotowywać oferty albo widzieć sprzedaż, marżę i wyniki w jednym miejscu.",
+    items: [
+      "raport sprzedaży, kosztów lub marży",
+      "kalkulator ofertowy lub kosztowy",
+      "zestawienie dla właściciela firmy",
+      "eksport do Excel / CSV / PDF",
+    ],
+    cta: "Zapytaj o raport",
+    href: "/kontakt/",
+    accent: "green",
+    featured: false,
+  },
+  {
+    label: "Najczęściej wybierane",
+    title: "Automatyzacja procesu",
+    price: "wycena w 24h",
+    description:
+      "Dla procesów, w których firma codziennie kopiuje dane, pilnuje statusów, sprawdza faktury, zamówienia, magazyn albo dokumenty.",
+    items: [
+      "faktury, dokumenty i statusy płatności",
+      "zamówienia, WZ, magazyn i kompletacja",
+      "e-commerce, paczki i zamówienia problemowe",
+      "automatyczne pobieranie i porządkowanie danych",
+    ],
+    cta: "Opisz proces",
+    href: "/kontakt/",
+    accent: "green",
+    featured: true,
+  },
+  {
+    label: "Większy zakres",
+    title: "Aplikacja, API lub KSeF",
+    price: "od 1800 zł",
+    description:
+      "Dla firm, które potrzebują narzędzia działającego pod konkretny proces: panelu, aplikacji lokalnej, integracji API albo automatyzacji dokumentów.",
+    items: [
+      "KSeF, XML, CSV, PDF i pliki firmowe",
+      "integracje API i dane z systemów",
+      "panel administracyjny lub aplikacja lokalna",
+      "Python, SQL, C#, Power BI jako technologia pod spodem",
+    ],
+    cta: "Zapytaj o wdrożenie",
+    href: "/kontakt/",
+    accent: "indigo",
+    featured: false,
+  },
+];
+
+const processAreas = [
+  "sprzedaż i marża",
+  "faktury i dokumenty",
+  "magazyn i WZ",
+  "e-commerce i paczki",
+  "flota i transport",
+  "raporty dla właściciela",
+];
 ---
 
 <section id="cennik" class="py-24 bg-slate-950 relative overflow-hidden border-t border-white/5">
+  <div class="absolute inset-0 opacity-20">
+    <div
+      class="absolute inset-0 bg-[radial-gradient(#1e293b_1.5px,transparent_1.5px)] [background-size:32px_32px]"
+    >
+    </div>
+  </div>
+
+  <div class="absolute -right-24 top-0 h-96 w-96 rounded-full bg-green-600/10 blur-[120px]"></div>
+  <div class="absolute -left-24 bottom-0 h-96 w-96 rounded-full bg-cyan-500/10 blur-[120px]"></div>
+
   <div class="container mx-auto px-4 relative z-10">
+    <div class="grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-end mb-16">
+      <header class="max-w-4xl">
+        <div
+          class="inline-flex items-center gap-3 mb-6 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20"
+        >
+          <span class="flex h-2 w-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]"></span>
+          <span class="text-[10px] font-black uppercase tracking-[0.2em] text-green-400">
+            Cennik orientacyjny
+          </span>
+        </div>
 
-    <header class="max-w-4xl mb-16">
-      <div class="inline-flex items-center gap-3 mb-6 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20">
-        <span class="flex h-2 w-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]"></span>
-        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-green-400">Przejrzyste Koszty</span>
-      </div>
+        <h2 class="text-5xl lg:text-7xl font-black tracking-tighter text-white mb-6 leading-[0.95]">
+          Ile kosztuje
+          <span class="block text-green-500 italic">uporządkowanie procesu?</span>
+        </h2>
 
-      <h2 class="text-5xl lg:text-7xl font-black tracking-tighter text-white mb-6 leading-[0.95]">
-        Inwestycja, która <br/><span class="text-green-500 italic">błyskawicznie się zwraca.</span>
-      </h2>
+        <p class="text-xl text-slate-400 max-w-3xl leading-relaxed">
+          Nie wyceniamy samego „Excela”, „Pythona” albo „API”. Patrzymy na proces:
+          ile danych trzeba zebrać, co firma robi ręcznie i jaki efekt ma dostać na końcu —
+          raport, kalkulator, panel, aplikację albo automatyczny eksport.
+        </p>
 
-      <p class="text-xl text-slate-400 max-w-2xl leading-relaxed">
-        Nie sprzedajemy "tabelek". Budujemy rozwiązania, które spłacają się same w ciągu pierwszych miesięcy dzięki zaoszczędzonym nadgodzinom Twojego zespołu.
-      </p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+          <a
+            href="/kontakt/"
+            class="bg-green-600 hover:bg-green-500 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-xs transition-all shadow-xl shadow-green-900/20 text-center flex items-center justify-center gap-2"
+          >
+            Poproś o wycenę <i class="fas fa-arrow-right"></i>
+          </a>
 
-      <div class="mt-8 flex flex-col sm:flex-row gap-4">
-        <a href="/kontakt/" class="bg-green-600 hover:bg-green-500 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-xs transition-all shadow-xl shadow-green-900/20 text-center flex items-center justify-center gap-2">
-          Zamów darmowy audyt <i class="fas fa-arrow-right"></i>
-        </a>
-        <a href="/cennik/" class="border-2 border-white/15 hover:border-white/30 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-xs transition-all text-center">
-          Zobacz pełny cennik
-        </a>
-      </div>
-    </header>
-
-    <div class="grid md:grid-cols-3 gap-8 items-stretch">
-
-      <div class="bg-slate-900/40 border border-slate-800 p-10 lg:p-12 rounded-[2.5rem] hover:bg-slate-900/60 hover:border-green-500/30 transition-all duration-500 group flex flex-col">
-        <div class="flex flex-col h-full">
-          <span class="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-4 block">Fundament</span>
-          <h3 class="text-2xl font-black text-white mb-2 uppercase tracking-tight">Makra i Formuły</h3>
-          <div class="text-5xl font-black text-green-500 mb-2 tracking-tighter">od 490 zł</div>
-          <span class="text-[11px] text-slate-500 font-bold uppercase tracking-wider block mb-8">* Wycena netto</span>
-
-          <p class="text-slate-400 mb-10 text-sm leading-relaxed">
-            Eliminacja powtarzalnych zadań. Jeden dedykowany przycisk, który wykonuje Twoją codzienną, godzinną pracę w 3 sekundy.
-          </p>
-
-          <ul class="space-y-4 text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-12 grow">
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> Automatyzacja w VBA</li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> Generowanie dokumentów PDF</li>
-            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> Naprawa uszkodzonych plików</li>
-          </ul>
-
-          <a href="/kontakt/" class="block text-center py-4 rounded-2xl border-2 border-slate-800 text-white font-black text-xs uppercase tracking-widest hover:bg-white hover:text-slate-950 transition-all duration-300">
-            Wyceń makro
+          <a
+            href="/cennik/"
+            class="border-2 border-white/15 hover:border-white/30 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-xs transition-all text-center"
+          >
+            Zobacz pełny cennik
           </a>
         </div>
-      </div>
+      </header>
 
-      <div class="bg-slate-900 border border-green-500/30 p-10 lg:p-12 rounded-[2.5rem] relative group overflow-hidden shadow-2xl shadow-green-900/20 scale-[1.05] z-10 flex flex-col">
-        <div class="absolute -top-20 -right-20 w-40 h-40 bg-green-500/10 rounded-full blur-3xl group-hover:bg-green-500/20 transition-all"></div>
+      <aside class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6">
+        <h3 class="mb-4 text-sm font-black uppercase tracking-widest text-white">
+          Przykładowe obszary
+        </h3>
 
-        <div class="flex flex-col h-full relative z-10">
-          <span class="text-[10px] font-black text-green-400 uppercase tracking-widest mb-4 block flex justify-between">Dedykowane Systemy <span class="bg-green-500/20 text-green-400 px-2 py-0.5 rounded">Rekomendowane</span></span>
-          <h3 class="text-2xl font-black text-white mb-2 uppercase tracking-tight">Wdrożenie / System</h3>
-          <div class="text-4xl lg:text-5xl font-black text-white mb-2 tracking-tighter">Wycena w 24h</div>
-          <span class="text-[11px] text-green-500 font-bold uppercase tracking-wider block mb-8">* Darmowy Audyt pod NDA</span>
-
-          <p class="text-slate-400 mb-10 text-sm leading-relaxed">
-            Kompleksowe systemy (CRM, Flota, Magazyn) budowane od zera pod Twoje procesy. Zwracają do kilkudziesięciu godzin w miesiącu.
-          </p>
-
-          <ul class="space-y-4 text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-12 grow">
-            <li class="flex items-center gap-3"><i class="fas fa-bolt text-green-500"></i> Zautomatyzowany obieg danych</li>
-            <li class="flex items-center gap-3"><i class="fas fa-bolt text-green-500"></i> Integracja wielu plików w jeden</li>
-            <li class="flex items-center gap-3"><i class="fas fa-bolt text-green-500"></i> Dashboardy Menadżerskie</li>
-          </ul>
-
-          <a href="/kontakt/" class="block text-center py-5 bg-green-600 rounded-2xl text-white font-black text-xs uppercase tracking-[0.2em] shadow-xl shadow-green-900/40 hover:bg-green-500 hover:-translate-y-1 transition-all duration-300">
-            Opisz proces do wyceny
-          </a>
+        <div class="flex flex-wrap gap-2">
+          {
+            processAreas.map((area) => (
+              <span class="rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-xs font-bold text-slate-300">
+                {area}
+              </span>
+            ))
+          }
         </div>
-      </div>
 
-      <div class="bg-slate-900/40 border border-slate-800 p-10 lg:p-12 rounded-[2.5rem] hover:bg-slate-900/60 hover:border-indigo-500/30 transition-all duration-500 group flex flex-col">
-        <div class="flex flex-col h-full">
-          <span class="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-4 block">Nowoczesna Analityka</span>
-          <h3 class="text-2xl font-black text-white mb-2 uppercase tracking-tight">Excel + AI / API</h3>
-          <div class="text-5xl font-black text-indigo-400 mb-2 tracking-tighter">od 1200 zł</div>
-          <span class="text-[11px] text-slate-500 font-bold uppercase tracking-wider block mb-8">* Wycena netto</span>
-
-          <p class="text-slate-400 mb-10 text-sm leading-relaxed">
-            Wznosimy Twoją organizację na najwyższy poziom. Integracja arkuszy ze sztuczną inteligencją lub zewnętrznymi systemami ERP.
-          </p>
-
-          <ul class="space-y-4 text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-12 grow">
-            <li class="flex items-center gap-3"><i class="fas fa-brain text-indigo-400"></i> Integracja API OpenAI (ChatGPT)</li>
-            <li class="flex items-center gap-3"><i class="fas fa-database text-indigo-400"></i> Pobieranie danych (ERP / SQL)</li>
-            <li class="flex items-center gap-3"><i class="fas fa-chart-pie text-indigo-400"></i> Zaawansowane Power Query</li>
-          </ul>
-
-          <a href="/kontakt/" class="block text-center py-4 rounded-2xl border-2 border-slate-800 text-white font-black text-xs uppercase tracking-widest hover:bg-white hover:text-slate-950 transition-all duration-300">
-            Zapytaj o technologię
-          </a>
-        </div>
-      </div>
-
+        <p class="mt-5 text-sm font-medium leading-relaxed text-slate-500">
+          Technologie dobieramy później: Excel, Power BI, Python, API, SQL, C# albo Power Automate.
+        </p>
+      </aside>
     </div>
 
-    <p class="mt-14 text-center text-slate-600 text-[10px] font-bold uppercase tracking-[0.3em] opacity-50">
-      * Prezentowane ceny mają charakter informacyjny i nie stanowią oferty handlowej. Każdy projekt wyceniamy bezpłatnie na podstawie przesłanego wzoru danych.
-    </p>
+    <div class="grid md:grid-cols-3 gap-8 items-stretch">
+      {
+        offers.map((offer) => (
+          <article
+            class={`relative flex flex-col rounded-[2.5rem] border p-10 lg:p-12 transition-all duration-500 ${
+              offer.featured
+                ? "bg-slate-900 border-green-500/30 shadow-2xl shadow-green-900/20 scale-[1.03] z-10"
+                : "bg-slate-900/40 border-slate-800 hover:bg-slate-900/60 hover:border-green-500/30"
+            }`}
+          >
+            {offer.featured && (
+              <div class="absolute -top-4 left-10 rounded-full bg-green-600 px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-white shadow-xl shadow-green-900/30">
+                Rekomendowane
+              </div>
+            )}
+
+            <span
+              class={`text-[10px] font-black uppercase tracking-widest mb-4 block ${
+                offer.featured ? "text-green-400" : "text-slate-600"
+              }`}
+            >
+              {offer.label}
+            </span>
+
+            <h3 class="text-2xl font-black text-white mb-4 uppercase tracking-tight leading-tight">
+              {offer.title}
+            </h3>
+
+            <div
+              class={`mb-2 tracking-tighter font-black ${
+                offer.featured
+                  ? "text-4xl lg:text-5xl text-white"
+                  : offer.accent === "indigo"
+                    ? "text-5xl text-indigo-400"
+                    : "text-5xl text-green-500"
+              }`}
+            >
+              {offer.price}
+            </div>
+
+            <span
+              class={`text-[11px] font-bold uppercase tracking-wider block mb-8 ${
+                offer.featured ? "text-green-500" : "text-slate-500"
+              }`}
+            >
+              * Wycena netto
+            </span>
+
+            <p class="text-slate-400 mb-10 text-sm leading-relaxed">
+              {offer.description}
+            </p>
+
+            <ul
+              class={`space-y-4 text-[11px] font-bold uppercase tracking-wider mb-12 grow ${
+                offer.featured ? "text-slate-300" : "text-slate-500"
+              }`}
+            >
+              {
+                offer.items.map((item) => (
+                  <li class="flex items-start gap-3">
+                    <i
+                      class={`fas fa-check-circle mt-0.5 ${
+                        offer.accent === "indigo" ? "text-indigo-400" : "text-green-500"
+                      }`}
+                    >
+                    </i>
+                    <span>{item}</span>
+                  </li>
+                ))
+              }
+            </ul>
+
+            <a
+              href={offer.href}
+              class={`block text-center rounded-2xl font-black text-xs uppercase tracking-widest transition-all duration-300 ${
+                offer.featured
+                  ? "py-5 bg-green-600 text-white shadow-xl shadow-green-900/40 hover:bg-green-500 hover:-translate-y-1"
+                  : "py-4 border-2 border-slate-800 text-white hover:bg-white hover:text-slate-950"
+              }`}
+            >
+              {offer.cta}
+            </a>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="mt-14 grid gap-6 rounded-[2.5rem] border border-white/10 bg-white/[0.04] p-7 md:grid-cols-3">
+      <div>
+        <h3 class="mb-3 text-sm font-black uppercase tracking-widest text-white">
+          Możesz zacząć mało
+        </h3>
+        <p class="text-sm font-medium leading-relaxed text-slate-500">
+          Nie każdy temat musi być dużym wdrożeniem. Czasem wystarczy raport, kalkulator,
+          poprawa procesu albo jeden automatyczny eksport.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-sm font-black uppercase tracking-widest text-white">
+          Najpierw zakres, potem cena
+        </h3>
+        <p class="text-sm font-medium leading-relaxed text-slate-500">
+          Do wstępnej wyceny wystarczy opis procesu, screen pliku, przykład raportu albo lista
+          czynności wykonywanych ręcznie.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="mb-3 text-sm font-black uppercase tracking-widest text-white">
+          Dane mogą zostać lokalnie
+        </h3>
+        <p class="text-sm font-medium leading-relaxed text-slate-500">
+          Przy fakturach, KSeF, dokumentach i danych firmowych możemy tworzyć narzędzia działające
+          lokalnie lub w środowisku firmy.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-10 flex flex-col items-center justify-between gap-5 rounded-[2rem] border border-green-500/20 bg-green-500/10 p-6 md:flex-row">
+      <p class="max-w-3xl text-sm font-medium leading-relaxed text-slate-300">
+        Ceny są orientacyjne i nie stanowią oferty handlowej. Dokładny koszt zależy od liczby
+        źródeł danych, reguł, użytkowników, integracji i formy wdrożenia.
+      </p>
+
+      <a
+        href="/cennik/"
+        class="inline-flex shrink-0 items-center justify-center rounded-2xl bg-white px-7 py-4 text-xs font-black uppercase tracking-widest text-slate-950 transition-all hover:-translate-y-1"
+      >
+        Pełny cennik
+      </a>
+    </div>
   </div>
 </section>
