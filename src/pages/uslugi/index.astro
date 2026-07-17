@@ -7,7 +7,7 @@ import Footer from "../../components/Footer.astro";
 const pageTitle =
   "Usługi automatyzacji danych dla firm | Excel, Power BI, Python, API i KSeF";
 const pageDescription =
-  "Automatyzujemy pracę z danymi: arkusze Excel, Power BI, KSeF do Excela, kalkulatory ofertowe, skrypty Python, integracje API i aplikacje dla firm.";
+  "Automatyzujemy pracę z danymi: Excel, Power BI, KSeF do Excela, kalkulatory ofertowe, skrypty Python, integracje API, raporty i aplikacje dla firm.";
 const ogImage = "/biuro3.webp";
 const currentUrl = "https://raporty24.pl/uslugi/";
 
@@ -22,6 +22,97 @@ type ServiceMeta = {
 
 const serviceModules = import.meta.glob("./*.astro", { eager: true });
 
+const serviceTitleOverrides: Record<string, string> = {
+  "pobieranie-email-do-excela": "Pobieranie e-maili do Excela",
+  "raporty-miesieczne-automatyczne": "Automatyczne raporty miesięczne",
+  "automatyzacja-excel-power-query": "Automatyzacja Excel Power Query",
+  "baza-klientow-w-excelu": "Baza klientów w Excelu",
+  "crm-w-excelu": "CRM w Excelu i Google Sheets",
+  "dashboardy-power-bi": "Dashboardy Power BI",
+  "excel-na-zamowienie": "Excel na zamówienie",
+  "lejek-sprzedazy-w-excelu": "Lejek sprzedaży w Excelu",
+  "makra-vba": "Makra VBA",
+  "optymalizacja-excela": "Optymalizacja Excela",
+  "power-bi-dla-firm": "Power BI dla firm",
+  "raporty-power-bi": "Raporty Power BI",
+  "raporty-serwisowe": "Raporty serwisowe",
+  "logistyka-w-excelu": "Logistyka w Excelu",
+  "finanse-w-excelu": "Finanse i controlling",
+  "kalkulatory-produktowe": "Kalkulatory ofertowe",
+  "ksef-do-excela": "KSeF do Excela",
+  "skrypty-python": "Skrypty Python",
+  "integracje-api": "Integracje API",
+};
+
+const serviceCategoryOverrides: Record<string, string> = {
+  "pobieranie-email-do-excela": "Automatyzacja",
+  "raporty-miesieczne-automatyczne": "Raporty",
+  "automatyzacja-excel-power-query": "Excel",
+  "baza-klientow-w-excelu": "Excel",
+  "crm-w-excelu": "CRM",
+  "dashboardy-power-bi": "Power BI",
+  "excel-na-zamowienie": "Excel",
+  "lejek-sprzedazy-w-excelu": "Sprzedaż",
+  "makra-vba": "Excel",
+  "optymalizacja-excela": "Excel",
+  "power-bi-dla-firm": "Power BI",
+  "raporty-power-bi": "Power BI",
+  "raporty-serwisowe": "Serwis",
+  "logistyka-w-excelu": "Logistyka",
+  "finanse-w-excelu": "Finanse",
+  "kalkulatory-produktowe": "Wyceny",
+  "ksef-do-excela": "KSeF",
+  "skrypty-python": "Python",
+  "integracje-api": "API",
+};
+
+const serviceDescriptions: Record<string, string> = {
+  "pobieranie-email-do-excela":
+    "Automatyczne pobieranie załączników z poczty, zapisywanie plików i przygotowanie danych do raportu Excel lub Power BI.",
+  "raporty-miesieczne-automatyczne":
+    "Raporty cykliczne, które odświeżają dane z plików, folderów lub systemów i ograniczają ręczne składanie zestawień.",
+  "automatyzacja-excel-power-query":
+    "Porządkowanie, łączenie i odświeżanie danych w Excelu za pomocą Power Query bez ręcznego kopiowania tabel.",
+  "baza-klientow-w-excelu":
+    "Praktyczna baza klientów, kontaktów, statusów i historii działań, gdy firma nie potrzebuje jeszcze dużego systemu CRM.",
+  "crm-w-excelu":
+    "Prosty CRM w Excelu lub Google Sheets do obsługi leadów, klientów, ofert, statusów i działań sprzedażowych.",
+  "dashboardy-power-bi":
+    "Dashboardy Power BI dla zarządu, sprzedaży, finansów, logistyki i zespołów, które potrzebują czytelnych KPI.",
+  "excel-na-zamowienie":
+    "Arkusze Excel dopasowane do procesu firmy: formularze, raporty, kalkulatory, walidacje, makra i automatyzacje.",
+  "lejek-sprzedazy-w-excelu":
+    "Lejek sprzedaży, statusy ofert, prognoza przychodów i kontrola działań handlowych w prostym narzędziu Excel.",
+  "makra-vba":
+    "Makra VBA do automatycznego formatowania, generowania plików, raportów, eksportów i powtarzalnych operacji w Excelu.",
+  "optymalizacja-excela":
+    "Przyspieszanie wolnych plików Excel, porządkowanie formuł, Power Query, tabel i struktury danych w arkuszu.",
+  "power-bi-dla-firm":
+    "Wdrożenie Power BI dla firmy: model danych, dashboardy, KPI, odświeżanie raportów i widoki dla zespołu.",
+  "raporty-power-bi":
+    "Raporty Power BI z danych sprzedażowych, finansowych, operacyjnych, magazynowych lub logistycznych.",
+  "raporty-serwisowe":
+    "Raporty serwisowe, zlecenia, statusy, koszty, czas pracy i historia obsługi klientów w jednym zestawieniu.",
+  "logistyka-w-excelu":
+    "Narzędzia Excel dla logistyki: flota, trasy, koszty transportu, harmonogramy, magazyn i raporty operacyjne.",
+  "finanse-w-excelu":
+    "Raporty finansowe, controlling, koszty, marże, budżety, zestawienia miesięczne i kontrola wyników firmy.",
+  "kalkulatory-produktowe":
+    "Kalkulatory ofertowe, konfiguratory produktów, formularze zamówień B2B i automatyczne wyceny dla handlowców.",
+  "ksef-do-excela":
+    "Pobieranie faktur z KSeF, filtrowanie dokumentów i eksport danych do Excel, CSV lub XML dla księgowości.",
+  "skrypty-python":
+    "Skrypty Python do plików CSV, XML, PDF, folderów, raportów, eksportów i powtarzalnych zadań firmowych.",
+  "integracje-api":
+    "Integracje API z systemami firmowymi, CRM, ERP, sklepami, plikami i bazami danych w jeden raport lub proces.",
+};
+
+function prettifyTitle(slug: string) {
+  return slug
+    .replaceAll("-", " ")
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
 const allServices = Object.entries(serviceModules)
   .filter(([path]) => path !== "./index.astro" && !path.endsWith("/index.astro"))
   .map(([path, module]) => {
@@ -31,11 +122,15 @@ const allServices = Object.entries(serviceModules)
     return {
       slug,
       href: `/uslugi/${slug}/`,
-      title: meta.title ?? slug.replaceAll("-", " "),
+      title: serviceTitleOverrides[slug] ?? meta.title ?? prettifyTitle(slug),
       order: typeof meta.order === "number" ? meta.order : 999,
       menu: meta.menu ?? true,
-      description: meta.description ?? "",
-      category: meta.category ?? meta.group ?? "Pozostałe",
+      description:
+        serviceDescriptions[slug] ??
+        meta.description ??
+        "Opisz swój proces, a dobierzemy narzędzie: Excel, Power BI, Python, API albo prostą aplikację.",
+      category:
+        serviceCategoryOverrides[slug] ?? meta.category ?? meta.group ?? "Automatyzacja",
     };
   })
   .filter((service) => service.menu !== false)
@@ -45,42 +140,42 @@ const featuredServices = [
   {
     title: "Arkusze Excel",
     description:
-      "Arkusze Excel na zamówienie, makra VBA, Power Query, formularze, kalkulatory i automatyzacje raportów.",
+      "Arkusze Excel na zamówienie: raporty, kalkulatory, formularze, Power Query, makra i automatyzacje codziennej pracy.",
     href: "/uslugi/excel-na-zamowienie/",
     icon: "fas fa-file-excel",
   },
   {
     title: "KSeF do Excela",
     description:
-      "Pobieranie faktur z KSeF, eksport do Excel, CSV i XML oraz porządkowanie danych dla księgowości.",
+      "Pobieranie faktur z KSeF, filtrowanie dokumentów i eksport do Excel, CSV lub XML dla księgowości i właściciela firmy.",
     href: "/uslugi/ksef-do-excela/",
     icon: "fas fa-file-invoice",
   },
   {
     title: "Kalkulatory ofertowe",
     description:
-      "Kalkulatory produktowe, konfiguratory, formularze zamówień B2B i automatyczne wyceny.",
+      "Kalkulatory produktowe, konfiguratory, formularze zamówień B2B i automatyczne wyceny bez liczenia wszystkiego ręcznie.",
     href: "/uslugi/kalkulatory-produktowe/",
     icon: "fas fa-calculator",
   },
   {
     title: "Skrypty Python",
     description:
-      "Automatyzacja pracy z plikami, raportami, eksportami danych i aplikacjami desktopowymi.",
+      "Automatyzacja plików CSV, XML, PDF, folderów, raportów, eksportów i powtarzalnych zadań firmowych.",
     href: "/uslugi/skrypty-python/",
     icon: "fas fa-code",
   },
   {
     title: "Integracje API",
     description:
-      "Pobieranie danych z systemów, połączenia CRM, ERP, sklepów, raportów i aplikacji firmowych.",
+      "Łączenie danych z systemów, sklepów, CRM, ERP i aplikacji firmowych w jeden raport, bazę albo proces.",
     href: "/uslugi/integracje-api/",
     icon: "fas fa-plug",
   },
   {
     title: "Dashboardy Power BI",
     description:
-      "Raporty zarządcze, KPI, sprzedaż, koszty, flota i wyniki firmy w czytelnych dashboardach.",
+      "Raporty zarządcze, KPI, sprzedaż, koszty, flota i wyniki firmy w czytelnych dashboardach Power BI.",
     href: "/uslugi/dashboardy-power-bi/",
     icon: "fas fa-chart-pie",
   },
@@ -90,7 +185,7 @@ const problemCards = [
   {
     title: "Za dużo ręcznej pracy w Excelu",
     description:
-      "Jeśli zespół kopiuje dane, skleja raporty i poprawia pliki ręcznie, zwykle można to skrócić do kilku kliknięć.",
+      "Jeśli zespół kopiuje dane, skleja raporty i poprawia pliki ręcznie, zwykle można skrócić ten proces do kilku kliknięć.",
     icon: "fas fa-clock",
   },
   {
@@ -107,6 +202,37 @@ const problemCards = [
   },
 ];
 
+const solutionPaths = [
+  {
+    title: "Faktury i dokumenty",
+    description:
+      "KSeF, faktury z maila, XML, CSV, rejestry dokumentów i eksporty dla księgowości.",
+    href: "/uslugi/ksef-do-excela/",
+    icon: "fas fa-file-invoice",
+  },
+  {
+    title: "Raporty i KPI",
+    description:
+      "Raporty miesięczne, dashboardy Power BI, Excel, controlling, sprzedaż i wyniki firmy.",
+    href: "/uslugi/dashboardy-power-bi/",
+    icon: "fas fa-chart-line",
+  },
+  {
+    title: "Wyceny i sprzedaż",
+    description:
+      "Kalkulatory ofertowe, konfiguratory produktów, lejki sprzedaży i automatyczne podsumowania.",
+    href: "/uslugi/kalkulatory-produktowe/",
+    icon: "fas fa-calculator",
+  },
+  {
+    title: "Systemy i integracje",
+    description:
+      "Python, API, pliki, foldery, eksporty, bazy danych i małe aplikacje pod proces firmy.",
+    href: "/uslugi/integracje-api/",
+    icon: "fas fa-plug",
+  },
+];
+
 const servicesSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -116,6 +242,7 @@ const servicesSchema = {
     position: index + 1,
     url: `https://raporty24.pl${service.href}`,
     name: service.title,
+    description: service.description,
   })),
 };
 ---
@@ -127,10 +254,7 @@ const servicesSchema = {
     <main class="pt-20">
       <section class="relative overflow-hidden bg-slate-950 py-24 text-white lg:py-36">
         <div class="absolute inset-0 opacity-20">
-          <div
-            class="absolute inset-0 bg-[radial-gradient(#1e293b_1.5px,transparent_1.5px)] [background-size:32px_32px]"
-          >
-          </div>
+          <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1.5px,transparent_1.5px)] [background-size:32px_32px]"></div>
         </div>
 
         <div class="absolute -right-24 top-0 h-96 w-96 rounded-full bg-green-600/10 blur-[120px]"></div>
@@ -138,9 +262,7 @@ const servicesSchema = {
 
         <div class="container relative z-10 mx-auto px-4">
           <div class="max-w-5xl">
-            <span
-              class="mb-8 inline-block rounded-full border border-green-500/20 bg-green-500/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.3em] text-green-400"
-            >
+            <span class="mb-8 inline-block rounded-full border border-green-500/20 bg-green-500/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.3em] text-green-400">
               Katalog usług
             </span>
 
@@ -152,8 +274,9 @@ const servicesSchema = {
             </h1>
 
             <p class="mb-12 max-w-3xl text-xl font-medium leading-relaxed text-slate-400 md:text-2xl">
-              Tworzymy narzędzia w Excelu, Power BI, Pythonie i API: automatyzacje raportów,
-              KSeF do Excela, kalkulatory ofertowe, integracje i aplikacje desktopowe.
+              Tworzymy narzędzia w Excelu, Power BI, Pythonie i API: raporty, KSeF do Excela,
+              kalkulatory ofertowe, integracje, skrypty i aplikacje, które zdejmują z firmy
+              ręczne kopiowanie danych.
             </p>
 
             <div class="flex flex-col gap-4 sm:flex-row">
@@ -198,7 +321,7 @@ const servicesSchema = {
               featuredServices.map((service) => (
                 <a
                   href={service.href}
-                  class="group flex min-h-[310px] flex-col rounded-[2.5rem] border border-slate-100 bg-slate-50 p-8 transition-all hover:-translate-y-1 hover:border-green-500/40 hover:bg-white hover:shadow-2xl"
+                  class="group flex min-h-[320px] flex-col rounded-[2.5rem] border border-slate-100 bg-slate-50 p-8 transition-all hover:-translate-y-1 hover:border-green-500/40 hover:bg-white hover:shadow-2xl"
                 >
                   <div class="mb-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-950 text-green-400 transition-all group-hover:bg-green-600 group-hover:text-white">
                     <i class={`${service.icon} text-xl`}></i>
@@ -216,6 +339,48 @@ const servicesSchema = {
                     Zobacz szczegóły
                     <i class="fas fa-chevron-right text-[10px]"></i>
                   </span>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-slate-50 py-24 text-slate-950">
+        <div class="container mx-auto px-4">
+          <div class="mb-16 max-w-4xl">
+            <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+              Po problemie, nie po technologii
+            </span>
+
+            <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+              Nie musisz wiedzieć, czy potrzebujesz Excela, Power BI czy aplikacji
+            </h2>
+
+            <p class="text-lg font-medium leading-relaxed text-slate-600 md:text-xl">
+              Wystarczy, że opiszesz proces, który dziś robicie ręcznie. Dobierzemy narzędzie
+              do problemu: od prostego arkusza po skrypt Python, API albo aplikację desktopową.
+            </p>
+          </div>
+
+          <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {
+              solutionPaths.map((item) => (
+                <a
+                  href={item.href}
+                  class="group rounded-[2rem] border border-slate-100 bg-white p-7 shadow-sm transition-all hover:-translate-y-1 hover:border-green-500/40 hover:shadow-xl"
+                >
+                  <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-50 text-green-600 transition-all group-hover:bg-green-600 group-hover:text-white">
+                    <i class={`${item.icon} text-xl`}></i>
+                  </div>
+
+                  <h3 class="mb-3 text-xl font-black uppercase leading-tight tracking-tight text-slate-950">
+                    {item.title}
+                  </h3>
+
+                  <p class="text-sm font-medium leading-relaxed text-slate-600">
+                    {item.description}
+                  </p>
                 </a>
               ))
             }
@@ -274,8 +439,8 @@ const servicesSchema = {
             </h2>
 
             <p class="text-lg font-medium leading-relaxed text-slate-600 md:text-xl">
-              Poniżej znajdziesz pełny katalog podstron usługowych. Każda z nich opisuje
-              konkretny typ wdrożenia, przykłady zastosowań i sposób pracy.
+              Poniżej znajdziesz podstrony usługowe pod konkretne potrzeby: raporty, KSeF,
+              Excel, Power BI, Python, API, sprzedaż, finanse, logistykę i automatyzację dokumentów.
             </p>
           </div>
 
@@ -284,7 +449,7 @@ const servicesSchema = {
               allServices.map((service) => (
                 <a
                   href={service.href}
-                  class="group flex min-h-[210px] flex-col rounded-2xl border border-slate-100 bg-slate-50 p-6 transition-all hover:-translate-y-1 hover:border-green-500/40 hover:bg-white hover:shadow-xl"
+                  class="group flex min-h-[235px] flex-col rounded-2xl border border-slate-100 bg-slate-50 p-6 transition-all hover:-translate-y-1 hover:border-green-500/40 hover:bg-white hover:shadow-xl"
                 >
                   <div class="mb-3 text-[10px] font-black uppercase tracking-[0.25em] text-green-600">
                     {service.category}
@@ -295,8 +460,7 @@ const servicesSchema = {
                   </h3>
 
                   <p class="flex-1 text-xs font-medium leading-relaxed text-slate-500">
-                    {service.description ||
-                      "Szczegółowy zakres prac oraz przykłady zastosowań dla firm."}
+                    {service.description}
                   </p>
 
                   <div class="mt-5 flex items-center justify-between border-t border-slate-100 pt-4 text-[10px] font-black uppercase tracking-[0.2em] text-green-600">
