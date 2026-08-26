@@ -1,85 +1,662 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
-import HeroService from "../../components/HeroService.astro";
 import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
 
-const title = "Baza Klientów w Excelu – Rejestr i Porządek w Danych | Raporty24";
-const description = "Uporządkuj dane swoich klientów. Budujemy profesjonalne bazy kontaktów w Excelu z walidacją NIP, e-mail i automatycznymi raportami. Koniec z duplikatami!";
+const title = "Baza klientów w Excelu – rejestr i porządek | Raporty24";
 
-const ogImage = "/biuro3.webp"; // Możesz tu dać dedykowaną grafikę bazy klientów, jeśli ją masz
-const currentUrl = "https://raporty24.pl/uslugi/baza-klientow-w-excelu/"; // upewnij się, że taki jest slug tej strony
+const description =
+  "Baza klientów w Excelu z wyszukiwarką, walidacją danych, statusami i historią kontaktów. Tworzymy rozwiązania dopasowane do procesu Twojej firmy.";
+
+const ogImage = "/biuro3.webp";
+const currentUrl = "https://raporty24.pl/uslugi/baza-klientow-w-excelu/";
 
 export const service = {
   title: "Baza klientów w Excelu",
   order: 10,
   menu: true,
-  category: "Excel", // opcjonalnie (do grupowania)
+  category: "Excel",
 };
 ---
 
-<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
+<BaseLayout
+  title={title}
+  description={description}
+  image={ogImage}
+  url={currentUrl}
+>
   <div x-data="app" x-cloak>
     <Header />
-    
-    <HeroService 
-      title="Bezpieczna i czysta" 
-      highlight="Baza Klientów w Excelu" 
-      subtitle="Koniec z bałaganem w kontaktach. Budujemy inteligentne rejestry klientów, które pilnują poprawności danych i ułatwiają codzienną pracę."
-    />
 
-    <section class="py-24 bg-slate-950 text-white">
-      <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-black uppercase tracking-tighter mb-16 text-center">Stop <span class="text-green-500">bałaganowi w danych</span></h2>
-        <div class="grid md:grid-cols-2 gap-12">
-          <div class="flex gap-6">
-            <div class="shrink-0 w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 border border-red-500/20">
-              <i class="fas fa-times"></i>
-            </div>
-            <div>
-              <h4 class="font-bold text-xl mb-2 text-white">Duplikaty i błędy</h4>
-              <p class="text-slate-400 text-sm leading-relaxed">Ręczne wpisywanie często kończy się tym samym klientem wpisanym pod trzema różnymi nazwami. Nasze mechanizmy blokują powstawanie duplikatów.</p>
-            </div>
-          </div>
-          <div class="flex gap-6">
-            <div class="shrink-0 w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 border border-red-500/20">
-              <i class="fas fa-times"></i>
-            </div>
-            <div>
-              <h4 class="font-bold text-xl mb-2 text-white">Nieaktualne informacje</h4>
-              <p class="text-slate-400 text-sm leading-relaxed">Bez struktury trudno o historię zmian. My wprowadzamy logi aktywności i jasne statusy relacji z klientem.</p>
+    <!-- =======================================================
+         HERO
+    ======================================================== -->
+    <main>
+      <section class="relative overflow-hidden bg-slate-950 text-white">
+        <div
+          class="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_top_right,rgba(34,197,94,0.16),transparent_38%)]"
+        ></div>
+
+        <div class="relative container mx-auto px-5 py-24 lg:py-32">
+          <div class="max-w-4xl">
+
+            <p
+              class="mb-5 text-sm font-bold uppercase tracking-[0.18em] text-green-400"
+            >
+              Excel dla firm
+            </p>
+
+            <h1
+              class="max-w-4xl text-4xl font-black leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
+            >
+              Baza klientów w Excelu
+              <span class="block mt-2 text-green-400">
+                – uporządkowany rejestr klientów dla firmy
+              </span>
+            </h1>
+
+            <p
+              class="mt-8 max-w-3xl text-lg leading-8 text-slate-300 lg:text-xl lg:leading-9"
+            >
+              Tworzymy dopasowane do firmy bazy klientów w Excelu:
+              od prostego rejestru kontaktów po rozbudowane narzędzie
+              z wyszukiwarką, statusami, historią kontaktów,
+              walidacją danych i automatycznymi zestawieniami.
+            </p>
+
+            <div class="mt-10 flex flex-wrap gap-4">
+              <a
+                href="#kontakt"
+                class="inline-flex items-center justify-center rounded-xl bg-green-500 px-6 py-3.5 font-bold text-slate-950 transition hover:bg-green-400"
+              >
+                Zapytaj o bazę klientów
+              </a>
+
+              <a
+                href="#funkcje"
+                class="inline-flex items-center justify-center rounded-xl border border-slate-700 px-6 py-3.5 font-semibold text-white transition hover:border-slate-500 hover:bg-slate-900"
+              >
+                Zobacz możliwości
+              </a>
             </div>
           </div>
         </div>
+      </section>
+
+      <!-- =======================================================
+           PROBLEM
+      ======================================================== -->
+      <section class="bg-white py-20 lg:py-28">
+        <div class="container mx-auto px-5">
+          <div class="mx-auto max-w-6xl">
+
+            <div class="max-w-3xl">
+              <p
+                class="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-green-600"
+              >
+                Porządek zamiast chaosu
+              </p>
+
+              <h2
+                class="text-3xl font-black leading-tight tracking-tight text-slate-950 sm:text-4xl"
+              >
+                Gdy zwykła lista klientów przestaje wystarczać
+              </h2>
+
+              <p class="mt-6 text-lg leading-8 text-slate-600">
+                Prosta tabela z nazwą firmy, telefonem i adresem e-mail
+                działa tylko do pewnego momentu. Wraz ze wzrostem liczby
+                klientów pojawiają się duplikaty, brakujące dane,
+                nieaktualne kontakty i problemy z odnalezieniem
+                właściwych informacji.
+              </p>
+            </div>
+
+            <div class="mt-12 grid gap-6 md:grid-cols-2">
+
+              <article
+                class="rounded-2xl border border-slate-200 bg-slate-50 p-7 lg:p-8"
+              >
+                <div
+                  class="mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-red-50 text-red-500"
+                >
+                  <i class="fas fa-copy"></i>
+                </div>
+
+                <h3 class="text-xl font-bold text-slate-950">
+                  Duplikaty i różne wersje klienta
+                </h3>
+
+                <p class="mt-3 leading-7 text-slate-600">
+                  Ten sam klient może zostać zapisany kilka razy:
+                  pod inną nazwą, innym numerem telefonu albo przez
+                  innego pracownika. Dobrze zaprojektowana baza pomaga
+                  ograniczyć takie sytuacje.
+                </p>
+              </article>
+
+              <article
+                class="rounded-2xl border border-slate-200 bg-slate-50 p-7 lg:p-8"
+              >
+                <div
+                  class="mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-red-50 text-red-500"
+                >
+                  <i class="fas fa-search"></i>
+                </div>
+
+                <h3 class="text-xl font-bold text-slate-950">
+                  Trudne wyszukiwanie informacji
+                </h3>
+
+                <p class="mt-3 leading-7 text-slate-600">
+                  Gdy danych jest dużo, ręczne przewijanie arkusza
+                  przestaje być wygodne. Możemy dodać wyszukiwarkę,
+                  filtry i szybkie podglądy najważniejszych informacji.
+                </p>
+              </article>
+
+              <article
+                class="rounded-2xl border border-slate-200 bg-slate-50 p-7 lg:p-8"
+              >
+                <div
+                  class="mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-red-50 text-red-500"
+                >
+                  <i class="fas fa-user-clock"></i>
+                </div>
+
+                <h3 class="text-xl font-bold text-slate-950">
+                  Brak historii kontaktu
+                </h3>
+
+                <p class="mt-3 leading-7 text-slate-600">
+                  Bez uporządkowanej struktury trudno sprawdzić,
+                  kiedy klient był ostatnio obsługiwany, kto się
+                  z nim kontaktował i jaki jest kolejny krok.
+                </p>
+              </article>
+
+              <article
+                class="rounded-2xl border border-slate-200 bg-slate-50 p-7 lg:p-8"
+              >
+                <div
+                  class="mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-red-50 text-red-500"
+                >
+                  <i class="fas fa-chart-line"></i>
+                </div>
+
+                <h3 class="text-xl font-bold text-slate-950">
+                  Dane są, ale trudno je analizować
+                </h3>
+
+                <p class="mt-3 leading-7 text-slate-600">
+                  Sama lista klientów nie odpowiada na pytania:
+                  ilu klientów jest aktywnych, kto wymaga kontaktu
+                  i jak wygląda struktura bazy. Możemy przygotować
+                  automatyczne zestawienia i dashboard.
+                </p>
+              </article>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================
+           FUNKCJE
+      ======================================================== -->
+      <section id="funkcje" class="bg-slate-50 py-20 lg:py-28">
+        <div class="container mx-auto px-5">
+          <div class="mx-auto max-w-6xl">
+
+            <div class="mx-auto max-w-3xl text-center">
+              <p
+                class="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-green-600"
+              >
+                Funkcje
+              </p>
+
+              <h2
+                class="text-3xl font-black tracking-tight text-slate-950 sm:text-4xl"
+              >
+                Co może zawierać baza klientów w Excelu?
+              </h2>
+
+              <p class="mt-6 text-lg leading-8 text-slate-600">
+                Zakres rozwiązania dobieramy do procesu firmy.
+                Nie dokładamy funkcji tylko dlatego, że „mogą się przydać”.
+                Baza ma być szybka, czytelna i wygodna w codziennej pracy.
+              </p>
+            </div>
+
+            <div class="mt-14 overflow-hidden rounded-2xl border border-slate-200 bg-white">
+              <div class="overflow-x-auto">
+                <table class="w-full min-w-[720px] text-left">
+                  <thead class="bg-slate-950 text-white">
+                    <tr>
+                      <th class="px-6 py-5 text-sm font-bold">
+                        Funkcja
+                      </th>
+                      <th class="px-6 py-5 text-sm font-bold">
+                        Zastosowanie
+                      </th>
+                    </tr>
+                  </thead>
+
+                  <tbody class="divide-y divide-slate-200">
+
+                    <tr>
+                      <td class="px-6 py-5 font-bold text-slate-900">
+                        Dane klienta
+                      </td>
+                      <td class="px-6 py-5 leading-7 text-slate-600">
+                        Firma, NIP, osoba kontaktowa, telefon, e-mail,
+                        adres i inne informacje potrzebne w Twoim procesie.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td class="px-6 py-5 font-bold text-slate-900">
+                        Status klienta
+                      </td>
+                      <td class="px-6 py-5 leading-7 text-slate-600">
+                        Np. nowy, aktywny, nieaktywny, do kontaktu,
+                        utracony lub własne statusy.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td class="px-6 py-5 font-bold text-slate-900">
+                        Wyszukiwarka
+                      </td>
+                      <td class="px-6 py-5 leading-7 text-slate-600">
+                        Szybkie odnajdywanie klienta po nazwie, NIP,
+                        telefonie, e-mailu albo innym parametrze.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td class="px-6 py-5 font-bold text-slate-900">
+                        Walidacja danych
+                      </td>
+                      <td class="px-6 py-5 leading-7 text-slate-600">
+                        Kontrola formatów NIP, telefonów i adresów e-mail
+                        oraz ograniczenie błędnych wpisów.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td class="px-6 py-5 font-bold text-slate-900">
+                        Kontrola duplikatów
+                      </td>
+                      <td class="px-6 py-5 leading-7 text-slate-600">
+                        Mechanizmy pomagające wykrywać powtarzające się
+                        rekordy przed zapisaniem kolejnej kopii klienta.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td class="px-6 py-5 font-bold text-slate-900">
+                        Historia kontaktów
+                      </td>
+                      <td class="px-6 py-5 leading-7 text-slate-600">
+                        Daty rozmów, notatki, ustalenia i informacje
+                        o ostatnim kontakcie z klientem.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td class="px-6 py-5 font-bold text-slate-900">
+                        Follow-up
+                      </td>
+                      <td class="px-6 py-5 leading-7 text-slate-600">
+                        Termin następnego kontaktu i lista klientów
+                        wymagających działania.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td class="px-6 py-5 font-bold text-slate-900">
+                        Filtry i segmentacja
+                      </td>
+                      <td class="px-6 py-5 leading-7 text-slate-600">
+                        Podział według handlowca, regionu, branży,
+                        statusu lub dowolnej cechy.
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td class="px-6 py-5 font-bold text-slate-900">
+                        Raporty
+                      </td>
+                      <td class="px-6 py-5 leading-7 text-slate-600">
+                        Podsumowania liczby klientów, statusów,
+                        aktywności i innych KPI.
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================
+           PROCES
+      ======================================================== -->
+      <section class="bg-white py-20 lg:py-28">
+        <div class="container mx-auto px-5">
+          <div class="mx-auto max-w-6xl">
+
+            <div class="max-w-3xl">
+              <p
+                class="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-green-600"
+              >
+                Jak pracujemy
+              </p>
+
+              <h2
+                class="text-3xl font-black tracking-tight text-slate-950 sm:text-4xl"
+              >
+                Jak powstaje baza klientów przygotowana na zamówienie?
+              </h2>
+
+              <p class="mt-6 text-lg leading-8 text-slate-600">
+                Nie zaczynamy od gotowego szablonu. Najpierw sprawdzamy,
+                jak firma naprawdę pracuje z danymi klientów.
+              </p>
+            </div>
+
+            <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+
+              <article class="rounded-2xl border border-slate-200 p-7">
+                <span class="text-sm font-black text-green-600">01</span>
+                <h3 class="mt-4 text-xl font-bold text-slate-950">
+                  Analiza danych
+                </h3>
+                <p class="mt-3 leading-7 text-slate-600">
+                  Sprawdzamy obecne pliki, strukturę danych
+                  i sposób pracy użytkowników.
+                </p>
+              </article>
+
+              <article class="rounded-2xl border border-slate-200 p-7">
+                <span class="text-sm font-black text-green-600">02</span>
+                <h3 class="mt-4 text-xl font-bold text-slate-950">
+                  Projekt struktury
+                </h3>
+                <p class="mt-3 leading-7 text-slate-600">
+                  Ustalamy pola, statusy, filtry i sposób
+                  wyszukiwania informacji.
+                </p>
+              </article>
+
+              <article class="rounded-2xl border border-slate-200 p-7">
+                <span class="text-sm font-black text-green-600">03</span>
+                <h3 class="mt-4 text-xl font-bold text-slate-950">
+                  Automatyzacja
+                </h3>
+                <p class="mt-3 leading-7 text-slate-600">
+                  Dodajemy potrzebne walidacje, raporty,
+                  wyszukiwarki i mechanizmy kontroli.
+                </p>
+              </article>
+
+              <article class="rounded-2xl border border-slate-200 p-7">
+                <span class="text-sm font-black text-green-600">04</span>
+                <h3 class="mt-4 text-xl font-bold text-slate-950">
+                  Gotowe narzędzie
+                </h3>
+                <p class="mt-3 leading-7 text-slate-600">
+                  Otrzymujesz rozwiązanie dopasowane
+                  do rzeczywistego procesu firmy.
+                </p>
+              </article>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================
+           BAZA VS CRM
+      ======================================================== -->
+      <section class="bg-slate-950 py-20 text-white lg:py-28">
+        <div class="container mx-auto px-5">
+          <div class="mx-auto max-w-6xl">
+
+            <div class="max-w-3xl">
+              <p
+                class="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-green-400"
+              >
+                Baza czy CRM?
+              </p>
+
+              <h2
+                class="text-3xl font-black tracking-tight sm:text-4xl"
+              >
+                Baza klientów czy CRM w Excelu?
+              </h2>
+
+              <p class="mt-6 text-lg leading-8 text-slate-300">
+                To dwa podobne rozwiązania, ale nie zawsze służą
+                dokładnie temu samemu celowi.
+              </p>
+            </div>
+
+            <div class="mt-12 grid gap-6 md:grid-cols-2">
+
+              <div
+                class="rounded-2xl border border-slate-800 bg-slate-900 p-8"
+              >
+                <h3 class="text-2xl font-bold">
+                  Baza klientów w Excelu
+                </h3>
+
+                <p class="mt-4 leading-7 text-slate-300">
+                  Dobry wybór, jeśli najważniejsze jest uporządkowanie
+                  danych, szybkie wyszukiwanie klientów, filtrowanie,
+                  historia kontaktów i kontrola jakości informacji.
+                </p>
+              </div>
+
+              <div
+                class="rounded-2xl border border-green-500/30 bg-green-500/5 p-8"
+              >
+                <h3 class="text-2xl font-bold">
+                  CRM w Excelu
+                </h3>
+
+                <p class="mt-4 leading-7 text-slate-300">
+                  Lepszy wybór, jeśli chcesz dodatkowo zarządzać leadami,
+                  etapami sprzedaży, zadaniami handlowców, follow-upami
+                  i całym procesem sprzedażowym.
+                </p>
+
+                <a
+                  href="/uslugi/crm-w-excelu/"
+                  class="mt-6 inline-flex font-bold text-green-400 hover:text-green-300"
+                >
+                  Zobacz CRM w Excelu →
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================
+           FAQ
+      ======================================================== -->
+      <section class="bg-white py-20 lg:py-28">
+        <div class="container mx-auto px-5">
+          <div class="mx-auto max-w-4xl">
+
+            <div class="text-center">
+              <p
+                class="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-green-600"
+              >
+                FAQ
+              </p>
+
+              <h2
+                class="text-3xl font-black tracking-tight text-slate-950 sm:text-4xl"
+              >
+                Najczęstsze pytania o bazę klientów w Excelu
+              </h2>
+            </div>
+
+            <div class="mt-14 space-y-5">
+
+              <details
+                class="group rounded-2xl border border-slate-200 bg-slate-50 p-6"
+              >
+                <summary
+                  class="cursor-pointer list-none text-lg font-bold text-slate-950"
+                >
+                  Czy można przenieść dane z mojej obecnej bazy?
+                </summary>
+
+                <p class="mt-4 leading-7 text-slate-600">
+                  Tak. Możemy uporządkować istniejące dane,
+                  dostosować kolumny i przenieść je do nowej struktury.
+                  Zakres zależy od jakości i formatu obecnych plików.
+                </p>
+              </details>
+
+              <details
+                class="group rounded-2xl border border-slate-200 bg-slate-50 p-6"
+              >
+                <summary
+                  class="cursor-pointer list-none text-lg font-bold text-slate-950"
+                >
+                  Czy baza może wykrywać duplikaty klientów?
+                </summary>
+
+                <p class="mt-4 leading-7 text-slate-600">
+                  Tak. Możemy zastosować kontrolę opartą np. na NIP,
+                  adresie e-mail, numerze telefonu lub innych polach,
+                  które jednoznacznie identyfikują klienta.
+                </p>
+              </details>
+
+              <details
+                class="group rounded-2xl border border-slate-200 bg-slate-50 p-6"
+              >
+                <summary
+                  class="cursor-pointer list-none text-lg font-bold text-slate-950"
+                >
+                  Czy można dodać wyszukiwarkę klientów?
+                </summary>
+
+                <p class="mt-4 leading-7 text-slate-600">
+                  Tak. Baza może posiadać szybką wyszukiwarkę
+                  po nazwie firmy, NIP, telefonie, e-mailu
+                  albo innych wybranych parametrach.
+                </p>
+              </details>
+
+              <details
+                class="group rounded-2xl border border-slate-200 bg-slate-50 p-6"
+              >
+                <summary
+                  class="cursor-pointer list-none text-lg font-bold text-slate-950"
+                >
+                  Czy baza może tworzyć raporty?
+                </summary>
+
+                <p class="mt-4 leading-7 text-slate-600">
+                  Tak. Możemy przygotować zestawienia i dashboardy
+                  pokazujące np. liczbę klientów, statusy,
+                  aktywność handlowców lub inne KPI.
+                </p>
+              </details>
+
+              <details
+                class="group rounded-2xl border border-slate-200 bg-slate-50 p-6"
+              >
+                <summary
+                  class="cursor-pointer list-none text-lg font-bold text-slate-950"
+                >
+                  Czym baza klientów różni się od CRM w Excelu?
+                </summary>
+
+                <p class="mt-4 leading-7 text-slate-600">
+                  Baza klientów koncentruje się głównie na uporządkowaniu
+                  i szybkim dostępie do danych. CRM obejmuje dodatkowo
+                  zarządzanie procesem sprzedaży, leadami, etapami
+                  i zadaniami handlowców.
+                </p>
+              </details>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================
+           INTERNAL LINKING
+      ======================================================== -->
+      <section class="bg-slate-50 py-16">
+        <div class="container mx-auto px-5">
+          <div class="mx-auto max-w-5xl">
+
+            <div
+              class="rounded-3xl border border-slate-200 bg-white p-8 md:p-10"
+            >
+              <h2 class="text-2xl font-black text-slate-950">
+                Potrzebujesz bardziej rozbudowanego rozwiązania?
+              </h2>
+
+              <p class="mt-4 max-w-3xl leading-7 text-slate-600">
+                Jeśli baza klientów ma być częścią większego procesu,
+                możemy połączyć ją z automatyzacją Excela,
+                raportowaniem lub systemem obsługi sprzedaży.
+              </p>
+
+              <div class="mt-6 flex flex-wrap gap-x-6 gap-y-3">
+                <a
+                  href="/uslugi/crm-w-excelu/"
+                  class="font-bold text-green-700 hover:text-green-600"
+                >
+                  CRM w Excelu →
+                </a>
+
+                <a
+                  href="/uslugi/excel-na-zamowienie/"
+                  class="font-bold text-green-700 hover:text-green-600"
+                >
+                  Excel na zamówienie →
+                </a>
+
+                <a
+                  href="/uslugi/automatyzacja-excel-power-query/"
+                  class="font-bold text-green-700 hover:text-green-600"
+                >
+                  Automatyzacja Excel →
+                </a>
+
+                <a
+                  href="/realizacje/"
+                  class="font-bold text-green-700 hover:text-green-600"
+                >
+                  Zobacz realizacje →
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <div id="kontakt">
+        <Contact />
       </div>
-    </section>
+    </main>
 
-    <section class="py-24 bg-white text-slate-900">
-      <div class="container mx-auto px-4">
-        <div class="max-w-3xl mb-16">
-          <h2 class="text-4xl font-black uppercase tracking-tighter mb-6">Co wyróżnia <span class="text-green-600">nasze bazy?</span></h2>
-          <p class="text-lg text-slate-600">Tworzymy systemy ewidencji, które są odporne na błędy użytkownika i dostarczają gotowych odpowiedzi biznesowych.</p>
-        </div>
-        
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="p-8 rounded-3xl bg-slate-50 border border-slate-200">
-            <h5 class="font-bold text-lg mb-4">Walidacja danych</h5>
-            <p class="text-slate-500 text-xs">Automatyczne sprawdzanie poprawności NIP, numerów telefonów i formatów adresów e-mail przy wpisie.</p>
-          </div>
-          <div class="p-8 rounded-3xl bg-slate-50 border border-slate-200">
-            <h5 class="font-bold text-lg mb-4">Wyszukiwanie 360°</h5>
-            <p class="text-slate-500 text-xs">Wyszukiwarki typu "instant" – znajdziesz klienta, ofertę lub notatkę w ułamku sekundy.</p>
-          </div>
-          <div class="p-8 rounded-3xl bg-slate-50 border border-slate-200">
-            <h5 class="font-bold text-lg mb-4">Zgodność RODO</h5>
-            <p class="text-slate-500 text-xs">Projektujemy strukturę, która ułatwia ewidencję zgód i bezpieczne przechowywanie danych kontaktowych.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <Contact />
     <Footer />
   </div>
 </BaseLayout>
