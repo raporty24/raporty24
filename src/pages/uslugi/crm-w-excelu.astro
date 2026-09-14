@@ -5,124 +5,947 @@ import HeroService from "../../components/HeroService.astro";
 import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
 
-// SEO Setup - Kompletna strategia słów kluczowych
-const title = "CRM w Excelu i Google Sheets – Program do zarządzania firmą | Raporty24";
-const description = "Szukasz alternatywy dla drogich systemów? Budujemy dedykowany CRM w Excelu i Google Sheets. Profesjonalny program do zarządzania firmą i sprzedażą w chmurze.";
+const title =
+  "CRM w Excelu dla firm | Leady, pipeline i follow-up | Raporty24";
 
-const ogImage = "/biuro3.webp"; // Możesz tu dać dedykowaną grafikę bazy klientów, jeśli ją masz
-const currentUrl = "https://raporty24.pl/uslugi/crm-w-excelu/"; // upewnij się, że taki jest slug tej strony
+const description =
+  "Dedykowany CRM w Excelu do obsługi klientów, leadów i sprzedaży. Pipeline, etapy sprzedaży, follow-up, zadania handlowców, historia kontaktów i raporty.";
+
+const ogImage = "/biuro3.webp";
+const currentUrl = "https://raporty24.pl/uslugi/crm-w-excelu/";
 
 export const service = {
-  title: "CRM w Excelu i Google Sheets",
-  order: 10,
+  title: "CRM w Excelu",
+  order: 20,
   menu: true,
   category: "Excel",
 };
+
+const crmFunctions = [
+  {
+    icon: "fas fa-users",
+    title: "Klienci i leady",
+    description:
+      "Jedno miejsce na dane klientów, potencjalnych klientów, osoby kontaktowe, źródła leadów i informacje potrzebne w procesie sprzedaży.",
+  },
+  {
+    icon: "fas fa-stream",
+    title: "Pipeline sprzedaży",
+    description:
+      "Etapy procesu sprzedażowego dopasowane do firmy: od pierwszego kontaktu, przez ofertę i negocjacje, aż po wygraną lub utraconą szansę.",
+  },
+  {
+    icon: "fas fa-calendar-check",
+    title: "Follow-up i zadania",
+    description:
+      "Terminy kolejnych kontaktów, zadania dla handlowców i listy spraw wymagających działania.",
+  },
+  {
+    icon: "fas fa-history",
+    title: "Historia kontaktów",
+    description:
+      "Notatki ze spotkań i rozmów, ustalenia, daty kontaktów oraz informacje o kolejnych krokach.",
+  },
+  {
+    icon: "fas fa-chart-line",
+    title: "Raportowanie sprzedaży",
+    description:
+      "Zestawienia leadów, szans sprzedażowych, statusów, wartości pipeline i innych wskaźników potrzebnych w zarządzaniu sprzedażą.",
+  },
+  {
+    icon: "fas fa-filter",
+    title: "Filtrowanie i segmentacja",
+    description:
+      "Filtrowanie klientów i szans według handlowca, etapu sprzedaży, branży, regionu, źródła leada lub innych parametrów.",
+  },
+];
+
+const faqItems = [
+  {
+    question: "Czym CRM w Excelu różni się od zwykłej bazy klientów?",
+    answer:
+      "Baza klientów służy przede wszystkim do uporządkowania danych kontaktowych. CRM obejmuje dodatkowo proces sprzedaży: leady, etapy, szanse sprzedażowe, follow-upy, zadania oraz historię działań handlowców.",
+  },
+  {
+    question: "Czy kilku handlowców może korzystać z jednego rozwiązania?",
+    answer:
+      "To zależy od sposobu pracy i wybranej architektury. Możemy zaprojektować rozwiązanie wykorzystujące m.in. Excel, SharePoint lub Microsoft 365, a sposób współdzielenia dobieramy do liczby użytkowników i procesu.",
+  },
+  {
+    question: "Czy można przenieść dane z obecnej bazy klientów?",
+    answer:
+      "Tak. Możemy przygotować import istniejących klientów, leadów i innych danych z obecnych plików. Zakres zależy od ich struktury i jakości.",
+  },
+  {
+    question: "Czy CRM może tworzyć raporty sprzedażowe?",
+    answer:
+      "Tak. Możemy przygotować zestawienia pipeline, wartości szans, liczby leadów, statusów, aktywności handlowców i innych KPI potrzebnych w sprzedaży.",
+  },
+  {
+    question: "Czy CRM musi pozostać tylko w Excelu?",
+    answer:
+      "Nie. Excel może być głównym interfejsem, ale w zależności od procesu możemy połączyć rozwiązanie z Power Query, SharePoint, Power BI, API lub innymi systemami.",
+  },
+];
+
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "CRM w Excelu dla firm",
+    description,
+    url: currentUrl,
+    provider: {
+      "@type": "Organization",
+      name: "Raporty24",
+      url: "https://raporty24.pl/",
+    },
+    serviceType: "CRM w Excelu i automatyzacja procesu sprzedaży",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Strona główna",
+        item: "https://raporty24.pl/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Usługi",
+        item: "https://raporty24.pl/uslugi/",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "CRM w Excelu",
+        item: currentUrl,
+      },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  },
+];
 ---
 
-<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
+<BaseLayout
+  title={title}
+  description={description}
+  image={ogImage}
+  url={currentUrl}
+  structuredData={structuredData}
+>
   <div x-data="app" x-cloak>
     <Header />
-    
-    <HeroService 
-      title="System CRM i program" 
-      highlight="do zarządzania firmą" 
-      subtitle="Zapanuj nad chaosem w danych. Jako doświadczona firma analityczna tworzymy profesjonalne systemy CRM w Excelu oraz Google Sheets, dopasowane do Twojego procesu sprzedaży."
-    />
 
-    <section class="py-24 bg-slate-950 text-white">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center mb-16">
-          <h2 class="text-4xl lg:text-5xl font-black uppercase tracking-tighter mb-6">CRM w <span class="text-green-500">Excelu lub Google Sheets?</span></h2>
-          <p class="text-xl text-slate-400">Dla wielu przedsiębiorców standardowe systemy SaaS są zbyt sztywne i kosztowne. Nasz <strong>program do zarządzania firmą</strong> to brak abonamentu i pełna kontrola. Jeśli planujesz <strong>zlecić excel</strong> ekspertom – oferujemy kompleksowe <strong>usługi dla firm</strong> w zakresie automatyzacji i baz danych.</p>
-        </div>
-        
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-green-500/50 transition-all group">
-            <i class="fas fa-cloud text-3xl text-green-500 mb-6 group-hover:scale-110 transition-transform"></i>
-            <h3 class="text-xl font-bold mb-4 italic text-white uppercase tracking-tight">Praca w chmurze</h3>
-            <p class="text-slate-400 text-sm">Natywna praca online w <strong>Google Sheets</strong> lub zaawansowane <strong>zarządzanie flotą</strong> i sprzedażą w <strong>Excel SharePoint</strong>. Wieloosobowa edycja to u nas standard.</p>
-          </div>
-          <div class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-green-500/50 transition-all group">
-            <i class="fas fa-chart-line text-3xl text-green-500 mb-6 group-hover:scale-110 transition-transform"></i>
-            <h3 class="text-xl font-bold mb-4 italic text-white uppercase tracking-tight">Analityka Biznesowa</h3>
-            <p class="text-slate-400 text-sm">To nie jest zwykły arkusz. To profesjonalna <strong>analityka biznesowa</strong> skrojona pod Twój lejek sprzedaży, z automatycznym raportowaniem KPI.</p>
-          </div>
-          <div class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-green-500/50 transition-all group">
-            <i class="fas fa-laptop-house text-3xl text-green-500 mb-6 group-hover:scale-110 transition-transform"></i>
-            <h3 class="text-xl font-bold mb-4 italic text-white uppercase tracking-tight">Zdalna współpraca</h3>
-            <p class="text-slate-400 text-sm">Działamy <strong>zdalnie w całej Polsce</strong>. Twój nowy system CRM wdrażamy online, zapewniając pełne wsparcie i szkolenie dla Twojego zespołu.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <main>
 
-    <section class="py-24 bg-white text-slate-900">
-      <div class="container mx-auto px-4">
-        <div class="flex flex-col lg:flex-row gap-16 items-center">
-          <div class="lg:w-1/2">
-            <h2 class="text-4xl font-black uppercase tracking-tighter mb-8 leading-none">Co zawiera Twój <br/><span class="text-green-600">nowy system CRM?</span></h2>
-            <ul class="space-y-6">
-              <li class="flex gap-4">
-                <i class="fas fa-check-circle text-green-600 text-2xl"></i>
-                <div>
-                  <h4 class="font-bold text-lg">Centralna baza klientów i kontaktów</h4>
-                  <p class="text-slate-500 text-sm">Pełna historia relacji w arkuszach Google lub Excelu. Wszystkie dane firmowe uporządkowane i bezpieczne.</p>
-                </div>
-              </li>
-              <li class="flex gap-4">
-                <i class="fas fa-check-circle text-green-600 text-2xl"></i>
-                <div>
-                  <h4 class="font-bold text-lg">Lejek Sprzedaży i Pipeline</h4>
-                  <p class="text-slate-500 text-sm">Zarządzaj szansami sprzedaży na każdym etapie. Widzisz konwersję i potencjalne zyski w czasie rzeczywistym.</p>
-                </div>
-              </li>
-              <li class="flex gap-4">
-                <i class="fas fa-check-circle text-green-600 text-2xl"></i>
-                <div>
-                  <h4 class="font-bold text-lg">Automatyzacja Follow-up</h4>
-                  <p class="text-slate-500 text-sm">Inteligentne przypomnienia o kontakcie, które pilnują, aby żadne zapytanie ofertowe nie zostało pominięte.</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div class="lg:w-1/2 bg-slate-950 p-12 rounded-[50px] shadow-2xl relative">
-            <div class="absolute -top-6 -left-6 bg-green-500 text-white px-6 py-3 rounded-2xl font-black uppercase text-xs tracking-widest shadow-xl">
-              Data Intelligence
+      <HeroService
+        eyebrow="Excel i proces sprzedaży"
+        title="CRM w Excelu"
+        highlight="dla Twojego procesu sprzedaży"
+        subtitle="Uporządkuj klientów, leady, pipeline, follow-upy i zadania handlowców w rozwiązaniu dopasowanym do sposobu pracy Twojej firmy."
+        ctaText="Opisz swój proces sprzedaży"
+      />
+
+
+      <!-- ===================================================== -->
+      <!-- PROBLEM -->
+      <!-- ===================================================== -->
+
+      <section
+        class="bg-white py-20 text-slate-950 lg:py-28"
+      >
+        <div class="container mx-auto px-4">
+
+          <div class="mx-auto max-w-6xl">
+
+            <div class="max-w-4xl">
+
+              <p
+                class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-green-600"
+              >
+                Gdy sama baza klientów przestaje wystarczać
+              </p>
+
+              <h2
+                class="text-4xl font-black tracking-tighter text-slate-950 lg:text-6xl"
+              >
+                Klient to nie tylko
+                <span class="text-green-600">
+                  wiersz w tabeli.
+                </span>
+              </h2>
+
+              <p
+                class="mt-7 max-w-3xl text-lg leading-relaxed text-slate-600"
+              >
+                Jeśli firma prowadzi sprzedaż, sam rejestr nazw,
+                telefonów i adresów e-mail szybko staje się niewystarczający.
+                Trzeba jeszcze wiedzieć, na jakim etapie jest rozmowa,
+                kto prowadzi klienta, kiedy wykonać kolejny kontakt
+                i które szanse sprzedażowe wymagają działania.
+              </p>
+
             </div>
-            <h3 class="text-2xl font-bold text-white mb-6 italic">Dashboard Zarządczy</h3>
-            <p class="text-slate-400 mb-8 text-sm leading-relaxed">Jako Twoja <strong>firma analityczna</strong>, projektujemy interaktywne dashboardy, które wizualizują Twoją sprzedaż bez ręcznego przepisywania danych.</p>
-            <div class="space-y-4">
-               <div class="flex justify-between text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-1"><span>Target kwartalny</span><span>82%</span></div>
-               <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden"><div class="w-[82%] h-full bg-green-500 shadow-[0_0_10px_#22c55e]"></div></div>
-               <div class="flex justify-between text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-1"><span>Realizacja leadów</span><span>60%</span></div>
-               <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden"><div class="w-3/5 h-full bg-green-500"></div></div>
+
+
+            <div
+              class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4"
+            >
+
+              <article
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7"
+              >
+                <i
+                  class="fas fa-user-plus mb-6 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3
+                  class="mb-3 text-lg font-black text-slate-950"
+                >
+                  Leady w wielu miejscach
+                </h3>
+
+                <p
+                  class="text-sm leading-relaxed text-slate-600"
+                >
+                  Zapytania trafiają do maili, notatek,
+                  różnych arkuszy albo bezpośrednio do handlowców.
+                </p>
+              </article>
+
+
+              <article
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7"
+              >
+                <i
+                  class="fas fa-stream mb-6 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3
+                  class="mb-3 text-lg font-black text-slate-950"
+                >
+                  Brak widoku pipeline
+                </h3>
+
+                <p
+                  class="text-sm leading-relaxed text-slate-600"
+                >
+                  Trudno szybko sprawdzić,
+                  które szanse są nowe, które czekają na ofertę,
+                  a które wymagają kolejnego kontaktu.
+                </p>
+              </article>
+
+
+              <article
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7"
+              >
+                <i
+                  class="fas fa-clock mb-6 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3
+                  class="mb-3 text-lg font-black text-slate-950"
+                >
+                  Zapomniane follow-upy
+                </h3>
+
+                <p
+                  class="text-sm leading-relaxed text-slate-600"
+                >
+                  Bez uporządkowanego procesu łatwo przeoczyć
+                  klienta, do którego należało wrócić
+                  po kilku dniach lub tygodniach.
+                </p>
+              </article>
+
+
+              <article
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7"
+              >
+                <i
+                  class="fas fa-chart-bar mb-6 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3
+                  class="mb-3 text-lg font-black text-slate-950"
+                >
+                  Brak wspólnego obrazu sprzedaży
+                </h3>
+
+                <p
+                  class="text-sm leading-relaxed text-slate-600"
+                >
+                  Zarządzający widzi dane dopiero po ręcznym
+                  przygotowaniu kolejnego zestawienia.
+                </p>
+              </article>
+
             </div>
+
           </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="py-24 bg-slate-950 text-white border-t border-white/5">
-      <div class="container mx-auto px-4 max-w-4xl">
-        <h2 class="text-3xl lg:text-4xl font-black mb-12 uppercase tracking-tight text-center italic">Częste pytania (FAQ)</h2>
-        <div class="grid gap-4">
-          {[
-            { q: "Czy lepiej wybrać Excel czy Google Sheets?", a: "To zależy od specyfiki pracy. Google Sheets świetnie sprawdza się w małych, zdalnych zespołach. Excel oferuje większą wydajność przy ogromnych bazach danych i integracji z Power BI." },
-            { q: "Czy wielu handlowców może pracować jednocześnie?", a: "Tak. Wykorzystując chmurę (SharePoint lub natywny dysk Google), cały zespół ma dostęp do najnowszej wersji pliku w tym samym czasie." },
-            { q: "Czy moje dane są bezpieczne?", a: "Tak. Stosujemy zaawansowane walidacje i uprawnienia. Twoja baza klientów pozostaje na Twojej infrastrukturze, zgodnie z wytycznymi RODO." },
-            { q: "Czy mogę zlecić excel do dalszej rozbudowy?", a: "Oczywiście. System rośnie wraz z Twoją firmą. Zapewniamy pełne wsparcie po-wdrożeniowe i rozbudowę o nowe moduły raportowe." }
-          ].map(item => (
-            <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all group">
-              <h4 class="font-bold text-green-400 mb-2 group-hover:translate-x-1 transition-transform">{item.q}</h4>
-              <p class="text-slate-400 text-sm leading-relaxed">{item.a}</p>
+        </div>
+      </section>
+
+
+      <!-- ===================================================== -->
+      <!-- FUNKCJE CRM -->
+      <!-- ===================================================== -->
+
+      <section
+        id="funkcje"
+        class="relative overflow-hidden bg-slate-950 py-20 text-white lg:py-28"
+      >
+
+        <div
+          class="pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-green-500/10 blur-[120px]"
+          aria-hidden="true"
+        ></div>
+
+
+        <div class="container relative z-10 mx-auto px-4">
+
+          <div class="mx-auto max-w-6xl">
+
+            <div class="max-w-4xl">
+
+              <p
+                class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-green-400"
+              >
+                CRM dopasowany do procesu
+              </p>
+
+              <h2
+                class="text-4xl font-black tracking-tighter text-white lg:text-6xl"
+              >
+                Co może zawierać
+                <span class="text-green-400">
+                  CRM w Excelu?
+                </span>
+              </h2>
+
+              <p
+                class="mt-7 max-w-3xl text-lg leading-relaxed text-slate-400"
+              >
+                Nie dokładamy modułów tylko dlatego,
+                że występują w dużych systemach CRM.
+                Zakres dobieramy do rzeczywistego procesu sprzedaży
+                i informacji, których potrzebuje zespół.
+              </p>
+
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
 
-    <Contact />
+
+            <div
+              class="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+            >
+              {
+                crmFunctions.map((item) => (
+                  <article
+                    class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 transition-all hover:border-green-500/30 hover:bg-white/[0.06]"
+                  >
+                    <div
+                      class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-500/10 text-green-400"
+                    >
+                      <i
+                        class={`${item.icon} text-xl`}
+                        aria-hidden="true"
+                      ></i>
+                    </div>
+
+                    <h3
+                      class="mb-4 text-xl font-black text-white"
+                    >
+                      {item.title}
+                    </h3>
+
+                    <p
+                      class="text-sm leading-relaxed text-slate-400"
+                    >
+                      {item.description}
+                    </p>
+                  </article>
+                ))
+              }
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- ===================================================== -->
+      <!-- BAZA KLIENTÓW VS CRM -->
+      <!-- ===================================================== -->
+
+      <section
+        class="bg-white py-20 text-slate-950 lg:py-28"
+      >
+        <div class="container mx-auto px-4">
+
+          <div class="mx-auto max-w-6xl">
+
+            <div class="max-w-4xl">
+
+              <p
+                class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-green-600"
+              >
+                Baza klientów czy CRM?
+              </p>
+
+              <h2
+                class="text-4xl font-black tracking-tighter lg:text-5xl"
+              >
+                Nie każda firma potrzebuje
+                <span class="text-green-600">
+                  pełnego CRM.
+                </span>
+              </h2>
+
+              <p
+                class="mt-6 max-w-3xl text-lg leading-relaxed text-slate-600"
+              >
+                Jeśli potrzebujesz tylko uporządkować dane klientów,
+                wyszukiwanie i historię kontaktów,
+                prostsza baza klientów może być lepszym rozwiązaniem.
+                CRM ma sens wtedy, gdy chcesz również zarządzać
+                procesem sprzedaży.
+              </p>
+
+            </div>
+
+
+            <div
+              class="mt-12 grid gap-6 md:grid-cols-2"
+            >
+
+              <!-- BAZA -->
+
+              <article
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-8 lg:p-10"
+              >
+
+                <span
+                  class="mb-4 block text-xs font-black uppercase tracking-widest text-slate-500"
+                >
+                  Prostszy zakres
+                </span>
+
+                <h3
+                  class="mb-5 text-2xl font-black text-slate-950"
+                >
+                  Baza klientów w Excelu
+                </h3>
+
+                <ul
+                  class="space-y-3 text-sm leading-relaxed text-slate-600"
+                >
+                  <li>✓ dane klientów i kontaktów</li>
+                  <li>✓ wyszukiwarka i filtry</li>
+                  <li>✓ walidacja danych</li>
+                  <li>✓ historia kontaktów</li>
+                  <li>✓ podstawowe raporty</li>
+                </ul>
+
+                <a
+                  href="/uslugi/baza-klientow-w-excelu/"
+                  class="mt-7 inline-flex font-black text-green-700 transition-colors hover:text-green-600"
+                >
+                  Zobacz bazę klientów →
+                </a>
+
+              </article>
+
+
+              <!-- CRM -->
+
+              <article
+                class="rounded-[2rem] border border-green-500/30 bg-green-50 p-8 lg:p-10"
+              >
+
+                <span
+                  class="mb-4 block text-xs font-black uppercase tracking-widest text-green-700"
+                >
+                  Proces sprzedaży
+                </span>
+
+                <h3
+                  class="mb-5 text-2xl font-black text-slate-950"
+                >
+                  CRM w Excelu
+                </h3>
+
+                <ul
+                  class="space-y-3 text-sm leading-relaxed text-slate-700"
+                >
+                  <li>✓ baza klientów i leadów</li>
+                  <li>✓ pipeline i etapy sprzedaży</li>
+                  <li>✓ follow-upy i zadania</li>
+                  <li>✓ przypisanie handlowców</li>
+                  <li>✓ raportowanie procesu sprzedaży</li>
+                </ul>
+
+                <a
+                  href="#kontakt"
+                  class="mt-7 inline-flex font-black text-green-700 transition-colors hover:text-green-600"
+                >
+                  Zapytaj o CRM →
+                </a>
+
+              </article>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- ===================================================== -->
+      <!-- EXCEL / MICROSOFT 365 / INTEGRACJE -->
+      <!-- ===================================================== -->
+
+      <section
+        class="bg-slate-50 py-20 lg:py-28"
+      >
+        <div class="container mx-auto px-4">
+
+          <div
+            class="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center"
+          >
+
+            <div>
+
+              <p
+                class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-green-600"
+              >
+                Nie tylko jeden arkusz
+              </p>
+
+              <h2
+                class="text-4xl font-black tracking-tighter text-slate-950 lg:text-5xl"
+              >
+                CRM może być częścią
+                <span class="text-green-600">
+                  większego procesu.
+                </span>
+              </h2>
+
+              <p
+                class="mt-6 text-lg leading-relaxed text-slate-600"
+              >
+                Excel może być głównym interfejsem,
+                ale dane nie muszą kończyć się w jednym pliku.
+                W zależności od potrzeb możemy wykorzystać
+                SharePoint, Microsoft 365, Power Query,
+                Power BI albo integrację z innym systemem.
+              </p>
+
+            </div>
+
+
+            <div
+              class="grid gap-5 sm:grid-cols-2"
+            >
+
+              <article
+                class="rounded-2xl border border-slate-200 bg-white p-7"
+              >
+                <i
+                  class="fas fa-cloud mb-5 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3
+                  class="mb-3 text-lg font-black text-slate-950"
+                >
+                  SharePoint i Microsoft 365
+                </h3>
+
+                <p
+                  class="text-sm leading-relaxed text-slate-600"
+                >
+                  Współdzielenie danych i procesów
+                  w środowisku Microsoft 365.
+                </p>
+              </article>
+
+
+              <article
+                class="rounded-2xl border border-slate-200 bg-white p-7"
+              >
+                <i
+                  class="fas fa-sync-alt mb-5 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3
+                  class="mb-3 text-lg font-black text-slate-950"
+                >
+                  Power Query
+                </h3>
+
+                <p
+                  class="text-sm leading-relaxed text-slate-600"
+                >
+                  Import i porządkowanie danych
+                  z innych plików i źródeł.
+                </p>
+              </article>
+
+
+              <article
+                class="rounded-2xl border border-slate-200 bg-white p-7"
+              >
+                <i
+                  class="fas fa-chart-bar mb-5 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3
+                  class="mb-3 text-lg font-black text-slate-950"
+                >
+                  Power BI
+                </h3>
+
+                <p
+                  class="text-sm leading-relaxed text-slate-600"
+                >
+                  Rozbudowane raportowanie,
+                  jeśli dane sprzedażowe wymagają
+                  osobnej warstwy analitycznej.
+                </p>
+              </article>
+
+
+              <article
+                class="rounded-2xl border border-slate-200 bg-white p-7"
+              >
+                <i
+                  class="fas fa-plug mb-5 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3
+                  class="mb-3 text-lg font-black text-slate-950"
+                >
+                  API i inne systemy
+                </h3>
+
+                <p
+                  class="text-sm leading-relaxed text-slate-600"
+                >
+                  Wymiana danych z innymi aplikacjami,
+                  jeśli wymaga tego proces.
+                </p>
+              </article>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- ===================================================== -->
+      <!-- JAK PRACUJEMY -->
+      <!-- ===================================================== -->
+
+      <section
+        class="bg-white py-20 lg:py-28"
+      >
+        <div class="container mx-auto px-4">
+
+          <div class="mx-auto max-w-6xl">
+
+            <div class="max-w-4xl">
+
+              <p
+                class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-green-600"
+              >
+                Jak powstaje rozwiązanie?
+              </p>
+
+              <h2
+                class="text-4xl font-black tracking-tighter text-slate-950 lg:text-5xl"
+              >
+                CRM dopasowujemy do
+                <span class="text-green-600">
+                  sposobu sprzedaży.
+                </span>
+              </h2>
+
+            </div>
+
+
+            <div
+              class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4"
+            >
+
+              <article
+                class="rounded-2xl border border-slate-200 p-7"
+              >
+                <span
+                  class="text-sm font-black text-green-600"
+                >
+                  01
+                </span>
+
+                <h3
+                  class="mt-4 text-xl font-black text-slate-950"
+                >
+                  Analiza procesu
+                </h3>
+
+                <p
+                  class="mt-3 text-sm leading-relaxed text-slate-600"
+                >
+                  Sprawdzamy, skąd trafiają leady,
+                  jak wygląda sprzedaż i jakie informacje
+                  są dziś zapisywane.
+                </p>
+              </article>
+
+
+              <article
+                class="rounded-2xl border border-slate-200 p-7"
+              >
+                <span
+                  class="text-sm font-black text-green-600"
+                >
+                  02
+                </span>
+
+                <h3
+                  class="mt-4 text-xl font-black text-slate-950"
+                >
+                  Projekt pipeline
+                </h3>
+
+                <p
+                  class="mt-3 text-sm leading-relaxed text-slate-600"
+                >
+                  Ustalamy etapy, statusy,
+                  odpowiedzialności i informacje
+                  potrzebne handlowcom.
+                </p>
+              </article>
+
+
+              <article
+                class="rounded-2xl border border-slate-200 p-7"
+              >
+                <span
+                  class="text-sm font-black text-green-600"
+                >
+                  03
+                </span>
+
+                <h3
+                  class="mt-4 text-xl font-black text-slate-950"
+                >
+                  Automatyzacja
+                </h3>
+
+                <p
+                  class="mt-3 text-sm leading-relaxed text-slate-600"
+                >
+                  Dodajemy potrzebne mechanizmy,
+                  walidacje, zadania, raporty
+                  i obsługę danych.
+                </p>
+              </article>
+
+
+              <article
+                class="rounded-2xl border border-slate-200 p-7"
+              >
+                <span
+                  class="text-sm font-black text-green-600"
+                >
+                  04
+                </span>
+
+                <h3
+                  class="mt-4 text-xl font-black text-slate-950"
+                >
+                  Rozwój rozwiązania
+                </h3>
+
+                <p
+                  class="mt-3 text-sm leading-relaxed text-slate-600"
+                >
+                  CRM można później rozwijać
+                  wraz ze zmianą procesu sprzedaży
+                  i potrzeb zespołu.
+                </p>
+              </article>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- ===================================================== -->
+      <!-- FAQ -->
+      <!-- ===================================================== -->
+
+      <section
+        class="bg-slate-950 py-20 text-white lg:py-28"
+      >
+        <div class="container mx-auto px-4">
+
+          <div class="mx-auto max-w-5xl">
+
+            <div class="max-w-3xl">
+
+              <p
+                class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-green-400"
+              >
+                FAQ
+              </p>
+
+              <h2
+                class="text-4xl font-black tracking-tighter text-white lg:text-5xl"
+              >
+                Najczęstsze pytania
+                <span class="text-green-400">
+                  o CRM w Excelu
+                </span>
+              </h2>
+
+            </div>
+
+
+            <div
+              class="mt-12 grid gap-4"
+            >
+              {
+                faqItems.map((item) => (
+                  <details
+                    class="rounded-2xl border border-white/10 bg-white/[0.04] p-6 transition-colors hover:border-green-500/30"
+                  >
+                    <summary
+                      class="cursor-pointer text-lg font-black text-white"
+                    >
+                      {item.question}
+                    </summary>
+
+                    <p
+                      class="mt-4 max-w-4xl text-sm leading-relaxed text-slate-400"
+                    >
+                      {item.answer}
+                    </p>
+                  </details>
+                ))
+              }
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- ===================================================== -->
+      <!-- INTERNAL LINKING -->
+      <!-- ===================================================== -->
+
+      <section
+        class="bg-slate-50 py-16"
+      >
+        <div class="container mx-auto px-4">
+
+          <div
+            class="mx-auto max-w-5xl rounded-[2rem] border border-slate-200 bg-white p-8 md:p-10"
+          >
+
+            <h2
+              class="text-2xl font-black text-slate-950"
+            >
+              CRM jest częścią większego procesu?
+            </h2>
+
+            <p
+              class="mt-4 max-w-3xl leading-relaxed text-slate-600"
+            >
+              Możemy połączyć obsługę klientów
+              z automatyzacją Excela, raportowaniem,
+              integracjami albo innymi elementami
+              procesu sprzedaży.
+            </p>
+
+
+            <div
+              class="mt-6 flex flex-wrap gap-x-6 gap-y-3"
+            >
+
+              <a
+                href="/uslugi/baza-klientow-w-excelu/"
+                class="font-bold text-green-700 hover:text-green-600"
+              >
+                Baza klientów w Excelu →
+              </a>
+
+              <a
+                href="/uslugi/lejek-sprzedazy-w-excelu/"
+                class="font-bold text-green-700 hover:text-green-600"
+              >
+                Lejek sprzedaży w Excelu →
+              </a>
+
+              <a
+                href="/uslugi/excel-na-zamowienie/"
+                class="font-bold text-green-700 hover:text-green-600"
+              >
+                Excel na zamówienie →
+              </a>
+
+              <a
+                href="/uslugi/integracje-api/"
+                class="font-bold text-green-700 hover:text-green-600"
+              >
+                Integracje API →
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      <Contact />
+
+    </main>
+
     <Footer />
   </div>
 </BaseLayout>

@@ -5,408 +5,1342 @@ import HeroService from "../../components/HeroService.astro";
 import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
 
-const title = "Integracje API dla firm | Automatyzacja danych i systemów";
+const title =
+  "Integracje API i połączenia systemów dla firm | Raporty24";
+
 const description =
-  "Tworzymy integracje API dla firm: pobieranie danych z systemów, eksporty do Excela, połączenia CRM, ERP, platform sprzedażowych, raportów i aplikacji firmowych.";
+  "Łączymy systemy i automatyzujemy przepływ danych. Integracje API, Excel, WooCommerce, ERP, CRM, sklepy, raporty i aplikacje bez ręcznego przepisywania danych.";
+
 const ogImage = "/biuro3.webp";
-const currentUrl = "https://raporty24.pl/uslugi/integracje-api/";
+
+const currentUrl =
+  "https://raporty24.pl/uslugi/integracje-api/";
 
 export const service = {
-  title: "Integracje API",
+  title: "Integracje API i systemów",
   order: 35,
   menu: true,
-  category: "Automatyzacja",
+  category: "Integracje i dane",
+  description:
+    "Łączenie systemów, sklepów, Excela, CRM, ERP i aplikacji przez API oraz automatyczna wymiana danych między narzędziami.",
 };
+
+
+/*
+ * =========================================================
+ * GŁÓWNE TYPY INTEGRACJI
+ * =========================================================
+ */
 
 const examples = [
   {
-    title: "API do Excela",
+    title: "System → Excel",
     description:
-      "Pobieranie danych z API i zapis do Excel, CSV lub XML, bez ręcznego eksportowania plików z systemu.",
+      "Automatyczne pobieranie danych z API do Excela, CSV lub innego formatu bez ręcznego eksportowania danych.",
     icon: "fas fa-file-excel",
   },
+
   {
-    title: "Połączenie systemów",
+    title: "System → system",
     description:
-      "Przekazywanie danych między CRM, ERP, sklepem, systemem magazynowym, księgowością lub raportami.",
-    icon: "fas fa-link",
+      "Przekazywanie danych pomiędzy CRM, ERP, magazynem, księgowością, platformą sprzedażową lub inną aplikacją.",
+    icon: "fas fa-right-left",
   },
+
   {
-    title: "Automatyczne eksporty",
+    title: "Sklep → Excel / system",
     description:
-      "Cykliczne pobieranie, czyszczenie i przygotowywanie danych do raportów, Power BI albo dalszej obróbki.",
-    icon: "fas fa-cloud-download-alt",
+      "Produkty, zamówienia, ceny, stany magazynowe i statusy mogą być synchronizowane pomiędzy sklepem a narzędziami firmy.",
+    icon: "fas fa-cart-shopping",
   },
+
   {
-    title: "Aplikacje z API",
+    title: "Excel → system",
     description:
-      "Proste aplikacje desktopowe lub formularze, które łączą się z API i wykonują proces za użytkownika.",
-    icon: "fas fa-desktop",
+      "Dane przygotowane lub zatwierdzone w Excelu mogą być wysyłane przez API do sklepu, CRM, ERP albo innego systemu.",
+    icon: "fas fa-arrow-up-from-bracket",
+  },
+
+  {
+    title: "Raporty z wielu źródeł",
+    description:
+      "Dane z kilku systemów mogą trafiać do wspólnego raportu Excel, Power BI, bazy danych albo narzędzia zarządczego.",
+    icon: "fas fa-chart-line",
+  },
+
+  {
+    title: "Małe aplikacje i dodatki",
+    description:
+      "Integracja może działać jako prosty program, dodatek do Excela albo narzędzie z własnym interfejsem dla pracownika.",
+    icon: "fas fa-window-restore",
   },
 ];
 
+
+/*
+ * =========================================================
+ * PRZYKŁADY PROCESÓW
+ * =========================================================
+ */
+
 const useCases = [
-  "pobieranie danych z API do Excela",
-  "łączenie systemu sprzedażowego z raportami",
-  "automatyczne eksporty zamówień, faktur lub stanów magazynowych",
-  "integracja CRM, ERP, sklepu internetowego lub platformy B2B",
-  "wysyłanie danych z formularza do systemu firmy",
-  "przygotowanie danych pod dashboard Power BI",
-  "sprawdzanie statusów zamówień, płatności lub przesyłek",
-  "automatyzacja zadań, które dziś wymagają ręcznego logowania do systemów",
+  "pobieranie produktów i zamówień ze sklepu internetowego do Excela",
+
+  "aktualizacja cen lub stanów magazynowych na podstawie danych z Excela",
+
+  "synchronizacja statusów zamówień między systemami",
+
+  "pobieranie danych z CRM lub ERP do raportu",
+
+  "wysyłanie danych z Excela do systemu firmowego",
+
+  "automatyczne pobieranie faktur, dokumentów lub danych sprzedażowych",
+
+  "łączenie danych z kilku API w jeden raport",
+
+  "sprawdzanie statusów płatności, przesyłek lub zamówień",
+
+  "automatyczne przygotowanie danych do Power BI",
+
+  "przenoszenie danych między sklepem, magazynem i księgowością",
+
+  "aktualizacja produktów, SKU, cen i stanów bez ręcznej pracy",
+
+  "uruchamianie integracji z poziomu własnego przycisku lub dodatku Excel",
 ];
+
+
+/*
+ * =========================================================
+ * PROCES WDROŻENIA
+ * =========================================================
+ */
 
 const process = [
   {
     step: "01",
-    title: "Analiza źródeł danych",
+
+    title: "Sprawdzamy systemy",
+
     description:
-      "Sprawdzamy, z jakimi systemami trzeba się połączyć, jakie dane są potrzebne i czy API daje dostęp do wymaganych informacji.",
+      "Ustalamy, jakie systemy mają się komunikować, jakie dane są potrzebne i jakie możliwości integracji udostępniają.",
   },
+
   {
     step: "02",
-    title: "Projekt przepływu",
+
+    title: "Projektujemy przepływ",
+
     description:
-      "Ustalamy, skąd dane mają być pobierane, gdzie mają trafić, w jakim formacie i jak często proces ma się uruchamiać.",
+      "Określamy, które dane mają być pobierane lub wysyłane, kiedy ma się to dziać i co powinno wydarzyć się w przypadku błędu.",
   },
+
   {
     step: "03",
-    title: "Budowa integracji",
+
+    title: "Budujemy integrację",
+
     description:
-      "Tworzymy połączenie API, obsługę autoryzacji, walidację danych, logikę przetwarzania i eksport do wybranego formatu.",
+      "Tworzymy autoryzację, pobieranie i wysyłanie danych, mapowanie pól, walidację, logikę biznesową oraz obsługę wyjątków.",
   },
+
   {
     step: "04",
-    title: "Testy i wdrożenie",
+
+    title: "Testujemy i wdrażamy",
+
     description:
-      "Testujemy integrację na rzeczywistych przykładach, obsługujemy błędy i przekazujemy gotowe narzędzie do pracy.",
+      "Testujemy rozwiązanie na rzeczywistych danych i przekazujemy użytkownikom gotowy sposób obsługi procesu.",
   },
 ];
+
+
+/*
+ * =========================================================
+ * TECHNOLOGIE
+ * =========================================================
+ */
+
+const technologies = [
+  {
+    title: "REST API",
+    description:
+      "Najczęstszy sposób automatycznej komunikacji pomiędzy współczesnymi systemami i aplikacjami.",
+  },
+
+  {
+    title: "Excel i dodatki",
+    description:
+      "Excel może pozostać interfejsem użytkownika, a integracja może pobierać lub wysyłać dane w tle.",
+  },
+
+  {
+    title: "C#",
+    description:
+      "Przydatny przy dodatkach do Excela, aplikacjach Windows i rozwiązaniach mocniej zintegrowanych ze środowiskiem Microsoft.",
+  },
+
+  {
+    title: "Python",
+    description:
+      "Dobrze sprawdza się przy przetwarzaniu danych, API, plikach, automatycznych zadaniach i integracji wielu źródeł.",
+  },
+
+  {
+    title: "CSV / XML / JSON",
+    description:
+      "Nie każdy system wymaga API. Czasem najlepszą integracją jest automatyczna wymiana i konwersja plików.",
+  },
+
+  {
+    title: "Bazy danych",
+    description:
+      "Dane mogą być pobierane, porządkowane lub zapisywane również bezpośrednio w bazach danych, jeśli system na to pozwala.",
+  },
+];
+
+
+/*
+ * =========================================================
+ * FAQ
+ * =========================================================
+ */
 
 const faqs = [
   {
-    question: "Czy można pobierać dane z API do Excela?",
+    question:
+      "Czy można połączyć Excel z systemem przez API?",
+
     answer:
-      "Tak. Możemy przygotować integrację, która pobiera dane z API i zapisuje je do pliku Excel, CSV, XML albo przygotowuje dane do dalszej analizy w Power BI.",
+      "Tak. Excel może pobierać dane z systemu albo wysyłać do niego informacje. W zależności od potrzeb rozwiązanie może działać przez Power Query, VBA, dodatek do Excela lub osobną warstwę integracyjną.",
   },
+
   {
-    question: "Czy integracja API może działać automatycznie?",
+    question:
+      "Czy można połączyć sklep internetowy z Excelem?",
+
     answer:
-      "Tak. Proces może być uruchamiany ręcznie przez użytkownika albo automatycznie według ustalonego harmonogramu, jeśli środowisko firmy na to pozwala.",
+      "Tak, jeżeli sklep udostępnia API lub odpowiedni eksport danych. Możliwe jest między innymi pobieranie produktów, zamówień i stanów magazynowych oraz wysyłanie aktualizacji cen lub innych informacji.",
   },
+
   {
-    question: "Czy można połączyć kilka systemów?",
+    question:
+      "Czy integracja może działać w obie strony?",
+
     answer:
-      "Tak. Integracja może pobierać dane z jednego systemu, przetwarzać je i przekazywać do innego narzędzia, raportu, pliku lub aplikacji.",
+      "Tak. Możliwe jest zarówno pobieranie danych, jak i wysyłanie zmian do drugiego systemu. Zakres zależy od możliwości API i uprawnień udostępnionych przez system.",
   },
+
   {
-    question: "Czy dane muszą trafiać na zewnętrzny serwer?",
+    question:
+      "Czy integracja API może działać automatycznie?",
+
     answer:
-      "Nie zawsze. Wiele rozwiązań może działać lokalnie lub w środowisku firmy. Sposób działania ustalamy na początku, zależnie od wymagań bezpieczeństwa.",
+      "Tak. Proces może być uruchamiany przez użytkownika, przyciskiem w aplikacji lub Excelu albo automatycznie według ustalonego harmonogramu, jeżeli środowisko na to pozwala.",
+  },
+
+  {
+    question:
+      "Czy zawsze potrzebne jest API?",
+
+    answer:
+      "Nie. Jeżeli system nie posiada API, czasami można wykorzystać pliki CSV, XML, JSON, Excel, bazę danych albo inny udostępniony sposób wymiany informacji.",
+  },
+
+  {
+    question:
+      "Jak zabezpieczane są klucze i tokeny API?",
+
+    answer:
+      "Sposób przechowywania danych dostępowych dobieramy do rodzaju rozwiązania i środowiska firmy. Klucze API nie powinny być umieszczane bezpośrednio w arkuszach lub kodzie udostępnianym użytkownikom.",
+  },
+
+  {
+    question:
+      "Czy integracja może działać na Windows i macOS?",
+
+    answer:
+      "Wiele integracji API może działać niezależnie od systemu, ale końcowa możliwość zależy od aplikacji i technologii użytej po stronie użytkownika. Niektóre dodatki Excel lub aplikacje desktopowe są zależne od systemu operacyjnego.",
   },
 ];
 
+
+/*
+ * =========================================================
+ * STRUCTURED DATA
+ * =========================================================
+ */
+
 const serviceSchema = {
   "@context": "https://schema.org",
+
   "@type": "Service",
-  name: "Integracje API dla firm",
+
+  name:
+    "Integracje API i połączenia systemów dla firm",
+
   provider: {
     "@type": "Organization",
-    name: "Raporty24",
-    url: "https://raporty24.pl/",
+
+    "@id":
+      "https://raporty24.pl/#organization",
+
+    name:
+      "Raporty24",
+
+    url:
+      "https://raporty24.pl/",
   },
-  areaServed: "Polska",
+
+  areaServed: {
+    "@type": "Country",
+
+    name:
+      "Polska",
+  },
+
   serviceType:
-    "Integracje API, automatyzacja danych, pobieranie danych z API, eksporty do Excela, połączenia systemów firmowych",
-  url: currentUrl,
+    "Integracje API, połączenia systemów, Excel API, automatyczna wymiana danych, integracje sklepów, CRM i ERP",
+
+  url:
+    currentUrl,
+
   description,
+};
+
+
+const breadcrumbSchema = {
+  "@context":
+    "https://schema.org",
+
+  "@type":
+    "BreadcrumbList",
+
+  itemListElement: [
+    {
+      "@type":
+        "ListItem",
+
+      position: 1,
+
+      name:
+        "Raporty24",
+
+      item:
+        "https://raporty24.pl/",
+    },
+
+    {
+      "@type":
+        "ListItem",
+
+      position: 2,
+
+      name:
+        "Usługi",
+
+      item:
+        "https://raporty24.pl/uslugi/",
+    },
+
+    {
+      "@type":
+        "ListItem",
+
+      position: 3,
+
+      name:
+        "Integracje API",
+
+      item:
+        currentUrl,
+    },
+  ],
 };
 ---
 
-<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
-  <div x-data="app" x-cloak>
+<BaseLayout
+  title={title}
+  description={description}
+  image={ogImage}
+  url={currentUrl}
+  structuredData={[
+    serviceSchema,
+    breadcrumbSchema
+  ]}
+>
+
+  <div
+    x-data="app"
+    x-cloak
+  >
+
     <Header />
 
+
+    <!-- ================================================= -->
+    <!-- HERO -->
+    <!-- ================================================= -->
+
     <HeroService
+      eyebrow="Automatyczna wymiana danych"
       title="Integracje API"
-      highlight="dla firm"
-      subtitle="Łączymy systemy, pobieramy dane z API i automatyzujemy eksporty do Excela, CSV, XML, Power BI albo aplikacji firmowych."
+      highlight="i połączenia systemów"
+      subtitle="Łączymy Excel, sklepy internetowe, CRM, ERP, aplikacje i inne systemy tak, aby dane przepływały między nimi bez ręcznego kopiowania, eksportowania i przepisywania."
+      ctaText="Opisz systemy do połączenia"
     />
 
-    <section class="bg-white py-24 text-slate-950">
-      <div class="container mx-auto px-4">
-        <div class="grid gap-16 lg:grid-cols-2 lg:items-center">
+
+    <!-- ================================================= -->
+    <!-- PROBLEM -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="grid gap-16 lg:grid-cols-2 lg:items-center"
+        >
+
           <div>
-            <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
-              Automatyzacja API
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
+              Systemy mogą wymieniać dane automatycznie
             </span>
 
-            <h2 class="mb-8 text-4xl font-black uppercase leading-tight tracking-tighter md:text-6xl">
-              Dane nie muszą być ręcznie eksportowane z każdego systemu.
+
+            <h2
+              class="mb-8 text-4xl font-black leading-tight tracking-tighter md:text-6xl"
+            >
+              Nie eksportuj danych z jednego systemu tylko po to,
+              żeby ręcznie wkleić je do drugiego.
             </h2>
 
-            <div class="space-y-6 text-lg leading-relaxed text-slate-600">
-              <p>
-                W wielu firmach pracownicy codziennie logują się do systemów, pobierają
-                pliki, kopiują dane do Excela i dopiero wtedy przygotowują raport albo
-                zestawienie.
-              </p>
+
+            <div
+              class="space-y-6 text-lg leading-relaxed text-slate-600"
+            >
 
               <p>
-                Tworzymy <strong>integracje API dla firm</strong>, które automatycznie
-                pobierają dane, porządkują je i przekazują dalej: do Excela, CSV, XML,
-                Power BI, aplikacji desktopowej albo innego systemu.
+                W wielu firmach ten sam proces wygląda codziennie:
+                logowanie do systemu, pobranie pliku, otwarcie Excela,
+                kopiowanie danych i ponowne wprowadzanie ich w innym
+                programie.
               </p>
+
+
+              <p>
+                Jeżeli system udostępnia API, bazę danych albo eksport
+                w uporządkowanym formacie, dużą część takiej pracy
+                można wykonywać automatycznie.
+              </p>
+
+
+              <p>
+                <strong class="text-slate-950">
+                  Integracja może działać w jedną albo w obie strony.
+                </strong>
+
+                Dane mogą być pobierane, sprawdzane, przekształcane
+                i wysyłane dalej bez ręcznego przepisywania.
+              </p>
+
             </div>
 
-            <div class="mt-10 flex flex-col gap-4 sm:flex-row">
+
+            <div
+              class="mt-10 flex flex-col gap-4 sm:flex-row"
+            >
+
               <a
                 href="#kontakt"
                 class="inline-flex items-center justify-center gap-3 rounded-2xl bg-green-600 px-8 py-5 text-sm font-black uppercase tracking-widest text-white transition-all hover:-translate-y-1 hover:bg-green-500"
               >
-                Zapytaj o integrację
-                <i class="fas fa-arrow-right text-xs"></i>
+                Opisz integrację
+
+                <i
+                  class="fas fa-arrow-right text-xs"
+                  aria-hidden="true"
+                ></i>
               </a>
+
 
               <a
                 href="/uslugi/skrypty-python/"
                 class="inline-flex items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white px-8 py-5 text-sm font-black uppercase tracking-widest text-slate-950 transition-all hover:-translate-y-1 hover:border-green-500"
               >
-                Zobacz też Python
+                Automatyzacja procesów
               </a>
+
             </div>
+
           </div>
 
-          <div class="rounded-[3rem] border border-slate-100 bg-slate-50 p-8 shadow-xl shadow-slate-200/60">
-            <h3 class="mb-6 text-2xl font-black uppercase tracking-tight text-slate-950">
-              Co można połączyć przez API?
+
+          <!-- PRZEPŁYW -->
+          <div
+            class="rounded-[3rem] border border-slate-100 bg-slate-50 p-8 shadow-xl shadow-slate-200/60 md:p-10"
+          >
+
+            <h3
+              class="mb-8 text-2xl font-black text-slate-950"
+            >
+              Przykład przepływu danych
             </h3>
 
-            <div class="space-y-4">
-              {
-                useCases.slice(0, 6).map((item) => (
-                  <div class="flex items-start gap-4 rounded-2xl bg-white p-5 shadow-sm">
-                    <div class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-500 text-[10px] text-white">
-                      <i class="fas fa-check"></i>
-                    </div>
 
-                    <p class="font-bold leading-relaxed text-slate-700">{item}</p>
-                  </div>
-                ))
-              }
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+            <div
+              class="space-y-5"
+            >
 
-    <section class="bg-slate-950 py-24 text-white">
-      <div class="container mx-auto px-4">
-        <div class="mb-16 max-w-3xl">
-          <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-400">
-            Przykłady zastosowań
-          </span>
+              <div
+                class="rounded-2xl bg-white p-5 shadow-sm"
+              >
+                <span
+                  class="mb-1 block text-[10px] font-black uppercase tracking-wider text-slate-400"
+                >
+                  Źródło
+                </span>
 
-          <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
-            Jakie integracje API tworzymy?
-          </h2>
+                <p class="font-bold text-slate-700">
+                  sklep / CRM / ERP / aplikacja
+                </p>
+              </div>
 
-          <p class="text-lg leading-relaxed text-slate-400">
-            Najczęściej chodzi o usunięcie ręcznego pobierania plików, kopiowania danych
-            i przepisywania informacji między systemami.
-          </p>
-        </div>
 
-        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {
-            examples.map((item) => (
-              <article class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 transition-all hover:-translate-y-1 hover:border-green-500/50 hover:bg-white/[0.08]">
-                <div class="mb-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-500/10 text-green-400">
-                  <i class={`${item.icon} text-xl`}></i>
+              <div
+                class="flex justify-center text-green-600"
+                aria-hidden="true"
+              >
+                <i class="fas fa-arrow-down"></i>
+              </div>
+
+
+              <div
+                class="rounded-2xl bg-slate-950 p-5 text-white"
+              >
+                <span
+                  class="mb-1 block text-[10px] font-black uppercase tracking-wider text-green-400"
+                >
+                  Integracja
+                </span>
+
+                <p class="font-bold">
+                  API + walidacja + logika biznesowa
+                </p>
+              </div>
+
+
+              <div
+                class="flex justify-center text-green-600"
+                aria-hidden="true"
+              >
+                <i class="fas fa-arrow-down"></i>
+              </div>
+
+
+              <div
+                class="grid grid-cols-2 gap-3"
+              >
+
+                <div
+                  class="rounded-2xl bg-white p-4 text-center shadow-sm"
+                >
+                  <strong class="text-sm">
+                    Excel
+                  </strong>
                 </div>
 
-                <h3 class="mb-4 text-2xl font-black uppercase leading-tight tracking-tight text-white">
+                <div
+                  class="rounded-2xl bg-white p-4 text-center shadow-sm"
+                >
+                  <strong class="text-sm">
+                    Power BI
+                  </strong>
+                </div>
+
+                <div
+                  class="rounded-2xl bg-white p-4 text-center shadow-sm"
+                >
+                  <strong class="text-sm">
+                    drugi system
+                  </strong>
+                </div>
+
+                <div
+                  class="rounded-2xl bg-white p-4 text-center shadow-sm"
+                >
+                  <strong class="text-sm">
+                    baza danych
+                  </strong>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- TYPY INTEGRACJI -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-950 py-24 text-white"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="mb-16 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-400"
+          >
+            Przykłady integracji
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Co możemy ze sobą połączyć?
+          </h2>
+
+
+          <p
+            class="text-lg leading-relaxed text-slate-400 md:text-xl"
+          >
+            Nie chodzi wyłącznie o pobieranie danych.
+            Integracja może obsługiwać cały przepływ informacji
+            pomiędzy narzędziami firmy.
+          </p>
+
+        </div>
+
+
+        <div
+          class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+        >
+
+          {
+            examples.map((item) => (
+
+              <article
+                class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 transition-all hover:-translate-y-1 hover:border-green-500/50 hover:bg-white/[0.08]"
+              >
+
+                <div
+                  class="mb-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-500/10 text-green-400"
+                >
+                  <i
+                    class={`${item.icon} text-xl`}
+                    aria-hidden="true"
+                  ></i>
+                </div>
+
+
+                <h3
+                  class="mb-4 text-2xl font-black leading-tight text-white"
+                >
                   {item.title}
                 </h3>
 
-                <p class="text-sm font-medium leading-relaxed text-slate-400">
+
+                <p
+                  class="text-sm font-medium leading-relaxed text-slate-400"
+                >
                   {item.description}
                 </p>
+
               </article>
+
             ))
           }
+
         </div>
+
       </div>
+
     </section>
 
-    <section class="bg-white py-24 text-slate-950">
-      <div class="container mx-auto px-4">
-        <div class="mb-16 max-w-3xl">
-          <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+
+    <!-- ================================================= -->
+    <!-- E-COMMERCE -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="grid gap-16 lg:grid-cols-2 lg:items-center"
+        >
+
+          <div>
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
+              E-commerce i sprzedaż
+            </span>
+
+
+            <h2
+              class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+            >
+              Sklep internetowy nie musi być osobną wyspą danych.
+            </h2>
+
+
+            <p
+              class="mb-6 text-lg leading-relaxed text-slate-600"
+            >
+              Dane ze sklepu mogą być pobierane do Excela,
+              magazynu, raportów albo innych narzędzi firmy.
+              W drugą stronę można przekazywać np. ceny,
+              stany lub inne zatwierdzone informacje.
+            </p>
+
+
+            <p
+              class="text-lg leading-relaxed text-slate-600"
+            >
+              Takie rozwiązanie może być szczególnie przydatne,
+              gdy Excel pozostaje głównym narzędziem operacyjnym,
+              ale firma chce ograniczyć ręczną obsługę sklepu.
+            </p>
+
+          </div>
+
+
+          <div
+            class="rounded-[2.5rem] bg-slate-950 p-8 text-white md:p-10"
+          >
+
+            <h3
+              class="mb-7 text-2xl font-black"
+            >
+              Przykładowy przepływ
+            </h3>
+
+
+            <div class="space-y-4">
+
+              <div
+                class="rounded-2xl border border-white/10 bg-white/[0.05] p-5"
+              >
+                <strong class="block text-green-400">
+                  Sklep → Excel
+                </strong>
+
+                <span class="text-sm text-slate-400">
+                  produkty, SKU, zamówienia, ceny, stany
+                </span>
+              </div>
+
+
+              <div
+                class="rounded-2xl border border-white/10 bg-white/[0.05] p-5"
+              >
+                <strong class="block text-green-400">
+                  Excel → sklep
+                </strong>
+
+                <span class="text-sm text-slate-400">
+                  zatwierdzone aktualizacje cen lub danych
+                </span>
+              </div>
+
+
+              <div
+                class="rounded-2xl border border-white/10 bg-white/[0.05] p-5"
+              >
+                <strong class="block text-green-400">
+                  Sklep → raport
+                </strong>
+
+                <span class="text-sm text-slate-400">
+                  sprzedaż, marża, stany i analiza produktów
+                </span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- USE CASES -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-50 py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="mb-16 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+          >
             Typowe procesy
           </span>
 
-          <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
-            Integracja API najlepiej działa tam, gdzie dane są powtarzalne.
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Gdzie integracja może usunąć ręczną pracę?
           </h2>
 
-          <p class="text-lg leading-relaxed text-slate-600">
-            API ma sens wtedy, gdy firma regularnie potrzebuje tych samych danych:
-            zamówień, faktur, produktów, stanów magazynowych, klientów, statusów albo raportów.
+
+          <p
+            class="text-lg leading-relaxed text-slate-600 md:text-xl"
+          >
+            Największy sens ma tam, gdzie te same informacje
+            regularnie przechodzą pomiędzy różnymi narzędziami.
           </p>
+
         </div>
 
-        <div class="grid gap-4 md:grid-cols-2">
+
+        <div
+          class="grid gap-4 md:grid-cols-2 xl:grid-cols-3"
+        >
+
           {
             useCases.map((item) => (
-              <div class="flex items-start gap-4 rounded-2xl border border-slate-100 bg-slate-50 p-6">
-                <div class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-950 text-[10px] text-green-400">
-                  <i class="fas fa-check"></i>
+
+              <div
+                class="flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-6"
+              >
+
+                <div
+                  class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-950 text-[10px] text-green-400"
+                >
+                  <i
+                    class="fas fa-check"
+                    aria-hidden="true"
+                  ></i>
                 </div>
 
-                <p class="font-bold leading-relaxed text-slate-700">{item}</p>
+
+                <p
+                  class="font-bold leading-relaxed text-slate-700"
+                >
+                  {item}
+                </p>
+
               </div>
+
             ))
           }
+
         </div>
+
       </div>
+
     </section>
 
-    <section class="bg-slate-50 py-24 text-slate-950">
-      <div class="container mx-auto px-4">
-        <div class="mb-16 max-w-3xl">
-          <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
-            Proces
-          </span>
 
-          <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
-            Jak wygląda wdrożenie?
-          </h2>
+    <!-- ================================================= -->
+    <!-- EXCEL + C# -->
+    <!-- ================================================= -->
 
-          <p class="text-lg leading-relaxed text-slate-600">
-            Najpierw sprawdzamy, czy API daje dostęp do potrzebnych danych. Dopiero potem
-            projektujemy automatyzację, eksport albo połączenie systemów.
-          </p>
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="grid gap-16 lg:grid-cols-2 lg:items-center"
+        >
+
+          <div>
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
+              Excel jako interfejs
+            </span>
+
+
+            <h2
+              class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+            >
+              Integracja może działać bezpośrednio z Excela.
+            </h2>
+
+
+            <p
+              class="mb-6 text-lg leading-relaxed text-slate-600"
+            >
+              Jeżeli pracownicy już pracują w Excelu, nie zawsze
+              trzeba budować zupełnie nowy system.
+            </p>
+
+
+            <p
+              class="text-lg leading-relaxed text-slate-600"
+            >
+              Możemy przygotować arkusz lub dedykowany dodatek,
+              który komunikuje się z API i daje użytkownikowi
+              własne przyciski, formularze i kontrolę nad zmianami.
+            </p>
+
+          </div>
+
+
+          <div
+            class="rounded-[2.5rem] border border-slate-200 bg-slate-50 p-8 md:p-10"
+          >
+
+            <h3
+              class="mb-6 text-2xl font-black"
+            >
+              Przykład
+            </h3>
+
+
+            <ul
+              class="space-y-5 text-slate-600"
+            >
+
+              <li class="flex gap-3">
+                <span class="font-black text-green-600">
+                  1.
+                </span>
+
+                Użytkownik pobiera aktualne dane ze sklepu.
+              </li>
+
+
+              <li class="flex gap-3">
+                <span class="font-black text-green-600">
+                  2.
+                </span>
+
+                Wprowadza lub zatwierdza zmiany w Excelu.
+              </li>
+
+
+              <li class="flex gap-3">
+                <span class="font-black text-green-600">
+                  3.
+                </span>
+
+                Narzędzie pokazuje podsumowanie zmian.
+              </li>
+
+
+              <li class="flex gap-3">
+                <span class="font-black text-green-600">
+                  4.
+                </span>
+
+                Po potwierdzeniu dane są wysyłane przez API.
+              </li>
+
+            </ul>
+
+
+            <div
+              class="mt-8 rounded-2xl bg-white p-5"
+            >
+              <p class="text-sm leading-relaxed text-slate-600">
+                Przy bardziej rozbudowanych rozwiązaniach Excel może
+                zostać rozszerzony własnym dodatkiem przygotowanym
+                np. w C#, zamiast opierać całą logikę na samym VBA.
+              </p>
+            </div>
+
+          </div>
+
         </div>
 
-        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {
-            process.map((item) => (
-              <article class="rounded-[2rem] border border-slate-100 bg-white p-7 transition-all hover:-translate-y-1 hover:border-green-500/30 hover:shadow-xl">
-                <div class="mb-6 text-5xl font-black tracking-tighter text-green-600">
-                  {item.step}
-                </div>
+      </div>
 
-                <h3 class="mb-4 text-2xl font-black uppercase tracking-tight text-slate-950">
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- TECHNOLOGIE -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-950 py-24 text-white"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="mb-16 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-400"
+          >
+            Technologia na drugim miejscu
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Dobieramy sposób integracji do systemów firmy.
+          </h2>
+
+
+          <p
+            class="text-lg leading-relaxed text-slate-400 md:text-xl"
+          >
+            API jest jednym z najlepszych sposobów wymiany danych,
+            ale nie jedynym.
+          </p>
+
+        </div>
+
+
+        <div
+          class="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
+        >
+
+          {
+            technologies.map((item) => (
+
+              <article
+                class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-7"
+              >
+
+                <h3
+                  class="mb-3 text-xl font-black text-white"
+                >
                   {item.title}
                 </h3>
 
-                <p class="text-sm font-medium leading-relaxed text-slate-600">
+                <p
+                  class="text-sm leading-relaxed text-slate-400"
+                >
                   {item.description}
                 </p>
+
               </article>
+
             ))
           }
+
         </div>
+
       </div>
+
     </section>
 
-    <section class="bg-white py-24 text-slate-950">
-      <div class="container mx-auto px-4">
-        <div class="grid gap-16 lg:grid-cols-2 lg:items-start">
+
+    <!-- ================================================= -->
+    <!-- PROCES -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="mb-16 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+          >
+            Wdrożenie
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Jak wygląda budowa integracji?
+          </h2>
+
+
+          <p
+            class="text-lg leading-relaxed text-slate-600 md:text-xl"
+          >
+            Najpierw sprawdzamy możliwości systemów.
+            Dopiero potem projektujemy przepływ danych.
+          </p>
+
+        </div>
+
+
+        <div
+          class="grid gap-6 md:grid-cols-2 xl:grid-cols-4"
+        >
+
+          {
+            process.map((item) => (
+
+              <article
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7 transition-all hover:-translate-y-1 hover:border-green-500/30 hover:shadow-xl"
+              >
+
+                <div
+                  class="mb-6 text-5xl font-black tracking-tighter text-green-600"
+                >
+                  {item.step}
+                </div>
+
+
+                <h3
+                  class="mb-4 text-2xl font-black tracking-tight text-slate-950"
+                >
+                  {item.title}
+                </h3>
+
+
+                <p
+                  class="text-sm font-medium leading-relaxed text-slate-600"
+                >
+                  {item.description}
+                </p>
+
+              </article>
+
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- BEZPIECZEŃSTWO -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-50 py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="grid gap-16 lg:grid-cols-2 lg:items-start"
+        >
+
           <div>
-            <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
-              Dane i bezpieczeństwo
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
+              Bezpieczeństwo i niezawodność
             </span>
 
-            <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
-              Integracja może działać lokalnie albo w środowisku firmy.
+
+            <h2
+              class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+            >
+              Integracja to więcej niż samo wywołanie API.
             </h2>
 
-            <p class="mb-8 text-lg leading-relaxed text-slate-600">
-              Nie każda automatyzacja wymaga zewnętrznego serwera. W wielu przypadkach
-              narzędzie może działać lokalnie, pobierać dane z API i zapisywać wynik
-              do pliku lub systemu wskazanego przez firmę.
+
+            <p
+              class="mb-8 text-lg leading-relaxed text-slate-600"
+            >
+              W produkcyjnym rozwiązaniu trzeba uwzględnić autoryzację,
+              błędy połączenia, limity API, nieprawidłowe dane
+              oraz sytuacje, w których jeden z systemów chwilowo
+              nie odpowiada.
             </p>
 
-            <div class="rounded-[2rem] bg-slate-950 p-8 text-white">
-              <h3 class="mb-4 text-2xl font-black uppercase tracking-tight">
-                Przed wdrożeniem ustalamy dostęp
+          </div>
+
+
+          <div
+            class="space-y-4"
+          >
+
+            <div
+              class="rounded-2xl border border-slate-200 bg-white p-6"
+            >
+              <h3 class="mb-2 text-xl font-black">
+                Bezpieczne dane dostępowe
               </h3>
 
-              <p class="text-sm font-medium leading-relaxed text-slate-400">
-                Potrzebne mogą być tokeny API, dokumentacja, konto testowe, zakres danych,
-                format wyniku i zasady bezpieczeństwa po stronie firmy.
+              <p class="text-sm leading-relaxed text-slate-600">
+                Klucze i tokeny API nie powinny być przechowywane
+                w miejscach dostępnych dla każdego użytkownika.
               </p>
             </div>
+
+
+            <div
+              class="rounded-2xl border border-slate-200 bg-white p-6"
+            >
+              <h3 class="mb-2 text-xl font-black">
+                Walidacja zmian
+              </h3>
+
+              <p class="text-sm leading-relaxed text-slate-600">
+                Przed wysłaniem danych można sprawdzić ich poprawność
+                i pokazać użytkownikowi zakres planowanych zmian.
+              </p>
+            </div>
+
+
+            <div
+              class="rounded-2xl border border-slate-200 bg-white p-6"
+            >
+              <h3 class="mb-2 text-xl font-black">
+                Obsługa błędów
+              </h3>
+
+              <p class="text-sm leading-relaxed text-slate-600">
+                Integracja może informować, które rekordy zostały
+                przetworzone, a które wymagają uwagi.
+              </p>
+            </div>
+
+
+            <div
+              class="rounded-2xl border border-slate-200 bg-white p-6"
+            >
+              <h3 class="mb-2 text-xl font-black">
+                Jednoznaczny przepływ
+              </h3>
+
+              <p class="text-sm leading-relaxed text-slate-600">
+                Ustalamy, który system jest źródłem danych i gdzie
+                mogą być wykonywane aktualizacje.
+              </p>
+            </div>
+
           </div>
 
-          <div class="space-y-4">
-            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
-              <h3 class="mb-2 text-xl font-black uppercase tracking-tight">Autoryzacja API</h3>
-              <p class="text-sm font-medium leading-relaxed text-slate-600">
-                Obsługujemy tokeny, klucze API, nagłówki, parametry zapytań i podstawowe modele dostępu.
-              </p>
-            </div>
-
-            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
-              <h3 class="mb-2 text-xl font-black uppercase tracking-tight">Walidacja danych</h3>
-              <p class="text-sm font-medium leading-relaxed text-slate-600">
-                Integracja może sprawdzać brakujące pola, błędne formaty, puste odpowiedzi i limity API.
-              </p>
-            </div>
-
-            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
-              <h3 class="mb-2 text-xl font-black uppercase tracking-tight">Eksport wyników</h3>
-              <p class="text-sm font-medium leading-relaxed text-slate-600">
-                Dane mogą trafiać do Excel, CSV, XML, JSON, Power BI albo aplikacji desktopowej.
-              </p>
-            </div>
-
-            <div class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
-              <h3 class="mb-2 text-xl font-black uppercase tracking-tight">Obsługa błędów</h3>
-              <p class="text-sm font-medium leading-relaxed text-slate-600">
-                Dodajemy komunikaty, logi i zabezpieczenia, żeby użytkownik wiedział, co się wydarzyło.
-              </p>
-            </div>
-          </div>
         </div>
+
       </div>
+
     </section>
 
-    <section class="bg-slate-50 py-24 text-slate-950">
-      <div class="container mx-auto px-4">
-        <div class="mb-14 max-w-3xl">
-          <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+
+    <!-- ================================================= -->
+    <!-- FAQ -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="mb-14 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+          >
             FAQ
           </span>
 
-          <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
-            Najczęstsze pytania
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Najczęstsze pytania o integracje
           </h2>
+
         </div>
 
-        <div class="grid gap-6 lg:grid-cols-2">
+
+        <div
+          class="grid gap-5 lg:grid-cols-2"
+        >
+
           {
             faqs.map((item) => (
-              <article class="rounded-[2rem] border border-slate-100 bg-white p-7">
-                <h3 class="mb-4 text-xl font-black uppercase tracking-tight text-slate-950">
-                  {item.question}
-                </h3>
 
-                <p class="text-sm font-medium leading-relaxed text-slate-600">
+              <details
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7"
+              >
+
+                <summary
+                  class="cursor-pointer text-lg font-black text-slate-950"
+                >
+                  {item.question}
+                </summary>
+
+
+                <p
+                  class="mt-5 text-sm font-medium leading-relaxed text-slate-600"
+                >
                   {item.answer}
                 </p>
-              </article>
+
+              </details>
+
             ))
           }
+
         </div>
+
       </div>
+
     </section>
 
+
     <Contact />
+
     <Footer />
+
   </div>
 
-  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
 </BaseLayout>

@@ -5,11 +5,16 @@ import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
 
 const pageTitle =
-  "Usługi automatyzacji danych dla firm | Excel, Power BI, Python, API i KSeF";
+  "Automatyzacja procesów i danych dla firm | Raporty24";
+
 const pageDescription =
-  "Automatyzujemy pracę z danymi: Excel, Power BI, KSeF do Excela, kalkulatory ofertowe, skrypty Python, integracje API, raporty i aplikacje dla firm.";
+  "Automatyzujemy powtarzalną pracę w firmach: Excel, Power BI, API, Python, raporty, integracje, pliki i małe narzędzia. Opisz problem – dobierzemy rozwiązanie.";
+
 const ogImage = "/biuro3.webp";
-const currentUrl = "https://raporty24.pl/uslugi/";
+
+const currentUrl =
+  "https://raporty24.pl/uslugi/";
+
 
 type ServiceMeta = {
   title?: string;
@@ -20,488 +25,1657 @@ type ServiceMeta = {
   description?: string;
 };
 
-const serviceModules = import.meta.glob("./*.astro", { eager: true });
+
+type ServiceItem = {
+  slug: string;
+  href: string;
+  title: string;
+  order: number;
+  menu: boolean;
+  description: string;
+  category: string;
+};
+
+
+type DisplayService = {
+  slug: string;
+  href: string;
+  title: string;
+  description: string;
+  category: string;
+  planned?: boolean;
+};
+
+
+const serviceModules = import.meta.glob("./*.astro", {
+  eager: true,
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| NAZWY USŁUG
+|--------------------------------------------------------------------------
+*/
 
 const serviceTitleOverrides: Record<string, string> = {
-  "pobieranie-email-do-excela": "Pobieranie e-maili do Excela",
-  "raporty-miesieczne-automatyczne": "Automatyczne raporty miesięczne",
-  "automatyzacja-excel-power-query": "Automatyzacja Excel Power Query",
-  "baza-klientow-w-excelu": "Baza klientów w Excelu",
-  "crm-w-excelu": "CRM w Excelu i Google Sheets",
-  "dashboardy-power-bi": "Dashboardy Power BI",
-  "excel-na-zamowienie": "Excel na zamówienie",
-  "lejek-sprzedazy-w-excelu": "Lejek sprzedaży w Excelu",
-  "makra-vba": "Makra VBA",
-  "optymalizacja-excela": "Optymalizacja Excela",
-  "power-bi-dla-firm": "Power BI dla firm",
-  "raporty-power-bi": "Raporty Power BI",
-  "raporty-serwisowe": "Raporty serwisowe",
-  "logistyka-w-excelu": "Logistyka w Excelu",
-  "finanse-w-excelu": "Finanse i controlling",
-  "kalkulatory-produktowe": "Kalkulatory ofertowe",
-  "ksef-do-excela": "KSeF do Excela",
-  "skrypty-python": "Skrypty Python",
-  "integracje-api": "Integracje API",
+  "pobieranie-emaili-do-excela":
+    "Pobieranie e-maili do Excela",
+
+  "pobieranie-email-do-excela":
+    "Pobieranie e-maili do Excela",
+
+  "raporty-miesieczne-automatyczne":
+    "Automatyczne raporty miesięczne",
+
+  "automatyzacja-excel-power-query":
+    "Automatyzacja Excel Power Query",
+
+  "baza-klientow-w-excelu":
+    "Baza klientów w Excelu",
+
+  "crm-w-excelu":
+    "CRM w Excelu",
+
+  "dashboardy-power-bi":
+    "Dashboardy Power BI",
+
+  "excel-na-zamowienie":
+    "Excel na zamówienie",
+
+  "lejek-sprzedazy-w-excelu":
+    "Lejek sprzedaży",
+
+  "makra-vba":
+    "Makra VBA",
+
+  "optymalizacja-excela":
+    "Optymalizacja Excela",
+
+  "power-bi-dla-firm":
+    "Power BI dla firm",
+
+  "raporty-power-bi":
+    "Raporty Power BI",
+
+  "raporty-serwisowe":
+    "Raporty serwisowe",
+
+  "logistyka-w-excelu":
+    "Logistyka w Excelu",
+
+  "finanse-w-excelu":
+    "Finanse i controlling",
+
+  "kalkulatory-produktowe":
+    "Kalkulatory ofertowe",
+
+  "ksef-do-excela":
+    "KSeF do Excela",
+
+ "skrypty-python":
+  "Automatyzacja plików i procesów",
+
+  "integracje-api":
+    "Integracje API",
 };
+
+
+/*
+|--------------------------------------------------------------------------
+| KATEGORIE
+|--------------------------------------------------------------------------
+*/
 
 const serviceCategoryOverrides: Record<string, string> = {
-  "pobieranie-email-do-excela": "Automatyzacja",
-  "raporty-miesieczne-automatyczne": "Raporty",
-  "automatyzacja-excel-power-query": "Excel",
-  "baza-klientow-w-excelu": "Excel",
-  "crm-w-excelu": "CRM",
-  "dashboardy-power-bi": "Power BI",
-  "excel-na-zamowienie": "Excel",
-  "lejek-sprzedazy-w-excelu": "Sprzedaż",
-  "makra-vba": "Excel",
-  "optymalizacja-excela": "Excel",
-  "power-bi-dla-firm": "Power BI",
-  "raporty-power-bi": "Power BI",
-  "raporty-serwisowe": "Serwis",
-  "logistyka-w-excelu": "Logistyka",
-  "finanse-w-excelu": "Finanse",
-  "kalkulatory-produktowe": "Wyceny",
-  "ksef-do-excela": "KSeF",
-  "skrypty-python": "Python",
-  "integracje-api": "API",
+  "pobieranie-emaili-do-excela":
+    "Integracje i dane",
+
+  "pobieranie-email-do-excela":
+    "Integracje i dane",
+
+  "raporty-miesieczne-automatyczne":
+    "Raportowanie",
+
+  "automatyzacja-excel-power-query":
+    "Excel",
+
+  "baza-klientow-w-excelu":
+    "Procesy biznesowe",
+
+  "crm-w-excelu":
+    "Procesy biznesowe",
+
+  "dashboardy-power-bi":
+    "Raportowanie",
+
+  "excel-na-zamowienie":
+    "Excel",
+
+  "lejek-sprzedazy-w-excelu":
+    "Procesy biznesowe",
+
+  "makra-vba":
+    "Excel",
+
+  "optymalizacja-excela":
+    "Excel",
+
+  "power-bi-dla-firm":
+    "Raportowanie",
+
+  "raporty-power-bi":
+    "Raportowanie",
+
+  "raporty-serwisowe":
+    "Procesy biznesowe",
+
+  "logistyka-w-excelu":
+    "Procesy biznesowe",
+
+  "finanse-w-excelu":
+    "Procesy biznesowe",
+
+  "kalkulatory-produktowe":
+    "Procesy biznesowe",
+
+  "ksef-do-excela":
+    "Integracje i dane",
+
+  "skrypty-python":
+    "Integracje i dane",
+
+  "integracje-api":
+    "Integracje i dane",
 };
 
+
+/*
+|--------------------------------------------------------------------------
+| OPISY USŁUG
+|--------------------------------------------------------------------------
+*/
+
 const serviceDescriptions: Record<string, string> = {
+  "pobieranie-emaili-do-excela":
+    "Automatyczne pobieranie załączników z poczty, zapisywanie plików i przygotowanie danych do Excela, raportu lub dalszego procesu.",
+
   "pobieranie-email-do-excela":
-    "Automatyczne pobieranie załączników z poczty, zapisywanie plików i przygotowanie danych do raportu Excel lub Power BI.",
+    "Automatyczne pobieranie załączników z poczty, zapisywanie plików i przygotowanie danych do Excela, raportu lub dalszego procesu.",
+
   "raporty-miesieczne-automatyczne":
-    "Raporty cykliczne, które odświeżają dane z plików, folderów lub systemów i ograniczają ręczne składanie zestawień.",
+    "Automatyczne raporty miesięczne z danych z plików i systemów. Excel, Power Query, Power BI, API i PDF.",
+
   "automatyzacja-excel-power-query":
-    "Porządkowanie, łączenie i odświeżanie danych w Excelu za pomocą Power Query bez ręcznego kopiowania tabel.",
+    "Łączenie, czyszczenie i odświeżanie danych w Excelu bez ręcznego kopiowania kolejnych tabel i plików.",
+
   "baza-klientow-w-excelu":
-    "Praktyczna baza klientów, kontaktów, statusów i historii działań, gdy firma nie potrzebuje jeszcze dużego systemu CRM.",
+    "Baza klientów, kontaktów, statusów i historii działań dla firmy, która nie potrzebuje rozbudowanego systemu CRM.",
+
   "crm-w-excelu":
-    "Prosty CRM w Excelu lub Google Sheets do obsługi leadów, klientów, ofert, statusów i działań sprzedażowych.",
+    "Proste narzędzie do obsługi leadów, klientów, ofert, statusów i działań sprzedażowych.",
+
   "dashboardy-power-bi":
-    "Dashboardy Power BI dla zarządu, sprzedaży, finansów, logistyki i zespołów, które potrzebują czytelnych KPI.",
+    "Dashboardy KPI dla zarządu, sprzedaży, finansów, logistyki i innych obszarów firmy.",
+
   "excel-na-zamowienie":
-    "Arkusze Excel dopasowane do procesu firmy: formularze, raporty, kalkulatory, walidacje, makra i automatyzacje.",
+    "Dedykowane arkusze, formularze, raporty, kalkulatory, walidacje i automatyzacje dopasowane do procesu firmy.",
+
   "lejek-sprzedazy-w-excelu":
-    "Lejek sprzedaży, statusy ofert, prognoza przychodów i kontrola działań handlowych w prostym narzędziu Excel.",
+    "Statusy ofert, prognoza przychodów, działania handlowe i kontrola lejka sprzedażowego.",
+
   "makra-vba":
-    "Makra VBA do automatycznego formatowania, generowania plików, raportów, eksportów i powtarzalnych operacji w Excelu.",
+    "Automatyzacja powtarzalnych czynności w Excelu: formatowanie, raporty, eksporty, pliki i operacje na danych.",
+
   "optymalizacja-excela":
-    "Przyspieszanie wolnych plików Excel, porządkowanie formuł, Power Query, tabel i struktury danych w arkuszu.",
+    "Przyspieszanie wolnych skoroszytów, porządkowanie formuł, Power Query, tabel i struktury danych.",
+
   "power-bi-dla-firm":
-    "Wdrożenie Power BI dla firmy: model danych, dashboardy, KPI, odświeżanie raportów i widoki dla zespołu.",
+    "Wdrożenie Power BI: model danych, KPI, dashboardy, raportowanie i odświeżanie danych.",
+
   "raporty-power-bi":
-    "Raporty Power BI z danych sprzedażowych, finansowych, operacyjnych, magazynowych lub logistycznych.",
+    "Raporty Power BI z danych sprzedażowych, finansowych, operacyjnych, magazynowych i logistycznych.",
+
   "raporty-serwisowe":
-    "Raporty serwisowe, zlecenia, statusy, koszty, czas pracy i historia obsługi klientów w jednym zestawieniu.",
+    "Zlecenia, statusy, koszty, czas pracy i historia obsługi klientów w jednym uporządkowanym narzędziu.",
+
   "logistyka-w-excelu":
-    "Narzędzia Excel dla logistyki: flota, trasy, koszty transportu, harmonogramy, magazyn i raporty operacyjne.",
+    "Narzędzia dla logistyki: flota, trasy, koszty transportu, harmonogramy, magazyn i raportowanie.",
+
   "finanse-w-excelu":
-    "Raporty finansowe, controlling, koszty, marże, budżety, zestawienia miesięczne i kontrola wyników firmy.",
+    "Raporty finansowe, controlling, koszty, marże, budżety i miesięczna kontrola wyników.",
+
   "kalkulatory-produktowe":
-    "Kalkulatory ofertowe, konfiguratory produktów, formularze zamówień B2B i automatyczne wyceny dla handlowców.",
+    "Kalkulatory ofertowe, konfiguratory produktów i automatyczne wyceny wspierające sprzedaż.",
+
   "ksef-do-excela":
-    "Pobieranie faktur z KSeF, filtrowanie dokumentów i eksport danych do Excel, CSV lub XML dla księgowości.",
+    "Pobieranie faktur z KSeF oraz przygotowanie danych do Excel, CSV lub XML.",
+
   "skrypty-python":
-    "Skrypty Python do plików CSV, XML, PDF, folderów, raportów, eksportów i powtarzalnych zadań firmowych.",
+  "Automatyzacja plików, folderów, dokumentów i powtarzalnych czynności. Dobieramy Python, C#, Excel, API lub inne narzędzie do konkretnego procesu.",
+
   "integracje-api":
-    "Integracje API z systemami firmowymi, CRM, ERP, sklepami, plikami i bazami danych w jeden raport lub proces.",
+    "Łączenie systemów, sklepów, CRM, ERP, aplikacji, baz danych i plików bez ręcznego przepisywania informacji.",
 };
+
 
 function prettifyTitle(slug: string) {
   return slug
     .replaceAll("-", " ")
-    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+    .replace(/\b\w/g, (letter) =>
+      letter.toUpperCase()
+    );
 }
 
-const allServices = Object.entries(serviceModules)
-  .filter(([path]) => path !== "./index.astro" && !path.endsWith("/index.astro"))
-  .map(([path, module]) => {
-    const slug = path.split("/").pop()?.replace(".astro", "") ?? "";
-    const meta = ((module as { service?: ServiceMeta }).service ?? {}) as ServiceMeta;
 
-    return {
-      slug,
-      href: `/uslugi/${slug}/`,
-      title: serviceTitleOverrides[slug] ?? meta.title ?? prettifyTitle(slug),
-      order: typeof meta.order === "number" ? meta.order : 999,
-      menu: meta.menu ?? true,
-      description:
-        serviceDescriptions[slug] ??
-        meta.description ??
-        "Opisz swój proces, a dobierzemy narzędzie: Excel, Power BI, Python, API albo prostą aplikację.",
-      category:
-        serviceCategoryOverrides[slug] ?? meta.category ?? meta.group ?? "Automatyzacja",
-    };
-  })
-  .filter((service) => service.menu !== false)
-  .sort((a, b) => a.order - b.order || a.title.localeCompare(b.title));
+/*
+|--------------------------------------------------------------------------
+| AUTOMATYCZNA LISTA ISTNIEJĄCYCH USŁUG
+|--------------------------------------------------------------------------
+*/
 
-const featuredServices = [
+const allServices: ServiceItem[] =
+  Object.entries(serviceModules)
+
+    .filter(
+      ([path]) =>
+        path !== "./index.astro" &&
+        !path.endsWith("/index.astro")
+    )
+
+    .map(([path, module]) => {
+
+      const slug =
+        path
+          .split("/")
+          .pop()
+          ?.replace(".astro", "") ?? "";
+
+      const meta =
+        ((module as { service?: ServiceMeta }).service ??
+          {}) as ServiceMeta;
+
+      return {
+        slug,
+
+        href:
+          `/uslugi/${slug}/`,
+
+        title:
+          serviceTitleOverrides[slug] ??
+          meta.title ??
+          prettifyTitle(slug),
+
+        order:
+          typeof meta.order === "number"
+            ? meta.order
+            : 999,
+
+        menu:
+          meta.menu ?? true,
+
+        description:
+          serviceDescriptions[slug] ??
+          meta.description ??
+          "Opisz proces, a dobierzemy możliwie proste rozwiązanie.",
+
+        category:
+          serviceCategoryOverrides[slug] ??
+          meta.category ??
+          meta.group ??
+          "Automatyzacja",
+      };
+    })
+
+    .filter(
+      (service) =>
+        service.menu !== false
+    )
+
+    .sort(
+      (a, b) =>
+        a.order - b.order ||
+        a.title.localeCompare(
+          b.title,
+          "pl"
+        )
+    );
+
+
+function findService(
+  ...slugs: string[]
+): ServiceItem | undefined {
+
+  return allServices.find(
+    (service) =>
+      slugs.includes(service.slug)
+  );
+
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| NOWE KIERUNKI - NA RAZIE BEZ OSOBNYCH MONEY PAGES
+|--------------------------------------------------------------------------
+|
+| Te dwa kafelki prowadzą do formularza.
+| Nie tworzymy jeszcze sztucznych / pustych URL-i.
+|
+*/
+
+const plannedIntegrationServices: DisplayService[] = [
   {
-    title: "Arkusze Excel",
+    slug: "import-eksport-danych",
+
+    title:
+      "Import i eksport danych",
+
+    category:
+      "Integracje i dane",
+
     description:
-      "Arkusze Excel na zamówienie: raporty, kalkulatory, formularze, Power Query, makra i automatyzacje codziennej pracy.",
-    href: "/uslugi/excel-na-zamowienie/",
-    icon: "fas fa-file-excel",
+      "Automatyczne przenoszenie, konwersja i mapowanie danych między Excel, CSV, XML, JSON oraz systemami firmowymi.",
+
+    href:
+      "#kontakt",
+
+    planned: true,
   },
+
   {
-    title: "KSeF do Excela",
+    slug: "automatyzacja-pdf-dokumentow",
+
+    title:
+      "PDF i automatyzacja dokumentów",
+
+    category:
+      "Integracje i dane",
+
     description:
-      "Pobieranie faktur z KSeF, filtrowanie dokumentów i eksport do Excel, CSV lub XML dla księgowości i właściciela firmy.",
-    href: "/uslugi/ksef-do-excela/",
-    icon: "fas fa-file-invoice",
-  },
-  {
-    title: "Kalkulatory ofertowe",
-    description:
-      "Kalkulatory produktowe, konfiguratory, formularze zamówień B2B i automatyczne wyceny bez liczenia wszystkiego ręcznie.",
-    href: "/uslugi/kalkulatory-produktowe/",
-    icon: "fas fa-calculator",
-  },
-  {
-    title: "Skrypty Python",
-    description:
-      "Automatyzacja plików CSV, XML, PDF, folderów, raportów, eksportów i powtarzalnych zadań firmowych.",
-    href: "/uslugi/skrypty-python/",
-    icon: "fas fa-code",
-  },
-  {
-    title: "Integracje API",
-    description:
-      "Łączenie danych z systemów, sklepów, CRM, ERP i aplikacji firmowych w jeden raport, bazę albo proces.",
-    href: "/uslugi/integracje-api/",
-    icon: "fas fa-plug",
-  },
-  {
-    title: "Dashboardy Power BI",
-    description:
-      "Raporty zarządcze, KPI, sprzedaż, koszty, flota i wyniki firmy w czytelnych dashboardach Power BI.",
-    href: "/uslugi/dashboardy-power-bi/",
-    icon: "fas fa-chart-pie",
+      "Generowanie, nazywanie, dzielenie i przetwarzanie plików PDF oraz dokumentów na podstawie danych firmowych.",
+
+    href:
+      "#kontakt",
+
+    planned: true,
   },
 ];
+
+
+/*
+|--------------------------------------------------------------------------
+| NAJWAŻNIEJSZE MONEY PAGES
+|--------------------------------------------------------------------------
+*/
+
+const featuredServiceDefinitions = [
+  {
+    slugs: [
+      "excel-na-zamowienie"
+    ],
+
+    icon:
+      "fas fa-file-excel",
+  },
+
+  {
+    slugs: [
+      "raporty-miesieczne-automatyczne"
+    ],
+
+    icon:
+      "fas fa-chart-line",
+  },
+
+  {
+    slugs: [
+      "integracje-api"
+    ],
+
+    icon:
+      "fas fa-plug",
+  },
+
+  {
+    slugs: [
+      "pobieranie-emaili-do-excela",
+      "pobieranie-email-do-excela",
+    ],
+
+    icon:
+      "fas fa-envelope-open-text",
+  },
+
+  {
+    slugs: [
+      "skrypty-python"
+    ],
+
+    icon:
+      "fas fa-gears",
+  },
+
+  {
+    slugs: [
+      "power-bi-dla-firm"
+    ],
+
+    icon:
+      "fas fa-chart-pie",
+  },
+];
+
+
+const featuredServices =
+  featuredServiceDefinitions
+
+    .map((definition) => {
+
+      const service =
+        findService(
+          ...definition.slugs
+        );
+
+      if (!service) {
+        return null;
+      }
+
+      return {
+        ...service,
+        icon:
+          definition.icon,
+      };
+    })
+
+    .filter(
+      (service): service is ServiceItem & {
+        icon: string;
+      } =>
+        service !== null
+    );
+
+
+/*
+|--------------------------------------------------------------------------
+| KLASTRY USŁUG
+|--------------------------------------------------------------------------
+*/
+
+const excelServices = [
+  "excel-na-zamowienie",
+  "automatyzacja-excel-power-query",
+  "makra-vba",
+  "optymalizacja-excela",
+]
+  .map((slug) =>
+    findService(slug)
+  )
+  .filter(
+    (service): service is ServiceItem =>
+      Boolean(service)
+  );
+
+
+const reportingServices = [
+  "raporty-miesieczne-automatyczne",
+  "power-bi-dla-firm",
+  "dashboardy-power-bi",
+  "raporty-power-bi",
+]
+  .map((slug) =>
+    findService(slug)
+  )
+  .filter(
+    (service): service is ServiceItem =>
+      Boolean(service)
+  );
+
+
+const integrationServices: DisplayService[] = [
+  findService(
+    "integracje-api"
+  ),
+
+  findService(
+    "pobieranie-emaili-do-excela",
+    "pobieranie-email-do-excela"
+  ),
+
+  findService(
+    "skrypty-python"
+  ),
+
+  findService(
+    "ksef-do-excela"
+  ),
+
+  ...plannedIntegrationServices,
+]
+  .filter(
+    (service): service is
+      ServiceItem | DisplayService =>
+      Boolean(service)
+  );
+
+
+const businessProcessServices = [
+  "baza-klientow-w-excelu",
+  "crm-w-excelu",
+  "lejek-sprzedazy-w-excelu",
+  "kalkulatory-produktowe",
+  "logistyka-w-excelu",
+  "finanse-w-excelu",
+  "raporty-serwisowe",
+]
+  .map((slug) =>
+    findService(slug)
+  )
+  .filter(
+    (service): service is ServiceItem =>
+      Boolean(service)
+  );
+
+
+const clusters = [
+  {
+    title:
+      "Excel i automatyzacja",
+
+    description:
+      "Gdy Excel jest właściwym narzędziem, ale ręczna praca zabiera za dużo czasu.",
+
+    icon:
+      "fas fa-file-excel",
+
+    services:
+      excelServices,
+  },
+
+  {
+    title:
+      "Raportowanie i BI",
+
+    description:
+      "Gdy dane trzeba regularnie zamieniać w czytelne raporty, KPI i dashboardy.",
+
+    icon:
+      "fas fa-chart-column",
+
+    services:
+      reportingServices,
+  },
+
+  {
+    title:
+      "Integracje i dane",
+
+    description:
+      "Gdy dane trzeba pobierać, przekształcać, przenosić lub synchronizować między plikami i systemami.",
+
+    icon:
+      "fas fa-plug",
+
+    services:
+      integrationServices,
+  },
+
+  {
+    title:
+      "Procesy biznesowe",
+
+    description:
+      "Gdy firma potrzebuje małego, dopasowanego narzędzia zamiast dużego i kosztownego systemu.",
+
+    icon:
+      "fas fa-gears",
+
+    services:
+      businessProcessServices,
+  },
+];
+
+
+/*
+|--------------------------------------------------------------------------
+| PROBLEMY KLIENTA
+|--------------------------------------------------------------------------
+*/
 
 const problemCards = [
   {
-    title: "Za dużo ręcznej pracy w Excelu",
+    title:
+      "Kopiujesz dane między systemami",
+
     description:
-      "Jeśli zespół kopiuje dane, skleja raporty i poprawia pliki ręcznie, zwykle można skrócić ten proces do kilku kliknięć.",
-    icon: "fas fa-clock",
+      "Pracownik pobiera informacje z jednego programu i ręcznie przepisuje lub wkleja je do drugiego.",
+
+    icon:
+      "fas fa-right-left",
+
+    href:
+      "/uslugi/integracje-api/",
   },
+
   {
-    title: "Dane są w wielu systemach",
+    title:
+      "Co miesiąc robisz ten sam raport",
+
     description:
-      "Łączymy dane z plików, API, systemów sprzedażowych, księgowych, magazynowych i raportowych.",
-    icon: "fas fa-database",
+      "Pobieranie plików, łączenie tabel, obliczenia i aktualizacja wykresów za każdym razem wyglądają podobnie.",
+
+    icon:
+      "fas fa-chart-line",
+
+    href:
+      "/uslugi/raporty-miesieczne-automatyczne/",
   },
+
   {
-    title: "Wyceny i raporty mają błędy",
+    title:
+      "Ręcznie obrabiasz pliki",
+
     description:
-      "Budujemy kalkulatory, walidacje, szablony, eksporty i procesy, które ograniczają pomyłki oraz chaos w danych.",
-    icon: "fas fa-check-circle",
+      "CSV, XML, PDF, Excel, eksporty albo załączniki wymagają ciągle tych samych operacji.",
+
+    icon:
+      "fas fa-file-code",
+
+    href:
+      "/uslugi/skrypty-python/",
+  },
+
+  {
+    title:
+      "Potrzebujesz jednego małego narzędzia",
+
+    description:
+      "Nie zawsze potrzebujesz dużego systemu. Czasem wystarczy arkusz, skrypt, integracja albo prosta aplikacja.",
+
+    icon:
+      "fas fa-screwdriver-wrench",
+
+    href:
+      "#kontakt",
   },
 ];
 
-const solutionPaths = [
-  {
-    title: "Faktury i dokumenty",
-    description:
-      "KSeF, faktury z maila, XML, CSV, rejestry dokumentów i eksporty dla księgowości.",
-    href: "/uslugi/ksef-do-excela/",
-    icon: "fas fa-file-invoice",
-  },
-  {
-    title: "Raporty i KPI",
-    description:
-      "Raporty miesięczne, dashboardy Power BI, Excel, controlling, sprzedaż i wyniki firmy.",
-    href: "/uslugi/dashboardy-power-bi/",
-    icon: "fas fa-chart-line",
-  },
-  {
-    title: "Wyceny i sprzedaż",
-    description:
-      "Kalkulatory ofertowe, konfiguratory produktów, lejki sprzedaży i automatyczne podsumowania.",
-    href: "/uslugi/kalkulatory-produktowe/",
-    icon: "fas fa-calculator",
-  },
-  {
-    title: "Systemy i integracje",
-    description:
-      "Python, API, pliki, foldery, eksporty, bazy danych i małe aplikacje pod proces firmy.",
-    href: "/uslugi/integracje-api/",
-    icon: "fas fa-plug",
-  },
-];
+
+/*
+|--------------------------------------------------------------------------
+| KTÓRE ISTNIEJĄCE USŁUGI SĄ JUŻ W KLASTRACH
+|--------------------------------------------------------------------------
+*/
+
+const assignedExistingSlugs =
+  new Set([
+    ...excelServices.map(
+      (service) =>
+        service.slug
+    ),
+
+    ...reportingServices.map(
+      (service) =>
+        service.slug
+    ),
+
+    ...integrationServices
+      .filter(
+        (service) =>
+          !service.planned
+      )
+      .map(
+        (service) =>
+          service.slug
+      ),
+
+    ...businessProcessServices.map(
+      (service) =>
+        service.slug
+    ),
+  ]);
+
+
+const remainingServices =
+  allServices.filter(
+    (service) =>
+      !assignedExistingSlugs.has(
+        service.slug
+      )
+  );
+
+
+/*
+|--------------------------------------------------------------------------
+| STRUCTURED DATA
+|--------------------------------------------------------------------------
+*/
 
 const servicesSchema = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  name: "Usługi Raporty24",
-  itemListElement: allServices.map((service, index) => ({
-    "@type": "ListItem",
-    position: index + 1,
-    url: `https://raporty24.pl${service.href}`,
-    name: service.title,
-    description: service.description,
-  })),
+  "@context":
+    "https://schema.org",
+
+  "@type":
+    "ItemList",
+
+  name:
+    "Usługi automatyzacji procesów i danych Raporty24",
+
+  itemListElement:
+    allServices.map(
+      (service, index) => ({
+        "@type":
+          "ListItem",
+
+        position:
+          index + 1,
+
+        url:
+          `https://raporty24.pl${service.href}`,
+
+        name:
+          service.title,
+
+        description:
+          service.description,
+      })
+    ),
+};
+
+
+const breadcrumbSchema = {
+  "@context":
+    "https://schema.org",
+
+  "@type":
+    "BreadcrumbList",
+
+  itemListElement: [
+    {
+      "@type":
+        "ListItem",
+
+      position:
+        1,
+
+      name:
+        "Raporty24",
+
+      item:
+        "https://raporty24.pl/",
+    },
+
+    {
+      "@type":
+        "ListItem",
+
+      position:
+        2,
+
+      name:
+        "Usługi",
+
+      item:
+        currentUrl,
+    },
+  ],
 };
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription} image={ogImage} url={currentUrl}>
-  <div x-data="app" x-cloak>
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  image={ogImage}
+  url={currentUrl}
+  structuredData={[
+    servicesSchema,
+    breadcrumbSchema
+  ]}
+>
+
+  <div
+    x-data="app"
+    x-cloak
+  >
+
     <Header />
 
+
     <main class="pt-20">
-      <section class="relative overflow-hidden bg-slate-950 py-24 text-white lg:py-36">
-        <div class="absolute inset-0 opacity-20">
-          <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1.5px,transparent_1.5px)] [background-size:32px_32px]"></div>
+
+      <!-- ========================================================= -->
+      <!-- HERO -->
+      <!-- ========================================================= -->
+
+      <section
+        class="relative overflow-hidden bg-slate-950 py-24 text-white lg:py-32"
+      >
+
+        <div
+          class="absolute inset-0 opacity-20"
+          aria-hidden="true"
+        >
+          <div
+            class="absolute inset-0 bg-[radial-gradient(#1e293b_1.5px,transparent_1.5px)] [background-size:32px_32px]"
+          ></div>
         </div>
 
-        <div class="absolute -right-24 top-0 h-96 w-96 rounded-full bg-green-600/10 blur-[120px]"></div>
-        <div class="absolute -left-24 bottom-0 h-96 w-96 rounded-full bg-cyan-500/10 blur-[120px]"></div>
 
-        <div class="container relative z-10 mx-auto px-4">
+        <div
+          class="absolute -right-24 top-0 h-96 w-96 rounded-full bg-green-600/10 blur-[120px]"
+          aria-hidden="true"
+        ></div>
+
+
+        <div
+          class="absolute -left-24 bottom-0 h-96 w-96 rounded-full bg-cyan-500/10 blur-[120px]"
+          aria-hidden="true"
+        ></div>
+
+
+        <div
+          class="container relative z-10 mx-auto px-4"
+        >
+
           <div class="max-w-5xl">
-            <span class="mb-8 inline-block rounded-full border border-green-500/20 bg-green-500/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.3em] text-green-400">
-              Katalog usług
+
+            <span
+              class="mb-7 inline-block rounded-full border border-green-500/20 bg-green-500/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.25em] text-green-400"
+            >
+              Automatyzacja procesów i danych
             </span>
 
-            <h1 class="mb-8 text-5xl font-black uppercase leading-[0.95] tracking-tighter md:text-8xl">
-              Automatyzacja danych
-              <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">
-                dla firm.
+
+            <h1
+              class="mb-8 text-5xl font-black leading-[0.95] tracking-tighter md:text-7xl lg:text-8xl"
+            >
+              Mniej ręcznej pracy.
+              <br />
+
+              <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600"
+              >
+                Więcej automatyzacji.
               </span>
             </h1>
 
-            <p class="mb-12 max-w-3xl text-xl font-medium leading-relaxed text-slate-400 md:text-2xl">
-              Tworzymy narzędzia w Excelu, Power BI, Pythonie i API: raporty, KSeF do Excela,
-              kalkulatory ofertowe, integracje, skrypty i aplikacje, które zdejmują z firmy
-              ręczne kopiowanie danych.
+
+            <p
+              class="mb-7 max-w-3xl text-xl font-medium leading-relaxed text-slate-300 md:text-2xl"
+            >
+              Pomagamy firmom automatyzować powtarzalne procesy,
+              raportowanie i przepływ danych między plikami
+              oraz systemami.
             </p>
 
-            <div class="flex flex-col gap-4 sm:flex-row">
+
+            <p
+              class="mb-10 max-w-3xl text-base leading-relaxed text-slate-400 md:text-lg"
+            >
+              Nie musisz wiedzieć, czy potrzebujesz Excela,
+              Power BI, API, Pythona czy małej aplikacji.
+              Najpierw analizujemy problem, a dopiero później
+              dobieramy możliwie proste rozwiązanie.
+            </p>
+
+
+            <div
+              class="flex flex-col gap-4 sm:flex-row"
+            >
+
               <a
-                href="#najczesciej"
+                href="#obszary"
                 class="inline-flex items-center justify-center gap-3 rounded-2xl bg-green-600 px-8 py-5 text-sm font-black uppercase tracking-widest text-white transition-all hover:-translate-y-1 hover:bg-green-500"
               >
-                Zobacz usługi
-                <i class="fas fa-arrow-right text-xs"></i>
+                Zobacz rozwiązania
+
+                <i
+                  class="fas fa-arrow-down text-xs"
+                  aria-hidden="true"
+                ></i>
               </a>
+
 
               <a
                 href="#kontakt"
                 class="inline-flex items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/10 px-8 py-5 text-sm font-black uppercase tracking-widest text-white transition-all hover:-translate-y-1 hover:bg-white hover:text-slate-950"
               >
-                Zapytaj o wycenę
+                Opisz swój problem
               </a>
+
             </div>
+
           </div>
+
         </div>
+
       </section>
 
-      <section id="najczesciej" class="bg-white py-24 text-slate-950">
-        <div class="container mx-auto px-4">
-          <div class="mb-16 max-w-4xl">
-            <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+
+      <!-- ========================================================= -->
+      <!-- PROBLEMY -->
+      <!-- ========================================================= -->
+
+      <section
+        class="bg-white py-24 text-slate-950"
+      >
+
+        <div
+          class="container mx-auto px-4"
+        >
+
+          <div
+            class="mb-14 max-w-4xl"
+          >
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
+              Zacznij od problemu
+            </span>
+
+
+            <h2
+              class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+            >
+              Co zabiera czas w Twojej firmie?
+            </h2>
+
+
+            <p
+              class="text-lg font-medium leading-relaxed text-slate-600 md:text-xl"
+            >
+              Najlepsze automatyzacje często zaczynają się od
+              jednej irytującej czynności wykonywanej codziennie,
+              co tydzień albo co miesiąc.
+            </p>
+
+          </div>
+
+
+          <div
+            class="grid gap-6 md:grid-cols-2 xl:grid-cols-4"
+          >
+
+            {
+              problemCards.map((item) => (
+                <a
+                  href={item.href}
+                  class="group flex flex-col rounded-[2rem] border border-slate-200 bg-slate-50 p-7 transition-all hover:-translate-y-1 hover:border-green-500/50 hover:bg-white hover:shadow-xl"
+                >
+
+                  <div
+                    class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-950 text-green-400 transition-all group-hover:bg-green-600 group-hover:text-white"
+                  >
+                    <i
+                      class={`${item.icon} text-xl`}
+                      aria-hidden="true"
+                    ></i>
+                  </div>
+
+
+                  <h3
+                    class="mb-3 text-xl font-black leading-tight text-slate-950"
+                  >
+                    {item.title}
+                  </h3>
+
+
+                  <p
+                    class="flex-1 text-sm font-medium leading-relaxed text-slate-600"
+                  >
+                    {item.description}
+                  </p>
+
+
+                  <span
+                    class="mt-6 inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-green-700"
+                  >
+                    Sprawdź rozwiązanie
+
+                    <i
+                      class="fas fa-arrow-right text-[10px] transition-transform group-hover:translate-x-1"
+                      aria-hidden="true"
+                    ></i>
+                  </span>
+
+                </a>
+              ))
+            }
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ========================================================= -->
+      <!-- CZTERY OBSZARY -->
+      <!-- ========================================================= -->
+
+      <section
+        id="obszary"
+        class="bg-slate-50 py-24 text-slate-950"
+      >
+
+        <div
+          class="container mx-auto px-4"
+        >
+
+          <div
+            class="mb-16 max-w-4xl"
+          >
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
+              Cztery obszary
+            </span>
+
+
+            <h2
+              class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+            >
+              W czym możemy pomóc?
+            </h2>
+
+
+            <p
+              class="text-lg font-medium leading-relaxed text-slate-600 md:text-xl"
+            >
+              Oferta jest uporządkowana według problemów biznesowych,
+              a nie języków programowania. Technologia jest dobierana
+              dopiero do konkretnego procesu.
+            </p>
+
+          </div>
+
+
+          <div
+            class="grid gap-7 lg:grid-cols-2"
+          >
+
+            {
+              clusters.map((cluster) => (
+
+                <article
+                  class="rounded-[2.5rem] border border-slate-200 bg-white p-8 md:p-10"
+                >
+
+                  <div
+                    class="mb-7 flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-950 text-2xl text-green-400"
+                  >
+                    <i
+                      class={cluster.icon}
+                      aria-hidden="true"
+                    ></i>
+                  </div>
+
+
+                  <h3
+                    class="mb-3 text-2xl font-black text-slate-950 md:text-3xl"
+                  >
+                    {cluster.title}
+                  </h3>
+
+
+                  <p
+                    class="mb-7 max-w-xl text-sm font-medium leading-relaxed text-slate-600"
+                  >
+                    {cluster.description}
+                  </p>
+
+
+                  <div
+                    class="grid gap-3 sm:grid-cols-2"
+                  >
+
+                    {
+                      cluster.services.map((service) => (
+
+                        <a
+                          href={service.href}
+                          class="group relative rounded-2xl border border-slate-100 bg-slate-50 px-5 py-4 transition-all hover:border-green-500/40 hover:bg-green-50"
+                        >
+
+                          {
+                            service.planned && (
+                              <span
+                                class="mb-2 inline-block rounded-full bg-green-100 px-2.5 py-1 text-[9px] font-black uppercase tracking-wider text-green-700"
+                              >
+                                Zapytaj o usługę
+                              </span>
+                            )
+                          }
+
+
+                          <span
+                            class="block text-sm font-black text-slate-800 transition-colors group-hover:text-green-700"
+                          >
+                            {service.title}
+                          </span>
+
+
+                          <span
+                            class="mt-1 block text-xs leading-relaxed text-slate-500"
+                          >
+                            {service.description}
+                          </span>
+
+                        </a>
+
+                      ))
+                    }
+
+                  </div>
+
+                </article>
+
+              ))
+            }
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ========================================================= -->
+      <!-- NAJWAŻNIEJSZE MONEY PAGES -->
+      <!-- ========================================================= -->
+
+      <section
+        class="bg-white py-24 text-slate-950"
+      >
+
+        <div
+          class="container mx-auto px-4"
+        >
+
+          <div
+            class="mb-16 max-w-4xl"
+          >
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
               Najczęściej wybierane
             </span>
 
-            <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
-              Usługi, które zdejmują ręczną pracę z firmy
+
+            <h2
+              class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+            >
+              Konkretne sposoby na mniej ręcznej pracy
             </h2>
 
-            <p class="text-lg font-medium leading-relaxed text-slate-600 md:text-xl">
-              Zaczynamy od konkretnego problemu: raporty, pliki, dane z systemów, faktury,
-              wyceny, dashboardy albo powtarzalny proces, który zabiera czas zespołowi.
+
+            <p
+              class="text-lg font-medium leading-relaxed text-slate-600 md:text-xl"
+            >
+              Od automatycznego raportu i obsługi plików
+              po integrację dwóch systemów. Nie zawsze potrzebny
+              jest duży projekt informatyczny.
             </p>
+
           </div>
 
-          <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+
+          <div
+            class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+          >
+
             {
               featuredServices.map((service) => (
+
                 <a
                   href={service.href}
-                  class="group flex min-h-[320px] flex-col rounded-[2.5rem] border border-slate-100 bg-slate-50 p-8 transition-all hover:-translate-y-1 hover:border-green-500/40 hover:bg-white hover:shadow-2xl"
+                  class="group flex min-h-[310px] flex-col rounded-[2.5rem] border border-slate-200 bg-slate-50 p-8 transition-all hover:-translate-y-1 hover:border-green-500/40 hover:bg-white hover:shadow-2xl"
                 >
-                  <div class="mb-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-950 text-green-400 transition-all group-hover:bg-green-600 group-hover:text-white">
-                    <i class={`${service.icon} text-xl`}></i>
+
+                  <div
+                    class="mb-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-950 text-green-400 transition-all group-hover:bg-green-600 group-hover:text-white"
+                  >
+                    <i
+                      class={`${service.icon} text-xl`}
+                      aria-hidden="true"
+                    ></i>
                   </div>
 
-                  <h3 class="mb-4 text-2xl font-black uppercase leading-tight tracking-tight text-slate-950">
+
+                  <h3
+                    class="mb-4 text-2xl font-black leading-tight text-slate-950"
+                  >
                     {service.title}
                   </h3>
 
-                  <p class="mb-8 flex-1 text-sm font-medium leading-relaxed text-slate-600">
+
+                  <p
+                    class="mb-8 flex-1 text-sm font-medium leading-relaxed text-slate-600"
+                  >
                     {service.description}
                   </p>
 
-                  <span class="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-slate-950 transition-colors group-hover:text-green-600">
+
+                  <span
+                    class="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-green-700"
+                  >
                     Zobacz szczegóły
-                    <i class="fas fa-chevron-right text-[10px]"></i>
+
+                    <i
+                      class="fas fa-chevron-right text-[10px]"
+                      aria-hidden="true"
+                    ></i>
                   </span>
+
                 </a>
+
               ))
             }
+
           </div>
+
         </div>
+
       </section>
 
-      <section class="bg-slate-50 py-24 text-slate-950">
-        <div class="container mx-auto px-4">
-          <div class="mb-16 max-w-4xl">
-            <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
-              Po problemie, nie po technologii
-            </span>
 
-            <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
-              Nie musisz wiedzieć, czy potrzebujesz Excela, Power BI czy aplikacji
-            </h2>
+      <!-- ========================================================= -->
+      <!-- POZYCJONOWANIE MARKI -->
+      <!-- ========================================================= -->
 
-            <p class="text-lg font-medium leading-relaxed text-slate-600 md:text-xl">
-              Wystarczy, że opiszesz proces, który dziś robicie ręcznie. Dobierzemy narzędzie
-              do problemu: od prostego arkusza po skrypt Python, API albo aplikację desktopową.
-            </p>
-          </div>
+      <section
+        class="bg-slate-950 py-24 text-white"
+      >
 
-          <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {
-              solutionPaths.map((item) => (
-                <a
-                  href={item.href}
-                  class="group rounded-[2rem] border border-slate-100 bg-white p-7 shadow-sm transition-all hover:-translate-y-1 hover:border-green-500/40 hover:shadow-xl"
-                >
-                  <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-50 text-green-600 transition-all group-hover:bg-green-600 group-hover:text-white">
-                    <i class={`${item.icon} text-xl`}></i>
-                  </div>
+        <div
+          class="container mx-auto px-4"
+        >
 
-                  <h3 class="mb-3 text-xl font-black uppercase leading-tight tracking-tight text-slate-950">
-                    {item.title}
-                  </h3>
+          <div
+            class="grid gap-14 lg:grid-cols-2 lg:items-center"
+          >
 
-                  <p class="text-sm font-medium leading-relaxed text-slate-600">
-                    {item.description}
+            <div>
+
+              <span
+                class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-400"
+              >
+                Mała automatyzacja zamiast wielkiego systemu
+              </span>
+
+
+              <h2
+                class="mb-7 text-4xl font-black tracking-tighter md:text-6xl"
+              >
+                Rozwiązujemy konkretny problem.
+              </h2>
+
+
+              <p
+                class="mb-6 text-lg leading-relaxed text-slate-300"
+              >
+                Jeżeli potrzebujesz jedynie automatycznie pobrać dane,
+                przetworzyć pliki, wygenerować dokumenty albo połączyć
+                dwa programy, nie musisz od razu wdrażać
+                rozbudowanego systemu.
+              </p>
+
+
+              <p
+                class="text-lg leading-relaxed text-slate-400"
+              >
+                Rozwiązaniem może być arkusz Excel, Power Query,
+                skrypt Python, niewielka integracja API albo mała
+                aplikacja przygotowana do jednego procesu.
+              </p>
+
+            </div>
+
+
+            <div
+              class="rounded-[2.5rem] border border-white/10 bg-white/[0.04] p-8 md:p-10"
+            >
+
+              <p
+                class="mb-7 text-xl font-black"
+              >
+                Przykład
+              </p>
+
+
+              <div
+                class="space-y-6"
+              >
+
+                <div>
+
+                  <span
+                    class="mb-1 block text-xs font-black uppercase tracking-wider text-green-400"
+                  >
+                    Dzisiaj
+                  </span>
+
+                  <p
+                    class="text-slate-300"
+                  >
+                    Pracownik loguje się do systemu, pobiera plik,
+                    kopiuje dane do Excela i aktualizuje raport.
                   </p>
-                </a>
-              ))
-            }
-          </div>
-        </div>
-      </section>
 
-      <section class="bg-slate-950 py-24 text-white">
-        <div class="container mx-auto px-4">
-          <div class="mb-16 max-w-4xl">
-            <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-400">
-              Kiedy warto się odezwać?
-            </span>
+                </div>
 
-            <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
-              Gdy dane blokują pracę zamiast ją przyspieszać
-            </h2>
 
-            <p class="text-lg font-medium leading-relaxed text-slate-400 md:text-xl">
-              Nie trzeba od razu budować dużego systemu. Czasem wystarczy dobry arkusz,
-              skrypt, integracja albo mała aplikacja, która porządkuje jeden ważny proces.
-            </p>
-          </div>
+                <div
+                  class="h-px bg-white/10"
+                ></div>
 
-          <div class="grid gap-6 md:grid-cols-3">
-            {
-              problemCards.map((item) => (
-                <article class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 transition-all hover:-translate-y-1 hover:border-green-500/50 hover:bg-white/[0.08]">
-                  <div class="mb-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-500/10 text-green-400">
-                    <i class={`${item.icon} text-xl`}></i>
-                  </div>
 
-                  <h3 class="mb-4 text-2xl font-black uppercase leading-tight tracking-tight text-white">
-                    {item.title}
-                  </h3>
+                <div>
 
-                  <p class="text-sm font-medium leading-relaxed text-slate-400">
-                    {item.description}
+                  <span
+                    class="mb-1 block text-xs font-black uppercase tracking-wider text-green-400"
+                  >
+                    Po automatyzacji
+                  </span>
+
+                  <p
+                    class="text-slate-300"
+                  >
+                    Dane są pobierane i przetwarzane automatycznie,
+                    a użytkownik otrzymuje gotowy raport albo
+                    uruchamia proces jednym poleceniem.
                   </p>
-                </article>
-              ))
-            }
+
+                </div>
+
+              </div>
+
+            </div>
+
           </div>
+
         </div>
+
       </section>
 
-      <section id="wszystkie" class="bg-white py-24 text-slate-950">
-        <div class="container mx-auto px-4">
-          <div class="mb-16 max-w-4xl">
-            <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
-              Pełna lista
+
+      <!-- ========================================================= -->
+      <!-- PEŁNA LISTA -->
+      <!-- ========================================================= -->
+
+      <section
+        id="wszystkie"
+        class="bg-white py-24 text-slate-950"
+      >
+
+        <div
+          class="container mx-auto px-4"
+        >
+
+          <div
+            class="mb-14 max-w-4xl"
+          >
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
+              Pełny zakres
             </span>
 
-            <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+
+            <h2
+              class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+            >
               Wszystkie usługi
             </h2>
 
-            <p class="text-lg font-medium leading-relaxed text-slate-600 md:text-xl">
-              Poniżej znajdziesz podstrony usługowe pod konkretne potrzeby: raporty, KSeF,
-              Excel, Power BI, Python, API, sprzedaż, finanse, logistykę i automatyzację dokumentów.
+
+            <p
+              class="text-lg font-medium leading-relaxed text-slate-600 md:text-xl"
+            >
+              Szczegółowe podstrony opisują konkretne przypadki
+              i rodzaje automatyzacji. Jeśli nie wiesz, którą wybrać,
+              nie musisz — wystarczy opisać problem.
             </p>
+
           </div>
 
-          <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+
+          <div
+            class="space-y-14"
+          >
+
             {
-              allServices.map((service) => (
-                <a
-                  href={service.href}
-                  class="group flex min-h-[235px] flex-col rounded-2xl border border-slate-100 bg-slate-50 p-6 transition-all hover:-translate-y-1 hover:border-green-500/40 hover:bg-white hover:shadow-xl"
-                >
-                  <div class="mb-3 text-[10px] font-black uppercase tracking-[0.25em] text-green-600">
-                    {service.category}
+              clusters.map((cluster) => (
+
+                <div>
+
+                  <div
+                    class="mb-6 flex items-center gap-4"
+                  >
+
+                    <div
+                      class="flex h-11 w-11 items-center justify-center rounded-xl bg-green-50 text-green-700"
+                    >
+                      <i
+                        class={cluster.icon}
+                        aria-hidden="true"
+                      ></i>
+                    </div>
+
+
+                    <h3
+                      class="text-2xl font-black text-slate-950"
+                    >
+                      {cluster.title}
+                    </h3>
+
                   </div>
 
-                  <h3 class="mb-3 text-lg font-black uppercase leading-tight tracking-tight text-slate-950 group-hover:text-green-700">
-                    {service.title}
-                  </h3>
 
-                  <p class="flex-1 text-xs font-medium leading-relaxed text-slate-500">
-                    {service.description}
-                  </p>
+                  <div
+                    class="grid gap-4 md:grid-cols-2 xl:grid-cols-3"
+                  >
 
-                  <div class="mt-5 flex items-center justify-between border-t border-slate-100 pt-4 text-[10px] font-black uppercase tracking-[0.2em] text-green-600">
-                    Szczegóły
-                    <i class="fas fa-arrow-right text-[10px] transition-transform group-hover:translate-x-1"></i>
+                    {
+                      cluster.services.map((service) => (
+
+                        <a
+                          href={service.href}
+                          class="group flex min-h-[220px] flex-col rounded-2xl border border-slate-200 bg-slate-50 p-6 transition-all hover:-translate-y-1 hover:border-green-500/40 hover:bg-white hover:shadow-xl"
+                        >
+
+                          <div
+                            class="mb-3 flex items-center justify-between gap-3"
+                          >
+
+                            <span
+                              class="text-[10px] font-black uppercase tracking-[0.18em] text-green-600"
+                            >
+                              {service.category}
+                            </span>
+
+
+                            {
+                              service.planned && (
+                                <span
+                                  class="rounded-full bg-green-100 px-2 py-1 text-[8px] font-black uppercase tracking-wider text-green-700"
+                                >
+                                  Zapytaj
+                                </span>
+                              )
+                            }
+
+                          </div>
+
+
+                          <h4
+                            class="mb-3 text-lg font-black leading-tight text-slate-950 group-hover:text-green-700"
+                          >
+                            {service.title}
+                          </h4>
+
+
+                          <p
+                            class="flex-1 text-xs font-medium leading-relaxed text-slate-500"
+                          >
+                            {service.description}
+                          </p>
+
+
+                          <span
+                            class="mt-5 inline-flex items-center gap-2 border-t border-slate-200 pt-4 text-[10px] font-black uppercase tracking-[0.16em] text-green-700"
+                          >
+
+                            {
+                              service.planned
+                                ? "Opisz potrzebę"
+                                : "Szczegóły"
+                            }
+
+                            <i
+                              class="fas fa-arrow-right text-[9px]"
+                              aria-hidden="true"
+                            ></i>
+
+                          </span>
+
+                        </a>
+
+                      ))
+                    }
+
                   </div>
-                </a>
+
+                </div>
+
               ))
             }
+
+
+            {
+              remainingServices.length > 0 && (
+
+                <div>
+
+                  <h3
+                    class="mb-6 text-2xl font-black text-slate-950"
+                  >
+                    Pozostałe rozwiązania
+                  </h3>
+
+
+                  <div
+                    class="grid gap-4 md:grid-cols-2 xl:grid-cols-4"
+                  >
+
+                    {
+                      remainingServices.map((service) => (
+
+                        <a
+                          href={service.href}
+                          class="group rounded-2xl border border-slate-200 bg-slate-50 p-6 transition-all hover:border-green-500/40 hover:bg-white"
+                        >
+
+                          <h4
+                            class="mb-2 font-black text-slate-950 group-hover:text-green-700"
+                          >
+                            {service.title}
+                          </h4>
+
+
+                          <p
+                            class="text-xs leading-relaxed text-slate-500"
+                          >
+                            {service.description}
+                          </p>
+
+                        </a>
+
+                      ))
+                    }
+
+                  </div>
+
+                </div>
+
+              )
+            }
+
           </div>
+
         </div>
+
       </section>
 
-      <section class="bg-slate-50 py-24 text-slate-950">
-        <div class="container mx-auto px-4">
-          <div class="rounded-[3rem] bg-slate-950 p-8 text-white md:p-14 lg:p-16">
-            <div class="grid gap-10 lg:grid-cols-[1.4fr_0.8fr] lg:items-center">
+
+      <!-- ========================================================= -->
+      <!-- CTA -->
+      <!-- ========================================================= -->
+
+      <section
+        class="bg-slate-50 py-24 text-slate-950"
+      >
+
+        <div
+          class="container mx-auto px-4"
+        >
+
+          <div
+            class="rounded-[3rem] bg-slate-950 p-8 text-white md:p-14 lg:p-16"
+          >
+
+            <div
+              class="grid gap-10 lg:grid-cols-[1.4fr_0.8fr] lg:items-center"
+            >
+
               <div>
-                <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-400">
-                  Nie wiesz, którą usługę wybrać?
+
+                <span
+                  class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-400"
+                >
+                  Nie wiesz, czego potrzebujesz?
                 </span>
 
-                <h2 class="mb-6 text-3xl font-black uppercase tracking-tighter md:text-5xl">
-                  Opisz proces, a podpowiemy najlepsze rozwiązanie.
+
+                <h2
+                  class="mb-6 text-3xl font-black tracking-tighter md:text-5xl"
+                >
+                  Opisz proces zamiast szukać technologii.
                 </h2>
 
-                <p class="max-w-3xl text-lg font-medium leading-relaxed text-slate-400">
-                  Możesz wysłać opis problemu, screen arkusza, przykładowy raport albo listę
-                  kroków, które dziś robicie ręcznie. Na tej podstawie ocenimy, czy lepszy
-                  będzie Excel, Power BI, Python, API, KSeF, aplikacja desktopowa czy prostsze rozwiązanie.
+
+                <p
+                  class="max-w-3xl text-lg font-medium leading-relaxed text-slate-400"
+                >
+                  Napisz, co obecnie robicie ręcznie, z jakich
+                  programów korzystacie i jaki efekt chcecie osiągnąć.
+                  Sprawdzimy, czy proces można uprościć lub
+                  zautomatyzować.
                 </p>
+
               </div>
 
-              <div class="flex flex-col gap-4">
+
+              <div
+                class="flex flex-col gap-4"
+              >
+
                 <a
                   href="#kontakt"
                   class="inline-flex items-center justify-center gap-3 rounded-2xl bg-green-600 px-8 py-5 text-center text-sm font-black uppercase tracking-widest text-white transition-all hover:-translate-y-1 hover:bg-green-500"
                 >
-                  Zapytaj o wycenę
-                  <i class="fas fa-arrow-right text-xs"></i>
+                  Opisz swój proces
+
+                  <i
+                    class="fas fa-arrow-right text-xs"
+                    aria-hidden="true"
+                  ></i>
                 </a>
+
 
                 <a
                   href="/realizacje/"
@@ -509,20 +1683,29 @@ const servicesSchema = {
                 >
                   Zobacz realizacje
                 </a>
+
               </div>
+
             </div>
+
           </div>
+
         </div>
+
       </section>
 
+
       <Contact />
+
     </main>
 
+
     <Footer />
+
   </div>
 
-  <script type="application/ld+json" set:html={JSON.stringify(servicesSchema)} />
 </BaseLayout>
+
 
 <style is:global>
   html {

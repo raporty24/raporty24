@@ -5,66 +5,1334 @@ import HeroService from "../../components/HeroService.astro";
 import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
 
-const title = "Makra VBA na zamówienie – Programowanie i Automatyzacja Excel | Raporty24";
-const description = "Zleć profesjonalne makra VBA. Automatyzacja procesów, generowanie PDF, integracje i dedykowane funkcje w Excelu. Sprawdź nasze realizacje!";
+const title =
+  "Makra VBA na zamówienie | Automatyzacja Excel | Raporty24";
 
-// 1. DODAJ TE DWIE LINIE:
-const ogImage = "/biuro3.webp"; // Możesz tu dać dedykowaną grafikę bazy klientów, jeśli ją masz
-const currentUrl = "https://raporty24.pl/uslugi/makra-vba/"; // upewnij się, że taki jest slug tej strony
+const description =
+  "Makra VBA na zamówienie dla firm. Automatyzacja Excela, formularze, PDF, raporty, import danych, Outlook oraz naprawa i rozwój istniejących makr.";
+
+const ogImage = "/biuro3.webp";
+
+const currentUrl =
+  "https://raporty24.pl/uslugi/makra-vba/";
 
 export const service = {
   title: "Makra VBA",
   order: 10,
   menu: true,
-  category: "Excel", // opcjonalnie (do grupowania)
+  category: "Excel",
+  description:
+    "Makra VBA na zamówienie: automatyzacja Excela, formularze, dokumenty, raporty oraz naprawa i rozwój istniejącego kodu.",
+};
+
+
+/*
+ * =========================================================
+ * ZASTOSOWANIA
+ * =========================================================
+ */
+
+const solutions = [
+  {
+    title: "Automatyzacja czynności",
+    description:
+      "Przyciski i procedury wykonujące powtarzalne operacje w Excelu według ustalonych reguł.",
+    icon: "fas fa-play",
+  },
+
+  {
+    title: "Formularze VBA",
+    description:
+      "Dedykowane formularze UserForm do wprowadzania, edycji i sprawdzania danych.",
+    icon: "fas fa-window-restore",
+  },
+
+  {
+    title: "Generowanie PDF",
+    description:
+      "Automatyczne tworzenie ofert, zestawień, raportów i innych dokumentów na podstawie danych z arkusza.",
+    icon: "fas fa-file-pdf",
+  },
+
+  {
+    title: "Obsługa plików",
+    description:
+      "Otwieranie, zapisywanie, kopiowanie, archiwizacja i przetwarzanie wielu plików według określonego procesu.",
+    icon: "fas fa-folder-open",
+  },
+
+  {
+    title: "Raporty i eksporty",
+    description:
+      "Automatyczne przygotowanie raportów, arkuszy wynikowych i plików przeznaczonych do dalszej pracy.",
+    icon: "fas fa-chart-bar",
+  },
+
+  {
+    title: "Naprawa istniejących makr",
+    description:
+      "Diagnoza błędów, poprawa kodu VBA oraz rozwój narzędzi utworzonych wcześniej przez inne osoby.",
+    icon: "fas fa-wrench",
+  },
+];
+
+
+/*
+ * =========================================================
+ * PRZYKŁADOWE PROCESY
+ * =========================================================
+ */
+
+const useCases = [
+  "przygotowanie raportu po kliknięciu jednego przycisku",
+
+  "generowanie wielu dokumentów PDF z danych w tabeli",
+
+  "tworzenie osobnych plików dla klientów, oddziałów lub pracowników",
+
+  "automatyczne zapisywanie i nazywanie dokumentów",
+
+  "walidacja danych przed wykonaniem dalszego procesu",
+
+  "formularze do wprowadzania danych przez pracowników",
+
+  "przenoszenie danych pomiędzy arkuszami i skoroszytami",
+
+  "importowanie i eksportowanie danych",
+
+  "przygotowanie pliku do wysłania lub dalszego przetwarzania",
+
+  "obsługa wiadomości lub Outlooka w odpowiednim środowisku",
+
+  "automatyzacja formatowania i przygotowania raportów",
+
+  "rozbudowa istniejącego systemu Excel o kolejne funkcje",
+];
+
+
+/*
+ * =========================================================
+ * PROCES
+ * =========================================================
+ */
+
+const process = [
+  {
+    step: "01",
+    title: "Pokazujesz czynność",
+    description:
+      "Opisujesz, co użytkownik wykonuje obecnie ręcznie i jaki powinien być końcowy efekt.",
+  },
+
+  {
+    step: "02",
+    title: "Projektujemy logikę",
+    description:
+      "Ustalamy warunki, wyjątki, kolejność operacji i sposób obsługi błędnych danych.",
+  },
+
+  {
+    step: "03",
+    title: "Tworzymy makro",
+    description:
+      "Budujemy kod VBA, formularze i elementy interfejsu potrzebne użytkownikowi.",
+  },
+
+  {
+    step: "04",
+    title: "Testujemy",
+    description:
+      "Sprawdzamy działanie na rzeczywistych danych i sytuacjach, które mogą wystąpić podczas codziennej pracy.",
+  },
+];
+
+
+/*
+ * =========================================================
+ * FAQ
+ * =========================================================
+ */
+
+const faqs = [
+  {
+    question:
+      "Do czego najlepiej nadają się makra VBA?",
+
+    answer:
+      "VBA dobrze sprawdza się wtedy, gdy trzeba sterować Excelem, wykonywać serię czynności po kliknięciu przycisku, obsługiwać formularze, tworzyć pliki, generować dokumenty albo automatyzować pracę wewnątrz skoroszytu.",
+  },
+
+  {
+    question:
+      "VBA czy Power Query – co wybrać?",
+
+    answer:
+      "Power Query jest bardzo dobry do pobierania, łączenia i przekształcania danych. VBA lepiej sprawdza się przy sterowaniu Excelem, interakcji z użytkownikiem, obsłudze formularzy i wykonywaniu sekwencji czynności. Często oba rozwiązania wykorzystujemy razem.",
+  },
+
+  {
+    question:
+      "Czy możecie poprawić makro napisane przez kogoś innego?",
+
+    answer:
+      "Tak. Możemy przeanalizować istniejący kod VBA, znaleźć przyczynę błędów, poprawić jego działanie oraz rozbudować go o nowe funkcje.",
+  },
+
+  {
+    question:
+      "Czy makro może generować pliki PDF?",
+
+    answer:
+      "Tak. VBA może automatycznie tworzyć dokumenty PDF na podstawie danych z arkusza, nadawać im odpowiednie nazwy i zapisywać je w ustalonych lokalizacjach.",
+  },
+
+  {
+    question:
+      "Czy VBA może współpracować z Outlookiem?",
+
+    answer:
+      "W odpowiednim środowisku Windows można automatyzować wybrane czynności związane z Outlookiem, np. przygotowanie wiadomości lub załączników. Przy rozwiązaniach chmurowych albo bardziej rozbudowanej obsłudze poczty możemy zastosować inne technologie.",
+  },
+
+  {
+    question:
+      "Czy VBA może łączyć Excel z API?",
+
+    answer:
+      "Technicznie jest to możliwe w części projektów, ale nie zawsze VBA jest najlepszym rozwiązaniem. Przy bardziej rozbudowanych integracjach możemy zastosować dedykowaną integrację API, C# lub inne narzędzie.",
+  },
+
+  {
+    question:
+      "Kiedy lepiej zastosować dodatek C# zamiast VBA?",
+
+    answer:
+      "C# warto rozważyć przy bardziej rozbudowanych dodatkach do Excela, własnym interfejsie Ribbon, większej liczbie funkcji, bardziej złożonej integracji z systemami lub wtedy, gdy rozwiązanie zaczyna wykraczać poza typowe możliwości makra.",
+  },
+
+  {
+    question:
+      "Czy makra VBA działają na macOS?",
+
+    answer:
+      "Excel na macOS obsługuje VBA, ale jego możliwości różnią się od wersji Windows. Niektóre biblioteki, integracje i funkcje systemowe mogą wymagać innego rozwiązania, dlatego środowisko użytkowników ustalamy przed rozpoczęciem projektu.",
+  },
+
+  {
+    question:
+      "Czy makra są bezpieczne?",
+
+    answer:
+      "Kod powinien być przygotowany tak, aby wykonywał wyłącznie zaplanowane czynności i odpowiednio reagował na błędne dane. Sposób dystrybucji, ustawienia zabezpieczeń oraz ewentualne podpisywanie kodu zależą od polityki IT i środowiska firmy.",
+  },
+
+  {
+    question:
+      "Czy VBA może pracować z plikami na SharePoint lub OneDrive?",
+
+    answer:
+      "W niektórych procesach tak, ale nie zawsze VBA jest najlepszą warstwą do obsługi SharePoint. W zależności od sposobu przechowywania danych możemy wykorzystać Power Query, Microsoft 365, API lub inne rozwiązanie i pozostawić VBA do obsługi samego Excela.",
+  },
+];
+
+
+/*
+ * =========================================================
+ * STRUCTURED DATA
+ * =========================================================
+ */
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+
+  "@type": "Service",
+
+  name:
+    "Makra VBA na zamówienie",
+
+  provider: {
+    "@type": "Organization",
+
+    "@id":
+      "https://raporty24.pl/#organization",
+
+    name:
+      "Raporty24",
+
+    url:
+      "https://raporty24.pl/",
+  },
+
+  areaServed: {
+    "@type": "Country",
+    name: "Polska",
+  },
+
+  serviceType:
+    "Makra VBA, programowanie VBA i automatyzacja Microsoft Excel",
+
+  url:
+    currentUrl,
+
+  description,
+};
+
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+
+  "@type": "BreadcrumbList",
+
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Raporty24",
+      item: "https://raporty24.pl/",
+    },
+
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Usługi",
+      item: "https://raporty24.pl/uslugi/",
+    },
+
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Makra VBA",
+      item: currentUrl,
+    },
+  ],
+};
+
+
+const faqSchema = {
+  "@context": "https://schema.org",
+
+  "@type": "FAQPage",
+
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+
+    name: item.question,
+
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
 };
 ---
 
-<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
-  <div x-data="app" x-cloak>
+<BaseLayout
+  title={title}
+  description={description}
+  image={ogImage}
+  url={currentUrl}
+  structuredData={[
+    serviceSchema,
+    breadcrumbSchema,
+    faqSchema
+  ]}
+>
+
+  <div
+    x-data="app"
+    x-cloak
+  >
+
     <Header />
-    <HeroService 
-      title="Zaawansowane" 
-      highlight="Makra VBA na zamówienie" 
-      subtitle="Tam, gdzie kończą się możliwości standardowych formuł, zaczyna się VBA. Tworzymy inteligentne skrypty, które wykonują wielogodzinną pracę w kilka sekund."
+
+
+    <!-- ================================================= -->
+    <!-- HERO -->
+    <!-- ================================================= -->
+
+    <HeroService
+      eyebrow="Automatyzacja Microsoft Excel"
+      title="Makra VBA"
+      highlight="na zamówienie"
+      subtitle="Automatyzujemy powtarzalne czynności w Excelu: formularze, raporty, dokumenty PDF, obsługę plików i procesy wykonywane dziś ręcznie. Jeżeli VBA nie jest najlepszym rozwiązaniem, dobierzemy inną technologię."
+      ctaText="Opisz czynność do automatyzacji"
     />
 
-    <section class="py-24 bg-slate-950 text-white">
-      <div class="container mx-auto px-4">
-        <div class="max-w-3xl mb-16">
-          <h2 class="text-4xl font-black uppercase mb-6">Automatyzacja <span class="text-green-500">bez limitów</span></h2>
-          <p class="text-slate-400">VBA (Visual Basic for Applications) pozwala nam "nauczyć" Excela wykonywania niemal każdej czynności: od sterowania innymi aplikacjami, po budowę skomplikowanych formularzy wprowadzania danych.</p>
-        </div>
-        <div class="grid md:grid-cols-2 gap-8">
-          <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
-            <h4 class="font-bold text-xl mb-4 text-green-400">Interaktywne Formularze</h4>
-            <p class="text-sm text-slate-400">Tworzymy okna dialogowe (UserForms), które wymuszają poprawność wpisywanych danych i prowadzą użytkownika za rękę.</p>
+
+    <!-- ================================================= -->
+    <!-- WPROWADZENIE -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="grid gap-16 lg:grid-cols-2 lg:items-center"
+        >
+
+          <div>
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
+              Programowanie VBA dla firm
+            </span>
+
+
+            <h2
+              class="mb-8 text-4xl font-black leading-tight tracking-tighter md:text-6xl"
+            >
+              Jeżeli pracownik codziennie klika to samo,
+              Excel może zrobić część pracy za niego.
+            </h2>
+
+
+            <div
+              class="space-y-6 text-lg leading-relaxed text-slate-600"
+            >
+
+              <p>
+                VBA pozwala automatyzować czynności wykonywane
+                bezpośrednio w Excelu i stworzyć własną logikę
+                dopasowaną do procesu firmy.
+              </p>
+
+
+              <p>
+                Makro może reagować na działania użytkownika,
+                sprawdzać dane, tworzyć nowe arkusze,
+                generować dokumenty, zapisywać pliki
+                albo uruchamiać kolejne etapy procesu.
+              </p>
+
+
+              <p>
+                <strong class="text-slate-950">
+                  Nie zaczynamy jednak od pytania:
+                  „jak napisać makro?”.
+                </strong>
+
+                Najpierw sprawdzamy, co rzeczywiście warto
+                zautomatyzować i czy VBA jest do tego
+                właściwym narzędziem.
+              </p>
+
+            </div>
+
+
+            <div
+              class="mt-10 flex flex-col gap-4 sm:flex-row"
+            >
+
+              <a
+                href="#kontakt"
+                class="inline-flex items-center justify-center gap-3 rounded-2xl bg-green-600 px-8 py-5 text-sm font-black uppercase tracking-widest text-white transition-all hover:-translate-y-1 hover:bg-green-500"
+              >
+                Opisz proces
+
+                <i
+                  class="fas fa-arrow-right text-xs"
+                  aria-hidden="true"
+                ></i>
+              </a>
+
+
+              <a
+                href="/uslugi/excel-na-zamowienie/"
+                class="inline-flex items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white px-8 py-5 text-sm font-black uppercase tracking-widest text-slate-950 transition-all hover:-translate-y-1 hover:border-green-500"
+              >
+                Excel na zamówienie
+              </a>
+
+            </div>
+
           </div>
-          <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
-            <h4 class="font-bold text-xl mb-4 text-green-400">Generowanie Dokumentów</h4>
-            <p class="text-sm text-slate-400">Jeden przycisk wystarczy, by Excel przygotował 50 spersonalizowanych ofert w PDF i wysłał je mailem do klientów.</p>
+
+
+          <!-- PRZYKŁADOWY PRZEPŁYW -->
+          <div
+            class="rounded-[3rem] border border-slate-100 bg-slate-50 p-8 shadow-xl shadow-slate-200/60 md:p-10"
+          >
+
+            <h3
+              class="mb-8 text-2xl font-black text-slate-950"
+            >
+              Przykład automatyzacji VBA
+            </h3>
+
+
+            <div class="space-y-4">
+
+              <div
+                class="rounded-2xl bg-white p-5 shadow-sm"
+              >
+                <span
+                  class="mb-1 block text-[10px] font-black uppercase tracking-wider text-slate-400"
+                >
+                  Użytkownik
+                </span>
+
+                <p class="font-bold text-slate-700">
+                  wybiera klienta i klika „Generuj”
+                </p>
+              </div>
+
+
+              <div
+                class="flex justify-center text-green-600"
+                aria-hidden="true"
+              >
+                <i class="fas fa-arrow-down"></i>
+              </div>
+
+
+              <div
+                class="rounded-2xl bg-slate-950 p-5 text-white"
+              >
+                <span
+                  class="mb-1 block text-[10px] font-black uppercase tracking-wider text-green-400"
+                >
+                  Makro VBA
+                </span>
+
+                <p class="font-bold">
+                  sprawdza dane i wykonuje ustalone operacje
+                </p>
+              </div>
+
+
+              <div
+                class="flex justify-center text-green-600"
+                aria-hidden="true"
+              >
+                <i class="fas fa-arrow-down"></i>
+              </div>
+
+
+              <div
+                class="grid grid-cols-2 gap-3"
+              >
+
+                <div
+                  class="rounded-2xl bg-white p-4 text-center shadow-sm"
+                >
+                  <strong class="text-sm">
+                    PDF
+                  </strong>
+                </div>
+
+
+                <div
+                  class="rounded-2xl bg-white p-4 text-center shadow-sm"
+                >
+                  <strong class="text-sm">
+                    raport
+                  </strong>
+                </div>
+
+
+                <div
+                  class="rounded-2xl bg-white p-4 text-center shadow-sm"
+                >
+                  <strong class="text-sm">
+                    nowy plik
+                  </strong>
+                </div>
+
+
+                <div
+                  class="rounded-2xl bg-white p-4 text-center shadow-sm"
+                >
+                  <strong class="text-sm">
+                    e-mail
+                  </strong>
+                </div>
+
+              </div>
+
+            </div>
+
           </div>
+
         </div>
+
       </div>
+
     </section>
 
-    <section class="py-24 bg-white text-slate-900">
-      <div class="container mx-auto px-4 max-w-4xl">
-        <h2 class="text-3xl font-black mb-12 uppercase text-center">FAQ – Programowanie VBA</h2>
-        <div class="space-y-4">
-          <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200">
-            <h4 class="font-bold mb-2">Czy makra są bezpieczne?</h4>
-            <p class="text-slate-500 text-sm">Tak. Każde napisane przez nas makro jest transparentne i podpisane. Pomagamy również skonfigurować uprawnienia w Twojej firmie, aby makra działały bez problemów.</p>
-          </div>
-          <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200">
-            <h4 class="font-bold mb-2">VBA czy Power Query – co wybrać?</h4>
-            <p class="text-slate-500 text-sm">Do czyszczenia danych polecamy Power Query. Jeśli jednak potrzebujesz "akcji" (np. zapisu pliku, otwarcia Outlooka, interakcji z użytkownikiem) – niezbędne są makra VBA.</p>
-          </div>
+
+    <!-- ================================================= -->
+    <!-- CO MOŻNA ZROBIĆ -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-950 py-24 text-white"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div
+          class="mb-16 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-400"
+          >
+            Możliwości VBA
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Jakie makra VBA możemy przygotować?
+          </h2>
+
+
+          <p
+            class="text-lg leading-relaxed text-slate-400 md:text-xl"
+          >
+            Od pojedynczego przycisku automatyzującego jedną czynność
+            po rozbudowane narzędzie z formularzami i własną logiką.
+          </p>
+
         </div>
+
+
+        <div
+          class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+        >
+
+          {
+            solutions.map((item) => (
+
+              <article
+                class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 transition-all hover:-translate-y-1 hover:border-green-500/50 hover:bg-white/[0.08]"
+              >
+
+                <div
+                  class="mb-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-500/10 text-green-400"
+                >
+                  <i
+                    class={`${item.icon} text-xl`}
+                    aria-hidden="true"
+                  ></i>
+                </div>
+
+
+                <h3
+                  class="mb-4 text-2xl font-black leading-tight text-white"
+                >
+                  {item.title}
+                </h3>
+
+
+                <p
+                  class="text-sm font-medium leading-relaxed text-slate-400"
+                >
+                  {item.description}
+                </p>
+
+              </article>
+
+            ))
+          }
+
+        </div>
+
       </div>
+
     </section>
+
+
+    <!-- ================================================= -->
+    <!-- PRZYKŁADY -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div
+          class="mb-16 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+          >
+            Typowe zlecenia
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Co można zautomatyzować makrem?
+          </h2>
+
+
+          <p
+            class="text-lg leading-relaxed text-slate-600 md:text-xl"
+          >
+            Jeżeli sekwencja czynności jest powtarzalna,
+            często można zamienić ją w kontrolowany proces.
+          </p>
+
+        </div>
+
+
+        <div
+          class="grid gap-4 md:grid-cols-2 xl:grid-cols-3"
+        >
+
+          {
+            useCases.map((item) => (
+
+              <div
+                class="flex items-start gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-6"
+              >
+
+                <div
+                  class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-950 text-[10px] text-green-400"
+                >
+                  <i
+                    class="fas fa-check"
+                    aria-hidden="true"
+                  ></i>
+                </div>
+
+
+                <p
+                  class="font-bold leading-relaxed text-slate-700"
+                >
+                  {item}
+                </p>
+
+              </div>
+
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- ISTNIEJĄCE MAKRA -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-50 py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="grid gap-16 lg:grid-cols-2 lg:items-center"
+        >
+
+          <div>
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
+              Nie musimy zaczynać od zera
+            </span>
+
+
+            <h2
+              class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+            >
+              Naprawiamy i rozwijamy również istniejące makra VBA.
+            </h2>
+
+
+            <p
+              class="mb-6 text-lg leading-relaxed text-slate-600"
+            >
+              Firmowe skoroszyty bywają rozwijane przez wiele lat.
+              Kod VBA rośnie, dochodzą kolejne wyjątki,
+              a osoba, która przygotowała pierwotne rozwiązanie,
+              nie zawsze jest już dostępna.
+            </p>
+
+
+            <p
+              class="text-lg leading-relaxed text-slate-600"
+            >
+              Możemy przeanalizować obecne makra,
+              znaleźć przyczynę błędów, uporządkować wybrane elementy
+              oraz dodać nowe funkcje.
+            </p>
+
+          </div>
+
+
+          <div
+            class="rounded-[2.5rem] bg-slate-950 p-8 text-white md:p-10"
+          >
+
+            <h3
+              class="mb-7 text-2xl font-black"
+            >
+              Typowe problemy
+            </h3>
+
+
+            <div class="space-y-4">
+
+              {
+                [
+                  "makro przestało działać po zmianie pliku",
+                  "kod działa bardzo wolno",
+                  "pojawiają się błędy przy nietypowych danych",
+                  "brakuje obsługi nowych przypadków",
+                  "kod jest trudny do dalszego rozwijania",
+                  "potrzebne są nowe przyciski lub formularze"
+                ].map((item) => (
+
+                  <div
+                    class="flex gap-3 rounded-xl border border-white/10 bg-white/[0.05] p-4"
+                  >
+                    <span class="font-black text-green-400">
+                      ✓
+                    </span>
+
+                    <span class="text-sm text-slate-300">
+                      {item}
+                    </span>
+                  </div>
+
+                ))
+              }
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- DOBÓR TECHNOLOGII -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div
+          class="mb-14 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+          >
+            Dobór technologii
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            VBA nie musi robić wszystkiego.
+          </h2>
+
+
+          <p
+            class="text-lg leading-relaxed text-slate-600 md:text-xl"
+          >
+            Dobre rozwiązanie nie polega na wciskaniu każdego procesu
+            do jednego języka lub narzędzia.
+          </p>
+
+        </div>
+
+
+        <div
+          class="overflow-hidden rounded-2xl border border-slate-200"
+        >
+
+          <div class="overflow-x-auto">
+
+            <table
+              class="w-full min-w-[780px] text-left"
+            >
+
+              <thead
+                class="bg-slate-950 text-white"
+              >
+
+                <tr>
+                  <th class="px-6 py-5">
+                    Technologia
+                  </th>
+
+                  <th class="px-6 py-5">
+                    Kiedy warto ją rozważyć
+                  </th>
+                </tr>
+
+              </thead>
+
+
+              <tbody
+                class="divide-y divide-slate-200 bg-white"
+              >
+
+                <tr>
+                  <td class="px-6 py-5 font-black">
+                    Power Query
+                  </td>
+
+                  <td class="px-6 py-5 leading-relaxed text-slate-600">
+                    Pobieranie, łączenie i przekształcanie
+                    dużej liczby powtarzalnych danych.
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="px-6 py-5 font-black">
+                    VBA
+                  </td>
+
+                  <td class="px-6 py-5 leading-relaxed text-slate-600">
+                    Przyciski, formularze, obsługa skoroszytu,
+                    dokumenty i automatyzacja działań użytkownika.
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="px-6 py-5 font-black">
+                    C# / dodatek Excel
+                  </td>
+
+                  <td class="px-6 py-5 leading-relaxed text-slate-600">
+                    Bardziej rozbudowane dodatki, własny Ribbon,
+                    interfejs i większa logika aplikacyjna.
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="px-6 py-5 font-black">
+                    API
+                  </td>
+
+                  <td class="px-6 py-5 leading-relaxed text-slate-600">
+                    Bezpośrednia komunikacja pomiędzy Excelem
+                    a sklepem, CRM, ERP lub innym systemem.
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td class="px-6 py-5 font-black">
+                    SharePoint / Microsoft 365
+                  </td>
+
+                  <td class="px-6 py-5 leading-relaxed text-slate-600">
+                    Współdzielone dane, dokumenty i procesy
+                    działające w środowisku Microsoft 365.
+                  </td>
+                </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+
+        <div
+          class="mt-8 rounded-2xl border border-green-100 bg-green-50 p-6"
+        >
+
+          <p
+            class="leading-relaxed text-slate-700"
+          >
+            <strong class="text-slate-950">
+              Nie musisz wiedzieć, której technologii potrzebujesz.
+            </strong>
+
+            Jeżeli opiszesz proces,
+            możemy zdecydować, czy wystarczy makro VBA,
+            czy lepsze będzie Power Query, API,
+            SharePoint albo dedykowany dodatek.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- BEZPIECZEŃSTWO -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-950 py-24 text-white"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="grid gap-16 lg:grid-cols-2 lg:items-center"
+        >
+
+          <div>
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-400"
+            >
+              Stabilność i bezpieczeństwo
+            </span>
+
+
+            <h2
+              class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+            >
+              Makro powinno przewidywać również błędne dane.
+            </h2>
+
+
+            <p
+              class="text-lg leading-relaxed text-slate-400"
+            >
+              Kod, który działa tylko dla idealnego przykładu,
+              nie jest gotowym narzędziem biznesowym.
+              Dlatego uwzględniamy walidację,
+              komunikaty i sytuacje wyjątkowe istotne dla procesu.
+            </p>
+
+          </div>
+
+
+          <div
+            class="grid gap-4 sm:grid-cols-2"
+          >
+
+            {
+              [
+                {
+                  title: "Walidacja",
+                  text: "Sprawdzanie wymaganych danych przed uruchomieniem procesu."
+                },
+
+                {
+                  title: "Obsługa błędów",
+                  text: "Kontrolowane zachowanie w przypadku problemu."
+                },
+
+                {
+                  title: "Komunikaty",
+                  text: "Czytelna informacja dla użytkownika zamiast przypadkowego błędu VBA."
+                },
+
+                {
+                  title: "Testy",
+                  text: "Sprawdzenie typowych i nietypowych przypadków na rzeczywistych danych."
+                }
+              ].map((item) => (
+
+                <div
+                  class="rounded-2xl border border-white/10 bg-white/[0.05] p-6"
+                >
+
+                  <h3
+                    class="mb-2 text-lg font-black text-green-400"
+                  >
+                    {item.title}
+                  </h3>
+
+                  <p
+                    class="text-sm leading-relaxed text-slate-400"
+                  >
+                    {item.text}
+                  </p>
+
+                </div>
+
+              ))
+            }
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- PROCES -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div
+          class="mb-16 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+          >
+            Realizacja
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Jak powstaje makro VBA na zamówienie?
+          </h2>
+
+        </div>
+
+
+        <div
+          class="grid gap-6 md:grid-cols-2 xl:grid-cols-4"
+        >
+
+          {
+            process.map((item) => (
+
+              <article
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7 transition-all hover:-translate-y-1 hover:border-green-500/30 hover:bg-white hover:shadow-xl"
+              >
+
+                <div
+                  class="mb-6 text-5xl font-black tracking-tighter text-green-600"
+                >
+                  {item.step}
+                </div>
+
+
+                <h3
+                  class="mb-4 text-xl font-black text-slate-950"
+                >
+                  {item.title}
+                </h3>
+
+
+                <p
+                  class="text-sm leading-relaxed text-slate-600"
+                >
+                  {item.description}
+                </p>
+
+              </article>
+
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- POWIĄZANE USŁUGI -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-50 py-20 text-slate-950"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div class="mx-auto max-w-6xl">
+
+          <div
+            class="mb-10 max-w-3xl"
+          >
+
+            <h2
+              class="mb-4 text-3xl font-black tracking-tight md:text-4xl"
+            >
+              Makro może być tylko jednym elementem rozwiązania
+            </h2>
+
+
+            <p class="text-slate-600">
+              Zobacz usługi, które możemy połączyć
+              z automatyzacją VBA.
+            </p>
+
+          </div>
+
+
+          <div
+            class="grid gap-5 md:grid-cols-2 xl:grid-cols-4"
+          >
+
+            <a
+              href="/uslugi/excel-na-zamowienie/"
+              class="rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:border-green-500 hover:shadow-lg"
+            >
+              <h3 class="mb-2 text-lg font-black">
+                Excel na zamówienie
+              </h3>
+
+              <p class="text-sm leading-relaxed text-slate-600">
+                Kompleksowe narzędzie dopasowane do procesu firmy.
+              </p>
+            </a>
+
+
+            <a
+              href="/uslugi/automatyzacja-excel-power-query/"
+              class="rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:border-green-500 hover:shadow-lg"
+            >
+              <h3 class="mb-2 text-lg font-black">
+                Power Query
+              </h3>
+
+              <p class="text-sm leading-relaxed text-slate-600">
+                Automatyczne pobieranie i przygotowanie danych.
+              </p>
+            </a>
+
+
+            <a
+              href="/uslugi/integracje-api/"
+              class="rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:border-green-500 hover:shadow-lg"
+            >
+              <h3 class="mb-2 text-lg font-black">
+                Integracje API
+              </h3>
+
+              <p class="text-sm leading-relaxed text-slate-600">
+                Połączenie Excela z systemami firmy.
+              </p>
+            </a>
+
+
+            <a
+              href="/uslugi/optymalizacja-excela/"
+              class="rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:border-green-500 hover:shadow-lg"
+            >
+              <h3 class="mb-2 text-lg font-black">
+                Naprawa Excela
+              </h3>
+
+              <p class="text-sm leading-relaxed text-slate-600">
+                Optymalizacja istniejących plików i kodu.
+              </p>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- FAQ -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div
+          class="mb-14 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+          >
+            FAQ
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Najczęstsze pytania o makra VBA
+          </h2>
+
+        </div>
+
+
+        <div
+          class="grid gap-5 lg:grid-cols-2"
+        >
+
+          {
+            faqs.map((item) => (
+
+              <details
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7"
+              >
+
+                <summary
+                  class="cursor-pointer text-lg font-black text-slate-950"
+                >
+                  {item.question}
+                </summary>
+
+
+                <p
+                  class="mt-5 text-sm font-medium leading-relaxed text-slate-600"
+                >
+                  {item.answer}
+                </p>
+
+              </details>
+
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
 
     <Contact />
+
     <Footer />
+
   </div>
+
 </BaseLayout>

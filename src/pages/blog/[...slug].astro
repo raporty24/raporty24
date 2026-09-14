@@ -1,72 +1,861 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('blog');
-  return blogEntries.map(entry => ({
-    params: { slug: entry.slug }, props: { entry },
+  const blogEntries = await getCollection("blog");
+
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
-// Przygotowujemy unikalny adres URL dla tego wpisu
 const currentUrl = `https://raporty24.pl/blog/${entry.slug}/`;
 
-// JSON-LD (zostawiamy bez zmian, jest super)
+const formattedDate = entry.data.pubDate.toLocaleDateString("pl-PL", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": entry.data.title,
-  "description": entry.data.description,
-  "image": `https://raporty24.pl${entry.data.image}`,
-  "datePublished": entry.data.pubDate.toISOString(),
-  "author": {
-    "@type": "Person",
-    "name": entry.data.author,
-    "url": "https://raporty24.pl/#dlaczego"
-  }
+  headline: entry.data.title,
+  description: entry.data.description,
+  image: `https://raporty24.pl${entry.data.image}`,
+  datePublished: entry.data.pubDate.toISOString(),
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": currentUrl,
+  },
+  author: {
+    "@type": "Organization",
+    name: "Raporty24",
+    url: "https://raporty24.pl/",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Raporty24",
+    url: "https://raporty24.pl/",
+  },
 };
 ---
 
-<BaseLayout 
-  title={entry.data.title} 
-  description={entry.data.description} 
-  image={entry.data.image} 
+<BaseLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  image={entry.data.image}
   url={currentUrl}
+  structuredData={jsonLd}
 >
-  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-
   <Header />
-  
-  <article class="py-24 bg-white">
-    <div class="container mx-auto px-4 max-w-3xl">
-      <header class="mb-12">
-        <div class="flex items-center gap-3 text-sm mb-6">
-           <span class="eyebrow !mb-0">{entry.data.category}</span>
-           <span class="text-slate-300">•</span>
-           <time class="text-slate-400">{entry.data.pubDate.toLocaleDateString('pl-PL')}</time>
+
+  <main>
+
+    <!-- =====================================================
+         HERO ARTYKUŁU
+    ====================================================== -->
+
+    <section
+      class="relative overflow-hidden bg-slate-950 pb-20 pt-24 text-white lg:pb-28 lg:pt-32"
+    >
+      <div
+        class="pointer-events-none absolute inset-0 opacity-40
+               bg-[radial-gradient(circle_at_80%_20%,rgba(34,197,94,0.16),transparent_35%)]"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="pointer-events-none absolute inset-0 opacity-[0.035]
+               bg-[linear-gradient(rgba(255,255,255,.8)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.8)_1px,transparent_1px)]
+               bg-[size:42px_42px]"
+        aria-hidden="true"
+      ></div>
+
+      <div class="container relative z-10 mx-auto px-5">
+
+        <div class="mx-auto max-w-4xl">
+
+          <div
+            class="mb-7 flex flex-wrap items-center gap-x-4 gap-y-3"
+          >
+            <span
+              class="inline-flex items-center rounded-full border border-green-500/30 bg-green-500/10 px-4 py-2
+                     text-xs font-black uppercase tracking-[0.18em] text-green-400"
+            >
+              {entry.data.category}
+            </span>
+
+            <span class="hidden text-slate-700 sm:inline">
+              •
+            </span>
+
+            <time
+              datetime={entry.data.pubDate.toISOString()}
+              class="text-sm font-medium text-slate-400"
+            >
+              {formattedDate}
+            </time>
+          </div>
+
+
+          <h1
+            class="max-w-4xl text-4xl font-black leading-[1.08] tracking-tight
+                   text-white sm:text-5xl lg:text-6xl"
+          >
+            {entry.data.title}
+          </h1>
+
+
+          <p
+            class="mt-7 max-w-3xl text-lg leading-8 text-slate-400 lg:text-xl lg:leading-9"
+          >
+            {entry.data.description}
+          </p>
+
+
+          <div
+            class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm"
+          >
+            <span class="font-bold text-slate-300">
+              Raporty24
+            </span>
+
+            <span class="text-slate-700">
+              •
+            </span>
+
+            <span class="text-slate-500">
+              Automatyzacja procesów i danych dla firm
+            </span>
+          </div>
+
         </div>
-        <h1 class="display-title mb-8">{entry.data.title}</h1>
-      </header>
-
-      <div class="prose prose-lg prose-slate prose-headings:scroll-mt-28 prose-a:text-green-600 max-w-none">
-        <Content />
       </div>
+    </section>
 
-      <div class="mt-16 pt-8 border-t border-slate-100 flex gap-2">
-        {entry.data.tags?.map(tag => (
-          <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">#{tag}</span>
-        ))}
+
+    <!-- =====================================================
+         TREŚĆ
+    ====================================================== -->
+
+    <article class="bg-white py-16 lg:py-24">
+
+      <div class="container mx-auto px-5">
+
+        <div class="blog-content mx-auto max-w-[880px]">
+
+          <Content />
+
+        </div>
+
+
+        <!-- =================================================
+             TAGI
+        ================================================== -->
+
+        {
+          entry.data.tags?.length > 0 && (
+            <div
+              class="mx-auto mt-16 max-w-[880px] border-t border-slate-200 pt-8"
+            >
+              <div class="flex flex-wrap gap-2">
+                {entry.data.tags.map((tag) => (
+                  <span
+                    class="rounded-full border border-slate-200 bg-slate-50 px-4 py-2
+                           text-xs font-black uppercase tracking-wider text-slate-500"
+                  >
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )
+        }
+
       </div>
-    </div>
-  </article>
+    </article>
+
+  </main>
 
   <Footer />
-  
-  <script is:inline async src="https://www.tiktok.com/embed.js"></script>
+
+  <script
+    is:inline
+    async
+    src="https://www.tiktok.com/embed.js"
+  ></script>
 </BaseLayout>
+
+
+<style is:global>
+
+  /* =========================================================
+     BLOG — TYPOGRAFIA
+     ========================================================= */
+
+  .blog-content {
+    --blog-green: #16a34a;
+    --blog-green-light: #22c55e;
+    --blog-green-dark: #15803d;
+
+    --blog-dark: #0f172a;
+    --blog-text: #475569;
+    --blog-muted: #64748b;
+    --blog-border: #e2e8f0;
+    --blog-soft: #f8fafc;
+
+    color: var(--blog-text);
+    font-size: 1.08rem;
+    line-height: 1.85;
+  }
+
+
+  .blog-content p {
+    margin: 1.35rem 0;
+    line-height: 1.85;
+  }
+
+
+  .blog-content > p:first-child {
+    margin-top: 0;
+
+    color: #334155;
+
+    font-size: 1.23rem;
+    line-height: 1.8;
+  }
+
+
+  /* =========================================================
+     NAGŁÓWKI
+     ========================================================= */
+
+  .blog-content h2 {
+    position: relative;
+
+    margin-top: 4.6rem;
+    margin-bottom: 1.5rem;
+
+    color: var(--blog-dark);
+
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 900;
+    line-height: 1.18;
+    letter-spacing: -0.035em;
+  }
+
+
+  .blog-content h2::before {
+    content: "";
+
+    display: block;
+
+    width: 50px;
+    height: 4px;
+
+    margin-bottom: 1rem;
+
+    border-radius: 999px;
+
+    background: var(--blog-green-light);
+  }
+
+
+  .blog-content h3 {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+
+    color: var(--blog-dark);
+
+    font-size: 1.5rem;
+    font-weight: 900;
+    line-height: 1.3;
+    letter-spacing: -0.025em;
+  }
+
+
+  .blog-content h4 {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+
+    color: #1e293b;
+
+    font-size: 1.15rem;
+    font-weight: 800;
+  }
+
+
+  /* =========================================================
+     TEKST
+     ========================================================= */
+
+  .blog-content strong {
+    color: #1e293b;
+    font-weight: 800;
+  }
+
+
+  .blog-content em {
+    color: var(--blog-muted);
+  }
+
+
+  /* =========================================================
+     LINKI
+     ========================================================= */
+
+  .blog-content a {
+    color: var(--blog-green-dark);
+
+    font-weight: 750;
+
+    text-decoration-line: underline;
+    text-decoration-color: rgba(22, 163, 74, 0.3);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+
+    transition:
+      color 0.2s ease,
+      text-decoration-color 0.2s ease;
+  }
+
+
+  .blog-content a:hover {
+    color: var(--blog-green);
+    text-decoration-color: var(--blog-green);
+  }
+
+
+  /* =========================================================
+     LISTY
+     ========================================================= */
+
+  .blog-content ul,
+  .blog-content ol {
+    margin: 1.8rem 0;
+    padding-left: 0;
+  }
+
+
+  .blog-content ul {
+    list-style: none;
+  }
+
+
+  .blog-content ul > li {
+    position: relative;
+
+    margin: 0.85rem 0;
+    padding-left: 2.1rem;
+  }
+
+
+  .blog-content ul > li::before {
+    content: "✓";
+
+    position: absolute;
+    top: 0.16rem;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 1.4rem;
+    height: 1.4rem;
+
+    border-radius: 999px;
+
+    background: #dcfce7;
+    color: #15803d;
+
+    font-size: 0.72rem;
+    font-weight: 900;
+  }
+
+
+  .blog-content ol {
+    list-style: none;
+    counter-reset: blog-counter;
+  }
+
+
+  .blog-content ol > li {
+    position: relative;
+
+    min-height: 3.3rem;
+
+    margin: 1.25rem 0;
+    padding-left: 4rem;
+
+    counter-increment: blog-counter;
+  }
+
+
+  .blog-content ol > li::before {
+    content: counter(blog-counter);
+
+    position: absolute;
+    top: -0.2rem;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 2.8rem;
+    height: 2.8rem;
+
+    border-radius: 0.9rem;
+
+    background: #0f172a;
+    color: #4ade80;
+
+    font-size: 0.85rem;
+    font-weight: 900;
+
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+  }
+
+
+  /* =========================================================
+     ZDJĘCIA / SCREENSHOTY
+     ========================================================= */
+
+  .blog-content img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    margin: 3rem auto 1rem;
+
+    border: 1px solid var(--blog-border);
+    border-radius: 1.5rem;
+
+    background: white;
+
+    box-shadow:
+      0 25px 60px rgba(15, 23, 42, 0.09),
+      0 4px 12px rgba(15, 23, 42, 0.04);
+  }
+
+
+  /*
+    Markdown często generuje:
+    <p><img /></p>
+  */
+
+  .blog-content p:has(> img) {
+    margin: 3rem 0 1rem;
+  }
+
+
+  .blog-content p:has(> img) img {
+    margin: 0;
+  }
+
+
+  /*
+    Podpis pod zdjęciem zapisany kursywą
+  */
+
+  .blog-content p:has(> img) + p > em:only-child {
+    display: block;
+
+    margin-top: -0.2rem;
+
+    color: #94a3b8;
+
+    font-size: 0.85rem;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+
+  /* =========================================================
+     CYTAT
+     ========================================================= */
+
+  .blog-content blockquote {
+    margin: 2.8rem 0;
+    padding: 1.7rem 1.8rem 1.7rem 2rem;
+
+    border-left: 4px solid #22c55e;
+    border-radius: 0 1.2rem 1.2rem 0;
+
+    background:
+      linear-gradient(
+        90deg,
+        rgba(34, 197, 94, 0.09),
+        rgba(248, 250, 252, 0.75)
+      );
+
+    color: #334155;
+
+    font-size: 1.08rem;
+    font-weight: 600;
+  }
+
+
+  .blog-content blockquote p {
+    margin: 0;
+  }
+
+
+  /* =========================================================
+     SEPARATOR
+     ========================================================= */
+
+  .blog-content hr {
+    height: 1px;
+
+    margin: 4rem 0;
+
+    border: 0;
+
+    background:
+      linear-gradient(
+        90deg,
+        transparent,
+        #cbd5e1,
+        transparent
+      );
+  }
+
+
+  /* =========================================================
+     KOD
+     ========================================================= */
+
+  .blog-content code {
+    border-radius: 0.4rem;
+
+    background: #f1f5f9;
+
+    padding: 0.15rem 0.4rem;
+
+    color: #166534;
+
+    font-size: 0.92em;
+  }
+
+
+  .blog-content pre {
+    overflow-x: auto;
+
+    margin: 2.2rem 0;
+    padding: 1.5rem;
+
+    border: 1px solid #1e293b;
+    border-radius: 1.25rem;
+
+    background: #020617;
+    color: #e2e8f0;
+
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+  }
+
+
+  .blog-content pre code {
+    padding: 0;
+
+    background: transparent;
+    color: inherit;
+  }
+
+
+  /* =========================================================
+     TABELA
+     ========================================================= */
+
+  .blog-content table {
+    width: 100%;
+
+    margin: 2.8rem 0;
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    overflow: hidden;
+
+    border: 1px solid var(--blog-border);
+    border-radius: 1rem;
+
+    background: white;
+
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+  }
+
+
+  .blog-content th {
+    padding: 1rem 1.2rem;
+
+    background: #0f172a;
+
+    color: white;
+
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-align: left;
+  }
+
+
+  .blog-content td {
+    padding: 1rem 1.2rem;
+
+    border-bottom: 1px solid var(--blog-border);
+
+    background: white;
+  }
+
+
+  .blog-content tr:last-child td {
+    border-bottom: 0;
+  }
+
+
+  /* =========================================================
+     DIAGRAM PROCESU
+     Microsoft Lists → Excel → Power BI
+     ========================================================= */
+
+  .blog-content .process-flow {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: stretch;
+    gap: 1rem;
+
+    margin: 3rem 0;
+  }
+
+
+  .blog-content .process-box {
+    min-height: 160px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 1.6rem;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 1.4rem;
+
+    background:
+      linear-gradient(
+        145deg,
+        #ffffff,
+        #f8fafc
+      );
+
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.04);
+  }
+
+
+  .blog-content .process-box span {
+    display: block;
+
+    margin-bottom: 0.8rem;
+
+    color: #16a34a;
+
+    font-size: 0.73rem;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+  }
+
+
+  .blog-content .process-box strong {
+    display: block;
+
+    color: #0f172a;
+
+    font-size: 1.05rem;
+    line-height: 1.35;
+  }
+
+
+  .blog-content .process-box small {
+    display: block;
+
+    margin-top: 0.6rem;
+
+    color: #64748b;
+
+    font-size: 0.82rem;
+    line-height: 1.55;
+  }
+
+
+  .blog-content .process-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #22c55e;
+
+    font-size: 1.8rem;
+    font-weight: 900;
+  }
+
+
+  /* =========================================================
+     BOX / INFO — można używać ręcznie w Markdown
+     ========================================================= */
+
+  .blog-content .info-box {
+    margin: 2.8rem 0;
+    padding: 1.8rem;
+
+    border: 1px solid #bbf7d0;
+    border-radius: 1.4rem;
+
+    background: #f0fdf4;
+  }
+
+
+  .blog-content .info-box strong {
+    color: #166534;
+  }
+
+
+  .blog-content .info-box p:first-child {
+    margin-top: 0;
+  }
+
+
+  .blog-content .info-box p:last-child {
+    margin-bottom: 0;
+  }
+
+
+  /* =========================================================
+     OSTATNIE CTA
+     ========================================================= */
+
+  .blog-content > p:last-child {
+    margin-top: 2rem;
+  }
+
+
+  .blog-content > p:last-child > a:only-child {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1rem 1.6rem;
+
+    border-radius: 0.9rem;
+
+    background: #22c55e;
+    color: #052e16;
+
+    font-weight: 900;
+    text-decoration: none;
+
+    box-shadow: 0 14px 35px rgba(34, 197, 94, 0.2);
+
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+
+  .blog-content > p:last-child > a:only-child:hover {
+    transform: translateY(-2px);
+
+    background: #4ade80;
+    color: #052e16;
+
+    box-shadow: 0 18px 40px rgba(34, 197, 94, 0.25);
+  }
+
+
+  /* =========================================================
+     TIKTOK
+     ========================================================= */
+
+  .blog-content .tiktok-container {
+    margin: 3rem 0;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 1.5rem;
+
+    background: #f8fafc;
+
+    padding: 2rem 1rem;
+  }
+
+
+  /* =========================================================
+     MOBILE
+     ========================================================= */
+
+  @media (max-width: 800px) {
+
+    .blog-content {
+      font-size: 1rem;
+      line-height: 1.78;
+    }
+
+
+    .blog-content > p:first-child {
+      font-size: 1.08rem;
+    }
+
+
+    .blog-content h2 {
+      margin-top: 3.6rem;
+    }
+
+
+    .blog-content ol > li {
+      padding-left: 3.6rem;
+    }
+
+
+    .blog-content img {
+      border-radius: 1rem;
+    }
+
+
+    .blog-content .process-flow {
+      grid-template-columns: 1fr;
+      gap: 0.8rem;
+    }
+
+
+    .blog-content .process-arrow {
+      min-height: 24px;
+
+      transform: rotate(90deg);
+
+      font-size: 1.5rem;
+    }
+
+
+    .blog-content .process-box {
+      min-height: auto;
+    }
+
+
+    .blog-content table {
+      display: block;
+
+      overflow-x: auto;
+
+      white-space: nowrap;
+    }
+  }
+
+</style>

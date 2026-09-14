@@ -5,56 +5,890 @@ import HeroService from "../../components/HeroService.astro";
 import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
 
-const title = "Raporty Serwisowe i Analiza SLA – Dashboardy dla Serwisu | Raporty24";
-const description = "Monitoruj wydajność swojego serwisu. Raporty SLA, czas reakcji, obłożenie techników i analiza usterek. Profesjonalne dashboardy w Power BI i Excel.";
-// 1. DODAJ TE DWIE LINIE:
-const ogImage = "/biuro3.webp"; // Możesz tu dać dedykowaną grafikę bazy klientów, jeśli ją masz
-const currentUrl = "https://raporty24.pl/uslugi/raporty-serwisowe/"; // upewnij się, że taki jest slug tej strony
+const title =
+  "Raporty serwisowe i SLA | Excel i Power BI | Raporty24";
+
+const description =
+  "Tworzymy raporty serwisowe w Excelu i Power BI: SLA, czas reakcji, czas realizacji, zgłoszenia, technicy, awarie, urządzenia i analiza jakości serwisu.";
+
+const ogImage = "/biuro3.webp";
+const currentUrl =
+  "https://raporty24.pl/uslugi/raporty-serwisowe/";
+
 export const service = {
   title: "Raporty serwisowe",
-  order: 10,
+  order: 50,
   menu: true,
-  category: "Excel", // opcjonalnie (do grupowania)
+  category: "Raportowanie",
 };
+
+const serviceMetrics = [
+  {
+    icon: "fas fa-stopwatch",
+    title: "Czas reakcji",
+    description:
+      "Analiza czasu od zgłoszenia problemu do rozpoczęcia obsługi przez serwis lub technika.",
+  },
+  {
+    icon: "fas fa-check-circle",
+    title: "Realizacja SLA",
+    description:
+      "Kontrola, jaka część zgłoszeń została obsłużona zgodnie z ustalonymi czasami i warunkami SLA.",
+  },
+  {
+    icon: "fas fa-tools",
+    title: "Czas realizacji",
+    description:
+      "Pomiar czasu potrzebnego do rozwiązania zgłoszenia, naprawy lub wykonania konkretnej czynności serwisowej.",
+  },
+  {
+    icon: "fas fa-user-cog",
+    title: "Obciążenie techników",
+    description:
+      "Analiza liczby zgłoszeń, czasu pracy, realizacji i obciążenia poszczególnych osób lub zespołów.",
+  },
+  {
+    icon: "fas fa-redo",
+    title: "Powtarzalność usterek",
+    description:
+      "Identyfikacja urządzeń, lokalizacji lub kategorii problemów, które generują najwięcej powtarzających się zgłoszeń.",
+  },
+  {
+    icon: "fas fa-map-marker-alt",
+    title: "Serwis według lokalizacji",
+    description:
+      "Porównanie liczby zgłoszeń, czasu obsługi i innych KPI pomiędzy oddziałami, klientami lub lokalizacjami.",
+  },
+];
+
+const sourceExamples = [
+  "Excel i CSV",
+  "system zgłoszeniowy",
+  "ERP lub CRM",
+  "SharePoint",
+  "baza danych",
+  "API",
+  "formularze i listy",
+  "pliki serwisowe",
+];
+
+const faqItems = [
+  {
+    question: "Jakie dane są potrzebne do przygotowania raportu SLA?",
+    answer:
+      "Najczęściej potrzebne są daty i godziny utworzenia zgłoszenia, rozpoczęcia obsługi i zakończenia, status, typ zgłoszenia oraz dane klienta, urządzenia lub technika. Zakres zależy od tego, co chcesz mierzyć.",
+  },
+  {
+    question: "Czy raport może pokazywać przekroczenia SLA?",
+    answer:
+      "Tak. Możemy oznaczać zgłoszenia przekraczające ustalone limity, analizować liczbę i udział przekroczeń oraz rozbijać wyniki według klienta, kategorii, technika lub innych wymiarów.",
+  },
+  {
+    question: "Czy raport serwisowy może być automatycznie aktualizowany?",
+    answer:
+      "Tak, jeśli dane są dostępne w źródle, z którego można je cyklicznie pobierać. Możemy wykorzystać między innymi Power Query, SharePoint, bazę danych lub API.",
+  },
+  {
+    question: "Czy lepiej zrobić raport serwisowy w Excelu czy Power BI?",
+    answer:
+      "To zależy od sposobu pracy. Excel dobrze sprawdza się przy analizie operacyjnej, kontroli danych i mniejszych rozwiązaniach. Power BI jest wygodny przy rozbudowanych dashboardach, wielu odbiorcach i większej liczbie źródeł.",
+  },
+  {
+    question: "Czy można analizować awarie według urządzeń?",
+    answer:
+      "Tak. Jeśli dane zawierają identyfikator urządzenia, model, lokalizację lub inne cechy, możemy analizować częstotliwość awarii, typy usterek i powtarzalność problemów.",
+  },
+];
+
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Raporty serwisowe i SLA",
+    description,
+    url: currentUrl,
+    provider: {
+      "@type": "Organization",
+      name: "Raporty24",
+      url: "https://raporty24.pl/",
+    },
+    serviceType:
+      "Raportowanie serwisu, zgłoszeń i realizacji SLA",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Strona główna",
+        item: "https://raporty24.pl/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Usługi",
+        item: "https://raporty24.pl/uslugi/",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Raporty serwisowe",
+        item: currentUrl,
+      },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  },
+];
 ---
 
-<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
+<BaseLayout
+  title={title}
+  description={description}
+  image={ogImage}
+  url={currentUrl}
+  structuredData={structuredData}
+>
   <div x-data="app" x-cloak>
     <Header />
-    <HeroService 
-      title="Wydajny" 
-      highlight="Serwis i Raportowanie SLA" 
-      subtitle="Zapanuj nad zgłoszeniami. Budujemy dedykowane raporty serwisowe, które pokazują czarno na białym, jak Twój zespół radzi sobie z realizacją umów serwisowych."
-    />
 
-    <section class="py-24 bg-slate-950 text-white text-center">
-      <div class="container mx-auto px-4 max-w-4xl">
-        <h2 class="text-4xl font-black uppercase mb-12">Kluczowe <span class="text-green-500">wskaźniki serwisu</span></h2>
-        <div class="grid md:grid-cols-2 gap-8 text-left">
-           <div class="p-8 bg-white/5 rounded-2xl border border-white/10">
-              <h4 class="font-bold text-xl mb-2">SLA Compliance</h4>
-              <p class="text-slate-400 text-sm">Jaki procent zgłoszeń został zamknięty w umownym czasie? Raportujemy odchylenia i zagrożenia.</p>
-           </div>
-           <div class="p-8 bg-white/5 rounded-2xl border border-white/10">
-              <h4 class="font-bold text-xl mb-2">Analiza Powtarzalności</h4>
-              <p class="text-slate-400 text-sm">Które urządzenia psują się najczęściej? Pomagamy zidentyfikować wady seryjne i optymalizować części zamienne.</p>
-           </div>
+    <main>
+
+      <HeroService
+        eyebrow="Serwis i utrzymanie"
+        title="Raporty serwisowe"
+        highlight="i analiza SLA"
+        subtitle="Tworzymy raporty serwisowe w Excelu i Power BI, które pokazują zgłoszenia, czas reakcji, realizację SLA, obciążenie techników, awarie i jakość obsługi."
+        ctaText="Opisz swój proces serwisowy"
+      />
+
+
+      <!-- ===================================================== -->
+      <!-- PROBLEM -->
+      <!-- ===================================================== -->
+
+      <section class="bg-white py-20 text-slate-950 lg:py-28">
+        <div class="container mx-auto px-4">
+          <div class="mx-auto max-w-6xl">
+
+            <div class="max-w-4xl">
+
+              <p
+                class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-green-600"
+              >
+                Dane operacyjne zamienione w informacje
+              </p>
+
+              <h2
+                class="text-4xl font-black tracking-tighter lg:text-6xl"
+              >
+                Nie wystarczy wiedzieć,
+                <span class="text-green-600">
+                  ile było zgłoszeń.
+                </span>
+              </h2>
+
+              <p
+                class="mt-7 max-w-3xl text-lg leading-relaxed text-slate-600"
+              >
+                Liczba zgłoszeń to tylko początek.
+                W procesie serwisowym liczy się również czas reakcji,
+                czas rozwiązania problemu, realizacja SLA,
+                obciążenie techników, powtarzalność usterek
+                i jakość obsługi poszczególnych klientów.
+              </p>
+
+            </div>
+
+
+            <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+
+              <article
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7"
+              >
+                <i
+                  class="fas fa-clock mb-6 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3 class="mb-3 text-lg font-black">
+                  Brak kontroli czasu
+                </h3>
+
+                <p class="text-sm leading-relaxed text-slate-600">
+                  Trudno szybko sprawdzić,
+                  ile trwa reakcja i realizacja
+                  poszczególnych zgłoszeń.
+                </p>
+              </article>
+
+
+              <article
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7"
+              >
+                <i
+                  class="fas fa-exclamation-triangle mb-6 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3 class="mb-3 text-lg font-black">
+                  SLA dopiero po fakcie
+                </h3>
+
+                <p class="text-sm leading-relaxed text-slate-600">
+                  Przekroczenia są wykrywane dopiero podczas
+                  przygotowywania ręcznego raportu.
+                </p>
+              </article>
+
+
+              <article
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7"
+              >
+                <i
+                  class="fas fa-users-cog mb-6 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3 class="mb-3 text-lg font-black">
+                  Nierówne obciążenie
+                </h3>
+
+                <p class="text-sm leading-relaxed text-slate-600">
+                  Bez wspólnego raportu trudno porównać
+                  obciążenie zespołów i techników.
+                </p>
+              </article>
+
+
+              <article
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7"
+              >
+                <i
+                  class="fas fa-wrench mb-6 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3 class="mb-3 text-lg font-black">
+                  Te same problemy wracają
+                </h3>
+
+                <p class="text-sm leading-relaxed text-slate-600">
+                  Powtarzające się awarie mogą być trudne
+                  do zauważenia bez analizy historii zgłoszeń.
+                </p>
+              </article>
+
+            </div>
+
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="py-24 bg-white text-slate-900">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-black mb-12 uppercase text-center">Dla kogo budujemy raporty serwisowe?</h2>
-        <div class="flex flex-wrap justify-center gap-4">
-          {['Serwisy IT', 'Firmy produkcyjne', 'Utrzymanie ruchu', 'Serwisy AGD/RTV', 'Firmy medyczne'].map(t => (
-            <span class="px-6 py-3 bg-slate-100 rounded-full font-bold text-slate-600 border border-slate-200">{t}</span>
-          ))}
+
+      <!-- ===================================================== -->
+      <!-- KPI -->
+      <!-- ===================================================== -->
+
+      <section
+        class="relative overflow-hidden bg-slate-950 py-20 text-white lg:py-28"
+      >
+
+        <div
+          class="pointer-events-none absolute -right-24 top-0 h-96 w-96 rounded-full bg-green-500/10 blur-[120px]"
+          aria-hidden="true"
+        ></div>
+
+        <div class="container relative z-10 mx-auto px-4">
+          <div class="mx-auto max-w-6xl">
+
+            <div class="max-w-4xl">
+
+              <p
+                class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-green-400"
+              >
+                KPI serwisowe
+              </p>
+
+              <h2
+                class="text-4xl font-black tracking-tighter lg:text-6xl"
+              >
+                Co może pokazywać
+                <span class="text-green-400">
+                  raport serwisowy?
+                </span>
+              </h2>
+
+              <p
+                class="mt-7 max-w-3xl text-lg leading-relaxed text-slate-400"
+              >
+                Zakres wskaźników dobieramy do sposobu pracy,
+                rodzaju usług i warunków umów serwisowych.
+              </p>
+
+            </div>
+
+
+            <div class="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {
+                serviceMetrics.map((item) => (
+                  <article
+                    class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 transition-all hover:border-green-500/30 hover:bg-white/[0.06]"
+                  >
+                    <div
+                      class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-500/10 text-green-400"
+                    >
+                      <i
+                        class={`${item.icon} text-xl`}
+                        aria-hidden="true"
+                      ></i>
+                    </div>
+
+                    <h3 class="mb-4 text-xl font-black text-white">
+                      {item.title}
+                    </h3>
+
+                    <p class="text-sm leading-relaxed text-slate-400">
+                      {item.description}
+                    </p>
+                  </article>
+                ))
+              }
+            </div>
+
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <Contact />
+
+      <!-- ===================================================== -->
+      <!-- SLA -->
+      <!-- ===================================================== -->
+
+      <section class="bg-white py-20 lg:py-28">
+        <div class="container mx-auto px-4">
+
+          <div
+            class="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center"
+          >
+
+            <div>
+
+              <p
+                class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-green-600"
+              >
+                Kontrola realizacji umów
+              </p>
+
+              <h2
+                class="text-4xl font-black tracking-tighter text-slate-950 lg:text-5xl"
+              >
+                SLA może być analizowane
+                <span class="text-green-600">
+                  automatycznie.
+                </span>
+              </h2>
+
+              <p
+                class="mt-6 text-lg leading-relaxed text-slate-600"
+              >
+                Jeśli zgłoszenia zawierają odpowiednie daty,
+                godziny i statusy, raport może automatycznie
+                sprawdzać realizację ustalonych czasów obsługi.
+              </p>
+
+              <p
+                class="mt-5 leading-relaxed text-slate-600"
+              >
+                Zamiast ręcznie analizować każde zgłoszenie,
+                możesz zobaczyć podsumowanie SLA dla klienta,
+                technika, rodzaju awarii, lokalizacji
+                lub dowolnego innego wymiaru.
+              </p>
+
+            </div>
+
+
+            <div
+              class="rounded-[2rem] border border-slate-200 bg-slate-50 p-8 lg:p-10"
+            >
+
+              <div class="space-y-6">
+
+                <div
+                  class="rounded-2xl border border-slate-200 bg-white p-6"
+                >
+                  <span
+                    class="text-xs font-black uppercase tracking-widest text-slate-400"
+                  >
+                    Czas reakcji
+                  </span>
+
+                  <h3
+                    class="mt-2 text-xl font-black text-slate-950"
+                  >
+                    Zgłoszenie → rozpoczęcie obsługi
+                  </h3>
+                </div>
+
+
+                <div
+                  class="rounded-2xl border border-slate-200 bg-white p-6"
+                >
+                  <span
+                    class="text-xs font-black uppercase tracking-widest text-slate-400"
+                  >
+                    Czas realizacji
+                  </span>
+
+                  <h3
+                    class="mt-2 text-xl font-black text-slate-950"
+                  >
+                    Zgłoszenie → rozwiązanie
+                  </h3>
+                </div>
+
+
+                <div
+                  class="rounded-2xl border border-green-500/30 bg-green-50 p-6"
+                >
+                  <span
+                    class="text-xs font-black uppercase tracking-widest text-green-700"
+                  >
+                    Wynik SLA
+                  </span>
+
+                  <h3
+                    class="mt-2 text-xl font-black text-slate-950"
+                  >
+                    W terminie / przekroczone
+                  </h3>
+
+                  <p
+                    class="mt-2 text-sm leading-relaxed text-slate-700"
+                  >
+                    Wynik może być następnie agregowany
+                    dla całego okresu, klienta lub zespołu.
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ===================================================== -->
+      <!-- ŹRÓDŁA DANYCH -->
+      <!-- ===================================================== -->
+
+      <section class="bg-slate-50 py-20 lg:py-28">
+        <div class="container mx-auto px-4">
+          <div class="mx-auto max-w-6xl">
+
+            <div class="max-w-4xl">
+
+              <p
+                class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-green-600"
+              >
+                Dane mogą pochodzić z różnych miejsc
+              </p>
+
+              <h2
+                class="text-4xl font-black tracking-tighter text-slate-950 lg:text-5xl"
+              >
+                Nie musisz budować raportu
+                <span class="text-green-600">
+                  ręcznie z wielu eksportów.
+                </span>
+              </h2>
+
+              <p
+                class="mt-6 max-w-3xl text-lg leading-relaxed text-slate-600"
+              >
+                Jeśli dane serwisowe są dostępne
+                w plikach lub systemach,
+                możemy dobrać sposób ich pobierania,
+                łączenia i aktualizacji.
+              </p>
+
+            </div>
+
+
+            <div class="mt-12 flex flex-wrap gap-3">
+              {
+                sourceExamples.map((source) => (
+                  <span
+                    class="rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-700"
+                  >
+                    {source}
+                  </span>
+                ))
+              }
+            </div>
+
+
+            <div
+              class="mt-12 grid gap-6 md:grid-cols-3"
+            >
+
+              <article
+                class="rounded-2xl border border-slate-200 bg-white p-7"
+              >
+                <i
+                  class="fas fa-sync-alt mb-5 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3 class="text-lg font-black text-slate-950">
+                  Power Query
+                </h3>
+
+                <p
+                  class="mt-3 text-sm leading-relaxed text-slate-600"
+                >
+                  Automatyczne pobieranie i porządkowanie
+                  danych z plików i innych źródeł.
+                </p>
+              </article>
+
+
+              <article
+                class="rounded-2xl border border-slate-200 bg-white p-7"
+              >
+                <i
+                  class="fas fa-cloud mb-5 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3 class="text-lg font-black text-slate-950">
+                  SharePoint i Microsoft 365
+                </h3>
+
+                <p
+                  class="mt-3 text-sm leading-relaxed text-slate-600"
+                >
+                  Raportowanie na podstawie danych
+                  i plików dostępnych w środowisku firmy.
+                </p>
+              </article>
+
+
+              <article
+                class="rounded-2xl border border-slate-200 bg-white p-7"
+              >
+                <i
+                  class="fas fa-plug mb-5 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3 class="text-lg font-black text-slate-950">
+                  API i systemy
+                </h3>
+
+                <p
+                  class="mt-3 text-sm leading-relaxed text-slate-600"
+                >
+                  Integracja z systemem źródłowym,
+                  jeśli udostępnia odpowiednie dane.
+                </p>
+              </article>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ===================================================== -->
+      <!-- EXCEL VS POWER BI -->
+      <!-- ===================================================== -->
+
+      <section class="bg-white py-20 lg:py-28">
+        <div class="container mx-auto px-4">
+          <div class="mx-auto max-w-6xl">
+
+            <div class="max-w-4xl">
+
+              <p
+                class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-green-600"
+              >
+                Excel czy Power BI?
+              </p>
+
+              <h2
+                class="text-4xl font-black tracking-tighter text-slate-950 lg:text-5xl"
+              >
+                Technologię dobieramy do
+                <span class="text-green-600">
+                  sposobu pracy zespołu.
+                </span>
+              </h2>
+
+            </div>
+
+
+            <div class="mt-12 grid gap-6 md:grid-cols-2">
+
+              <article
+                class="rounded-[2rem] border border-green-500/30 bg-green-50 p-8 lg:p-10"
+              >
+
+                <span
+                  class="text-xs font-black uppercase tracking-widest text-green-700"
+                >
+                  Operacyjnie
+                </span>
+
+                <h3
+                  class="mt-4 text-2xl font-black text-slate-950"
+                >
+                  Raport serwisowy w Excelu
+                </h3>
+
+                <ul
+                  class="mt-5 space-y-3 text-sm leading-relaxed text-slate-700"
+                >
+                  <li>✓ analiza danych operacyjnych</li>
+                  <li>✓ kontrola i poprawianie danych</li>
+                  <li>✓ kalkulacje i zestawienia</li>
+                  <li>✓ praca na plikach</li>
+                  <li>✓ elastyczne modele raportowe</li>
+                </ul>
+
+              </article>
+
+
+              <article
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-8 lg:p-10"
+              >
+
+                <span
+                  class="text-xs font-black uppercase tracking-widest text-slate-500"
+                >
+                  Raportowo
+                </span>
+
+                <h3
+                  class="mt-4 text-2xl font-black text-slate-950"
+                >
+                  Dashboard serwisowy Power BI
+                </h3>
+
+                <ul
+                  class="mt-5 space-y-3 text-sm leading-relaxed text-slate-600"
+                >
+                  <li>✓ wiele KPI i wymiarów</li>
+                  <li>✓ filtry i przekroje</li>
+                  <li>✓ raportowanie dla zarządzających</li>
+                  <li>✓ łączenie wielu źródeł</li>
+                  <li>✓ rozbudowane dashboardy</li>
+                </ul>
+
+                <a
+                  href="/uslugi/power-bi-dla-firm/"
+                  class="mt-7 inline-flex font-black text-green-700 hover:text-green-600"
+                >
+                  Zobacz Power BI dla firm →
+                </a>
+
+              </article>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ===================================================== -->
+      <!-- DLA KOGO -->
+      <!-- ===================================================== -->
+
+      <section class="bg-slate-50 py-20 lg:py-24">
+        <div class="container mx-auto px-4">
+
+          <div class="mx-auto max-w-6xl">
+
+            <div class="max-w-3xl">
+
+              <p
+                class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-green-600"
+              >
+                Przykładowe zastosowania
+              </p>
+
+              <h2
+                class="text-3xl font-black tracking-tighter text-slate-950 lg:text-5xl"
+              >
+                Raportowanie dla różnych
+                procesów serwisowych
+              </h2>
+
+            </div>
+
+
+            <div class="mt-10 flex flex-wrap gap-3">
+
+              {
+                [
+                  "serwis IT",
+                  "utrzymanie ruchu",
+                  "serwis urządzeń",
+                  "obsługa techniczna",
+                  "serwis terenowy",
+                  "facility management",
+                  "wsparcie klientów",
+                  "serwis maszyn",
+                ].map((item) => (
+                  <span
+                    class="rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-700"
+                  >
+                    {item}
+                  </span>
+                ))
+              }
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ===================================================== -->
+      <!-- FAQ -->
+      <!-- ===================================================== -->
+
+      <section class="bg-slate-950 py-20 text-white lg:py-28">
+        <div class="container mx-auto px-4">
+
+          <div class="mx-auto max-w-5xl">
+
+            <p
+              class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-green-400"
+            >
+              FAQ
+            </p>
+
+            <h2
+              class="text-4xl font-black tracking-tighter lg:text-5xl"
+            >
+              Najczęstsze pytania o
+              <span class="text-green-400">
+                raporty serwisowe
+              </span>
+            </h2>
+
+
+            <div class="mt-12 grid gap-4">
+              {
+                faqItems.map((item) => (
+                  <details
+                    class="rounded-2xl border border-white/10 bg-white/[0.04] p-6 transition-colors hover:border-green-500/30"
+                  >
+                    <summary
+                      class="cursor-pointer text-lg font-black text-white"
+                    >
+                      {item.question}
+                    </summary>
+
+                    <p
+                      class="mt-4 max-w-4xl text-sm leading-relaxed text-slate-400"
+                    >
+                      {item.answer}
+                    </p>
+                  </details>
+                ))
+              }
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ===================================================== -->
+      <!-- INTERNAL LINKING -->
+      <!-- ===================================================== -->
+
+      <section class="bg-slate-50 py-16">
+        <div class="container mx-auto px-4">
+
+          <div
+            class="mx-auto max-w-5xl rounded-[2rem] border border-slate-200 bg-white p-8 md:p-10"
+          >
+
+            <h2 class="text-2xl font-black text-slate-950">
+              Potrzebujesz automatycznego raportowania?
+            </h2>
+
+            <p
+              class="mt-4 max-w-3xl leading-relaxed text-slate-600"
+            >
+              Możemy połączyć raport serwisowy
+              z automatycznym pobieraniem danych,
+              Power BI, SharePoint lub innym systemem.
+            </p>
+
+
+            <div class="mt-6 flex flex-wrap gap-x-6 gap-y-3">
+
+              <a
+                href="/uslugi/raporty-power-bi/"
+                class="font-bold text-green-700 hover:text-green-600"
+              >
+                Raporty Power BI →
+              </a>
+
+              <a
+                href="/uslugi/raporty-miesieczne-automatyczne/"
+                class="font-bold text-green-700 hover:text-green-600"
+              >
+                Automatyczne raporty →
+              </a>
+
+              <a
+                href="/uslugi/automatyzacja-excel-power-query/"
+                class="font-bold text-green-700 hover:text-green-600"
+              >
+                Excel i Power Query →
+              </a>
+
+              <a
+                href="/uslugi/integracje-api/"
+                class="font-bold text-green-700 hover:text-green-600"
+              >
+                Integracje API →
+              </a>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <Contact />
+
+    </main>
+
     <Footer />
   </div>
 </BaseLayout>

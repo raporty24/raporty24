@@ -5,50 +5,479 @@ import HeroService from "../../components/HeroService.astro";
 import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
 
-const title = "Automatyczne raporty miesięczne – Oszczędność czasu dla zarządu | Raporty24";
-const description = "Zamień dni pracy nad raportem miesięcznym w kilka sekund. Automatyzacja zestawień w Excelu i Power BI. Sprawdź, jak to działa!";
+const title = "Automatyczne raporty miesięczne Excel i Power BI | Raporty24";
 
-// 1. DODAJ TE DWIE LINIE:
-const ogImage = "/biuro3.webp"; // Możesz tu dać dedykowaną grafikę bazy klientów, jeśli ją masz
-const currentUrl = "https://raporty24.pl/uslugi/raporty-miesieczne-automatyczne/"; // upewnij się, że taki jest slug tej strony
+const description =
+  "Automatyzujemy raporty miesięczne w Excelu i Power BI. Łączymy dane z plików i systemów, eliminujemy ręczne zestawienia i skracamy przygotowanie raportów.";
+
+const ogImage = "/biuro3.webp";
+
+const currentUrl =
+  "https://raporty24.pl/uslugi/raporty-miesieczne-automatyczne/";
+
 export const service = {
   title: "Automatyczne raporty miesięczne",
   order: 10,
   menu: true,
-  category: "Excel", // opcjonalnie (do grupowania)
+  category: "Excel",
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Czy można zautomatyzować raport miesięczny przygotowywany obecnie w Excelu?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Tak. Jeżeli raport jest tworzony cyklicznie na podstawie podobnych plików, eksportów lub danych z systemów, większość etapów można zautomatyzować za pomocą Excela, Power Query, Power BI, API lub dodatkowych skryptów.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Z jakich źródeł mogą być pobierane dane do raportu?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Dane mogą pochodzić między innymi z plików Excel, CSV i XML, baz danych, systemów ERP i CRM, sklepów internetowych, poczty e-mail oraz systemów udostępniających API.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Czy po wdrożeniu raport można aktualizować samodzielnie?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Tak. Celem automatyzacji jest stworzenie procesu, który po dostarczeniu nowych danych można uruchomić samodzielnie, na przykład przyciskiem Odśwież lub automatycznie według ustalonego procesu.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Czy raport może być generowany również jako PDF lub Power BI?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Tak. Wyniki mogą być prezentowane w Excelu, Power BI lub generowane do PDF. Możliwe jest również automatyczne przygotowywanie plików do dalszej wysyłki lub archiwizacji.",
+      },
+    },
+  ],
 };
 ---
 
-<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
+<BaseLayout
+  title={title}
+  description={description}
+  image={ogImage}
+  url={currentUrl}
+>
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(faqSchema)}
+  />
+
   <div x-data="app" x-cloak>
     <Header />
-    <HeroService 
-      title="Błyskawiczne" 
-      highlight="Raporty Miesięczne" 
-      subtitle="Koniec z gorączką na koniec miesiąca. Budujemy automaty, które same agregują dane z całego okresu i generują gotowy raport z komentarzem w PDF lub Power BI."
+
+    <HeroService
+      eyebrow="Automatyzacja raportowania dla firm"
+      title="Automatyczne raporty miesięczne"
+      highlight="Excel i Power BI"
+      subtitle="Zamiast co miesiąc kopiować dane, łączyć pliki i ręcznie aktualizować zestawienia, zbuduj proces, który przygotuje raport za Ciebie. Automatyzujemy pobieranie, porządkowanie i prezentację danych z Excela, CSV, systemów firmowych i API."
     />
 
+    <!-- GŁÓWNA SEKCJA SEO + SPRZEDAŻ -->
     <section class="py-24 bg-slate-950 text-white">
       <div class="container mx-auto px-4">
-        <div class="grid md:grid-cols-2 gap-16 items-center">
-           <div>
-              <h2 class="text-4xl font-black uppercase mb-8">Czas raportu: <br/><span class="text-green-500 text-5xl">4h &rarr; 10 min</span></h2>
-              <p class="text-slate-400 mb-6">Większość raportów miesięcznych to te same, powtarzalne czynności. My zamieniamy je w proces, który wymaga jedynie kliknięcia 'Odśwież'.</p>
-              <ul class="space-y-4 italic text-slate-300">
-                <li>• Porównania Miesiąc do Miesiąca (M/M)</li>
-                <li>• Analiza odchyleń od budżetu</li>
-                <li>• Automatyczne wykresy trendów</li>
-              </ul>
-           </div>
-           <div class="bg-white/5 p-10 rounded-3xl border border-white/10 text-center">
-              <i class="fas fa-history text-6xl text-green-500 mb-6"></i>
-              <p class="text-lg">Odzyskaj 12 dni w skali roku, które marnujesz na ręczne zestawienia.</p>
-           </div>
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+          <div>
+            <span
+              class="inline-block mb-5 text-sm font-bold uppercase tracking-widest text-green-500"
+            >
+              Automatyzacja raportowania
+            </span>
+
+            <h2 class="text-3xl md:text-4xl font-black mb-7 leading-tight">
+              Raport miesięczny bez ręcznego
+              <span class="text-green-500">
+                kopiowania i składania danych
+              </span>
+            </h2>
+
+            <p class="text-lg text-slate-300 leading-relaxed mb-6">
+              Jeżeli każdego miesiąca wykonujesz ten sam zestaw czynności:
+              pobierasz dane, kopiujesz je między plikami, poprawiasz formaty,
+              liczysz wskaźniki i aktualizujesz wykresy, znaczną część tego
+              procesu można zautomatyzować.
+            </p>
+
+            <p class="text-slate-400 leading-relaxed mb-8">
+              Budujemy automatyczne raporty miesięczne w Excelu i Power BI,
+              wykorzystując między innymi Power Query, integracje API oraz
+              dodatkowe skrypty wtedy, gdy standardowe możliwości Excela
+              są niewystarczające.
+            </p>
+
+            <ul class="space-y-4 text-slate-200">
+              <li class="flex gap-3">
+                <span class="text-green-500 font-bold">✓</span>
+                Automatyczne łączenie wielu plików Excel i CSV
+              </li>
+
+              <li class="flex gap-3">
+                <span class="text-green-500 font-bold">✓</span>
+                Porównania miesiąc do miesiąca i rok do roku
+              </li>
+
+              <li class="flex gap-3">
+                <span class="text-green-500 font-bold">✓</span>
+                Analiza wykonania budżetu i odchyleń
+              </li>
+
+              <li class="flex gap-3">
+                <span class="text-green-500 font-bold">✓</span>
+                Automatyczne aktualizowanie tabel i wykresów
+              </li>
+
+              <li class="flex gap-3">
+                <span class="text-green-500 font-bold">✓</span>
+                Raporty Excel, Power BI i PDF
+              </li>
+
+              <li class="flex gap-3">
+                <span class="text-green-500 font-bold">✓</span>
+                Pobieranie danych z systemów przez API
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="bg-white/5 p-8 md:p-10 rounded-3xl border border-white/10"
+          >
+            <i
+              class="fas fa-chart-line text-5xl text-green-500 mb-7"
+              aria-hidden="true"
+            ></i>
+
+            <h3 class="text-2xl font-black mb-5">
+              Co może dziać się automatycznie?
+            </h3>
+
+            <div class="space-y-5 text-slate-300">
+
+              <div class="border-b border-white/10 pb-5">
+                <strong class="text-white block mb-1">
+                  1. Pobranie danych
+                </strong>
+                Excel, CSV, XML, ERP, CRM, API lub inne źródło danych.
+              </div>
+
+              <div class="border-b border-white/10 pb-5">
+                <strong class="text-white block mb-1">
+                  2. Przetworzenie
+                </strong>
+                Czyszczenie, łączenie, filtrowanie i wykonywanie obliczeń.
+              </div>
+
+              <div class="border-b border-white/10 pb-5">
+                <strong class="text-white block mb-1">
+                  3. Aktualizacja raportu
+                </strong>
+                Tabele, KPI, wykresy i porównania aktualizują się na podstawie
+                nowych danych.
+              </div>
+
+              <div>
+                <strong class="text-white block mb-1">
+                  4. Gotowy wynik
+                </strong>
+                Excel, dashboard Power BI, PDF lub dane przygotowane do
+                dalszego wykorzystania.
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM KLIENTA -->
+    <section class="py-24 bg-white">
+      <div class="container mx-auto px-4">
+
+        <div class="max-w-3xl mx-auto text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-6">
+            Czy Twój raport miesięczny wygląda właśnie tak?
+          </h2>
+
+          <p class="text-lg text-slate-600">
+            Najlepszym kandydatem do automatyzacji jest proces, który każdego
+            miesiąca przebiega według podobnego schematu.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+
+          <div class="p-7 rounded-2xl border border-slate-200 bg-slate-50">
+            <h3 class="font-black text-xl text-slate-900 mb-3">
+              Łączysz wiele plików
+            </h3>
+            <p class="text-slate-600">
+              Dane przychodzą z różnych działów, oddziałów albo systemów
+              i trzeba je ręcznie zebrać w jeden raport.
+            </p>
+          </div>
+
+          <div class="p-7 rounded-2xl border border-slate-200 bg-slate-50">
+            <h3 class="font-black text-xl text-slate-900 mb-3">
+              Kopiujesz dane
+            </h3>
+            <p class="text-slate-600">
+              Każdego miesiąca kopiujesz te same kolumny, zestawienia lub
+              eksporty do kolejnego pliku.
+            </p>
+          </div>
+
+          <div class="p-7 rounded-2xl border border-slate-200 bg-slate-50">
+            <h3 class="font-black text-xl text-slate-900 mb-3">
+              Poprawiasz format danych
+            </h3>
+            <p class="text-slate-600">
+              Daty, nazwy, formaty liczb i układ kolumn trzeba przygotować
+              przed wykonaniem raportu.
+            </p>
+          </div>
+
+          <div class="p-7 rounded-2xl border border-slate-200 bg-slate-50">
+            <h3 class="font-black text-xl text-slate-900 mb-3">
+              Aktualizujesz wykresy
+            </h3>
+            <p class="text-slate-600">
+              Tabele, KPI i wykresy wymagają ręcznego odświeżania lub zmiany
+              zakresów.
+            </p>
+          </div>
+
+          <div class="p-7 rounded-2xl border border-slate-200 bg-slate-50">
+            <h3 class="font-black text-xl text-slate-900 mb-3">
+              Porównujesz miesiące
+            </h3>
+            <p class="text-slate-600">
+              Potrzebujesz automatycznych porównań M/M, R/R, wykonania planu
+              lub odchyleń od budżetu.
+            </p>
+          </div>
+
+          <div class="p-7 rounded-2xl border border-slate-200 bg-slate-50">
+            <h3 class="font-black text-xl text-slate-900 mb-3">
+              Generujesz PDF
+            </h3>
+            <p class="text-slate-600">
+              Po zakończeniu raportu przygotowujesz pliki do wysłania,
+              archiwizacji lub prezentacji zarządowi.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ŹRÓDŁA DANYCH -->
+    <section class="py-24 bg-slate-100">
+      <div class="container mx-auto px-4">
+
+        <div class="grid lg:grid-cols-2 gap-16 items-start max-w-6xl mx-auto">
+
+          <div>
+            <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-6">
+              Dane nie muszą pochodzić tylko z Excela
+            </h2>
+
+            <p class="text-lg text-slate-600 leading-relaxed mb-6">
+              Automatyczny raport może łączyć informacje z kilku źródeł.
+              Dzięki temu nie trzeba ręcznie przenosić danych pomiędzy
+              programami przed każdym zamknięciem miesiąca.
+            </p>
+
+            <p class="text-slate-600 leading-relaxed">
+              Jeżeli system posiada API, bazę danych albo umożliwia eksport
+              do pliku, często można wykorzystać te dane bezpośrednio
+              w procesie raportowania.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-white p-5 rounded-xl font-bold text-slate-800">
+              Excel
+            </div>
+
+            <div class="bg-white p-5 rounded-xl font-bold text-slate-800">
+              CSV
+            </div>
+
+            <div class="bg-white p-5 rounded-xl font-bold text-slate-800">
+              XML
+            </div>
+
+            <div class="bg-white p-5 rounded-xl font-bold text-slate-800">
+              Power BI
+            </div>
+
+            <div class="bg-white p-5 rounded-xl font-bold text-slate-800">
+              ERP / CRM
+            </div>
+
+            <div class="bg-white p-5 rounded-xl font-bold text-slate-800">
+              REST API
+            </div>
+
+            <div class="bg-white p-5 rounded-xl font-bold text-slate-800">
+              Bazy danych
+            </div>
+
+            <div class="bg-white p-5 rounded-xl font-bold text-slate-800">
+              E-mail
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- POWIĄZANE USŁUGI -->
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-black text-slate-900 mb-8 text-center">
+            Automatyzacja dopasowana do źródła danych
+          </h2>
+
+          <div class="grid md:grid-cols-3 gap-5">
+
+            <a
+              href="/uslugi/excel-na-zamowienie/"
+              class="block p-6 border border-slate-200 rounded-2xl hover:border-green-500 transition"
+            >
+              <h3 class="font-black text-lg mb-2">
+                Excel na zamówienie
+              </h3>
+
+              <p class="text-sm text-slate-600">
+                Dedykowane skoroszyty, raporty i narzędzia dla firm.
+              </p>
+            </a>
+
+            <a
+              href="/uslugi/power-bi-dla-firm/"
+              class="block p-6 border border-slate-200 rounded-2xl hover:border-green-500 transition"
+            >
+              <h3 class="font-black text-lg mb-2">
+                Power BI dla firm
+              </h3>
+
+              <p class="text-sm text-slate-600">
+                Dashboardy i raportowanie na danych z wielu źródeł.
+              </p>
+            </a>
+
+            <a
+              href="/uslugi/integracje-api/"
+              class="block p-6 border border-slate-200 rounded-2xl hover:border-green-500 transition"
+            >
+              <h3 class="font-black text-lg mb-2">
+                Integracje API
+              </h3>
+
+              <p class="text-sm text-slate-600">
+                Automatyczna wymiana danych pomiędzy systemami.
+              </p>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-24 bg-slate-950 text-white">
+      <div class="container mx-auto px-4">
+
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-black mb-12 text-center">
+            Najczęstsze pytania o automatyczne raporty
+          </h2>
+
+          <div class="space-y-5">
+
+            <details
+              class="bg-white/5 border border-white/10 rounded-2xl p-6"
+            >
+              <summary class="font-bold cursor-pointer text-lg">
+                Czy można zautomatyzować raport, który obecnie przygotowuję
+                w Excelu?
+              </summary>
+
+              <p class="text-slate-300 mt-4 leading-relaxed">
+                W wielu przypadkach tak. Jeżeli raport jest przygotowywany
+                cyklicznie według podobnych reguł, można zautomatyzować
+                pobieranie danych, ich przetwarzanie, obliczenia i aktualizację
+                raportu.
+              </p>
+            </details>
+
+            <details
+              class="bg-white/5 border border-white/10 rounded-2xl p-6"
+            >
+              <summary class="font-bold cursor-pointer text-lg">
+                Czy dane mogą pochodzić z różnych systemów?
+              </summary>
+
+              <p class="text-slate-300 mt-4 leading-relaxed">
+                Tak. Możemy łączyć pliki Excel, CSV i XML z bazami danych,
+                eksportami z systemów ERP lub CRM oraz danymi udostępnianymi
+                przez API.
+              </p>
+            </details>
+
+            <details
+              class="bg-white/5 border border-white/10 rounded-2xl p-6"
+            >
+              <summary class="font-bold cursor-pointer text-lg">
+                Czy po wdrożeniu będę mógł samodzielnie aktualizować raport?
+              </summary>
+
+              <p class="text-slate-300 mt-4 leading-relaxed">
+                Tak. Proces projektujemy tak, aby aktualizacja wymagała
+                możliwie niewielkiej liczby czynności, np. zapisania nowego
+                pliku i wybrania polecenia „Odśwież”.
+              </p>
+            </details>
+
+            <details
+              class="bg-white/5 border border-white/10 rounded-2xl p-6"
+            >
+              <summary class="font-bold cursor-pointer text-lg">
+                Czy raport może być generowany do PDF?
+              </summary>
+
+              <p class="text-slate-300 mt-4 leading-relaxed">
+                Tak. W zależności od procesu raport może kończyć się gotowym
+                Excelem, raportem Power BI albo plikiem PDF przeznaczonym
+                do wysyłki lub archiwizacji.
+              </p>
+            </details>
+
+          </div>
         </div>
       </div>
     </section>
 
     <Contact />
+
     <Footer />
   </div>
 </BaseLayout>

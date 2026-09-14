@@ -5,78 +5,1076 @@ import HeroService from "../../components/HeroService.astro";
 import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
 
-const title = "Optymalizacja Excela – Przyspieszanie wolnych plików i naprawa | Raporty24";
-const description = "Twój Excel wolno działa? Zawiesza się? Oferujemy profesjonalną optymalizację, czyszczenie plików i przyspieszanie formuł. Przywróć płynność pracy!";
+const title =
+  "Optymalizacja i naprawa Excela dla firm | Raporty24";
 
-// 1. DODAJ TE DWIE LINIE:
-const ogImage = "/biuro3.webp"; // Możesz tu dać dedykowaną grafikę bazy klientów, jeśli ją masz
-const currentUrl = "https://raporty24.pl/uslugi/optymalizacja-excela/"; // upewnij się, że taki jest slug tej strony
+const description =
+  "Naprawiamy, przyspieszamy i rozwijamy istniejące pliki Excel. Wolne formuły, Power Query, VBA, błędy, duże skoroszyty i przebudowa narzędzi firmowych.";
+
+const ogImage = "/biuro3.webp";
+
+const currentUrl =
+  "https://raporty24.pl/uslugi/optymalizacja-excela/";
+
 export const service = {
-  title: "Optymalizacja Excela",
+  title: "Optymalizacja i naprawa Excela",
   order: 10,
   menu: true,
-  category: "Excel", // opcjonalnie (do grupowania)
+  category: "Excel",
+  description:
+    "Przyspieszanie wolnych plików Excel, naprawa błędów, porządkowanie formuł, Power Query, VBA i rozwój istniejących narzędzi firmowych.",
+};
+
+
+/*
+ * =========================================================
+ * PROBLEMY
+ * =========================================================
+ */
+
+const problems = [
+  {
+    title: "Plik działa bardzo wolno",
+    description:
+      "Otwieranie, zapis, filtrowanie, przeliczanie lub odświeżanie zajmuje coraz więcej czasu.",
+    icon: "fas fa-gauge",
+  },
+
+  {
+    title: "Formuły są trudne do utrzymania",
+    description:
+      "Setki lub tysiące formuł, odwołania między arkuszami i nieczytelna logika utrudniają dalszą pracę.",
+    icon: "fas fa-calculator",
+  },
+
+  {
+    title: "Power Query przestał być stabilny",
+    description:
+      "Zapytania działają długo, mają wiele kroków albo przestają działać po zmianie plików wejściowych.",
+    icon: "fas fa-database",
+  },
+
+  {
+    title: "Makra VBA powodują błędy",
+    description:
+      "Kod był rozwijany przez lata, nie obsługuje wyjątków albo trudno go dalej modyfikować.",
+    icon: "fas fa-code",
+  },
+
+  {
+    title: "Plik urósł do ogromnych rozmiarów",
+    description:
+      "Skoroszyt zawiera nadmiar formatowania, obiektów, arkuszy pomocniczych albo niepotrzebnych danych.",
+    icon: "fas fa-file-alt",
+  },
+
+  {
+    title: "Excel stał się systemem firmy",
+    description:
+      "Plik zaczął jako prosty arkusz, ale dziś obsługuje raportowanie, formularze, bazy danych i procesy kilku osób.",
+    icon: "fas fa-sitemap",
+  },
+];
+
+
+/*
+ * =========================================================
+ * ZAKRES PRAC
+ * =========================================================
+ */
+
+const improvements = [
+  "analiza struktury skoroszytu i źródeł danych",
+
+  "identyfikacja wolnych formuł i niepotrzebnych przeliczeń",
+
+  "porządkowanie tabel, nazwanych zakresów i połączeń",
+
+  "optymalizacja lub przebudowa Power Query",
+
+  "naprawa błędów w VBA i istniejących makrach",
+
+  "usuwanie zbędnego formatowania, obiektów i danych",
+
+  "przeniesienie części obliczeń do Power Query lub modelu danych",
+
+  "podział dużego pliku na logiczne moduły",
+
+  "uproszczenie pracy użytkownika i liczby ręcznych kroków",
+
+  "dodanie walidacji i komunikatów o błędach",
+
+  "automatyzacja importu i eksportu danych",
+
+  "przygotowanie pliku do dalszego rozwoju",
+];
+
+
+/*
+ * =========================================================
+ * PROCES
+ * =========================================================
+ */
+
+const process = [
+  {
+    step: "01",
+    title: "Analiza pliku",
+    description:
+      "Sprawdzamy strukturę arkuszy, formuły, Power Query, makra, połączenia, rozmiar pliku i sposób pracy użytkowników.",
+  },
+
+  {
+    step: "02",
+    title: "Diagnoza",
+    description:
+      "Wskazujemy miejsca, które powodują spowolnienia, błędy lub utrudniają dalszy rozwój narzędzia.",
+  },
+
+  {
+    step: "03",
+    title: "Optymalizacja",
+    description:
+      "Przebudowujemy wybrane elementy, upraszczamy logikę, poprawiamy zapytania, kod i strukturę danych.",
+  },
+
+  {
+    step: "04",
+    title: "Testy",
+    description:
+      "Porównujemy działanie przed i po zmianach, testujemy typowe przypadki i sprawdzamy, czy użytkownik może bezpiecznie kontynuować pracę.",
+  },
+];
+
+
+/*
+ * =========================================================
+ * FAQ
+ * =========================================================
+ */
+
+const faqs = [
+  {
+    question:
+      "Czy każdy wolny plik Excel da się przyspieszyć?",
+
+    answer:
+      "Nie zawsze w takim samym stopniu. Najpierw trzeba ustalić, co faktycznie powoduje spowolnienie. Czasem problemem są formuły, czasem Power Query, VBA, struktura danych, formatowanie albo sama wielkość procesu.",
+  },
+
+  {
+    question:
+      "Czy możecie naprawić plik, którego nie tworzyliście?",
+
+    answer:
+      "Tak. Możemy przeanalizować istniejący skoroszyt, nawet jeśli był rozwijany przez inną osobę lub wiele osób na przestrzeni lat.",
+  },
+
+  {
+    question:
+      "Czy optymalizacja oznacza konieczność przebudowania całego pliku?",
+
+    answer:
+      "Nie. W wielu przypadkach wystarczy poprawić najbardziej problematyczne elementy. Jeżeli jednak obecna struktura mocno ogranicza dalszy rozwój, możemy zaproponować stopniową przebudowę.",
+  },
+
+  {
+    question:
+      "Czy możecie poprawić istniejące makra VBA?",
+
+    answer:
+      "Tak. Możemy naprawić błędy, uprościć kod, dodać walidację, obsługę wyjątków oraz przebudować fragmenty, które są trudne do utrzymania.",
+  },
+
+  {
+    question:
+      "Co jeśli VBA lub zwykły Excel już nie wystarczają?",
+
+    answer:
+      "Wtedy możemy zaproponować inne rozwiązanie, np. Power Query, integrację API, bazę danych, automatyzację w Pythonie albo dedykowany dodatek do Excela przygotowany np. w C#.",
+  },
+
+  {
+    question:
+      "Czy pracujecie także z Excelem na macOS?",
+
+    answer:
+      "Tak, ale zakres możliwości zależy od zastosowanych funkcji i technologii. Część rozwiązań VBA, dodatków i narzędzi Microsoft różni się pomiędzy Windows i macOS, dlatego najpierw sprawdzamy środowisko użytkownika.",
+  },
+];
+
+
+/*
+ * =========================================================
+ * STRUCTURED DATA
+ * =========================================================
+ */
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+
+  "@type": "Service",
+
+  name:
+    "Optymalizacja i naprawa Excela dla firm",
+
+  provider: {
+    "@type": "Organization",
+
+    "@id":
+      "https://raporty24.pl/#organization",
+
+    name:
+      "Raporty24",
+
+    url:
+      "https://raporty24.pl/",
+  },
+
+  areaServed: {
+    "@type": "Country",
+    name: "Polska",
+  },
+
+  serviceType:
+    "Optymalizacja Excel, naprawa plików Excel, Power Query, VBA, przyspieszanie skoroszytów i modernizacja narzędzi Excel",
+
+  url:
+    currentUrl,
+
+  description,
+};
+
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+
+  "@type": "BreadcrumbList",
+
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Raporty24",
+      item: "https://raporty24.pl/",
+    },
+
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Usługi",
+      item: "https://raporty24.pl/uslugi/",
+    },
+
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Optymalizacja Excela",
+      item: currentUrl,
+    },
+  ],
 };
 ---
 
-<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
-  <div x-data="app" x-cloak>
+<BaseLayout
+  title={title}
+  description={description}
+  image={ogImage}
+  url={currentUrl}
+  structuredData={[
+    serviceSchema,
+    breadcrumbSchema
+  ]}
+>
+
+  <div
+    x-data="app"
+    x-cloak
+  >
+
     <Header />
-    <HeroService 
-      title="Błyskawiczna" 
-      highlight="Optymalizacja Excela" 
-      subtitle="Naprawiamy 'nieużywalne' pliki. Jeśli Twój arkusz otwiera się minutami lub zawiesza przy każdym kliknięciu – wiemy jak temu zaradzić."
+
+
+    <!-- ================================================= -->
+    <!-- HERO -->
+    <!-- ================================================= -->
+
+    <HeroService
+      eyebrow="Naprawa i rozwój istniejących narzędzi"
+      title="Optymalizacja"
+      highlight="i naprawa Excela"
+      subtitle="Twój plik działa coraz wolniej, zawiesza się albo trudno go dalej rozwijać? Analizujemy istniejące skoroszyty, naprawiamy problemy i przebudowujemy najbardziej obciążające elementy."
+      ctaText="Opisz problem z plikiem"
     />
 
-    <section class="py-24 bg-slate-950 text-white">
-      <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-black uppercase tracking-tighter mb-16">Dlaczego <span class="text-green-500">twój plik muli?</span></h2>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="p-6 border-l-2 border-red-500 bg-white/5">
-            <h4 class="font-bold mb-2 italic text-red-400">Zbyt wiele formatowania</h4>
-            <p class="text-slate-400 text-sm">Nadmiar kolorów i obramowań potrafi 'ważyć' więcej niż same dane.</p>
+
+    <!-- ================================================= -->
+    <!-- GŁÓWNY PROBLEM -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="grid gap-16 lg:grid-cols-2 lg:items-center"
+        >
+
+          <div>
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
+              Nie zawsze trzeba budować plik od nowa
+            </span>
+
+
+            <h2
+              class="mb-8 text-4xl font-black leading-tight tracking-tighter md:text-6xl"
+            >
+              Dobry Excel po kilku latach może stać się
+              trudny, wolny i ryzykowny w utrzymaniu.
+            </h2>
+
+
+            <div
+              class="space-y-6 text-lg leading-relaxed text-slate-600"
+            >
+
+              <p>
+                Skoroszyty firmowe często rosną razem z firmą.
+                Dochodzą kolejne arkusze, formuły, makra,
+                raporty, importy i wyjątki.
+              </p>
+
+
+              <p>
+                Po pewnym czasie nawet poprawnie zaprojektowany
+                plik może zacząć działać wolno albo stać się
+                bardzo trudny do dalszego rozwijania.
+              </p>
+
+
+              <p>
+                <strong class="text-slate-950">
+                  Najpierw diagnozujemy przyczynę.
+                </strong>
+
+                Dopiero później decydujemy, czy wystarczy
+                poprawić kilka elementów, czy lepiej przebudować
+                większą część procesu.
+              </p>
+
+            </div>
+
+
+            <div
+              class="mt-10 flex flex-col gap-4 sm:flex-row"
+            >
+
+              <a
+                href="#kontakt"
+                class="inline-flex items-center justify-center gap-3 rounded-2xl bg-green-600 px-8 py-5 text-sm font-black uppercase tracking-widest text-white transition-all hover:-translate-y-1 hover:bg-green-500"
+              >
+                Opisz problem
+
+                <i
+                  class="fas fa-arrow-right text-xs"
+                  aria-hidden="true"
+                ></i>
+              </a>
+
+
+              <a
+                href="/uslugi/excel-na-zamowienie/"
+                class="inline-flex items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white px-8 py-5 text-sm font-black uppercase tracking-widest text-slate-950 transition-all hover:-translate-y-1 hover:border-green-500"
+              >
+                Excel na zamówienie
+              </a>
+
+            </div>
+
           </div>
-          <div class="p-6 border-l-2 border-red-500 bg-white/5">
-            <h4 class="font-bold mb-2 italic text-red-400">Niewydajne formuły</h4>
-            <p class="text-slate-400 text-sm">Zastępujemy ciężkie funkcje (np. WYSZUKAJ.PIONOWO) szybszymi odpowiednikami.</p>
+
+
+          <!-- DIAGNOZA -->
+          <div
+            class="rounded-[3rem] border border-slate-100 bg-slate-50 p-8 shadow-xl shadow-slate-200/60 md:p-10"
+          >
+
+            <h3
+              class="mb-7 text-2xl font-black text-slate-950"
+            >
+              Co sprawdzamy?
+            </h3>
+
+
+            <div class="space-y-4">
+
+              {
+                [
+                  "czas otwierania i zapisu pliku",
+                  "czas przeliczania formuł",
+                  "Power Query i źródła danych",
+                  "makra VBA i zdarzenia",
+                  "nadmiarowe formatowanie i obiekty",
+                  "układ danych i zależności między arkuszami"
+                ].map((item) => (
+
+                  <div
+                    class="flex items-start gap-4 rounded-2xl bg-white p-5 shadow-sm"
+                  >
+
+                    <div
+                      class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-600 text-[10px] text-white"
+                    >
+                      <i
+                        class="fas fa-check"
+                        aria-hidden="true"
+                      ></i>
+                    </div>
+
+
+                    <p
+                      class="font-bold leading-relaxed text-slate-700"
+                    >
+                      {item}
+                    </p>
+
+                  </div>
+
+                ))
+              }
+
+            </div>
+
           </div>
-          <div class="p-6 border-l-2 border-red-500 bg-white/5">
-            <h4 class="font-bold mb-2 italic text-red-400">Zbędne obiekty</h4>
-            <p class="text-slate-400 text-sm">Ukryte kształty i grafiki to częsty powód 'puchnięcia' plików XLSX.</p>
-          </div>
+
         </div>
+
       </div>
+
     </section>
 
-    <section class="py-24 bg-white text-slate-900">
-      <div class="container mx-auto px-4 max-w-5xl">
-        <div class="flex flex-col lg:flex-row gap-16">
-          <div class="lg:w-1/2">
-            <h2 class="text-4xl font-black uppercase mb-8">Nasz Proces <span class="text-green-600">Naprawczy</span></h2>
-            <div class="space-y-4">
-              <div class="flex gap-4">
-                <span class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold">1</span>
-                <p class="text-sm">Audyt architektury i identyfikacja 'wąskich gardeł'.</p>
-              </div>
-              <div class="flex gap-4">
-                <span class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold">2</span>
-                <p class="text-sm">Przebudowa modelu danych na Power Query (odchudzenie pliku).</p>
-              </div>
-              <div class="flex gap-4">
-                <span class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold">3</span>
-                <p class="text-sm">Finalne testy wydajności i oddanie błyskawicznego arkusza.</p>
-              </div>
-            </div>
-          </div>
-          <div class="lg:w-1/2 p-8 bg-slate-900 rounded-3xl text-white">
-            <h4 class="text-2xl font-bold mb-4">Efekt?</h4>
-            <p class="text-slate-400">Redukcja wagi pliku nawet o <span class="text-green-500 font-bold">90%</span> i skrócenie czasu odświeżania z kilku minut do <span class="text-green-500 font-bold">kilku sekund</span>.</p>
-          </div>
+
+    <!-- ================================================= -->
+    <!-- PROBLEMY -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-950 py-24 text-white"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="mb-16 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-400"
+          >
+            Typowe problemy
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Co najczęściej spowalnia i komplikuje Excel?
+          </h2>
+
+
+          <p
+            class="text-lg leading-relaxed text-slate-400 md:text-xl"
+          >
+            Przyczyna nie zawsze jest oczywista.
+            Wolny plik może mieć kilka problemów jednocześnie.
+          </p>
+
         </div>
+
+
+        <div
+          class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+        >
+
+          {
+            problems.map((item) => (
+
+              <article
+                class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 transition-all hover:-translate-y-1 hover:border-green-500/50 hover:bg-white/[0.08]"
+              >
+
+                <div
+                  class="mb-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-500/10 text-green-400"
+                >
+                  <i
+                    class={`${item.icon} text-xl`}
+                    aria-hidden="true"
+                  ></i>
+                </div>
+
+
+                <h3
+                  class="mb-4 text-2xl font-black leading-tight text-white"
+                >
+                  {item.title}
+                </h3>
+
+
+                <p
+                  class="text-sm font-medium leading-relaxed text-slate-400"
+                >
+                  {item.description}
+                </p>
+
+              </article>
+
+            ))
+          }
+
+        </div>
+
       </div>
+
     </section>
+
+
+    <!-- ================================================= -->
+    <!-- ZAKRES -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="mb-16 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+          >
+            Zakres prac
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Optymalizacja to więcej niż usunięcie kilku formuł.
+          </h2>
+
+
+          <p
+            class="text-lg leading-relaxed text-slate-600 md:text-xl"
+          >
+            Czasem przyczyną problemu jest jedna funkcja.
+            Innym razem trzeba zmienić sposób pobierania,
+            przetwarzania lub przechowywania danych.
+          </p>
+
+        </div>
+
+
+        <div
+          class="grid gap-4 md:grid-cols-2 xl:grid-cols-3"
+        >
+
+          {
+            improvements.map((item) => (
+
+              <div
+                class="flex items-start gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-6"
+              >
+
+                <div
+                  class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-950 text-[10px] text-green-400"
+                >
+                  <i
+                    class="fas fa-check"
+                    aria-hidden="true"
+                  ></i>
+                </div>
+
+
+                <p
+                  class="font-bold leading-relaxed text-slate-700"
+                >
+                  {item}
+                </p>
+
+              </div>
+
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- MODERNIZACJA -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-50 py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="grid gap-14 lg:grid-cols-2 lg:items-center"
+        >
+
+          <div>
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
+              Modernizacja
+            </span>
+
+
+            <h2
+              class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+            >
+              Czasem najlepsza optymalizacja to zmiana architektury.
+            </h2>
+
+
+            <p
+              class="mb-6 text-lg leading-relaxed text-slate-600"
+            >
+              Jeżeli jeden skoroszyt wykonuje coraz więcej zadań,
+              może być potrzebne rozdzielenie warstwy danych,
+              obliczeń i interfejsu użytkownika.
+            </p>
+
+
+            <p
+              class="text-lg leading-relaxed text-slate-600"
+            >
+              Nie oznacza to automatycznie budowy dużej aplikacji.
+              Często wystarczy lepiej wykorzystać Power Query,
+              przenieść część logiki do API albo dołożyć niewielkie
+              narzędzie wspierające Excel.
+            </p>
+
+          </div>
+
+
+          <div
+            class="rounded-[2.5rem] bg-slate-950 p-8 text-white md:p-10"
+          >
+
+            <h3
+              class="mb-7 text-2xl font-black"
+            >
+              Przykładowe kierunki przebudowy
+            </h3>
+
+
+            <div class="space-y-5">
+
+              <div
+                class="rounded-2xl border border-white/10 bg-white/[0.05] p-5"
+              >
+                <strong class="block text-green-400">
+                  Excel + Power Query
+                </strong>
+
+                <span class="text-sm text-slate-400">
+                  zamiast ręcznego kopiowania danych i tysięcy formuł
+                </span>
+              </div>
+
+
+              <div
+                class="rounded-2xl border border-white/10 bg-white/[0.05] p-5"
+              >
+                <strong class="block text-green-400">
+                  Excel + API
+                </strong>
+
+                <span class="text-sm text-slate-400">
+                  zamiast ręcznych eksportów z innych systemów
+                </span>
+              </div>
+
+
+              <div
+                class="rounded-2xl border border-white/10 bg-white/[0.05] p-5"
+              >
+                <strong class="block text-green-400">
+                  Excel + dodatek C#
+                </strong>
+
+                <span class="text-sm text-slate-400">
+                  gdy potrzebny jest własny interfejs lub bardziej rozbudowana logika
+                </span>
+              </div>
+
+
+              <div
+                class="rounded-2xl border border-white/10 bg-white/[0.05] p-5"
+              >
+                <strong class="block text-green-400">
+                  Excel + małe narzędzie
+                </strong>
+
+                <span class="text-sm text-slate-400">
+                  gdy część procesu lepiej wykonać poza skoroszytem
+                </span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- EFEKT -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="grid gap-16 lg:grid-cols-2 lg:items-center"
+        >
+
+          <div>
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
+              Cel optymalizacji
+            </span>
+
+
+            <h2
+              class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+            >
+              Plik powinien być nie tylko szybszy, ale też łatwiejszy do utrzymania.
+            </h2>
+
+
+            <p
+              class="text-lg leading-relaxed text-slate-600"
+            >
+              Samo skrócenie czasu otwierania pliku nie zawsze
+              rozwiązuje problem. Ważne jest również ograniczenie
+              ryzyka błędów i ułatwienie dalszego rozwoju narzędzia.
+            </p>
+
+          </div>
+
+
+          <div
+            class="grid gap-4 sm:grid-cols-2"
+          >
+
+            {
+              [
+                {
+                  title: "Szybsza praca",
+                  text: "Mniej oczekiwania na przeliczanie, zapis i odświeżanie."
+                },
+                {
+                  title: "Mniej błędów",
+                  text: "Czytelniejsza logika, walidacja i lepsza obsługa wyjątków."
+                },
+                {
+                  title: "Łatwiejszy rozwój",
+                  text: "Struktura, którą można później rozbudować bez kolejnych obejść."
+                },
+                {
+                  title: "Prostsza obsługa",
+                  text: "Mniej ręcznych kroków i większa przewidywalność procesu."
+                }
+              ].map((item) => (
+
+                <div
+                  class="rounded-2xl border border-slate-200 bg-slate-50 p-6"
+                >
+
+                  <h3
+                    class="mb-2 text-xl font-black text-slate-950"
+                  >
+                    {item.title}
+                  </h3>
+
+                  <p
+                    class="text-sm leading-relaxed text-slate-600"
+                  >
+                    {item.text}
+                  </p>
+
+                </div>
+
+              ))
+            }
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- PROCES -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-950 py-24 text-white"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="mb-16 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-400"
+          >
+            Proces
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Jak wygląda optymalizacja pliku?
+          </h2>
+
+
+          <p
+            class="text-lg leading-relaxed text-slate-400 md:text-xl"
+          >
+            Najpierw diagnoza. Dopiero później zmiany.
+          </p>
+
+        </div>
+
+
+        <div
+          class="grid gap-6 md:grid-cols-2 xl:grid-cols-4"
+        >
+
+          {
+            process.map((item) => (
+
+              <article
+                class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-7"
+              >
+
+                <div
+                  class="mb-6 text-5xl font-black tracking-tighter text-green-400"
+                >
+                  {item.step}
+                </div>
+
+
+                <h3
+                  class="mb-4 text-2xl font-black text-white"
+                >
+                  {item.title}
+                </h3>
+
+
+                <p
+                  class="text-sm leading-relaxed text-slate-400"
+                >
+                  {item.description}
+                </p>
+
+              </article>
+
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- POWIĄZANE USŁUGI -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-20 text-slate-950"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div class="mx-auto max-w-5xl">
+
+          <h2
+            class="mb-10 text-center text-3xl font-black tracking-tight md:text-4xl"
+          >
+            A jeśli problem wykracza poza sam Excel?
+          </h2>
+
+
+          <div
+            class="grid gap-5 md:grid-cols-3"
+          >
+
+            <a
+              href="/uslugi/excel-na-zamowienie/"
+              class="rounded-2xl border border-slate-200 p-6 transition-all hover:border-green-500 hover:shadow-lg"
+            >
+              <h3 class="mb-2 text-lg font-black">
+                Excel na zamówienie
+              </h3>
+
+              <p class="text-sm leading-relaxed text-slate-600">
+                Budowa nowego narzędzia lub większa przebudowa istniejącego.
+              </p>
+            </a>
+
+
+            <a
+              href="/uslugi/automatyzacja-excel-power-query/"
+              class="rounded-2xl border border-slate-200 p-6 transition-all hover:border-green-500 hover:shadow-lg"
+            >
+              <h3 class="mb-2 text-lg font-black">
+                Power Query
+              </h3>
+
+              <p class="text-sm leading-relaxed text-slate-600">
+                Automatyczne pobieranie i przekształcanie danych.
+              </p>
+            </a>
+
+
+            <a
+              href="/uslugi/integracje-api/"
+              class="rounded-2xl border border-slate-200 p-6 transition-all hover:border-green-500 hover:shadow-lg"
+            >
+              <h3 class="mb-2 text-lg font-black">
+                Integracje API
+              </h3>
+
+              <p class="text-sm leading-relaxed text-slate-600">
+                Połączenie Excela z innymi systemami firmy.
+              </p>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- FAQ -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-50 py-24 text-slate-950"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div class="mb-14 max-w-4xl">
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+          >
+            FAQ
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Najczęstsze pytania
+          </h2>
+
+        </div>
+
+
+        <div
+          class="grid gap-5 lg:grid-cols-2"
+        >
+
+          {
+            faqs.map((item) => (
+
+              <details
+                class="rounded-[2rem] border border-slate-200 bg-white p-7"
+              >
+
+                <summary
+                  class="cursor-pointer text-lg font-black text-slate-950"
+                >
+                  {item.question}
+                </summary>
+
+
+                <p
+                  class="mt-5 text-sm font-medium leading-relaxed text-slate-600"
+                >
+                  {item.answer}
+                </p>
+
+              </details>
+
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
 
     <Contact />
+
     <Footer />
+
   </div>
+
 </BaseLayout>

@@ -1,130 +1,176 @@
 ---
 // src/components/Panels.astro
+// Główne obszary usług Raporty24 - jasna sekcja HOME
+
 const services = [
   {
-    title: "Excel na zamówienie",
+    title: "Excel i automatyzacja",
     description:
-      "Automatyzacje Excel, makra VBA, Power Query, kalkulatory, formularze i pliki, które zastępują ręczne kopiowanie danych.",
+      "Dedykowane pliki Excel, Power Query, makra VBA, kalkulatory i narzędzia, które ograniczają ręczne kopiowanie, liczenie i przygotowywanie danych.",
     icon: "fas fa-file-excel",
     href: "/uslugi/excel-na-zamowienie/",
-    tags: ["Excel", "VBA", "Power Query"],
-    dark: false,
+    tags: ["Excel", "Power Query", "VBA"],
   },
   {
-    title: "Dashboardy Power BI",
+    title: "Raportowanie i Power BI",
     description:
-      "Raporty zarządcze, KPI, sprzedaż, koszty, flota i wyniki firmy w czytelnych dashboardach Power BI.",
+      "Raporty, dashboardy i modele danych dla sprzedaży, finansów, magazynu, controllingu i innych procesów wymagających bieżącej analizy wyników.",
     icon: "fas fa-chart-pie",
-    href: "/uslugi/dashboardy-power-bi/",
-    tags: ["Power BI", "KPI", "DAX"],
-    dark: false,
+    href: "/uslugi/power-bi-dla-firm/",
+    tags: ["Power BI", "KPI", "Raporty"],
   },
   {
-    title: "KSeF do Excela",
+    title: "Integracje API i systemów",
     description:
-      "Narzędzia do pobierania faktur z KSeF, eksportu danych do Excel, CSV i XML oraz porządkowania dokumentów dla księgowości.",
-    icon: "fas fa-file-invoice",
-    href: "/realizacje/#ksef-exporter-pro",
-    tags: ["KSeF", "Excel", "CSV / XML"],
-    dark: true,
+      "Łączymy sklepy, systemy ERP i CRM, Excel oraz inne źródła danych, aby informacje przepływały między nimi bez ręcznego przepisywania.",
+    icon: "fas fa-plug",
+    href: "/uslugi/integracje-api/",
+    tags: ["API", "Systemy", "Dane"],
   },
   {
-    title: "Kalkulatory ofertowe",
+    title: "Automatyzacja plików i procesów",
     description:
-      "Kalkulatory produktowe i zamówieniowe dla firm: warianty, ilości, dodatki, cena, podsumowanie i gotowe dane do wyceny.",
-    icon: "fas fa-calculator",
-   href: "/uslugi/kalkulatory-produktowe/",
-    tags: ["Oferty", "B2B", "Wycena"],
-    dark: false,
-  },
-  {
-    title: "Logistyka w Excelu",
-    description:
-      "Planowanie tras, flota, koszty transportu, raporty operacyjne i narzędzia wspierające codzienną pracę logistyki.",
-    icon: "fas fa-route",
-    href: "/uslugi/logistyka-w-excelu/",
-    tags: ["Trasy", "Flota", "Transport"],
-    dark: false,
-  },
-  {
-    title: "Python, API i aplikacje",
-    description:
-      "Skrypty Python, integracje API, przetwarzanie plików, eksporty danych i proste aplikacje desktopowe dla firm.",
-    icon: "fas fa-code",
+      "Automatyzujemy obsługę Excel, CSV, XML, PDF, folderów, eksportów i innych powtarzalnych czynności. Technologię dobieramy do procesu.",
+    icon: "fas fa-cogs",
     href: "/uslugi/skrypty-python/",
-    tags: ["Python", "API", "Desktop"],
-    dark: true,
+    tags: ["Pliki", "PDF", "Automatyzacja"],
+  },
+  {
+    title: "Automatyczne raporty",
+    description:
+      "Porządkujemy źródła danych i tworzymy raporty, które można regularnie odświeżać bez każdorazowego składania zestawienia od początku.",
+    icon: "fas fa-chart-line",
+    href: "/uslugi/raporty-miesieczne-automatyczne/",
+    tags: ["Raporty", "Excel", "Power BI"],
+  },
+  {
+    title: "Narzędzia dla firm",
+    description:
+      "Tworzymy kalkulatory, dodatki do Excela, formularze i niewielkie aplikacje wspierające konkretny proces zamiast wdrażania dużego systemu.",
+    icon: "fas fa-laptop-code",
+    href: "/uslugi/",
+    tags: ["Dodatki", "Aplikacje", "Kalkulatory"],
   },
 ];
 ---
 
-<section id="oferta" class="bg-white py-24 text-slate-950">
-  <div class="container mx-auto px-4">
+<section
+  id="oferta"
+  class="relative overflow-hidden border-t border-slate-100 bg-white py-24 text-slate-950"
+>
+  <!-- DELIKATNE TŁO -->
+
+  <div
+    class="pointer-events-none absolute inset-0 opacity-40"
+    aria-hidden="true"
+  >
+    <div
+      class="absolute inset-0 bg-[radial-gradient(#e2e8f0_1.25px,transparent_1.25px)] [background-size:32px_32px]"
+    ></div>
+  </div>
+
+  <div
+    class="pointer-events-none absolute -right-32 top-0 h-96 w-96 rounded-full bg-green-500/[0.05] blur-[120px]"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    class="container relative z-10 mx-auto px-4">
+
+    <!-- NAGŁÓWEK -->
+
     <header class="mb-16 max-w-4xl lg:mb-20">
+
       <div
-        class="mb-4 inline-flex items-center gap-2 rounded-full border border-green-500/20 bg-green-500/10 px-3 py-1"
+        class="mb-5 inline-flex items-center gap-3 rounded-full border border-green-500/20 bg-green-500/10 px-4 py-2"
       >
-        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-green-600">
-          Usługi
+        <span
+          class="h-2 w-2 rounded-full bg-green-500"
+          aria-hidden="true"
+        ></span>
+
+        <span
+          class="text-[10px] font-black uppercase tracking-[0.2em] text-green-700"
+        >
+          Co możemy zautomatyzować?
         </span>
       </div>
 
-      <h2 class="mb-8 text-4xl font-black leading-tight tracking-tighter text-slate-900 lg:text-6xl">
-        Automatyzacje, które zdejmują z firmy
-        <span class="text-green-600">ręczną pracę.</span>
+      <h2
+        class="mb-8 text-4xl font-black leading-[0.95] tracking-tighter text-slate-950 md:text-5xl lg:text-6xl"
+      >
+        Od pojedynczej czynności
+        <br class="hidden md:block" />
+        do
+        <span class="text-green-600">
+          całego procesu.
+        </span>
       </h2>
 
-      <p class="max-w-3xl text-xl leading-relaxed text-slate-600">
-        Tworzymy rozwiązania w Excelu, Power BI, Pythonie i API: od prostych
-        automatyzacji po aplikacje desktopowe, kalkulatory ofertowe i narzędzia
-        do pracy z KSeF.
+      <p
+        class="max-w-3xl text-lg leading-relaxed text-slate-600 md:text-xl"
+      >
+        Nie zaczynamy od wyboru technologii.
+        Najpierw sprawdzamy, gdzie powstaje ręczna praca,
+        powtarzalne kopiowanie danych lub niepotrzebne błędy.
+        Dopiero potem dobieramy Excel, Power BI, API,
+        Microsoft 365, dodatek lub niewielką aplikację.
       </p>
+
     </header>
 
-    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+
+    <!-- KARTY -->
+
+    <div
+      class="grid grid-cols-1 gap-7 md:grid-cols-2 xl:grid-cols-3"
+    >
       {
         services.map((service) => (
           <a
             href={service.href}
-            class={`group flex min-h-[360px] flex-col rounded-[2.5rem] border-2 p-9 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${
-              service.dark
-                ? "border-slate-800 bg-slate-950 text-white shadow-slate-900/30 hover:border-green-500/40"
-                : "border-slate-100 bg-slate-50 text-slate-950 hover:border-green-500/30 hover:bg-white"
-            }`}
+            class="group flex min-h-[360px] flex-col rounded-[2.5rem] border border-slate-200 bg-slate-50 p-9 transition-all duration-300 hover:-translate-y-1 hover:border-green-500/30 hover:bg-white hover:shadow-2xl hover:shadow-slate-200/60"
           >
+
+            <!-- IKONA -->
+
             <div
-              class={`mb-8 flex h-16 w-16 items-center justify-center rounded-2xl shadow-sm transition-transform group-hover:scale-110 ${
-                service.dark ? "bg-green-500/10 text-green-400" : "bg-white text-green-600"
-              }`}
+              class="mb-8 flex h-16 w-16 items-center justify-center rounded-2xl border border-slate-100 bg-white text-green-600 shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:border-green-500/20"
             >
-              <i class={`${service.icon} text-3xl`}></i>
+              <i
+                class={`${service.icon} text-3xl`}
+                aria-hidden="true"
+              ></i>
             </div>
 
+
+            <!-- TYTUŁ -->
+
             <h3
-              class={`mb-4 text-2xl font-black uppercase tracking-tighter ${
-                service.dark ? "text-white" : "text-slate-900"
-              }`}
+              class="mb-4 text-2xl font-black uppercase tracking-tighter text-slate-950"
             >
               {service.title}
             </h3>
 
+
+            <!-- OPIS -->
+
             <p
-              class={`mb-8 flex-1 text-base leading-relaxed ${
-                service.dark ? "text-slate-400" : "text-slate-600"
-              }`}
+              class="mb-8 flex-1 text-base leading-relaxed text-slate-600"
             >
               {service.description}
             </p>
 
-            <div class="mb-8 flex flex-wrap gap-2">
+
+            <!-- TAGI -->
+
+            <div
+              class="mb-8 flex flex-wrap gap-2"
+            >
               {
                 service.tags.map((tag) => (
                   <span
-                    class={`rounded-lg border px-3 py-1 text-[10px] font-black uppercase tracking-widest ${
-                      service.dark
-                        ? "border-white/10 bg-white/5 text-slate-300"
-                        : "border-slate-200 bg-white text-slate-500"
-                    }`}
+                    class="rounded-lg border border-slate-200 bg-white px-3 py-1 text-[10px] font-black uppercase tracking-widest text-slate-500"
                   >
                     {tag}
                   </span>
@@ -132,22 +178,81 @@ const services = [
               }
             </div>
 
+
+            <!-- LINK -->
+
             <span
-              class={`inline-flex items-center gap-3 text-xs font-black uppercase tracking-widest transition-colors ${
-                service.dark
-                  ? "text-white group-hover:text-green-400"
-                  : "text-slate-950 group-hover:text-green-600"
-              }`}
+              class="inline-flex items-center gap-3 text-xs font-black uppercase tracking-widest text-slate-950 transition-colors group-hover:text-green-600"
             >
-              Zobacz więcej
-              <i class="fas fa-chevron-right text-[10px]"></i>
+              Zobacz rozwiązania
+
+              <i
+                class="fas fa-chevron-right text-[10px]"
+                aria-hidden="true"
+              ></i>
             </span>
+
           </a>
         ))
       }
     </div>
+
+
+    <!-- DOLNE CTA -->
+
+    <div
+      class="mt-14 flex flex-col gap-6 rounded-[2rem] border border-green-200 bg-green-50 p-7 sm:flex-row sm:items-center sm:justify-between lg:p-9"
+    >
+
+      <div class="max-w-2xl">
+
+        <h3
+          class="mb-2 text-xl font-black tracking-tight text-slate-950"
+        >
+          Nie widzisz swojego przypadku?
+        </h3>
+
+        <p
+          class="text-sm leading-relaxed text-slate-600"
+        >
+          Nie musisz dopasowywać problemu do gotowej usługi.
+          Opisz proces, który chcesz usprawnić,
+          a sprawdzimy, jakie rozwiązanie będzie najprostsze.
+        </p>
+
+      </div>
+
+
+      <div
+        class="flex shrink-0 flex-col gap-3 sm:flex-row"
+      >
+
+        <a
+          href="/uslugi/"
+          class="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-4 text-xs font-black uppercase tracking-widest text-slate-900 transition-all hover:border-green-500 hover:text-green-600"
+        >
+          Wszystkie usługi
+        </a>
+
+        <a
+          href="/kontakt/#formularz"
+          class="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-950 px-6 py-4 text-xs font-black uppercase tracking-widest text-white transition-all hover:bg-green-600"
+        >
+          Opisz problem
+
+          <i
+            class="fas fa-arrow-right text-[10px]"
+            aria-hidden="true"
+          ></i>
+        </a>
+
+      </div>
+
+    </div>
+
   </div>
 </section>
+
 
 <style>
   section {

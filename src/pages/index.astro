@@ -4,35 +4,59 @@ import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import Panels from "../components/Panels.astro";
 import SelectedRealizations from "../components/SelectedRealizations.astro";
-
 import Pricing from "../components/Pricing.astro";
 import WhyUs from "../components/WhyUs.astro";
-import FreeAuditCTA from "../components/FreeAuditCTA.astro";
 import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
 
-const title = "Automatyzacja Excel, Power BI, Python i API dla firm | Raporty24";
+const title =
+  "Automatyzacja procesów i danych dla firm | Raporty24";
+
 const description =
-  "Tworzymy automatyzacje Excel, dashboardy Power BI, skrypty Python, integracje API, kalkulatory ofertowe i aplikacje dla firm. Darmowa wycena w 24h.";
+  "Automatyzujemy procesy i pracę z danymi w firmach. Excel, Power Query, Power BI, API, SharePoint, Microsoft 365, integracje, raporty i dedykowane narzędzia.";
+
 const image = "/biuro3.webp";
+
 const url = "https://raporty24.pl/";
 ---
 
-<BaseLayout title={title} description={description} image={image} url={url}>
+<BaseLayout
+  title={title}
+  description={description}
+  image={image}
+  url={url}
+>
   <div x-data="app" x-cloak>
+
     <Header />
+
+    <!-- CIEMNY -->
     <Hero />
+
+    <!-- JASNY -->
     <Panels />
+
+    <!-- CIEMNY -->
     <SelectedRealizations />
+
+    <!-- JASNY -->
     <Pricing />
+
+    <!-- CIEMNY -->
     <WhyUs />
-    <FreeAuditCTA />
+
+    <!-- JASNY -->
     <Contact />
+
+    <!-- CIEMNY -->
     <Footer />
+
   </div>
 </BaseLayout>
 
+
 <style is:global>
+
   * {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
@@ -48,4 +72,5 @@ const url = "https://raporty24.pl/";
   .neon-flow {
     animation: none !important;
   }
+
 </style>

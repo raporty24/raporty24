@@ -3,98 +3,187 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 
-const title = "Stałe wsparcie po wdrożeniu | Opieka nad raportami, Excel i Power BI | Raporty24";
+const title =
+  "Stałe wsparcie i rozwój automatyzacji dla firm | Raporty24";
+
 const description =
-  "Stałe wsparcie po wdrożeniu: opieka nad raportami Excel i Power BI, poprawki, aktualizacje, rozwój automatyzacji, kontrola odświeżeń i pomoc przy danych firmowych.";
+  "Stałe wsparcie po wdrożeniu: opieka nad Excel, Power BI, Power Query, API, SharePoint i automatyzacjami. Poprawki, rozwój i pomoc przy danych firmowych.";
 
 const image = "/biuro3.webp";
+
 const url = "https://raporty24.pl/subskrypcja/";
+
 
 const packages = [
   {
-    label: "Na start",
-    title: "Opieka podstawowa",
-    hours: "4-6 h",
-    note: "gdy raporty mają po prostu działać",
+    label:
+      "Na start",
+
+    title:
+      "Opieka podstawowa",
+
+    hours:
+      "4-6 h",
+
+    note:
+      "gdy raporty mają po prostu działać",
+
     description:
       "Dla firm, które mają już raport, plik Excel, dashboard albo automatyzację i potrzebują drobnych poprawek, aktualizacji oraz szybkiej pomocy bez szukania wykonawcy od nowa.",
+
     items: [
       "poprawki w raportach, plikach i automatyzacjach",
       "pomoc przy błędach i zmianach w danych",
       "kontrola, czy raporty nadal działają poprawnie",
       "krótkie konsultacje i wsparcie użytkowników",
     ],
-    cta: "Zapytaj o opiekę",
-    href: "/kontakt/#formularz",
-    featured: false,
+
+    cta:
+      "Zapytaj o opiekę",
+
+    href:
+      "/kontakt/",
+
+    featured:
+      false,
   },
+
+
   {
-    label: "Najczęściej wybierane",
-    title: "Stały rozwój",
-    hours: "8-12 h",
-    note: "gdy procesy zmieniają się co miesiąc",
+    label:
+      "Regularny rozwój",
+
+    title:
+      "Stały rozwój",
+
+    hours:
+      "8-12 h",
+
+    note:
+      "gdy procesy zmieniają się co miesiąc",
+
     description:
       "Dla firm, które regularnie potrzebują nowych widoków, dodatkowych raportów, zmian w kalkulatorach, automatyzacji albo pomocy przy danych firmowych.",
+
     items: [
       "rozwój raportów, KPI i dashboardów",
-      "nowe automatyzacje Excel, Power BI, Python lub API",
+      "nowe automatyzacje Excel, Power BI, API, SharePoint lub Microsoft 365",
       "ustalone priorytety zgłoszeń i plan prac",
       "cykliczne poprawki, testy i usprawnienia",
     ],
-    cta: "Zapytaj o stałe wsparcie",
-    href: "/kontakt/#formularz",
-    featured: true,
+
+    cta:
+      "Zapytaj o stałe wsparcie",
+
+    href:
+      "/kontakt/",
+
+    featured:
+      true,
   },
+
+
   {
-    label: "Większy zakres",
-    title: "Opieka nad procesami",
-    hours: "16 h+",
-    note: "gdy firma ma wiele raportów lub narzędzi",
+    label:
+      "Większy zakres",
+
+    title:
+      "Opieka nad procesami",
+
+    hours:
+      "16 h+",
+
+    note:
+      "gdy firma ma wiele raportów lub narzędzi",
+
     description:
       "Dla firm, które chcą mieć stałego partnera do raportowania, danych, automatyzacji, integracji i rozwoju narzędzi używanych przez kilka osób lub działów.",
+
     items: [
       "opieka nad większą liczbą raportów i narzędzi",
       "integracje danych, automatyzacje i optymalizacja",
       "stała lista prac do wykonania i regularne rekomendacje",
       "możliwe czasy reakcji i priorytety dla krytycznych zgłoszeń",
     ],
-    cta: "Omów większy zakres",
-    href: "/kontakt/#formularz",
-    featured: false,
+
+    cta:
+      "Omów większy zakres",
+
+    href:
+      "/kontakt/",
+
+    featured:
+      false,
   },
 ];
 
+
 const situations = [
   {
-    title: "Raporty regularnie się zmieniają",
-    text: "Co miesiąc dochodzą nowe dane, nowe kolumny, nowe KPI albo inne wymagania od zarządu, właściciela lub działu.",
-    items: ["nowe widoki", "nowe wskaźniki", "zmiany w danych"],
-    icon: "fas fa-chart-line",
+    title:
+      "Raporty regularnie się zmieniają",
+
+    text:
+      "Co miesiąc dochodzą nowe dane, nowe kolumny, nowe KPI albo inne wymagania od zarządu, właściciela lub działu.",
+
+    items: [
+      "nowe widoki",
+      "nowe wskaźniki",
+      "zmiany w danych",
+    ],
+
+    icon:
+      "fas fa-chart-line",
   },
+
   {
-    title: "Nie możesz pozwolić sobie na przestój",
-    text: "Raport, plik albo automatyzacja są potrzebne do codziennej pracy, więc awaria lub błąd blokuje zespół.",
-    items: ["błędy odświeżeń", "pilne poprawki", "kontrola działania"],
-    icon: "fas fa-shield-halved",
+    title:
+      "Nie możesz pozwolić sobie na przestój",
+
+    text:
+      "Raport, plik albo automatyzacja są potrzebne do codziennej pracy, więc awaria lub błąd blokuje zespół.",
+
+    items: [
+      "błędy odświeżeń",
+      "pilne poprawki",
+      "kontrola działania",
+    ],
+
+    icon:
+      "fas fa-shield-alt",
   },
+
   {
-    title: "Firma chce rozwijać narzędzia etapami",
-    text: "Nie wszystko trzeba robić jako jeden duży projekt. Część zmian można wdrażać stopniowo, w kolejnych miesiącach.",
-    items: ["lista zmian", "mniejsze wdrożenia", "stały rozwój"],
-    icon: "fas fa-list-check",
+    title:
+      "Firma chce rozwijać narzędzia etapami",
+
+    text:
+      "Nie wszystko trzeba robić jako jeden duży projekt. Część zmian można wdrażać stopniowo, w kolejnych miesiącach.",
+
+    items: [
+      "lista zmian",
+      "mniejsze wdrożenia",
+      "stały rozwój",
+    ],
+
+    icon:
+      "fas fa-list-ul",
   },
 ];
+
 
 const included = [
   "poprawki w raportach Excel i Power BI",
   "zmiany w kalkulatorach, formularzach i plikach",
   "kontrola odświeżeń danych i diagnoza błędów",
   "rozwój dashboardów, KPI i widoków dla zespołu",
-  "automatyzacje Power Query, VBA, Python lub API",
+  "automatyzacje Power Query, VBA, API, SharePoint lub inne narzędzia",
   "porządkowanie danych i drobne integracje",
+  "rozwój procesów w SharePoint i Microsoft 365",
   "konsultacje dotyczące struktury raportów i wskaźników",
   "lista zgłoszeń, priorytety i plan prac",
 ];
+
 
 const notIncluded = [
   "duże nowe systemy bez osobnej wyceny",
@@ -103,127 +192,311 @@ const notIncluded = [
   "obsługa infrastruktury IT niezwiązanej z raportami lub automatyzacją",
 ];
 
+
 const steps = [
   {
-    number: "01",
-    title: "Ustalamy, co ma być pod opieką",
-    text: "Spisujemy raporty, pliki, automatyzacje, źródła danych i najczęstsze problemy.",
+    number:
+      "01",
+
+    title:
+      "Ustalamy, co ma być pod opieką",
+
+    text:
+      "Spisujemy raporty, pliki, automatyzacje, źródła danych i najczęstsze problemy.",
   },
+
   {
-    number: "02",
-    title: "Dobieramy zakres godzin",
-    text: "Wybieramy pakiet dopasowany do tego, ile zmian i zgłoszeń pojawia się w firmie.",
+    number:
+      "02",
+
+    title:
+      "Dobieramy zakres godzin",
+
+    text:
+      "Wybieramy pakiet dopasowany do tego, ile zmian i zgłoszeń pojawia się w firmie.",
   },
+
   {
-    number: "03",
-    title: "Zgłaszasz poprawki i potrzeby",
-    text: "Możesz zgłaszać błędy, zmiany w raportach, nowe wskaźniki, automatyzacje albo pytania.",
+    number:
+      "03",
+
+    title:
+      "Zgłaszasz poprawki i potrzeby",
+
+    text:
+      "Możesz zgłaszać błędy, zmiany w raportach, nowe wskaźniki, automatyzacje albo pytania.",
   },
+
   {
-    number: "04",
-    title: "Realizujemy i raportujemy postęp",
-    text: "Prace są wykonywane według priorytetów, a Ty wiesz, co zostało zrobione i co jest następne.",
+    number:
+      "04",
+
+    title:
+      "Realizujemy i raportujemy postęp",
+
+    text:
+      "Prace są wykonywane według priorytetów, a Ty wiesz, co zostało zrobione i co jest następne.",
   },
 ];
+
 
 const faqs = [
   {
-    q: "Czy to jest tylko dla Power BI?",
-    a: "Nie. Stałe wsparcie może obejmować Excel, Power BI, Power Query, VBA, Python, API, pliki CSV/XML, KSeF i inne narzędzia związane z raportami lub automatyzacją danych.",
+    q:
+      "Czy to jest tylko dla Power BI?",
+
+    a:
+      "Nie. Stałe wsparcie może obejmować Excel, Power BI, Power Query, VBA, API, SharePoint, Microsoft 365, pliki CSV/XML, KSeF oraz inne narzędzia związane z raportami i automatyzacją danych.",
   },
+
   {
-    q: "Czy muszę mieć już gotowy raport lub plik?",
-    a: "Nie zawsze. Stałe wsparcie najlepiej działa po pierwszym wdrożeniu, ale możemy też zacząć od uporządkowania obecnych plików i ustalenia, co warto rozwijać dalej.",
+    q:
+      "Czy muszę mieć już gotowy raport lub plik?",
+
+    a:
+      "Nie zawsze. Stałe wsparcie najlepiej działa po pierwszym wdrożeniu, ale możemy też zacząć od uporządkowania obecnych plików i ustalenia, co warto rozwijać dalej.",
   },
+
   {
-    q: "Czy niewykorzystane godziny przechodzą na kolejny miesiąc?",
-    a: "To ustalamy indywidualnie. Najczęściej można przenieść część godzin w ustalonym limicie albo wykorzystać je na dokumentację, porządki w raportach lub drobne usprawnienia.",
+    q:
+      "Czy niewykorzystane godziny przechodzą na kolejny miesiąc?",
+
+    a:
+      "To ustalamy indywidualnie. Najczęściej można przenieść część godzin w ustalonym limicie albo wykorzystać je na dokumentację, porządki w raportach lub drobne usprawnienia.",
   },
+
   {
-    q: "Czy można zacząć bez długiej umowy?",
-    a: "Tak. Możemy zacząć od krótszego okresu próbnego albo pierwszego miesiąca wsparcia, żeby sprawdzić realną liczbę zgłoszeń i dobrać właściwy zakres.",
+    q:
+      "Czy można zacząć bez długiej umowy?",
+
+    a:
+      "Tak. Możemy zacząć od krótszego okresu próbnego albo pierwszego miesiąca wsparcia, żeby sprawdzić realną liczbę zgłoszeń i dobrać właściwy zakres.",
   },
+
   {
-    q: "Czym to się różni od jednorazowego projektu?",
-    a: "Projekt kończy się po wdrożeniu konkretnego zakresu. Stałe wsparcie jest dla firm, w których raporty i procesy regularnie się zmieniają, więc potrzebna jest ciągła opieka i rozwój.",
+    q:
+      "Czym to się różni od jednorazowego projektu?",
+
+    a:
+      "Projekt kończy się po wdrożeniu konkretnego zakresu. Stałe wsparcie jest dla firm, w których raporty i procesy regularnie się zmieniają, więc potrzebna jest ciągła opieka i rozwój.",
   },
 ];
 
-const schema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Service",
-      name: "Stałe wsparcie po wdrożeniu raportów i automatyzacji",
-      provider: {
-        "@type": "LocalBusiness",
-        name: "Raporty24",
-        url: "https://raporty24.pl/",
-      },
-      description,
-      offers: {
-        "@type": "AggregateOffer",
-        priceCurrency: "PLN",
-        offerCount: "3",
-      },
+
+const serviceSchema = {
+  "@context":
+    "https://schema.org",
+
+  "@type":
+    "Service",
+
+  name:
+    "Stałe wsparcie i rozwój raportów oraz automatyzacji",
+
+  provider: {
+    "@type":
+      "Organization",
+
+    "@id":
+      "https://raporty24.pl/#organization",
+
+    name:
+      "Raporty24",
+
+    url:
+      "https://raporty24.pl/",
+  },
+
+  areaServed: {
+    "@type":
+      "Country",
+
+    name:
+      "Polska",
+  },
+
+  serviceType:
+    "Stałe wsparcie Excel, Power BI, Power Query, API, SharePoint i automatyzacji",
+
+  url,
+
+  description,
+};
+
+
+const faqSchema = {
+  "@context":
+    "https://schema.org",
+
+  "@type":
+    "FAQPage",
+
+  mainEntity: faqs.map((faq) => ({
+    "@type":
+      "Question",
+
+    name:
+      faq.q,
+
+    acceptedAnswer: {
+      "@type":
+        "Answer",
+
+      text:
+        faq.a,
     },
+  })),
+};
+
+
+const breadcrumbSchema = {
+  "@context":
+    "https://schema.org",
+
+  "@type":
+    "BreadcrumbList",
+
+  itemListElement: [
     {
-      "@type": "FAQPage",
-      mainEntity: faqs.map((faq) => ({
-        "@type": "Question",
-        name: faq.q,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: faq.a,
-        },
-      })),
+      "@type":
+        "ListItem",
+
+      position:
+        1,
+
+      name:
+        "Raporty24",
+
+      item:
+        "https://raporty24.pl/",
+    },
+
+    {
+      "@type":
+        "ListItem",
+
+      position:
+        2,
+
+      name:
+        "Stałe wsparcie",
+
+      item:
+        url,
     },
   ],
 };
 ---
 
-<BaseLayout title={title} description={description} image={image} url={url} structuredData={schema}>
-  <div x-data="app" class="antialiased bg-white text-slate-900">
+<BaseLayout
+  title={title}
+  description={description}
+  image={image}
+  url={url}
+  structuredData={[
+    serviceSchema,
+    faqSchema,
+    breadcrumbSchema
+  ]}
+>
+
+  <div
+    x-data="app"
+    class="antialiased bg-white text-slate-900"
+  >
+
     <Header />
 
+
     <main class="pt-20">
-      <section class="relative overflow-hidden border-b border-slate-100 bg-slate-50 py-24 text-slate-950 lg:py-36">
-        <div class="absolute inset-0 z-0 opacity-20">
-          <div class="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+
+
+      <!-- HERO -->
+
+      <section
+        class="relative overflow-hidden border-b border-slate-100 bg-slate-50 py-24 text-slate-950 lg:py-36"
+      >
+
+        <div
+          class="absolute inset-0 z-0 opacity-20"
+        >
+          <div
+            class="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:40px_40px]"
+          ></div>
         </div>
 
-        <div class="absolute inset-0 z-0 pointer-events-none">
-          <div class="absolute left-1/2 top-1/2 h-[500px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-100/60 blur-[130px]"></div>
-          <div class="absolute right-0 top-0 h-[400px] w-[400px] rounded-full bg-blue-100/40 blur-[100px]"></div>
+
+        <div
+          class="absolute inset-0 z-0 pointer-events-none"
+        >
+
+          <div
+            class="absolute left-1/2 top-1/2 h-[500px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-100/60 blur-[130px]"
+          ></div>
+
+          <div
+            class="absolute right-0 top-0 h-[400px] w-[400px] rounded-full bg-blue-100/40 blur-[100px]"
+          ></div>
+
         </div>
 
-        <div class="container relative z-10 mx-auto px-4">
-          <div class="mx-auto max-w-5xl text-center">
-            <span class="mb-8 inline-flex items-center gap-3 rounded-full border border-emerald-100 bg-white px-4 py-2 text-[10px] font-black uppercase tracking-[0.3em] text-emerald-700 shadow-sm">
-              <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+
+        <div
+          class="container relative z-10 mx-auto px-4"
+        >
+
+          <div
+            class="mx-auto max-w-5xl text-center"
+          >
+
+            <span
+              class="mb-8 inline-flex items-center gap-3 rounded-full border border-emerald-100 bg-white px-4 py-2 text-[10px] font-black uppercase tracking-[0.3em] text-emerald-700 shadow-sm"
+            >
+
+              <span
+                class="h-2 w-2 rounded-full bg-emerald-500"
+              ></span>
+
               Stałe wsparcie po wdrożeniu
+
             </span>
 
-            <h1 class="mb-8 text-5xl font-black uppercase leading-[1.02] tracking-tight text-slate-950 md:text-8xl">
+
+            <h1
+              class="mb-8 text-5xl font-black uppercase leading-[1.02] tracking-tight text-slate-950 md:text-8xl"
+            >
               Ktoś powinien pilnować,
-              <span class="block text-emerald-600">
+
+              <span
+                class="block text-emerald-600"
+              >
                 żeby raporty działały.
               </span>
             </h1>
 
-            <p class="mx-auto mb-12 max-w-4xl text-xl font-medium leading-relaxed text-slate-600">
-              Po wdrożeniu raporty, pliki i automatyzacje często dalej się zmieniają.
-              Dochodzą nowe dane, nowe potrzeby, nowe błędy i nowe pytania. W stałym wsparciu
-              pomagamy utrzymać narzędzia, poprawiać je i rozwijać bez zaczynania każdej pracy od zera.
+
+            <p
+              class="mx-auto mb-12 max-w-4xl text-xl font-medium leading-relaxed text-slate-600"
+            >
+              Po wdrożeniu raporty, pliki i automatyzacje często
+              dalej się zmieniają. Dochodzą nowe dane, nowe potrzeby,
+              nowe błędy i nowe pytania. W stałym wsparciu pomagamy
+              utrzymać narzędzia, poprawiać je i rozwijać
+              bez zaczynania każdej pracy od zera.
             </p>
 
-            <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+
+            <div
+              class="flex flex-col items-center justify-center gap-4 sm:flex-row"
+            >
+
               <a
-                href="/kontakt/#formularz"
+                href="/kontakt/"
                 class="inline-flex w-full items-center justify-center rounded-2xl bg-emerald-600 px-10 py-5 text-center text-sm font-black uppercase tracking-widest text-white shadow-2xl shadow-emerald-200 transition-all hover:-translate-y-1 hover:bg-emerald-500 sm:w-auto"
               >
                 Zapytaj o stałe wsparcie
               </a>
+
 
               <a
                 href="#pakiety"
@@ -231,131 +504,279 @@ const schema = {
               >
                 Zobacz zakres
               </a>
+
             </div>
+
           </div>
+
         </div>
+
       </section>
 
-      <section class="container relative z-20 mx-auto px-4 py-16">
-        <div class="-mt-20 rounded-[2.5rem] border border-slate-200 bg-white p-8 shadow-2xl md:p-12">
-          <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+
+      <!-- KIEDY MA SENS -->
+
+      <section
+        class="container relative z-20 mx-auto px-4 py-16"
+      >
+
+        <div
+          class="-mt-20 rounded-[2.5rem] border border-slate-200 bg-white p-8 shadow-2xl md:p-12"
+        >
+
+          <div
+            class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center"
+          >
+
             <div>
-              <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-emerald-600">
+
+              <span
+                class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-emerald-600"
+              >
                 Kiedy to ma sens?
               </span>
 
-              <h2 class="text-3xl font-black uppercase tracking-tight text-slate-950 md:text-4xl">
-                Gdy raport lub automatyzacja stały się częścią codziennej pracy firmy.
+
+              <h2
+                class="text-3xl font-black uppercase tracking-tight text-slate-950 md:text-4xl"
+              >
+                Gdy raport lub automatyzacja stały się
+                częścią codziennej pracy firmy.
               </h2>
 
-              <p class="mt-6 text-lg font-medium leading-relaxed text-slate-600">
-                Jednorazowe wdrożenie wystarcza, gdy proces jest stały. Stałe wsparcie jest lepsze,
-                gdy dane, raporty, kalkulatory lub automatyzacje regularnie się zmieniają i ktoś
-                musi szybko reagować.
+
+              <p
+                class="mt-6 text-lg font-medium leading-relaxed text-slate-600"
+              >
+                Jednorazowe wdrożenie wystarcza, gdy proces jest stały.
+                Stałe wsparcie jest lepsze, gdy dane, raporty,
+                kalkulatory lub automatyzacje regularnie się zmieniają
+                i ktoś musi szybko reagować.
               </p>
+
             </div>
+
 
             <div class="grid gap-4">
-              <div class="rounded-2xl border border-slate-100 bg-slate-50 p-6">
-                <p class="mb-1 text-base font-black uppercase tracking-tight text-slate-950">
+
+              <div
+                class="rounded-2xl border border-slate-100 bg-slate-50 p-6"
+              >
+
+                <p
+                  class="mb-1 text-base font-black uppercase tracking-tight text-slate-950"
+                >
                   Nie szukasz wykonawcy od nowa
                 </p>
-                <p class="text-sm font-medium leading-relaxed text-slate-500">
-                  Masz ustalony kanał kontaktu i osobę, która zna Twoje pliki, raporty oraz proces.
+
+                <p
+                  class="text-sm font-medium leading-relaxed text-slate-500"
+                >
+                  Masz ustalony kanał kontaktu i osobę,
+                  która zna Twoje pliki, raporty oraz proces.
                 </p>
+
               </div>
 
-              <div class="rounded-2xl border border-slate-100 bg-slate-50 p-6">
-                <p class="mb-1 text-base font-black uppercase tracking-tight text-slate-950">
+
+              <div
+                class="rounded-2xl border border-slate-100 bg-slate-50 p-6"
+              >
+
+                <p
+                  class="mb-1 text-base font-black uppercase tracking-tight text-slate-950"
+                >
                   Masz przewidywalny koszt
                 </p>
-                <p class="text-sm font-medium leading-relaxed text-slate-500">
-                  Zamiast osobnej wyceny każdej drobnej poprawki, ustalasz miesięczny zakres godzin.
+
+                <p
+                  class="text-sm font-medium leading-relaxed text-slate-500"
+                >
+                  Zamiast osobnej wyceny każdej drobnej poprawki,
+                  ustalasz miesięczny zakres godzin.
                 </p>
+
               </div>
 
-              <div class="rounded-2xl border border-slate-100 bg-slate-50 p-6">
-                <p class="mb-1 text-base font-black uppercase tracking-tight text-slate-950">
+
+              <div
+                class="rounded-2xl border border-slate-100 bg-slate-50 p-6"
+              >
+
+                <p
+                  class="mb-1 text-base font-black uppercase tracking-tight text-slate-950"
+                >
                   Raporty nie stoją w miejscu
                 </p>
-                <p class="text-sm font-medium leading-relaxed text-slate-500">
-                  Można stopniowo dodawać nowe dane, KPI, widoki, automatyzacje i usprawnienia.
+
+                <p
+                  class="text-sm font-medium leading-relaxed text-slate-500"
+                >
+                  Można stopniowo dodawać nowe dane, KPI,
+                  widoki, automatyzacje i usprawnienia.
                 </p>
+
               </div>
+
             </div>
+
           </div>
+
         </div>
+
       </section>
 
-      <section class="bg-white py-24">
-        <div class="container mx-auto px-4">
-          <div class="mx-auto mb-16 max-w-4xl text-center">
-            <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-emerald-600">
+
+      <!-- TYPOWE SYTUACJE -->
+
+      <section
+        class="bg-white py-24"
+      >
+
+        <div
+          class="container mx-auto px-4"
+        >
+
+          <div
+            class="mx-auto mb-16 max-w-4xl text-center"
+          >
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-emerald-600"
+            >
               Typowe sytuacje
             </span>
 
-            <h2 class="text-4xl font-black uppercase tracking-tight text-slate-950 md:text-6xl">
+
+            <h2
+              class="text-4xl font-black uppercase tracking-tight text-slate-950 md:text-6xl"
+            >
               Dla jakich firm jest opieka?
             </h2>
 
-            <p class="mt-6 text-lg font-medium leading-relaxed text-slate-600">
-              Najczęściej sprawdza się tam, gdzie raportowanie i automatyzacje są ważne dla
-              codziennej pracy, a zmiany pojawiają się regularnie.
+
+            <p
+              class="mt-6 text-lg font-medium leading-relaxed text-slate-600"
+            >
+              Najczęściej sprawdza się tam,
+              gdzie raportowanie i automatyzacje są ważne
+              dla codziennej pracy, a zmiany pojawiają się regularnie.
             </p>
+
           </div>
 
-          <div class="grid gap-8 md:grid-cols-3">
+
+          <div
+            class="grid gap-8 md:grid-cols-3"
+          >
+
             {
               situations.map((box) => (
-                <article class="rounded-[2.5rem] border border-slate-100 bg-white p-8 shadow-xl shadow-slate-100 transition-all hover:-translate-y-1 hover:border-emerald-300 hover:shadow-2xl">
-                  <div class="mb-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600">
-                    <i class={`${box.icon} text-xl`}></i>
+
+                <article
+                  class="rounded-[2.5rem] border border-slate-100 bg-white p-8 shadow-xl shadow-slate-100 transition-all hover:-translate-y-1 hover:border-emerald-300 hover:shadow-2xl"
+                >
+
+                  <div
+                    class="mb-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600"
+                  >
+                    <i
+                      class={`${box.icon} text-xl`}
+                    ></i>
                   </div>
 
-                  <h3 class="mb-4 text-xl font-black uppercase tracking-tight text-slate-950">
+
+                  <h3
+                    class="mb-4 text-xl font-black uppercase tracking-tight text-slate-950"
+                  >
                     {box.title}
                   </h3>
 
-                  <p class="mb-6 text-sm font-medium leading-relaxed text-slate-500">
+
+                  <p
+                    class="mb-6 text-sm font-medium leading-relaxed text-slate-500"
+                  >
                     {box.text}
                   </p>
 
-                  <div class="flex flex-wrap gap-2">
+
+                  <div
+                    class="flex flex-wrap gap-2"
+                  >
+
                     {
                       box.items.map((item) => (
-                        <span class="rounded-full bg-slate-50 px-3 py-1 text-[10px] font-black uppercase tracking-wider text-slate-500 ring-1 ring-slate-100">
+
+                        <span
+                          class="rounded-full bg-slate-50 px-3 py-1 text-[10px] font-black uppercase tracking-wider text-slate-500 ring-1 ring-slate-100"
+                        >
                           {item}
                         </span>
+
                       ))
                     }
+
                   </div>
+
                 </article>
+
               ))
             }
+
           </div>
+
         </div>
+
       </section>
 
-      <section id="pakiety" class="border-y border-slate-100 bg-slate-50 py-24">
-        <div class="container mx-auto px-4">
-          <div class="mx-auto mb-20 max-w-4xl text-center">
-            <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-emerald-600">
+
+      <!-- PAKIETY -->
+
+      <section
+        id="pakiety"
+        class="border-y border-slate-100 bg-slate-50 py-24"
+      >
+
+        <div
+          class="container mx-auto px-4"
+        >
+
+          <div
+            class="mx-auto mb-20 max-w-4xl text-center"
+          >
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-emerald-600"
+            >
               Zakres współpracy
             </span>
 
-            <h2 class="text-4xl font-black uppercase tracking-tight text-slate-950 md:text-6xl">
+
+            <h2
+              class="text-4xl font-black uppercase tracking-tight text-slate-950 md:text-6xl"
+            >
               Pakiety stałego wsparcia
             </h2>
 
-            <p class="mt-5 text-lg font-medium leading-relaxed text-slate-600">
-              Rozliczamy się w miesięcznym pakiecie godzin. Dzięki temu wiesz, jaki masz budżet,
+
+            <p
+              class="mt-5 text-lg font-medium leading-relaxed text-slate-600"
+            >
+              Rozliczamy się w miesięcznym pakiecie godzin.
+              Dzięki temu wiesz, jaki masz budżet,
               a prace można planować według ważności.
             </p>
+
           </div>
 
-          <div class="grid items-stretch gap-8 lg:grid-cols-3">
+
+          <div
+            class="grid items-stretch gap-8 lg:grid-cols-3"
+          >
+
             {
               packages.map((pack) => (
+
                 <article
                   class={`relative flex flex-col rounded-[2.5rem] border bg-white p-10 ${
                     pack.featured
@@ -363,47 +784,101 @@ const schema = {
                       : "border-slate-200 shadow-sm"
                   }`}
                 >
-                  {pack.featured && (
-                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 rounded-full bg-emerald-600 px-6 py-2 text-[10px] font-black uppercase tracking-widest text-white shadow-lg">
-                      Najczęstszy wybór
-                    </div>
-                  )}
 
-                  <div class={pack.featured ? "mb-8 mt-4" : "mb-8"}>
-                    <span class="mb-4 block text-[10px] font-black uppercase tracking-[0.25em] text-emerald-600">
+                  {
+                    pack.featured && (
+
+                      <div
+                        class="absolute -top-5 left-1/2 -translate-x-1/2 rounded-full bg-emerald-600 px-6 py-2 text-[10px] font-black uppercase tracking-widest text-white shadow-lg"
+                      >
+                        Regularna opieka
+                      </div>
+
+                    )
+                  }
+
+
+                  <div
+                    class={pack.featured
+                      ? "mb-8 mt-4"
+                      : "mb-8"}
+                  >
+
+                    <span
+                      class="mb-4 block text-[10px] font-black uppercase tracking-[0.25em] text-emerald-600"
+                    >
                       {pack.label}
                     </span>
 
-                    <h3 class="text-2xl font-black uppercase tracking-tight text-slate-950">
+
+                    <h3
+                      class="text-2xl font-black uppercase tracking-tight text-slate-950"
+                    >
                       {pack.title}
                     </h3>
 
-                    <p class="mt-3 text-sm font-medium leading-relaxed text-slate-500">
+
+                    <p
+                      class="mt-3 text-sm font-medium leading-relaxed text-slate-500"
+                    >
                       {pack.description}
                     </p>
+
                   </div>
 
-                  <div class="mb-8">
-                    <div class="text-5xl font-black tracking-tighter text-slate-950">
+
+                  <div
+                    class="mb-8"
+                  >
+
+                    <div
+                      class="text-5xl font-black tracking-tighter text-slate-950"
+                    >
                       {pack.hours}
-                      <span class="text-lg font-medium text-slate-400"> / mies.</span>
+
+                      <span
+                        class="text-lg font-medium text-slate-400"
+                      >
+                        / mies.
+                      </span>
                     </div>
 
-                    <p class="mt-3 inline-block rounded-lg bg-emerald-50 px-3 py-1 text-sm font-bold text-emerald-700">
+
+                    <p
+                      class="mt-3 inline-block rounded-lg bg-emerald-50 px-3 py-1 text-sm font-bold text-emerald-700"
+                    >
                       {pack.note}
                     </p>
+
                   </div>
 
-                  <ul class="mb-10 grow space-y-4 text-sm font-bold text-slate-700">
+
+                  <ul
+                    class="mb-10 grow space-y-4 text-sm font-bold text-slate-700"
+                  >
+
                     {
                       pack.items.map((item) => (
-                        <li class="flex items-start gap-3">
-                          <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500"></span>
-                          <span>{item}</span>
+
+                        <li
+                          class="flex items-start gap-3"
+                        >
+
+                          <span
+                            class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500"
+                          ></span>
+
+                          <span>
+                            {item}
+                          </span>
+
                         </li>
+
                       ))
                     }
+
                   </ul>
+
 
                   <a
                     href={pack.href}
@@ -415,153 +890,355 @@ const schema = {
                   >
                     {pack.cta}
                   </a>
+
                 </article>
+
               ))
             }
+
           </div>
 
-          <p class="mx-auto mt-10 max-w-3xl text-center text-sm font-medium leading-relaxed text-slate-500">
-            Godziny i zasady współpracy dopasowujemy do firmy. Przy krytycznych raportach można
-            ustalić priorytety i czas reakcji, ale nie musisz znać pojęcia SLA, żeby zacząć.
-          </p>
+
+          <div
+            class="mx-auto mt-10 max-w-3xl text-center"
+          >
+
+            <p
+              class="text-sm font-medium leading-relaxed text-slate-500"
+            >
+              Godziny i zasady współpracy dopasowujemy do firmy.
+              Przy krytycznych raportach można ustalić priorytety
+              i czas reakcji, ale nie musisz znać pojęcia SLA,
+              żeby zacząć.
+            </p>
+
+
+            <p
+              class="mt-4 text-sm font-bold leading-relaxed text-slate-700"
+            >
+              Miesięczny koszt podajemy przed startem współpracy
+              po poznaniu narzędzi i realnego zakresu.
+              Pakiet uruchamiamy dopiero po akceptacji ceny.
+            </p>
+
+          </div>
+
         </div>
+
       </section>
 
-      <section class="bg-white py-24">
-        <div class="container mx-auto px-4">
-          <div class="grid gap-10 lg:grid-cols-2">
-            <div class="rounded-[2.5rem] border border-slate-100 bg-white p-8 shadow-xl shadow-slate-100 md:p-12">
-              <h2 class="mb-8 text-3xl font-black uppercase tracking-tight text-slate-950">
+
+      <!-- CO OBEJMUJE -->
+
+      <section
+        class="bg-white py-24"
+      >
+
+        <div
+          class="container mx-auto px-4"
+        >
+
+          <div
+            class="grid gap-10 lg:grid-cols-2"
+          >
+
+            <div
+              class="rounded-[2.5rem] border border-slate-100 bg-white p-8 shadow-xl shadow-slate-100 md:p-12"
+            >
+
+              <h2
+                class="mb-8 text-3xl font-black uppercase tracking-tight text-slate-950"
+              >
                 Co może obejmować stałe wsparcie?
               </h2>
 
-              <ul class="space-y-4 text-sm font-bold text-slate-700">
+
+              <ul
+                class="space-y-4 text-sm font-bold text-slate-700"
+              >
+
                 {
                   included.map((item) => (
-                    <li class="flex items-start gap-3">
-                      <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-emerald-500"></span>
-                      <span>{item}</span>
+
+                    <li
+                      class="flex items-start gap-3"
+                    >
+
+                      <span
+                        class="mt-2 h-2 w-2 shrink-0 rounded-full bg-emerald-500"
+                      ></span>
+
+                      <span>
+                        {item}
+                      </span>
+
                     </li>
+
                   ))
                 }
+
               </ul>
+
             </div>
 
-            <div class="rounded-[2.5rem] border border-slate-100 bg-slate-50 p-8 md:p-12">
-              <h2 class="mb-8 text-3xl font-black uppercase tracking-tight text-slate-950">
+
+            <div
+              class="rounded-[2.5rem] border border-slate-100 bg-slate-50 p-8 md:p-12"
+            >
+
+              <h2
+                class="mb-8 text-3xl font-black uppercase tracking-tight text-slate-950"
+              >
                 Czego zwykle nie obejmuje?
               </h2>
 
-              <ul class="space-y-4 text-sm font-bold text-slate-700">
+
+              <ul
+                class="space-y-4 text-sm font-bold text-slate-700"
+              >
+
                 {
                   notIncluded.map((item) => (
-                    <li class="flex items-start gap-3">
-                      <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-slate-300"></span>
-                      <span>{item}</span>
+
+                    <li
+                      class="flex items-start gap-3"
+                    >
+
+                      <span
+                        class="mt-2 h-2 w-2 shrink-0 rounded-full bg-slate-300"
+                      ></span>
+
+                      <span>
+                        {item}
+                      </span>
+
                     </li>
+
                   ))
                 }
+
               </ul>
 
-              <p class="mt-8 text-sm font-medium leading-relaxed text-slate-500">
-                Większe nowe wdrożenia można oczywiście zrealizować osobno — po wcześniejszym
+
+              <p
+                class="mt-8 text-sm font-medium leading-relaxed text-slate-500"
+              >
+                Większe nowe wdrożenia można oczywiście
+                zrealizować osobno — po wcześniejszym
                 ustaleniu zakresu i ceny.
               </p>
+
             </div>
+
           </div>
+
         </div>
+
       </section>
 
-      <section class="bg-slate-950 py-24 text-white">
-        <div class="container mx-auto px-4">
-          <div class="mx-auto mb-16 max-w-4xl text-center">
-            <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-emerald-400">
+
+      <!-- PROCES -->
+
+      <section
+        class="bg-slate-950 py-24 text-white"
+      >
+
+        <div
+          class="container mx-auto px-4"
+        >
+
+          <div
+            class="mx-auto mb-16 max-w-4xl text-center"
+          >
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-emerald-400"
+            >
               Jak działa współpraca?
             </span>
 
-            <h2 class="text-4xl font-black uppercase tracking-tight md:text-6xl">
+
+            <h2
+              class="text-4xl font-black uppercase tracking-tight md:text-6xl"
+            >
               Prosty model, bez chaosu w zgłoszeniach
             </h2>
+
           </div>
 
-          <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+
+          <div
+            class="grid gap-6 md:grid-cols-2 xl:grid-cols-4"
+          >
+
             {
               steps.map((step) => (
-                <article class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-7">
-                  <div class="mb-8 text-5xl font-black tracking-tighter text-emerald-500">
+
+                <article
+                  class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-7"
+                >
+
+                  <div
+                    class="mb-8 text-5xl font-black tracking-tighter text-emerald-500"
+                  >
                     {step.number}
                   </div>
 
-                  <h3 class="mb-4 text-xl font-black uppercase tracking-tight text-white">
+
+                  <h3
+                    class="mb-4 text-xl font-black uppercase tracking-tight text-white"
+                  >
                     {step.title}
                   </h3>
 
-                  <p class="text-sm font-medium leading-relaxed text-slate-400">
+
+                  <p
+                    class="text-sm font-medium leading-relaxed text-slate-400"
+                  >
                     {step.text}
                   </p>
+
                 </article>
+
               ))
             }
+
           </div>
+
         </div>
+
       </section>
 
-      <section class="bg-white py-24">
-        <div class="container mx-auto max-w-4xl px-4">
-          <div class="mb-14 text-center">
-            <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-emerald-600">
+
+      <!-- FAQ -->
+
+      <section
+        class="bg-white py-24"
+      >
+
+        <div
+          class="container mx-auto max-w-4xl px-4"
+        >
+
+          <div
+            class="mb-14 text-center"
+          >
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-emerald-600"
+            >
               FAQ
             </span>
 
-            <h2 class="text-4xl font-black uppercase tracking-tight text-slate-950 md:text-6xl">
+
+            <h2
+              class="text-4xl font-black uppercase tracking-tight text-slate-950 md:text-6xl"
+            >
               Najczęstsze pytania
             </h2>
+
           </div>
 
-          <div class="space-y-4">
+
+          <div
+            class="space-y-4"
+          >
+
             {
               faqs.map((faq) => (
-                <details class="group rounded-[2rem] border border-slate-200 bg-white p-7 transition-all hover:bg-slate-50">
-                  <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-black uppercase tracking-tight text-slate-950">
+
+                <details
+                  class="group rounded-[2rem] border border-slate-200 bg-white p-7 transition-all hover:bg-slate-50"
+                >
+
+                  <summary
+                    class="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-black uppercase tracking-tight text-slate-950"
+                  >
                     {faq.q}
-                    <span class="text-2xl leading-none text-emerald-600 transition-transform group-open:rotate-180">
+
+                    <span
+                      class="text-2xl leading-none text-emerald-600 transition-transform group-open:rotate-180"
+                    >
                       ↓
                     </span>
+
                   </summary>
 
-                  <p class="mt-6 border-t border-slate-100 pt-6 text-sm font-medium leading-relaxed text-slate-600">
+
+                  <p
+                    class="mt-6 border-t border-slate-100 pt-6 text-sm font-medium leading-relaxed text-slate-600"
+                  >
                     {faq.a}
                   </p>
+
                 </details>
+
               ))
             }
+
           </div>
+
         </div>
+
       </section>
 
-      <section class="border-t border-slate-100 bg-slate-50 py-24">
-        <div class="container mx-auto px-4">
-          <div class="relative overflow-hidden rounded-[3.5rem] border border-slate-200 bg-white p-8 text-center shadow-2xl shadow-slate-100 md:p-16 lg:p-24">
-            <div class="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-emerald-100/40 blur-[100px]"></div>
-            <div class="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-blue-100/30 blur-[100px]"></div>
 
-            <div class="relative z-10">
-              <h2 class="mx-auto mb-8 max-w-4xl text-4xl font-black uppercase leading-tight tracking-tight text-slate-950 md:text-6xl">
-                Chcesz, żeby ktoś stale pilnował raportów i automatyzacji?
+      <!-- CTA -->
+
+      <section
+        class="border-t border-slate-100 bg-slate-50 py-24"
+      >
+
+        <div
+          class="container mx-auto px-4"
+        >
+
+          <div
+            class="relative overflow-hidden rounded-[3.5rem] border border-slate-200 bg-white p-8 text-center shadow-2xl shadow-slate-100 md:p-16 lg:p-24"
+          >
+
+            <div
+              class="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-emerald-100/40 blur-[100px]"
+            ></div>
+
+
+            <div
+              class="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-blue-100/30 blur-[100px]"
+            ></div>
+
+
+            <div
+              class="relative z-10"
+            >
+
+              <h2
+                class="mx-auto mb-8 max-w-4xl text-4xl font-black uppercase leading-tight tracking-tight text-slate-950 md:text-6xl"
+              >
+                Chcesz, żeby ktoś stale pilnował
+                raportów i automatyzacji?
               </h2>
 
-              <p class="mx-auto mb-12 max-w-2xl text-xl font-medium leading-relaxed text-slate-600">
-                Napisz, jakie raporty, pliki lub automatyzacje macie teraz i jak często coś się zmienia.
+
+              <p
+                class="mx-auto mb-12 max-w-2xl text-xl font-medium leading-relaxed text-slate-600"
+              >
+                Napisz, jakie raporty, pliki lub automatyzacje
+                macie teraz i jak często coś się zmienia.
                 Zaproponujemy zakres stałego wsparcia.
               </p>
 
-              <div class="flex flex-col justify-center gap-4 sm:flex-row">
+
+              <div
+                class="flex flex-col justify-center gap-4 sm:flex-row"
+              >
+
                 <a
-                  href="/kontakt/#formularz"
+                  href="/kontakt/"
                   class="inline-flex items-center justify-center rounded-2xl bg-emerald-600 px-12 py-5 text-center text-sm font-black uppercase tracking-widest text-white shadow-xl shadow-emerald-100 transition-all hover:-translate-y-1 hover:bg-emerald-500"
                 >
                   Zapytaj o stałe wsparcie
                 </a>
+
 
                 <a
                   href="/cennik/"
@@ -569,16 +1246,26 @@ const schema = {
                 >
                   Zobacz cennik projektów
                 </a>
+
               </div>
+
             </div>
+
           </div>
+
         </div>
+
       </section>
+
     </main>
 
+
     <Footer />
+
   </div>
+
 </BaseLayout>
+
 
 <style is:global>
   html {

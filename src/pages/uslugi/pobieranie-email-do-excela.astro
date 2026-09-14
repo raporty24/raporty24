@@ -5,115 +5,1163 @@ import HeroService from "../../components/HeroService.astro";
 import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
 
-// SEO Setup - celujemy w automatyzację i oszczędność czasu
-const title = "Pobieranie danych z e-maili do Excela i Google Sheets | Raporty24";
-const description = "Automatyzacja załączników i treści wiadomości. Oferujemy automatyczne pobieranie danych z e-mail (CSV, XLSX) do Excela. Koniec z ręcznym przepisywaniem danych!";
+const title =
+  "Pobieranie danych z e-maili do Excela | Automatyzacja | Raporty24";
 
-// 1. DODAJ TE DWIE LINIE:
-const ogImage = "/biuro3.webp"; // Możesz tu dać dedykowaną grafikę bazy klientów, jeśli ją masz
-const currentUrl = "https://raporty24.pl/uslugi/pobieranie-email-do-excela/"; // upewnij się, że taki jest slug tej strony
+const description =
+  "Automatyzujemy obsługę e-maili i załączników: pobieranie danych do Excela, zapisywanie plików, przetwarzanie CSV, XLSX, XML i PDF oraz przekazywanie danych do raportów i systemów.";
+
+const ogImage = "/biuro3.webp";
+
+const currentUrl =
+  "https://raporty24.pl/uslugi/pobieranie-email-do-excela/";
 
 export const service = {
-  title: "Automatyczne pobieranie email",
+  title: "Automatyczna obsługa e-maili i załączników",
   order: 10,
   menu: true,
-  category: "Excel",
+  category: "Integracje i dane",
+  description:
+    "Automatyczne pobieranie wiadomości i załączników, zapisywanie plików, odczyt danych oraz przekazywanie ich do Excela, raportów lub innych systemów.",
+};
+
+
+/*
+ * =========================================================
+ * PRZYKŁADOWE AUTOMATYZACJE
+ * =========================================================
+ */
+
+const solutions = [
+  {
+    title: "Załączniki → folder",
+    description:
+      "Automatyczne wykrywanie wiadomości i zapisywanie załączników do odpowiednich folderów według nadawcy, daty, klienta lub innych reguł.",
+    icon: "fas fa-folder-open",
+  },
+
+  {
+    title: "Załączniki → Excel",
+    description:
+      "Pobieranie danych z plików XLSX, CSV, XML lub innych powtarzalnych załączników i przygotowanie ich do raportu albo dalszej analizy.",
+    icon: "fas fa-file-excel",
+  },
+
+  {
+    title: "Treść e-maila → dane",
+    description:
+      "Wyciąganie uporządkowanych informacji z powtarzalnych wiadomości, np. numeru zamówienia, klienta, produktu, kwoty lub statusu.",
+    icon: "fas fa-envelope-open-text",
+  },
+
+  {
+    title: "E-mail → raport",
+    description:
+      "Dane z wiadomości i załączników mogą automatycznie zasilać raport Excel, Power BI albo inne zestawienie firmowe.",
+    icon: "fas fa-chart-line",
+  },
+
+  {
+    title: "E-mail → system",
+    description:
+      "Po przetworzeniu dane mogą zostać przekazane dalej do API, CRM, ERP, bazy danych lub innego narzędzia.",
+    icon: "fas fa-right-left",
+  },
+
+  {
+    title: "Archiwizacja dokumentów",
+    description:
+      "Automatyczne nazewnictwo plików, tworzenie folderów, porządkowanie dokumentów i przygotowanie ich do dalszej obsługi.",
+    icon: "fas fa-box-archive",
+  },
+];
+
+
+/*
+ * =========================================================
+ * TYPOWE PRZYPADKI
+ * =========================================================
+ */
+
+const useCases = [
+  "codzienne pobieranie raportów przesyłanych e-mailem",
+
+  "zapisywanie cenników dostawców do właściwych folderów",
+
+  "łączenie danych z wielu załączników w jedno zestawienie",
+
+  "pobieranie plików CSV lub Excel i automatyczne odświeżanie raportu",
+
+  "odczytywanie numerów zamówień, klientów i kwot z powtarzalnych wiadomości",
+
+  "porządkowanie dokumentów według kontrahenta, daty lub rodzaju pliku",
+
+  "przekazywanie danych z wiadomości do CRM, ERP lub innego systemu",
+
+  "automatyczne przygotowanie plików do dalszego importu",
+
+  "obsługa raportów przychodzących od oddziałów lub pracowników",
+
+  "pobieranie danych z poczty do Excel lub Power BI",
+
+  "automatyczne rejestrowanie zgłoszeń przesyłanych e-mailem",
+
+  "kontrola brakujących lub nieprawidłowych załączników",
+];
+
+
+/*
+ * =========================================================
+ * PRZEPŁYW PROCESU
+ * =========================================================
+ */
+
+const process = [
+  {
+    step: "01",
+    title: "Określamy wiadomości",
+    description:
+      "Ustalamy, które wiadomości mają być obsługiwane: po nadawcy, temacie, załączniku, folderze poczty albo innych regułach.",
+  },
+
+  {
+    step: "02",
+    title: "Pobieramy dane",
+    description:
+      "Automatyzacja odczytuje treść wiadomości lub pobiera załączniki i zapisuje je w ustalonym miejscu.",
+  },
+
+  {
+    step: "03",
+    title: "Przetwarzamy",
+    description:
+      "Dane są sprawdzane, czyszczone, łączone, konwertowane albo przygotowywane zgodnie z regułami procesu.",
+  },
+
+  {
+    step: "04",
+    title: "Przekazujemy wynik",
+    description:
+      "Gotowe informacje trafiają do Excela, raportu, folderu, bazy danych, API lub innego systemu firmy.",
+  },
+];
+
+
+/*
+ * =========================================================
+ * FAQ
+ * =========================================================
+ */
+
+const faqs = [
+  {
+    question:
+      "Czy można automatycznie pobierać załączniki z e-maili do Excela?",
+
+    answer:
+      "Tak. Załączniki mogą być automatycznie zapisywane, a dane z plików takich jak Excel, CSV lub XML mogą następnie trafiać do jednego zestawienia lub raportu.",
+  },
+
+  {
+    question:
+      "Czy można pobierać dane z samej treści wiadomości?",
+
+    answer:
+      "Tak, jeżeli wiadomości mają powtarzalną strukturę. Można wyodrębniać określone informacje, np. numer zamówienia, klienta, kwotę, datę, produkt lub status.",
+  },
+
+  {
+    question:
+      "Czy system może obsługiwać Outlook i Gmail?",
+
+    answer:
+      "Takie rozwiązania są możliwe zarówno dla środowiska Microsoft, jak i Google. Sposób integracji zależy od rodzaju konta, uprawnień, dostępnych API oraz środowiska firmy.",
+  },
+
+  {
+    question:
+      "Czy komputer musi być cały czas włączony?",
+
+    answer:
+      "Nie zawsze. Proces może działać lokalnie na komputerze albo w środowisku chmurowym lub serwerowym. Najlepszy wariant zależy od poczty, infrastruktury i częstotliwości działania automatyzacji.",
+  },
+
+  {
+    question:
+      "Co się stanie, jeśli załącznik ma zły format lub brakuje danych?",
+
+    answer:
+      "Automatyzacja może sprawdzać strukturę plików, wymagane kolumny i inne warunki. W przypadku niezgodności można zatrzymać przetwarzanie danego pliku i poinformować użytkownika o problemie.",
+  },
+
+  {
+    question:
+      "Czy dane z e-maili mogą być przekazywane dalej do systemu firmy?",
+
+    answer:
+      "Tak. Po przetworzeniu dane mogą trafić do Excela, Power BI, bazy danych, CRM, ERP lub innego systemu, jeżeli istnieje odpowiednia możliwość integracji.",
+  },
+
+  {
+    question:
+      "Czy takie rozwiązanie może działać na Windows i macOS?",
+
+    answer:
+      "Wiele automatyzacji poczty może działać niezależnie od systemu operacyjnego, szczególnie gdy wykorzystuje rozwiązania chmurowe lub API. W przypadku lokalnych aplikacji i dodatków zakres zależy od użytej technologii.",
+  },
+];
+
+
+/*
+ * =========================================================
+ * STRUCTURED DATA
+ * =========================================================
+ */
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+
+  "@type": "Service",
+
+  name:
+    "Automatyczna obsługa e-maili i pobieranie danych do Excela",
+
+  provider: {
+    "@type": "Organization",
+
+    "@id":
+      "https://raporty24.pl/#organization",
+
+    name:
+      "Raporty24",
+
+    url:
+      "https://raporty24.pl/",
+  },
+
+  areaServed: {
+    "@type": "Country",
+    name: "Polska",
+  },
+
+  serviceType:
+    "Automatyzacja poczty e-mail, pobieranie załączników, e-mail do Excel, przetwarzanie danych i dokumentów",
+
+  url:
+    currentUrl,
+
+  description,
+};
+
+
+const breadcrumbSchema = {
+  "@context":
+    "https://schema.org",
+
+  "@type":
+    "BreadcrumbList",
+
+  itemListElement: [
+    {
+      "@type":
+        "ListItem",
+
+      position: 1,
+
+      name:
+        "Raporty24",
+
+      item:
+        "https://raporty24.pl/",
+    },
+
+    {
+      "@type":
+        "ListItem",
+
+      position: 2,
+
+      name:
+        "Usługi",
+
+      item:
+        "https://raporty24.pl/uslugi/",
+    },
+
+    {
+      "@type":
+        "ListItem",
+
+      position: 3,
+
+      name:
+        "Automatyczna obsługa e-maili i załączników",
+
+      item:
+        currentUrl,
+    },
+  ],
 };
 ---
 
-<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
-  <div x-data="app" x-cloak>
+<BaseLayout
+  title={title}
+  description={description}
+  image={ogImage}
+  url={currentUrl}
+  structuredData={[
+    serviceSchema,
+    breadcrumbSchema
+  ]}
+>
+
+  <div
+    x-data="app"
+    x-cloak
+  >
+
     <Header />
-    
-    <HeroService 
-      title="Automatyczne" 
-      highlight="Pobieranie danych z E-maili" 
-      subtitle="Zamień chaos w skrzynce odbiorczej w uporządkowany raport. Jako firma analityczna budujemy systemy, które same skanują maile, wyciągają załączniki i agregują dane w chmurze."
+
+
+    <!-- ================================================= -->
+    <!-- HERO -->
+    <!-- ================================================= -->
+
+    <HeroService
+      eyebrow="Automatyzacja poczty i dokumentów"
+      title="Automatyczna obsługa"
+      highlight="e-maili i załączników"
+      subtitle="Zamiast ręcznie otwierać wiadomości, zapisywać załączniki i kopiować dane do Excela, zbuduj proces, który zrobi to automatycznie i przekaże informacje dalej do raportu, folderu lub systemu."
+      ctaText="Opisz obsługę swojej poczty"
     />
 
-    <section class="py-24 bg-slate-950 text-white">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center mb-16">
-          <h2 class="text-4xl lg:text-5xl font-black uppercase tracking-tighter mb-6">Co możemy <span class="text-green-500">zautomatyzować?</span></h2>
-          <p class="text-xl text-slate-400">Ręczne zapisywanie załączników to marnowanie potencjału Twoich pracowników. Jeśli chcesz <strong>zlecić excel</strong> profesjonalistom, stworzymy dla Ciebie <strong>program do zarządzania firmą</strong>, który sam „czyta” pocztę.</p>
-        </div>
-        
-        <div class="grid md:grid-cols-2 gap-8">
-          <div class="p-10 rounded-[3rem] bg-white/5 border border-white/10 hover:border-green-500/50 transition-all group">
-            <div class="w-14 h-14 bg-green-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-green-500 group-hover:text-white transition-all">
-                <i class="fas fa-file-import text-2xl"></i>
+
+    <!-- ================================================= -->
+    <!-- GŁÓWNY PROBLEM -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="grid gap-16 lg:grid-cols-2 lg:items-center"
+        >
+
+          <div>
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
+              E-mail może być początkiem automatycznego procesu
+            </span>
+
+
+            <h2
+              class="mb-8 text-4xl font-black leading-tight tracking-tighter md:text-6xl"
+            >
+              Załącznika nie trzeba codziennie pobierać,
+              otwierać i kopiować ręcznie.
+            </h2>
+
+
+            <div
+              class="space-y-6 text-lg leading-relaxed text-slate-600"
+            >
+
+              <p>
+                Firmowe skrzynki często otrzymują powtarzalne
+                wiadomości: raporty, cenniki, zamówienia,
+                faktury, zestawienia, zgłoszenia lub eksporty
+                z innych systemów.
+              </p>
+
+
+              <p>
+                Jeżeli sposób obsługi takich wiadomości jest
+                powtarzalny, można zautomatyzować zarówno
+                pobieranie załączników, jak i dalszą pracę
+                z zawartymi w nich danymi.
+              </p>
+
+
+              <p>
+                <strong class="text-slate-950">
+                  E-mail nie musi być końcem procesu.
+                </strong>
+
+                Dane mogą automatycznie trafić do Excela,
+                Power BI, odpowiedniego folderu, bazy danych
+                albo innego systemu firmy.
+              </p>
+
             </div>
-            <h4 class="text-2xl font-bold mb-4 text-white italic">Import załączników CSV/XLSX</h4>
-            <p class="text-slate-400 leading-relaxed">System automatycznie wykrywa nowe wiadomości od dostawców, pobiera cenniki lub raporty i przez <strong>Power Query</strong> dołącza je do bazy głównej w Excelu lub <strong>Google Sheets</strong>.</p>
+
+
+            <div
+              class="mt-10 flex flex-col gap-4 sm:flex-row"
+            >
+
+              <a
+                href="#kontakt"
+                class="inline-flex items-center justify-center gap-3 rounded-2xl bg-green-600 px-8 py-5 text-sm font-black uppercase tracking-widest text-white transition-all hover:-translate-y-1 hover:bg-green-500"
+              >
+                Opisz swój proces
+
+                <i
+                  class="fas fa-arrow-right text-xs"
+                  aria-hidden="true"
+                ></i>
+              </a>
+
+
+              <a
+                href="/uslugi/integracje-api/"
+                class="inline-flex items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white px-8 py-5 text-sm font-black uppercase tracking-widest text-slate-950 transition-all hover:-translate-y-1 hover:border-green-500"
+              >
+                Integracje systemów
+              </a>
+
+            </div>
+
           </div>
 
-          <div class="p-10 rounded-[3rem] bg-white/5 border border-white/10 hover:border-green-500/50 transition-all group">
-            <div class="w-14 h-14 bg-green-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-green-500 group-hover:text-white transition-all">
-                <i class="fas fa-envelope-open-text text-2xl"></i>
-            </div>
-            <h4 class="text-2xl font-bold mb-4 text-white italic">Parsowanie treści wiadomości</h4>
-            <p class="text-slate-400 leading-relaxed">Otrzymujesz setki powtarzalnych maili z formularzy? Wyciągniemy z nich kluczowe informacje (imię, produkt, kwota) i zamienimy je w czyste dane gotowe do <strong>analityki biznesowej</strong>.</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="py-24 bg-white text-slate-900">
-      <div class="container mx-auto px-4">
-        <div class="flex flex-col lg:flex-row gap-16 items-center">
-          <div class="lg:w-1/2">
-            <h2 class="text-4xl font-black uppercase tracking-tighter mb-8 leading-none">Poczta zintegrowana <br/><span class="text-green-600 text-3xl">z Twoim arkuszem</span></h2>
-            <p class="text-slate-600 mb-8 leading-relaxed">Jako <strong>firma analityczna</strong> wdrażamy rozwiązania oparte o <strong>Power Automate</strong> oraz skrypty <strong>Google Apps Script</strong>. Dzięki temu Twoje dane są zawsze aktualne, bez otwierania skrzynki pocztowej.</p>
-            
+          <!-- PRZEPŁYW -->
+          <div
+            class="rounded-[3rem] border border-slate-100 bg-slate-50 p-8 shadow-xl shadow-slate-200/60 md:p-10"
+          >
+
+            <h3
+              class="mb-8 text-2xl font-black text-slate-950"
+            >
+              Przykładowy przepływ
+            </h3>
+
+
             <div class="space-y-4">
-                <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100 italic">
-                    <i class="fas fa-check-circle text-green-600 mt-1"></i>
-                    <p class="text-sm text-slate-600"><strong>Usługi dla firm excel</strong>: pełna automatyzacja raportów dziennych.</p>
+
+              <div
+                class="rounded-2xl bg-white p-5 shadow-sm"
+              >
+                <span
+                  class="mb-1 block text-[10px] font-black uppercase tracking-wider text-slate-400"
+                >
+                  1. Wiadomość
+                </span>
+
+                <p class="font-bold text-slate-700">
+                  przychodzi e-mail z załącznikiem
+                </p>
+              </div>
+
+
+              <div
+                class="flex justify-center text-green-600"
+                aria-hidden="true"
+              >
+                <i class="fas fa-arrow-down"></i>
+              </div>
+
+
+              <div
+                class="rounded-2xl bg-slate-950 p-5 text-white"
+              >
+                <span
+                  class="mb-1 block text-[10px] font-black uppercase tracking-wider text-green-400"
+                >
+                  2. Automat
+                </span>
+
+                <p class="font-bold">
+                  rozpoznaje, pobiera i sprawdza dane
+                </p>
+              </div>
+
+
+              <div
+                class="flex justify-center text-green-600"
+                aria-hidden="true"
+              >
+                <i class="fas fa-arrow-down"></i>
+              </div>
+
+
+              <div
+                class="grid grid-cols-2 gap-3"
+              >
+
+                <div
+                  class="rounded-2xl bg-white p-4 text-center shadow-sm"
+                >
+                  <strong class="text-sm">
+                    Excel
+                  </strong>
                 </div>
-                <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100 italic">
-                    <i class="fas fa-check-circle text-green-600 mt-1"></i>
-                    <p class="text-sm text-slate-600">Bezpieczna praca w chmurze (SharePoint / OneDrive).</p>
+
+
+                <div
+                  class="rounded-2xl bg-white p-4 text-center shadow-sm"
+                >
+                  <strong class="text-sm">
+                    folder
+                  </strong>
                 </div>
+
+
+                <div
+                  class="rounded-2xl bg-white p-4 text-center shadow-sm"
+                >
+                  <strong class="text-sm">
+                    raport
+                  </strong>
+                </div>
+
+
+                <div
+                  class="rounded-2xl bg-white p-4 text-center shadow-sm"
+                >
+                  <strong class="text-sm">
+                    system
+                  </strong>
+                </div>
+
+              </div>
+
             </div>
+
           </div>
-          
-          <div class="lg:w-1/2 bg-slate-950 p-12 rounded-[50px] shadow-2xl relative">
-            <div class="absolute -top-6 -left-6 bg-green-500 text-white px-6 py-3 rounded-2xl font-black uppercase text-xs tracking-widest shadow-xl">
-              Efficiency Boost
-            </div>
-            <h3 class="text-2xl font-bold text-white mb-6">Zaoszczędzony czas</h3>
-            <p class="text-slate-400 mb-8 text-sm leading-relaxed">Nasi klienci odzyskują średnio 5-10 godzin tygodniowo, które wcześniej poświęcali na ręczne „przeklejanie” danych z maili.</p>
-            <div class="space-y-4">
-               <div class="flex justify-between text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-1"><span>Automatyzacja procesów</span><span>100%</span></div>
-               <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden"><div class="w-full h-full bg-green-500 shadow-[0_0_10px_#22c55e]"></div></div>
-               <div class="flex justify-between text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-1"><span>Ryzyko błędu ludzkiego</span><span>0%</span></div>
-               <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden"><div class="w-[2%] h-full bg-green-500"></div></div>
-            </div>
-          </div>
+
         </div>
+
       </div>
+
     </section>
 
-    <section class="py-24 bg-slate-950 text-white border-t border-white/5">
-      <div class="container mx-auto px-4 max-w-4xl">
-        <h2 class="text-3xl lg:text-4xl font-black mb-12 uppercase tracking-tight text-center italic">FAQ – Automatyzacja E-mail</h2>
-        <div class="grid gap-4">
-          {[
-            { q: "Czy system obsługuje Outlooka i Gmaila?", a: "Tak, integrujemy się z najpopularniejszymi klientami poczty. W przypadku Microsoft 365 używamy natywnych rozwiązań chmurowych, a dla Google Sheets wykorzystujemy Apps Script." },
-            { q: "Czy moje dane są bezpieczne?", a: "Absolutnie. Procesy automatyzacji działają wewnątrz Twojego środowiska firmowego. Jako firma analityczna dbamy o standardy bezpieczeństwa i RODO." },
-            { q: "Czy muszę mieć włączony komputer, żeby to działało?", a: "Nie. Rozwiązania oparte na chmurze (Power Automate / Google) działają 24/7 na serwerach, nawet gdy Twój komputer jest wyłączony." },
-            { q: "Co jeśli załącznik zmieni strukturę?", a: "Budujemy inteligentne mechanizmy w Power Query, które potrafią rozpoznać zmiany lub powiadomić Cię o konieczności weryfikacji danych." }
-          ].map(item => (
-            <div class="p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all group">
-              <h4 class="font-bold text-green-400 mb-2 group-hover:translate-x-1 transition-transform">{item.q}</h4>
-              <p class="text-slate-400 text-sm leading-relaxed">{item.a}</p>
-            </div>
-          ))}
+
+    <!-- ================================================= -->
+    <!-- MOŻLIWOŚCI -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-950 py-24 text-white"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div
+          class="mb-16 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-400"
+          >
+            Co można zautomatyzować?
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Od zapisania załącznika po aktualizację systemu.
+          </h2>
+
+
+          <p
+            class="text-lg leading-relaxed text-slate-400 md:text-xl"
+          >
+            Automatyzacja poczty może obejmować tylko jeden krok
+            albo cały proces następujący po otrzymaniu wiadomości.
+          </p>
+
         </div>
+
+
+        <div
+          class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+        >
+
+          {
+            solutions.map((item) => (
+
+              <article
+                class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 transition-all hover:-translate-y-1 hover:border-green-500/50 hover:bg-white/[0.08]"
+              >
+
+                <div
+                  class="mb-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-500/10 text-green-400"
+                >
+                  <i
+                    class={`${item.icon} text-xl`}
+                    aria-hidden="true"
+                  ></i>
+                </div>
+
+
+                <h3
+                  class="mb-4 text-2xl font-black leading-tight text-white"
+                >
+                  {item.title}
+                </h3>
+
+
+                <p
+                  class="text-sm font-medium leading-relaxed text-slate-400"
+                >
+                  {item.description}
+                </p>
+
+              </article>
+
+            ))
+          }
+
+        </div>
+
       </div>
+
     </section>
+
+
+    <!-- ================================================= -->
+    <!-- USE CASES -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="mb-16 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+          >
+            Typowe zastosowania
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Co dziś robicie ręcznie ze swoją pocztą?
+          </h2>
+
+
+          <p
+            class="text-lg leading-relaxed text-slate-600 md:text-xl"
+          >
+            Jeśli podobna wiadomość pojawia się regularnie
+            i za każdym razem wykonujesz te same czynności,
+            proces prawdopodobnie warto przeanalizować.
+          </p>
+
+        </div>
+
+
+        <div
+          class="grid gap-4 md:grid-cols-2 xl:grid-cols-3"
+        >
+
+          {
+            useCases.map((item) => (
+
+              <div
+                class="flex items-start gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-6"
+              >
+
+                <div
+                  class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-950 text-[10px] text-green-400"
+                >
+                  <i
+                    class="fas fa-check"
+                    aria-hidden="true"
+                  ></i>
+                </div>
+
+
+                <p
+                  class="font-bold leading-relaxed text-slate-700"
+                >
+                  {item}
+                </p>
+
+              </div>
+
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- FORMATY -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-50 py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="grid gap-14 lg:grid-cols-2 lg:items-center"
+        >
+
+          <div>
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
+              Nie tylko Excel
+            </span>
+
+
+            <h2
+              class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+            >
+              Załącznik może uruchomić dalsze przetwarzanie danych.
+            </h2>
+
+
+            <p
+              class="mb-6 text-lg leading-relaxed text-slate-600"
+            >
+              Automatyzacja nie musi kończyć się na zapisaniu
+              pliku na dysku.
+            </p>
+
+
+            <p
+              class="text-lg leading-relaxed text-slate-600"
+            >
+              Możemy odczytać jego dane, sprawdzić strukturę,
+              przekształcić je i przygotować wynik w formacie
+              wymaganym przez kolejny etap procesu.
+            </p>
+
+          </div>
+
+
+          <div
+            class="grid grid-cols-2 gap-4"
+          >
+
+            {
+              [
+                "Excel / XLSX",
+                "CSV",
+                "XML",
+                "JSON",
+                "PDF",
+                "TXT",
+                "Power BI",
+                "API / system"
+              ].map((format) => (
+
+                <div
+                  class="rounded-2xl border border-slate-200 bg-white p-5 text-center font-black text-slate-700"
+                >
+                  {format}
+                </div>
+
+              ))
+            }
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- CHMURA / LOKALNIE -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="grid gap-16 lg:grid-cols-2 lg:items-center"
+        >
+
+          <div>
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
+              Sposób działania
+            </span>
+
+
+            <h2
+              class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+            >
+              Lokalnie, w chmurze albo przez API.
+            </h2>
+
+
+            <p
+              class="mb-6 text-lg leading-relaxed text-slate-600"
+            >
+              Nie każda firma potrzebuje tego samego rozwiązania.
+              Sposób działania zależy od używanej poczty,
+              bezpieczeństwa, liczby wiadomości i tego,
+              gdzie finalnie mają trafić dane.
+            </p>
+
+
+            <p
+              class="text-lg leading-relaxed text-slate-600"
+            >
+              Możemy wykorzystać rozwiązania Microsoft,
+              Google, API poczty, Power Automate,
+              Power Query, Python, C# albo inne narzędzie
+              odpowiednie do konkretnego procesu.
+            </p>
+
+          </div>
+
+
+          <div
+            class="space-y-4"
+          >
+
+            <div
+              class="rounded-2xl border border-slate-200 bg-slate-50 p-6"
+            >
+              <h3 class="mb-2 text-xl font-black">
+                Proces lokalny
+              </h3>
+
+              <p class="text-sm leading-relaxed text-slate-600">
+                Narzędzie może działać na komputerze użytkownika
+                i przetwarzać lokalne pliki lub pocztę.
+              </p>
+            </div>
+
+
+            <div
+              class="rounded-2xl border border-slate-200 bg-slate-50 p-6"
+            >
+              <h3 class="mb-2 text-xl font-black">
+                Proces chmurowy
+              </h3>
+
+              <p class="text-sm leading-relaxed text-slate-600">
+                W odpowiednim środowisku część procesów może działać
+                niezależnie od tego, czy komputer użytkownika jest włączony.
+              </p>
+            </div>
+
+
+            <div
+              class="rounded-2xl border border-slate-200 bg-slate-50 p-6"
+            >
+              <h3 class="mb-2 text-xl font-black">
+                Integracja z systemem
+              </h3>
+
+              <p class="text-sm leading-relaxed text-slate-600">
+                Dane odczytane z wiadomości mogą zostać przekazane
+                dalej przez API lub zapisane w bazie danych.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- PROCES -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-950 py-24 text-white"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="mb-16 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-400"
+          >
+            Wdrożenie
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Jak wygląda automatyzacja poczty?
+          </h2>
+
+
+          <p
+            class="text-lg leading-relaxed text-slate-400 md:text-xl"
+          >
+            Najpierw ustalamy reguły procesu i przypadki wyjątkowe.
+            Dopiero później wybieramy technologię.
+          </p>
+
+        </div>
+
+
+        <div
+          class="grid gap-6 md:grid-cols-2 xl:grid-cols-4"
+        >
+
+          {
+            process.map((item) => (
+
+              <article
+                class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-7"
+              >
+
+                <div
+                  class="mb-6 text-5xl font-black tracking-tighter text-green-400"
+                >
+                  {item.step}
+                </div>
+
+
+                <h3
+                  class="mb-4 text-2xl font-black text-white"
+                >
+                  {item.title}
+                </h3>
+
+
+                <p
+                  class="text-sm leading-relaxed text-slate-400"
+                >
+                  {item.description}
+                </p>
+
+              </article>
+
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- BEZPIECZEŃSTWO -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="grid gap-14 lg:grid-cols-2 lg:items-center"
+        >
+
+          <div>
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
+              Kontrola procesu
+            </span>
+
+
+            <h2
+              class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+            >
+              Automat powinien wiedzieć, kiedy czegoś nie robić.
+            </h2>
+
+
+            <p
+              class="text-lg leading-relaxed text-slate-600"
+            >
+              W procesach pocztowych szczególnie ważne jest
+              filtrowanie właściwych wiadomości, walidacja załączników
+              i obsługa sytuacji, w których format danych jest inny
+              niż oczekiwany.
+            </p>
+
+          </div>
+
+
+          <div
+            class="rounded-[2.5rem] bg-slate-950 p-8 text-white md:p-10"
+          >
+
+            <ul
+              class="space-y-5"
+            >
+
+              <li class="flex gap-3">
+                <span class="font-black text-green-400">
+                  ✓
+                </span>
+
+                filtrowanie właściwych nadawców i tematów
+              </li>
+
+
+              <li class="flex gap-3">
+                <span class="font-black text-green-400">
+                  ✓
+                </span>
+
+                sprawdzanie obecności wymaganych załączników
+              </li>
+
+
+              <li class="flex gap-3">
+                <span class="font-black text-green-400">
+                  ✓
+                </span>
+
+                kontrola nazw kolumn i formatów danych
+              </li>
+
+
+              <li class="flex gap-3">
+                <span class="font-black text-green-400">
+                  ✓
+                </span>
+
+                komunikaty o błędach i niezgodnych plikach
+              </li>
+
+
+              <li class="flex gap-3">
+                <span class="font-black text-green-400">
+                  ✓
+                </span>
+
+                możliwość zachowania oryginalnych dokumentów
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- FAQ -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-50 py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="mb-14 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+          >
+            FAQ
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Najczęstsze pytania
+          </h2>
+
+        </div>
+
+
+        <div
+          class="grid gap-5 lg:grid-cols-2"
+        >
+
+          {
+            faqs.map((item) => (
+
+              <details
+                class="rounded-[2rem] border border-slate-200 bg-white p-7"
+              >
+
+                <summary
+                  class="cursor-pointer text-lg font-black text-slate-950"
+                >
+                  {item.question}
+                </summary>
+
+
+                <p
+                  class="mt-5 text-sm font-medium leading-relaxed text-slate-600"
+                >
+                  {item.answer}
+                </p>
+
+              </details>
+
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
 
     <Contact />
+
     <Footer />
+
   </div>
+
 </BaseLayout>

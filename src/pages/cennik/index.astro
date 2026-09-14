@@ -3,318 +3,798 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 
-const title = "Cennik automatyzacji Excel, Power BI, Python, API i KSeF | Raporty24";
+const title =
+  "Cennik automatyzacji i narzędzi dla firm | Raporty24";
+
 const description =
-  "Orientacyjny cennik usług Raporty24: Excel na zamówienie, makra VBA, Power Query, KSeF do Excela, kalkulatory ofertowe, skrypty Python, integracje API i dashboardy Power BI.";
+  "Orientacyjny cennik Raporty24: małe poprawki Excel od 390 zł, automatyzacje, raporty, Power Query, KSeF, integracje API, Power BI, SharePoint i narzędzia dedykowane.";
+
 const image = "/biuro3.webp";
+
 const url = "https://raporty24.pl/cennik/";
+
 
 const priceGroups = [
   {
     label: "Mały zakres",
-    title: "Poprawki i proste automatyzacje Excel",
+
+    title:
+      "Poprawki i proste automatyzacje Excel",
+
     description:
       "Dobre, gdy nie potrzebujesz dużego wdrożenia, tylko chcesz naprawić plik, dodać przycisk, uporządkować dane albo zautomatyzować jeden powtarzalny krok.",
+
     items: [
       {
-        title: "Mała poprawka Excel",
-        price: "od 390 zł",
-        tag: "szybki start",
-        text: "Poprawa formuł, formatowania, układu pliku, drobne usprawnienia i porządkowanie arkusza.",
-        features: ["poprawa istniejącego pliku", "proste formuły i walidacje", "szybka konsultacja zakresu"],
-        href: "/kontakt/",
+        title:
+          "Mała poprawka Excel",
+
+        price:
+          "od 390 zł",
+
+        tag:
+          "szybki start",
+
+        text:
+          "Poprawa formuł, formatowania, układu pliku, drobne usprawnienia i porządkowanie arkusza.",
+
+        features: [
+          "poprawa istniejącego pliku",
+          "proste formuły i walidacje",
+          "szybka konsultacja zakresu",
+        ],
+
+        href:
+          "/kontakt/",
       },
+
       {
-        title: "Makro VBA / przycisk",
-        price: "od 490 zł",
-        tag: "Excel VBA",
-        text: "Jeden przycisk, który wykonuje powtarzalną czynność: eksport, czyszczenie danych, generowanie plików lub raportów.",
-        features: ["makra VBA", "automatyczne PDF", "eksport Excel / CSV"],
-        href: "/uslugi/makra-vba/",
+        title:
+          "Makro VBA / przycisk",
+
+        price:
+          "od 490 zł",
+
+        tag:
+          "Excel VBA",
+
+        text:
+          "Jeden przycisk, który wykonuje powtarzalną czynność: eksport, czyszczenie danych, generowanie plików lub raportów.",
+
+        features: [
+          "makra VBA",
+          "automatyczne PDF",
+          "eksport Excel / CSV",
+        ],
+
+        href:
+          "/uslugi/makra-vba/",
       },
+
       {
-        title: "Optymalizacja Excela",
-        price: "od 490 zł",
-        tag: "naprawa plików",
-        text: "Przyspieszenie wolnego pliku, uporządkowanie struktury, poprawa błędów i przygotowanie arkusza do dalszej pracy.",
-        features: ["szybsze działanie pliku", "mniej błędów ręcznych", "czytelniejszy układ"],
-        href: "/uslugi/optymalizacja-excela/",
+        title:
+          "Optymalizacja Excela",
+
+        price:
+          "od 490 zł",
+
+        tag:
+          "naprawa plików",
+
+        text:
+          "Przyspieszenie wolnego pliku, uporządkowanie struktury, poprawa błędów i przygotowanie arkusza do dalszej pracy.",
+
+        features: [
+          "szybsze działanie pliku",
+          "mniej błędów ręcznych",
+          "czytelniejszy układ",
+        ],
+
+        href:
+          "/uslugi/optymalizacja-excela/",
       },
     ],
   },
+
+
   {
-    label: "Najczęściej wybierane",
-    title: "Automatyzacje procesów i raportów",
+    label:
+      "Raporty i automatyzacje",
+
+    title:
+      "Automatyzacje procesów i raportów",
+
     description:
       "Dla firm, które chcą ograniczyć kopiowanie danych, ręczne raporty, powtarzalne wyceny, zestawienia i pracę na wielu plikach.",
+
     items: [
       {
-        title: "Automatyczny raport Excel",
-        price: "od 800 zł",
-        tag: "Power Query",
-        text: "Raport, który pobiera dane z plików, porządkuje je i przygotowuje zestawienie do odświeżenia w kilku kliknięciach.",
-        features: ["Power Query", "czyszczenie danych", "raporty miesięczne"],
-        href: "/uslugi/automatyzacja-power-query/",
+        title:
+          "Automatyczny raport Excel",
+
+        price:
+          "od 800 zł",
+
+        tag:
+          "Power Query",
+
+        text:
+          "Raport, który pobiera dane z plików, porządkuje je i przygotowuje zestawienie do odświeżenia w kilku kliknięciach.",
+
+        features: [
+          "Power Query",
+          "czyszczenie danych",
+          "raporty miesięczne",
+        ],
+
+        href:
+          "/uslugi/automatyzacja-excel-power-query/",
       },
+
       {
-        title: "Kalkulator ofertowy",
-        price: "od 900 zł",
-        tag: "oferty B2B",
-        text: "Kalkulator produktu, ceny, zamówienia lub konfiguracji: warianty, ilości, dodatki, rabaty i gotowe podsumowanie.",
-        features: ["reguły cenowe", "formularz wyceny", "gotowa oferta / PDF"],
-        href: "/uslugi/kalkulatory-produktowe/",
+        title:
+          "Kalkulator ofertowy",
+
+        price:
+          "od 900 zł",
+
+        tag:
+          "oferty B2B",
+
+        text:
+          "Kalkulator produktu, ceny, zamówienia lub konfiguracji: warianty, ilości, dodatki, rabaty i gotowe podsumowanie.",
+
+        features: [
+          "reguły cenowe",
+          "formularz wyceny",
+          "gotowa oferta / PDF",
+        ],
+
+        href:
+          "/uslugi/kalkulatory-produktowe/",
       },
+
       {
-        title: "Logistyka i flota w Excelu",
-        price: "od 900 zł",
-        tag: "transport",
-        text: "Narzędzia do planowania tras, kontroli kosztów transportu, floty, paliwa, magazynu i raportów operacyjnych.",
-        features: ["planowanie tras", "koszty floty", "raporty operacyjne"],
-        href: "/uslugi/logistyka-w-excelu/",
+        title:
+          "Logistyka i flota w Excelu",
+
+        price:
+          "od 900 zł",
+
+        tag:
+          "transport",
+
+        text:
+          "Narzędzia do planowania tras, kontroli kosztów transportu, floty, paliwa, magazynu i raportów operacyjnych.",
+
+        features: [
+          "planowanie tras",
+          "koszty floty",
+          "raporty operacyjne",
+        ],
+
+        href:
+          "/uslugi/logistyka-w-excelu/",
       },
     ],
   },
+
+
   {
-    label: "Większe wdrożenia",
-    title: "KSeF, Python, API, Power BI i aplikacje",
+    label:
+      "Większe wdrożenia",
+
+    title:
+      "Integracje, BI i narzędzia dedykowane",
+
     description:
       "Dla procesów, które wymagają połączenia wielu źródeł danych, aplikacji lokalnej, integracji z systemami albo raportowania dla zespołu.",
+
     items: [
       {
-        title: "KSeF do Excela",
-        price: "od 1200 zł",
-        tag: "księgowość",
-        text: "Pobieranie, filtrowanie i eksport faktur z KSeF do Excela, CSV lub XML, z możliwością pracy lokalnej na komputerze firmy.",
-        features: ["KSeF", "Excel / CSV / XML", "filtry i eksporty"],
-        href: "/uslugi/ksef-do-excela/",
+        title:
+          "KSeF do Excela",
+
+        price:
+          "od 1200 zł",
+
+        tag:
+          "księgowość",
+
+        text:
+          "Pobieranie, filtrowanie i eksport faktur z KSeF do Excela, CSV lub XML, z możliwością pracy lokalnej na komputerze firmy.",
+
+        features: [
+          "KSeF",
+          "Excel / CSV / XML",
+          "filtry i eksporty",
+        ],
+
+        href:
+          "/uslugi/ksef-do-excela/",
       },
+
       {
-        title: "Skrypt Python",
-        price: "od 1200 zł",
-        tag: "automatyzacja",
-        text: "Skrypty do przetwarzania plików, pobierania danych, generowania raportów, eksportów i zadań, które Excel wykonuje zbyt wolno.",
-        features: ["Python", "pliki i foldery", "automatyczne eksporty"],
-        href: "/uslugi/skrypty-python/",
+        title:
+          "Automatyzacja plików i procesów",
+
+        price:
+          "od 1200 zł",
+
+        tag:
+          "automatyzacja",
+
+        text:
+          "Automatyzacja przetwarzania plików, folderów, eksportów i danych. Technologię dobieramy do procesu — może to być Python, C#, Excel lub inne narzędzie.",
+
+        features: [
+          "pliki i foldery",
+          "CSV / XLSX / XML",
+          "automatyczne eksporty",
+        ],
+
+        href:
+          "/uslugi/skrypty-python/",
       },
+
       {
-        title: "Integracja API",
-        price: "od 1500 zł",
-        tag: "systemy",
-        text: "Połączenie danych z CRM, ERP, sklepu, aplikacji, API, plików lub baz danych, żeby ograniczyć ręczne przepisywanie informacji.",
-        features: ["API", "ERP / CRM", "pobieranie i wysyłka danych"],
-        href: "/uslugi/integracje-api/",
+        title:
+          "Integracja API",
+
+        price:
+          "od 1500 zł",
+
+        tag:
+          "systemy",
+
+        text:
+          "Połączenie danych z CRM, ERP, sklepu, aplikacji, API, plików lub baz danych, żeby ograniczyć ręczne przepisywanie informacji.",
+
+        features: [
+          "API",
+          "ERP / CRM",
+          "pobieranie i wysyłka danych",
+        ],
+
+        href:
+          "/uslugi/integracje-api/",
       },
+
       {
-        title: "Dashboard Power BI",
-        price: "od 1800 zł",
-        tag: "KPI",
-        text: "Raporty zarządcze, KPI, sprzedaż, koszty, flota, finanse i dashboardy, które pokazują dane w jednym miejscu.",
-        features: ["Power BI", "DAX", "KPI i dashboardy"],
-        href: "/uslugi/dashboardy-power-bi/",
+        title:
+          "Dashboard Power BI",
+
+        price:
+          "od 1800 zł",
+
+        tag:
+          "KPI",
+
+        text:
+          "Raporty zarządcze, KPI, sprzedaż, koszty, flota, finanse i dashboardy, które pokazują dane w jednym miejscu.",
+
+        features: [
+          "Power BI",
+          "DAX",
+          "KPI i dashboardy",
+        ],
+
+        href:
+          "/uslugi/dashboardy-power-bi/",
       },
+
       {
-        title: "Aplikacja desktopowa",
-        price: "wycena po zakresie",
-        tag: "lokalnie",
-        text: "Lokalne narzędzie dla firmy, np. do obsługi plików, zamówień, faktur, eksportów, raportów lub procesu wewnętrznego.",
-        features: ["aplikacja lokalna", "własny interfejs", "bezpieczna praca z danymi"],
-        href: "/kontakt/",
+        title:
+          "SharePoint / Microsoft 365",
+
+        price:
+          "wycena po zakresie",
+
+        tag:
+          "Microsoft 365",
+
+        text:
+          "Automatyzacja obiegu danych i plików pomiędzy Excel, SharePoint, OneDrive, Outlookiem, Power Automate i Power BI.",
+
+        features: [
+          "SharePoint / OneDrive",
+          "Excel i Power BI",
+          "procesy Microsoft 365",
+        ],
+
+        href:
+          "/kontakt/",
       },
+
       {
-        title: "System pod proces",
-        price: "wycena po zakresie",
-        tag: "dedykowane",
-        text: "Większy projekt obejmujący wiele etapów: dane, reguły, użytkowników, raporty, eksporty, walidacje i wdrożenie w firmie.",
-        features: ["analiza procesu", "stała cena po zakresie", "możliwe NDA"],
-        href: "/kontakt/",
+        title:
+          "Dodatek do Excela / C#",
+
+        price:
+          "wycena po zakresie",
+
+        tag:
+          "Excel add-in",
+
+        text:
+          "Dedykowany dodatek do Excela z własnymi przyciskami, interfejsem i logiką, gdy zwykłe VBA nie wystarcza.",
+
+        features: [
+          "własny Ribbon",
+          "C# / dodatek Excel",
+          "integracje i logika biznesowa",
+        ],
+
+        href:
+          "/uslugi/excel-na-zamowienie/",
+      },
+
+      {
+        title:
+          "Aplikacja desktopowa",
+
+        price:
+          "wycena po zakresie",
+
+        tag:
+          "lokalnie",
+
+        text:
+          "Lokalne narzędzie dla firmy, np. do obsługi plików, zamówień, faktur, eksportów, raportów lub procesu wewnętrznego.",
+
+        features: [
+          "aplikacja lokalna",
+          "własny interfejs",
+          "bezpieczna praca z danymi",
+        ],
+
+        href:
+          "/kontakt/",
+      },
+
+      {
+        title:
+          "System pod proces",
+
+        price:
+          "wycena po zakresie",
+
+        tag:
+          "dedykowane",
+
+        text:
+          "Większy projekt obejmujący wiele etapów: dane, reguły, użytkowników, raporty, eksporty, walidacje i wdrożenie w firmie.",
+
+        features: [
+          "analiza procesu",
+          "stała cena po zakresie",
+          "możliwe NDA",
+        ],
+
+        href:
+          "/kontakt/",
       },
     ],
   },
 ];
+
 
 const factors = [
   {
-    title: "Zakres i liczba reguł",
-    text: "Jedna poprawka w pliku kosztuje mniej niż kalkulator z wieloma wariantami, wyjątkami i eksportami.",
+    title:
+      "Zakres i liczba reguł",
+
+    text:
+      "Jedna poprawka w pliku kosztuje mniej niż kalkulator z wieloma wariantami, wyjątkami i eksportami.",
   },
+
   {
-    title: "Źródła danych",
-    text: "Jeden plik Excel to prostszy zakres niż dane z kilku plików, systemu ERP, API, KSeF lub bazy SQL.",
+    title:
+      "Źródła danych",
+
+    text:
+      "Jeden plik Excel to prostszy zakres niż dane z kilku plików, systemu ERP, API, KSeF lub bazy SQL.",
   },
+
   {
-    title: "Jakość danych",
-    text: "Jeśli dane są niespójne, trzeba doliczyć czyszczenie, walidację, obsługę błędów i zabezpieczenia.",
+    title:
+      "Jakość danych",
+
+    text:
+      "Jeśli dane są niespójne, trzeba doliczyć czyszczenie, walidację, obsługę błędów i zabezpieczenia.",
   },
+
   {
-    title: "Forma wdrożenia",
-    text: "Inaczej wyceniamy arkusz Excel, inaczej skrypt Python, aplikację desktopową, integrację API albo Power BI.",
+    title:
+      "Forma wdrożenia",
+
+    text:
+      "Inaczej wyceniamy prosty arkusz, inaczej automatyzację plików, dodatek do Excela, SharePoint, integrację API, aplikację albo Power BI.",
   },
 ];
+
 
 const steps = [
   {
-    number: "01",
-    title: "Opisujesz problem",
-    text: "Wystarczy krótki opis procesu, screen pliku, przykład raportu albo lista czynności wykonywanych ręcznie.",
+    number:
+      "01",
+
+    title:
+      "Opisujesz problem",
+
+    text:
+      "Wystarczy krótki opis procesu, screen pliku, przykład raportu albo lista czynności wykonywanych ręcznie.",
   },
+
   {
-    number: "02",
-    title: "Ustalamy zakres",
-    text: "Sprawdzamy, czy wystarczy mała poprawka, arkusz Excel, automatyzacja, skrypt, API, KSeF czy większe wdrożenie.",
+    number:
+      "02",
+
+    title:
+      "Ustalamy zakres",
+
+    text:
+      "Sprawdzamy, czy wystarczy mała poprawka, arkusz Excel, automatyzacja plików, Power Query, API, SharePoint, KSeF czy większe wdrożenie.",
   },
+
   {
-    number: "03",
-    title: "Dostajesz wycenę",
-    text: "Po analizie zakresu podajemy orientacyjny lub stały koszt, czas realizacji i proponowany sposób wdrożenia.",
+    number:
+      "03",
+
+    title:
+      "Dostajesz wycenę",
+
+    text:
+      "Po analizie zakresu podajemy orientacyjny lub stały koszt, czas realizacji i proponowany sposób wdrożenia.",
   },
+
   {
-    number: "04",
-    title: "Wdrażamy narzędzie",
-    text: "Po akceptacji budujemy rozwiązanie, testujemy je na przykładach i przekazujemy gotowe narzędzie do pracy.",
+    number:
+      "04",
+
+    title:
+      "Wdrażamy narzędzie",
+
+    text:
+      "Po akceptacji budujemy rozwiązanie, testujemy je na przykładach i przekazujemy gotowe narzędzie do pracy.",
   },
 ];
+
 
 const faqs = [
   {
-    q: "Czy można zlecić tylko małą poprawkę w Excelu?",
-    a: "Tak. Nie każdy temat musi być dużym projektem. Możemy poprawić plik, dodać makro, uporządkować dane albo zautomatyzować jeden powtarzalny krok.",
+    q:
+      "Czy można zlecić tylko małą poprawkę w Excelu?",
+
+    a:
+      "Tak. Nie każdy temat musi być dużym projektem. Możemy poprawić plik, dodać makro, uporządkować dane albo zautomatyzować jeden powtarzalny krok.",
   },
+
   {
-    q: "Czy ceny są netto?",
-    a: "Tak, podane ceny są orientacyjnymi cenami netto. Dokładna cena zależy od zakresu i jest potwierdzana przed rozpoczęciem prac.",
+    q:
+      "Czy ceny są netto?",
+
+    a:
+      "Tak, podane ceny są orientacyjnymi cenami netto. Dokładna cena zależy od zakresu i jest potwierdzana przed rozpoczęciem prac.",
   },
+
   {
-    q: "Czy podana cena może się zmienić w trakcie projektu?",
-    a: "Po ustaleniu zakresu podajemy cenę dla uzgodnionych prac. Cena zmienia się tylko wtedy, gdy w trakcie projektu pojawią się nowe funkcje lub dodatkowy zakres.",
+    q:
+      "Czy podana cena może się zmienić w trakcie projektu?",
+
+    a:
+      "Po ustaleniu zakresu podajemy cenę dla uzgodnionych prac. Cena zmienia się tylko wtedy, gdy w trakcie projektu pojawią się nowe funkcje lub dodatkowy zakres.",
   },
+
   {
-    q: "Czy trzeba wysłać prawdziwe dane firmy?",
-    a: "Nie zawsze. Do wstępnej wyceny często wystarczy zanonimizowany plik, screen raportu albo opis procesu. Przy danych wrażliwych możemy ustalić bezpieczny sposób przekazania lub NDA.",
+    q:
+      "Czy trzeba wysłać prawdziwe dane firmy?",
+
+    a:
+      "Nie zawsze. Do wstępnej wyceny często wystarczy zanonimizowany plik, screen raportu albo opis procesu. Przy danych wrażliwych możemy ustalić bezpieczny sposób przekazania lub NDA.",
   },
+
   {
-    q: "Czy narzędzie może działać lokalnie?",
-    a: "Tak. Przy Excelu, KSeF, Pythonie i danych księgowych często projektujemy rozwiązania lokalne, które działają na komputerze lub w środowisku firmy.",
+    q:
+      "Czy narzędzie może działać lokalnie?",
+
+    a:
+      "Tak. Przy Excelu, KSeF, automatyzacji plików i danych firmowych możemy projektować rozwiązania lokalne, które działają na komputerze lub w środowisku firmy.",
   },
 ];
 
-const cennikSchema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Service",
-      name: "Cennik automatyzacji Excel, Power BI, Python, API i KSeF",
-      provider: {
-        "@type": "LocalBusiness",
-        name: "Raporty24",
-        url: "https://raporty24.pl/",
-      },
-      description,
-      offers: {
-        "@type": "AggregateOffer",
-        priceCurrency: "PLN",
-        lowPrice: "390",
-        offerCount: "12",
-      },
+
+const serviceSchema = {
+  "@context":
+    "https://schema.org",
+
+  "@type":
+    "Service",
+
+  name:
+    "Automatyzacja procesów i danych dla firm",
+
+  provider: {
+    "@type":
+      "Organization",
+
+    "@id":
+      "https://raporty24.pl/#organization",
+
+    name:
+      "Raporty24",
+
+    url:
+      "https://raporty24.pl/",
+  },
+
+  areaServed: {
+    "@type":
+      "Country",
+
+    name:
+      "Polska",
+  },
+
+  serviceType:
+    "Automatyzacja Excel, Power Query, API, Power BI, SharePoint, KSeF i narzędzia dedykowane",
+
+  url,
+
+  description,
+};
+
+
+const faqSchema = {
+  "@context":
+    "https://schema.org",
+
+  "@type":
+    "FAQPage",
+
+  mainEntity: faqs.map((faq) => ({
+    "@type":
+      "Question",
+
+    name:
+      faq.q,
+
+    acceptedAnswer: {
+      "@type":
+        "Answer",
+
+      text:
+        faq.a,
     },
+  })),
+};
+
+
+const breadcrumbSchema = {
+  "@context":
+    "https://schema.org",
+
+  "@type":
+    "BreadcrumbList",
+
+  itemListElement: [
     {
-      "@type": "FAQPage",
-      mainEntity: faqs.map((faq) => ({
-        "@type": "Question",
-        name: faq.q,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: faq.a,
-        },
-      })),
+      "@type":
+        "ListItem",
+
+      position:
+        1,
+
+      name:
+        "Raporty24",
+
+      item:
+        "https://raporty24.pl/",
+    },
+
+    {
+      "@type":
+        "ListItem",
+
+      position:
+        2,
+
+      name:
+        "Cennik",
+
+      item:
+        url,
     },
   ],
 };
 ---
 
-<BaseLayout title={title} description={description} image={image} url={url} structuredData={cennikSchema}>
-  <div x-data="app" class="antialiased bg-white text-slate-900">
+<BaseLayout
+  title={title}
+  description={description}
+  image={image}
+  url={url}
+  structuredData={[
+    serviceSchema,
+    faqSchema,
+    breadcrumbSchema
+  ]}
+>
+
+  <div
+    x-data="app"
+    class="antialiased bg-white text-slate-900"
+  >
+
     <Header />
 
+
     <main class="pt-20">
-      <section class="relative overflow-hidden border-b border-slate-100 bg-slate-50 py-24 lg:py-36">
-        <div class="absolute inset-0 opacity-40">
+
+
+      <!-- HERO -->
+
+      <section
+        class="relative overflow-hidden border-b border-slate-100 bg-slate-50 py-24 lg:py-36"
+      >
+
+        <div
+          class="absolute inset-0 opacity-40"
+        >
           <div
             class="absolute inset-0 bg-[radial-gradient(#cbd5e1_1.5px,transparent_1.5px)] [background-size:28px_28px]"
           >
           </div>
         </div>
 
-        <div class="absolute -right-24 top-0 h-96 w-96 rounded-full bg-green-200/60 blur-[120px]"></div>
-        <div class="absolute -left-24 bottom-0 h-96 w-96 rounded-full bg-cyan-100/70 blur-[120px]"></div>
 
-        <div class="container relative z-10 mx-auto px-4">
+        <div
+          class="absolute -right-24 top-0 h-96 w-96 rounded-full bg-green-200/60 blur-[120px]"
+        ></div>
+
+
+        <div
+          class="absolute -left-24 bottom-0 h-96 w-96 rounded-full bg-cyan-100/70 blur-[120px]"
+        ></div>
+
+
+        <div
+          class="container relative z-10 mx-auto px-4"
+        >
+
           <div class="max-w-5xl">
+
             <span
               class="mb-8 inline-flex items-center gap-3 rounded-full border border-green-500/20 bg-white px-4 py-2 text-[10px] font-black uppercase tracking-[0.3em] text-green-700 shadow-sm"
             >
-              <span class="h-2 w-2 rounded-full bg-green-500"></span>
+              <span
+                class="h-2 w-2 rounded-full bg-green-500"
+              ></span>
+
               Cennik orientacyjny
             </span>
 
-            <h1 class="mb-8 text-5xl font-black uppercase leading-[0.95] tracking-tighter text-slate-950 md:text-8xl">
+
+            <h1
+              class="mb-8 text-5xl font-black uppercase leading-[0.95] tracking-tighter text-slate-950 md:text-8xl"
+            >
               Cennik usług
-              <span class="block text-green-600">
+
+              <span
+                class="block text-green-600"
+              >
                 automatyzacji danych
               </span>
             </h1>
 
-            <p class="mb-10 max-w-3xl text-xl font-medium leading-relaxed text-slate-600 md:text-2xl">
-              Możesz zacząć od małej poprawki w Excelu albo zlecić większą automatyzację:
-              KSeF do Excela, kalkulator ofertowy, skrypt Python, integrację API, dashboard Power BI
-              lub aplikację dla procesu firmowego.
+
+            <p
+              class="mb-10 max-w-3xl text-xl font-medium leading-relaxed text-slate-600 md:text-2xl"
+            >
+              Możesz zacząć od małej poprawki w Excelu albo
+              zlecić większą automatyzację: KSeF do Excela,
+              kalkulator ofertowy, automatyzację plików,
+              integrację API, dashboard Power BI,
+              SharePoint albo aplikację dla procesu firmowego.
             </p>
 
-            <div class="mb-10 grid max-w-4xl gap-4 md:grid-cols-3">
-              <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+
+            <div
+              class="mb-10 grid max-w-4xl gap-4 md:grid-cols-3"
+            >
+
+              <div
+                class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
+              >
+
+                <p
+                  class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400"
+                >
                   Mały start
                 </p>
-                <p class="mt-2 text-3xl font-black tracking-tighter text-slate-950">
+
+                <p
+                  class="mt-2 text-3xl font-black tracking-tighter text-slate-950"
+                >
                   od 390 zł
                 </p>
-                <p class="mt-2 text-sm font-medium text-slate-500">
+
+                <p
+                  class="mt-2 text-sm font-medium text-slate-500"
+                >
                   poprawki i drobne usprawnienia Excel
                 </p>
+
               </div>
 
-              <div class="rounded-2xl border border-green-200 bg-white p-5 shadow-sm">
-                <p class="text-[10px] font-black uppercase tracking-[0.2em] text-green-600">
-                  Najczęściej
+
+              <div
+                class="rounded-2xl border border-green-200 bg-white p-5 shadow-sm"
+              >
+
+                <p
+                  class="text-[10px] font-black uppercase tracking-[0.2em] text-green-600"
+                >
+                  Typowy zakres
                 </p>
-                <p class="mt-2 text-3xl font-black tracking-tighter text-slate-950">
+
+                <p
+                  class="mt-2 text-3xl font-black tracking-tighter text-slate-950"
+                >
                   od 800 zł
                 </p>
-                <p class="mt-2 text-sm font-medium text-slate-500">
+
+                <p
+                  class="mt-2 text-sm font-medium text-slate-500"
+                >
                   raporty, kalkulatory i automatyzacje
                 </p>
+
               </div>
 
-              <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-                <p class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+
+              <div
+                class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm"
+              >
+
+                <p
+                  class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400"
+                >
                   Większy zakres
                 </p>
-                <p class="mt-2 text-3xl font-black tracking-tighter text-slate-950">
+
+                <p
+                  class="mt-2 text-3xl font-black tracking-tighter text-slate-950"
+                >
                   wycena
                 </p>
-                <p class="mt-2 text-sm font-medium text-slate-500">
-                  API, Python, KSeF, Power BI, aplikacje
+
+                <p
+                  class="mt-2 text-sm font-medium text-slate-500"
+                >
+                  API, KSeF, Power BI, SharePoint, aplikacje
                 </p>
+
               </div>
+
             </div>
 
-            <div class="flex flex-col gap-4 sm:flex-row">
+
+            <div
+              class="flex flex-col gap-4 sm:flex-row"
+            >
+
               <a
                 href="/kontakt/"
                 class="inline-flex items-center justify-center gap-3 rounded-2xl bg-green-600 px-8 py-5 text-sm font-black uppercase tracking-widest text-white shadow-xl shadow-green-200 transition-all hover:-translate-y-1 hover:bg-green-500"
               >
                 Poproś o wycenę
-                <i class="fas fa-arrow-right text-xs"></i>
+
+                <i
+                  class="fas fa-arrow-right text-xs"
+                ></i>
               </a>
+
 
               <a
                 href="#cennik-uslug"
@@ -322,86 +802,178 @@ const cennikSchema = {
               >
                 Zobacz ceny usług
               </a>
+
             </div>
 
-            <p class="mt-6 max-w-2xl text-sm font-medium leading-relaxed text-slate-500">
-              Ceny są orientacyjne i nie stanowią oferty handlowej. Dokładny koszt podajemy po krótkiej analizie zakresu.
+
+            <p
+              class="mt-6 max-w-2xl text-sm font-medium leading-relaxed text-slate-500"
+            >
+              Ceny są orientacyjne i nie stanowią oferty handlowej.
+              Dokładny koszt podajemy po krótkiej analizie zakresu.
             </p>
+
           </div>
+
         </div>
+
       </section>
 
-      <section id="cennik-uslug" class="bg-white py-24">
-        <div class="container mx-auto px-4">
-          <div class="mb-16 max-w-4xl">
-            <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+
+      <!-- CENNIK -->
+
+      <section
+        id="cennik-uslug"
+        class="bg-white py-24"
+      >
+
+        <div
+          class="container mx-auto px-4"
+        >
+
+          <div
+            class="mb-16 max-w-4xl"
+          >
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600"
+            >
               Zakres usług
             </span>
 
-            <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter text-slate-950 md:text-6xl">
+
+            <h2
+              class="mb-6 text-4xl font-black uppercase tracking-tighter text-slate-950 md:text-6xl"
+            >
               Wybierz typ pracy, której potrzebujesz
             </h2>
 
-            <p class="text-lg font-medium leading-relaxed text-slate-600 md:text-xl">
-              Cennik jest podzielony tak samo jak oferta: od prostych prac w Excelu, przez raporty
-              i kalkulatory, po KSeF, Python, API, Power BI oraz narzędzia dedykowane.
+
+            <p
+              class="text-lg font-medium leading-relaxed text-slate-600 md:text-xl"
+            >
+              Cennik jest podzielony od małych poprawek i prostych
+              automatyzacji, przez raporty i kalkulatory,
+              po KSeF, API, Power BI, SharePoint
+              oraz narzędzia dedykowane.
             </p>
+
           </div>
 
+
           <div class="space-y-20">
+
             {
               priceGroups.map((group) => (
+
                 <section>
-                  <div class="mb-8 grid gap-4 lg:grid-cols-[0.55fr_1fr] lg:items-end">
+
+                  <div
+                    class="mb-8 grid gap-4 lg:grid-cols-[0.55fr_1fr] lg:items-end"
+                  >
+
                     <div>
-                      <span class="mb-3 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+
+                      <span
+                        class="mb-3 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600"
+                      >
                         {group.label}
                       </span>
 
-                      <h3 class="text-3xl font-black uppercase tracking-tighter text-slate-950 md:text-5xl">
+
+                      <h3
+                        class="text-3xl font-black uppercase tracking-tighter text-slate-950 md:text-5xl"
+                      >
                         {group.title}
                       </h3>
+
                     </div>
 
-                    <p class="max-w-3xl text-base font-medium leading-relaxed text-slate-600 lg:ml-auto">
+
+                    <p
+                      class="max-w-3xl text-base font-medium leading-relaxed text-slate-600 lg:ml-auto"
+                    >
                       {group.description}
                     </p>
+
                   </div>
 
-                  <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+
+                  <div
+                    class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+                  >
+
                     {
                       group.items.map((item) => (
-                        <article class="group flex h-full flex-col rounded-[2rem] border border-slate-100 bg-slate-50 p-7 transition-all hover:-translate-y-1 hover:border-green-500/30 hover:bg-white hover:shadow-xl">
-                          <div class="mb-6 flex items-start justify-between gap-4">
+
+                        <article
+                          class="group flex h-full flex-col rounded-[2rem] border border-slate-100 bg-slate-50 p-7 transition-all hover:-translate-y-1 hover:border-green-500/30 hover:bg-white hover:shadow-xl"
+                        >
+
+                          <div
+                            class="mb-6 flex items-start justify-between gap-4"
+                          >
+
                             <div>
-                              <span class="mb-3 inline-block rounded-full bg-white px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-green-700 ring-1 ring-slate-200">
+
+                              <span
+                                class="mb-3 inline-block rounded-full bg-white px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-green-700 ring-1 ring-slate-200"
+                              >
                                 {item.tag}
                               </span>
 
-                              <h4 class="text-2xl font-black uppercase leading-tight tracking-tight text-slate-950">
+
+                              <h4
+                                class="text-2xl font-black uppercase leading-tight tracking-tight text-slate-950"
+                              >
                                 {item.title}
                               </h4>
+
                             </div>
+
                           </div>
 
-                          <div class="mb-5 text-4xl font-black tracking-tighter text-green-600">
+
+                          <div
+                            class="mb-5 text-4xl font-black tracking-tighter text-green-600"
+                          >
                             {item.price}
                           </div>
 
-                          <p class="mb-7 text-sm font-medium leading-relaxed text-slate-600">
+
+                          <p
+                            class="mb-7 text-sm font-medium leading-relaxed text-slate-600"
+                          >
                             {item.text}
                           </p>
 
-                          <ul class="mb-8 grow space-y-3 text-sm font-bold text-slate-700">
+
+                          <ul
+                            class="mb-8 grow space-y-3 text-sm font-bold text-slate-700"
+                          >
+
                             {
                               item.features.map((feature) => (
-                                <li class="flex items-start gap-3">
-                                  <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-green-500"></span>
-                                  <span>{feature}</span>
+
+                                <li
+                                  class="flex items-start gap-3"
+                                >
+
+                                  <span
+                                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-green-500"
+                                  ></span>
+
+                                  <span>
+                                    {feature}
+                                  </span>
+
                                 </li>
+
                               ))
                             }
+
                           </ul>
+
 
                           <a
                             href={item.href}
@@ -409,42 +981,85 @@ const cennikSchema = {
                           >
                             Zapytaj o usługę
                           </a>
+
                         </article>
+
                       ))
                     }
+
                   </div>
+
                 </section>
+
               ))
             }
+
           </div>
+
         </div>
+
       </section>
 
-      <section class="border-y border-slate-200 bg-slate-50 py-24">
-        <div class="container mx-auto px-4">
-          <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+
+      <!-- WYCENA INDYWIDUALNA -->
+
+      <section
+        class="border-y border-slate-200 bg-slate-50 py-24"
+      >
+
+        <div
+          class="container mx-auto px-4"
+        >
+
+          <div
+            class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center"
+          >
+
             <div>
-              <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+
+              <span
+                class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600"
+              >
                 Wycena indywidualna
               </span>
 
-              <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter text-slate-950 md:text-6xl">
+
+              <h2
+                class="mb-6 text-4xl font-black uppercase tracking-tighter text-slate-950 md:text-6xl"
+              >
                 Większe projekty wyceniamy po zakresie
               </h2>
 
-              <p class="text-lg font-medium leading-relaxed text-slate-600">
-                Przy KSeF, API, Pythonie, Power BI i aplikacjach cena zależy głównie od liczby reguł,
-                źródeł danych, użytkowników i sposobu wdrożenia. Dlatego nie udajemy, że każdy projekt
-                da się uczciwie zamknąć w jednej sztywnej cenie.
+
+              <p
+                class="text-lg font-medium leading-relaxed text-slate-600"
+              >
+                Przy KSeF, API, Power BI, SharePoint,
+                dodatkach i aplikacjach cena zależy głównie
+                od liczby reguł, źródeł danych, użytkowników
+                i sposobu wdrożenia. Dlatego nie udajemy,
+                że każdy projekt da się uczciwie zamknąć
+                w jednej sztywnej cenie.
               </p>
+
             </div>
 
-            <div class="rounded-[3rem] border border-slate-200 bg-white p-8 shadow-xl shadow-slate-200/70 md:p-10">
-              <h3 class="mb-6 text-2xl font-black uppercase tracking-tight text-slate-950">
+
+            <div
+              class="rounded-[3rem] border border-slate-200 bg-white p-8 shadow-xl shadow-slate-200/70 md:p-10"
+            >
+
+              <h3
+                class="mb-6 text-2xl font-black uppercase tracking-tight text-slate-950"
+              >
                 Do wstępnej wyceny wystarczy:
               </h3>
 
-              <div class="grid gap-4 md:grid-cols-2">
+
+              <div
+                class="grid gap-4 md:grid-cols-2"
+              >
+
                 {[
                   "krótki opis procesu",
                   "screen arkusza lub raportu",
@@ -453,161 +1068,338 @@ const cennikSchema = {
                   "lista kroków wykonywanych ręcznie",
                   "cel: co ma powstać na końcu",
                 ].map((item) => (
-                  <div class="rounded-2xl bg-slate-50 p-4 text-sm font-bold text-slate-700">
+
+                  <div
+                    class="rounded-2xl bg-slate-50 p-4 text-sm font-bold text-slate-700"
+                  >
                     {item}
                   </div>
+
                 ))}
+
               </div>
+
 
               <a
                 href="/kontakt/"
                 class="mt-8 inline-flex w-full items-center justify-center gap-3 rounded-2xl bg-green-600 px-8 py-5 text-center text-sm font-black uppercase tracking-widest text-white transition-all hover:-translate-y-1 hover:bg-green-500"
               >
                 Wyślij opis do wyceny
-                <i class="fas fa-arrow-right text-xs"></i>
+
+                <i
+                  class="fas fa-arrow-right text-xs"
+                ></i>
               </a>
+
             </div>
+
           </div>
+
         </div>
+
       </section>
 
-      <section class="bg-white py-24">
-        <div class="container mx-auto px-4">
-          <div class="mb-14 max-w-4xl">
-            <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+
+      <!-- CZYNNIKI CENY -->
+
+      <section
+        class="bg-white py-24"
+      >
+
+        <div
+          class="container mx-auto px-4"
+        >
+
+          <div
+            class="mb-14 max-w-4xl"
+          >
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600"
+            >
               Co wpływa na cenę?
             </span>
 
-            <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter text-slate-950 md:text-6xl">
-              Cena zależy od procesu, nie od samej nazwy narzędzia
+
+            <h2
+              class="mb-6 text-4xl font-black uppercase tracking-tighter text-slate-950 md:text-6xl"
+            >
+              Cena zależy od procesu,
+              nie od samej nazwy narzędzia
             </h2>
 
-            <p class="text-lg font-medium leading-relaxed text-slate-600 md:text-xl">
-              Ten sam „plik Excel” może być prostą poprawką albo mini-systemem dla kilku osób.
+
+            <p
+              class="text-lg font-medium leading-relaxed text-slate-600 md:text-xl"
+            >
+              Ten sam „plik Excel” może być prostą poprawką
+              albo mini-systemem dla kilku osób.
               Dlatego zawsze patrzymy na realny zakres pracy.
             </p>
+
           </div>
 
-          <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+
+          <div
+            class="grid gap-6 md:grid-cols-2 xl:grid-cols-4"
+          >
+
             {
               factors.map((item) => (
-                <article class="rounded-[2rem] border border-slate-100 bg-slate-50 p-7 transition-all hover:-translate-y-1 hover:border-green-500/30 hover:bg-white hover:shadow-xl">
-                  <h3 class="mb-4 text-2xl font-black uppercase tracking-tight text-slate-950">
+
+                <article
+                  class="rounded-[2rem] border border-slate-100 bg-slate-50 p-7 transition-all hover:-translate-y-1 hover:border-green-500/30 hover:bg-white hover:shadow-xl"
+                >
+
+                  <h3
+                    class="mb-4 text-2xl font-black uppercase tracking-tight text-slate-950"
+                  >
                     {item.title}
                   </h3>
 
-                  <p class="text-sm font-medium leading-relaxed text-slate-600">
+
+                  <p
+                    class="text-sm font-medium leading-relaxed text-slate-600"
+                  >
                     {item.text}
                   </p>
+
                 </article>
+
               ))
             }
+
           </div>
+
         </div>
+
       </section>
 
-      <section class="bg-slate-950 py-24 text-white">
-        <div class="container mx-auto px-4">
-          <div class="mb-14 max-w-4xl">
-            <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-400">
+
+      <!-- PROCES -->
+
+      <section
+        class="bg-slate-950 py-24 text-white"
+      >
+
+        <div
+          class="container mx-auto px-4"
+        >
+
+          <div
+            class="mb-14 max-w-4xl"
+          >
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-400"
+            >
               Proces
             </span>
 
-            <h2 class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl">
+
+            <h2
+              class="mb-6 text-4xl font-black uppercase tracking-tighter md:text-6xl"
+            >
               Jak wygląda wycena i wdrożenie?
             </h2>
 
-            <p class="text-lg font-medium leading-relaxed text-slate-400 md:text-xl">
-              Najpierw ustalamy, czy temat jest małą poprawką, automatyzacją, raportem, integracją
-              czy większym systemem. Dopiero potem proponujemy zakres i cenę.
+
+            <p
+              class="text-lg font-medium leading-relaxed text-slate-400 md:text-xl"
+            >
+              Najpierw ustalamy, czy temat jest małą poprawką,
+              automatyzacją, raportem, integracją czy większym systemem.
+              Dopiero potem proponujemy zakres i cenę.
             </p>
+
           </div>
 
-          <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+
+          <div
+            class="grid gap-6 md:grid-cols-2 xl:grid-cols-4"
+          >
+
             {
               steps.map((step) => (
-                <article class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-7">
-                  <div class="mb-8 text-5xl font-black tracking-tighter text-green-500">
+
+                <article
+                  class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-7"
+                >
+
+                  <div
+                    class="mb-8 text-5xl font-black tracking-tighter text-green-500"
+                  >
                     {step.number}
                   </div>
 
-                  <h3 class="mb-4 text-xl font-black uppercase tracking-tight text-white">
+
+                  <h3
+                    class="mb-4 text-xl font-black uppercase tracking-tight text-white"
+                  >
                     {step.title}
                   </h3>
 
-                  <p class="text-sm font-medium leading-relaxed text-slate-400">
+
+                  <p
+                    class="text-sm font-medium leading-relaxed text-slate-400"
+                  >
                     {step.text}
                   </p>
+
                 </article>
+
               ))
             }
+
           </div>
+
         </div>
+
       </section>
 
-      <section class="bg-white py-24">
-        <div class="container mx-auto max-w-4xl px-4">
-          <div class="mb-14 text-center">
-            <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600">
+
+      <!-- FAQ -->
+
+      <section
+        class="bg-white py-24"
+      >
+
+        <div
+          class="container mx-auto max-w-4xl px-4"
+        >
+
+          <div
+            class="mb-14 text-center"
+          >
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-600"
+            >
               FAQ
             </span>
 
-            <h2 class="text-4xl font-black uppercase tracking-tighter text-slate-950 md:text-6xl">
+
+            <h2
+              class="text-4xl font-black uppercase tracking-tighter text-slate-950 md:text-6xl"
+            >
               Najczęstsze pytania
             </h2>
+
           </div>
 
+
           <div class="space-y-4">
+
             {
               faqs.map((faq) => (
-                <details class="group rounded-[2rem] border border-slate-200 bg-white p-7 transition-all hover:bg-slate-50">
-                  <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-black uppercase tracking-tight text-slate-950">
+
+                <details
+                  class="group rounded-[2rem] border border-slate-200 bg-white p-7 transition-all hover:bg-slate-50"
+                >
+
+                  <summary
+                    class="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-black uppercase tracking-tight text-slate-950"
+                  >
                     {faq.q}
-                    <span class="text-2xl leading-none text-green-600 transition-transform group-open:rotate-180">
+
+                    <span
+                      class="text-2xl leading-none text-green-600 transition-transform group-open:rotate-180"
+                    >
                       ↓
                     </span>
                   </summary>
 
-                  <p class="mt-6 border-t border-slate-100 pt-6 text-sm font-medium leading-relaxed text-slate-600">
+
+                  <p
+                    class="mt-6 border-t border-slate-100 pt-6 text-sm font-medium leading-relaxed text-slate-600"
+                  >
                     {faq.a}
                   </p>
+
                 </details>
+
               ))
             }
+
           </div>
+
         </div>
+
       </section>
 
-      <section class="bg-slate-50 py-24">
-        <div class="container mx-auto px-4">
-          <div class="relative overflow-hidden rounded-[3rem] bg-slate-950 p-8 text-white md:p-14 lg:p-16">
-            <div class="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-green-600/20 blur-[100px]"></div>
-            <div class="absolute -left-24 bottom-0 h-80 w-80 rounded-full bg-cyan-500/10 blur-[100px]"></div>
 
-            <div class="relative z-10 grid gap-10 lg:grid-cols-[1.4fr_0.8fr] lg:items-center">
+      <!-- CTA -->
+
+      <section
+        class="bg-slate-50 py-24"
+      >
+
+        <div
+          class="container mx-auto px-4"
+        >
+
+          <div
+            class="relative overflow-hidden rounded-[3rem] bg-slate-950 p-8 text-white md:p-14 lg:p-16"
+          >
+
+            <div
+              class="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-green-600/20 blur-[100px]"
+            ></div>
+
+
+            <div
+              class="absolute -left-24 bottom-0 h-80 w-80 rounded-full bg-cyan-500/10 blur-[100px]"
+            ></div>
+
+
+            <div
+              class="relative z-10 grid gap-10 lg:grid-cols-[1.4fr_0.8fr] lg:items-center"
+            >
+
               <div>
-                <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-400">
+
+                <span
+                  class="mb-4 inline-block text-xs font-black uppercase tracking-[0.25em] text-green-400"
+                >
                   Bezpłatna wycena
                 </span>
 
-                <h2 class="mb-6 text-3xl font-black uppercase tracking-tighter md:text-5xl">
+
+                <h2
+                  class="mb-6 text-3xl font-black uppercase tracking-tighter md:text-5xl"
+                >
                   Masz plik, raport albo proces do automatyzacji?
                 </h2>
 
-                <p class="max-w-3xl text-lg font-medium leading-relaxed text-slate-400">
-                  Podeślij opis, screen albo przykład. Sprawdzimy, czy wystarczy mała poprawka,
-                  arkusz Excel, skrypt Python, integracja API, KSeF do Excela albo dashboard Power BI.
+
+                <p
+                  class="max-w-3xl text-lg font-medium leading-relaxed text-slate-400"
+                >
+                  Podeślij opis, screen albo przykład.
+                  Sprawdzimy, czy wystarczy mała poprawka,
+                  arkusz Excel, automatyzacja plików,
+                  integracja API, SharePoint,
+                  KSeF do Excela albo dashboard Power BI.
                 </p>
+
               </div>
 
-              <div class="flex flex-col gap-4">
+
+              <div
+                class="flex flex-col gap-4"
+              >
+
                 <a
                   href="/kontakt/"
                   class="inline-flex items-center justify-center gap-3 rounded-2xl bg-green-600 px-8 py-5 text-center text-sm font-black uppercase tracking-widest text-white transition-all hover:-translate-y-1 hover:bg-green-500"
                 >
                   Poproś o wycenę
-                  <i class="fas fa-arrow-right text-xs"></i>
+
+                  <i
+                    class="fas fa-arrow-right text-xs"
+                  ></i>
                 </a>
+
 
                 <a
                   href="/realizacje/"
@@ -615,16 +1407,26 @@ const cennikSchema = {
                 >
                   Zobacz realizacje
                 </a>
+
               </div>
+
             </div>
+
           </div>
+
         </div>
+
       </section>
+
     </main>
 
+
     <Footer />
+
   </div>
+
 </BaseLayout>
+
 
 <style is:global>
   html {

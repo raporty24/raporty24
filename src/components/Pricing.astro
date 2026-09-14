@@ -1,54 +1,56 @@
 ---
-// Cennik HOME teaser — spójny z pełnym cennikiem /cennik/
+// Cennik HOME teaser — jasna wersja
+// Spójny z pełnym cennikiem /cennik/
+
 const offers = [
   {
-    label: "Najłatwiejszy start",
-    title: "Raport lub kalkulator",
-    price: "od 900 zł",
+    label: "Mały zakres",
+    title: "Małe poprawki i usprawnienia",
+    price: "od 390 zł",
     description:
-      "Dla firm, które chcą szybciej liczyć koszty, przygotowywać oferty albo widzieć sprzedaż, marżę i wyniki w jednym miejscu.",
+      "Dla firm, które chcą naprawić istniejący plik, dodać prostą automatyzację albo usprawnić jeden konkretny krok bez dużego wdrożenia.",
     items: [
-      "raport sprzedaży, kosztów lub marży",
-      "kalkulator ofertowy lub kosztowy",
-      "zestawienie dla właściciela firmy",
-      "eksport do Excel / CSV / PDF",
+      "poprawa istniejącego pliku Excel",
+      "małe makro lub przycisk",
+      "optymalizacja wolnego skoroszytu",
+      "drobny eksport lub automatyzacja",
     ],
-    cta: "Zapytaj o raport",
-    href: "/kontakt/",
+    cta: "Zapytaj o małe zlecenie",
+    href: "/kontakt/#formularz",
     accent: "green",
     featured: false,
   },
   {
-    label: "Najczęściej wybierane",
-    title: "Automatyzacja procesu",
-    price: "wycena w 24h",
+    label: "Raporty i automatyzacje",
+    title: "Raport lub kalkulator",
+    price: "od 800 zł",
     description:
-      "Dla procesów, w których firma codziennie kopiuje dane, pilnuje statusów, sprawdza faktury, zamówienia, magazyn albo dokumenty.",
+      "Dla firm, które chcą ograniczyć ręczne raporty, szybciej liczyć koszty i marżę albo przygotować kalkulator dopasowany do własnego procesu.",
     items: [
-      "faktury, dokumenty i statusy płatności",
-      "zamówienia, WZ, magazyn i kompletacja",
-      "e-commerce, paczki i zamówienia problemowe",
-      "automatyczne pobieranie i porządkowanie danych",
+      "automatyczny raport Excel / Power Query",
+      "kalkulator ofertowy lub kosztowy",
+      "zestawienie sprzedaży, kosztów lub marży",
+      "eksport do Excel / CSV / PDF",
     ],
     cta: "Opisz proces",
-    href: "/kontakt/",
+    href: "/kontakt/#formularz",
     accent: "green",
     featured: true,
   },
   {
     label: "Większy zakres",
-    title: "Aplikacja, API lub KSeF",
-    price: "od 1800 zł",
+    title: "Integracja, aplikacja lub BI",
+    price: "od 1200 zł",
     description:
-      "Dla firm, które potrzebują narzędzia działającego pod konkretny proces: panelu, aplikacji lokalnej, integracji API albo automatyzacji dokumentów.",
+      "Dla procesów wymagających połączenia kilku źródeł danych, integracji z systemem, Power BI, KSeF albo dedykowanego narzędzia.",
     items: [
       "KSeF, XML, CSV, PDF i pliki firmowe",
       "integracje API i dane z systemów",
-      "panel administracyjny lub aplikacja lokalna",
-      "Python, SQL, C#, Power BI jako technologia pod spodem",
+      "Power BI, SharePoint i Microsoft 365",
+      "aplikacje, dodatki Excel, C# lub Python jako technologia",
     ],
     cta: "Zapytaj o wdrożenie",
-    href: "/kontakt/",
+    href: "/kontakt/#formularz",
     accent: "indigo",
     featured: false,
   },
@@ -64,209 +66,394 @@ const processAreas = [
 ];
 ---
 
-<section id="cennik" class="py-24 bg-slate-950 relative overflow-hidden border-t border-white/5">
-  <div class="absolute inset-0 opacity-20">
+<section
+  id="cennik"
+  class="relative overflow-hidden border-t border-slate-100 bg-white py-24 text-slate-950"
+>
+  <!-- DELIKATNE TŁO -->
+
+  <div
+    class="pointer-events-none absolute inset-0 opacity-40"
+    aria-hidden="true"
+  >
     <div
-      class="absolute inset-0 bg-[radial-gradient(#1e293b_1.5px,transparent_1.5px)] [background-size:32px_32px]"
-    >
-    </div>
+      class="absolute inset-0 bg-[radial-gradient(#e2e8f0_1.25px,transparent_1.25px)] [background-size:32px_32px]"
+    ></div>
   </div>
 
-  <div class="absolute -right-24 top-0 h-96 w-96 rounded-full bg-green-600/10 blur-[120px]"></div>
-  <div class="absolute -left-24 bottom-0 h-96 w-96 rounded-full bg-cyan-500/10 blur-[120px]"></div>
+  <div
+    class="pointer-events-none absolute -right-24 top-0 h-96 w-96 rounded-full bg-green-500/[0.06] blur-[120px]"
+    aria-hidden="true"
+  ></div>
 
-  <div class="container mx-auto px-4 relative z-10">
-    <div class="grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-end mb-16">
-      <header class="max-w-4xl">
+  <div
+    class="pointer-events-none absolute -left-24 bottom-0 h-96 w-96 rounded-full bg-sky-500/[0.05] blur-[120px]"
+    aria-hidden="true"
+  ></div>
+
+
+  <div
+    class="container relative z-10 mx-auto px-4"
+  >
+
+    <!-- ================================================= -->
+    <!-- NAGŁÓWEK -->
+    <!-- ================================================= -->
+
+    <div
+      class="mb-16 grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-end"
+    >
+
+      <header
+        class="max-w-4xl"
+      >
+
         <div
-          class="inline-flex items-center gap-3 mb-6 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20"
+          class="mb-6 inline-flex items-center gap-3 rounded-full border border-green-500/20 bg-green-500/10 px-4 py-2"
         >
-          <span class="flex h-2 w-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]"></span>
-          <span class="text-[10px] font-black uppercase tracking-[0.2em] text-green-400">
+          <span
+            class="flex h-2 w-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]"
+            aria-hidden="true"
+          ></span>
+
+          <span
+            class="text-[10px] font-black uppercase tracking-[0.2em] text-green-700"
+          >
             Cennik orientacyjny
           </span>
         </div>
 
-        <h2 class="text-5xl lg:text-7xl font-black tracking-tighter text-white mb-6 leading-[0.95]">
+
+        <h2
+          class="mb-6 text-5xl font-black leading-[0.95] tracking-tighter text-slate-950 lg:text-7xl"
+        >
           Ile kosztuje
-          <span class="block text-green-500 italic">uporządkowanie procesu?</span>
+
+          <span
+            class="block italic text-green-600"
+          >
+            uporządkowanie procesu?
+          </span>
         </h2>
 
-        <p class="text-xl text-slate-400 max-w-3xl leading-relaxed">
-          Nie wyceniamy samego „Excela”, „Pythona” albo „API”. Patrzymy na proces:
-          ile danych trzeba zebrać, co firma robi ręcznie i jaki efekt ma dostać na końcu —
-          raport, kalkulator, panel, aplikację albo automatyczny eksport.
+
+        <p
+          class="max-w-3xl text-xl leading-relaxed text-slate-600"
+        >
+          Nie wyceniamy samego „Excela”, „Pythona” albo „API”.
+          Patrzymy na proces: ile danych trzeba zebrać,
+          co firma robi ręcznie i jaki efekt ma dostać na końcu —
+          raport, kalkulator, panel, aplikację
+          albo automatyczny eksport.
         </p>
 
-        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+
+        <div
+          class="mt-8 flex flex-col gap-4 sm:flex-row"
+        >
+
           <a
-            href="/kontakt/"
-            class="bg-green-600 hover:bg-green-500 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-xs transition-all shadow-xl shadow-green-900/20 text-center flex items-center justify-center gap-2"
+            href="/kontakt/#formularz"
+            class="flex items-center justify-center gap-2 rounded-2xl bg-green-600 px-10 py-4 text-center text-xs font-black uppercase tracking-widest text-white shadow-xl shadow-green-600/20 transition-all hover:-translate-y-1 hover:bg-green-500"
           >
-            Poproś o wycenę <i class="fas fa-arrow-right"></i>
+            Poproś o wycenę
+
+            <i
+              class="fas fa-arrow-right"
+              aria-hidden="true"
+            ></i>
           </a>
+
 
           <a
             href="/cennik/"
-            class="border-2 border-white/15 hover:border-white/30 text-white px-10 py-4 rounded-2xl font-black uppercase tracking-widest text-xs transition-all text-center"
+            class="rounded-2xl border-2 border-slate-200 bg-white px-10 py-4 text-center text-xs font-black uppercase tracking-widest text-slate-900 transition-all hover:border-green-500 hover:text-green-600"
           >
             Zobacz pełny cennik
           </a>
+
         </div>
+
       </header>
 
-      <aside class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6">
-        <h3 class="mb-4 text-sm font-black uppercase tracking-widest text-white">
+
+      <!-- OBSZARY -->
+
+      <aside
+        class="rounded-[2rem] border border-slate-200 bg-slate-50 p-6"
+      >
+
+        <h3
+          class="mb-4 text-sm font-black uppercase tracking-widest text-slate-900"
+        >
           Przykładowe obszary
         </h3>
 
-        <div class="flex flex-wrap gap-2">
+
+        <div
+          class="flex flex-wrap gap-2"
+        >
           {
             processAreas.map((area) => (
-              <span class="rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-xs font-bold text-slate-300">
+              <span
+                class="rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-slate-600"
+              >
                 {area}
               </span>
             ))
           }
         </div>
 
-        <p class="mt-5 text-sm font-medium leading-relaxed text-slate-500">
-          Technologie dobieramy później: Excel, Power BI, Python, API, SQL, C# albo Power Automate.
+
+        <p
+          class="mt-5 text-sm font-medium leading-relaxed text-slate-500"
+        >
+          Technologię dobieramy później — od Excela i Power Query
+          po Power BI, SharePoint, API, C# i Python.
         </p>
+
       </aside>
+
     </div>
 
-    <div class="grid md:grid-cols-3 gap-8 items-stretch">
+
+    <!-- ================================================= -->
+    <!-- KARTY CENOWE -->
+    <!-- ================================================= -->
+
+    <div
+      class="grid items-stretch gap-8 md:grid-cols-3"
+    >
       {
         offers.map((offer) => (
           <article
-            class={`relative flex flex-col rounded-[2.5rem] border p-10 lg:p-12 transition-all duration-500 ${
+            class={`relative flex flex-col rounded-[2.5rem] border p-9 transition-all duration-300 lg:p-11 ${
               offer.featured
-                ? "bg-slate-900 border-green-500/30 shadow-2xl shadow-green-900/20 scale-[1.03] z-10"
-                : "bg-slate-900/40 border-slate-800 hover:bg-slate-900/60 hover:border-green-500/30"
+                ? "z-10 border-green-500/30 bg-slate-950 text-white shadow-2xl shadow-slate-300/40 md:scale-[1.03]"
+                : "border-slate-200 bg-white text-slate-950 shadow-sm hover:-translate-y-1 hover:border-green-500/30 hover:shadow-xl"
             }`}
           >
+
+            <!-- FEATURED -->
+
             {offer.featured && (
-              <div class="absolute -top-4 left-10 rounded-full bg-green-600 px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-white shadow-xl shadow-green-900/30">
-                Rekomendowane
+              <div
+                class="absolute -top-4 left-8 rounded-full bg-green-600 px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-white shadow-lg"
+              >
+                Typowy zakres
               </div>
             )}
 
+
+            <!-- LABEL -->
+
             <span
-              class={`text-[10px] font-black uppercase tracking-widest mb-4 block ${
-                offer.featured ? "text-green-400" : "text-slate-600"
+              class={`mb-4 block text-[10px] font-black uppercase tracking-widest ${
+                offer.featured
+                  ? "text-green-400"
+                  : "text-green-700"
               }`}
             >
               {offer.label}
             </span>
 
-            <h3 class="text-2xl font-black text-white mb-4 uppercase tracking-tight leading-tight">
+
+            <!-- TITLE -->
+
+            <h3
+              class={`mb-4 text-2xl font-black uppercase leading-tight tracking-tight ${
+                offer.featured
+                  ? "text-white"
+                  : "text-slate-950"
+              }`}
+            >
               {offer.title}
             </h3>
 
+
+            <!-- PRICE -->
+
             <div
-              class={`mb-2 tracking-tighter font-black ${
+              class={`mb-2 font-black tracking-tighter ${
                 offer.featured
-                  ? "text-4xl lg:text-5xl text-white"
+                  ? "text-4xl text-white lg:text-5xl"
                   : offer.accent === "indigo"
-                    ? "text-5xl text-indigo-400"
-                    : "text-5xl text-green-500"
+                    ? "text-5xl text-indigo-600"
+                    : "text-5xl text-green-600"
               }`}
             >
               {offer.price}
             </div>
 
+
             <span
-              class={`text-[11px] font-bold uppercase tracking-wider block mb-8 ${
-                offer.featured ? "text-green-500" : "text-slate-500"
+              class={`mb-8 block text-[11px] font-bold uppercase tracking-wider ${
+                offer.featured
+                  ? "text-green-400"
+                  : "text-slate-400"
               }`}
             >
-              * Wycena netto
+              * ceny netto / orientacyjne
             </span>
 
-            <p class="text-slate-400 mb-10 text-sm leading-relaxed">
+
+            <!-- DESCRIPTION -->
+
+            <p
+              class={`mb-10 text-sm leading-relaxed ${
+                offer.featured
+                  ? "text-slate-400"
+                  : "text-slate-600"
+              }`}
+            >
               {offer.description}
             </p>
 
+
+            <!-- LIST -->
+
             <ul
-              class={`space-y-4 text-[11px] font-bold uppercase tracking-wider mb-12 grow ${
-                offer.featured ? "text-slate-300" : "text-slate-500"
+              class={`mb-12 grow space-y-4 text-[11px] font-bold uppercase tracking-wider ${
+                offer.featured
+                  ? "text-slate-300"
+                  : "text-slate-500"
               }`}
             >
               {
                 offer.items.map((item) => (
-                  <li class="flex items-start gap-3">
+                  <li
+                    class="flex items-start gap-3"
+                  >
                     <i
                       class={`fas fa-check-circle mt-0.5 ${
-                        offer.accent === "indigo" ? "text-indigo-400" : "text-green-500"
+                        offer.accent === "indigo"
+                          ? "text-indigo-500"
+                          : "text-green-500"
                       }`}
-                    >
-                    </i>
-                    <span>{item}</span>
+                      aria-hidden="true"
+                    ></i>
+
+                    <span>
+                      {item}
+                    </span>
                   </li>
                 ))
               }
             </ul>
 
+
+            <!-- CTA -->
+
             <a
               href={offer.href}
-              class={`block text-center rounded-2xl font-black text-xs uppercase tracking-widest transition-all duration-300 ${
+              class={`block rounded-2xl text-center text-xs font-black uppercase tracking-widest transition-all duration-300 ${
                 offer.featured
-                  ? "py-5 bg-green-600 text-white shadow-xl shadow-green-900/40 hover:bg-green-500 hover:-translate-y-1"
-                  : "py-4 border-2 border-slate-800 text-white hover:bg-white hover:text-slate-950"
+                  ? "bg-green-600 py-5 text-white shadow-xl shadow-green-950/30 hover:-translate-y-1 hover:bg-green-500"
+                  : "border-2 border-slate-200 bg-white py-4 text-slate-950 hover:border-slate-950 hover:bg-slate-950 hover:text-white"
               }`}
             >
               {offer.cta}
             </a>
+
           </article>
         ))
       }
     </div>
 
-    <div class="mt-14 grid gap-6 rounded-[2.5rem] border border-white/10 bg-white/[0.04] p-7 md:grid-cols-3">
+
+    <!-- ================================================= -->
+    <!-- INFORMACJE -->
+    <!-- ================================================= -->
+
+    <div
+      class="mt-14 grid gap-6 rounded-[2.5rem] border border-slate-200 bg-slate-50 p-7 md:grid-cols-3 lg:p-9"
+    >
+
       <div>
-        <h3 class="mb-3 text-sm font-black uppercase tracking-widest text-white">
+
+        <h3
+          class="mb-3 text-sm font-black uppercase tracking-widest text-slate-900"
+        >
           Możesz zacząć mało
         </h3>
-        <p class="text-sm font-medium leading-relaxed text-slate-500">
-          Nie każdy temat musi być dużym wdrożeniem. Czasem wystarczy raport, kalkulator,
-          poprawa procesu albo jeden automatyczny eksport.
+
+        <p
+          class="text-sm font-medium leading-relaxed text-slate-600"
+        >
+          Nie każdy temat musi być dużym wdrożeniem.
+          Małe poprawki i usprawnienia zaczynają się
+          już od 390 zł netto, a większe projekty
+          wyceniamy po poznaniu zakresu.
         </p>
+
       </div>
 
+
       <div>
-        <h3 class="mb-3 text-sm font-black uppercase tracking-widest text-white">
+
+        <h3
+          class="mb-3 text-sm font-black uppercase tracking-widest text-slate-900"
+        >
           Najpierw zakres, potem cena
         </h3>
-        <p class="text-sm font-medium leading-relaxed text-slate-500">
-          Do wstępnej wyceny wystarczy opis procesu, screen pliku, przykład raportu albo lista
+
+        <p
+          class="text-sm font-medium leading-relaxed text-slate-600"
+        >
+          Do wstępnej wyceny wystarczy opis procesu,
+          screen pliku, przykład raportu albo lista
           czynności wykonywanych ręcznie.
         </p>
+
       </div>
+
 
       <div>
-        <h3 class="mb-3 text-sm font-black uppercase tracking-widest text-white">
+
+        <h3
+          class="mb-3 text-sm font-black uppercase tracking-widest text-slate-900"
+        >
           Dane mogą zostać lokalnie
         </h3>
-        <p class="text-sm font-medium leading-relaxed text-slate-500">
-          Przy fakturach, KSeF, dokumentach i danych firmowych możemy tworzyć narzędzia działające
-          lokalnie lub w środowisku firmy.
+
+        <p
+          class="text-sm font-medium leading-relaxed text-slate-600"
+        >
+          Przy fakturach, KSeF, dokumentach
+          i danych firmowych możemy tworzyć narzędzia
+          działające lokalnie lub w środowisku firmy.
         </p>
+
       </div>
+
     </div>
 
-    <div class="mt-10 flex flex-col items-center justify-between gap-5 rounded-[2rem] border border-green-500/20 bg-green-500/10 p-6 md:flex-row">
-      <p class="max-w-3xl text-sm font-medium leading-relaxed text-slate-300">
-        Ceny są orientacyjne i nie stanowią oferty handlowej. Dokładny koszt zależy od liczby
-        źródeł danych, reguł, użytkowników, integracji i formy wdrożenia.
+
+    <!-- ================================================= -->
+    <!-- DISCLAIMER -->
+    <!-- ================================================= -->
+
+    <div
+      class="mt-10 flex flex-col items-center justify-between gap-5 rounded-[2rem] border border-green-200 bg-green-50 p-6 md:flex-row"
+    >
+
+      <p
+        class="max-w-3xl text-sm font-medium leading-relaxed text-slate-600"
+      >
+        Ceny są orientacyjne i nie stanowią oferty handlowej.
+        Dokładny koszt zależy od liczby źródeł danych,
+        reguł, użytkowników, integracji i formy wdrożenia.
       </p>
+
 
       <a
         href="/cennik/"
-        class="inline-flex shrink-0 items-center justify-center rounded-2xl bg-white px-7 py-4 text-xs font-black uppercase tracking-widest text-slate-950 transition-all hover:-translate-y-1"
+        class="inline-flex shrink-0 items-center justify-center rounded-2xl bg-slate-950 px-7 py-4 text-xs font-black uppercase tracking-widest text-white transition-all hover:-translate-y-1 hover:bg-green-600"
       >
         Pełny cennik
       </a>
+
     </div>
+
   </div>
 </section>

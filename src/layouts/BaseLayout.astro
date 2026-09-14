@@ -1,104 +1,320 @@
 ---
 import "../styles/global.css";
 
-const { 
-  title, 
-  description, 
-  image = "/logo.webp", 
-  url, 
-  structuredData = null 
+const {
+  title,
+  description,
+  image = "/logo.webp",
+  url,
+  structuredData = null,
+  noindex = false,
+  ogType = "website",
 } = Astro.props;
 
-const businessSchema = {
+const siteUrl = "https://raporty24.pl";
+
+const defaultTitle =
+  "Raporty24 | Automatyzacja procesów, Excel, Power BI i API";
+
+const defaultDescription =
+  "Automatyzujemy powtarzalne procesy i pracę z danymi w firmach. Excel, Power BI, Python, API i dedykowane narzędzia.";
+
+const pageTitle = title || defaultTitle;
+const pageDescription = description || defaultDescription;
+
+/*
+ * Canonical
+ *
+ * new URL() zabezpiecza nas również na wypadek,
+ * gdyby do komponentu został przekazany względny URL.
+ */
+const canonicalUrl = url
+  ? new URL(url, siteUrl).toString()
+  : new URL(Astro.url.pathname, siteUrl).toString();
+
+/*
+ * Pełny URL grafiki dla Open Graph / social media.
+ */
+const ogImageUrl = new URL(image, siteUrl).toString();
+
+/*
+ * Organization i WebSite wystarczą na stronie głównej.
+ *
+ * Nie oznaczamy całej witryny jako LocalBusiness,
+ * jeżeli Raporty24 nie jest placówką stacjonarną
+ * dostępną dla klientów pod konkretnym adresem.
+ */
+const isHomePage = Astro.url.pathname === "/";
+
+const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Raporty24 - Ekspert Power BI i Excel",
-  "url": "https://raporty24.pl",
-  "logo": "https://raporty24.pl/logo.webp",
-  "image": "https://raporty24.pl/logo.webp",
-  "telephone": "+48784391076",
-  "priceRange": "od 400 zł",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Katowice",
-    "addressRegion": "Slask",
-    "postalCode": "40-860",
-    "addressCountry": "PL"
+  "@type": "Organization",
+  "@id": `${siteUrl}/#organization`,
+
+  name: "Raporty24",
+  url: siteUrl,
+
+  logo: {
+    "@type": "ImageObject",
+    url: `${siteUrl}/logo.webp`,
   },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "50.2649",
-    "longitude": "19.0238"
-  },
-  "description": "Profesjonalne usługi Power BI, tworzenie zaawansowanych arkuszy Excel i automatyzacja procesów biznesowych.",
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-    "opens": "08:00",
-    "closes": "22:00"
-  }
+
+  image: `${siteUrl}/logo.webp`,
+
+  telephone: "+48729790150",
+
+  description:
+    "Automatyzacja procesów i danych dla firm. Excel, Power BI, Python, integracje API i dedykowane narzędzia usprawniające powtarzalną pracę.",
 };
 
-const siteUrl = "https://raporty24.pl";
-const canonicalUrl = url ?? new URL(Astro.url.pathname, siteUrl).toString();
-const ogImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
+
+  url: siteUrl,
+  name: "Raporty24",
+
+  publisher: {
+    "@id": `${siteUrl}/#organization`,
+  },
+};
+
+/*
+ * Pozwala przekazywać z podstron:
+ *
+ * structuredData={schema}
+ *
+ * albo w przyszłości:
+ *
+ * structuredData={[schema1, schema2]}
+ */
+const structuredDataList = structuredData
+  ? Array.isArray(structuredData)
+    ? structuredData
+    : [structuredData]
+  : [];
 ---
 
 <!doctype html>
+
 <html lang="pl" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/favicon.png" />
 
-    <!-- Google Tag Manager -->
-<!-- Google Tag Manager -->
-<script is:inline>
-  // @ts-nocheck
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    'gtm.start': new Date().getTime(),
-    event: 'gtm.js'
-  });
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
 
-  (function () {
-    var firstScript = document.getElementsByTagName('script')[0];
-    var gtmScript = document.createElement('script');
+    <!-- INDEXOWANIE -->
+    <meta
+      name="robots"
+      content={
+        noindex
+          ? "noindex,nofollow"
+          : "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
+      }
+    />
 
-    gtmScript.async = true;
-    gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-WPF9W73V';
+    <!-- TITLE + DESCRIPTION -->
+    <title>{pageTitle}</title>
 
-    if (firstScript && firstScript.parentNode) {
-      firstScript.parentNode.insertBefore(gtmScript, firstScript);
+    <meta
+      name="description"
+      content={pageDescription}
+    />
+
+    <!-- CANONICAL -->
+    <link
+      rel="canonical"
+      href={canonicalUrl}
+    />
+
+    <!-- FAVICON -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="/favicon.png"
+    />
+
+    <link
+      rel="apple-touch-icon"
+      href="/favicon.png"
+    />
+
+    <!-- OPEN GRAPH -->
+    <meta
+      property="og:locale"
+      content="pl_PL"
+    />
+
+    <meta
+      property="og:type"
+      content={ogType}
+    />
+
+    <meta
+      property="og:site_name"
+      content="Raporty24"
+    />
+
+    <meta
+      property="og:title"
+      content={pageTitle}
+    />
+
+    <meta
+      property="og:description"
+      content={pageDescription}
+    />
+
+    <meta
+      property="og:url"
+      content={canonicalUrl}
+    />
+
+    <meta
+      property="og:image"
+      content={ogImageUrl}
+    />
+
+    <meta
+      property="og:image:alt"
+      content={pageTitle}
+    />
+
+    <!-- TWITTER / X -->
+    <meta
+      name="twitter:card"
+      content="summary_large_image"
+    />
+
+    <meta
+      name="twitter:title"
+      content={pageTitle}
+    />
+
+    <meta
+      name="twitter:description"
+      content={pageDescription}
+    />
+
+    <meta
+      name="twitter:image"
+      content={ogImageUrl}
+    />
+
+    <!-- PODSTAWOWE SCHEMA FIRMY -->
+    {
+      isHomePage && (
+        <>
+          <script
+            type="application/ld+json"
+            set:html={JSON.stringify(organizationSchema)}
+          />
+
+          <script
+            type="application/ld+json"
+            set:html={JSON.stringify(websiteSchema)}
+          />
+        </>
+      )
     }
-  })();
-</script>
-<!-- End Google Tag Manager -->
 
-    <title>{title}</title>
-    {description && <meta name="description" content={description} />}
-    
-    <script type="application/ld+json" set:html={JSON.stringify(businessSchema)} />
-    {structuredData && (
-      <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
-    )}
-    
-    <link rel="canonical" href={canonicalUrl} />
-    <meta property="og:title" content={title} />
-    <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content={ogImageUrl} />
+    <!-- SCHEMA KONKRETNEJ PODSTRONY -->
+    {
+      structuredDataList.map((schema) => (
+        <script
+          type="application/ld+json"
+          set:html={JSON.stringify(schema)}
+        />
+      ))
+    }
 
-    <script defer src="/scripts/site.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- WCZEŚNIEJSZE POŁĄCZENIA Z ZEWNĘTRZNYMI ZASOBAMI -->
+    <link
+      rel="preconnect"
+      href="https://www.googletagmanager.com"
+    />
+
+    <link
+      rel="preconnect"
+      href="https://cdn.jsdelivr.net"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="preconnect"
+      href="https://cdnjs.cloudflare.com"
+      crossorigin="anonymous"
+    />
+
+    <!-- GOOGLE TAG MANAGER -->
+    <script is:inline>
+      // @ts-nocheck
+
+      window.dataLayer = window.dataLayer || [];
+
+      window.dataLayer.push({
+        "gtm.start": new Date().getTime(),
+        event: "gtm.js",
+      });
+
+      (function () {
+        var firstScript =
+          document.getElementsByTagName("script")[0];
+
+        var gtmScript =
+          document.createElement("script");
+
+        gtmScript.async = true;
+
+        gtmScript.src =
+          "https://www.googletagmanager.com/gtm.js?id=GTM-WPF9W73V";
+
+        if (
+          firstScript &&
+          firstScript.parentNode
+        ) {
+          firstScript.parentNode.insertBefore(
+            gtmScript,
+            firstScript
+          );
+        }
+      })();
+    </script>
+
+    <!-- STYLE / SKRYPTY -->
+    <script
+      defer
+      src="/scripts/site.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
   </head>
+
   <body class="bg-white antialiased">
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WPF9W73V"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+
+    <!-- GOOGLE TAG MANAGER - NOSCRIPT -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-WPF9W73V"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe>
+    </noscript>
+
     <slot />
+
   </body>
 </html>

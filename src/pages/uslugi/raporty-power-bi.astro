@@ -5,48 +5,1306 @@ import HeroService from "../../components/HeroService.astro";
 import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
 
-const title = "Analityczne Raporty Power BI – Szczegółowa analiza danych | Raporty24";
-const description = "Budujemy zaawansowane raporty Power BI z funkcjami drill-down. Analizuj dane na każdym poziomie szczegółowości. Sprawdź!";
-// 1. DODAJ TE DWIE LINIE:
-const ogImage = "/biuro3.webp"; // Możesz tu dać dedykowaną grafikę bazy klientów, jeśli ją masz
-const currentUrl = "https://raporty24.pl/uslugi/raporty-power-bi/"; // upewnij się, że taki jest slug tej strony
+const title =
+  "Raporty Power BI dla firm | Analiza danych i drill-down | Raporty24";
+
+const description =
+  "Tworzymy raporty Power BI do szczegółowej analizy sprzedaży, finansów, magazynu i operacji. Drill-down, filtrowanie, analiza danych i raporty dopasowane do procesu firmy.";
+
+const ogImage = "/biuro3.webp";
+
+const currentUrl =
+  "https://raporty24.pl/uslugi/raporty-power-bi/";
+
 export const service = {
   title: "Raporty Power BI",
-  order: 10,
+  order: 40,
   menu: true,
-  category: "Excel", // opcjonalnie (do grupowania)
+  category: "Raportowanie i BI",
+  description:
+    "Szczegółowe raporty analityczne Power BI dla sprzedaży, finansów, magazynu i procesów operacyjnych.",
+};
+
+
+/*
+ * =========================================================
+ * TYPY RAPORTÓW
+ * =========================================================
+ */
+
+const reportTypes = [
+  {
+    title: "Raport sprzedaży",
+    description:
+      "Analiza sprzedaży według klientów, produktów, handlowców, regionów i okresów wraz z możliwością przejścia do szczegółowych danych.",
+    icon: "fas fa-chart-line",
+  },
+
+  {
+    title: "Raport finansowy",
+    description:
+      "Przychody, koszty, marża, budżet, wykonanie i inne wskaźniki finansowe przygotowane zgodnie z logiką firmy.",
+    icon: "fas fa-coins",
+  },
+
+  {
+    title: "Raport magazynowy",
+    description:
+      "Stany, rotacja, zapasy, ruchy magazynowe i analiza produktów wymagających uwagi.",
+    icon: "fas fa-boxes",
+  },
+
+  {
+    title: "Raport operacyjny",
+    description:
+      "Status procesów, zleceń, realizacji i pracy zespołu przedstawiony w układzie dopasowanym do codziennych potrzeb.",
+    icon: "fas fa-cogs",
+  },
+
+  {
+    title: "Raport klientów",
+    description:
+      "Analiza klientów, segmentów, sprzedaży, rentowności i historii współpracy.",
+    icon: "fas fa-users",
+  },
+
+  {
+    title: "Raport zarządczy",
+    description:
+      "Połączenie najważniejszych wyników z możliwością przejścia od informacji ogólnej do źródła konkretnej zmiany.",
+    icon: "fas fa-briefcase",
+  },
+];
+
+
+/*
+ * =========================================================
+ * MOŻLIWOŚCI ANALITYCZNE
+ * =========================================================
+ */
+
+const analysisFeatures = [
+  {
+    title: "Drill-down",
+    description:
+      "Przechodzenie od wyniku ogólnego do niższego poziomu, np. firma → region → oddział → handlowiec.",
+    icon: "fas fa-search",
+  },
+
+  {
+    title: "Drill-through",
+    description:
+      "Przejście z wybranego wyniku do osobnej strony zawierającej szczegółowe dane dotyczące konkretnego klienta, produktu lub procesu.",
+    icon: "fas fa-arrow-right",
+  },
+
+  {
+    title: "Dynamiczne filtry",
+    description:
+      "Analiza raportu według okresu, produktu, klienta, działu, lokalizacji lub innych wymiarów biznesowych.",
+    icon: "fas fa-filter",
+  },
+
+  {
+    title: "Porównanie okresów",
+    description:
+      "Porównania rok do roku, miesiąc do miesiąca, plan vs wykonanie i inne analizy zmian w czasie.",
+    icon: "fas fa-calendar-alt",
+  },
+
+  {
+    title: "Tabele szczegółowe",
+    description:
+      "Możliwość uzupełnienia wizualizacji o szczegółowe dane potrzebne analitykom i użytkownikom operacyjnym.",
+    icon: "fas fa-table",
+  },
+
+  {
+    title: "Eksport i dalsza analiza",
+    description:
+      "W zależności od konfiguracji użytkownik może wykorzystać dane lub widoki raportu w dalszej pracy.",
+    icon: "fas fa-file-export",
+  },
+];
+
+
+/*
+ * =========================================================
+ * ŹRÓDŁA
+ * =========================================================
+ */
+
+const sources = [
+  "Excel",
+  "CSV",
+  "SharePoint",
+  "OneDrive",
+  "SQL",
+  "ERP",
+  "CRM",
+  "API",
+];
+
+
+/*
+ * =========================================================
+ * PROCES
+ * =========================================================
+ */
+
+const process = [
+  {
+    step: "01",
+    title: "Określamy pytania",
+    description:
+      "Ustalamy, jakie decyzje ma wspierać raport i jakich informacji potrzebują użytkownicy.",
+  },
+
+  {
+    step: "02",
+    title: "Analizujemy dane",
+    description:
+      "Sprawdzamy dostępne źródła, strukturę informacji, jakość danych i możliwość ich połączenia.",
+  },
+
+  {
+    step: "03",
+    title: "Budujemy model",
+    description:
+      "Przygotowujemy relacje, Power Query i miary potrzebne do prawidłowej analizy danych.",
+  },
+
+  {
+    step: "04",
+    title: "Projektujemy raport",
+    description:
+      "Budujemy strony raportu, filtry, szczegóły i sposób przechodzenia pomiędzy poziomami analizy.",
+  },
+
+  {
+    step: "05",
+    title: "Weryfikujemy wyniki",
+    description:
+      "Porównujemy obliczenia ze źródłami i sprawdzamy raport na rzeczywistych przypadkach.",
+  },
+
+  {
+    step: "06",
+    title: "Przekazujemy do pracy",
+    description:
+      "Ustalamy sposób publikacji, dostęp użytkowników i dalsze wykorzystanie raportu.",
+  },
+];
+
+
+/*
+ * =========================================================
+ * FAQ
+ * =========================================================
+ */
+
+const faqs = [
+  {
+    question:
+      "Czym raport Power BI różni się od dashboardu?",
+
+    answer:
+      "Dashboard koncentruje się zwykle na szybkim przeglądzie najważniejszych KPI. Raport analityczny może mieć więcej stron, szczegółowych tabel, filtrów i możliwości przechodzenia do danych źródłowych. W praktyce oba podejścia mogą być częścią jednego rozwiązania.",
+  },
+
+  {
+    question:
+      "Czy raport Power BI może pokazywać pojedyncze transakcje?",
+
+    answer:
+      "Tak, jeśli odpowiedni poziom szczegółowości znajduje się w modelu danych. Można przygotować raport tak, aby użytkownik przechodził od wyniku ogólnego do szczegółowych rekordów.",
+  },
+
+  {
+    question:
+      "Czy raport może pobierać dane z Excela?",
+
+    answer:
+      "Tak. Excel może być jednym z głównych źródeł danych, a raport może korzystać również z wielu plików lub danych przygotowanych wcześniej w Power Query.",
+  },
+
+  {
+    question:
+      "Czy raport Power BI może korzystać z SharePoint?",
+
+    answer:
+      "Tak. W odpowiednio skonfigurowanym środowisku raport może korzystać z danych lub plików znajdujących się w SharePoint lub OneDrive.",
+  },
+
+  {
+    question:
+      "Czy można połączyć dane z kilku działów?",
+
+    answer:
+      "Tak. Jeżeli dane posiadają odpowiednie relacje i jakość, można połączyć np. sprzedaż, produkty, klientów, koszty i magazyn w jednym modelu analitycznym.",
+  },
+
+  {
+    question:
+      "Czy raport może zawierać plan i wykonanie?",
+
+    answer:
+      "Tak. Jeżeli dostępne są dane planistyczne i rzeczywiste, możemy przygotować odpowiednie miary i porównania pokazujące wykonanie, odchylenia oraz zmiany w czasie.",
+  },
+
+  {
+    question:
+      "Czy Power BI może zastąpić raport przygotowywany co miesiąc w Excelu?",
+
+    answer:
+      "W części przypadków tak, ale nie zawsze trzeba całkowicie rezygnować z Excela. Możemy pozostawić Excel w procesie operacyjnym, a Power BI wykorzystać do analizy i prezentacji wyników.",
+  },
+
+  {
+    question:
+      "Czy raport może aktualizować się automatycznie?",
+
+    answer:
+      "Jest to możliwe w zależności od źródła danych, konfiguracji środowiska, sposobu publikacji i posiadanych licencji. Mechanizm odświeżania ustalamy dla konkretnego rozwiązania.",
+  },
+
+  {
+    question:
+      "Czy można poprawić istniejący raport Power BI?",
+
+    answer:
+      "Tak. Możemy przeanalizować obecny model danych, Power Query, miary DAX, wydajność, strukturę stron oraz sposób prezentacji danych.",
+  },
+
+  {
+    question:
+      "Czy raporty Power BI można przeglądać na macOS?",
+
+    answer:
+      "Użytkownik może korzystać z odpowiednio udostępnionych raportów Power BI przez obsługiwaną przeglądarkę. Power BI Desktop, używany do tworzenia raportów, jest aplikacją przeznaczoną dla Windows.",
+  },
+];
+
+
+/*
+ * =========================================================
+ * STRUCTURED DATA
+ * =========================================================
+ */
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+
+  "@type": "Service",
+
+  name:
+    "Raporty Power BI dla firm",
+
+  provider: {
+    "@type": "Organization",
+
+    "@id":
+      "https://raporty24.pl/#organization",
+
+    name:
+      "Raporty24",
+
+    url:
+      "https://raporty24.pl/",
+  },
+
+  areaServed: {
+    "@type": "Country",
+    name: "Polska",
+  },
+
+  serviceType:
+    "Raporty Power BI, analiza danych, raportowanie operacyjne i analityczne",
+
+  url:
+    currentUrl,
+
+  description,
+};
+
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+
+  "@type": "BreadcrumbList",
+
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Raporty24",
+      item: "https://raporty24.pl/",
+    },
+
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Usługi",
+      item: "https://raporty24.pl/uslugi/",
+    },
+
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Raporty Power BI",
+      item: currentUrl,
+    },
+  ],
+};
+
+
+const faqSchema = {
+  "@context": "https://schema.org",
+
+  "@type": "FAQPage",
+
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+
+    name: item.question,
+
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
 };
 ---
 
-<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
-  <div x-data="app" x-cloak>
+<BaseLayout
+  title={title}
+  description={description}
+  image={ogImage}
+  url={currentUrl}
+  structuredData={[
+    serviceSchema,
+    breadcrumbSchema,
+    faqSchema
+  ]}
+>
+
+  <div
+    x-data="app"
+    x-cloak
+  >
+
     <Header />
-    <HeroService 
-      title="Operacyjne" 
-      highlight="Raporty Power BI" 
-      subtitle="Zejdź do poziomu pojedynczej transakcji. Tworzymy raporty analityczne, które pozwalają na głęboką analizę przyczyn Twoich wyników (Root Cause Analysis)."
+
+
+    <!-- ================================================= -->
+    <!-- HERO -->
+    <!-- ================================================= -->
+
+    <HeroService
+      eyebrow="Szczegółowa analiza danych"
+      title="Raporty"
+      highlight="Power BI"
+      subtitle="Tworzymy raporty analityczne i operacyjne, które pozwalają przejść od wyniku ogólnego do szczegółowych danych. Sprzedaż, finanse, klienci, magazyn i procesy firmy w jednym uporządkowanym modelu."
+      ctaText="Opisz potrzebny raport"
     />
 
-    <section class="py-24 bg-slate-950 text-white">
+
+    <!-- ================================================= -->
+    <!-- WPROWADZENIE -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
       <div class="container mx-auto px-4">
-        <div class="grid md:grid-cols-2 gap-16 items-center">
-          <div class="p-10 rounded-[50px] bg-white/5 border border-white/10">
-            <h3 class="text-3xl font-bold mb-6">Analiza Drill-Down</h3>
-            <p class="text-slate-400 text-lg">Widzisz ogólny wynik sprzedaży? Kliknij w region, potem w miasto, a na końcu w konkretnego handlowca. Wszystko w jednym widoku.</p>
-          </div>
+
+        <div
+          class="grid gap-16 lg:grid-cols-2 lg:items-center"
+        >
+
           <div>
-            <h2 class="text-4xl font-black uppercase mb-8 tracking-tighter text-green-500">Raportowanie 360°</h2>
-            <ul class="space-y-4">
-              <li class="flex items-center gap-3"><i class="fas fa-chevron-right text-green-500"></i> Dynamiczne filtrowanie dat</li>
-              <li class="flex items-center gap-3"><i class="fas fa-chevron-right text-green-500"></i> Eksport widoków do PDF/PPT</li>
-              <li class="flex items-center gap-3"><i class="fas fa-chevron-right text-green-500"></i> Dostęp przez przeglądarkę WWW</li>
-            </ul>
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
+              Raport analityczny Power BI
+            </span>
+
+
+            <h2
+              class="mb-8 text-4xl font-black leading-tight tracking-tighter md:text-6xl"
+            >
+              Wynik mówi co się stało.
+              Dobry raport pomaga sprawdzić dlaczego.
+            </h2>
+
+
+            <div
+              class="space-y-6 text-lg leading-relaxed text-slate-600"
+            >
+
+              <p>
+                Informacja, że sprzedaż wzrosła lub spadła,
+                to dopiero początek analizy.
+              </p>
+
+
+              <p>
+                Raport Power BI może pozwolić przejść dalej:
+                do konkretnego regionu, klienta, produktu,
+                handlowca lub pojedynczego rekordu.
+              </p>
+
+
+              <p>
+                <strong class="text-slate-950">
+                  Projektujemy raporty tak, aby użytkownik
+                  mógł samodzielnie szukać przyczyn wyniku,
+                  zamiast każdorazowo prosić o nowe zestawienie.
+                </strong>
+              </p>
+
+            </div>
+
+
+            <div
+              class="mt-10 flex flex-col gap-4 sm:flex-row"
+            >
+
+              <a
+                href="#kontakt"
+                class="inline-flex items-center justify-center gap-3 rounded-2xl bg-green-600 px-8 py-5 text-sm font-black uppercase tracking-widest text-white transition-all hover:-translate-y-1 hover:bg-green-500"
+              >
+                Opisz raport
+
+                <i
+                  class="fas fa-arrow-right text-xs"
+                  aria-hidden="true"
+                ></i>
+              </a>
+
+
+              <a
+                href="/uslugi/dashboardy-power-bi/"
+                class="inline-flex items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white px-8 py-5 text-sm font-black uppercase tracking-widest text-slate-950 transition-all hover:-translate-y-1 hover:border-green-500"
+              >
+                Dashboardy Power BI
+              </a>
+
+            </div>
+
           </div>
+
+
+          <!-- ANALIZA -->
+          <div
+            class="rounded-[3rem] border border-slate-100 bg-slate-50 p-8 shadow-xl shadow-slate-200/60 md:p-10"
+          >
+
+            <h3
+              class="mb-8 text-2xl font-black text-slate-950"
+            >
+              Przykład analizy
+            </h3>
+
+
+            <div class="space-y-4">
+
+              <div
+                class="rounded-2xl bg-slate-950 p-5 text-white"
+              >
+                <span
+                  class="text-[10px] font-black uppercase tracking-wider text-green-400"
+                >
+                  Wynik firmy
+                </span>
+
+                <p class="mt-1 font-bold">
+                  sprzedaż poniżej planu
+                </p>
+              </div>
+
+
+              <div
+                class="text-center font-black text-green-600"
+              >
+                ↓
+              </div>
+
+
+              <div
+                class="ml-5 rounded-2xl bg-white p-5 shadow-sm"
+              >
+                <span
+                  class="text-[10px] font-black uppercase tracking-wider text-slate-400"
+                >
+                  Region
+                </span>
+
+                <p class="mt-1 font-bold text-slate-700">
+                  gdzie wystąpiła różnica?
+                </p>
+              </div>
+
+
+              <div
+                class="text-center font-black text-green-600"
+              >
+                ↓
+              </div>
+
+
+              <div
+                class="ml-10 rounded-2xl bg-white p-5 shadow-sm"
+              >
+                <span
+                  class="text-[10px] font-black uppercase tracking-wider text-slate-400"
+                >
+                  Produkt / klient
+                </span>
+
+                <p class="mt-1 font-bold text-slate-700">
+                  co odpowiada za zmianę?
+                </p>
+              </div>
+
+
+              <div
+                class="text-center font-black text-green-600"
+              >
+                ↓
+              </div>
+
+
+              <div
+                class="ml-16 rounded-2xl border border-green-200 bg-green-50 p-5"
+              >
+                <span
+                  class="text-[10px] font-black uppercase tracking-wider text-green-700"
+                >
+                  Szczegóły
+                </span>
+
+                <p class="mt-1 font-bold text-slate-800">
+                  konkretne rekordy
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
+
       </div>
+
     </section>
 
+
+    <!-- ================================================= -->
+    <!-- RODZAJE RAPORTÓW -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-950 py-24 text-white"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div class="mb-16 max-w-4xl">
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-400"
+          >
+            Raporty dla różnych obszarów firmy
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Jakie raporty Power BI możemy przygotować?
+          </h2>
+
+
+          <p
+            class="text-lg leading-relaxed text-slate-400 md:text-xl"
+          >
+            Każdy raport projektujemy pod konkretny proces,
+            odbiorców oraz dostępne dane.
+          </p>
+
+        </div>
+
+
+        <div
+          class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+        >
+
+          {
+            reportTypes.map((item) => (
+
+              <article
+                class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 transition-all hover:-translate-y-1 hover:border-green-500/50 hover:bg-white/[0.08]"
+              >
+
+                <div
+                  class="mb-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-500/10 text-green-400"
+                >
+                  <i
+                    class={`${item.icon} text-xl`}
+                    aria-hidden="true"
+                  ></i>
+                </div>
+
+
+                <h3
+                  class="mb-4 text-2xl font-black"
+                >
+                  {item.title}
+                </h3>
+
+
+                <p
+                  class="text-sm leading-relaxed text-slate-400"
+                >
+                  {item.description}
+                </p>
+
+              </article>
+
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- FUNKCJE ANALITYCZNE -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div class="mb-16 max-w-4xl">
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+          >
+            Analiza danych
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Od podsumowania do szczegółowych danych.
+          </h2>
+
+
+          <p
+            class="text-lg leading-relaxed text-slate-600 md:text-xl"
+          >
+            Power BI może dać użytkownikowi możliwość
+            samodzielnego eksplorowania danych bez tworzenia
+            kolejnych wersji raportu dla każdego pytania.
+          </p>
+
+        </div>
+
+
+        <div
+          class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+        >
+
+          {
+            analysisFeatures.map((item) => (
+
+              <article
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7"
+              >
+
+                <div
+                  class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-950 text-green-400"
+                >
+                  <i
+                    class={`${item.icon} text-xl`}
+                    aria-hidden="true"
+                  ></i>
+                </div>
+
+
+                <h3
+                  class="mb-3 text-xl font-black"
+                >
+                  {item.title}
+                </h3>
+
+
+                <p
+                  class="text-sm leading-relaxed text-slate-600"
+                >
+                  {item.description}
+                </p>
+
+              </article>
+
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- ŹRÓDŁA -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-50 py-24 text-slate-950"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div
+          class="grid gap-16 lg:grid-cols-2 lg:items-center"
+        >
+
+          <div>
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
+              Źródła danych
+            </span>
+
+
+            <h2
+              class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+            >
+              Raport może łączyć dane z różnych systemów.
+            </h2>
+
+
+            <p
+              class="mb-6 text-lg leading-relaxed text-slate-600"
+            >
+              Dane sprzedażowe mogą pochodzić z jednego miejsca,
+              koszty z drugiego, a informacje o klientach
+              z jeszcze innego systemu.
+            </p>
+
+
+            <p
+              class="text-lg leading-relaxed text-slate-600"
+            >
+              Jeżeli źródła można odpowiednio powiązać,
+              przygotowujemy wspólny model analityczny
+              dla raportu Power BI.
+            </p>
+
+          </div>
+
+
+          <div
+            class="grid grid-cols-2 gap-4 sm:grid-cols-4"
+          >
+
+            {
+              sources.map((source) => (
+
+                <div
+                  class="rounded-2xl border border-slate-200 bg-white p-5 text-center font-black text-slate-700"
+                >
+                  {source}
+                </div>
+
+              ))
+            }
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- SHAREPOINT -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div
+          class="grid gap-16 lg:grid-cols-2 lg:items-center"
+        >
+
+          <div>
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
+              Excel + SharePoint + Power BI
+            </span>
+
+
+            <h2
+              class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+            >
+              Dane operacyjne mogą pozostać tam,
+              gdzie pracuje zespół.
+            </h2>
+
+
+            <p
+              class="mb-6 text-lg leading-relaxed text-slate-600"
+            >
+              Nie zawsze trzeba przebudowywać cały sposób pracy
+              tylko dlatego, że firma chce wdrożyć raport Power BI.
+            </p>
+
+
+            <p
+              class="text-lg leading-relaxed text-slate-600"
+            >
+              Excel może nadal służyć do pracy operacyjnej,
+              SharePoint lub OneDrive do współdzielenia plików,
+              a Power BI do analizy i raportowania.
+            </p>
+
+          </div>
+
+
+          <div
+            class="rounded-[2.5rem] bg-slate-950 p-8 text-white md:p-10"
+          >
+
+            <div class="space-y-4">
+
+              <div
+                class="rounded-2xl border border-white/10 bg-white/[0.05] p-5"
+              >
+                <strong class="block text-green-400">
+                  Excel / system
+                </strong>
+
+                <span class="text-sm text-slate-400">
+                  dane operacyjne
+                </span>
+              </div>
+
+
+              <div class="text-center text-green-400">
+                ↓
+              </div>
+
+
+              <div
+                class="rounded-2xl border border-white/10 bg-white/[0.05] p-5"
+              >
+                <strong class="block text-green-400">
+                  Power Query / model
+                </strong>
+
+                <span class="text-sm text-slate-400">
+                  przygotowanie i połączenie danych
+                </span>
+              </div>
+
+
+              <div class="text-center text-green-400">
+                ↓
+              </div>
+
+
+              <div
+                class="rounded-2xl border border-green-500/30 bg-green-500/10 p-5"
+              >
+                <strong class="block text-green-400">
+                  Raport Power BI
+                </strong>
+
+                <span class="text-sm text-slate-300">
+                  analiza i szczegóły
+                </span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- ROZRÓŻNIENIE STRON -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-950 py-24 text-white"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div class="mb-14 max-w-4xl">
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-400"
+          >
+            Wybierz odpowiedni zakres
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Dashboard, raport czy pełne wdrożenie?
+          </h2>
+
+        </div>
+
+
+        <div
+          class="grid gap-6 lg:grid-cols-3"
+        >
+
+          <a
+            href="/uslugi/dashboardy-power-bi/"
+            class="rounded-[2rem] border border-white/10 bg-white/[0.05] p-8 transition-all hover:border-green-500/50"
+          >
+
+            <span
+              class="text-xs font-black uppercase tracking-wider text-green-400"
+            >
+              Dashboard Power BI
+            </span>
+
+
+            <h3
+              class="mb-4 mt-3 text-2xl font-black"
+            >
+              Szybki obraz sytuacji
+            </h3>
+
+
+            <p class="text-sm leading-relaxed text-slate-400">
+              KPI, widok zarządczy, najważniejsze wyniki
+              i interaktywna wizualizacja.
+            </p>
+
+          </a>
+
+
+          <div
+            class="rounded-[2rem] border border-green-500/40 bg-green-500/10 p-8"
+          >
+
+            <span
+              class="text-xs font-black uppercase tracking-wider text-green-400"
+            >
+              Raport Power BI
+            </span>
+
+
+            <h3
+              class="mb-4 mt-3 text-2xl font-black"
+            >
+              Szczegółowa analiza
+            </h3>
+
+
+            <p class="text-sm leading-relaxed text-slate-300">
+              Więcej stron, filtrów, szczegółowych danych
+              i możliwość analizowania przyczyn wyniku.
+            </p>
+
+          </div>
+
+
+          <a
+            href="/uslugi/power-bi-dla-firm/"
+            class="rounded-[2rem] border border-white/10 bg-white/[0.05] p-8 transition-all hover:border-green-500/50"
+          >
+
+            <span
+              class="text-xs font-black uppercase tracking-wider text-green-400"
+            >
+              Power BI dla firm
+            </span>
+
+
+            <h3
+              class="mb-4 mt-3 text-2xl font-black"
+            >
+              Pełne wdrożenie
+            </h3>
+
+
+            <p class="text-sm leading-relaxed text-slate-400">
+              Źródła danych, architektura, Power Query,
+              model, DAX, raporty i publikacja.
+            </p>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- PROCES -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div class="mb-16 max-w-4xl">
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+          >
+            Realizacja
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Jak powstaje raport Power BI?
+          </h2>
+
+        </div>
+
+
+        <div
+          class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+        >
+
+          {
+            process.map((item) => (
+
+              <article
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7 transition-all hover:-translate-y-1 hover:border-green-500/30 hover:bg-white hover:shadow-xl"
+              >
+
+                <div
+                  class="mb-6 text-5xl font-black tracking-tighter text-green-600"
+                >
+                  {item.step}
+                </div>
+
+
+                <h3
+                  class="mb-4 text-xl font-black"
+                >
+                  {item.title}
+                </h3>
+
+
+                <p
+                  class="text-sm leading-relaxed text-slate-600"
+                >
+                  {item.description}
+                </p>
+
+              </article>
+
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- LINKOWANIE -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-50 py-20 text-slate-950"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div class="mx-auto max-w-6xl">
+
+          <div class="mb-10 max-w-3xl">
+
+            <h2
+              class="mb-4 text-3xl font-black tracking-tight md:text-4xl"
+            >
+              Raport może być częścią większego systemu raportowego
+            </h2>
+
+          </div>
+
+
+          <div
+            class="grid gap-5 md:grid-cols-2 xl:grid-cols-4"
+          >
+
+            <a
+              href="/uslugi/power-bi-dla-firm/"
+              class="rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:border-green-500 hover:shadow-lg"
+            >
+              <h3 class="mb-2 text-lg font-black">
+                Power BI dla firm
+              </h3>
+
+              <p class="text-sm leading-relaxed text-slate-600">
+                Kompleksowe wdrożenie Power BI.
+              </p>
+            </a>
+
+
+            <a
+              href="/uslugi/dashboardy-power-bi/"
+              class="rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:border-green-500 hover:shadow-lg"
+            >
+              <h3 class="mb-2 text-lg font-black">
+                Dashboardy Power BI
+              </h3>
+
+              <p class="text-sm leading-relaxed text-slate-600">
+                KPI i raporty zarządcze.
+              </p>
+            </a>
+
+
+            <a
+              href="/uslugi/raporty-miesieczne-automatyczne/"
+              class="rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:border-green-500 hover:shadow-lg"
+            >
+              <h3 class="mb-2 text-lg font-black">
+                Raporty miesięczne
+              </h3>
+
+              <p class="text-sm leading-relaxed text-slate-600">
+                Automatyzacja cyklicznego raportowania.
+              </p>
+            </a>
+
+
+            <a
+              href="/uslugi/automatyzacja-excel-power-query/"
+              class="rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:border-green-500 hover:shadow-lg"
+            >
+              <h3 class="mb-2 text-lg font-black">
+                Power Query
+              </h3>
+
+              <p class="text-sm leading-relaxed text-slate-600">
+                Przygotowanie danych do raportowania.
+              </p>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- FAQ -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div class="mb-14 max-w-4xl">
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+          >
+            FAQ
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Najczęstsze pytania o raporty Power BI
+          </h2>
+
+        </div>
+
+
+        <div
+          class="grid gap-5 lg:grid-cols-2"
+        >
+
+          {
+            faqs.map((item) => (
+
+              <details
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7"
+              >
+
+                <summary
+                  class="cursor-pointer text-lg font-black text-slate-950"
+                >
+                  {item.question}
+                </summary>
+
+
+                <p
+                  class="mt-5 text-sm font-medium leading-relaxed text-slate-600"
+                >
+                  {item.answer}
+                </p>
+
+              </details>
+
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+
     <Contact />
+
     <Footer />
+
   </div>
+
 </BaseLayout>

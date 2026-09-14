@@ -1,66 +1,161 @@
 ---
-// Header.astro - menu główne Raporty24
-const modules = import.meta.glob("../pages/uslugi/*.astro", { eager: true });
+// Header.astro
+// Raporty24 - uporządkowana architektura usług
+// Menu pokazuje najważniejsze money pages.
+// Wszystkie pozostałe usługi nadal są dostępne przez /uslugi/.
 
-type ServiceLink = {
-  slug: string;
-  href: string;
+const currentPath = Astro.url.pathname;
+
+type MenuLink = {
   title: string;
+  href: string;
+  description?: string;
 };
 
-const TITLE_MAP: Record<string, string> = {
-  "arkusze-kalkulacyjne-za-zamowienie": "Arkusze na zamówienie",
-  "automatyzacja-excel-power-query": "Automatyzacja Power Query",
-  "baza-klientow-w-excelu": "Baza klientów",
-  "kalkulatory-produktowe": "Kalkulatory produktowe",
-  "crm-w-excelu": "System CRM",
-  "dashboardy-power-bi": "Dashboardy Power BI",
-  "excel-na-zamowienie": "Arkusze Excel na zamówienie",
-  "skrypty-python": "Skrypty Python",
-  "integracje-api": "Integracje API",
-  "lejek-sprzedazy-w-excelu": "Lejek sprzedaży",
-  "logistyka-w-excelu": "Logistyka i trasy",
-  "makra-vba": "Makra VBA",
-  "optymalizacja-dax-power-bi": "Optymalizacja DAX",
-  "optymalizacja-excela": "Optymalizacja Excela",
-  "pobieranie-emaili-do-excela": "Import z e-maili",
-  "power-bi-dla-firm": "Wdrożenia Power BI",
-  "raporty-miesieczne-automatyczne": "Raporty miesięczne",
-  "raporty-power-bi": "Analityka Power BI",
-  "raporty-serwisowe": "Raporty serwisowe",
-  "wizualizacja-danych-power-bi": "Wizualizacja danych",
+type ServiceGroup = {
+  title: string;
+  description: string;
+  links: MenuLink[];
 };
 
-function fileToSlug(filePath: string) {
-  return filePath.split("/").pop()?.replace(".astro", "") ?? "";
+const serviceGroups: ServiceGroup[] = [
+  {
+    title: "Excel i automatyzacja",
+    description: "Narzędzia, arkusze i automatyzacja pracy w Excelu.",
+    links: [
+      {
+        title: "Excel na zamówienie",
+        href: "/uslugi/excel-na-zamowienie/",
+      },
+      {
+        title: "Power Query",
+        href: "/uslugi/automatyzacja-excel-power-query/",
+      },
+      {
+        title: "Makra VBA",
+        href: "/uslugi/makra-vba/",
+      },
+      {
+        title: "Optymalizacja Excela",
+        href: "/uslugi/optymalizacja-excela/",
+      },
+    ],
+  },
+
+  {
+    title: "Raportowanie i BI",
+    description: "Automatyczne raporty, KPI i analiza danych.",
+    links: [
+      {
+        title: "Raporty miesięczne",
+        href: "/uslugi/raporty-miesieczne-automatyczne/",
+      },
+      {
+        title: "Power BI dla firm",
+        href: "/uslugi/power-bi-dla-firm/",
+      },
+      {
+        title: "Dashboardy Power BI",
+        href: "/uslugi/dashboardy-power-bi/",
+      },
+    ],
+  },
+
+  {
+    title: "Integracje i dane",
+    description: "Łączenie systemów i eliminowanie ręcznego przepisywania.",
+    links: [
+      {
+        title: "Integracje API",
+        href: "/uslugi/integracje-api/",
+      },
+      {
+        title: "E-mail → Excel",
+        href: "/uslugi/pobieranie-email-do-excela/",
+      },
+      {
+  title: "Automatyzacja plików i procesów",
+  href: "/uslugi/skrypty-python/",
+},
+    ],
+  },
+
+  {
+    title: "Procesy biznesowe",
+    description: "Narzędzia rozwiązujące konkretne problemy firmy.",
+    links: [
+      {
+        title: "Baza klientów",
+        href: "/uslugi/baza-klientow-w-excelu/",
+      },
+      {
+        title: "CRM w Excelu",
+        href: "/uslugi/crm-w-excelu/",
+      },
+      {
+        title: "Logistyka i trasy",
+        href: "/uslugi/logistyka-w-excelu/",
+      },
+      {
+        title: "Kalkulatory produktowe",
+        href: "/uslugi/kalkulatory-produktowe/",
+      },
+    ],
+  },
+];
+
+const mainLinks: MenuLink[] = [
+  {
+    title: "Realizacje",
+    href: "/realizacje/",
+  },
+  {
+    title: "Cennik",
+    href: "/cennik/",
+  },
+  {
+    title: "Blog",
+    href: "/blog/",
+  },
+  {
+    title: "Stała opieka",
+    href: "/subskrypcja/",
+  },
+];
+
+function isActive(href: string) {
+  if (href === "/") {
+    return currentPath === "/";
+  }
+
+  return currentPath.startsWith(href);
 }
 
-const services = Object.keys(modules)
-  .map((file): ServiceLink | null => {
-    const slug = fileToSlug(file);
-
-    if (!slug || slug === "index") {
-      return null;
-    }
-
-    return {
-      slug,
-      href: `/uslugi/${slug}/`,
-      title: TITLE_MAP[slug] ?? slug.replace(/-/g, " "),
-    };
-  })
-  .filter((service): service is ServiceLink => Boolean(service))
-  .sort((a, b) => a.title.localeCompare(b.title, "pl"));
+const servicesActive = currentPath.startsWith("/uslugi/");
 ---
 
 <header
-  class="fixed top-0 z-50 w-full border-b border-slate-200/60 bg-white/90 backdrop-blur-xl"
-  x-data="{ menuOpen: false, servicesOpen: false }"
+  class="fixed top-0 z-50 w-full border-b border-slate-200/60 bg-white/95 backdrop-blur-xl"
+  x-data="{
+    menuOpen: false,
+    servicesOpen: false
+  }"
+  @keydown.escape.window="
+    menuOpen = false;
+    servicesOpen = false;
+  "
 >
-  <nav class="container mx-auto flex items-center justify-between px-4 py-3 lg:py-4">
+
+  <!-- GŁÓWNA NAWIGACJA -->
+  <nav
+    class="container mx-auto flex items-center justify-between px-4 py-3 lg:py-4"
+    aria-label="Główna nawigacja"
+  >
+
+    <!-- LOGO -->
     <a
       href="/"
-      class="flex items-center gap-2 transition-transform hover:scale-105"
+      class="flex items-center gap-2 transition-transform hover:scale-[1.02]"
       aria-label="Raporty24 - strona główna"
     >
       <img
@@ -72,97 +167,224 @@ const services = Object.keys(modules)
       />
     </a>
 
-    <div class="hidden items-center gap-1 xl:flex" id="desktop-menu">
+
+    <!-- DESKTOP -->
+    <div
+      class="hidden items-center gap-1 xl:flex"
+      id="desktop-menu"
+    >
+
+      <!-- USŁUGI -->
       <div
         class="relative"
         @mouseenter="servicesOpen = true"
         @mouseleave="servicesOpen = false"
+        @focusin="servicesOpen = true"
+        @focusout="
+          if (!$el.contains($event.relatedTarget)) {
+            servicesOpen = false;
+          }
+        "
+        @click.outside="servicesOpen = false"
       >
+
         <a
           href="/uslugi/"
-          class="nav-link flex items-center gap-1"
-          :class="servicesOpen ? 'text-green-600' : ''"
+          class:list={[
+            "nav-link flex items-center gap-2",
+            servicesActive && "text-green-600"
+          ]}
+          aria-haspopup="true"
+          :aria-expanded="servicesOpen ? 'true' : 'false'"
+          aria-controls="services-dropdown"
         >
           Usługi
+
           <i
             class="fas fa-chevron-down text-[8px] transition-transform"
             :class="servicesOpen ? 'rotate-180' : ''"
+            aria-hidden="true"
           ></i>
         </a>
 
+
+        <!-- MEGA MENU -->
         <div
+          id="services-dropdown"
           x-show="servicesOpen"
           x-cloak
           x-transition:enter="transition ease-out duration-200"
           x-transition:enter-start="opacity-0 translate-y-2"
           x-transition:enter-end="opacity-100 translate-y-0"
-          class="absolute left-1/2 top-full w-[620px] -translate-x-1/2 pt-4"
+          x-transition:leave="transition ease-in duration-150"
+          x-transition:leave-start="opacity-100 translate-y-0"
+          x-transition:leave-end="opacity-0 translate-y-2"
+          class="absolute left-1/2 top-full w-[920px] -translate-x-1/2 pt-4"
         >
-          <div
-            class="grid grid-cols-2 gap-x-8 gap-y-2 rounded-3xl border border-slate-100 bg-white p-6 shadow-2xl"
-          >
-            <a
-              href="/uslugi/"
-              class="dropdown-link col-span-2 mb-2 border-b border-slate-50 pb-3 font-black text-green-600"
-            >
-              Wszystkie usługi
-              <i class="fas fa-arrow-right ml-2 text-[8px]"></i>
-            </a>
 
-            {
-              services.map((service) => (
-                <a href={service.href} class="dropdown-link whitespace-nowrap">
-                  {service.title}
-                </a>
-              ))
-            }
+          <div
+            class="rounded-3xl border border-slate-200 bg-white p-7 shadow-2xl shadow-slate-900/10"
+          >
+
+            <!-- HEADER MENU -->
+            <div
+              class="mb-6 flex items-center justify-between border-b border-slate-100 pb-5"
+            >
+
+              <div>
+                <p
+                  class="text-xs font-black uppercase tracking-[0.16em] text-green-600"
+                >
+                  Automatyzacja procesów i danych
+                </p>
+
+                <p
+                  class="mt-1 text-sm text-slate-500"
+                >
+                  Dobieramy technologię do konkretnego problemu firmy.
+                </p>
+              </div>
+
+              <a
+                href="/uslugi/"
+                class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-slate-900 transition-colors hover:text-green-600"
+              >
+                Wszystkie usługi
+
+                <i
+                  class="fas fa-arrow-right text-[9px]"
+                  aria-hidden="true"
+                ></i>
+              </a>
+
+            </div>
+
+
+            <!-- GRUPY -->
+            <div
+              class="grid grid-cols-4 gap-7"
+            >
+
+              {
+                serviceGroups.map((group) => (
+                  <div>
+
+                    <h2
+                      class="mb-2 text-sm font-black text-slate-900"
+                    >
+                      {group.title}
+                    </h2>
+
+                    <p
+                      class="mb-4 min-h-[40px] text-xs leading-relaxed text-slate-400"
+                    >
+                      {group.description}
+                    </p>
+
+                    <div class="space-y-1">
+
+                      {
+                        group.links.map((service) => (
+                          <a
+                            href={service.href}
+                            class:list={[
+                              "service-menu-link",
+                              isActive(service.href) &&
+                                "bg-green-50 text-green-700"
+                            ]}
+                            aria-current={
+                              isActive(service.href)
+                                ? "page"
+                                : undefined
+                            }
+                          >
+                            {service.title}
+                          </a>
+                        ))
+                      }
+
+                    </div>
+
+                  </div>
+                ))
+              }
+
+            </div>
+
+
+            <!-- DOLNY CTA -->
+            <div
+              class="mt-7 flex items-center justify-between rounded-2xl bg-slate-950 px-6 py-5 text-white"
+            >
+
+              <div>
+                <p class="font-black">
+                  Nie wiesz, jakiej technologii potrzebujesz?
+                </p>
+
+                <p
+                  class="mt-1 text-xs text-slate-400"
+                >
+                  Opisz ręczną czynność lub proces, który chcesz usprawnić.
+                </p>
+              </div>
+
+              <a
+                href="/kontakt/"
+                class="rounded-xl bg-green-600 px-5 py-3 text-[10px] font-black uppercase tracking-widest text-white transition-colors hover:bg-green-500"
+              >
+                Opisz problem
+              </a>
+
+            </div>
+
           </div>
+
         </div>
       </div>
 
-      <a href="/realizacje/" class="nav-link" data-section="realizacje">
-        Realizacje
-      </a>
 
-      <a href="/cennik/" class="nav-link">
-        Cennik
-      </a>
+      <!-- GŁÓWNE LINKI -->
+      {
+        mainLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              "nav-link",
+              isActive(link.href) && "text-green-600"
+            ]}
+            aria-current={
+              isActive(link.href)
+                ? "page"
+                : undefined
+            }
+          >
+            {link.title}
+          </a>
+        ))
+      }
 
-      <a href="/blog/" class="nav-link">
-        Blog
-      </a>
 
-      <a href="/subskrypcja/" class="nav-link">
-        Subskrypcja
-      </a>
-
-      <a href="/#dlaczego" class="nav-link" data-section="dlaczego">
-        Dlaczego my?
-      </a>
-
-      <a href="/kontakt/" class="nav-link" data-section="kontakt">
-        Kontakt
-      </a>
-
-      <div class="ml-6 flex items-center gap-3 border-l border-slate-200 pl-6">
-       
-
-        <a href="/kontakt/" class="green-btn-menu">
-          Darmowa wycena
-        </a>
-
+      <!-- CTA -->
+      <div
+        class="ml-5 border-l border-slate-200 pl-5"
+      >
         <a
-          href="https://www.tiktok.com/@raporty24"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="ml-2 text-xl text-slate-400 transition-colors hover:text-[#ff0050]"
-          aria-label="Raporty24 na TikToku"
+          href="/kontakt/"
+          class:list={[
+            "green-btn-menu",
+            isActive("/kontakt/") &&
+              "ring-2 ring-green-300 ring-offset-2"
+          ]}
         >
-          <i class="fab fa-tiktok"></i>
+          Bezpłatna analiza
         </a>
       </div>
+
     </div>
 
+
+    <!-- MOBILE BUTTON -->
     <button
       class="rounded-xl border border-slate-100 bg-slate-50 p-2 xl:hidden"
       type="button"
@@ -171,136 +393,181 @@ const services = Object.keys(modules)
       aria-controls="mobile-menu"
       aria-label="Otwórz lub zamknij menu"
     >
-      <i class="fas fa-bars text-xl text-green-700" x-show="!menuOpen"></i>
-      <i class="fas fa-times text-xl text-slate-500" x-show="menuOpen" x-cloak></i>
+
+      <i
+        class="fas fa-bars text-xl text-green-700"
+        x-show="!menuOpen"
+        aria-hidden="true"
+      ></i>
+
+      <i
+        class="fas fa-times text-xl text-slate-500"
+        x-show="menuOpen"
+        x-cloak
+        aria-hidden="true"
+      ></i>
+
     </button>
+
   </nav>
 
+
+  <!-- MOBILE MENU -->
   <div
     id="mobile-menu"
     class="fixed inset-x-0 top-[64px] max-h-[calc(100vh-64px)] overflow-y-auto border-t border-slate-100 bg-white shadow-2xl xl:hidden"
     x-show="menuOpen"
     x-cloak
+    @click.outside="menuOpen = false"
     x-transition:enter="transition ease-out duration-300"
     x-transition:enter-start="opacity-0 -translate-y-4"
     x-transition:enter-end="opacity-100 translate-y-0"
+    x-transition:leave="transition ease-in duration-200"
+    x-transition:leave-start="opacity-100 translate-y-0"
+    x-transition:leave-end="opacity-0 -translate-y-4"
   >
-    <nav class="flex flex-col space-y-1 p-6">
-      <div x-data="{ subMenuOpen: false }">
+
+    <nav
+      class="flex flex-col p-5"
+      aria-label="Nawigacja mobilna"
+    >
+
+      <!-- USŁUGI -->
+      <div
+        x-data="{ subMenuOpen: false }"
+        class="border-b border-slate-100"
+      >
+
         <button
           type="button"
           @click="subMenuOpen = !subMenuOpen"
-          class="mobile-nav-link flex w-full items-center justify-between text-green-600"
+          class:list={[
+            "mobile-nav-link flex w-full items-center justify-between",
+            servicesActive && "text-green-600"
+          ]}
+          :aria-expanded="subMenuOpen ? 'true' : 'false'"
         >
-          Zakres usług
+
+          <span>Usługi</span>
+
           <i
-            class="fas fa-chevron-down transition-transform"
+            class="fas fa-chevron-down text-xs transition-transform"
             :class="subMenuOpen ? 'rotate-180' : ''"
+            aria-hidden="true"
           ></i>
+
         </button>
+
 
         <div
           x-show="subMenuOpen"
           x-cloak
-          class="my-2 grid grid-cols-1 rounded-2xl bg-slate-50 py-2"
+          class="pb-4"
         >
+
           <a
             href="/uslugi/"
-            class="mobile-nav-sublink font-black text-green-600"
+            class="mb-3 block rounded-xl bg-green-50 px-5 py-4 text-sm font-black text-green-700"
             @click="menuOpen = false"
           >
             Wszystkie usługi
           </a>
 
+
           {
-            services.map((service) => (
-              <a
-                href={service.href}
-                class="mobile-nav-sublink"
-                @click="menuOpen = false"
-              >
-                {service.title}
-              </a>
+            serviceGroups.map((group) => (
+              <div class="mb-5">
+
+                <p
+                  class="mb-2 px-4 text-[10px] font-black uppercase tracking-[0.15em] text-slate-400"
+                >
+                  {group.title}
+                </p>
+
+                <div class="rounded-2xl bg-slate-50 py-1">
+
+                  {
+                    group.links.map((service) => (
+                      <a
+                        href={service.href}
+                        class:list={[
+                          "mobile-nav-sublink",
+                          isActive(service.href) &&
+                            "text-green-700"
+                        ]}
+                        aria-current={
+                          isActive(service.href)
+                            ? "page"
+                            : undefined
+                        }
+                        @click="menuOpen = false"
+                      >
+                        {service.title}
+                      </a>
+                    ))
+                  }
+
+                </div>
+
+              </div>
             ))
           }
+
         </div>
       </div>
 
-      <a href="/realizacje/" class="mobile-nav-link" @click="menuOpen = false">
-        Realizacje
-      </a>
 
-      <a href="/cennik/" class="mobile-nav-link" @click="menuOpen = false">
-        Cennik
-      </a>
+      <!-- GŁÓWNE LINKI -->
+      {
+        mainLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              "mobile-nav-link",
+              isActive(link.href) && "text-green-600"
+            ]}
+            aria-current={
+              isActive(link.href)
+                ? "page"
+                : undefined
+            }
+            @click="menuOpen = false"
+          >
+            {link.title}
+          </a>
+        ))
+      }
 
-      <a href="/blog/" class="mobile-nav-link" @click="menuOpen = false">
-        Blog
-      </a>
 
-     
+      <!-- CTA MOBILE -->
+      <div
+        class="flex flex-col gap-3 pb-5 pt-7"
+      >
 
-      <a href="/subskrypcja/" class="mobile-nav-link" @click="menuOpen = false">
-        Subskrypcja
-      </a>
+        <a
+          href="/kontakt/"
+          class="rounded-2xl bg-green-600 py-4 text-center text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-green-500"
+          @click="menuOpen = false"
+        >
+          Opisz problem
+        </a>
 
-      <a href="/#dlaczego" class="mobile-nav-link" @click="menuOpen = false">
-        Dlaczego my?
-      </a>
-
-
-      <div class="flex flex-col gap-4 pb-4 pt-6">
         <a
           href="/realizacje/"
-          class="rounded-2xl bg-slate-900 py-4 text-center text-xs font-black uppercase tracking-widest text-white"
+          class="rounded-2xl border border-slate-200 bg-white py-4 text-center text-xs font-black uppercase tracking-widest text-slate-700 transition-colors hover:border-slate-300"
           @click="menuOpen = false"
         >
           Zobacz realizacje
         </a>
 
-        <a
-          href="/kontakt/"
-          class="rounded-2xl bg-green-600 py-4 text-center text-xs font-black uppercase tracking-widest text-white"
-          @click="menuOpen = false"
-        >
-          Bezpłatna wycena
-        </a>
       </div>
 
-      <div class="flex justify-center gap-6 border-t border-slate-50 pt-6">
-        <a
-          href="https://www.tiktok.com/@raporty24"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-2xl text-slate-400"
-          aria-label="Raporty24 na TikToku"
-        >
-          <i class="fab fa-tiktok"></i>
-        </a>
-
-        <a
-          href="https://www.linkedin.com/in/raporty-raporty-50a8413a4/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-2xl text-slate-400"
-          aria-label="Raporty24 na LinkedIn"
-        >
-          <i class="fab fa-linkedin"></i>
-        </a>
-      </div>
     </nav>
+
   </div>
+
 </header>
 
-<a
-  href="https://www.tiktok.com/@raporty24"
-  target="_blank"
-  rel="noopener noreferrer"
-  class="fixed bottom-6 right-6 z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-slate-950 text-white shadow-2xl transition-all duration-300 hover:scale-110"
-  aria-label="Raporty24 na TikToku"
->
-  <i class="fab fa-tiktok text-xl transition-colors hover:text-[#ff0050]"></i>
-</a>
 
 <style>
   @reference "../styles/global.css";
@@ -313,90 +580,19 @@ const services = Object.keys(modules)
     @apply relative px-3 py-2 text-[11px] font-black uppercase tracking-widest text-slate-500 transition-all hover:text-green-600;
   }
 
-  .nav-link.active::after {
-    content: "";
-    @apply absolute bottom-0 left-3 right-3 h-0.5 rounded-full bg-green-600;
-  }
-
-  .dropdown-link {
-    @apply rounded-xl px-4 py-2 text-[10px] font-bold uppercase tracking-wider text-slate-600 transition-all hover:bg-green-50/50 hover:text-green-600;
+  .service-menu-link {
+    @apply block rounded-xl px-3 py-2.5 text-xs font-bold text-slate-600 transition-all hover:bg-green-50 hover:text-green-700;
   }
 
   .mobile-nav-link {
-    @apply flex items-center justify-center border-b border-slate-50 py-4 text-sm font-bold text-slate-600 hover:text-green-600;
+    @apply flex items-center border-b border-slate-100 px-3 py-4 text-sm font-bold text-slate-700 transition-colors hover:text-green-600;
   }
 
   .mobile-nav-sublink {
-    @apply block px-6 py-3 text-xs font-bold text-slate-500 hover:text-green-600;
-  }
-
-  .navy-btn-menu {
-    @apply rounded-full bg-slate-900 px-6 py-2.5 text-[10px] font-black uppercase tracking-widest text-white transition-all hover:bg-slate-800;
+    @apply block px-5 py-3 text-sm font-bold text-slate-600 transition-colors hover:text-green-600;
   }
 
   .green-btn-menu {
-    @apply rounded-full bg-green-600 px-6 py-2.5 text-[10px] font-black uppercase tracking-widest text-white transition-all hover:bg-green-500;
+    @apply rounded-full bg-green-600 px-6 py-3 text-[10px] font-black uppercase tracking-widest text-white transition-all hover:bg-green-500;
   }
 </style>
-
-<script>
-  let scrollSpyObserver = null;
-
-  function setupScrollSpy() {
-    if (scrollSpyObserver) {
-      scrollSpyObserver.disconnect();
-    }
-
-    const sections = [
-      "hero",
-      "oferta",
-      "realizacje",
-      "cennik",
-      "abonament",
-      "dlaczego",
-      "kontakt",
-    ];
-
-    const navLinks = document.querySelectorAll(".nav-link, .navy-btn-menu");
-
-    scrollSpyObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) {
-            return;
-          }
-
-          const id = entry.target.getAttribute("id");
-
-          navLinks.forEach((link) => {
-            if (link.getAttribute("data-section") === id) {
-              link.classList.add("active");
-            } else {
-              link.classList.remove("active");
-            }
-          });
-        });
-      },
-      {
-        rootMargin: "-20% 0px -70% 0px",
-        threshold: 0,
-      }
-    );
-
-    sections.forEach((id) => {
-      const section = document.getElementById(id);
-
-      if (section) {
-        scrollSpyObserver.observe(section);
-      }
-    });
-  }
-
-  document.addEventListener("astro:page-load", setupScrollSpy);
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", setupScrollSpy);
-  } else {
-    setupScrollSpy();
-  }
-</script>

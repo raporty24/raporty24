@@ -1,82 +1,175 @@
 ---
 const examples = [
-  "screen arkusza lub raportu",
-  "opis procesu krok po kroku",
+  "krótki opis tego, co dziś robicie ręcznie",
+  "screen arkusza, raportu lub programu",
   "przykładowy plik bez danych wrażliwych",
-  "informacja, co ma powstać na końcu",
+  "informacja, jaki efekt chcesz osiągnąć",
 ];
 
 const areas = [
-  "faktury i dokumenty",
+  "raporty i analiza danych",
+  "pliki i dokumenty",
   "zamówienia i magazyn",
-  "raporty i kalkulatory",
+  "integracje systemów",
+  "Excel i Microsoft 365",
 ];
 ---
 
-<section class="relative overflow-hidden bg-slate-50 py-20 text-slate-950">
+<section
+  class="relative overflow-hidden bg-slate-50 py-20 text-slate-950"
+>
   <div class="container mx-auto px-4">
-    <div class="relative overflow-hidden rounded-[3rem] bg-slate-950 p-8 text-white md:p-14 lg:p-16">
-      <div class="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-green-600/20 blur-[100px]"></div>
-      <div class="absolute -left-24 bottom-0 h-80 w-80 rounded-full bg-cyan-500/10 blur-[100px]"></div>
 
-      <div class="relative z-10 grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-center">
+    <div
+      class="relative overflow-hidden rounded-[3rem] bg-slate-950 p-8 text-white md:p-14 lg:p-16"
+    >
+
+      <!-- TŁO -->
+
+      <div
+        class="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-green-600/20 blur-[100px]"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="absolute -left-24 bottom-0 h-80 w-80 rounded-full bg-cyan-500/10 blur-[100px]"
+        aria-hidden="true"
+      ></div>
+
+
+      <div
+        class="relative z-10 grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-center"
+      >
+
+        <!-- LEWA STRONA -->
+
         <div>
-          <span class="mb-4 inline-flex items-center gap-3 rounded-full border border-green-500/20 bg-green-500/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.25em] text-green-400">
-            <span class="h-2 w-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]"></span>
-            Bezpłatna wycena
+
+          <span
+            class="mb-4 inline-flex items-center gap-3 rounded-full border border-green-500/20 bg-green-500/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.25em] text-green-400"
+          >
+
+            <span
+              class="h-2 w-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]"
+              aria-hidden="true"
+            ></span>
+
+            Bezpłatna wstępna analiza
+
           </span>
 
-          <h2 class="mb-6 text-3xl font-black uppercase leading-tight tracking-tighter md:text-5xl">
-            Nie wiesz, czy potrzebujesz Excela, Power BI czy aplikacji?
+
+          <h2
+            class="mb-6 text-3xl font-black uppercase leading-tight tracking-tighter md:text-5xl"
+          >
+            Masz problem do rozwiązania,
+            ale nie wiesz
+            <span class="text-green-400">
+              jakiego narzędzia potrzebujesz?
+            </span>
           </h2>
 
-          <p class="max-w-3xl text-lg font-medium leading-relaxed text-slate-400">
-            Opisz proces, który dziś robicie ręcznie. Sprawdzimy, czy wystarczy raport,
-            kalkulator, automatyzacja pliku, skrypt Python, integracja API, KSeF albo
-            prostsze rozwiązanie.
+
+          <p
+            class="max-w-3xl text-lg font-medium leading-relaxed text-slate-400"
+          >
+            Opisz proces, który dziś wykonujecie ręcznie
+            lub który działa zbyt wolno.
+            Sprawdzimy, czy najlepiej sprawdzi się Excel,
+            Power Query, Power BI, integracja API,
+            SharePoint, dodatek do Excela,
+            mała aplikacja czy prostsze rozwiązanie.
           </p>
 
-          <div class="mt-8 flex flex-wrap gap-2">
+
+          <!-- OBSZARY -->
+
+          <div
+            class="mt-8 flex flex-wrap gap-2"
+          >
             {
               areas.map((area) => (
-                <span class="rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-xs font-bold text-slate-300">
+                <span
+                  class="rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-xs font-bold text-slate-300"
+                >
                   {area}
                 </span>
               ))
             }
           </div>
+
+
+          <p
+            class="mt-8 max-w-2xl text-sm leading-relaxed text-slate-500"
+          >
+            Realizujemy zarówno małe usprawnienia,
+            jak i większe automatyzacje oraz integracje.
+            Nie musisz przygotowywać specyfikacji technicznej.
+          </p>
+
         </div>
 
-        <div class="rounded-[2rem] border border-white/10 bg-white/[0.05] p-6">
-          <h3 class="mb-5 text-sm font-black uppercase tracking-widest text-white">
-            Do wyceny wystarczy:
+
+        <!-- PRAWA STRONA -->
+
+        <div
+          class="rounded-[2rem] border border-white/10 bg-white/[0.05] p-6"
+        >
+
+          <h3
+            class="mb-5 text-sm font-black uppercase tracking-widest text-white"
+          >
+            Na początek wystarczy:
           </h3>
 
-          <ul class="mb-7 space-y-4 text-sm font-bold text-slate-300">
+
+          <ul
+            class="mb-7 space-y-4 text-sm font-bold text-slate-300"
+          >
             {
               examples.map((item) => (
-                <li class="flex items-start gap-3">
-                  <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-green-500"></span>
-                  <span>{item}</span>
+                <li
+                  class="flex items-start gap-3"
+                >
+                  <span
+                    class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-green-500"
+                    aria-hidden="true"
+                  ></span>
+
+                  <span>
+                    {item}
+                  </span>
                 </li>
               ))
             }
           </ul>
 
+
           <a
-            href="#kontakt"
+            href="#formularz"
             class="inline-flex w-full items-center justify-center gap-3 rounded-2xl bg-green-600 px-8 py-5 text-center text-sm font-black uppercase tracking-widest text-white transition-all hover:-translate-y-1 hover:bg-green-500"
           >
-            Wyślij opis do wyceny
-            <i class="fas fa-arrow-right text-xs"></i>
+            Opisz swój problem
+
+            <i
+              class="fas fa-arrow-right text-xs"
+              aria-hidden="true"
+            ></i>
           </a>
 
-          <p class="mt-4 text-xs font-medium leading-relaxed text-slate-500">
-            Nie musisz znać technologii. Wystarczy opisać, co zajmuje czas, gdzie są błędy
-            i jaki efekt chcesz dostać.
+
+          <p
+            class="mt-4 text-xs font-medium leading-relaxed text-slate-500"
+          >
+            Nie musisz znać technologii ani mieć gotowego projektu.
+            Opisz, co robicie teraz i jaki efekt chcesz uzyskać.
           </p>
+
         </div>
+
       </div>
+
     </div>
+
   </div>
 </section>

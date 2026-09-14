@@ -1,159 +1,492 @@
 ---
-// Dlaczego.astro - Sekcja Trust & Values w stylu Rounded Dark (z mini FAQ)
+// src/components/WhyUs.astro
+// Sekcja zaufania + sposób współpracy + mini FAQ
 ---
 
-<section id="dlaczego" class="py-24 bg-slate-950 relative overflow-hidden border-t border-white/5">
+<section
+  id="dlaczego"
+  class="relative overflow-hidden border-t border-white/5 bg-slate-950 py-24 text-white"
+>
+  <div class="container relative z-10 mx-auto px-4">
 
-  <div class="sr-only">
-    <h2>Dlaczego Raporty24</h2>
-    <p>Stabilne raportowanie, bezpieczeństwo danych i wsparcie po wdrożeniu.</p>
-  </div>
+    <!-- ================================================= -->
+    <!-- GŁÓWNA CZĘŚĆ -->
+    <!-- ================================================= -->
 
-  <div class="container mx-auto px-4 relative z-10">
-    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+    <div
+      class="grid items-center gap-16 lg:grid-cols-2 lg:gap-24"
+    >
+
+      <!-- LEWA STRONA -->
 
       <div>
-        <div class="inline-flex items-center gap-3 mb-6 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20">
-          <span class="flex h-2 w-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]"></span>
-          <span class="text-[10px] font-black uppercase tracking-[0.2em] text-green-400">Dlaczego my?</span>
+
+        <div
+          class="mb-6 inline-flex items-center gap-3 rounded-full border border-green-500/20 bg-green-500/10 px-4 py-2"
+        >
+          <span
+            class="flex h-2 w-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]"
+            aria-hidden="true"
+          ></span>
+
+          <span
+            class="text-[10px] font-black uppercase tracking-[0.2em] text-green-400"
+          >
+            Jak pracujemy
+          </span>
         </div>
 
-        <h2 class="text-5xl lg:text-7xl font-black text-white tracking-tighter mb-8 leading-[0.95]">
-          Twoje dane mają <span class="text-slate-500 italic font-medium">pracować,</span> nie generować pracę.
+
+        <h2
+          class="mb-8 text-5xl font-black leading-[0.95] tracking-tighter text-white lg:text-7xl"
+        >
+          Najpierw proces.
+          <br />
+
+          <span
+            class="font-medium italic text-slate-500"
+          >
+            Potem technologia.
+          </span>
         </h2>
 
-        <p class="text-xl text-slate-400 mb-10 leading-relaxed max-w-xl">
-          Większość firm tonie w tabelkach, zamiast wyciągać z nich wnioski. Budujemy systemy, które są
-          <strong class="text-white">intuicyjne w obsłudze i bezwzględne w precyzji</strong> — od Excela, przez Power BI, po automatyzacje.
+
+        <p
+          class="mb-10 max-w-xl text-xl leading-relaxed text-slate-400"
+        >
+          Nie próbujemy dopasować każdego problemu do jednego narzędzia.
+          Najpierw analizujemy sposób pracy, źródła danych
+          i oczekiwany efekt. Dopiero potem wybieramy rozwiązanie —
+          od prostej poprawki w Excelu po integrację systemów
+          lub dedykowane narzędzie.
         </p>
 
-        <div class="flex flex-col sm:flex-row gap-4 mb-12">
-          <a href="/uslugi/" class="bg-white/5 hover:bg-white/10 backdrop-blur-md text-white py-4 px-8 rounded-2xl font-black uppercase tracking-widest text-xs border border-white/20 transition-all text-center">
+
+        <!-- CTA -->
+
+        <div
+          class="mb-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap"
+        >
+
+          <a
+            href="/uslugi/"
+            class="rounded-2xl border border-white/20 bg-white/5 px-8 py-4 text-center text-xs font-black uppercase tracking-widest text-white transition-all hover:bg-white/10"
+          >
             Zobacz usługi
           </a>
-          <a href="/subskrypcja/" class="bg-white/5 hover:bg-white/10 backdrop-blur-md text-white py-4 px-8 rounded-2xl font-black uppercase tracking-widest text-xs border border-white/20 transition-all text-center">
-            Subskrypcja (SLA)
+
+
+          <a
+            href="/subskrypcja/"
+            class="rounded-2xl border border-white/20 bg-white/5 px-8 py-4 text-center text-xs font-black uppercase tracking-widest text-white transition-all hover:bg-white/10"
+          >
+            Stałe wsparcie
           </a>
-          <a href="/kontakt/#formularz" class="bg-green-600 hover:bg-green-500 text-white py-4 px-8 rounded-2xl font-black uppercase tracking-widest text-xs shadow-xl shadow-green-600/20 transition-all text-center">
-            Wyceń projekt
+
+
+          <a
+            href="/kontakt/#formularz"
+            class="rounded-2xl bg-green-600 px-8 py-4 text-center text-xs font-black uppercase tracking-widest text-white shadow-xl shadow-green-600/20 transition-all hover:bg-green-500"
+          >
+            Opisz swój problem
           </a>
+
         </div>
 
-        <div class="grid grid-cols-2 gap-12 pt-8 border-t border-white/10">
-          <div class="group">
-            <span class="block text-5xl font-black text-green-500 mb-2 tracking-tighter group-hover:scale-110 transition-transform origin-left">12h</span>
-            <p class="text-slate-400 text-xs font-bold uppercase tracking-widest leading-tight">Czas reakcji <br/>w modelu SLA</p>
+
+        <!-- KRÓTKIE WYRÓŻNIKI -->
+
+        <div
+          class="grid grid-cols-1 gap-8 border-t border-white/10 pt-8 sm:grid-cols-2 sm:gap-12"
+        >
+
+          <div>
+
+            <span
+              class="mb-2 block text-2xl font-black tracking-tighter text-green-500"
+            >
+              Elastyczny zakres
+            </span>
+
+            <p
+              class="text-xs font-bold uppercase leading-relaxed tracking-widest text-slate-400"
+            >
+              Od małej poprawki
+              <br />
+              po większe wdrożenie
+            </p>
+
           </div>
-          <div class="group">
-            <span class="block text-5xl font-black text-white mb-2 tracking-tighter group-hover:text-green-500 transition-colors">Priorytet</span>
-            <p class="text-slate-400 text-xs font-bold uppercase tracking-widest leading-tight">Bezpieczeństwo <br/>i poufność danych</p>
+
+
+          <div>
+
+            <span
+              class="mb-2 block text-2xl font-black tracking-tighter text-white"
+            >
+              Poufność danych
+            </span>
+
+            <p
+              class="text-xs font-bold uppercase leading-relaxed tracking-widest text-slate-400"
+            >
+              Możliwość pracy na kopii,
+              <br />
+              danych testowych lub po NDA
+            </p>
+
           </div>
-        </div>
-      </div>
 
-      <div class="space-y-6 lg:space-y-8">
-
-        <div class="bg-slate-900/40 border border-slate-800 p-8 lg:p-10 rounded-[2.5rem] hover:border-green-500/30 transition-all duration-500 group relative overflow-hidden">
-          <div class="absolute -top-10 -right-10 w-32 h-32 bg-green-500/5 rounded-full blur-2xl group-hover:bg-green-500/10 transition-all"></div>
-
-          <div class="flex items-start gap-6">
-            <div class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center shrink-0 shadow-xl group-hover:scale-110 transition-transform duration-500">
-              <i class="fas fa-shield-alt text-green-600 text-xl"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-black text-white mb-3 uppercase tracking-tight">Standardy Enterprise (RODO)</h3>
-              <p class="text-slate-400 text-sm leading-relaxed">
-                Dbamy o kontrolę dostępu, uprawnienia (np. RLS) i bezpieczne procesy przekazywania danych. W razie potrzeby — NDA.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-slate-900/40 border border-slate-800 p-8 lg:p-10 rounded-[2.5rem] hover:border-green-500/30 transition-all duration-500 group relative overflow-hidden">
-          <div class="absolute -top-10 -right-10 w-32 h-32 bg-green-500/5 rounded-full blur-2xl group-hover:bg-green-500/10 transition-all"></div>
-
-          <div class="flex items-start gap-6">
-            <div class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center shrink-0 shadow-xl group-hover:scale-110 transition-transform duration-500">
-              <i class="fas fa-handshake text-green-600 text-xl"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-black text-white mb-3 uppercase tracking-tight">Partnerstwo po wdrożeniu</h3>
-              <p class="text-slate-400 text-sm leading-relaxed">
-                Utrzymanie, poprawki, rozwój KPI i stabilność odświeżeń. Raporty nie stoją w miejscu — my też nie.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-slate-900/40 border border-slate-800 p-8 lg:p-10 rounded-[2.5rem] hover:border-green-500/30 transition-all duration-500 group relative overflow-hidden">
-          <div class="absolute -top-10 -right-10 w-32 h-32 bg-green-500/5 rounded-full blur-2xl group-hover:bg-green-500/10 transition-all"></div>
-
-          <div class="flex items-start gap-6">
-            <div class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center shrink-0 shadow-xl group-hover:scale-110 transition-transform duration-500">
-              <i class="fas fa-lightbulb text-green-600 text-xl"></i>
-            </div>
-            <div>
-              <h3 class="text-xl font-black text-white mb-3 uppercase tracking-tight">Analityka szyta na miarę</h3>
-              <p class="text-slate-400 text-sm leading-relaxed">
-                Dopasowujemy KPI, model danych i automatyzacje do procesu — żeby dowozić efekt, a nie tylko „ładny widok”.
-              </p>
-            </div>
-          </div>
         </div>
 
       </div>
+
+
+      <!-- ================================================= -->
+      <!-- PRAWA STRONA -->
+      <!-- ================================================= -->
+
+      <div
+        class="space-y-6 lg:space-y-8"
+      >
+
+        <!-- KARTA 1 -->
+
+        <div
+          class="group relative overflow-hidden rounded-[2.5rem] border border-slate-800 bg-slate-900/40 p-8 transition-all duration-300 hover:border-green-500/30 lg:p-10"
+        >
+
+          <div
+            class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-green-500/5 blur-2xl transition-all group-hover:bg-green-500/10"
+            aria-hidden="true"
+          ></div>
+
+
+          <div
+            class="flex items-start gap-6"
+          >
+
+            <div
+              class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white shadow-xl transition-transform duration-300 group-hover:scale-105"
+            >
+              <i
+                class="fas fa-search text-xl text-green-600"
+                aria-hidden="true"
+              ></i>
+            </div>
+
+
+            <div>
+
+              <h3
+                class="mb-3 text-xl font-black uppercase tracking-tight text-white"
+              >
+                Najpierw rozumiemy problem
+              </h3>
+
+
+              <p
+                class="text-sm leading-relaxed text-slate-400"
+              >
+                Analizujemy obecną pracę, źródła danych
+                i miejsce, w którym powstają zbędne czynności,
+                błędy lub ręczne przepisywanie informacji.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- KARTA 2 -->
+
+        <div
+          class="group relative overflow-hidden rounded-[2.5rem] border border-slate-800 bg-slate-900/40 p-8 transition-all duration-300 hover:border-green-500/30 lg:p-10"
+        >
+
+          <div
+            class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-green-500/5 blur-2xl transition-all group-hover:bg-green-500/10"
+            aria-hidden="true"
+          ></div>
+
+
+          <div
+            class="flex items-start gap-6"
+          >
+
+            <div
+              class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white shadow-xl transition-transform duration-300 group-hover:scale-105"
+            >
+              <i
+                class="fas fa-puzzle-piece text-xl text-green-600"
+                aria-hidden="true"
+              ></i>
+            </div>
+
+
+            <div>
+
+              <h3
+                class="mb-3 text-xl font-black uppercase tracking-tight text-white"
+              >
+                Dobieramy możliwie proste rozwiązanie
+              </h3>
+
+
+              <p
+                class="text-sm leading-relaxed text-slate-400"
+              >
+                Nie każda firma potrzebuje dużego systemu.
+                Czasem wystarczy lepszy Excel, Power Query
+                lub małe narzędzie. W innych przypadkach
+                potrzebna jest integracja API albo aplikacja.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- KARTA 3 -->
+
+        <div
+          class="group relative overflow-hidden rounded-[2.5rem] border border-slate-800 bg-slate-900/40 p-8 transition-all duration-300 hover:border-green-500/30 lg:p-10"
+        >
+
+          <div
+            class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-green-500/5 blur-2xl transition-all group-hover:bg-green-500/10"
+            aria-hidden="true"
+          ></div>
+
+
+          <div
+            class="flex items-start gap-6"
+          >
+
+            <div
+              class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-white shadow-xl transition-transform duration-300 group-hover:scale-105"
+            >
+              <i
+                class="fas fa-handshake text-xl text-green-600"
+                aria-hidden="true"
+              ></i>
+            </div>
+
+
+            <div>
+
+              <h3
+                class="mb-3 text-xl font-black uppercase tracking-tight text-white"
+              >
+                Możemy rozwijać rozwiązanie dalej
+              </h3>
+
+
+              <p
+                class="text-sm leading-relaxed text-slate-400"
+              >
+                Po wdrożeniu możemy realizować kolejne poprawki,
+                rozwijać raporty, automatyzacje i integracje
+                albo objąć rozwiązanie stałym wsparciem.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
 
-    <!-- MINI FAQ (widoczne) -->
-    <div class="mt-16 border-t border-white/10 pt-14">
-      <div class="max-w-4xl">
-        <h3 class="text-3xl lg:text-4xl font-black text-white tracking-tighter mb-8">
+
+    <!-- ================================================= -->
+    <!-- MINI FAQ -->
+    <!-- ================================================= -->
+
+    <div
+      class="mt-20 border-t border-white/10 pt-14"
+    >
+
+      <div class="max-w-5xl">
+
+        <span
+          class="mb-3 block text-xs font-black uppercase tracking-[0.22em] text-green-400"
+        >
           Najczęstsze pytania
+        </span>
+
+
+        <h3
+          class="mb-8 text-3xl font-black tracking-tighter text-white lg:text-4xl"
+        >
+          Zanim opiszesz swój projekt
         </h3>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <details class="bg-slate-900/40 border border-slate-800 rounded-2xl p-6 hover:border-green-500/30 transition-all">
-            <summary class="cursor-pointer font-black text-white uppercase tracking-tight">
-              Ile trwa wycena i od czego zależy koszt?
+
+        <div
+          class="grid grid-cols-1 gap-4 lg:grid-cols-2"
+        >
+
+          <!-- FAQ 1 -->
+
+          <details
+            class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition-all hover:border-green-500/30"
+          >
+
+            <summary
+              class="cursor-pointer font-black uppercase tracking-tight text-white"
+            >
+              Ile może kosztować projekt?
             </summary>
-            <p class="mt-4 text-slate-400 text-sm leading-relaxed">
-              Zwykle odpisujemy w <strong class="text-white">24h</strong>. Cena zależy od źródeł danych, złożoności modelu i oczekiwanego efektu
-              (Excel „1 klik”, Power BI KPI, integracje). Start od <strong class="text-white">400 zł</strong>.
-              <a href="/cennik/" class="text-green-400 font-bold hover:text-green-300">Zobacz cennik →</a>
+
+
+            <p
+              class="mt-4 text-sm leading-relaxed text-slate-400"
+            >
+              Koszt zależy od zakresu i złożoności rozwiązania.
+              Realizujemy również niewielkie poprawki
+              i automatyzacje od kilkuset złotych,
+              a większe projekty wyceniamy indywidualnie
+              po poznaniu procesu.
+
+              <a
+                href="/cennik/"
+                class="ml-1 font-bold text-green-400 hover:text-green-300"
+              >
+                Zobacz orientacyjny cennik →
+              </a>
             </p>
+
           </details>
 
-          <details class="bg-slate-900/40 border border-slate-800 rounded-2xl p-6 hover:border-green-500/30 transition-all">
-            <summary class="cursor-pointer font-black text-white uppercase tracking-tight">
+
+          <!-- FAQ 2 -->
+
+          <details
+            class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition-all hover:border-green-500/30"
+          >
+
+            <summary
+              class="cursor-pointer font-black uppercase tracking-tight text-white"
+            >
               Czy mogę liczyć na wsparcie po wdrożeniu?
             </summary>
-            <p class="mt-4 text-slate-400 text-sm leading-relaxed">
-              Tak. Możesz działać projektowo albo w modelu <strong class="text-white">subskrypcji (SLA)</strong>: utrzymanie odświeżeń, poprawki,
-              rozwój KPI i priorytety zgłoszeń.
-              <a href="/subskrypcja/" class="text-green-400 font-bold hover:text-green-300">Zobacz subskrypcję →</a>
+
+
+            <p
+              class="mt-4 text-sm leading-relaxed text-slate-400"
+            >
+              Tak. Możemy realizować pojedyncze poprawki
+              i kolejne etapy rozwoju albo pracować
+              w modelu stałego wsparcia dopasowanego
+              do rzeczywistych potrzeb firmy.
+
+              <a
+                href="/subskrypcja/"
+                class="ml-1 font-bold text-green-400 hover:text-green-300"
+              >
+                Zobacz stałe wsparcie →
+              </a>
             </p>
+
           </details>
-          <details class="bg-slate-900/40 border border-slate-800 rounded-2xl p-6 hover:border-green-500/30 transition-all">
-  <summary class="cursor-pointer font-black text-white uppercase tracking-tight">
-    Czy mogę wysłać plik anonimowo lub bez wrażliwych danych?
-  </summary>
-  <p class="mt-4 text-slate-400 text-sm leading-relaxed">
-    Tak. Do wstępnej wyceny wystarczy <strong class="text-white">anonimowy zrzut / przykładowy plik</strong> albo plik po usunięciu danych wrażliwych
-    (np. klientów, NIP, adresów, numerów zamówień). Jeśli wolisz, możemy podpisać <strong class="text-white">NDA</strong> i ustalić bezpieczny sposób
-    przekazania danych (link z ograniczonym dostępem, szyfrowanie, praca na kopii).
-  </p>
-</details>
+
+
+          <!-- FAQ 3 -->
+
+          <details
+            class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition-all hover:border-green-500/30"
+          >
+
+            <summary
+              class="cursor-pointer font-black uppercase tracking-tight text-white"
+            >
+              Czy muszę przesyłać prawdziwe dane?
+            </summary>
+
+
+            <p
+              class="mt-4 text-sm leading-relaxed text-slate-400"
+            >
+              Nie. Do wstępnej analizy często wystarczy
+              przykładowy plik, screen lub dane testowe.
+              Nie należy przesyłać haseł ani kluczy API
+              przez zwykły formularz kontaktowy.
+              Jeśli analiza wymaga poufnych materiałów,
+              możemy wcześniej ustalić sposób ich przekazania
+              lub podpisać NDA.
+            </p>
+
+          </details>
+
+
+          <!-- FAQ 4 -->
+
+          <details
+            class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition-all hover:border-green-500/30"
+          >
+
+            <summary
+              class="cursor-pointer font-black uppercase tracking-tight text-white"
+            >
+              Czy muszę wiedzieć, czego technicznie potrzebuję?
+            </summary>
+
+
+            <p
+              class="mt-4 text-sm leading-relaxed text-slate-400"
+            >
+              Nie. Najlepiej opisać obecną pracę,
+              problem i oczekiwany efekt.
+              Na tej podstawie możemy zaproponować,
+              czy lepiej sprawdzi się Excel, Power BI,
+              API, SharePoint, dodatek do Excela,
+              aplikacja czy inne rozwiązanie.
+            </p>
+
+          </details>
+
         </div>
 
-        <div class="mt-10">
-          <a href="/kontakt/#formularz" class="inline-flex items-center gap-3 bg-green-600 hover:bg-green-500 text-white px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-xs transition-all shadow-xl shadow-green-600/20">
-            Zadaj pytanie / wyceń temat
-            <i class="fas fa-chevron-right text-[10px]"></i>
+
+        <!-- CTA -->
+
+        <div
+          class="mt-10"
+        >
+
+          <a
+            href="/kontakt/#formularz"
+            class="inline-flex items-center gap-3 rounded-2xl bg-green-600 px-8 py-4 text-xs font-black uppercase tracking-widest text-white shadow-xl shadow-green-600/20 transition-all hover:bg-green-500"
+          >
+            Opisz swój problem
+
+            <i
+              class="fas fa-chevron-right text-[10px]"
+              aria-hidden="true"
+            ></i>
           </a>
+
         </div>
+
       </div>
+
     </div>
+
   </div>
 
-  <div class="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-green-500/5 rounded-full blur-[120px] -z-10"></div>
+
+  <!-- TŁO -->
+
+  <div
+    class="pointer-events-none absolute -bottom-1/4 -left-1/4 h-[600px] w-[600px] rounded-full bg-green-500/5 blur-[120px]"
+    aria-hidden="true"
+  ></div>
+
 </section>

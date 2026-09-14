@@ -5,100 +5,756 @@ import HeroService from "../../components/HeroService.astro";
 import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
 
-const title = "Lejek Sprzedaży w Excelu – Analiza Pipeline i Prognozowanie | Raporty24";
-const description = "Zbudujemy dla Ciebie profesjonalny lejek sprzedaży w Excelu. Monitoruj konwersję na każdym etapie, prognozuj przychody i analizuj wąskie gardła w procesie.";
-// 1. DODAJ TE DWIE LINIE:
-const ogImage = "/biuro3.webp"; // Możesz tu dać dedykowaną grafikę bazy klientów, jeśli ją masz
-const currentUrl = "https://raporty24.pl/uslugi/lejek-sprzedazy-w-excelu/"; // upewnij się, że taki jest slug tej strony
+const title =
+  "Lejek sprzedaży w Excelu | Pipeline i konwersja | Raporty24";
+
+const description =
+  "Lejek sprzedaży w Excelu do analizy pipeline, konwersji, wartości szans i etapów sprzedaży. Raporty dla handlowców i zarządzających dopasowane do procesu firmy.";
+
+const ogImage = "/biuro3.webp";
+const currentUrl =
+  "https://raporty24.pl/uslugi/lejek-sprzedazy-w-excelu/";
 
 export const service = {
   title: "Lejek sprzedaży w Excelu",
-  order: 10,
+  order: 30,
   menu: true,
-  category: "Excel", // opcjonalnie (do grupowania)
+  category: "Excel",
 };
+
+const funnelMetrics = [
+  {
+    icon: "fas fa-percentage",
+    title: "Konwersja etapów",
+    description:
+      "Sprawdzasz, jaki procent szans przechodzi z jednego etapu sprzedaży do kolejnego i gdzie najczęściej odpadają potencjalni klienci.",
+  },
+  {
+    icon: "fas fa-coins",
+    title: "Wartość pipeline",
+    description:
+      "Widzisz łączną wartość aktywnych szans sprzedażowych i możesz analizować ją według etapu, handlowca, produktu lub innego kryterium.",
+  },
+  {
+    icon: "fas fa-hourglass-half",
+    title: "Czas na etapach",
+    description:
+      "Możemy analizować, jak długo szanse pozostają na poszczególnych etapach i gdzie proces sprzedaży zaczyna się zatrzymywać.",
+  },
+  {
+    icon: "fas fa-user-tie",
+    title: "Wyniki handlowców",
+    description:
+      "Porównanie liczby szans, wartości pipeline, konwersji i innych wskaźników przypisanych do poszczególnych osób lub zespołów.",
+  },
+  {
+    icon: "fas fa-bullhorn",
+    title: "Źródła leadów",
+    description:
+      "Analiza tego, skąd pochodzą szanse sprzedażowe i które źródła generują wartościowe leady.",
+  },
+  {
+    icon: "fas fa-chart-line",
+    title: "Prognoza sprzedaży",
+    description:
+      "Możemy przygotować prognozę opartą na aktywnych szansach i ustalonych zasadach prawdopodobieństwa, jeśli taki model ma sens w Twoim procesie.",
+  },
+];
+
+const faqItems = [
+  {
+    question: "Czym lejek sprzedaży różni się od CRM w Excelu?",
+    answer:
+      "CRM obejmuje szerszy proces obsługi klientów i leadów: historię kontaktów, zadania, follow-upy, handlowców i etapy sprzedaży. Lejek koncentruje się przede wszystkim na analizie pipeline, przejść między etapami, konwersji, wartości szans i wyników sprzedaży.",
+  },
+  {
+    question: "Czy etapy lejka można dopasować do naszej sprzedaży?",
+    answer:
+      "Tak. Etapy mogą odpowiadać rzeczywistemu procesowi firmy, np. nowy lead, kwalifikacja, oferta, negocjacje, decyzja, wygrana lub utracona szansa.",
+  },
+  {
+    question: "Czy można analizować konwersję pomiędzy etapami?",
+    answer:
+      "Tak. Jeśli dane pozwalają śledzić historię lub aktualne etapy szans, możemy przygotować wskaźniki pokazujące przejścia i konwersję w procesie sprzedaży.",
+  },
+  {
+    question: "Czy lejek może pobierać dane z innych źródeł?",
+    answer:
+      "Tak. W zależności od źródła możemy wykorzystać Power Query, pliki, SharePoint, API lub inne rozwiązanie do zasilania raportu danymi.",
+  },
+  {
+    question: "Czy potrzebuję lejka, jeśli mam już CRM?",
+    answer:
+      "Niekoniecznie. Jeśli CRM dostarcza wszystkie potrzebne raporty, osobne rozwiązanie może nie być potrzebne. Lejek w Excelu ma sens np. wtedy, gdy firma potrzebuje własnej analityki, dodatkowego raportowania lub danych z kilku źródeł.",
+  },
+];
+
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Lejek sprzedaży w Excelu",
+    description,
+    url: currentUrl,
+    provider: {
+      "@type": "Organization",
+      name: "Raporty24",
+      url: "https://raporty24.pl/",
+    },
+    serviceType:
+      "Analiza lejka sprzedaży, pipeline i konwersji w Excelu",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Strona główna",
+        item: "https://raporty24.pl/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Usługi",
+        item: "https://raporty24.pl/uslugi/",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Lejek sprzedaży w Excelu",
+        item: currentUrl,
+      },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  },
+];
 ---
 
-<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
+<BaseLayout
+  title={title}
+  description={description}
+  image={ogImage}
+  url={currentUrl}
+  structuredData={structuredData}
+>
   <div x-data="app" x-cloak>
     <Header />
-    
-    <HeroService 
-      title="Przejrzysty" 
-      highlight="Lejek Sprzedaży w Excelu" 
-      subtitle="Dowiedz się, na którym etapie tracisz najwięcej klientów. Projektujemy arkusze do zarządzania procesem sprzedaży (Pipeline Management) z automatyczną analityką KPI."
-    />
 
-    <section class="py-24 bg-slate-950 text-white">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center mb-16">
-          <h2 class="text-4xl lg:text-5xl font-black uppercase tracking-tighter mb-6">Mierz to, co <span class="text-green-500">naprawdę sprzedaje</span></h2>
-          <p class="text-xl text-slate-400">Sam rejestr klientów to za mało. Profesjonalny lejek pozwala zrozumieć dynamikę sprzedaży i przewidzieć wynik finansowy z wyprzedzeniem kilku miesięcy.</p>
-        </div>
-        
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
-            <h3 class="text-xl font-bold mb-4 text-green-400">Współczynnik Konwersji</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">Ile procent ofert zamienia się w zamówienia? Liczymy skuteczność dla każdego handlowca i źródła pozyskania klienta.</p>
-          </div>
-          <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
-            <h3 class="text-xl font-bold mb-4 text-green-400">Wartość Pipeline</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">Ile pieniędzy "leży na stole"? Automatyczna suma ofert ważona prawdopodobieństwem domknięcia transakcji.</p>
-          </div>
-          <div class="p-8 rounded-3xl bg-white/5 border border-white/10">
-            <h3 class="text-xl font-bold mb-4 text-green-400">Wąskie Gardła</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">Sprawdzamy, na którym etapie klienci najdłużej czekają na kontakt lub ofertę. Skracamy cykl sprzedaży.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <main>
 
-    <section class="py-24 bg-white text-slate-900">
-      <div class="container mx-auto px-4">
-        <div class="flex flex-col lg:flex-row gap-16 items-center">
-          <div class="lg:w-1/2">
-            <h2 class="text-4xl font-black uppercase tracking-tighter mb-8 leading-none">Elementy profesjonalnego <br/><span class="text-green-600">zarządzania Pipeline</span></h2>
-            <div class="space-y-6 text-slate-600">
-              <p>Twój lejek w Excelu zostanie wyposażony w mechanizmy, które do tej pory były dostępne tylko w drogich systemach CRM:</p>
-              <ul class="space-y-4">
-                <li class="flex items-center gap-3"><i class="fas fa-check text-green-600"></i> Definicja etapów (od zapytania po fakturę)</li>
-                <li class="flex items-center gap-3"><i class="fas fa-check text-green-600"></i> Priorytetyzacja szans sprzedaży (Hot/Warm/Cold)</li>
-                <li class="flex items-center gap-3"><i class="fas fa-check text-green-600"></i> Automatyczne daty follow-up i alarmy o zaległościach</li>
-                <li class="flex items-center gap-3"><i class="fas fa-check text-green-600"></i> Raportowanie źródeł leadów (Skąd przychodzą klienci?)</li>
-              </ul>
+      <HeroService
+        eyebrow="Sprzedaż i analiza pipeline"
+        title="Lejek sprzedaży"
+        highlight="w Excelu"
+        subtitle="Analizuj etapy sprzedaży, konwersję, wartość aktywnych szans i miejsca, w których proces zaczyna się zatrzymywać."
+        ctaText="Opisz swój proces sprzedaży"
+      />
+
+
+      <!-- ===================================================== -->
+      <!-- PO CO LEJEK -->
+      <!-- ===================================================== -->
+
+      <section
+        class="bg-white py-20 text-slate-950 lg:py-28"
+      >
+        <div class="container mx-auto px-4">
+
+          <div class="mx-auto max-w-6xl">
+
+            <div class="max-w-4xl">
+
+              <p
+                class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-green-600"
+              >
+                Więcej niż lista szans
+              </p>
+
+              <h2
+                class="text-4xl font-black tracking-tighter lg:text-6xl"
+              >
+                Zobacz, co dzieje się
+                <span class="text-green-600">
+                  pomiędzy leadem a sprzedażą.
+                </span>
+              </h2>
+
+              <p
+                class="mt-7 max-w-3xl text-lg leading-relaxed text-slate-600"
+              >
+                Sama liczba klientów lub ofert niewiele mówi
+                o jakości procesu sprzedaży. Lejek pozwala zobaczyć,
+                ile szans znajduje się na poszczególnych etapach,
+                jaka jest ich wartość i w którym miejscu
+                potencjalni klienci najczęściej odpadają.
+              </p>
+
             </div>
-          </div>
-          <div class="lg:w-1/2">
-             <div class="p-10 rounded-[40px] bg-slate-50 border border-slate-200 shadow-inner">
-               <h4 class="font-bold text-2xl mb-6">Widok Kanban w Excelu?</h4>
-               <p class="text-slate-600 text-sm mb-6">Tak, projektujemy arkusze w taki sposób, aby wizualnie przypominały nowoczesne tablice zadań, co drastycznie ułatwia codzienną pracę handlowców.</p>
-               <div class="bg-white p-4 rounded-xl border border-slate-200">
-                 <div class="flex gap-2 mb-2"><div class="w-1/3 h-2 bg-green-500 rounded"></div><div class="w-1/3 h-2 bg-slate-200 rounded"></div><div class="w-1/3 h-2 bg-slate-200 rounded"></div></div>
-                 <div class="text-[10px] text-slate-400 uppercase font-bold">Etap: Ofertowanie</div>
-               </div>
-             </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="py-24 bg-slate-950 text-white">
-      <div class="container mx-auto px-4 max-w-4xl">
-        <h2 class="text-3xl font-black mb-12 uppercase border-l-4 border-green-500 pl-6">FAQ – Lejek Sprzedaży</h2>
-        <div class="grid gap-4">
-          <div class="p-6 rounded-2xl bg-white/5 border border-white/10">
-            <h4 class="font-bold text-green-400 mb-2">Jak wyliczane jest prawdopodobieństwo sprzedaży?</h4>
-            <p class="text-slate-400 text-sm">Przypisujemy procentową szansę na sukces do każdego etapu lejka (np. Oferta - 30%, Negocjacje - 70%). Dzięki temu prognoza przychodów jest realistyczna.</p>
-          </div>
-          <div class="p-6 rounded-2xl bg-white/5 border border-white/10">
-            <h4 class="font-bold text-green-400 mb-2">Czy można importować dane z innych systemów?</h4>
-            <p class="text-slate-400 text-sm">Oczywiście. Przez Power Query możemy pobierać dane o leadach z formularzy na stronie, systemów reklamowych lub innych plików.</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <Contact />
+            <div
+              class="mt-14 grid gap-6 md:grid-cols-3"
+            >
+
+              <article
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-8"
+              >
+                <i
+                  class="fas fa-filter mb-6 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3
+                  class="mb-3 text-xl font-black"
+                >
+                  Etapy sprzedaży
+                </h3>
+
+                <p
+                  class="text-sm leading-relaxed text-slate-600"
+                >
+                  Pipeline może odzwierciedlać rzeczywisty proces:
+                  od nowego zapytania, przez ofertę i negocjacje,
+                  aż do wygranej lub utraconej szansy.
+                </p>
+              </article>
+
+
+              <article
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-8"
+              >
+                <i
+                  class="fas fa-chart-pie mb-6 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3
+                  class="mb-3 text-xl font-black"
+                >
+                  Konwersja
+                </h3>
+
+                <p
+                  class="text-sm leading-relaxed text-slate-600"
+                >
+                  Możesz analizować, jaka część szans
+                  przechodzi pomiędzy kolejnymi etapami
+                  i gdzie sprzedaż traci najwięcej potencjału.
+                </p>
+              </article>
+
+
+              <article
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-8"
+              >
+                <i
+                  class="fas fa-search-dollar mb-6 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3
+                  class="mb-3 text-xl font-black"
+                >
+                  Wartość szans
+                </h3>
+
+                <p
+                  class="text-sm leading-relaxed text-slate-600"
+                >
+                  Pipeline pokazuje nie tylko liczbę tematów,
+                  ale również ich wartość i strukturę
+                  na poszczególnych etapach procesu.
+                </p>
+              </article>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- ===================================================== -->
+      <!-- METRYKI -->
+      <!-- ===================================================== -->
+
+      <section
+        class="relative overflow-hidden bg-slate-950 py-20 text-white lg:py-28"
+      >
+
+        <div
+          class="pointer-events-none absolute -right-24 top-0 h-96 w-96 rounded-full bg-green-500/10 blur-[120px]"
+          aria-hidden="true"
+        ></div>
+
+
+        <div class="container relative z-10 mx-auto px-4">
+
+          <div class="mx-auto max-w-6xl">
+
+            <div class="max-w-4xl">
+
+              <p
+                class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-green-400"
+              >
+                Analiza pipeline
+              </p>
+
+              <h2
+                class="text-4xl font-black tracking-tighter lg:text-6xl"
+              >
+                Jakie informacje może pokazywać
+                <span class="text-green-400">
+                  lejek sprzedaży?
+                </span>
+              </h2>
+
+              <p
+                class="mt-7 max-w-3xl text-lg leading-relaxed text-slate-400"
+              >
+                Zakres wskaźników zależy od tego,
+                jakie dane są dostępne i jak wygląda
+                proces sprzedaży w Twojej firmie.
+              </p>
+
+            </div>
+
+
+            <div
+              class="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+            >
+              {
+                funnelMetrics.map((item) => (
+                  <article
+                    class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 transition-all hover:border-green-500/30 hover:bg-white/[0.06]"
+                  >
+                    <div
+                      class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-500/10 text-green-400"
+                    >
+                      <i
+                        class={`${item.icon} text-xl`}
+                        aria-hidden="true"
+                      ></i>
+                    </div>
+
+                    <h3
+                      class="mb-4 text-xl font-black text-white"
+                    >
+                      {item.title}
+                    </h3>
+
+                    <p
+                      class="text-sm leading-relaxed text-slate-400"
+                    >
+                      {item.description}
+                    </p>
+                  </article>
+                ))
+              }
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- ===================================================== -->
+      <!-- LEJEK VS CRM -->
+      <!-- ===================================================== -->
+
+      <section
+        class="bg-white py-20 lg:py-28"
+      >
+        <div class="container mx-auto px-4">
+
+          <div class="mx-auto max-w-6xl">
+
+            <div class="max-w-4xl">
+
+              <p
+                class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-green-600"
+              >
+                Lejek czy CRM?
+              </p>
+
+              <h2
+                class="text-4xl font-black tracking-tighter text-slate-950 lg:text-5xl"
+              >
+                To podobne narzędzia,
+                ale mają
+                <span class="text-green-600">
+                  inne zadania.
+                </span>
+              </h2>
+
+              <p
+                class="mt-6 max-w-3xl text-lg leading-relaxed text-slate-600"
+              >
+                CRM pomaga prowadzić proces sprzedaży.
+                Lejek koncentruje się na jego analizie.
+                W praktyce oba rozwiązania mogą również
+                działać razem.
+              </p>
+
+            </div>
+
+
+            <div
+              class="mt-12 grid gap-6 md:grid-cols-2"
+            >
+
+              <article
+                class="rounded-[2rem] border border-green-500/30 bg-green-50 p-8 lg:p-10"
+              >
+
+                <span
+                  class="mb-4 block text-xs font-black uppercase tracking-widest text-green-700"
+                >
+                  Analiza sprzedaży
+                </span>
+
+                <h3
+                  class="mb-5 text-2xl font-black text-slate-950"
+                >
+                  Lejek sprzedaży
+                </h3>
+
+                <ul
+                  class="space-y-3 text-sm leading-relaxed text-slate-700"
+                >
+                  <li>✓ etapy pipeline</li>
+                  <li>✓ konwersja między etapami</li>
+                  <li>✓ wartość aktywnych szans</li>
+                  <li>✓ czas na etapach</li>
+                  <li>✓ analiza wyników</li>
+                </ul>
+
+              </article>
+
+
+              <article
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-8 lg:p-10"
+              >
+
+                <span
+                  class="mb-4 block text-xs font-black uppercase tracking-widest text-slate-500"
+                >
+                  Prowadzenie sprzedaży
+                </span>
+
+                <h3
+                  class="mb-5 text-2xl font-black text-slate-950"
+                >
+                  CRM w Excelu
+                </h3>
+
+                <ul
+                  class="space-y-3 text-sm leading-relaxed text-slate-600"
+                >
+                  <li>✓ klienci i leady</li>
+                  <li>✓ zadania handlowców</li>
+                  <li>✓ follow-upy</li>
+                  <li>✓ historia kontaktów</li>
+                  <li>✓ cały proces sprzedaży</li>
+                </ul>
+
+                <a
+                  href="/uslugi/crm-w-excelu/"
+                  class="mt-7 inline-flex font-black text-green-700 hover:text-green-600"
+                >
+                  Zobacz CRM w Excelu →
+                </a>
+
+              </article>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- ===================================================== -->
+      <!-- ŹRÓDŁA DANYCH -->
+      <!-- ===================================================== -->
+
+      <section
+        class="bg-slate-50 py-20 lg:py-28"
+      >
+        <div class="container mx-auto px-4">
+
+          <div
+            class="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1fr_1fr] lg:items-center"
+          >
+
+            <div>
+
+              <p
+                class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-green-600"
+              >
+                Dane nie muszą być wpisywane ręcznie
+              </p>
+
+              <h2
+                class="text-4xl font-black tracking-tighter text-slate-950 lg:text-5xl"
+              >
+                Lejek może korzystać
+                <span class="text-green-600">
+                  z innych źródeł danych.
+                </span>
+              </h2>
+
+              <p
+                class="mt-6 text-lg leading-relaxed text-slate-600"
+              >
+                Jeśli dane o leadach lub sprzedaży znajdują się
+                w innych plikach albo systemach,
+                możemy dobrać sposób ich importu i aktualizacji.
+              </p>
+
+            </div>
+
+
+            <div
+              class="grid gap-5 sm:grid-cols-2"
+            >
+
+              <article
+                class="rounded-2xl border border-slate-200 bg-white p-7"
+              >
+                <i
+                  class="fas fa-file-excel mb-5 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3 class="font-black text-slate-950">
+                  Excel i CSV
+                </h3>
+
+                <p
+                  class="mt-2 text-sm leading-relaxed text-slate-600"
+                >
+                  Dane z innych arkuszy,
+                  eksportów i zestawień.
+                </p>
+              </article>
+
+
+              <article
+                class="rounded-2xl border border-slate-200 bg-white p-7"
+              >
+                <i
+                  class="fas fa-sync-alt mb-5 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3 class="font-black text-slate-950">
+                  Power Query
+                </h3>
+
+                <p
+                  class="mt-2 text-sm leading-relaxed text-slate-600"
+                >
+                  Automatyczne pobieranie
+                  i porządkowanie danych.
+                </p>
+              </article>
+
+
+              <article
+                class="rounded-2xl border border-slate-200 bg-white p-7"
+              >
+                <i
+                  class="fas fa-cloud mb-5 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3 class="font-black text-slate-950">
+                  SharePoint
+                </h3>
+
+                <p
+                  class="mt-2 text-sm leading-relaxed text-slate-600"
+                >
+                  Dane i pliki wykorzystywane
+                  w środowisku Microsoft 365.
+                </p>
+              </article>
+
+
+              <article
+                class="rounded-2xl border border-slate-200 bg-white p-7"
+              >
+                <i
+                  class="fas fa-plug mb-5 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3 class="font-black text-slate-950">
+                  API i systemy
+                </h3>
+
+                <p
+                  class="mt-2 text-sm leading-relaxed text-slate-600"
+                >
+                  Integracje, jeśli dane mają
+                  pochodzić z innych aplikacji.
+                </p>
+              </article>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- ===================================================== -->
+      <!-- FAQ -->
+      <!-- ===================================================== -->
+
+      <section
+        class="bg-slate-950 py-20 text-white lg:py-28"
+      >
+        <div class="container mx-auto px-4">
+
+          <div class="mx-auto max-w-5xl">
+
+            <p
+              class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-green-400"
+            >
+              FAQ
+            </p>
+
+            <h2
+              class="text-4xl font-black tracking-tighter lg:text-5xl"
+            >
+              Najczęstsze pytania
+              <span class="text-green-400">
+                o lejek sprzedaży
+              </span>
+            </h2>
+
+
+            <div
+              class="mt-12 grid gap-4"
+            >
+              {
+                faqItems.map((item) => (
+                  <details
+                    class="rounded-2xl border border-white/10 bg-white/[0.04] p-6 transition-colors hover:border-green-500/30"
+                  >
+                    <summary
+                      class="cursor-pointer text-lg font-black text-white"
+                    >
+                      {item.question}
+                    </summary>
+
+                    <p
+                      class="mt-4 max-w-4xl text-sm leading-relaxed text-slate-400"
+                    >
+                      {item.answer}
+                    </p>
+                  </details>
+                ))
+              }
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- ===================================================== -->
+      <!-- INTERNAL LINKING -->
+      <!-- ===================================================== -->
+
+      <section
+        class="bg-slate-50 py-16"
+      >
+        <div class="container mx-auto px-4">
+
+          <div
+            class="mx-auto max-w-5xl rounded-[2rem] border border-slate-200 bg-white p-8 md:p-10"
+          >
+
+            <h2
+              class="text-2xl font-black text-slate-950"
+            >
+              Potrzebujesz czegoś więcej niż raport pipeline?
+            </h2>
+
+            <p
+              class="mt-4 max-w-3xl leading-relaxed text-slate-600"
+            >
+              Możemy rozszerzyć rozwiązanie o pełny CRM,
+              bazę klientów, automatyzację importu danych
+              lub dodatkowe raportowanie.
+            </p>
+
+
+            <div
+              class="mt-6 flex flex-wrap gap-x-6 gap-y-3"
+            >
+
+              <a
+                href="/uslugi/crm-w-excelu/"
+                class="font-bold text-green-700 hover:text-green-600"
+              >
+                CRM w Excelu →
+              </a>
+
+              <a
+                href="/uslugi/baza-klientow-w-excelu/"
+                class="font-bold text-green-700 hover:text-green-600"
+              >
+                Baza klientów →
+              </a>
+
+              <a
+                href="/uslugi/automatyzacja-excel-power-query/"
+                class="font-bold text-green-700 hover:text-green-600"
+              >
+                Excel i Power Query →
+              </a>
+
+              <a
+                href="/uslugi/power-bi-dla-firm/"
+                class="font-bold text-green-700 hover:text-green-600"
+              >
+                Power BI dla firm →
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+
+      <Contact />
+
+    </main>
+
     <Footer />
   </div>
 </BaseLayout>

@@ -5,157 +5,1422 @@ import HeroService from "../../components/HeroService.astro";
 import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
 
-// SEO Setup - Maksymalne podbicie pozycji i klikalności (CTR)
-const title = "Excel na zamówienie – Automatyzacja, Makra VBA i AI dla Firm";
-const description = "Zleć profesjonalne arkusze Excel na zamówienie. Automatyzacja raportów, pisanie makr VBA i systemy Power BI. Odzyskaj do 40h miesięcznie. Darmowa wycena w 24h!";
+const title =
+  "Excel na zamówienie dla firm | Automatyzacja i integracje | Raporty24";
 
-const ogImage = "/biuro3.webp"; 
-const currentUrl = "https://raporty24.pl/uslugi/excel-na-zamowienie/";
+const description =
+  "Tworzymy Excel na zamówienie dla firm: raporty, kalkulatory, Power Query, VBA, API, SharePoint, dodatki do Excela i automatyzacje procesów.";
+
+const ogImage = "/biuro3.webp";
+
+const currentUrl =
+  "https://raporty24.pl/uslugi/excel-na-zamowienie/";
 
 export const service = {
   title: "Excel na zamówienie",
   order: 10,
   menu: true,
   category: "Excel",
+  description:
+    "Dedykowane narzędzia Excel dla firm: raporty, kalkulatory, formularze, Power Query, VBA, integracje API, SharePoint i dodatki.",
+};
+
+
+/*
+ * =========================================================
+ * GŁÓWNE RODZAJE ROZWIĄZAŃ
+ * =========================================================
+ */
+
+const solutions = [
+  {
+    title: "Dedykowane arkusze",
+    description:
+      "Narzędzia dopasowane do konkretnego procesu firmy zamiast uniwersalnych szablonów i ręcznego obchodzenia ograniczeń.",
+    icon: "fas fa-file-excel",
+  },
+
+  {
+    title: "Raporty i zestawienia",
+    description:
+      "Raporty operacyjne, finansowe, sprzedażowe, magazynowe i zarządcze odświeżane na podstawie aktualnych danych.",
+    icon: "fas fa-chart-bar",
+  },
+
+  {
+    title: "Kalkulatory i formularze",
+    description:
+      "Kalkulatory ofertowe, konfiguratory, formularze zamówień, wyceny i narzędzia wspierające codzienną pracę zespołu.",
+    icon: "fas fa-calculator",
+  },
+
+  {
+    title: "Automatyzacja danych",
+    description:
+      "Power Query, importy, eksporty i przetwarzanie plików zamiast ręcznego kopiowania danych pomiędzy arkuszami.",
+    icon: "fas fa-database",
+  },
+
+  {
+    title: "Integracje z systemami",
+    description:
+      "Excel może pobierać lub wysyłać dane przez API do sklepu, CRM, ERP, bazy danych lub innego systemu firmy.",
+    icon: "fas fa-plug",
+  },
+
+  {
+    title: "Dodatki do Excela",
+    description:
+      "Gdy zwykły arkusz i VBA przestają wystarczać, możemy rozszerzyć Excel o własny interfejs, funkcje i logikę biznesową.",
+    icon: "fas fa-cogs",
+  },
+];
+
+
+/*
+ * =========================================================
+ * TYPOWE ZASTOSOWANIA
+ * =========================================================
+ */
+
+const useCases = [
+  "automatyczne raporty dzienne, tygodniowe i miesięczne",
+
+  "kalkulatory cen, marży i ofert dla handlowców",
+
+  "bazy klientów, produktów, zamówień lub zleceń",
+
+  "formularze do wprowadzania i kontroli danych",
+
+  "automatyczne importowanie wielu plików Excel lub CSV",
+
+  "łączenie Excela z API sklepu, CRM, ERP lub innego systemu",
+
+  "pobieranie danych z SharePoint lub OneDrive",
+
+  "generowanie PDF, ofert, zestawień i dokumentów",
+
+  "walidacja danych przed wysłaniem ich do systemu",
+
+  "narzędzia magazynowe, logistyczne i finansowe",
+
+  "automatyzacja powtarzalnych czynności wykonywanych przez pracowników",
+
+  "rozbudowa istniejącego pliku o nowe funkcje i integracje",
+];
+
+
+/*
+ * =========================================================
+ * TECHNOLOGIE
+ * =========================================================
+ */
+
+const technologies = [
+  {
+    title: "Excel i Power Query",
+    description:
+      "Dobre rozwiązanie, gdy dane pochodzą z plików, folderów, SharePoint, baz lub regularnych eksportów.",
+    icon: "fas fa-file-excel",
+  },
+
+  {
+    title: "VBA",
+    description:
+      "Do automatyzacji czynności wykonywanych wewnątrz Excela, formularzy, raportów, eksportów i obsługi skoroszytu.",
+    icon: "fas fa-code",
+  },
+
+  {
+    title: "C# i dodatki Excel",
+    description:
+      "Gdy potrzebny jest własny Ribbon, bardziej rozbudowany interfejs, integracja z Windows albo logika wychodząca poza typowe możliwości VBA.",
+    icon: "fas fa-desktop",
+  },
+
+  {
+    title: "API",
+    description:
+      "Do pobierania i wysyłania danych pomiędzy Excelem a sklepami, CRM, ERP, aplikacjami i innymi systemami.",
+    icon: "fas fa-plug",
+  },
+
+  {
+    title: "SharePoint i Microsoft 365",
+    description:
+      "Excel może współpracować z bibliotekami dokumentów, listami, OneDrive, Outlookiem, Power Automate i innymi elementami środowiska Microsoft 365.",
+    icon: "fas fa-cloud",
+  },
+
+  {
+    title: "Power BI i inne narzędzia",
+    description:
+      "Jeżeli Excel nie jest najlepszym miejscem na cały proces, możemy połączyć go z Power BI, bazą danych albo innym rozwiązaniem.",
+    icon: "fas fa-layer-group",
+  },
+];
+
+
+/*
+ * =========================================================
+ * PROCES
+ * =========================================================
+ */
+
+const process = [
+  {
+    step: "01",
+    title: "Opisujesz proces",
+    description:
+      "Nie potrzebujemy gotowej specyfikacji technicznej. Wystarczy opisać, co dziś robicie ręcznie, z jakich danych korzystacie i jaki ma być efekt.",
+  },
+
+  {
+    step: "02",
+    title: "Projektujemy rozwiązanie",
+    description:
+      "Ustalamy strukturę narzędzia, źródła danych, funkcje, uprawnienia i technologię potrzebną do realizacji procesu.",
+  },
+
+  {
+    step: "03",
+    title: "Budujemy i testujemy",
+    description:
+      "Tworzymy rozwiązanie i sprawdzamy je na rzeczywistych przypadkach, w tym na błędnych lub niekompletnych danych.",
+  },
+
+  {
+    step: "04",
+    title: "Przekazujemy do pracy",
+    description:
+      "Użytkownicy otrzymują gotowe narzędzie oraz sposób obsługi dopasowany do ich codziennej pracy.",
+  },
+];
+
+
+/*
+ * =========================================================
+ * FAQ
+ * =========================================================
+ */
+
+const faqs = [
+  {
+    question:
+      "Ile kosztuje Excel na zamówienie?",
+
+    answer:
+      "Cena zależy od zakresu procesu, liczby funkcji, źródeł danych i potrzebnych integracji. Prosty kalkulator i rozbudowane narzędzie połączone z API to dwa różne projekty, dlatego najpierw analizujemy wymagania i przygotowujemy wycenę.",
+  },
+
+  {
+    question:
+      "Czy muszę wiedzieć, czy potrzebuję VBA, Power Query, C# albo API?",
+
+    answer:
+      "Nie. Najlepiej opisać proces biznesowy i oczekiwany efekt. Technologię dobieramy dopiero po analizie sposobu pracy, źródeł danych i środowiska użytkowników.",
+  },
+
+  {
+    question:
+      "Czy możecie rozbudować Excel, który już mamy?",
+
+    answer:
+      "Tak. Możemy przeanalizować istniejący skoroszyt, naprawić problemy, dodać nowe funkcje, zmienić sposób pobierania danych albo przebudować najbardziej problematyczne elementy.",
+  },
+
+  {
+    question:
+      "Czy Excel może pobierać dane z API?",
+
+    answer:
+      "Tak. Excel może być interfejsem użytkownika, a dane mogą być pobierane lub wysyłane do sklepu, CRM, ERP albo innego systemu przez API.",
+  },
+
+  {
+    question:
+      "Czy tworzycie dodatki do Excela w C#?",
+
+    answer:
+      "Tak. Przy bardziej rozbudowanych rozwiązaniach możemy przygotować dodatek z własnymi przyciskami, formularzami i logiką biznesową. Dobór technologii zależy od środowiska firmy i wymaganej funkcjonalności.",
+  },
+
+  {
+    question:
+      "Czy Excel może współpracować z SharePoint i Microsoft 365?",
+
+    answer:
+      "Tak. Możemy pracować z danymi i plikami przechowywanymi w SharePoint lub OneDrive oraz łączyć proces z innymi elementami środowiska Microsoft 365, np. Outlookiem, Power Automate lub Power BI.",
+  },
+
+  {
+    question:
+      "Czy można połączyć Excel z AI?",
+
+    answer:
+      "Tak, jeśli ma to uzasadnienie biznesowe. Modele AI mogą wspierać np. klasyfikację tekstu, analizę opisów lub przetwarzanie nieustrukturyzowanych informacji. Nie dodajemy AI tam, gdzie zwykła automatyzacja jest prostsza i bardziej przewidywalna.",
+  },
+
+  {
+    question:
+      "Czy rozwiązania działają na Windows i macOS?",
+
+    answer:
+      "Część rozwiązań może działać na obu systemach, ale niektóre funkcje VBA, dodatki do Excela i narzędzia Microsoft mają różne możliwości na Windows i macOS. Dlatego środowisko użytkowników ustalamy przed rozpoczęciem projektu.",
+  },
+
+  {
+    question:
+      "Czy możemy podpisać NDA przed przekazaniem danych?",
+
+    answer:
+      "Tak. Jeżeli analiza wymaga przekazania poufnych plików lub danych firmowych, możemy wcześniej ustalić zasady poufności i podpisać NDA.",
+  },
+];
+
+
+/*
+ * =========================================================
+ * STRUCTURED DATA
+ * =========================================================
+ */
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+
+  "@type": "Service",
+
+  name:
+    "Excel na zamówienie dla firm",
+
+  provider: {
+    "@type": "Organization",
+
+    "@id":
+      "https://raporty24.pl/#organization",
+
+    name:
+      "Raporty24",
+
+    url:
+      "https://raporty24.pl/",
+  },
+
+  areaServed: {
+    "@type": "Country",
+    name: "Polska",
+  },
+
+  serviceType:
+    "Excel na zamówienie, automatyzacja Excel, Power Query, VBA, dodatki Excel, integracje API i SharePoint",
+
+  url:
+    currentUrl,
+
+  description,
+};
+
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+
+  "@type": "BreadcrumbList",
+
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Raporty24",
+      item: "https://raporty24.pl/",
+    },
+
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Usługi",
+      item: "https://raporty24.pl/uslugi/",
+    },
+
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Excel na zamówienie",
+      item: currentUrl,
+    },
+  ],
 };
 ---
 
-<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
-  <div x-data="app" x-cloak>
+<BaseLayout
+  title={title}
+  description={description}
+  image={ogImage}
+  url={currentUrl}
+  structuredData={[
+    serviceSchema,
+    breadcrumbSchema
+  ]}
+>
+
+  <div
+    x-data="app"
+    x-cloak
+  >
+
     <Header />
-    
+
+
+    <!-- ================================================= -->
+    <!-- HERO -->
+    <!-- ================================================= -->
+
     <HeroService
-      title="Dedykowany" 
-      highlight="Excel na zamówienie" 
-      subtitle="Automatyzujemy arkusze, eliminując ręczną pracę i błędy. Od zaawansowanych makr VBA po systemy analityczne oparte o sztuczną inteligencję (AI)."
+      eyebrow="Dedykowane narzędzia Excel dla firm"
+      title="Excel na zamówienie"
+      highlight="dopasowany do Twojego procesu"
+      subtitle="Tworzymy rozwiązania Excel, które nie kończą się na tabeli i kilku formułach. Raporty, kalkulatory, Power Query, VBA, API, SharePoint, dodatki do Excela i automatyzacje dopasowane do sposobu pracy firmy."
+      ctaText="Opisz swój proces"
     />
 
-    <section class="py-24 bg-white text-slate-900">
-      <div class="container mx-auto px-4">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+    <!-- ================================================= -->
+    <!-- GŁÓWNA SEKCJA -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="grid gap-16 lg:grid-cols-2 lg:items-center"
+        >
+
           <div>
-            <h2 class="text-4xl font-black uppercase tracking-tighter mb-8 leading-none">
-              Twój Excel wolno działa? <br/> <span class="text-green-600">Odzyskaj nawet 40h w miesiącu.</span>
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
+              Nie szablon. Narzędzie do konkretnej pracy.
+            </span>
+
+
+            <h2
+              class="mb-8 text-4xl font-black leading-tight tracking-tighter md:text-6xl"
+            >
+              Excel może obsługiwać proces firmy,
+              a nie tylko przechowywać dane.
             </h2>
-            <p class="text-lg text-slate-600 mb-6 leading-relaxed">
-              Ręczne przepisywanie danych i naprawianie wiszących formuł to kosztowny błąd Twojej firmy. Nasz <strong>ekspert Excel</strong> przygotuje dla Ciebie inteligentne rozwiązanie, które skróci czas codziennych operacji nawet o 80%. Projektujemy dedykowane <strong>systemy raportowe w Excelu</strong> oraz oferujemy profesjonalne <strong>pisanie makr VBA</strong> dopasowanych ściśle do procesów biznesowych Twojej organizacji.
-            </p>
-            <p class="text-md text-slate-600 mb-8 leading-relaxed bg-indigo-50/50 p-4 border-l-4 border-indigo-600 rounded-r-lg">
-              <i class="fas fa-robot text-indigo-600 mr-2"></i> <strong>Automatyzacja nowej generacji:</strong> Wdrażamy bezpośrednie integracje arkuszy z <strong>AI (ChatGPT API)</strong>. Twój nowy Excel może automatycznie kategoryzować tysiące wierszy danych, samodzielnie pisać spersonalizowane maile handlowe czy masowo analizować teksty i dokumenty bez udziału człowieka.
+
+
+            <div
+              class="space-y-6 text-lg leading-relaxed text-slate-600"
+            >
+
+              <p>
+                W wielu firmach Excel jest miejscem, do którego
+                ostatecznie trafiają dane z kilku systemów,
+                e-maili, plików i pracowników.
+              </p>
+
+
+              <p>
+                Dobrze zaprojektowane narzędzie może nie tylko
+                przechowywać te informacje, ale również je
+                sprawdzać, przeliczać, raportować i przekazywać dalej.
+              </p>
+
+
+              <p>
+                <strong class="text-slate-950">
+                  Nie zakładamy jednak, że wszystko musi zostać
+                  wykonane w samym Excelu.
+                </strong>
+
+                Jeżeli proces wymaga API, SharePoint,
+                dodatkowej aplikacji albo dodatku C#,
+                możemy połączyć te elementy w jedno rozwiązanie.
+              </p>
+
+            </div>
+
+
+            <div
+              class="mt-10 flex flex-col gap-4 sm:flex-row"
+            >
+
+              <a
+                href="#kontakt"
+                class="inline-flex items-center justify-center gap-3 rounded-2xl bg-green-600 px-8 py-5 text-sm font-black uppercase tracking-widest text-white transition-all hover:-translate-y-1 hover:bg-green-500"
+              >
+                Opisz potrzebne narzędzie
+
+                <i
+                  class="fas fa-arrow-right text-xs"
+                  aria-hidden="true"
+                ></i>
+              </a>
+
+
+              <a
+                href="/realizacje/"
+                class="inline-flex items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white px-8 py-5 text-sm font-black uppercase tracking-widest text-slate-950 transition-all hover:-translate-y-1 hover:border-green-500"
+              >
+                Zobacz realizacje
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <!-- PRZYKŁADOWY PRZEPŁYW -->
+          <div
+            class="rounded-[3rem] border border-slate-100 bg-slate-50 p-8 shadow-xl shadow-slate-200/60 md:p-10"
+          >
+
+            <h3
+              class="mb-8 text-2xl font-black text-slate-950"
+            >
+              Przykładowe narzędzie
+            </h3>
+
+
+            <div class="space-y-4">
+
+              <div
+                class="rounded-2xl bg-white p-5 shadow-sm"
+              >
+                <span
+                  class="mb-1 block text-[10px] font-black uppercase tracking-wider text-slate-400"
+                >
+                  Dane
+                </span>
+
+                <p class="font-bold text-slate-700">
+                  Excel / CSV / SharePoint / API / system
+                </p>
+              </div>
+
+
+              <div
+                class="flex justify-center text-green-600"
+                aria-hidden="true"
+              >
+                <i class="fas fa-arrow-down"></i>
+              </div>
+
+
+              <div
+                class="rounded-2xl bg-slate-950 p-5 text-white"
+              >
+                <span
+                  class="mb-1 block text-[10px] font-black uppercase tracking-wider text-green-400"
+                >
+                  Logika procesu
+                </span>
+
+                <p class="font-bold">
+                  walidacja + obliczenia + automatyzacja
+                </p>
+              </div>
+
+
+              <div
+                class="flex justify-center text-green-600"
+                aria-hidden="true"
+              >
+                <i class="fas fa-arrow-down"></i>
+              </div>
+
+
+              <div
+                class="grid grid-cols-2 gap-3"
+              >
+
+                <div
+                  class="rounded-2xl bg-white p-4 text-center shadow-sm"
+                >
+                  <strong class="text-sm">
+                    raport
+                  </strong>
+                </div>
+
+                <div
+                  class="rounded-2xl bg-white p-4 text-center shadow-sm"
+                >
+                  <strong class="text-sm">
+                    PDF
+                  </strong>
+                </div>
+
+                <div
+                  class="rounded-2xl bg-white p-4 text-center shadow-sm"
+                >
+                  <strong class="text-sm">
+                    system
+                  </strong>
+                </div>
+
+                <div
+                  class="rounded-2xl bg-white p-4 text-center shadow-sm"
+                >
+                  <strong class="text-sm">
+                    dashboard
+                  </strong>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- CO TWORZYMY -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-950 py-24 text-white"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div
+          class="mb-16 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-400"
+          >
+            Excel na zamówienie
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Jakie rozwiązania możemy przygotować?
+          </h2>
+
+
+          <p
+            class="text-lg leading-relaxed text-slate-400 md:text-xl"
+          >
+            Od prostego kalkulatora po narzędzie,
+            które komunikuje się z innymi systemami firmy.
+          </p>
+
+        </div>
+
+
+        <div
+          class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+        >
+
+          {
+            solutions.map((item) => (
+
+              <article
+                class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 transition-all hover:-translate-y-1 hover:border-green-500/50 hover:bg-white/[0.08]"
+              >
+
+                <div
+                  class="mb-7 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-500/10 text-green-400"
+                >
+                  <i
+                    class={`${item.icon} text-xl`}
+                    aria-hidden="true"
+                  ></i>
+                </div>
+
+
+                <h3
+                  class="mb-4 text-2xl font-black leading-tight text-white"
+                >
+                  {item.title}
+                </h3>
+
+
+                <p
+                  class="text-sm font-medium leading-relaxed text-slate-400"
+                >
+                  {item.description}
+                </p>
+
+              </article>
+
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- PRZYKŁADY -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div
+          class="mb-16 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+          >
+            Przykłady zastosowań
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Co można zrobić w Excelu dla firmy?
+          </h2>
+
+
+          <p
+            class="text-lg leading-relaxed text-slate-600 md:text-xl"
+          >
+            Najlepszy projekt zaczyna się od konkretnego procesu,
+            a nie od listy funkcji Excela.
+          </p>
+
+        </div>
+
+
+        <div
+          class="grid gap-4 md:grid-cols-2 xl:grid-cols-3"
+        >
+
+          {
+            useCases.map((item) => (
+
+              <div
+                class="flex items-start gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-6"
+              >
+
+                <div
+                  class="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-slate-950 text-[10px] text-green-400"
+                >
+                  <i
+                    class="fas fa-check"
+                    aria-hidden="true"
+                  ></i>
+                </div>
+
+
+                <p
+                  class="font-bold leading-relaxed text-slate-700"
+                >
+                  {item}
+                </p>
+
+              </div>
+
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- EXCEL + INNE SYSTEMY -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-50 py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="grid gap-16 lg:grid-cols-2 lg:items-center"
+        >
+
+          <div>
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
+              Excel może być interfejsem
+            </span>
+
+
+            <h2
+              class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+            >
+              Pracownik zostaje w Excelu.
+              Dane mogą pochodzić z innych systemów.
+            </h2>
+
+
+            <p
+              class="mb-6 text-lg leading-relaxed text-slate-600"
+            >
+              Jeżeli zespół zna Excel i dobrze się w nim porusza,
+              nie zawsze trzeba zmuszać użytkowników do pracy
+              w zupełnie nowym programie.
             </p>
 
-            <ul class="space-y-4 mb-10">
-              <li class="flex items-center gap-3 font-bold text-slate-800"><i class="fas fa-shield-alt text-green-500"></i> Pełne bezpieczeństwo danych i gwarancja poufności (Podpisujemy NDA przed wdrożeniem)</li>
-              <li class="flex items-center gap-3 font-bold text-slate-800"><i class="fas fa-bolt text-green-500"></i> Błyskawiczne generowanie PDF, umów, ofert i faktur jednym kliknięciem</li>
-              <li class="flex items-center gap-3 font-bold text-slate-800"><i class="fas fa-check-circle text-green-500"></i> Kompleksowa pomoc w Excelu – optymalizacja i naprawa starych, wolnych plików</li>
+
+            <p
+              class="text-lg leading-relaxed text-slate-600"
+            >
+              Excel może pozostać wygodnym interfejsem,
+              a dane mogą być pobierane lub wysyłane
+              automatycznie do innych systemów.
+            </p>
+
+          </div>
+
+
+          <div
+            class="rounded-[2.5rem] bg-slate-950 p-8 text-white md:p-10"
+          >
+
+            <h3
+              class="mb-7 text-2xl font-black"
+            >
+              Przykład
+            </h3>
+
+
+            <div class="space-y-5">
+
+              <div
+                class="rounded-2xl border border-white/10 bg-white/[0.05] p-5"
+              >
+                <strong class="block text-green-400">
+                  Pobierz
+                </strong>
+
+                <span class="text-sm text-slate-400">
+                  produkty, zamówienia lub dane z systemu
+                </span>
+              </div>
+
+
+              <div
+                class="rounded-2xl border border-white/10 bg-white/[0.05] p-5"
+              >
+                <strong class="block text-green-400">
+                  Pracuj w Excelu
+                </strong>
+
+                <span class="text-sm text-slate-400">
+                  sprawdź, przelicz lub zatwierdź zmiany
+                </span>
+              </div>
+
+
+              <div
+                class="rounded-2xl border border-white/10 bg-white/[0.05] p-5"
+              >
+                <strong class="block text-green-400">
+                  Wyślij
+                </strong>
+
+                <span class="text-sm text-slate-400">
+                  zatwierdzone dane wracają do systemu przez API
+                </span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- SHAREPOINT / MICROSOFT 365 -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div
+          class="grid gap-16 lg:grid-cols-2 lg:items-center"
+        >
+
+          <div>
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
+              Microsoft 365 i SharePoint
+            </span>
+
+
+            <h2
+              class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+            >
+              Excel może być częścią większego procesu Microsoft 365.
+            </h2>
+
+
+            <p
+              class="mb-6 text-lg leading-relaxed text-slate-600"
+            >
+              Dane nie muszą znajdować się wyłącznie
+              w lokalnym pliku na komputerze.
+            </p>
+
+
+            <p
+              class="text-lg leading-relaxed text-slate-600"
+            >
+              Możemy połączyć Excel z SharePoint,
+              OneDrive, Outlookiem, Power Automate
+              i Power BI, dzięki czemu pliki, dokumenty
+              i informacje mogą przepływać pomiędzy
+              narzędziami bez ręcznego kopiowania.
+            </p>
+
+          </div>
+
+
+          <div
+            class="grid gap-4 sm:grid-cols-2"
+          >
+
+            {
+              [
+                {
+                  title: "SharePoint",
+                  text: "Pliki, biblioteki dokumentów i listy jako źródło danych."
+                },
+
+                {
+                  title: "OneDrive",
+                  text: "Współdzielone pliki i dane dostępne dla zespołu."
+                },
+
+                {
+                  title: "Outlook",
+                  text: "Automatyczna obsługa wiadomości i załączników."
+                },
+
+                {
+                  title: "Power Automate",
+                  text: "Automatyczne przepływy pomiędzy usługami Microsoft 365."
+                },
+
+                {
+                  title: "Power BI",
+                  text: "Raportowanie danych z Excela i pozostałych źródeł."
+                },
+
+                {
+                  title: "Excel",
+                  text: "Znany użytkownikom interfejs do pracy z procesem."
+                }
+              ].map((item) => (
+
+                <div
+                  class="rounded-2xl border border-slate-200 bg-slate-50 p-6"
+                >
+
+                  <h3
+                    class="mb-2 text-lg font-black text-slate-950"
+                  >
+                    {item.title}
+                  </h3>
+
+                  <p
+                    class="text-sm leading-relaxed text-slate-600"
+                  >
+                    {item.text}
+                  </p>
+
+                </div>
+
+              ))
+            }
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- TECHNOLOGIE -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-950 py-24 text-white"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div
+          class="mb-16 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-400"
+          >
+            Nie ograniczamy projektu do jednej technologii
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Excel jest narzędziem. Proces firmy jest najważniejszy.
+          </h2>
+
+
+          <p
+            class="text-lg leading-relaxed text-slate-400 md:text-xl"
+          >
+            Dobieramy rozwiązanie do problemu,
+            środowiska i użytkowników.
+          </p>
+
+        </div>
+
+
+        <div
+          class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+        >
+
+          {
+            technologies.map((item) => (
+
+              <article
+                class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-7"
+              >
+
+                <div
+                  class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-500/10 text-green-400"
+                >
+                  <i
+                    class={`${item.icon} text-xl`}
+                    aria-hidden="true"
+                  ></i>
+                </div>
+
+
+                <h3
+                  class="mb-3 text-xl font-black text-white"
+                >
+                  {item.title}
+                </h3>
+
+
+                <p
+                  class="text-sm leading-relaxed text-slate-400"
+                >
+                  {item.description}
+                </p>
+
+              </article>
+
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- AI -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="grid gap-14 lg:grid-cols-2 lg:items-center"
+        >
+
+          <div>
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
+              AI wtedy, gdy ma sens
+            </span>
+
+
+            <h2
+              class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+            >
+              Nie każdy Excel potrzebuje sztucznej inteligencji.
+            </h2>
+
+
+            <p
+              class="mb-6 text-lg leading-relaxed text-slate-600"
+            >
+              W wielu procesach zwykłe reguły,
+              Power Query albo integracja API będą
+              prostsze i bardziej przewidywalne.
+            </p>
+
+
+            <p
+              class="text-lg leading-relaxed text-slate-600"
+            >
+              Jeżeli jednak problem obejmuje analizę tekstów,
+              klasyfikację opisów albo inne zadania,
+              w których AI daje realną przewagę,
+              możemy uwzględnić model AI jako jeden
+              z elementów procesu.
+            </p>
+
+          </div>
+
+
+          <div
+            class="rounded-[2.5rem] border border-slate-200 bg-slate-50 p-8 md:p-10"
+          >
+
+            <h3
+              class="mb-6 text-2xl font-black text-slate-950"
+            >
+              Najpierw pytamy:
+            </h3>
+
+
+            <ul class="space-y-5">
+
+              <li class="flex gap-3 text-slate-700">
+                <span class="font-black text-green-600">
+                  ✓
+                </span>
+
+                Czy problem da się rozwiązać prostymi regułami?
+              </li>
+
+              <li class="flex gap-3 text-slate-700">
+                <span class="font-black text-green-600">
+                  ✓
+                </span>
+
+                Czy wynik AI może zostać zweryfikowany?
+              </li>
+
+              <li class="flex gap-3 text-slate-700">
+                <span class="font-black text-green-600">
+                  ✓
+                </span>
+
+                Czy wykorzystanie AI faktycznie upraszcza proces?
+              </li>
+
+              <li class="flex gap-3 text-slate-700">
+                <span class="font-black text-green-600">
+                  ✓
+                </span>
+
+                Czy sposób przetwarzania danych jest odpowiedni dla firmy?
+              </li>
+
             </ul>
 
-            <div>
-              <a href="#kontakt" class="inline-block bg-green-600 text-white font-black py-4 px-10 rounded-full hover:bg-green-700 hover:scale-105 transition-all shadow-xl shadow-green-500/30 text-lg uppercase tracking-tight">
-                Odbierz darmowy audyt i wycenę w 24h
-              </a>
-              <span class="block text-sm text-slate-500 mt-3 font-medium">
-                <i class="fas fa-lock text-slate-400 mr-1"></i> Bezpieczne przesyłanie plików – gwarancja poufności danych firmowych
-              </span>
-            </div>
           </div>
 
-          <div class="bg-slate-50 p-8 rounded-[40px] border-2 border-slate-200">
-            <h3 class="text-2xl font-black mb-2 uppercase text-slate-900">Systemy wysokiej marży dla biznesu</h3>
-            <p class="text-sm text-slate-600 mb-6 font-medium">Wybierz gotowy kierunek zmian lub opisz nam swój własny proces:</p>
-            
-            <div class="grid sm:grid-cols-2 gap-4">
-              <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-indigo-600 hover:shadow-md transition-shadow ring-2 ring-indigo-50/50">
-                <h4 class="font-bold block text-slate-800 flex items-center gap-2">Excel + AI (Automatyzacja) <span class="text-[10px] bg-indigo-600 text-white px-1.5 py-0.5 rounded font-black">NAJCZĘŚCIEJ WYBIERANE</span></h4>
-                <span class="text-[11px] text-slate-500 leading-relaxed block mt-1 mb-2">Wykorzystanie potęgi ChatGPT do autonomicznej analizy, kategoryzacji danych i automatyzacji pętli mailowych.</span>
-                <span class="inline-block bg-indigo-100 text-indigo-800 text-[10px] px-2 py-1 rounded font-black">Od 1200 zł netto</span>
-              </div>
-
-              <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-green-500 hover:shadow-md transition-shadow">
-                <h4 class="font-bold block text-slate-800">Dedykowane systemy CRM i Magazyn</h4>
-                <span class="text-[11px] text-slate-500 leading-relaxed block mt-1 mb-2">Rozbudowane, zautomatyzowane bazy klientów, płatności, obieg dokumentów i stany magazynowe w jednym pliku.</span>
-                <span class="inline-block bg-green-100 text-green-800 text-[10px] px-2 py-1 rounded font-black">Od 1500 zł netto</span>
-              </div>
-
-              <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-green-500 hover:shadow-md transition-shadow">
-                <h4 class="font-bold block text-slate-800">Integracje Power Query</h4>
-                <span class="text-[11px] text-slate-500 leading-relaxed block mt-1 mb-2">Automatyczne, bezpośrednie zasysanie i czyszczenie danych z systemów ERP, CRM, baz SQL oraz zewnętrznych plików.</span>
-                <span class="inline-block bg-green-100 text-green-800 text-[10px] px-2 py-1 rounded font-black">Od 700 zł netto</span>
-              </div>
-
-              <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-green-500 hover:shadow-md transition-shadow">
-                <h4 class="font-bold block text-slate-800">Automatyczne Generatory PDF</h4>
-                <span class="text-[11px] text-slate-500 leading-relaxed block mt-1 mb-2">Masowe i bezbłędne tworzenie spersonalizowanych ofert, umów handlowych oraz faktur prosto z Twojej tabeli.</span>
-                <span class="inline-block bg-green-100 text-green-800 text-[10px] px-2 py-1 rounded font-black">Od 600 zł netto</span>
-              </div>
-
-              <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-green-500 hover:shadow-md transition-shadow">
-                <h4 class="font-bold block text-slate-800">Makra i VBA</h4>
-                <span class="text-[11px] text-slate-500 leading-relaxed block mt-1 mb-2">Przyspieszenie powtarzalnych, nudnych czynności biurowych do jednego kliknięcia dedykowanego przycisku.</span>
-                <span class="inline-block bg-green-100 text-green-800 text-[10px] px-2 py-1 rounded font-black">Od 490 zł netto</span>
-              </div>
-
-              <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-slate-400 hover:shadow-md transition-shadow text-center flex flex-col justify-center bg-slate-100/50">
-                <h4 class="font-bold block text-slate-600 italic">Inny, nietypowy proces?</h4>
-                <span class="text-[11px] text-slate-500">Przeanalizujemy go za darmo.</span>
-                <a href="#kontakt" class="text-xs font-black text-green-600 underline mt-1 block">Opisz wyzwanie &rarr;</a>
-              </div>
-            </div>
-          </div>
         </div>
+
       </div>
+
     </section>
 
-    <section class="py-24 bg-slate-950 text-white">
+
+    <!-- ================================================= -->
+    <!-- PROCES -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-50 py-24 text-slate-950"
+    >
+
       <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-black uppercase tracking-tighter mb-16 text-center">Standard profesjonalnej usługi B2B</h2>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-            <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-6">
-              <i class="fas fa-lock text-green-500"></i>
-            </div>
-            <h4 class="text-xl font-bold mb-4">Gwarancja Poufności (NDA)</h4>
-            <p class="text-slate-400 text-sm leading-relaxed">Wiemy, jak wrażliwe są dane finansowe i kadrowe firm. Przed analizą procesów i plików podpisujemy prawną umowę o zachowaniu poufności.</p>
-          </div>
-          <div class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-            <div class="w-12 h-12 bg-indigo-500/20 rounded-xl flex items-center justify-center mb-6">
-              <i class="fas fa-brain text-indigo-400"></i>
-            </div>
-            <h4 class="text-xl font-bold mb-4">Architektura Nowoczesnego AI</h4>
-            <p class="text-slate-400 text-sm leading-relaxed">Nie tworzymy tymczasowych rozwiązań. Budujemy stabilne integracje z oficjalnymi interfejsami API, gwarantując ciągłość działania systemów.</p>
-          </div>
-          <div class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-            <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-6">
-              <i class="fas fa-headset text-green-500"></i>
-            </div>
-            <h4 class="text-xl font-bold mb-4">Wsparcie Techniczne i Gwarancja</h4>
-            <p class="text-slate-400 text-sm leading-relaxed">Po oddaniu projektu nie zostajesz sam. Każde wdrożenie objęte jest opieką po-wdrożeniową oraz pełną gwarancją techniczną na poprawne działanie.</p>
-          </div>
+
+        <div
+          class="mb-16 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+          >
+            Realizacja
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Jak powstaje Excel na zamówienie?
+          </h2>
+
+
+          <p
+            class="text-lg leading-relaxed text-slate-600 md:text-xl"
+          >
+            Nie musisz tworzyć dokumentacji technicznej.
+            Zaczynamy od sposobu pracy i efektu,
+            który chcesz osiągnąć.
+          </p>
+
         </div>
+
+
+        <div
+          class="grid gap-6 md:grid-cols-2 xl:grid-cols-4"
+        >
+
+          {
+            process.map((item) => (
+
+              <article
+                class="rounded-[2rem] border border-slate-200 bg-white p-7 transition-all hover:-translate-y-1 hover:border-green-500/30 hover:shadow-xl"
+              >
+
+                <div
+                  class="mb-6 text-5xl font-black tracking-tighter text-green-600"
+                >
+                  {item.step}
+                </div>
+
+
+                <h3
+                  class="mb-4 text-2xl font-black text-slate-950"
+                >
+                  {item.title}
+                </h3>
+
+
+                <p
+                  class="text-sm leading-relaxed text-slate-600"
+                >
+                  {item.description}
+                </p>
+
+              </article>
+
+            ))
+          }
+
+        </div>
+
       </div>
+
     </section>
 
-    <section class="py-24 bg-slate-50 text-slate-900">
-      <div class="container mx-auto px-4 max-w-4xl">
-        <h2 class="text-3xl font-black mb-12 uppercase tracking-tight border-l-4 border-green-500 pl-6">Najczęściej zadawane pytania (FAQ)</h2>
-        <div class="space-y-4">
-          {[
-            { q: "Czy przed wysłaniem plików do wyceny możemy podpisać umowę o poufności (NDA)?", a: "Tak, oczywiście. Rozumiemy, że pliki zawierają strategiczne dane firmy. Na życzenie klienta wysyłamy nasz standardowy wzór umowy NDA lub podpisujemy dokument dostarczony przez Twój dział prawny jeszcze przed przekazaniem nam jakichkolwiek arkuszy do wglądu." },
-            { q: "Ile kosztuje stworzenie arkusza w Excelu na zamówienie?", a: "Proste i powtarzalne kalkulatory automatyzujące pojedyncze zadania zaczynają się od 490 zł netto. Bardziej złożone systemy zintegrowane z AI, systemy CRM, panele managerskie Power BI czy automatyzacja całych procesów to koszt od 1200–1500 zł netto w górę. Każdy projekt wyceniamy indywidualnie podczas darmowego audytu." },
-            { q: "Jak wygląda kwestia kosztów przy integracji Excela ze sztuczną inteligencją (AI)?", a: "Arkusz łączymy bezpośrednio z Twoim indywidualnym kluczem API OpenAI (twórców ChatGPT) przy pomocy stabilnego kodu VBA. Koszt utrzymania zależy bezpośrednio od wolumenu przetwarzanych danych przez Twoją firmę – przy standardowym, codziennym użytkowaniu biurowym są to zazwyczaj koszty rzędu kilku dolarów miesięcznie." },
-            { q: "Ile trwa realizacja i wdrożenie dedykowanego rozwiązania?", a: "Szybkie poprawki optymalizacyjne w istniejących plikach realizujemy zazwyczaj w 2-4 dni robocze. Budowa kompletnego, dedykowanego systemu automatyzacji od zera trwa średnio od 7 do 14 dni roboczych, w zależności od poziomu skomplikowania procedur." },
-            { q: "Czy stworzone makra i systemy będą poprawnie działać na systemach MacOS?", a: "Makra VBA posiadają pewne ograniczenia natywne w środowisku Apple w porównaniu do systemu Windows. Jeśli w Twojej firmie pracownicy korzystają z komputerów Mac, poinformuj nas o tym na samym początku – dopasujemy architekturę technologiczną kodu i narzędzi tak, aby były w pełni kompatybilne z Waszym sprzętem." }
-          ].map(item => (
-            <div class="p-6 rounded-2xl bg-white shadow-sm border border-slate-200 hover:border-green-500/50 transition-all">
-              <h4 class="font-bold text-slate-900 mb-2">{item.q}</h4>
-              <p class="text-slate-600 text-sm leading-relaxed">{item.a}</p>
-            </div>
-          ))}
+
+    <!-- ================================================= -->
+    <!-- POWIĄZANE -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-20 text-slate-950"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div class="mx-auto max-w-6xl">
+
+          <div
+            class="mb-10 max-w-3xl"
+          >
+            <h2
+              class="mb-4 text-3xl font-black tracking-tight md:text-4xl"
+            >
+              Potrzebujesz czegoś bardziej konkretnego?
+            </h2>
+
+            <p class="text-slate-600">
+              Zobacz usługi powiązane z Excelem i automatyzacją.
+            </p>
+          </div>
+
+
+          <div
+            class="grid gap-5 md:grid-cols-2 xl:grid-cols-4"
+          >
+
+            <a
+              href="/uslugi/automatyzacja-excel-power-query/"
+              class="rounded-2xl border border-slate-200 p-6 transition-all hover:border-green-500 hover:shadow-lg"
+            >
+              <h3 class="mb-2 text-lg font-black">
+                Power Query
+              </h3>
+
+              <p class="text-sm leading-relaxed text-slate-600">
+                Automatyczne pobieranie, łączenie i przetwarzanie danych.
+              </p>
+            </a>
+
+
+            <a
+              href="/uslugi/optymalizacja-excela/"
+              class="rounded-2xl border border-slate-200 p-6 transition-all hover:border-green-500 hover:shadow-lg"
+            >
+              <h3 class="mb-2 text-lg font-black">
+                Optymalizacja Excela
+              </h3>
+
+              <p class="text-sm leading-relaxed text-slate-600">
+                Naprawa i rozwój istniejących skoroszytów.
+              </p>
+            </a>
+
+
+            <a
+              href="/uslugi/integracje-api/"
+              class="rounded-2xl border border-slate-200 p-6 transition-all hover:border-green-500 hover:shadow-lg"
+            >
+              <h3 class="mb-2 text-lg font-black">
+                Integracje API
+              </h3>
+
+              <p class="text-sm leading-relaxed text-slate-600">
+                Połączenie Excela z systemami firmy.
+              </p>
+            </a>
+
+
+            <a
+              href="/uslugi/power-bi-dla-firm/"
+              class="rounded-2xl border border-slate-200 p-6 transition-all hover:border-green-500 hover:shadow-lg"
+            >
+              <h3 class="mb-2 text-lg font-black">
+                Power BI
+              </h3>
+
+              <p class="text-sm leading-relaxed text-slate-600">
+                Gdy raportowanie wykracza poza możliwości arkusza.
+              </p>
+            </a>
+
+          </div>
+
         </div>
+
       </div>
+
     </section>
+
+
+    <!-- ================================================= -->
+    <!-- FAQ -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-50 py-24 text-slate-950"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div
+          class="mb-14 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+          >
+            FAQ
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Najczęstsze pytania
+          </h2>
+
+        </div>
+
+
+        <div
+          class="grid gap-5 lg:grid-cols-2"
+        >
+
+          {
+            faqs.map((item) => (
+
+              <details
+                class="rounded-[2rem] border border-slate-200 bg-white p-7"
+              >
+
+                <summary
+                  class="cursor-pointer text-lg font-black text-slate-950"
+                >
+                  {item.question}
+                </summary>
+
+
+                <p
+                  class="mt-5 text-sm font-medium leading-relaxed text-slate-600"
+                >
+                  {item.answer}
+                </p>
+
+              </details>
+
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
 
     <Contact />
+
     <Footer />
+
   </div>
+
 </BaseLayout>

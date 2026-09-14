@@ -5,133 +5,850 @@ import HeroService from "../../components/HeroService.astro";
 import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
 
-// SEO Setup - uderzamy w najcięższe frazy finansowe + CHMURA
-const title = "Finanse w Excelu i Google Sheets – Cashflow i Budżetowanie | Raporty24";
-const description = "Zapanuj nad płynnością finansową w chmurze. Tworzymy modele cashflow i budżet firmowy w Excelu oraz Google Sheets. Bezpieczna analityka biznesowa online.";
-// 1. DODAJ TE DWIE LINIE:
-const ogImage = "/biuro3.webp"; // Możesz tu dać dedykowaną grafikę bazy klientów, jeśli ją masz
-const currentUrl = "https://raporty24.pl/uslugi/finanse-w-excelu/"; // upewnij się, że taki jest slug tej strony
+const title =
+  "Finanse w Excelu dla firm | Cashflow, budżet i controlling | Raporty24";
+
+const description =
+  "Tworzymy narzędzia finansowe w Excelu dla firm: cashflow, budżety, plan vs wykonanie, koszty, przychody, prognozy i raporty controllingowe.";
+
+const ogImage = "/biuro3.webp";
+const currentUrl = "https://raporty24.pl/uslugi/finanse-w-excelu/";
+
 export const service = {
-  title: "Finanse i Controlling",
-  order: 20,
+  title: "Finanse i controlling",
+  order: 40,
   menu: true,
   category: "Excel",
 };
+
+const financeAreas = [
+  {
+    icon: "fas fa-water",
+    title: "Cashflow",
+    description:
+      "Planowanie wpływów i wydatków oraz kontrola przyszłej płynności finansowej firmy.",
+  },
+  {
+    icon: "fas fa-calculator",
+    title: "Budżet firmowy",
+    description:
+      "Budżety kosztów i przychodów według działów, projektów, kategorii, okresów lub innych wymiarów.",
+  },
+  {
+    icon: "fas fa-scale-balanced",
+    title: "Plan vs wykonanie",
+    description:
+      "Porównanie założeń z rzeczywistymi wynikami oraz analiza odchyleń i ich źródeł.",
+  },
+  {
+    icon: "fas fa-chart-line",
+    title: "Prognozy",
+    description:
+      "Aktualizowane prognozy finansowe wykorzystujące rzeczywiste dane i założenia na kolejne okresy.",
+  },
+  {
+    icon: "fas fa-layer-group",
+    title: "Konsolidacja danych",
+    description:
+      "Łączenie danych finansowych z wielu plików, działów, oddziałów lub innych źródeł.",
+  },
+  {
+    icon: "fas fa-chart-pie",
+    title: "Raporty controllingowe",
+    description:
+      "Czytelne zestawienia kosztów, przychodów, marży, wyniku i innych wskaźników potrzebnych do zarządzania.",
+  },
+];
+
+const faqItems = [
+  {
+    question: "Czy można przygotować cashflow dopasowany do naszej firmy?",
+    answer:
+      "Tak. Układ kategorii, źródeł wpływów, wydatków, okresów i prognoz dobieramy do sposobu działania firmy. Nie musisz korzystać z gotowego szablonu.",
+  },
+  {
+    question: "Czy narzędzie może porównywać plan z wykonaniem?",
+    answer:
+      "Tak. Możemy zestawić budżet z rzeczywistymi danymi i pokazywać odchylenia według okresu, działu, kategorii, projektu lub innych wymiarów.",
+  },
+  {
+    question: "Czy dane mogą być pobierane automatycznie?",
+    answer:
+      "Tak, jeśli źródło na to pozwala. Możemy wykorzystać między innymi Power Query, pliki Excel i CSV, SharePoint, bazy danych lub API.",
+  },
+  {
+    question: "Czy kilku użytkowników może pracować z takim rozwiązaniem?",
+    answer:
+      "Tak, ale sposób współpracy zależy od architektury rozwiązania. Możemy wykorzystać środowisko Microsoft 365, SharePoint lub przygotować inny model pracy dopasowany do liczby użytkowników.",
+  },
+  {
+    question: "Czy raport finansowy może później trafić do Power BI?",
+    answer:
+      "Tak. Excel może służyć do wprowadzania, przygotowania lub kontroli danych, a Power BI może być osobną warstwą raportową dla zarządu i innych odbiorców.",
+  },
+];
+
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Finanse i controlling w Excelu",
+    description,
+    url: currentUrl,
+    provider: {
+      "@type": "Organization",
+      name: "Raporty24",
+      url: "https://raporty24.pl/",
+    },
+    serviceType:
+      "Cashflow, budżetowanie i controlling w Excelu dla firm",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Strona główna",
+        item: "https://raporty24.pl/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Usługi",
+        item: "https://raporty24.pl/uslugi/",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Finanse i controlling",
+        item: currentUrl,
+      },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  },
+];
 ---
 
-<BaseLayout title={title} description={description} image={ogImage} url={currentUrl}>
+<BaseLayout
+  title={title}
+  description={description}
+  image={ogImage}
+  url={currentUrl}
+  structuredData={structuredData}
+>
   <div x-data="app" x-cloak>
     <Header />
-    
-    <HeroService 
-      title="Systemy finansowe" 
-      highlight="w Excelu i Chmurze" 
-      subtitle="Przekształć dane finansowe w czytelne raporty online. Budujemy bezpieczne systemy do kontroli cashflow i budżetowania w środowisku Excel (SharePoint) oraz Google Sheets."
-    />
 
-    <section class="py-24 bg-slate-950 text-white">
-      <div class="container mx-auto px-4">
-        <div class="max-w-4xl mx-auto text-center mb-16">
-          <h2 class="text-4xl lg:text-5xl font-black uppercase tracking-tighter mb-6">Finanse <span class="text-green-500">dostępne z każdego miejsca</span></h2>
-          <p class="text-xl text-slate-400">Jako profesjonalna <strong>firma analityczna</strong> wiemy, że zespół finansowy musi pracować wspólnie. Nasz <strong>program do zarządzania firmą</strong> w obszarze finansów pozwala na jednoczesną edycję budżetu przez wielu użytkowników dzięki technologii chmurowej.</p>
-        </div>
-        
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-green-500/50 transition-all group">
-            <i class="fas fa-cloud-upload-alt text-3xl text-green-500 mb-6 group-hover:scale-110 transition-transform"></i>
-            <h4 class="text-xl font-bold mb-4 uppercase tracking-tight italic">Cashflow Online</h4>
-            <p class="text-slate-400 text-sm">Profesjonalny <strong>cashflow excel</strong> działający na OneDrive lub natywny <strong>cashflow w Google Sheets</strong>. Śledź płynność finansową w czasie rzeczywistym, gdziekolwiek jesteś.</p>
-          </div>
-          <div class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-green-500/50 transition-all group">
-            <i class="fas fa-users-cog text-3xl text-green-500 mb-6 group-hover:scale-110 transition-transform"></i>
-            <h4 class="text-xl font-bold mb-4 uppercase tracking-tight italic">Wspólne Budżetowanie</h4>
-            <p class="text-slate-400 text-sm">Twój <strong>budżet firmowy excel</strong> w chmurze Microsoft 365 pozwala wielu działom wprowadzać koszty jednocześnie, bez tworzenia dziesiątek kopii plików.</p>
-          </div>
-          <div class="p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-green-500/50 transition-all group">
-            <i class="fas fa-chart-area text-3xl text-green-500 mb-6 group-hover:scale-110 transition-transform"></i>
-            <h4 class="text-xl font-bold mb-4 uppercase tracking-tight italic">Raporty w Chmurze</h4>
-            <p class="text-slate-400 text-sm">Przekształcamy <strong>rachunek przepływów pieniężnych</strong> w interaktywne dashboardy dostępne przez przeglądarkę. Profesjonalne <strong>usługi dla firm excel</strong> na najwyższym poziomie.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <main>
 
-    <section class="py-24 bg-white text-slate-900">
-      <div class="container mx-auto px-4">
-        <div class="flex flex-col lg:flex-row gap-16 items-center">
-          <div class="lg:w-1/2">
-            <h2 class="text-4xl font-black uppercase tracking-tighter mb-8 leading-none">Precyzja <br/><span class="text-green-600">Arkuszy Google i Excela</span></h2>
-            <ul class="space-y-6">
-              <li class="flex gap-4">
-                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center">
-                    <i class="fab fa-google text-green-600"></i>
-                </div>
-                <div>
-                  <h4 class="font-bold text-lg italic uppercase">Automatyzacja Google Sheets</h4>
-                  <p class="text-slate-500 text-sm leading-relaxed italic">Piszemy skrypty Apps Script, które automatycznie pobierają dane do Twoich finansów w Google Sheets. Idealne rozwiązanie dla nowoczesnych firm online.</p>
-                </div>
-              </li>
-              <li class="flex gap-4">
-                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center">
-                    <i class="fas fa-database text-green-600"></i>
-                </div>
-                <div>
-                  <h4 class="font-bold text-lg italic uppercase">Power Query w SharePoint</h4>
-                  <p class="text-slate-500 text-sm leading-relaxed italic">Łączymy Excela z Twoim bankiem i systemem księgowym w chmurze. Twój <strong>przepływy pieniężne wzór excel</strong> aktualizuje się automatycznie po każdym odświeżeniu.</p>
-                </div>
-              </li>
-              <li class="flex gap-4">
-                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center">
-                    <i class="fas fa-user-shield text-green-600"></i>
-                </div>
-                <div>
-                  <h4 class="font-bold text-lg italic uppercase">Bezpieczeństwo i RODO</h4>
-                  <p class="text-slate-500 text-sm leading-relaxed italic">Zarządzaj dostępem do wrażliwych danych finansowych. Nasza <strong>analityka biznesowa</strong> dba o to, by tylko uprawnione osoby widziały wyniki firmy.</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div class="lg:w-1/2 bg-slate-950 p-12 rounded-[50px] shadow-2xl relative overflow-hidden group">
-            <div class="absolute -top-6 -left-6 bg-green-600 text-white px-6 py-3 rounded-2xl font-black uppercase text-xs tracking-widest shadow-xl">
-              Financial Cloud
+      <HeroService
+        eyebrow="Finanse i controlling"
+        title="Finanse w Excelu"
+        highlight="pod kontrolą"
+        subtitle="Tworzymy dopasowane do firmy narzędzia do cashflow, budżetowania, analizy plan vs wykonanie, prognoz i raportowania finansowego."
+        ctaText="Opisz swój proces finansowy"
+      />
+
+
+      <!-- ===================================================== -->
+      <!-- PROBLEM -->
+      <!-- ===================================================== -->
+
+      <section class="bg-white py-20 text-slate-950 lg:py-28">
+        <div class="container mx-auto px-4">
+          <div class="mx-auto max-w-6xl">
+
+            <div class="max-w-4xl">
+
+              <p
+                class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-green-600"
+              >
+                Dane są. Brakuje jednego obrazu.
+              </p>
+
+              <h2
+                class="text-4xl font-black tracking-tighter lg:text-6xl"
+              >
+                Finanse firmy nie powinny być
+                <span class="text-green-600">
+                  rozsiane po wielu plikach.
+                </span>
+              </h2>
+
+              <p
+                class="mt-7 max-w-3xl text-lg leading-relaxed text-slate-600"
+              >
+                Budżet w jednym arkuszu, wykonanie w drugim,
+                koszty w eksporcie z systemu, a prognoza przygotowywana
+                ręcznie przed każdym spotkaniem. Takie rozwiązanie
+                działa tylko do momentu, gdy danych i użytkowników
+                zaczyna być więcej.
+              </p>
+
             </div>
-            <h3 class="text-2xl font-bold text-white mb-6">Konsolidacja Online</h3>
-            <p class="text-slate-400 mb-8 text-sm leading-relaxed">Jako Twoja <strong>firma analityczna</strong> budujemy systemy, które w chmurze łączą dane z wielu oddziałów. Widzisz stan finansów całej grupy w jednym arkuszu.</p>
-            <div class="space-y-6">
-               <div>
-                  <div class="flex justify-between text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em] mb-2"><span>Płynność (Quick Ratio)</span><span>1.8</span></div>
-                  <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden"><div class="w-[70%] h-full bg-green-500 shadow-[0_0_15px_#22c55e]"></div></div>
-               </div>
-               <div>
-                  <div class="flex justify-between text-[10px] text-slate-500 font-bold uppercase tracking-[0.2em] mb-2"><span>Dostępny kapitał</span><span>85%</span></div>
-                  <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden"><div class="w-[85%] h-full bg-green-400 shadow-[0_0_15px_#4ade80]"></div></div>
-               </div>
+
+
+            <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+
+              <article
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7"
+              >
+                <i
+                  class="fas fa-file-excel mb-6 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3 class="mb-3 text-lg font-black">
+                  Wiele wersji plików
+                </h3>
+
+                <p class="text-sm leading-relaxed text-slate-600">
+                  Różne działy pracują na własnych kopiach,
+                  a konsolidacja wymaga kolejnego ręcznego etapu.
+                </p>
+              </article>
+
+
+              <article
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7"
+              >
+                <i
+                  class="fas fa-keyboard mb-6 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3 class="mb-3 text-lg font-black">
+                  Ręczne przepisywanie
+                </h3>
+
+                <p class="text-sm leading-relaxed text-slate-600">
+                  Dane są kopiowane między systemami, plikami
+                  i raportami zamiast przepływać automatycznie.
+                </p>
+              </article>
+
+
+              <article
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7"
+              >
+                <i
+                  class="fas fa-clock mb-6 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3 class="mb-3 text-lg font-black">
+                  Raport zawsze po czasie
+                </h3>
+
+                <p class="text-sm leading-relaxed text-slate-600">
+                  Zanim dane zostaną zebrane i sprawdzone,
+                  raport przedstawia już sytuację sprzed kilku dni.
+                </p>
+              </article>
+
+
+              <article
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7"
+              >
+                <i
+                  class="fas fa-eye-slash mb-6 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3 class="mb-3 text-lg font-black">
+                  Brak widoku przyszłości
+                </h3>
+
+                <p class="text-sm leading-relaxed text-slate-600">
+                  Firma zna wyniki historyczne,
+                  ale trudniej ocenić przyszłą płynność,
+                  koszty i realizację budżetu.
+                </p>
+              </article>
+
             </div>
+
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="py-24 bg-slate-950 text-white border-t border-white/5">
-      <div class="container mx-auto px-4 max-w-4xl">
-        <h2 class="text-3xl lg:text-4xl font-black mb-12 uppercase tracking-tight text-center italic text-white">Finanse w Chmurze – FAQ</h2>
-        <div class="grid gap-6">
-          {[
-            { q: "Czy Google Sheets jest wystarczająco bezpieczny dla finansów?", a: "Tak. Google Sheets oferuje zaawansowane szyfrowanie i logi aktywności. To świetna alternatywa dla Excela, jeśli zależy Ci na natywnej pracy w chmurze." },
-            { q: "Czy mogę zablokować wybrane dane przed edycją?", a: "Oczywiście. Zarówno w Excelu (SharePoint), jak i w Google Sheets wdrażamy precyzyjne uprawnienia, chroniąc kluczowe formuły i dane przed przypadkową zmianą." },
-            { q: "Czy w chmurze zadziałają makra?", a: "W Google Sheets używamy Apps Script, który działa w chmurze bez zarzutu. W Excelu Online makra VBA mają ograniczenia, dlatego projektujemy je tak, by kluczowe funkcje działały w modelu danych." },
-            { q: "Jakie są koszty wdrożenia cashflow online?", a: "Cena zależy od liczby źródeł danych. Płacisz raz za projekt – nie ma żadnych miesięcznych opłat za korzystanie z Twojego nowego systemu finansowego." }
-          ].map(item => (
-            <div class="p-8 rounded-[2rem] bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
-              <h4 class="font-bold text-green-400 mb-3 text-lg">{item.q}</h4>
-              <p class="text-slate-400 text-sm leading-relaxed">{item.a}</p>
+
+      <!-- ===================================================== -->
+      <!-- OBSZARY -->
+      <!-- ===================================================== -->
+
+      <section
+        class="relative overflow-hidden bg-slate-950 py-20 text-white lg:py-28"
+      >
+
+        <div
+          class="pointer-events-none absolute -right-24 top-0 h-96 w-96 rounded-full bg-green-500/10 blur-[120px]"
+          aria-hidden="true"
+        ></div>
+
+        <div class="container relative z-10 mx-auto px-4">
+          <div class="mx-auto max-w-6xl">
+
+            <div class="max-w-4xl">
+
+              <p
+                class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-green-400"
+              >
+                Finanse w jednym rozwiązaniu
+              </p>
+
+              <h2
+                class="text-4xl font-black tracking-tighter lg:text-6xl"
+              >
+                Co możemy
+                <span class="text-green-400">
+                  zautomatyzować?
+                </span>
+              </h2>
+
+              <p
+                class="mt-7 max-w-3xl text-lg leading-relaxed text-slate-400"
+              >
+                Zakres zależy od procesu firmy.
+                Możemy przygotować pojedynczy model cashflow
+                albo większe narzędzie łączące budżet,
+                wykonanie, prognozę i raportowanie.
+              </p>
+
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
 
-    <Contact />
+
+            <div class="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {
+                financeAreas.map((item) => (
+                  <article
+                    class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 transition-all hover:border-green-500/30 hover:bg-white/[0.06]"
+                  >
+                    <div
+                      class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-500/10 text-green-400"
+                    >
+                      <i
+                        class={`${item.icon} text-xl`}
+                        aria-hidden="true"
+                      ></i>
+                    </div>
+
+                    <h3 class="mb-4 text-xl font-black text-white">
+                      {item.title}
+                    </h3>
+
+                    <p class="text-sm leading-relaxed text-slate-400">
+                      {item.description}
+                    </p>
+                  </article>
+                ))
+              }
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ===================================================== -->
+      <!-- PLAN VS WYKONANIE -->
+      <!-- ===================================================== -->
+
+      <section class="bg-white py-20 lg:py-28">
+        <div class="container mx-auto px-4">
+
+          <div
+            class="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center"
+          >
+
+            <div>
+
+              <p
+                class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-green-600"
+              >
+                Budżetowanie i controlling
+              </p>
+
+              <h2
+                class="text-4xl font-black tracking-tighter text-slate-950 lg:text-5xl"
+              >
+                Nie tylko budżet.
+                <span class="text-green-600">
+                  Budżet kontra rzeczywistość.
+                </span>
+              </h2>
+
+              <p
+                class="mt-6 text-lg leading-relaxed text-slate-600"
+              >
+                Sam plan finansowy nie daje pełnego obrazu.
+                Narzędzie może zestawiać wartości planowane
+                z rzeczywistymi wynikami i pokazywać,
+                gdzie powstają odchylenia.
+              </p>
+
+            </div>
+
+
+            <div
+              class="rounded-[2rem] border border-slate-200 bg-slate-50 p-8 lg:p-10"
+            >
+
+              <div class="grid gap-6 sm:grid-cols-2">
+
+                <div
+                  class="rounded-2xl border border-slate-200 bg-white p-6"
+                >
+                  <span
+                    class="text-xs font-black uppercase tracking-widest text-slate-400"
+                  >
+                    Plan
+                  </span>
+
+                  <p
+                    class="mt-3 text-3xl font-black text-slate-950"
+                  >
+                    Budżet
+                  </p>
+
+                  <p
+                    class="mt-2 text-sm leading-relaxed text-slate-600"
+                  >
+                    Założenia kosztowe,
+                    przychodowe i finansowe.
+                  </p>
+                </div>
+
+
+                <div
+                  class="rounded-2xl border border-slate-200 bg-white p-6"
+                >
+                  <span
+                    class="text-xs font-black uppercase tracking-widest text-slate-400"
+                  >
+                    Wykonanie
+                  </span>
+
+                  <p
+                    class="mt-3 text-3xl font-black text-slate-950"
+                  >
+                    Actual
+                  </p>
+
+                  <p
+                    class="mt-2 text-sm leading-relaxed text-slate-600"
+                  >
+                    Rzeczywiste dane
+                    pochodzące z procesu firmy.
+                  </p>
+                </div>
+
+
+                <div
+                  class="rounded-2xl border border-green-500/30 bg-green-50 p-6 sm:col-span-2"
+                >
+                  <span
+                    class="text-xs font-black uppercase tracking-widest text-green-700"
+                  >
+                    Analiza
+                  </span>
+
+                  <p
+                    class="mt-3 text-3xl font-black text-slate-950"
+                  >
+                    Odchylenia
+                  </p>
+
+                  <p
+                    class="mt-2 max-w-xl text-sm leading-relaxed text-slate-700"
+                  >
+                    Różnice kwotowe i procentowe,
+                    podział według kategorii, działu,
+                    projektu, miesiąca lub innych wymiarów.
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ===================================================== -->
+      <!-- ŹRÓDŁA DANYCH -->
+      <!-- ===================================================== -->
+
+      <section class="bg-slate-50 py-20 lg:py-28">
+        <div class="container mx-auto px-4">
+
+          <div class="mx-auto max-w-6xl">
+
+            <div class="max-w-4xl">
+
+              <p
+                class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-green-600"
+              >
+                Automatyczne zasilanie
+              </p>
+
+              <h2
+                class="text-4xl font-black tracking-tighter text-slate-950 lg:text-5xl"
+              >
+                Dane finansowe nie muszą być
+                <span class="text-green-600">
+                  przepisywane ręcznie.
+                </span>
+              </h2>
+
+              <p
+                class="mt-6 max-w-3xl text-lg leading-relaxed text-slate-600"
+              >
+                Jeśli dane są już dostępne w plikach,
+                systemach lub innych źródłach,
+                możemy dobrać sposób ich pobierania,
+                porządkowania i aktualizacji.
+              </p>
+
+            </div>
+
+
+            <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+
+              <article
+                class="rounded-2xl border border-slate-200 bg-white p-7"
+              >
+                <i
+                  class="fas fa-file-excel mb-5 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3 class="font-black text-slate-950">
+                  Excel, CSV i pliki
+                </h3>
+
+                <p
+                  class="mt-2 text-sm leading-relaxed text-slate-600"
+                >
+                  Import danych z cyklicznych zestawień
+                  i eksportów.
+                </p>
+              </article>
+
+
+              <article
+                class="rounded-2xl border border-slate-200 bg-white p-7"
+              >
+                <i
+                  class="fas fa-sync-alt mb-5 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3 class="font-black text-slate-950">
+                  Power Query
+                </h3>
+
+                <p
+                  class="mt-2 text-sm leading-relaxed text-slate-600"
+                >
+                  Pobieranie, transformowanie
+                  i konsolidacja danych.
+                </p>
+              </article>
+
+
+              <article
+                class="rounded-2xl border border-slate-200 bg-white p-7"
+              >
+                <i
+                  class="fas fa-cloud mb-5 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3 class="font-black text-slate-950">
+                  SharePoint i Microsoft 365
+                </h3>
+
+                <p
+                  class="mt-2 text-sm leading-relaxed text-slate-600"
+                >
+                  Praca na plikach i danych
+                  dostępnych w środowisku firmy.
+                </p>
+              </article>
+
+
+              <article
+                class="rounded-2xl border border-slate-200 bg-white p-7"
+              >
+                <i
+                  class="fas fa-plug mb-5 text-2xl text-green-600"
+                  aria-hidden="true"
+                ></i>
+
+                <h3 class="font-black text-slate-950">
+                  API i systemy
+                </h3>
+
+                <p
+                  class="mt-2 text-sm leading-relaxed text-slate-600"
+                >
+                  Integracje z innymi źródłami,
+                  jeśli proces tego wymaga.
+                </p>
+              </article>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ===================================================== -->
+      <!-- EXCEL CZY POWER BI -->
+      <!-- ===================================================== -->
+
+      <section class="bg-white py-20 lg:py-28">
+        <div class="container mx-auto px-4">
+
+          <div class="mx-auto max-w-6xl">
+
+            <div class="max-w-4xl">
+
+              <p
+                class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-green-600"
+              >
+                Dobieramy narzędzie do procesu
+              </p>
+
+              <h2
+                class="text-4xl font-black tracking-tighter text-slate-950 lg:text-5xl"
+              >
+                Excel może liczyć.
+                <span class="text-green-600">
+                  Power BI może raportować.
+                </span>
+              </h2>
+
+              <p
+                class="mt-6 max-w-3xl text-lg leading-relaxed text-slate-600"
+              >
+                Nie każdy proces finansowy powinien kończyć się
+                w jednym arkuszu. Excel może służyć do kalkulacji,
+                planowania i kontroli danych, a Power BI
+                do ich prezentowania większej liczbie odbiorców.
+              </p>
+
+            </div>
+
+
+            <div class="mt-12 grid gap-6 md:grid-cols-2">
+
+              <article
+                class="rounded-[2rem] border border-green-500/30 bg-green-50 p-8 lg:p-10"
+              >
+
+                <span
+                  class="text-xs font-black uppercase tracking-widest text-green-700"
+                >
+                  Praca z danymi
+                </span>
+
+                <h3
+                  class="mt-4 text-2xl font-black text-slate-950"
+                >
+                  Excel
+                </h3>
+
+                <ul
+                  class="mt-5 space-y-3 text-sm leading-relaxed text-slate-700"
+                >
+                  <li>✓ budżetowanie</li>
+                  <li>✓ cashflow</li>
+                  <li>✓ kalkulacje</li>
+                  <li>✓ prognozowanie</li>
+                  <li>✓ wprowadzanie i kontrola danych</li>
+                </ul>
+
+              </article>
+
+
+              <article
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-8 lg:p-10"
+              >
+
+                <span
+                  class="text-xs font-black uppercase tracking-widest text-slate-500"
+                >
+                  Raportowanie
+                </span>
+
+                <h3
+                  class="mt-4 text-2xl font-black text-slate-950"
+                >
+                  Power BI
+                </h3>
+
+                <ul
+                  class="mt-5 space-y-3 text-sm leading-relaxed text-slate-600"
+                >
+                  <li>✓ dashboardy zarządcze</li>
+                  <li>✓ analiza wielu wymiarów</li>
+                  <li>✓ KPI finansowe</li>
+                  <li>✓ raportowanie dla odbiorców</li>
+                  <li>✓ połączenie wielu źródeł</li>
+                </ul>
+
+                <a
+                  href="/uslugi/power-bi-dla-firm/"
+                  class="mt-7 inline-flex font-black text-green-700 hover:text-green-600"
+                >
+                  Zobacz Power BI dla firm →
+                </a>
+
+              </article>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ===================================================== -->
+      <!-- FAQ -->
+      <!-- ===================================================== -->
+
+      <section class="bg-slate-950 py-20 text-white lg:py-28">
+        <div class="container mx-auto px-4">
+
+          <div class="mx-auto max-w-5xl">
+
+            <p
+              class="mb-4 text-xs font-black uppercase tracking-[0.2em] text-green-400"
+            >
+              FAQ
+            </p>
+
+            <h2
+              class="text-4xl font-black tracking-tighter lg:text-5xl"
+            >
+              Najczęstsze pytania o
+              <span class="text-green-400">
+                finanse w Excelu
+              </span>
+            </h2>
+
+
+            <div class="mt-12 grid gap-4">
+              {
+                faqItems.map((item) => (
+                  <details
+                    class="rounded-2xl border border-white/10 bg-white/[0.04] p-6 transition-colors hover:border-green-500/30"
+                  >
+                    <summary
+                      class="cursor-pointer text-lg font-black text-white"
+                    >
+                      {item.question}
+                    </summary>
+
+                    <p
+                      class="mt-4 max-w-4xl text-sm leading-relaxed text-slate-400"
+                    >
+                      {item.answer}
+                    </p>
+                  </details>
+                ))
+              }
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ===================================================== -->
+      <!-- INTERNAL LINKING -->
+      <!-- ===================================================== -->
+
+      <section class="bg-slate-50 py-16">
+        <div class="container mx-auto px-4">
+
+          <div
+            class="mx-auto max-w-5xl rounded-[2rem] border border-slate-200 bg-white p-8 md:p-10"
+          >
+
+            <h2 class="text-2xl font-black text-slate-950">
+              Potrzebujesz szerszej automatyzacji finansów?
+            </h2>
+
+            <p
+              class="mt-4 max-w-3xl leading-relaxed text-slate-600"
+            >
+              Możemy połączyć modele finansowe
+              z automatycznym importem danych,
+              raportowaniem Power BI,
+              SharePoint lub innymi systemami.
+            </p>
+
+
+            <div class="mt-6 flex flex-wrap gap-x-6 gap-y-3">
+
+              <a
+                href="/uslugi/excel-na-zamowienie/"
+                class="font-bold text-green-700 hover:text-green-600"
+              >
+                Excel na zamówienie →
+              </a>
+
+              <a
+                href="/uslugi/automatyzacja-excel-power-query/"
+                class="font-bold text-green-700 hover:text-green-600"
+              >
+                Excel i Power Query →
+              </a>
+
+              <a
+                href="/uslugi/power-bi-dla-firm/"
+                class="font-bold text-green-700 hover:text-green-600"
+              >
+                Power BI dla firm →
+              </a>
+
+              <a
+                href="/uslugi/integracje-api/"
+                class="font-bold text-green-700 hover:text-green-600"
+              >
+                Integracje API →
+              </a>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      <Contact />
+
+    </main>
+
     <Footer />
   </div>
 </BaseLayout>

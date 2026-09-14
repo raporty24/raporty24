@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
+import HeroService from "../../components/HeroService.astro";
 import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
 
@@ -8,7 +9,7 @@ const title =
   "Automatyzacja Excel i Power Query dla firm | Raporty24";
 
 const description =
-  "Automatyzacja Excel i Power Query: łączenie plików, import i czyszczenie danych oraz raporty odświeżane bez ręcznego kopiowania. Sprawdź możliwości.";
+  "Automatyzacja Excel i Power Query: łączenie plików, SharePoint, OneDrive, import i czyszczenie danych oraz raporty odświeżane bez ręcznego kopiowania.";
 
 const ogImage = "/biuro3.webp";
 
@@ -16,10 +17,387 @@ const currentUrl =
   "https://raporty24.pl/uslugi/automatyzacja-excel-power-query/";
 
 export const service = {
-  title: "Automatyzacja Power Query",
+  title: "Automatyzacja Excel Power Query",
   order: 10,
   menu: true,
   category: "Excel",
+  description:
+    "Automatyczne pobieranie, łączenie i przekształcanie danych z plików, folderów, SharePoint, OneDrive, baz i innych źródeł.",
+};
+
+
+/*
+ * =========================================================
+ * PROBLEMY
+ * =========================================================
+ */
+
+const problems = [
+  {
+    title: "Ręczne kopiowanie danych",
+    description:
+      "Co tydzień lub miesiąc kopiujesz kolejne pliki i arkusze do jednego zestawienia.",
+    icon: "fas fa-copy",
+  },
+
+  {
+    title: "Dane wymagają ciągłego czyszczenia",
+    description:
+      "Kolumny, daty, formaty, puste wartości i duplikaty trzeba poprawiać za każdym razem.",
+    icon: "fas fa-broom",
+  },
+
+  {
+    title: "Raport korzysta z wielu źródeł",
+    description:
+      "Dane pochodzą z Excela, CSV, folderów, SharePoint, eksportów systemowych lub baz danych.",
+    icon: "fas fa-database",
+  },
+
+  {
+    title: "Każda aktualizacja wygląda tak samo",
+    description:
+      "Proces ma powtarzalne kroki, ale użytkownik za każdym razem wykonuje je ręcznie.",
+    icon: "fas fa-sync-alt",
+  },
+
+  {
+    title: "Rosnące ryzyko błędu",
+    description:
+      "Pominięty plik, zła kolumna albo niewłaściwy zakres może zmienić cały wynik raportu.",
+    icon: "fas fa-exclamation-triangle",
+  },
+
+  {
+    title: "Excel zaczyna być trudny w utrzymaniu",
+    description:
+      "Wraz z kolejnymi miesiącami dochodzą nowe arkusze, formuły i ręczne obejścia.",
+    icon: "fas fa-file-excel",
+  },
+];
+
+
+/*
+ * =========================================================
+ * MOŻLIWOŚCI
+ * =========================================================
+ */
+
+const capabilities = [
+  {
+    title: "Łączenie wielu plików",
+    description:
+      "Automatyczne pobieranie kolejnych plików Excel lub CSV z folderu i łączenie ich w jeden zestaw danych.",
+    icon: "fas fa-folder-open",
+  },
+
+  {
+    title: "Czyszczenie danych",
+    description:
+      "Usuwanie zbędnych rekordów, pustych wartości, duplikatów i elementów niepotrzebnych w raporcie.",
+    icon: "fas fa-broom",
+  },
+
+  {
+    title: "Transformacja danych",
+    description:
+      "Zmiana formatów, typów danych, nazw kolumn, układu tabel i innych elementów wymaganych przez raport.",
+    icon: "fas fa-random",
+  },
+
+  {
+    title: "Łączenie tabel",
+    description:
+      "Łączenie sprzedaży, produktów, klientów, kosztów i innych danych na podstawie wspólnych identyfikatorów.",
+    icon: "fas fa-link",
+  },
+
+  {
+    title: "Automatyczne odświeżanie",
+    description:
+      "Nowe dane przechodzą przez wcześniej przygotowany proces zamiast być ręcznie przetwarzane od początku.",
+    icon: "fas fa-sync-alt",
+  },
+
+  {
+    title: "Przygotowanie raportów",
+    description:
+      "Gotowe dane mogą zasilać tabele, wykresy, raporty miesięczne, model danych lub Power BI.",
+    icon: "fas fa-chart-bar",
+  },
+];
+
+
+/*
+ * =========================================================
+ * ŹRÓDŁA
+ * =========================================================
+ */
+
+const sources = [
+  {
+    title: "Excel",
+    description:
+      "Skoroszyty XLSX, tabele i cyklicznie przygotowywane pliki.",
+    icon: "fas fa-file-excel",
+  },
+
+  {
+    title: "CSV i TXT",
+    description:
+      "Eksporty z systemów sprzedażowych, finansowych, magazynowych i innych aplikacji.",
+    icon: "fas fa-file-alt",
+  },
+
+  {
+    title: "Foldery",
+    description:
+      "Automatyczne przetwarzanie kolejnych plików o powtarzalnej strukturze.",
+    icon: "fas fa-folder-open",
+  },
+
+  {
+    title: "SharePoint",
+    description:
+      "Pliki i dane przechowywane we współdzielonym środowisku Microsoft 365.",
+    icon: "fas fa-cloud",
+  },
+
+  {
+    title: "OneDrive",
+    description:
+      "Pliki synchronizowane i współdzielone w środowisku Microsoft 365.",
+    icon: "fas fa-cloud",
+  },
+
+  {
+    title: "Bazy danych",
+    description:
+      "Dane z baz SQL i innych źródeł, jeżeli środowisko firmy umożliwia odpowiedni dostęp.",
+    icon: "fas fa-database",
+  },
+
+  {
+    title: "ERP i CRM",
+    description:
+      "Eksporty lub dostępne konektory do systemów wykorzystywanych przez firmę.",
+    icon: "fas fa-server",
+  },
+
+  {
+    title: "Źródła internetowe i API",
+    description:
+      "Wybrane źródła webowe i API, jeżeli sposób autoryzacji i udostępniania danych pozwala wykorzystać je w danym rozwiązaniu.",
+    icon: "fas fa-globe",
+  },
+];
+
+
+/*
+ * =========================================================
+ * PROCES
+ * =========================================================
+ */
+
+const process = [
+  {
+    step: "01",
+    title: "Analizujemy proces",
+    description:
+      "Sprawdzamy, skąd pochodzą dane, co użytkownik robi z nimi ręcznie i jaki ma być końcowy wynik.",
+  },
+
+  {
+    step: "02",
+    title: "Projektujemy przepływ",
+    description:
+      "Ustalamy sposób pobierania danych, transformacje, zasady walidacji i miejsce docelowe.",
+  },
+
+  {
+    step: "03",
+    title: "Budujemy zapytania",
+    description:
+      "Tworzymy Power Query i pozostałe elementy potrzebne do powtarzalnego przetwarzania danych.",
+  },
+
+  {
+    step: "04",
+    title: "Testujemy odświeżanie",
+    description:
+      "Sprawdzamy rozwiązanie na rzeczywistych danych i przygotowujemy użytkownika do dalszej pracy.",
+  },
+];
+
+
+/*
+ * =========================================================
+ * FAQ
+ * =========================================================
+ */
+
+const faqs = [
+  {
+    question:
+      "Co można zautomatyzować za pomocą Power Query?",
+
+    answer:
+      "Power Query dobrze sprawdza się przy powtarzalnym imporcie, łączeniu plików, czyszczeniu danych, zmianie formatów, łączeniu tabel i przygotowaniu danych do raportów.",
+  },
+
+  {
+    question:
+      "Czy Power Query może łączyć wiele plików Excel?",
+
+    answer:
+      "Tak. Jeżeli pliki mają odpowiednio powtarzalną strukturę, można przygotować proces pobierający kolejne pliki z folderu i łączący je w jeden zestaw danych.",
+  },
+
+  {
+    question:
+      "Czy Power Query może pobierać dane z SharePoint?",
+
+    answer:
+      "Tak. W odpowiednim środowisku Power Query może korzystać z danych i plików przechowywanych w SharePoint. Sposób konfiguracji zależy od źródła danych, uprawnień i struktury środowiska Microsoft 365.",
+  },
+
+  {
+    question:
+      "Czy można połączyć Power Query z OneDrive?",
+
+    answer:
+      "Tak, ale sposób konfiguracji zależy od rodzaju konta, lokalizacji plików i sposobu ich udostępniania. Przy projektowaniu rozwiązania dobieramy wariant odpowiedni do środowiska firmy.",
+  },
+
+  {
+    question:
+      "Power Query czy makro VBA – co wybrać?",
+
+    answer:
+      "Power Query jest bardzo dobry do pobierania, czyszczenia i transformacji danych. VBA lepiej sprawdza się przy sterowaniu Excelem, formularzach i automatyzacji czynności użytkownika. Oba rozwiązania mogą działać razem.",
+  },
+
+  {
+    question:
+      "Power Query czy integracja API?",
+
+    answer:
+      "Jeżeli dane są łatwo dostępne przez pliki, foldery lub odpowiedni konektor, Power Query może być najprostszym rozwiązaniem. Gdy potrzebna jest dwukierunkowa komunikacja z systemem, wysyłanie zmian lub bardziej zaawansowana autoryzacja, lepsza może być dedykowana integracja API.",
+  },
+
+  {
+    question:
+      "Czy po automatyzacji nadal można pracować w Excelu?",
+
+    answer:
+      "Tak. Power Query może jedynie przygotowywać dane, a użytkownik nadal może korzystać z tabel, formuł, wykresów, tabel przestawnych i pozostałych elementów skoroszytu.",
+  },
+
+  {
+    question:
+      "Czy trzeba od razu wdrażać Power BI?",
+
+    answer:
+      "Nie. W wielu przypadkach Excel z dobrze przygotowanym Power Query w pełni wystarcza. Power BI warto rozważyć wtedy, gdy raporty mają być szerzej udostępniane lub wymagają bardziej rozbudowanych dashboardów.",
+  },
+
+  {
+    question:
+      "Czy Power Query działa na Windows i macOS?",
+
+    answer:
+      "Możliwości Power Query zależą od wersji Excela, systemu operacyjnego oraz użytych źródeł danych. Dlatego przed wdrożeniem sprawdzamy środowisko, w którym rozwiązanie ma działać.",
+  },
+];
+
+
+/*
+ * =========================================================
+ * STRUCTURED DATA
+ * =========================================================
+ */
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+
+  "@type": "Service",
+
+  name:
+    "Automatyzacja Excel i Power Query dla firm",
+
+  provider: {
+    "@type": "Organization",
+
+    "@id":
+      "https://raporty24.pl/#organization",
+
+    name:
+      "Raporty24",
+
+    url:
+      "https://raporty24.pl/",
+  },
+
+  areaServed: {
+    "@type": "Country",
+    name: "Polska",
+  },
+
+  serviceType:
+    "Automatyzacja Excel, Power Query, łączenie plików, SharePoint, OneDrive i automatyczne raportowanie",
+
+  url:
+    currentUrl,
+
+  description,
+};
+
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+
+  "@type": "BreadcrumbList",
+
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Raporty24",
+      item: "https://raporty24.pl/",
+    },
+
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Usługi",
+      item: "https://raporty24.pl/uslugi/",
+    },
+
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Automatyzacja Excel i Power Query",
+      item: currentUrl,
+    },
+  ],
+};
+
+
+const faqSchema = {
+  "@context": "https://schema.org",
+
+  "@type": "FAQPage",
+
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+
+    name: item.question,
+
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
 };
 ---
 
@@ -28,955 +406,1049 @@ export const service = {
   description={description}
   image={ogImage}
   url={currentUrl}
+  structuredData={[
+    serviceSchema,
+    breadcrumbSchema,
+    faqSchema
+  ]}
 >
-  <div x-data="app" x-cloak>
+
+  <div
+    x-data="app"
+    x-cloak
+  >
+
     <Header />
 
-    <main>
 
-      <!-- =====================================================
-           HERO
-      ====================================================== -->
-      <section class="relative overflow-hidden bg-slate-950 text-white">
+    <!-- ================================================= -->
+    <!-- HERO -->
+    <!-- ================================================= -->
+
+    <HeroService
+      eyebrow="Automatyzacja danych i raportowania"
+      title="Automatyzacja Excel"
+      highlight="i Power Query"
+      subtitle="Łączymy pliki, foldery, SharePoint, OneDrive, eksporty z systemów i inne źródła danych. Power Query wykonuje powtarzalne transformacje, a Ty zamiast kopiować dane od początku — odświeżasz przygotowany proces."
+      ctaText="Opisz swój raport"
+    />
+
+
+    <!-- ================================================= -->
+    <!-- PROBLEM -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div class="max-w-4xl">
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+          >
+            Powtarzalna praca z danymi
+          </span>
+
+
+          <h2
+            class="mb-7 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Jeśli przy każdym raporcie wykonujesz
+            te same kroki, warto sprawdzić Power Query.
+          </h2>
+
+
+          <p
+            class="text-lg leading-relaxed text-slate-600 md:text-xl"
+          >
+            Problemem często nie jest sam raport.
+            Najwięcej pracy zajmuje przygotowanie danych:
+            pobranie plików, poprawienie kolumn, połączenie tabel,
+            usunięcie błędów i przygotowanie wszystkiego
+            w wymaganym układzie.
+          </p>
+
+        </div>
+
+
         <div
-          class="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_top_right,rgba(34,197,94,0.18),transparent_38%)]"
-        ></div>
+          class="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+        >
 
-        <div class="relative container mx-auto px-5 py-24 lg:py-32">
-          <div class="max-w-4xl">
-
-            <p
-              class="mb-5 text-sm font-bold uppercase tracking-[0.18em] text-green-400"
-            >
-              Automatyzacja raportowania
-            </p>
-
-            <h1
-              class="max-w-4xl text-4xl font-black leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
-            >
-              Automatyzacja Excel i Power Query
-              <span class="mt-2 block text-green-400">
-                – raporty bez ręcznego kopiowania danych
-              </span>
-            </h1>
-
-            <p
-              class="mt-8 max-w-3xl text-lg leading-8 text-slate-300 lg:text-xl lg:leading-9"
-            >
-              Łączymy pliki, pobieramy dane z różnych źródeł,
-              porządkujemy je i budujemy procesy, które można
-              odświeżyć bez wykonywania tych samych czynności
-              każdego dnia, tygodnia lub miesiąca.
-            </p>
-
-            <div class="mt-10 flex flex-wrap gap-4">
-              <a
-                href="#kontakt"
-                class="inline-flex items-center justify-center rounded-xl bg-green-500 px-6 py-3.5 font-bold text-slate-950 transition hover:bg-green-400"
-              >
-                Zapytaj o automatyzację
-              </a>
-
-              <a
-                href="#mozliwosci"
-                class="inline-flex items-center justify-center rounded-xl border border-slate-700 px-6 py-3.5 font-semibold text-white transition hover:border-slate-500 hover:bg-slate-900"
-              >
-                Zobacz możliwości
-              </a>
-            </div>
-
-            <div
-              class="mt-12 grid max-w-3xl gap-4 border-t border-slate-800 pt-8 sm:grid-cols-3"
-            >
-              <div>
-                <p class="font-bold text-white">Mniej kopiowania</p>
-                <p class="mt-1 text-sm leading-6 text-slate-400">
-                  Dane są pobierane i przekształcane według ustalonego procesu.
-                </p>
-              </div>
-
-              <div>
-                <p class="font-bold text-white">Mniej błędów</p>
-                <p class="mt-1 text-sm leading-6 text-slate-400">
-                  Te same reguły przetwarzania są stosowane przy każdym odświeżeniu.
-                </p>
-              </div>
-
-              <div>
-                <p class="font-bold text-white">Szybszy raport</p>
-                <p class="mt-1 text-sm leading-6 text-slate-400">
-                  Zamiast budować raport od początku, aktualizujesz dane.
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-
-      <!-- =====================================================
-           PROBLEM
-      ====================================================== -->
-      <section class="bg-white py-20 lg:py-28">
-        <div class="container mx-auto px-5">
-          <div class="mx-auto max-w-6xl">
-
-            <div class="max-w-3xl">
-              <p
-                class="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-green-600"
-              >
-                Powtarzalna praca
-              </p>
-
-              <h2
-                class="text-3xl font-black leading-tight tracking-tight text-slate-950 sm:text-4xl"
-              >
-                Jeśli co miesiąc robisz to samo w Excelu,
-                prawdopodobnie część procesu można zautomatyzować
-              </h2>
-
-              <p class="mt-6 text-lg leading-8 text-slate-600">
-                Problemem często nie jest sam raport. Najwięcej czasu
-                zajmuje przygotowanie danych: pobieranie plików,
-                kopiowanie kolumn, poprawianie formatów, usuwanie
-                duplikatów i łączenie kilku źródeł w jedną tabelę.
-              </p>
-            </div>
-
-            <div class="mt-14 grid gap-6 md:grid-cols-2">
+          {
+            problems.map((item) => (
 
               <article
-                class="rounded-2xl border border-slate-200 bg-slate-50 p-7 lg:p-8"
+                class="rounded-[2rem] border border-slate-200 bg-slate-50 p-7 transition-all hover:-translate-y-1 hover:border-green-500/40 hover:bg-white hover:shadow-xl"
               >
+
                 <div
-                  class="mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-red-50 text-red-500"
+                  class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-950 text-green-400"
                 >
-                  <i class="fas fa-copy"></i>
+                  <i
+                    class={`${item.icon} text-xl`}
+                    aria-hidden="true"
+                  ></i>
                 </div>
 
-                <h3 class="text-xl font-bold text-slate-950">
-                  Ręczne kopiowanie danych
-                </h3>
 
-                <p class="mt-3 leading-7 text-slate-600">
-                  Dane z kolejnych plików są kopiowane do jednego
-                  skoroszytu, a cały proces trzeba powtarzać przy
-                  każdym nowym raporcie.
-                </p>
-              </article>
-
-              <article
-                class="rounded-2xl border border-slate-200 bg-slate-50 p-7 lg:p-8"
-              >
-                <div
-                  class="mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-red-50 text-red-500"
+                <h3
+                  class="mb-3 text-xl font-black text-slate-950"
                 >
-                  <i class="fas fa-triangle-exclamation"></i>
-                </div>
-
-                <h3 class="text-xl font-bold text-slate-950">
-                  Błędy przy aktualizacji
+                  {item.title}
                 </h3>
 
-                <p class="mt-3 leading-7 text-slate-600">
-                  Jedna pominięta kolumna, błędnie zaznaczony zakres
-                  albo niewłaściwy plik może zmienić wynik całego raportu.
-                </p>
-              </article>
 
-              <article
-                class="rounded-2xl border border-slate-200 bg-slate-50 p-7 lg:p-8"
-              >
-                <div
-                  class="mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-red-50 text-red-500"
-                >
-                  <i class="fas fa-clock"></i>
-                </div>
-
-                <h3 class="text-xl font-bold text-slate-950">
-                  Raport zabiera kilka godzin
-                </h3>
-
-                <p class="mt-3 leading-7 text-slate-600">
-                  Analiza wyniku trwa krótko, ale wcześniej trzeba
-                  spędzić dużo czasu na przygotowaniu danych
-                  do właściwej analizy.
-                </p>
-              </article>
-
-              <article
-                class="rounded-2xl border border-slate-200 bg-slate-50 p-7 lg:p-8"
-              >
-                <div
-                  class="mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-red-50 text-red-500"
-                >
-                  <i class="fas fa-file-excel"></i>
-                </div>
-
-                <h3 class="text-xl font-bold text-slate-950">
-                  Coraz więcej plików
-                </h3>
-
-                <p class="mt-3 leading-7 text-slate-600">
-                  Raport zaczyna korzystać z kolejnych CSV, XLSX,
-                  eksportów z ERP i innych źródeł, a ręczne połączenie
-                  wszystkiego staje się coraz trudniejsze.
-                </p>
-              </article>
-
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      <!-- =====================================================
-           CO ROBI POWER QUERY
-      ====================================================== -->
-      <section id="mozliwosci" class="bg-slate-50 py-20 lg:py-28">
-        <div class="container mx-auto px-5">
-          <div class="mx-auto max-w-6xl">
-
-            <div class="mx-auto max-w-3xl text-center">
-              <p
-                class="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-green-600"
-              >
-                Możliwości
-              </p>
-
-              <h2
-                class="text-3xl font-black tracking-tight text-slate-950 sm:text-4xl"
-              >
-                Co można zautomatyzować w Excelu i Power Query?
-              </h2>
-
-              <p class="mt-6 text-lg leading-8 text-slate-600">
-                Power Query szczególnie dobrze sprawdza się tam,
-                gdzie proces jest powtarzalny i za każdym razem
-                wykonujesz podobne operacje na danych.
-              </p>
-            </div>
-
-            <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-
-              <article class="rounded-2xl border border-slate-200 bg-white p-7">
-                <div
-                  class="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-green-50 text-green-600"
-                >
-                  <i class="fas fa-folder-open"></i>
-                </div>
-
-                <h3 class="text-xl font-bold text-slate-950">
-                  Łączenie wielu plików
-                </h3>
-
-                <p class="mt-3 leading-7 text-slate-600">
-                  Automatyczne łączenie kolejnych plików CSV lub Excel
-                  z jednego folderu w jedną spójną tabelę.
-                </p>
-              </article>
-
-              <article class="rounded-2xl border border-slate-200 bg-white p-7">
-                <div
-                  class="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-green-50 text-green-600"
-                >
-                  <i class="fas fa-broom"></i>
-                </div>
-
-                <h3 class="text-xl font-bold text-slate-950">
-                  Czyszczenie danych
-                </h3>
-
-                <p class="mt-3 leading-7 text-slate-600">
-                  Usuwanie zbędnych rekordów, pustych wierszy,
-                  błędnych wartości i innych elementów,
-                  które utrudniają raportowanie.
-                </p>
-              </article>
-
-              <article class="rounded-2xl border border-slate-200 bg-white p-7">
-                <div
-                  class="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-green-50 text-green-600"
-                >
-                  <i class="fas fa-shuffle"></i>
-                </div>
-
-                <h3 class="text-xl font-bold text-slate-950">
-                  Transformacja danych
-                </h3>
-
-                <p class="mt-3 leading-7 text-slate-600">
-                  Zmiana typów danych, formatów dat, podział kolumn,
-                  grupowanie i przygotowanie danych w wymaganym układzie.
-                </p>
-              </article>
-
-              <article class="rounded-2xl border border-slate-200 bg-white p-7">
-                <div
-                  class="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-green-50 text-green-600"
-                >
-                  <i class="fas fa-link"></i>
-                </div>
-
-                <h3 class="text-xl font-bold text-slate-950">
-                  Łączenie tabel
-                </h3>
-
-                <p class="mt-3 leading-7 text-slate-600">
-                  Łączenie danych np. o sprzedaży, klientach,
-                  produktach i kosztach na podstawie wspólnych kluczy.
-                </p>
-              </article>
-
-              <article class="rounded-2xl border border-slate-200 bg-white p-7">
-                <div
-                  class="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-green-50 text-green-600"
-                >
-                  <i class="fas fa-arrows-rotate"></i>
-                </div>
-
-                <h3 class="text-xl font-bold text-slate-950">
-                  Aktualizacja raportów
-                </h3>
-
-                <p class="mt-3 leading-7 text-slate-600">
-                  Po podmianie lub dodaniu nowych danych raport
-                  może korzystać z przygotowanego wcześniej procesu
-                  zamiast wykonywania wszystkich operacji od początku.
-                </p>
-              </article>
-
-              <article class="rounded-2xl border border-slate-200 bg-white p-7">
-                <div
-                  class="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-green-50 text-green-600"
-                >
-                  <i class="fas fa-chart-column"></i>
-                </div>
-
-                <h3 class="text-xl font-bold text-slate-950">
-                  Raporty miesięczne
-                </h3>
-
-                <p class="mt-3 leading-7 text-slate-600">
-                  Powtarzalne raporty sprzedaży, finansów,
-                  logistyki lub innych procesów mogą korzystać
-                  ze stale zdefiniowanego sposobu przygotowania danych.
-                </p>
-              </article>
-
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      <!-- =====================================================
-           PRZYKŁAD PRZED / PO
-      ====================================================== -->
-      <section class="bg-white py-20 lg:py-28">
-        <div class="container mx-auto px-5">
-          <div class="mx-auto max-w-6xl">
-
-            <div class="max-w-3xl">
-              <p
-                class="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-green-600"
-              >
-                Przykład
-              </p>
-
-              <h2
-                class="text-3xl font-black tracking-tight text-slate-950 sm:text-4xl"
-              >
-                Z ręcznego raportu do procesu „Odśwież”
-              </h2>
-
-              <p class="mt-6 text-lg leading-8 text-slate-600">
-                Załóżmy, że co miesiąc otrzymujesz pliki sprzedażowe
-                z kilku oddziałów i przygotowujesz z nich jeden raport.
-              </p>
-            </div>
-
-            <div class="mt-14 grid gap-6 lg:grid-cols-2">
-
-              <article
-                class="rounded-3xl border border-red-200 bg-red-50/40 p-8 lg:p-10"
-              >
                 <p
-                  class="text-sm font-bold uppercase tracking-[0.15em] text-red-600"
+                  class="text-sm leading-relaxed text-slate-600"
                 >
-                  Przed automatyzacją
+                  {item.description}
                 </p>
 
-                <h3 class="mt-4 text-2xl font-black text-slate-950">
-                  Kilka ręcznych kroków przy każdym raporcie
-                </h3>
-
-                <ol class="mt-7 space-y-4 text-slate-700">
-                  <li class="flex gap-3">
-                    <span class="font-bold text-red-500">1.</span>
-                    Pobranie wszystkich plików.
-                  </li>
-
-                  <li class="flex gap-3">
-                    <span class="font-bold text-red-500">2.</span>
-                    Kopiowanie danych do wspólnego arkusza.
-                  </li>
-
-                  <li class="flex gap-3">
-                    <span class="font-bold text-red-500">3.</span>
-                    Poprawianie kolumn i formatów.
-                  </li>
-
-                  <li class="flex gap-3">
-                    <span class="font-bold text-red-500">4.</span>
-                    Usuwanie duplikatów i błędów.
-                  </li>
-
-                  <li class="flex gap-3">
-                    <span class="font-bold text-red-500">5.</span>
-                    Aktualizacja tabel i wykresów.
-                  </li>
-                </ol>
               </article>
 
-              <article
-                class="rounded-3xl border border-green-200 bg-green-50/50 p-8 lg:p-10"
-              >
-                <p
-                  class="text-sm font-bold uppercase tracking-[0.15em] text-green-700"
-                >
-                  Po automatyzacji
-                </p>
+            ))
+          }
 
-                <h3 class="mt-4 text-2xl font-black text-slate-950">
-                  Ustalony proces przygotowania danych
-                </h3>
-
-                <ol class="mt-7 space-y-4 text-slate-700">
-                  <li class="flex gap-3">
-                    <span class="font-bold text-green-600">1.</span>
-                    Dodajesz nowe pliki lub aktualizujesz źródło.
-                  </li>
-
-                  <li class="flex gap-3">
-                    <span class="font-bold text-green-600">2.</span>
-                    Uruchamiasz odświeżanie.
-                  </li>
-
-                  <li class="flex gap-3">
-                    <span class="font-bold text-green-600">3.</span>
-                    Power Query wykonuje przygotowane transformacje.
-                  </li>
-
-                  <li class="flex gap-3">
-                    <span class="font-bold text-green-600">4.</span>
-                    Raport korzysta z aktualnych danych.
-                  </li>
-                </ol>
-
-                <div
-                  class="mt-8 rounded-2xl border border-green-200 bg-white p-6"
-                >
-                  <strong class="text-slate-950">
-                    Efekt:
-                  </strong>
-
-                  <p class="mt-2 leading-7 text-slate-600">
-                    Zamiast ponownie budować raport, użytkownik
-                    korzysta z przygotowanego procesu aktualizacji danych.
-                  </p>
-                </div>
-              </article>
-
-            </div>
-          </div>
         </div>
-      </section>
 
-
-      <!-- =====================================================
-           ŹRÓDŁA
-      ====================================================== -->
-      <section class="bg-slate-950 py-20 text-white lg:py-28">
-        <div class="container mx-auto px-5">
-          <div class="mx-auto max-w-6xl">
-
-            <div class="mx-auto max-w-3xl text-center">
-              <p
-                class="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-green-400"
-              >
-                Źródła danych
-              </p>
-
-              <h2
-                class="text-3xl font-black tracking-tight sm:text-4xl"
-              >
-                Jeden raport może korzystać z wielu źródeł
-              </h2>
-
-              <p class="mt-6 text-lg leading-8 text-slate-300">
-                Zakres zależy od konkretnego procesu i sposobu,
-                w jaki dane są udostępniane w Twojej firmie.
-              </p>
-            </div>
-
-            <div
-              class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
-            >
-
-              <div
-                class="rounded-2xl border border-slate-800 bg-slate-900 p-6"
-              >
-                <p class="font-bold">Pliki Excel</p>
-                <p class="mt-2 text-sm leading-6 text-slate-400">
-                  XLSX, arkusze i cykliczne zestawienia.
-                </p>
-              </div>
-
-              <div
-                class="rounded-2xl border border-slate-800 bg-slate-900 p-6"
-              >
-                <p class="font-bold">CSV i pliki tekstowe</p>
-                <p class="mt-2 text-sm leading-6 text-slate-400">
-                  Eksporty generowane przez systemy firmowe.
-                </p>
-              </div>
-
-              <div
-                class="rounded-2xl border border-slate-800 bg-slate-900 p-6"
-              >
-                <p class="font-bold">Systemy ERP</p>
-                <p class="mt-2 text-sm leading-6 text-slate-400">
-                  Dane pochodzące z eksportów lub dostępnych połączeń.
-                </p>
-              </div>
-
-              <div
-                class="rounded-2xl border border-slate-800 bg-slate-900 p-6"
-              >
-                <p class="font-bold">Bazy danych</p>
-                <p class="mt-2 text-sm leading-6 text-slate-400">
-                  Np. źródła SQL, jeśli infrastruktura umożliwia dostęp.
-                </p>
-              </div>
-
-              <div
-                class="rounded-2xl border border-slate-800 bg-slate-900 p-6"
-              >
-                <p class="font-bold">Foldery z plikami</p>
-                <p class="mt-2 text-sm leading-6 text-slate-400">
-                  Automatyczne przetwarzanie kolejnych plików
-                  o powtarzalnej strukturze.
-                </p>
-              </div>
-
-              <div
-                class="rounded-2xl border border-slate-800 bg-slate-900 p-6"
-              >
-                <p class="font-bold">Inne źródła</p>
-                <p class="mt-2 text-sm leading-6 text-slate-400">
-                  Dobieramy sposób pobierania danych do konkretnego procesu.
-                </p>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      <!-- =====================================================
-           POWER QUERY VS VBA
-      ====================================================== -->
-      <section class="bg-white py-20 lg:py-28">
-        <div class="container mx-auto px-5">
-          <div class="mx-auto max-w-6xl">
-
-            <div class="max-w-3xl">
-              <p
-                class="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-green-600"
-              >
-                Dobór technologii
-              </p>
-
-              <h2
-                class="text-3xl font-black tracking-tight text-slate-950 sm:text-4xl"
-              >
-                Power Query, formuły czy VBA?
-              </h2>
-
-              <p class="mt-6 text-lg leading-8 text-slate-600">
-                Nie każdy proces powinien być rozwiązany w ten sam sposób.
-                Dobieramy technologię do problemu, zamiast budować
-                wszystko jednym narzędziem.
-              </p>
-            </div>
-
-            <div
-              class="mt-12 overflow-hidden rounded-2xl border border-slate-200"
-            >
-              <div class="overflow-x-auto">
-                <table class="w-full min-w-[720px] text-left">
-
-                  <thead class="bg-slate-950 text-white">
-                    <tr>
-                      <th class="px-6 py-5">
-                        Narzędzie
-                      </th>
-
-                      <th class="px-6 py-5">
-                        Dobre zastosowanie
-                      </th>
-                    </tr>
-                  </thead>
-
-                  <tbody class="divide-y divide-slate-200 bg-white">
-
-                    <tr>
-                      <td class="px-6 py-5 font-bold text-slate-950">
-                        Power Query
-                      </td>
-
-                      <td class="px-6 py-5 leading-7 text-slate-600">
-                        Import, łączenie, czyszczenie i transformacja
-                        powtarzalnych danych.
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td class="px-6 py-5 font-bold text-slate-950">
-                        Formuły Excel
-                      </td>
-
-                      <td class="px-6 py-5 leading-7 text-slate-600">
-                        Obliczenia i logika wykonywana bezpośrednio
-                        w arkuszach.
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td class="px-6 py-5 font-bold text-slate-950">
-                        VBA
-                      </td>
-
-                      <td class="px-6 py-5 leading-7 text-slate-600">
-                        Automatyzacja czynności i procesów wymagających
-                        sterowania Excelem lub interakcji użytkownika.
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td class="px-6 py-5 font-bold text-slate-950">
-                        Power BI
-                      </td>
-
-                      <td class="px-6 py-5 leading-7 text-slate-600">
-                        Dashboardy, analiza i udostępnianie raportów
-                        wielu odbiorcom.
-                      </td>
-                    </tr>
-
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <p class="mt-8 leading-7 text-slate-600">
-              Jeżeli proces wymaga czegoś więcej niż Power Query,
-              możemy również wykorzystać
-              <a
-                href="/uslugi/makra-vba/"
-                class="font-bold text-green-700 hover:text-green-600"
-              >
-                makra VBA
-              </a>
-              lub przygotować
-              <a
-                href="/uslugi/excel-na-zamowienie/"
-                class="font-bold text-green-700 hover:text-green-600"
-              >
-                dedykowane rozwiązanie Excel
-              </a>.
-            </p>
-
-          </div>
-        </div>
-      </section>
-
-
-      <!-- =====================================================
-           PROCES WSPÓŁPRACY
-      ====================================================== -->
-      <section class="bg-slate-50 py-20 lg:py-28">
-        <div class="container mx-auto px-5">
-          <div class="mx-auto max-w-6xl">
-
-            <div class="max-w-3xl">
-              <p
-                class="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-green-600"
-              >
-                Jak pracujemy
-              </p>
-
-              <h2
-                class="text-3xl font-black tracking-tight text-slate-950 sm:text-4xl"
-              >
-                Jak wygląda automatyzacja raportu?
-              </h2>
-            </div>
-
-            <div class="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-
-              <article class="rounded-2xl border border-slate-200 bg-white p-7">
-                <span class="text-sm font-black text-green-600">
-                  01
-                </span>
-
-                <h3 class="mt-4 text-xl font-bold text-slate-950">
-                  Analizujemy proces
-                </h3>
-
-                <p class="mt-3 leading-7 text-slate-600">
-                  Sprawdzamy, skąd pochodzą dane i które czynności
-                  są wykonywane ręcznie.
-                </p>
-              </article>
-
-              <article class="rounded-2xl border border-slate-200 bg-white p-7">
-                <span class="text-sm font-black text-green-600">
-                  02
-                </span>
-
-                <h3 class="mt-4 text-xl font-bold text-slate-950">
-                  Projektujemy rozwiązanie
-                </h3>
-
-                <p class="mt-3 leading-7 text-slate-600">
-                  Ustalamy strukturę danych, reguły transformacji
-                  oraz końcowy sposób raportowania.
-                </p>
-              </article>
-
-              <article class="rounded-2xl border border-slate-200 bg-white p-7">
-                <span class="text-sm font-black text-green-600">
-                  03
-                </span>
-
-                <h3 class="mt-4 text-xl font-bold text-slate-950">
-                  Budujemy automat
-                </h3>
-
-                <p class="mt-3 leading-7 text-slate-600">
-                  Przygotowujemy zapytania i mechanizmy potrzebne
-                  do powtarzalnego przetwarzania danych.
-                </p>
-              </article>
-
-              <article class="rounded-2xl border border-slate-200 bg-white p-7">
-                <span class="text-sm font-black text-green-600">
-                  04
-                </span>
-
-                <h3 class="mt-4 text-xl font-bold text-slate-950">
-                  Testujemy i przekazujemy
-                </h3>
-
-                <p class="mt-3 leading-7 text-slate-600">
-                  Sprawdzamy działanie na rzeczywistych danych
-                  i przekazujemy gotowy proces.
-                </p>
-              </article>
-
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      <!-- =====================================================
-           FAQ
-      ====================================================== -->
-      <section class="bg-white py-20 lg:py-28">
-        <div class="container mx-auto px-5">
-          <div class="mx-auto max-w-4xl">
-
-            <div class="text-center">
-              <p
-                class="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-green-600"
-              >
-                FAQ
-              </p>
-
-              <h2
-                class="text-3xl font-black tracking-tight text-slate-950 sm:text-4xl"
-              >
-                Najczęstsze pytania o automatyzację Excel i Power Query
-              </h2>
-            </div>
-
-            <div class="mt-14 space-y-5">
-
-              <details
-                class="rounded-2xl border border-slate-200 bg-slate-50 p-6"
-              >
-                <summary
-                  class="cursor-pointer list-none text-lg font-bold text-slate-950"
-                >
-                  Co można zautomatyzować za pomocą Power Query?
-                </summary>
-
-                <p class="mt-4 leading-7 text-slate-600">
-                  Między innymi import danych, łączenie plików,
-                  czyszczenie danych, zmianę formatów, łączenie tabel
-                  oraz przygotowanie danych do raportów i analiz.
-                </p>
-              </details>
-
-              <details
-                class="rounded-2xl border border-slate-200 bg-slate-50 p-6"
-              >
-                <summary
-                  class="cursor-pointer list-none text-lg font-bold text-slate-950"
-                >
-                  Czy Power Query może łączyć wiele plików Excel?
-                </summary>
-
-                <p class="mt-4 leading-7 text-slate-600">
-                  Tak. Jeżeli pliki mają powtarzalną strukturę,
-                  można przygotować proces pobierający kolejne pliki
-                  z folderu i łączący je w jeden zestaw danych.
-                </p>
-              </details>
-
-              <details
-                class="rounded-2xl border border-slate-200 bg-slate-50 p-6"
-              >
-                <summary
-                  class="cursor-pointer list-none text-lg font-bold text-slate-950"
-                >
-                  Czy po automatyzacji nadal można edytować raport?
-                </summary>
-
-                <p class="mt-4 leading-7 text-slate-600">
-                  Tak. Sposób przygotowania rozwiązania zależy
-                  od procesu. Automatyzacja nie musi odbierać
-                  użytkownikowi możliwości dalszej pracy w Excelu.
-                </p>
-              </details>
-
-              <details
-                class="rounded-2xl border border-slate-200 bg-slate-50 p-6"
-              >
-                <summary
-                  class="cursor-pointer list-none text-lg font-bold text-slate-950"
-                >
-                  Power Query czy makro VBA – co wybrać?
-                </summary>
-
-                <p class="mt-4 leading-7 text-slate-600">
-                  Power Query świetnie nadaje się do pobierania
-                  i transformacji danych. VBA może być lepsze
-                  przy automatyzacji czynności wykonywanych
-                  w samym Excelu. Często oba rozwiązania można łączyć.
-                </p>
-              </details>
-
-              <details
-                class="rounded-2xl border border-slate-200 bg-slate-50 p-6"
-              >
-                <summary
-                  class="cursor-pointer list-none text-lg font-bold text-slate-950"
-                >
-                  Czy trzeba od razu wdrażać Power BI?
-                </summary>
-
-                <p class="mt-4 leading-7 text-slate-600">
-                  Nie. W wielu firmach dobrze przygotowany Excel
-                  z Power Query wystarcza do automatyzacji raportowania.
-                  Power BI warto rozważyć wtedy, gdy potrzebujesz
-                  bardziej rozbudowanych dashboardów i dystrybucji raportów.
-                </p>
-              </details>
-
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      <!-- =====================================================
-           LINKOWANIE WEWNĘTRZNE
-      ====================================================== -->
-      <section class="bg-slate-50 py-16">
-        <div class="container mx-auto px-5">
-          <div class="mx-auto max-w-5xl">
-
-            <div
-              class="rounded-3xl border border-slate-200 bg-white p-8 md:p-10"
-            >
-              <h2 class="text-2xl font-black text-slate-950">
-                Chcesz rozwinąć automatyzację dalej?
-              </h2>
-
-              <p class="mt-4 max-w-3xl leading-7 text-slate-600">
-                Power Query może być jednym elementem większego
-                rozwiązania: dedykowanego Excela, automatycznego
-                raportu albo dashboardu Power BI.
-              </p>
-
-              <div class="mt-6 flex flex-wrap gap-x-6 gap-y-3">
-                <a
-                  href="/uslugi/excel-na-zamowienie/"
-                  class="font-bold text-green-700 hover:text-green-600"
-                >
-                  Excel na zamówienie →
-                </a>
-
-                <a
-                  href="/uslugi/makra-vba/"
-                  class="font-bold text-green-700 hover:text-green-600"
-                >
-                  Makra VBA →
-                </a>
-
-                <a
-                  href="/uslugi/dashboardy-power-bi/"
-                  class="font-bold text-green-700 hover:text-green-600"
-                >
-                  Dashboardy Power BI →
-                </a>
-
-                <a
-                  href="/blog/power-query-automatyzacja-raportow-excel/"
-                  class="font-bold text-green-700 hover:text-green-600"
-                >
-                  Poradnik o Power Query →
-                </a>
-
-                <a
-                  href="/realizacje/"
-                  class="font-bold text-green-700 hover:text-green-600"
-                >
-                  Zobacz realizacje →
-                </a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-
-      <!-- =====================================================
-           KONTAKT
-      ====================================================== -->
-      <div id="kontakt">
-        <Contact />
       </div>
 
-    </main>
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- MOŻLIWOŚCI -->
+    <!-- ================================================= -->
+
+    <section
+      id="mozliwosci"
+      class="bg-slate-950 py-24 text-white"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="mb-16 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-400"
+          >
+            Możliwości Power Query
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Co można zautomatyzować?
+          </h2>
+
+
+          <p
+            class="text-lg leading-relaxed text-slate-400 md:text-xl"
+          >
+            Power Query najlepiej sprawdza się tam,
+            gdzie nowe dane pojawiają się regularnie,
+            a sposób ich przygotowania jest powtarzalny.
+          </p>
+
+        </div>
+
+
+        <div
+          class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+        >
+
+          {
+            capabilities.map((item) => (
+
+              <article
+                class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-7 transition-all hover:-translate-y-1 hover:border-green-500/50 hover:bg-white/[0.08]"
+              >
+
+                <div
+                  class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-green-500/10 text-green-400"
+                >
+                  <i
+                    class={`${item.icon} text-xl`}
+                    aria-hidden="true"
+                  ></i>
+                </div>
+
+
+                <h3
+                  class="mb-3 text-xl font-black text-white"
+                >
+                  {item.title}
+                </h3>
+
+
+                <p
+                  class="text-sm leading-relaxed text-slate-400"
+                >
+                  {item.description}
+                </p>
+
+              </article>
+
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- PRZED / PO -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div
+          class="mb-14 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+          >
+            Przykład
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Z ręcznego raportu do procesu „Odśwież”
+          </h2>
+
+
+          <p
+            class="text-lg leading-relaxed text-slate-600 md:text-xl"
+          >
+            Załóżmy, że co miesiąc otrzymujesz pliki sprzedażowe
+            z kilku oddziałów i przygotowujesz z nich jeden raport.
+          </p>
+
+        </div>
+
+
+        <div
+          class="grid gap-6 lg:grid-cols-2"
+        >
+
+          <article
+            class="rounded-[2.5rem] border border-red-200 bg-red-50/50 p-8 md:p-10"
+          >
+
+            <span
+              class="text-xs font-black uppercase tracking-wider text-red-600"
+            >
+              Przed automatyzacją
+            </span>
+
+
+            <h3
+              class="mb-7 mt-4 text-2xl font-black text-slate-950"
+            >
+              Przy każdym raporcie powtarzasz te same czynności
+            </h3>
+
+
+            <ol
+              class="space-y-4 text-slate-700"
+            >
+
+              <li class="flex gap-3">
+                <strong class="text-red-500">
+                  1.
+                </strong>
+                Pobierasz wszystkie pliki.
+              </li>
+
+              <li class="flex gap-3">
+                <strong class="text-red-500">
+                  2.
+                </strong>
+                Kopiujesz dane do wspólnego arkusza.
+              </li>
+
+              <li class="flex gap-3">
+                <strong class="text-red-500">
+                  3.
+                </strong>
+                Poprawiasz kolumny i formaty.
+              </li>
+
+              <li class="flex gap-3">
+                <strong class="text-red-500">
+                  4.
+                </strong>
+                Usuwasz duplikaty i błędy.
+              </li>
+
+              <li class="flex gap-3">
+                <strong class="text-red-500">
+                  5.
+                </strong>
+                Aktualizujesz raport.
+              </li>
+
+            </ol>
+
+          </article>
+
+
+          <article
+            class="rounded-[2.5rem] border border-green-200 bg-green-50/50 p-8 md:p-10"
+          >
+
+            <span
+              class="text-xs font-black uppercase tracking-wider text-green-700"
+            >
+              Po automatyzacji
+            </span>
+
+
+            <h3
+              class="mb-7 mt-4 text-2xl font-black text-slate-950"
+            >
+              Proces przygotowania danych jest już zdefiniowany
+            </h3>
+
+
+            <ol
+              class="space-y-4 text-slate-700"
+            >
+
+              <li class="flex gap-3">
+                <strong class="text-green-600">
+                  1.
+                </strong>
+                Dodajesz nowe pliki lub aktualizujesz źródło.
+              </li>
+
+              <li class="flex gap-3">
+                <strong class="text-green-600">
+                  2.
+                </strong>
+                Uruchamiasz odświeżanie.
+              </li>
+
+              <li class="flex gap-3">
+                <strong class="text-green-600">
+                  3.
+                </strong>
+                Power Query wykonuje przygotowane transformacje.
+              </li>
+
+              <li class="flex gap-3">
+                <strong class="text-green-600">
+                  4.
+                </strong>
+                Raport otrzymuje aktualne dane.
+              </li>
+
+            </ol>
+
+
+            <div
+              class="mt-8 rounded-2xl bg-white p-6"
+            >
+
+              <strong class="text-slate-950">
+                Efekt:
+              </strong>
+
+              <p
+                class="mt-2 leading-relaxed text-slate-600"
+              >
+                Użytkownik nie buduje procesu od początku.
+                Korzysta z przygotowanego wcześniej sposobu
+                pobierania i transformacji danych.
+              </p>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- SHAREPOINT / M365 -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-50 py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="grid gap-16 lg:grid-cols-2 lg:items-center"
+        >
+
+          <div>
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
+              SharePoint i Microsoft 365
+            </span>
+
+
+            <h2
+              class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+            >
+              Raport nie musi korzystać z plików zapisanych lokalnie.
+            </h2>
+
+
+            <p
+              class="mb-6 text-lg leading-relaxed text-slate-600"
+            >
+              W firmach pracujących w Microsoft 365 dane
+              i pliki często znajdują się już w SharePoint
+              albo OneDrive.
+            </p>
+
+
+            <p
+              class="text-lg leading-relaxed text-slate-600"
+            >
+              Możemy zaprojektować proces, w którym Excel
+              pobiera odpowiednie dane ze współdzielonego
+              środowiska i przygotowuje je według ustalonych reguł.
+            </p>
+
+          </div>
+
+
+          <div
+            class="rounded-[2.5rem] bg-slate-950 p-8 text-white md:p-10"
+          >
+
+            <h3
+              class="mb-7 text-2xl font-black"
+            >
+              Przykład
+            </h3>
+
+
+            <div class="space-y-5">
+
+              <div
+                class="rounded-2xl border border-white/10 bg-white/[0.05] p-5"
+              >
+                <strong class="block text-green-400">
+                  SharePoint
+                </strong>
+
+                <span class="text-sm text-slate-400">
+                  oddziały zapisują pliki w jednej bibliotece
+                </span>
+              </div>
+
+
+              <div
+                class="rounded-2xl border border-white/10 bg-white/[0.05] p-5"
+              >
+                <strong class="block text-green-400">
+                  Power Query
+                </strong>
+
+                <span class="text-sm text-slate-400">
+                  pobiera, łączy i przekształca właściwe dane
+                </span>
+              </div>
+
+
+              <div
+                class="rounded-2xl border border-white/10 bg-white/[0.05] p-5"
+              >
+                <strong class="block text-green-400">
+                  Excel / Power BI
+                </strong>
+
+                <span class="text-sm text-slate-400">
+                  korzysta z przygotowanego zestawu danych
+                </span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- ŹRÓDŁA -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-950 py-24 text-white"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div
+          class="mb-16 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-400"
+          >
+            Źródła danych
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Jeden raport może korzystać z wielu źródeł.
+          </h2>
+
+
+          <p
+            class="text-lg leading-relaxed text-slate-400 md:text-xl"
+          >
+            Dokładny zakres zależy od środowiska firmy,
+            sposobu udostępniania danych oraz używanej wersji Excela.
+          </p>
+
+        </div>
+
+
+        <div
+          class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+        >
+
+          {
+            sources.map((item) => (
+
+              <article
+                class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6"
+              >
+
+                <div
+                  class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-green-500/10 text-green-400"
+                >
+                  <i
+                    class={`${item.icon} text-lg`}
+                    aria-hidden="true"
+                  ></i>
+                </div>
+
+
+                <h3
+                  class="mb-2 text-lg font-black text-white"
+                >
+                  {item.title}
+                </h3>
+
+
+                <p
+                  class="text-sm leading-relaxed text-slate-400"
+                >
+                  {item.description}
+                </p>
+
+              </article>
+
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- DOBÓR TECHNOLOGII -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="mb-14 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+          >
+            Dobór rozwiązania
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Power Query, VBA, API czy Power BI?
+          </h2>
+
+
+          <p
+            class="text-lg leading-relaxed text-slate-600 md:text-xl"
+          >
+            Nie każdy problem powinien być rozwiązany tym samym
+            narzędziem. Power Query jest jednym elementem
+            większego ekosystemu automatyzacji.
+          </p>
+
+        </div>
+
+
+        <div
+          class="overflow-hidden rounded-2xl border border-slate-200"
+        >
+
+          <div class="overflow-x-auto">
+
+            <table
+              class="w-full min-w-[760px] text-left"
+            >
+
+              <thead
+                class="bg-slate-950 text-white"
+              >
+                <tr>
+
+                  <th class="px-6 py-5">
+                    Narzędzie
+                  </th>
+
+                  <th class="px-6 py-5">
+                    Najlepsze zastosowanie
+                  </th>
+
+                </tr>
+              </thead>
+
+
+              <tbody
+                class="divide-y divide-slate-200 bg-white"
+              >
+
+                <tr>
+                  <td
+                    class="px-6 py-5 font-black text-slate-950"
+                  >
+                    Power Query
+                  </td>
+
+                  <td
+                    class="px-6 py-5 leading-relaxed text-slate-600"
+                  >
+                    Import, czyszczenie, łączenie i transformacja
+                    powtarzalnych danych.
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td
+                    class="px-6 py-5 font-black text-slate-950"
+                  >
+                    Formuły Excel
+                  </td>
+
+                  <td
+                    class="px-6 py-5 leading-relaxed text-slate-600"
+                  >
+                    Obliczenia i logika wykonywana bezpośrednio
+                    w skoroszycie.
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td
+                    class="px-6 py-5 font-black text-slate-950"
+                  >
+                    VBA
+                  </td>
+
+                  <td
+                    class="px-6 py-5 leading-relaxed text-slate-600"
+                  >
+                    Sterowanie Excelem, formularze,
+                    przyciski i automatyzacja czynności użytkownika.
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td
+                    class="px-6 py-5 font-black text-slate-950"
+                  >
+                    Integracja API
+                  </td>
+
+                  <td
+                    class="px-6 py-5 leading-relaxed text-slate-600"
+                  >
+                    Pobieranie i wysyłanie danych bezpośrednio
+                    pomiędzy systemami.
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <td
+                    class="px-6 py-5 font-black text-slate-950"
+                  >
+                    Power BI
+                  </td>
+
+                  <td
+                    class="px-6 py-5 leading-relaxed text-slate-600"
+                  >
+                    Dashboardy, modele danych i raportowanie
+                    dla większej liczby odbiorców.
+                  </td>
+                </tr>
+
+              </tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+
+        <div
+          class="mt-8 rounded-2xl border border-green-100 bg-green-50 p-6"
+        >
+
+          <p
+            class="leading-relaxed text-slate-700"
+          >
+            <strong class="text-slate-950">
+              Nie musisz wybierać technologii samodzielnie.
+            </strong>
+
+            Opisz obecny proces, a sprawdzimy,
+            czy najlepiej rozwiąże go Power Query,
+            VBA, API czy inne narzędzie.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- PROCES -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-50 py-24 text-slate-950"
+    >
+
+      <div class="container mx-auto px-4">
+
+        <div
+          class="mb-16 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+          >
+            Jak pracujemy
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Jak wygląda automatyzacja w Power Query?
+          </h2>
+
+        </div>
+
+
+        <div
+          class="grid gap-6 md:grid-cols-2 xl:grid-cols-4"
+        >
+
+          {
+            process.map((item) => (
+
+              <article
+                class="rounded-[2rem] border border-slate-200 bg-white p-7 transition-all hover:-translate-y-1 hover:border-green-500/30 hover:shadow-xl"
+              >
+
+                <div
+                  class="mb-6 text-5xl font-black tracking-tighter text-green-600"
+                >
+                  {item.step}
+                </div>
+
+
+                <h3
+                  class="mb-4 text-xl font-black text-slate-950"
+                >
+                  {item.title}
+                </h3>
+
+
+                <p
+                  class="text-sm leading-relaxed text-slate-600"
+                >
+                  {item.description}
+                </p>
+
+              </article>
+
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- LINKOWANIE -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-white py-20 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div class="mx-auto max-w-6xl">
+
+          <div class="mb-10 max-w-3xl">
+
+            <h2
+              class="mb-4 text-3xl font-black tracking-tight md:text-4xl"
+            >
+              Power Query może być częścią większej automatyzacji
+            </h2>
+
+            <p
+              class="text-slate-600"
+            >
+              Jeśli sam import danych nie wystarcza,
+              możemy rozwinąć rozwiązanie o raportowanie,
+              integrację systemów lub dedykowane narzędzie Excel.
+            </p>
+
+          </div>
+
+
+          <div
+            class="grid gap-5 md:grid-cols-2 xl:grid-cols-4"
+          >
+
+            <a
+              href="/uslugi/excel-na-zamowienie/"
+              class="rounded-2xl border border-slate-200 p-6 transition-all hover:border-green-500 hover:shadow-lg"
+            >
+              <h3
+                class="mb-2 text-lg font-black"
+              >
+                Excel na zamówienie
+              </h3>
+
+              <p
+                class="text-sm leading-relaxed text-slate-600"
+              >
+                Dedykowane narzędzie do procesu firmy.
+              </p>
+            </a>
+
+
+            <a
+              href="/uslugi/raporty-miesieczne-automatyczne/"
+              class="rounded-2xl border border-slate-200 p-6 transition-all hover:border-green-500 hover:shadow-lg"
+            >
+              <h3
+                class="mb-2 text-lg font-black"
+              >
+                Raporty miesięczne
+              </h3>
+
+              <p
+                class="text-sm leading-relaxed text-slate-600"
+              >
+                Automatyczne przygotowanie cyklicznych raportów.
+              </p>
+            </a>
+
+
+            <a
+              href="/uslugi/integracje-api/"
+              class="rounded-2xl border border-slate-200 p-6 transition-all hover:border-green-500 hover:shadow-lg"
+            >
+              <h3
+                class="mb-2 text-lg font-black"
+              >
+                Integracje API
+              </h3>
+
+              <p
+                class="text-sm leading-relaxed text-slate-600"
+              >
+                Bezpośrednia komunikacja z systemami firmy.
+              </p>
+            </a>
+
+
+            <a
+              href="/uslugi/power-bi-dla-firm/"
+              class="rounded-2xl border border-slate-200 p-6 transition-all hover:border-green-500 hover:shadow-lg"
+            >
+              <h3
+                class="mb-2 text-lg font-black"
+              >
+                Power BI
+              </h3>
+
+              <p
+                class="text-sm leading-relaxed text-slate-600"
+              >
+                Dashboardy i raportowanie dla większej liczby odbiorców.
+              </p>
+            </a>
+
+          </div>
+
+
+          <div class="mt-8">
+
+            <a
+              href="/blog/power-query-automatyzacja-raportow-excel/"
+              class="font-black text-green-700 hover:text-green-600"
+            >
+              Przeczytaj poradnik o Power Query →
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- FAQ -->
+    <!-- ================================================= -->
+
+    <section
+      class="bg-slate-50 py-24 text-slate-950"
+    >
+
+      <div
+        class="container mx-auto px-4"
+      >
+
+        <div
+          class="mb-14 max-w-4xl"
+        >
+
+          <span
+            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+          >
+            FAQ
+          </span>
+
+
+          <h2
+            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+          >
+            Najczęstsze pytania o Power Query
+          </h2>
+
+        </div>
+
+
+        <div
+          class="grid gap-5 lg:grid-cols-2"
+        >
+
+          {
+            faqs.map((item) => (
+
+              <details
+                class="rounded-[2rem] border border-slate-200 bg-white p-7"
+              >
+
+                <summary
+                  class="cursor-pointer text-lg font-black text-slate-950"
+                >
+                  {item.question}
+                </summary>
+
+
+                <p
+                  class="mt-5 text-sm font-medium leading-relaxed text-slate-600"
+                >
+                  {item.answer}
+                </p>
+
+              </details>
+
+            ))
+          }
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <Contact />
 
     <Footer />
+
   </div>
+
 </BaseLayout>

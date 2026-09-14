@@ -1,227 +1,424 @@
 ---
 // Footer.astro - stopka Raporty24
+
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="relative overflow-hidden border-t border-white/5 bg-slate-950 pb-12 pt-24 text-white">
+<footer
+  class="relative overflow-hidden border-t border-white/5 bg-slate-950 pb-12 pt-24 text-white"
+>
   <div class="container relative z-10 mx-auto px-4">
-    <div class="mb-20 grid gap-16 md:grid-cols-2 lg:grid-cols-4">
-      <div class="lg:col-span-1">
+
+    <!-- ================================================= -->
+    <!-- GŁÓWNA CZĘŚĆ -->
+    <!-- ================================================= -->
+
+    <div
+      class="mb-20 grid gap-14 md:grid-cols-2 lg:grid-cols-4 lg:gap-12"
+    >
+
+      <!-- MARKA -->
+
+      <div>
+
         <a
           href="/"
-          class="mb-8 block text-3xl font-black tracking-tighter text-white transition-colors hover:text-slate-200"
+          class="mb-7 block text-3xl font-black tracking-tighter text-white transition-colors hover:text-slate-200"
           aria-label="Raporty24 - strona główna"
         >
           RAPORTY<span class="text-green-500">24</span>
         </a>
 
-        <p class="mb-8 max-w-xs text-sm leading-relaxed text-slate-400">
-          Tworzymy narzędzia dla firm, które chcą ograniczyć ręczne raportowanie,
-          uporządkować dane i zautomatyzować powtarzalne procesy w Excelu, Power BI,
-          Pythonie i aplikacjach desktopowych.
+
+        <p
+          class="mb-7 max-w-sm text-sm leading-relaxed text-slate-400"
+        >
+          Automatyzujemy procesy i pracę z danymi w firmach.
+          Łączymy Excel, Power BI, API, SharePoint,
+          Microsoft 365 i dedykowane narzędzia,
+          aby ograniczyć ręczne kopiowanie,
+          raportowanie i powtarzalne czynności.
         </p>
 
-        <div class="flex gap-4">
+
+        <div
+          class="mb-8 space-y-3 text-sm text-slate-400"
+        >
+
+          <a
+            href="mailto:biuro@raporty24.pl"
+            class="flex items-center gap-3 transition-colors hover:text-white"
+          >
+            <i
+              class="fas fa-envelope w-4 text-green-500"
+              aria-hidden="true"
+            ></i>
+
+            biuro@raporty24.pl
+          </a>
+
+
+          <a
+            href="tel:+48729790150"
+            class="flex items-center gap-3 transition-colors hover:text-white"
+          >
+            <i
+              class="fas fa-phone w-4 text-green-500"
+              aria-hidden="true"
+            ></i>
+
+            +48 729 790 150
+          </a>
+
+        </div>
+
+
+        <!-- SOCIAL MEDIA -->
+
+        <div class="flex gap-3">
+
           <a
             href="https://www.linkedin.com/in/raporty-raporty-50a8413a4/"
             target="_blank"
             rel="noopener noreferrer"
-            class="flex h-10 w-10 items-center justify-center rounded-xl bg-white transition-all hover:bg-[#0077b5]"
+            class="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-slate-950 transition-all hover:-translate-y-1"
             title="LinkedIn Raporty24"
             aria-label="Raporty24 na LinkedIn"
           >
-            <i class="fab fa-linkedin-in text-slate-950 transition-colors"></i>
+            <i
+              class="fab fa-linkedin-in"
+              aria-hidden="true"
+            ></i>
           </a>
+
 
           <a
             href="https://www.tiktok.com/@raporty24"
             target="_blank"
             rel="noopener noreferrer"
-            class="flex h-10 w-10 items-center justify-center rounded-xl bg-white transition-all hover:bg-[#ff0050]"
+            class="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-slate-950 transition-all hover:-translate-y-1"
             title="TikTok Raporty24"
             aria-label="Raporty24 na TikToku"
           >
-            <i class="fab fa-tiktok text-slate-950 transition-colors"></i>
+            <i
+              class="fab fa-tiktok"
+              aria-hidden="true"
+            ></i>
           </a>
+
         </div>
+
       </div>
 
+
+      <!-- EXCEL I AUTOMATYZACJA -->
+
       <div>
-        <h4 class="mb-8 text-xs font-black uppercase tracking-[0.3em] text-green-500">
-          Usługi
+
+        <h4
+          class="mb-7 text-xs font-black uppercase tracking-[0.25em] text-green-500"
+        >
+          Excel i automatyzacja
         </h4>
 
-        <ul class="space-y-4 text-sm font-bold uppercase tracking-widest text-slate-400">
+
+        <ul
+          class="space-y-4 text-sm font-bold text-slate-400"
+        >
+
           <li>
             <a
               href="/uslugi/excel-na-zamowienie/"
-              class="underline decoration-transparent transition-colors hover:text-white hover:decoration-green-500"
+              class="transition-colors hover:text-white"
             >
               Excel na zamówienie
             </a>
           </li>
 
+
+          <li>
+            <a
+              href="/uslugi/automatyzacja-excel-power-query/"
+              class="transition-colors hover:text-white"
+            >
+              Excel i Power Query
+            </a>
+          </li>
+
+
           <li>
             <a
               href="/uslugi/makra-vba/"
-              class="underline decoration-transparent transition-colors hover:text-white hover:decoration-green-500"
+              class="transition-colors hover:text-white"
             >
               Makra VBA
             </a>
           </li>
 
+
+          <li>
+            <a
+              href="/uslugi/optymalizacja-excela/"
+              class="transition-colors hover:text-white"
+            >
+              Optymalizacja Excela
+            </a>
+          </li>
+
+
+          <li>
+            <a
+              href="/uslugi/pobieranie-email-do-excela/"
+              class="transition-colors hover:text-white"
+            >
+              E-mail → Excel i dane
+            </a>
+          </li>
+
+
+          <li>
+            <a
+              href="/uslugi/skrypty-python/"
+              class="transition-colors hover:text-white"
+            >
+              Automatyzacja plików i procesów
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- RAPORTOWANIE I INTEGRACJE -->
+
+      <div>
+
+        <h4
+          class="mb-7 text-xs font-black uppercase tracking-[0.25em] text-green-500"
+        >
+          Dane i integracje
+        </h4>
+
+
+        <ul
+          class="space-y-4 text-sm font-bold text-slate-400"
+        >
+
+          <li>
+            <a
+              href="/uslugi/power-bi-dla-firm/"
+              class="transition-colors hover:text-white"
+            >
+              Power BI dla firm
+            </a>
+          </li>
+
+
           <li>
             <a
               href="/uslugi/dashboardy-power-bi/"
-              class="underline decoration-transparent transition-colors hover:text-white hover:decoration-green-500"
+              class="transition-colors hover:text-white"
             >
               Dashboardy Power BI
             </a>
           </li>
 
-          <li>
-            <a
-              href="/uslugi/logistyka-w-excelu/"
-              class="underline decoration-transparent transition-colors hover:text-white hover:decoration-green-500"
-            >
-              Logistyka i planowanie tras
-            </a>
-          </li>
 
           <li>
             <a
-              href="/uslugi/optymalizacja-excela/"
-              class="underline decoration-transparent transition-colors hover:text-white hover:decoration-green-500"
+              href="/uslugi/raporty-power-bi/"
+              class="transition-colors hover:text-white"
             >
-              Pomoc i optymalizacja Excela
+              Raporty Power BI
             </a>
           </li>
+
+
+          <li>
+            <a
+              href="/uslugi/raporty-miesieczne-automatyczne/"
+              class="transition-colors hover:text-white"
+            >
+              Automatyczne raporty
+            </a>
+          </li>
+
+
+          <li>
+            <a
+              href="/uslugi/integracje-api/"
+              class="transition-colors hover:text-white"
+            >
+              Integracje API i systemów
+            </a>
+          </li>
+
 
           <li>
             <a
               href="/uslugi/"
-              class="underline decoration-transparent transition-colors hover:text-white hover:decoration-green-500"
+              class="font-black text-white transition-colors hover:text-green-400"
             >
-              Wszystkie usługi
+              Wszystkie usługi →
             </a>
           </li>
+
         </ul>
+
       </div>
 
+
+      <!-- FIRMA / CTA -->
+
       <div>
-        <h4 class="mb-8 text-xs font-black uppercase tracking-[0.3em] text-slate-500">
-          Nawigacja
+
+        <h4
+          class="mb-7 text-xs font-black uppercase tracking-[0.25em] text-slate-500"
+        >
+          Raporty24
         </h4>
 
-        <ul class="space-y-4 text-sm font-bold uppercase tracking-widest text-slate-400">
+
+        <ul
+          class="mb-8 space-y-4 text-sm font-bold text-slate-400"
+        >
+
           <li>
-            <a href="/realizacje/" class="transition-colors hover:text-white">
+            <a
+              href="/realizacje/"
+              class="transition-colors hover:text-white"
+            >
               Realizacje
             </a>
           </li>
 
+
           <li>
-            <a href="/blog/" class="transition-colors hover:text-white">
+            <a
+              href="/cennik/"
+              class="transition-colors hover:text-white"
+            >
+              Cennik
+            </a>
+          </li>
+
+
+          <li>
+            <a
+              href="/subskrypcja/"
+              class="transition-colors hover:text-white"
+            >
+              Stałe wsparcie
+            </a>
+          </li>
+
+
+          <li>
+            <a
+              href="/blog/"
+              class="transition-colors hover:text-white"
+            >
               Blog
             </a>
           </li>
 
-          <li>
-            <a href="/cennik/" class="transition-colors hover:text-white">
-              Cennik usług
-            </a>
-          </li>
 
           <li>
-            <a href="/subskrypcja/" class="transition-colors hover:text-white">
-              Wsparcie SLA
-            </a>
-          </li>
-<li>
-  <a href="/uslugi/ksef-do-excela/" class="hover:text-green-400 transition-colors">
-    KSeF do Excela
-  </a>
-</li>
-
-<li>
-  <a href="/uslugi/kalkulatory-produktowe/" class="hover:text-green-400 transition-colors">
-    Kalkulatory ofertowe
-  </a>
-</li>
-
-<li>
-  <a href="/uslugi/skrypty-python/" class="hover:text-green-400 transition-colors">
-    Skrypty Python
-  </a>
-</li>
-
-<li>
-  <a href="/uslugi/integracje-api/" class="hover:text-green-400 transition-colors">
-    Integracje API
-  </a>
-</li>
-          <li>
-            <a href="/kontakt/" class="text-green-500 transition-colors hover:text-green-400">
+            <a
+              href="/kontakt/"
+              class="font-black text-green-400 transition-colors hover:text-green-300"
+            >
               Kontakt
             </a>
           </li>
+
         </ul>
-      </div>
 
-      <div class="relative rounded-[2rem] border border-slate-800 bg-slate-900 p-8">
-        <h4 class="mb-4 font-black uppercase tracking-tight text-white">
-          Masz proces do automatyzacji?
-        </h4>
 
-        <p class="mb-8 text-[11px] leading-relaxed text-slate-500">
-          Podeślij opis procesu, screen arkusza albo przykład raportu. Sprawdzimy,
-          czy da się to uprościć w Excelu, Power BI, Pythonie albo aplikacji desktopowej.
-        </p>
+        <!-- CTA -->
 
-        <div class="mb-6 space-y-3 text-[11px] font-bold uppercase tracking-widest text-slate-400">
-          <a
-            href="/realizacje/"
-            class="flex items-center gap-2 transition-colors hover:text-white"
-          >
-            <i class="fas fa-check text-green-500"></i>
-            KSeF Exporter Pro
-          </a>
-
-          <a
-            href="/realizacje/"
-            class="flex items-center gap-2 transition-colors hover:text-white"
-          >
-            <i class="fas fa-check text-green-500"></i>
-            System planowania tras
-          </a>
-        </div>
-
-        <a
-          href="/kontakt/#formularz"
-          class="block rounded-xl bg-green-600 py-4 text-center text-[11px] font-black uppercase tracking-widest text-white transition-all hover:bg-green-500"
+        <div
+          class="rounded-[2rem] border border-slate-800 bg-slate-900 p-6"
         >
-          Poproś o wycenę
-        </a>
-      </div>
-    </div>
 
-    <div class="flex flex-col items-center justify-between gap-8 border-t border-white/5 pt-12 md:flex-row">
-      <div class="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-600">
-        &copy; {currentYear} Raporty24. All rights reserved.
-      </div>
+          <h4
+            class="mb-3 text-lg font-black tracking-tight text-white"
+          >
+            Masz proces do usprawnienia?
+          </h4>
 
-      <div class="flex flex-col items-center gap-8 md:flex-row">
-        <div class="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400">
-          <i class="fas fa-map-marker-alt text-green-500"></i>
-          Obsługa zdalna:
-          <span class="text-white">Polska, Niemcy, UK</span>
+
+          <p
+            class="mb-5 text-xs leading-relaxed text-slate-400"
+          >
+            Nie musisz wiedzieć, jakiej technologii potrzebujesz.
+            Opisz problem, a sprawdzimy,
+            jak można go uprościć lub zautomatyzować.
+          </p>
+
+
+          <a
+            href="/kontakt/#formularz"
+            class="block rounded-xl bg-green-600 px-5 py-4 text-center text-[11px] font-black uppercase tracking-widest text-white transition-all hover:bg-green-500"
+          >
+            Opisz swój problem
+          </a>
+
         </div>
 
-        <div class="text-[10px] font-bold uppercase tracking-widest text-slate-600">
-          Siedziba:
-          <span class="text-white">Katowice, Śląsk</span>
-        </div>
       </div>
+
     </div>
+
+
+    <!-- ================================================= -->
+    <!-- DÓŁ STOPKI -->
+    <!-- ================================================= -->
+
+    <div
+      class="flex flex-col gap-7 border-t border-white/5 pt-10 md:flex-row md:items-center md:justify-between"
+    >
+
+      <div
+        class="text-[10px] font-bold uppercase tracking-[0.25em] text-slate-600"
+      >
+        &copy; {currentYear} Raporty24. Wszystkie prawa zastrzeżone.
+      </div>
+
+
+      <div
+        class="flex flex-col gap-4 text-[10px] font-bold uppercase tracking-widest text-slate-500 sm:flex-row sm:items-center sm:gap-8"
+      >
+
+        <div
+          class="flex items-center gap-2"
+        >
+          <i
+            class="fas fa-globe-europe text-green-500"
+            aria-hidden="true"
+          ></i>
+
+          Obsługa zdalna
+        </div>
+
+
+        <div>
+          Polska i klienci zagraniczni
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
+
+
+  <!-- TŁO -->
+
+  <div
+    class="pointer-events-none absolute -bottom-48 -right-48 h-[500px] w-[500px] rounded-full bg-green-500/[0.04] blur-[120px]"
+    aria-hidden="true"
+  ></div>
+
 </footer>

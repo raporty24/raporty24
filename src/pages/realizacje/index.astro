@@ -4,228 +4,585 @@ import Header from "../../components/Header.astro";
 import Contact from "../../components/Contact.astro";
 import Footer from "../../components/Footer.astro";
 
+
 type RealizationImage = {
   src: string;
   alt: string;
   caption: string;
 };
 
+
+type ServiceLink = {
+  title: string;
+  href: string;
+};
+
+
 type Realization = {
   slug: string;
   title: string;
   subtitle: string;
-  industry: string;
+  category: string;
   problem: string;
-  description: string;
+  solution: string;
   effect: string;
   technologies: string[];
+  services?: ServiceLink[];
   featured?: boolean;
   accent?: string;
   images?: RealizationImage[];
 };
 
-const pageTitle = "Realizacje Excel, Power BI, KSeF i aplikacje dla firm | Raporty24";
+
+const pageTitle =
+  "Realizacje automatyzacji, Excel, API i aplikacji dla firm | Raporty24";
+
 const pageDescription =
-  "Zobacz przykładowe realizacje Raporty24: programy magazynowe Excel WMS, kalkulatory tras ciężarowych TMS, KSeF Exporter Pro i zaawansowane automatyzacje.";
-const ogImage = "/realizacje/KSEF_EXPORTER_PRO_1.webp";
-const currentUrl = "https://raporty24.pl/realizacje/";
+  "Zobacz realizacje Raporty24: automatyzacje procesów, Excel, API, KSeF, systemy magazynowe, kalkulatory, aplikacje i narzędzia do pracy z danymi.";
+
+const ogImage =
+  "/realizacje/KSEF_EXPORTER_PRO_1.webp";
+
+const currentUrl =
+  "https://raporty24.pl/realizacje/";
+
+
+/*
+ * =========================================================
+ * REALIZACJE
+ * =========================================================
+ */
 
 const realizations: Realization[] = [
   {
     slug: "ksef-exporter-pro",
+
     title: "KSeF Exporter Pro",
-    subtitle: "Program desktopowy do pobierania faktur z KSeF",
-    industry: "KSeF, księgowość i automatyzacja",
+
+    subtitle:
+      "Lokalna aplikacja do pobierania i eksportowania danych z KSeF",
+
+    category:
+      "KSeF • dokumenty • automatyzacja danych",
+
     problem:
-      "Brak przejrzystych zestawień faktur wystawianych w KSeF oraz brak natywnej możliwości ich szybkiego, masowego eksportu do uniwersalnych formatów analitycznych.",
-    description:
-      "Lokalna aplikacja Windows do pobierania faktur z KSeF, podglądu pozycji, filtrowania danych oraz eksportu do Excel, CSV i XML. Program działa bez serwera pośredniego i bez przesyłania faktur do zewnętrznej chmury.",
+      "Dane z faktur wymagają dalszej analizy i wykorzystania poza systemem źródłowym. Ręczne przeglądanie dokumentów oraz przygotowywanie zestawień utrudnia szybką pracę z większą liczbą faktur.",
+
+    solution:
+      "Powstała lokalna aplikacja Windows umożliwiająca pobieranie danych z KSeF, przeglądanie faktur i ich pozycji, filtrowanie informacji oraz eksport do formatów Excel, CSV i XML. Użytkownik może również korzystać z własnych szablonów kolumn eksportu.",
+
     effect:
-      "Użytkownik może pobierać faktury lokalnie, przeglądać pozycje, korzystać z własnych szablonów kolumn i eksportować dane do dalszej pracy w Excelu lub księgowości.",
-    technologies: ["Python", "Windows", "KSeF", "Excel", "CSV", "XML", "Desktop app"],
+      "Dane z faktur mogą zostać przygotowane w uporządkowanej formie do dalszej analizy, pracy w Excelu lub przekazania do kolejnego procesu bez ręcznego przepisywania informacji.",
+
+    technologies: [
+      "KSeF",
+      "Python",
+      "Windows",
+      "Excel",
+      "CSV",
+      "XML",
+      "aplikacja desktopowa",
+    ],
+
+    services: [
+      {
+        title: "Automatyzacja plików i procesów",
+        href: "/uslugi/skrypty-python/",
+      },
+
+      {
+        title: "Integracje API",
+        href: "/uslugi/integracje-api/",
+      },
+    ],
+
     featured: true,
+
     images: [
       {
         src: "/realizacje/KSEF_EXPORTER_PRO_1.webp",
-        alt: "KSeF Exporter Pro - pobieranie faktur z KSeF i eksport danych",
-        caption: "Panel pobierania faktur z KSeF, podgląd pozycji i eksport danych.",
+
+        alt:
+          "KSeF Exporter Pro - pobieranie faktur i eksport danych",
+
+        caption:
+          "Panel pobierania faktur, podgląd danych i przygotowanie eksportu.",
       },
+
       {
         src: "/realizacje/KSEF_EXPORTER_PRO_2.webp",
-        alt: "KSeF Exporter Pro - edycja szablonów kolumn eksportu",
-        caption: "Edycja szablonów kolumn do eksportu XLSX, CSV i XML.",
+
+        alt:
+          "KSeF Exporter Pro - konfiguracja kolumn eksportu",
+
+        caption:
+          "Konfiguracja własnego układu kolumn eksportowanych do XLSX, CSV i XML.",
       },
     ],
   },
+
+
   {
     slug: "system-planowania-tras",
-    title: "Kalkulator rzeczywistych tras ciężarowych dla spedycji",
-    subtitle: "System TMS z darmowym API mapowym HGV i integracją KSeF",
-    industry: "Transport, Logistyka i Finanse",
+
+    title:
+      "Kalkulator tras ciężarowych i obsługi zleceń transportowych",
+
+    subtitle:
+      "Excel połączony z aplikacją, API mapowym HGV i obsługą dokumentów",
+
+    category:
+      "Transport • logistyka • API • automatyzacja",
+
     problem:
-      "Standardowe narzędzia (np. konsumenckie Google Maps) nie uwzględniają restrykcji dla pojazdów ciężarowych (tonaż, DMC, wysokość wiaduktów). Prowadzi to do błędów w wycenie frachtu, ryzyka kar administracyjnych, a brak integracji z fakturowaniem wymusza ręczne przepisywanie danych po realizacji zlecenia.",
-    description:
-      "Zaawansowany system klasy TMS łączący arkusz kalkulacyjny z dedykowaną aplikacją i darmowym API mapowym HGV. Narzędzie obsługuje elastyczne wprowadzanie adresów (inteligentna geo-detekcja), pełną parametryzację gabarytów floty, dynamiczną wizualizację tras bezpośrednio w Excelu, a także automatyczny moduł finansowy generujący i wysyłający faktury XML bezpośrednio do KSeF wraz z rejestrem płatności.",
+      "Planowanie transportu wymaga uwzględnienia parametrów pojazdu, rzeczywistej trasy oraz kosztów przejazdu. Korzystanie z kilku niezależnych narzędzi powoduje dodatkowe ręczne czynności przy wycenie, realizacji zlecenia i późniejszym przygotowaniu dokumentów.",
+
+    solution:
+      "Przygotowano narzędzie łączące Excel z dedykowaną aplikacją i API mapowym przeznaczonym do tras HGV. Proces uwzględnia parametry pojazdów, wizualizację trasy, stawki i dane finansowe. Rozwiązanie zostało rozszerzone o moduł przygotowania dokumentów oraz obsługę danych wykorzystywanych przy fakturowaniu i KSeF.",
+
     effect:
-      "Bezpieczna i precyzyjna wycena frachtu, wyeliminowanie kosztownych licencji komercyjnych na API mapowe, skrócenie czasu planowania tras oraz pełna automatyzacja obiegu dokumentów finansowych bez opuszczania jednego programu.",
-    technologies: ["Excel", "Dedykowana aplikacja", "API Mapowe HGV", "KSeF XML", "Automatyzacja procesów"],
+      "Użytkownik może przejść od parametrów pojazdu i kalkulacji trasy do wyceny oraz dalszej obsługi zlecenia w jednym uporządkowanym procesie, ograniczając liczbę ręcznie przepisywanych danych.",
+
+    technologies: [
+      "Excel",
+      "API HGV",
+      "dedykowana aplikacja",
+      "KSeF XML",
+      "automatyzacja procesów",
+    ],
+
+    services: [
+      {
+        title: "Excel na zamówienie",
+        href: "/uslugi/excel-na-zamowienie/",
+      },
+
+      {
+        title: "Integracje API",
+        href: "/uslugi/integracje-api/",
+      },
+    ],
+
     featured: true,
+
     images: [
       {
         src: "/spedycja_apka/1.webp",
-        alt: "Przejazd pod wiaduktem do 3m - pojazd niski",
-        caption: "Przykład 1: Przykład, gdy na trasie napotkany jest wiadukt o max wys. przejazdu 3m, ale parametry samochodu (wys. 2,7m) pozwalają na przejazd.",
+
+        alt:
+          "Trasa pojazdu ciężarowego z ograniczeniem wysokości",
+
+        caption:
+          "Przykład trasy dla pojazdu, którego wysokość pozwala na przejazd pod wiaduktem.",
       },
+
       {
         src: "/spedycja_apka/2.webp",
-        alt: "Omijanie wiaduktu do 3m - pojazd wysoki",
-        caption: "Przykład 2: Przykład, gdy na trasie napotkany jest wiadukt o max wys. przejazdu 3m, ale parametry samochodu (wys. 4m) nie pozwalają na przejazd i wymagany jest objazd.",
+
+        alt:
+          "Objazd pojazdu ciężarowego ze względu na ograniczenie wysokości",
+
+        caption:
+          "Przykład wyznaczenia alternatywnej trasy dla wyższego pojazdu.",
       },
+
       {
         src: "/spedycja_apka/6.webp",
-        alt: "Kalkulacja trasy ciężarowej Katowice - Stuttgart",
-        caption: "Przykład 6: Przykład kalkulacji z podglądem na mapę dla samochodu ciężarowego na trasie Katowice PL - Stuttgart DE.",
+
+        alt:
+          "Kalkulacja trasy ciężarowej Katowice Stuttgart",
+
+        caption:
+          "Przykładowa kalkulacja i podgląd trasy Katowice – Stuttgart.",
       },
+
       {
         src: "/spedycja_apka/7.webp",
-        alt: "Kalkulacja trasy ciężarowej Gdańsk - Warszawa",
-        caption: "Przykład 7: Przykład kalkulacji z podglądem na mapę dla samochodu ciężarowego na trasie Gdańsk PL - Warszawa PL.",
+
+        alt:
+          "Kalkulacja trasy ciężarowej Gdańsk Warszawa",
+
+        caption:
+          "Przykładowa kalkulacja trasy Gdańsk – Warszawa.",
       },
+
       {
         src: "/spedycja_apka/8.webp",
-        alt: "Kalkulacja trasy ciężarowej Wrocław - Praga",
-        caption: "Przykład 8: Przykład kalkulacji z podglądem na mapę dla samochodu ciężarowego na trasie Wrocław PL - Praga CZ.",
+
+        alt:
+          "Kalkulacja trasy ciężarowej Wrocław Praga",
+
+        caption:
+          "Przykładowa kalkulacja trasy Wrocław – Praga.",
       },
+
       {
         src: "/spedycja_apka/9.webp",
-        alt: "Kalkulacja trasy ciężarowej Poznań - Rotterdam",
-        caption: "Przykład 9: Przykład kalkulacji z podglądem na mapę dla samochodu ciężarowego na trasie Poznań PL - Rotterdam NL.",
+
+        alt:
+          "Kalkulacja trasy ciężarowej Poznań Rotterdam",
+
+        caption:
+          "Przykładowa kalkulacja trasy Poznań – Rotterdam.",
       },
+
       {
         src: "/spedycja_apka/4.webp",
-        alt: "Rejestr typów samochodów i wymiarów floty",
-        caption: "Przykład 4: Przykładowy arkusz z rejestrem typów samochodów z wymiarami, które będą uwzględniane w kalkulatorze.",
+
+        alt:
+          "Rejestr parametrów samochodów ciężarowych",
+
+        caption:
+          "Rejestr typów pojazdów i parametrów wykorzystywanych podczas kalkulacji.",
       },
+
       {
         src: "/spedycja_apka/5.webp",
-        alt: "Definiowanie stawek i parametrów paliwowych",
-        caption: "Przykład 5: Przykładowy arkusz do definiowania stawek w zależności od regionu, możliwość dodawania większej ilości parametrów zależnych np. od cen paliwa.",
+
+        alt:
+          "Konfiguracja stawek transportowych",
+
+        caption:
+          "Konfiguracja stawek i parametrów wykorzystywanych podczas wyceny transportu.",
       },
+
       {
         src: "/spedycja_apka/3.webp",
-        alt: "Rejestr faktur generowanych z kalkulatora",
-        caption: "Przykład 3: Przykładowy arkusz z rejestrem faktur generowanych z kalkulatora.",
-      }
+
+        alt:
+          "Rejestr dokumentów i faktur transportowych",
+
+        caption:
+          "Przykładowy rejestr dokumentów generowanych podczas obsługi zlecenia.",
+      },
     ],
   },
+
+
   {
     slug: "program-magazynowy-excel",
-    title: "System zarządzania magazynem i stanami w Excelu",
-    subtitle: "Kompleksowe zarządzanie gospodarką magazynową z mobilnym skanowaniem i KSeF",
-    industry: "E-commerce, Logistyka i Produkcja",
+
+    title:
+      "System zarządzania magazynem i stanami w Excelu",
+
+    subtitle:
+      "Excel, mobilne skanowanie, dokumenty magazynowe i KSeF",
+
+    category:
+      "Magazyn • logistyka • Excel • automatyzacja",
+
     problem:
-      "Małe magazyny i firmy e-commerce często zmagają się z rozbieżnościami w stanach (oferowanie towaru, którego brak fizycznie na półce), czasochłonnym ręcznym wystawianiem dokumentów WZ/PZ oraz wysokimi kosztami tradycyjnych systemów klasy WMS/ERP i dedykowanych terminali/skanerów.",
-    description:
-      "Zaawansowany system magazynowy oparty na arkuszu Excel zintegrowanym z bezpłatną aplikacją mobilną na smartfony, która pełni rolę bezprzewodowego skanera kodów kreskowych i QR. Dane ze skanera trafiają na Dysk Google jako pliki CSV, a arkusz automatycznie pobiera logi, aktualizuje stany w czasie rzeczywistym, generuje inteligentne formularze wydań zewnętrznych (WZ/PZ) do druku/PDF oraz umożliwia bezpośrednie fakturowanie handlowe z integracją struktury XML dla KSeF.",
+      "W małym magazynie wiele operacji może odbywać się w osobnych plikach lub ręcznie: skanowanie produktów, aktualizacja stanów, przygotowanie dokumentów WZ/PZ i późniejsze wykorzystanie tych samych danych przy fakturowaniu.",
+
+    solution:
+      "Przygotowano rozwiązanie oparte na Excelu, które wykorzystuje dane ze skanowania kodów kreskowych wykonywanego smartfonem. Dane trafiają do procesu importu, aktualizują rejestry magazynowe i mogą być wykorzystane do przygotowania dokumentów WZ/PZ oraz dalszej obsługi sprzedaży.",
+
     effect:
-      "Wyeliminowanie kosztów zakupu profesjonalnego sprzętu skanującego, pełna zgodność stanów fizycznych z bazą produktową, automatyzacja procesu kompletacji zamówień (szybsze pakowanie) oraz natychmiastowe wystawianie dokumentów logistycznych i handlowych z poziomu jednego narzędzia.",
-    technologies: ["Excel", "Power Query", "Aplikacja Mobilna", "Dysk Google Cloud", "Automatyzacja WMS", "KSeF XML"],
+      "Operacje magazynowe, dokumenty i dane produktowe zostały połączone w jeden proces. Użytkownik może wykorzystywać te same dane na kolejnych etapach pracy zamiast ponownie wpisywać informacje w kilku miejscach.",
+
+    technologies: [
+      "Excel",
+      "Power Query",
+      "skanowanie mobilne",
+      "CSV",
+      "Google Drive",
+      "KSeF XML",
+      "automatyzacja magazynu",
+    ],
+
+    services: [
+      {
+        title: "Excel na zamówienie",
+        href: "/uslugi/excel-na-zamowienie/",
+      },
+
+      {
+        title: "Power Query",
+        href: "/uslugi/automatyzacja-excel-power-query/",
+      },
+    ],
+
     featured: true,
+
     images: [
       {
-        src: "/realizacje/program_magazynowy_excel/skan2.webp",
-        alt: "Proces skanowania smartfonem",
-        caption: "Krok 1: Przykład szybkiego odczytywania kodów kreskowych z etykiet produktowych za pomocą darmowej aplikacji na smartfonie.",
+        src:
+          "/realizacje/program_magazynowy_excel/skan2.webp",
+
+        alt:
+          "Skanowanie kodów produktów smartfonem",
+
+        caption:
+          "Odczyt kodów kreskowych produktów za pomocą aplikacji na smartfonie.",
       },
+
       {
-        src: "/realizacje/program_magazynowy_excel/dysk google.webp",
-        alt: "Widok dysku Google Drive z plikami logów",
-        caption: "Krok 2: Pliki CSV z zeskanowanymi zamówieniami, automatycznie zapisywane w chmurze Google Drive (np. Allegro, Amazon, Kaufland).",
+        src:
+          "/realizacje/program_magazynowy_excel/dysk google.webp",
+
+        alt:
+          "Pliki ze skanowania zapisane w Google Drive",
+
+        caption:
+          "Pliki CSV z danymi ze skanowania przygotowane do dalszego importu.",
       },
+
       {
-        src: "/realizacje/program_magazynowy_excel/2.Rejestr wydań ze skanera.webp",
-        alt: "Rejestr operacji skanera",
-        caption: "Krok 3: Zestawienie w Excelu prezentujące zaimportowane, surowe logi operacji mobilnych (daty, godziny, kody kreskowe).",
+        src:
+          "/realizacje/program_magazynowy_excel/2.Rejestr wydań ze skanera.webp",
+
+        alt:
+          "Rejestr operacji magazynowych w Excelu",
+
+        caption:
+          "Rejestr danych zaimportowanych ze skanowania produktów.",
       },
+
       {
-        src: "/realizacje/program_magazynowy_excel/3.pusty arkusz wz.webp",
-        alt: "Szablon WZ - Wydanie zewnętrzne",
-        caption: "Krok 4: Inteligentny, czysty szablon formularza dokumentu WZ z listą rozwijaną ułatwiającą wybór pliku wsadowego ze skanera.",
+        src:
+          "/realizacje/program_magazynowy_excel/3.pusty arkusz wz.webp",
+
+        alt:
+          "Szablon dokumentu WZ w Excelu",
+
+        caption:
+          "Szablon dokumentu WZ przygotowany do automatycznego uzupełnienia.",
       },
+
       {
-        src: "/realizacje/program_magazynowy_excel/3a.uzupełniony arkusz wz.webp",
-        alt: "Automatycznie wypełniony dokument WZ",
-        caption: "Krok 5: Formularz WZ po automatycznym zaimportowaniu danych ze skanera – automatyczne uzupełnienie kontrahenta (Kaufland) oraz 23 pozycji zamówienia.",
+        src:
+          "/realizacje/program_magazynowy_excel/3a.uzupełniony arkusz wz.webp",
+
+        alt:
+          "Automatycznie uzupełniony dokument WZ",
+
+        caption:
+          "Dokument WZ po pobraniu danych z procesu magazynowego.",
       },
+
       {
-        src: "/realizacje/program_magazynowy_excel/3b.wydruk wz.webp",
-        alt: "Podgląd wydruku WZ",
-        caption: "Krok 6: Gotowy do wydruku lub zapisu do formatu PDF oficjalny dokument Wydania Zewnętrznego (WZ).",
+        src:
+          "/realizacje/program_magazynowy_excel/3b.wydruk wz.webp",
+
+        alt:
+          "Podgląd dokumentu WZ",
+
+        caption:
+          "Przygotowany dokument WZ gotowy do wydruku lub zapisu PDF.",
       },
+
       {
-        src: "/realizacje/program_magazynowy_excel/8.transakcje magazynowe.webp",
-        alt: "Rejestr transakcji magazynowych",
-        caption: "Krok 7: Zbiorcza baza danych rejestrująca każdy ruch surowcowy i produktowy (wartości ujemne dla fizycznego wydania z magazynu).",
+        src:
+          "/realizacje/program_magazynowy_excel/8.transakcje magazynowe.webp",
+
+        alt:
+          "Rejestr transakcji magazynowych",
+
+        caption:
+          "Rejestr ruchów magazynowych wykorzystywany do aktualizacji stanów.",
       },
+
       {
-        src: "/realizacje/program_magazynowy_excel/9.stany magazynowe.webp",
-        alt: "Zarządzanie stanami magazynowymi",
-        caption: "Krok 8: Aktualne stany magazynowe w czasie rzeczywistym z wbudowanym panelem szybkiego filtrowania UserForm po prawej stronie.",
+        src:
+          "/realizacje/program_magazynowy_excel/9.stany magazynowe.webp",
+
+        alt:
+          "Stany magazynowe w Excelu",
+
+        caption:
+          "Widok aktualnych stanów magazynowych oraz narzędzi filtrowania.",
       },
+
       {
-        src: "/realizacje/program_magazynowy_excel/4.pusty arkusz fv.webp",
-        alt: "Moduł Faktury VAT",
-        caption: "Krok 9: Arkusz fakturowania handlowego z listą rozwijaną, pozwalający przekształcić zatwierdzone wydanie WZ w fakturę VAT.",
-      }
+        src:
+          "/realizacje/program_magazynowy_excel/4.pusty arkusz fv.webp",
+
+        alt:
+          "Moduł faktury VAT w Excelu",
+
+        caption:
+          "Arkusz wykorzystywany w dalszym procesie przygotowania dokumentów sprzedażowych.",
+      },
     ],
   },
+
+
   {
     slug: "kalkulatory-produktowe",
-    title: "Kalkulatory produktowe i ofertowe",
-    subtitle: "Narzędzia do wyceny, konfiguracji produktu i zbierania zamówień B2B",
-    industry: "Sprzedaż, zamówienia i obsługa klienta",
+
+    title:
+      "Kalkulatory produktowe i ofertowe",
+
+    subtitle:
+      "Narzędzia do wyceny, konfiguracji produktu i przygotowania zamówień",
+
+    category:
+      "Sprzedaż • oferty • kalkulatory",
+
     problem:
-      "Handlowcy i klienci często przygotowują zapytania ofertowe ręcznie: wpisują warianty, ilości, dodatki, rabaty i parametry produktu w mailach lub nieuporządkowanych plikach. To wydłuża wycenę i zwiększa ryzyko pomyłek.",
-    description:
-      "Tworzymy kalkulatory produktowe i ofertowe w Excelu, aplikacji desktopowej albo formularzu online. Narzędzie może prowadzić użytkownika przez wybór wariantów, liczyć cenę, rabaty, marżę, transport, dodatki oraz generować podsumowanie zamówienia lub dane do dalszej obsługi.",
+      "Przy produktach posiadających wiele wariantów, dodatków, rabatów i parametrów handlowiec musi każdorazowo sprawdzać zasady wyceny i kompletność informacji potrzebnych do przygotowania oferty.",
+
+    solution:
+      "Tworzymy kalkulatory produktowe i ofertowe w Excelu, aplikacji desktopowej lub formularzu online. Narzędzie może prowadzić użytkownika przez konfigurację produktu, wykonywać obliczenia i przygotowywać podsumowanie do dalszej obsługi.",
+
     effect:
-      "Szybsze przygotowanie oferty, mniej brakujących danych w zapytaniach, spójny sposób liczenia ceny oraz wygodniejsze przekazywanie zamówień do handlowca, produkcji lub księgowości.",
-    technologies: ["Excel", "Formularze", "Python", "JavaScript", "API", "Automatyzacja ofert"],
+      "Proces wyceny może korzystać z jednej ustalonej logiki, a informacje potrzebne do przygotowania oferty lub zamówienia są zbierane w uporządkowany sposób.",
+
+    technologies: [
+      "Excel",
+      "formularze",
+      "Python",
+      "JavaScript",
+      "API",
+      "automatyzacja ofert",
+    ],
+
+    services: [
+      {
+        title: "Excel na zamówienie",
+        href: "/uslugi/excel-na-zamowienie/",
+      },
+
+      {
+        title: "Kalkulatory produktowe",
+        href: "/uslugi/kalkulatory-produktowe/",
+      },
+    ],
+
     accent: "KALKULATORY",
   },
+
+
   {
-    slug: "skrypty-python-api",
-    title: "Skrypty Python, integracje API i aplikacje desktopowe",
-    subtitle: "Małe narzędzia firmowe do pobierania, przetwarzania i eksportu danych",
-    industry: "Python, API, SQL i automatyzacja procesów",
+    slug: "automatyzacja-api-aplikacje",
+
+    title:
+      "Automatyzacja plików, API i małe aplikacje",
+
+    subtitle:
+      "Narzędzia do pobierania, przetwarzania i przekazywania danych",
+
+    category:
+      "Automatyzacja • API • aplikacje",
+
     problem:
-      "W firmach wiele zadań nadal odbywa się ręcznie: pobieranie plików, kopiowanie danych między systemami, czyszczenie CSV, przygotowanie raportów, eksporty do Excela albo cykliczne sprawdzanie danych w panelach i aplikacjach.",
-    description:
-      "Budujemy skrypty Python, integracje API, proste aplikacje Windows, narzędzia SQL oraz automatyzacje JavaScript dopasowane do konkretnego procesu. Rozwiązanie może działać lokalnie, cyklicznie albo jako mały panel dla zespołu.",
+      "W firmach część pracy nadal polega na ręcznym pobieraniu plików, kopiowaniu danych między systemami, poprawianiu CSV, przygotowywaniu eksportów i wykonywaniu tych samych operacji na kolejnych zestawach danych.",
+
+    solution:
+      "W zależności od procesu przygotowujemy niewielkie aplikacje, integracje API i automatyzacje plików. Do realizacji możemy wykorzystać Python, C#, JavaScript, SQL, Excel lub inne narzędzie odpowiednie do konkretnego zadania.",
+
     effect:
-      "Mniej ręcznego kopiowania, szybsze przetwarzanie danych, mniej błędów i możliwość połączenia Excela, systemów firmowych, API, plików CSV/XLSX/XML oraz baz danych w jeden uporządkowany proces.",
-    technologies: ["Python", "API", "SQL", "JavaScript", "C#", "Windows", "CSV", "Excel"],
-    accent: "PYTHON / API",
+      "Powtarzalny proces może zostać uporządkowany w jedno narzędzie lub przepływ danych, który ogranicza ręczne wykonywanie tych samych czynności i ułatwia dalszą pracę z informacjami.",
+
+    technologies: [
+      "API",
+      "Python",
+      "C#",
+      "JavaScript",
+      "SQL",
+      "Windows",
+      "CSV",
+      "Excel",
+    ],
+
+    services: [
+      {
+        title: "Automatyzacja plików i procesów",
+        href: "/uslugi/skrypty-python/",
+      },
+
+      {
+        title: "Integracje API",
+        href: "/uslugi/integracje-api/",
+      },
+    ],
+
+    accent: "AUTOMATYZACJA",
   },
 ];
 
+
+/*
+ * =========================================================
+ * STRUCTURED DATA
+ * =========================================================
+ */
+
 const realizationsSchema = {
   "@context": "https://schema.org",
+
   "@type": "ItemList",
-  name: "Realizacje Raporty24",
+
+  name:
+    "Realizacje automatyzacji Raporty24",
+
   itemListElement: realizations.map((item, index) => ({
     "@type": "ListItem",
-    position: index + 1,
-    name: item.title,
-    description: item.description,
+
+    position:
+      index + 1,
+
+    name:
+      item.title,
+
+    description:
+      item.solution,
+
+    url:
+      `${currentUrl}#${item.slug}`,
   })),
 };
 
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+
+  "@type": "BreadcrumbList",
+
+  itemListElement: [
+    {
+      "@type": "ListItem",
+
+      position: 1,
+
+      name:
+        "Raporty24",
+
+      item:
+        "https://raporty24.pl/",
+    },
+
+    {
+      "@type": "ListItem",
+
+      position: 2,
+
+      name:
+        "Realizacje",
+
+      item:
+        currentUrl,
+    },
+  ],
+};
+
+
 const allImagesJson = JSON.stringify(
-  realizations.reduce((acc: RealizationImage[], item) => {
-    if (item.images) acc.push(...item.images);
-    return acc;
-  }, [])
+  realizations.reduce(
+    (
+      acc: RealizationImage[],
+      item
+    ) => {
+
+      if (item.images) {
+        acc.push(...item.images);
+      }
+
+      return acc;
+
+    },
+    []
+  )
 );
 ---
 
@@ -234,322 +591,899 @@ const allImagesJson = JSON.stringify(
   description={pageDescription}
   image={ogImage}
   url={currentUrl}
-  structuredData={realizationsSchema}
+  structuredData={[
+    realizationsSchema,
+    breadcrumbSchema
+  ]}
 >
-  <div 
+
+  <div
     x-data={`{
       app: {},
       lightboxOpen: false,
       lightboxIndex: 0,
       lightboxImages: ${allImagesJson},
+
       openLightbox(src) {
-        this.lightboxIndex = this.lightboxImages.findIndex(img => img.src === src);
+        this.lightboxIndex =
+          this.lightboxImages.findIndex(
+            img => img.src === src
+          );
+
         if (this.lightboxIndex !== -1) {
           this.lightboxOpen = true;
           document.body.style.overflow = 'hidden';
         }
       },
+
       closeLightbox() {
         this.lightboxOpen = false;
         document.body.style.overflow = '';
       },
+
       nextLightbox() {
-        this.lightboxIndex = (this.lightboxIndex + 1) % this.lightboxImages.length;
+        this.lightboxIndex =
+          (this.lightboxIndex + 1)
+          % this.lightboxImages.length;
       },
+
       prevLightbox() {
-        this.lightboxIndex = (this.lightboxIndex - 1 + this.lightboxImages.length) % this.lightboxImages.length;
+        this.lightboxIndex =
+          (
+            this.lightboxIndex
+            - 1
+            + this.lightboxImages.length
+          )
+          % this.lightboxImages.length;
       }
     }`}
+
     @keydown.escape.window="closeLightbox()"
-    @keydown.arrow-right.window="if(lightboxOpen) nextLightbox()"
-    @keydown.arrow-left.window="if(lightboxOpen) prevLightbox()"
+
+    @keydown.arrow-right.window="
+      if(lightboxOpen) nextLightbox()
+    "
+
+    @keydown.arrow-left.window="
+      if(lightboxOpen) prevLightbox()
+    "
   >
+
     <Header />
 
-    <main class="pt-20">
-      {/* Hero Section */}
-      <section class="relative overflow-hidden bg-slate-950 py-24 text-white lg:py-32">
-        <div class="absolute inset-0 z-0 opacity-20">
-          <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1.5px,transparent_1.5px)] [background-size:32px_32px]"></div>
-        </div>
-        <div class="absolute right-0 top-0 h-96 w-96 rounded-full bg-emerald-600/10 blur-[120px]"></div>
-        <div class="absolute bottom-0 left-0 h-96 w-96 rounded-full bg-cyan-500/10 blur-[120px]"></div>
 
-        <div class="container relative z-10 mx-auto px-6 text-center max-w-4xl">
-          <span class="mb-4 inline-block rounded-full bg-emerald-500/10 px-4 py-1.5 text-xs font-semibold tracking-wider text-emerald-400">
-            Case Studies & Portfolio
-          </span>
-          <h1 class="mb-6 text-4xl font-extrabold tracking-tight text-white md:text-6xl lg:text-7xl">
-            Nasze <span class="text-emerald-500">Realizacje</span>
-          </h1>
-          <p class="mx-auto max-w-2xl text-lg font-normal leading-relaxed text-slate-400">
-            Zobacz, jak przekształcamy powtarzalne, ręczne procesy w firmach w automatyczne aplikacje, intuicyjne arkusze Excel oraz interaktywne raporty Power BI.
-          </p>
+    <main>
+
+
+      <!-- ================================================= -->
+      <!-- HERO -->
+      <!-- ================================================= -->
+
+      <section
+        class="relative overflow-hidden bg-slate-950 py-28 text-white lg:py-36"
+      >
+
+        <div
+          class="absolute inset-0 opacity-20 bg-[radial-gradient(#1e293b_1.5px,transparent_1.5px)] [background-size:32px_32px]"
+        ></div>
+
+
+        <div
+          class="absolute right-0 top-0 h-96 w-96 rounded-full bg-green-600/10 blur-[120px]"
+        ></div>
+
+
+        <div
+          class="container relative z-10 mx-auto px-4"
+        >
+
+          <div class="max-w-5xl">
+
+            <span
+              class="mb-5 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-400"
+            >
+              Realizacje Raporty24
+            </span>
+
+
+            <h1
+              class="max-w-5xl text-5xl font-black leading-[1.03] tracking-tighter md:text-7xl"
+            >
+              Zobacz, jak
+              <span class="text-green-400">
+                automatyzujemy procesy
+              </span>
+              w firmach.
+            </h1>
+
+
+            <p
+              class="mt-8 max-w-3xl text-lg leading-relaxed text-slate-300 md:text-xl"
+            >
+              Excel, API, aplikacje, KSeF, dokumenty,
+              dane i procesy firmowe.
+              Technologię dobieramy do problemu,
+              a nie odwrotnie.
+            </p>
+
+
+            <div
+              class="mt-10 flex flex-col gap-4 sm:flex-row"
+            >
+
+              <a
+                href="#realizacje"
+                class="inline-flex items-center justify-center rounded-2xl bg-green-500 px-8 py-5 text-sm font-black uppercase tracking-widest text-slate-950 transition-all hover:-translate-y-1 hover:bg-green-400"
+              >
+                Zobacz realizacje
+              </a>
+
+
+              <a
+                href="#kontakt"
+                class="inline-flex items-center justify-center rounded-2xl border border-white/20 px-8 py-5 text-sm font-black uppercase tracking-widest text-white transition-all hover:-translate-y-1 hover:border-green-400"
+              >
+                Opisz swój proces
+              </a>
+
+            </div>
+
+          </div>
+
         </div>
+
       </section>
 
-      {/* Główna sekcja z projektami */}
-      <section id="realizacje" class="bg-slate-50/50 py-24 text-slate-900">
-        <div class="container mx-auto px-4 max-w-6xl">
-          
-          <div class="grid gap-16 grid-cols-1">
-            {
-              realizations.map((item) => (
-                <article
-                  id={item.slug}
-                  class="scroll-mt-28 overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-sm hover:shadow-md transition-shadow duration-300"
-                >
-                  <div class="flex flex-col">
-                    
-                    {/* GÓRA: Karuzela ze zdjęciami */}
-                    {item.images && item.images.length > 0 ? (
-                      <div 
-                        class="relative w-full border-b border-slate-100 bg-slate-50/50"
-                        x-data={`{ activeIndex: 0, total: ${item.images.length} }`}
-                      >
-                        <div class="relative w-full h-[320px] md:h-[480px] lg:h-[540px] flex items-center justify-center overflow-hidden">
-                          {item.images.map((img, idx) => (
-                            <div
-                              x-show={`activeIndex === ${idx}`}
-                              x-transition:enter="transition ease-out duration-300"
-                              x-transition:enter-start="opacity-0 scale-99"
-                              x-transition:enter-end="opacity-100 scale-100"
-                              class="absolute inset-0 w-full h-full flex items-center justify-center p-6 md:p-10"
-                            >
-                              <button 
-                                type="button"
-                                @click={`openLightbox('${img.src}')`}
-                                class="block max-w-full max-h-full rounded-2xl shadow-lg border border-slate-200/60 overflow-hidden bg-white cursor-zoom-in relative group/img"
-                              >
-                                <img
-                                  src={img.src}
-                                  alt={img.alt}
-                                  class="w-full h-full object-contain max-h-[260px] md:max-h-[400px] lg:max-h-[440px]"
-                                  loading="lazy"
-                                />
-                                <div class="absolute inset-0 bg-slate-950/5 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center">
-                                  <div class="bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-md text-slate-800 transform scale-90 group-hover/img:scale-100 transition-transform">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-                                  </div>
-                                </div>
-                              </button>
-                            </div>
-                          ))}
-                        </div>
 
-                        {item.images.length > 1 && (
-                          <>
-                            {/* Strzałka w lewo */}
-                            <button
-                              type="button"
-                              @click="activeIndex = activeIndex === 0 ? total - 1 : activeIndex - 1"
-                              class="absolute left-4 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-md transition-all hover:bg-emerald-500 hover:text-white hover:border-emerald-500 hover:scale-105 z-20"
-                              aria-label="Poprzednie zdjęcie"
-                            >
-                              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-                            </button>
+      <!-- ================================================= -->
+      <!-- CO ROBIMY -->
+      <!-- ================================================= -->
 
-                            {/* Strzałka w prawo */}
-                            <button
-                              type="button"
-                              @click="activeIndex = activeIndex === total - 1 ? 0 : activeIndex + 1"
-                              class="absolute right-4 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-md transition-all hover:bg-emerald-500 hover:text-white hover:border-emerald-500 hover:scale-105 z-20"
-                              aria-label="Następne zdjęcie"
-                            >
-                              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-                            </button>
+      <section
+        class="bg-white py-24 text-slate-950"
+      >
 
-                            <div class="absolute top-4 right-4 z-20 rounded-full bg-slate-900/80 px-3 py-1 text-xs font-bold text-white tracking-wider backdrop-blur-sm shadow-sm">
-                              <span x-text="activeIndex + 1"></span> / <span x-text="total"></span>
-                            </div>
+        <div
+          class="container mx-auto px-4"
+        >
 
-                            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 max-w-[85%] md:max-w-xl text-center">
-                              {item.images.map((img, idx) => (
-                                <p 
-                                  x-show={`activeIndex === ${idx}`} 
-                                  class="text-xs md:text-sm font-medium text-slate-600 bg-white/90 backdrop-blur-sm border border-slate-200 px-4 py-1.5 rounded-full shadow-sm inline-block"
-                                >
-                                  {img.caption}
-                                </p>
-                              ))}
-                            </div>
-                          </>
-                        )}
-                      </div>
-                    ) : (
-                      <div class="w-full h-[180px] border-b border-slate-100 bg-gradient-to-r from-slate-50 to-slate-100/50 flex items-center p-8 md:p-12">
-                        <div>
-                          <span class="inline-block rounded-md bg-emerald-50 px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-emerald-700 border border-emerald-200/60 mb-3">
-                            {item.accent || "WDROŻENIE"}
-                          </span>
-                          <div class="text-2xl font-bold text-slate-800 tracking-tight">{item.title}</div>
-                        </div>
-                      </div>
-                    )}
+          <div
+            class="grid gap-16 lg:grid-cols-2 lg:items-center"
+          >
 
-                    {/* DÓŁ: Treść opisowa */}
-                    <div class="p-8 md:p-12 lg:p-16">
-                      <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8 pb-6 border-b border-slate-100">
-                        <div>
-                          <span class="text-xs font-bold uppercase tracking-widest text-emerald-600 block mb-2">
-                            {item.industry}
-                          </span>
-                          <h2 class="text-2xl font-bold text-slate-900 tracking-tight md:text-4xl">
-                            {item.title}
-                          </h2>
-                          <p class="mt-2 text-base font-normal text-slate-500">
-                            {item.subtitle}
-                          </p>
-                        </div>
-                        
-                        <div class="flex flex-wrap gap-1.5 md:justify-end max-w-md">
-                          {item.technologies.map((tech) => (
-                            <span class="rounded-md bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-600 border border-slate-200/40">
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
+            <div>
 
-                      <div class="grid gap-8 md:grid-cols-3 text-slate-700">
-                        <div class="flex gap-4">
-                          <div class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-50 text-red-600 border border-red-100">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
-                          </div>
-                          <div>
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">Wyzwanie / Problem</h3>
-                            <p class="text-sm font-normal leading-relaxed text-slate-600">{item.problem}</p>
-                          </div>
-                        </div>
+              <span
+                class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+              >
+                Od problemu do działającego narzędzia
+              </span>
 
-                        <div class="flex gap-4">
-                          <div class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>
-                          </div>
-                          <div>
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">Wdrożone Rozwiązanie</h3>
-                            <p class="text-sm font-normal leading-relaxed text-slate-600">{item.description}</p>
-                          </div>
-                        </div>
 
-                        <div class="flex gap-4">
-                          <div class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600 border border-blue-100">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
-                          </div>
-                          <div>
-                            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 mb-2">Uzyskany Efekt</h3>
-                            <p class="text-sm font-normal leading-relaxed text-slate-600">{item.effect}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+              <h2
+                class="mb-7 text-4xl font-black tracking-tighter md:text-6xl"
+              >
+                Nie sprzedajemy technologii.
+                Rozwiązujemy konkretny proces.
+              </h2>
+
+
+              <p
+                class="mb-6 text-lg leading-relaxed text-slate-600"
+              >
+                Jeden projekt może wymagać tylko Excela
+                i Power Query. W innym potrzebna będzie
+                aplikacja, API albo dodatkowa warstwa
+                automatyzacji.
+              </p>
+
+
+              <p
+                class="text-lg leading-relaxed text-slate-600"
+              >
+                Dlatego w realizacjach pokazujemy najpierw
+                problem biznesowy, później rozwiązanie,
+                a dopiero na końcu technologie,
+                których użyliśmy.
+              </p>
+
+            </div>
+
+
+            <div
+              class="grid gap-4 sm:grid-cols-2"
+            >
+
+              {
+                [
+                  {
+                    title:
+                      "Excel i Power Query",
+
+                    text:
+                      "Narzędzia operacyjne, raporty, kalkulatory i przetwarzanie danych."
+                  },
+
+                  {
+                    title:
+                      "Integracje API",
+
+                    text:
+                      "Wymiana danych pomiędzy Excelem, aplikacjami i systemami firmy."
+                  },
+
+                  {
+                    title:
+                      "Małe aplikacje",
+
+                    text:
+                      "Dedykowane narzędzia tam, gdzie sam arkusz przestaje wystarczać."
+                  },
+
+                  {
+                    title:
+                      "Automatyzacja procesów",
+
+                    text:
+                      "Połączenie kilku etapów pracy w jeden kontrolowany przepływ."
+                  }
+                ].map((item) => (
+
+                  <div
+                    class="rounded-2xl border border-slate-200 bg-slate-50 p-6"
+                  >
+
+                    <h3
+                      class="mb-2 text-lg font-black"
+                    >
+                      {item.title}
+                    </h3>
+
+
+                    <p
+                      class="text-sm leading-relaxed text-slate-600"
+                    >
+                      {item.text}
+                    </p>
 
                   </div>
-                </article>
-              ))
-            }
-          </div>
 
-          {/* Call to Action */}
-          <div class="mt-20 rounded-3xl border border-slate-200 bg-white p-8 md:p-12 shadow-sm flex flex-col md:flex-row items-center justify-between gap-8">
-            <div class="max-w-2xl text-center md:text-left">
-              <span class="text-xs font-bold uppercase tracking-widest text-emerald-600 block mb-2">Wycena w 24h</span>
-              <h3 class="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
-                Masz podobny proces do zautomatyzowania?
-              </h3>
-              <p class="mt-2 text-base font-normal text-slate-500">
-                Wyślij nam krótki opis, screeny plików lub przykładowy raport. Przeanalizujemy strukturę i bezpłatnie zaproponujemy najlepsze rozwiązanie.
-              </p>
+                ))
+              }
+
             </div>
-            <a
-              href="/kontakt/"
-              class="inline-flex shrink-0 items-center justify-center rounded-xl bg-emerald-600 px-6 py-3.5 text-base font-bold text-white shadow-sm transition-all hover:bg-emerald-500 hover:scale-[1.02]"
-            >
-              Zapytaj o bezpłatną wycenę
-            </a>
+
           </div>
 
         </div>
+
       </section>
 
+
+      <!-- ================================================= -->
+      <!-- REALIZACJE -->
+      <!-- ================================================= -->
+
+      <section
+        id="realizacje"
+        class="bg-slate-50 py-24 text-slate-950"
+      >
+
+        <div
+          class="container mx-auto max-w-6xl px-4"
+        >
+
+          <div
+            class="mb-16 max-w-4xl"
+          >
+
+            <span
+              class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
+            >
+              Case studies
+            </span>
+
+
+            <h2
+              class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
+            >
+              Wybrane projekty
+            </h2>
+
+
+            <p
+              class="text-lg leading-relaxed text-slate-600 md:text-xl"
+            >
+              Każdy projekt zaczynał się od konkretnego problemu
+              lub powtarzalnej czynności,
+              którą trzeba było uporządkować.
+            </p>
+
+          </div>
+
+
+          <div
+            class="space-y-16"
+          >
+
+            {
+              realizations.map((item) => (
+
+                <article
+                  id={item.slug}
+                  class="scroll-mt-28 overflow-hidden rounded-[2.5rem] border border-slate-200 bg-white shadow-sm"
+                >
+
+
+                  <!-- ================================= -->
+                  <!-- GALERIA -->
+                  <!-- ================================= -->
+
+                  {
+                    item.images
+                    && item.images.length > 0
+                    ? (
+
+                      <div
+                        class="relative border-b border-slate-100 bg-slate-50"
+                        x-data={`{
+                          activeIndex: 0,
+                          total: ${item.images.length}
+                        }`}
+                      >
+
+                        <div
+                          class="relative flex h-[320px] w-full items-center justify-center overflow-hidden md:h-[480px] lg:h-[540px]"
+                        >
+
+                          {
+                            item.images.map(
+                              (img, idx) => (
+
+                                <div
+                                  x-show={`activeIndex === ${idx}`}
+                                  x-transition:enter="transition ease-out duration-300"
+                                  x-transition:enter-start="opacity-0"
+                                  x-transition:enter-end="opacity-100"
+                                  class="absolute inset-0 flex h-full w-full items-center justify-center p-6 md:p-10"
+                                >
+
+                                  <button
+                                    type="button"
+
+                                    @click={`openLightbox('${img.src}')`}
+
+                                    class="group/img relative block max-h-full max-w-full cursor-zoom-in overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg"
+                                  >
+
+                                    <img
+                                      src={img.src}
+                                      alt={img.alt}
+                                      class="max-h-[260px] h-full w-full object-contain md:max-h-[400px] lg:max-h-[440px]"
+                                      loading="lazy"
+                                    />
+
+
+                                    <div
+                                      class="absolute inset-0 flex items-center justify-center bg-slate-950/5 opacity-0 transition-opacity group-hover/img:opacity-100"
+                                    >
+
+                                      <div
+                                        class="rounded-full bg-white/90 p-3 text-slate-800 shadow-md"
+                                      >
+                                        <i class="fas fa-search-plus"></i>
+                                      </div>
+
+                                    </div>
+
+                                  </button>
+
+                                </div>
+
+                              )
+                            )
+                          }
+
+                        </div>
+
+
+                        {
+                          item.images.length > 1 && (
+
+                            <>
+
+                              <button
+                                type="button"
+
+                                @click="
+                                  activeIndex =
+                                    activeIndex === 0
+                                      ? total - 1
+                                      : activeIndex - 1
+                                "
+
+                                class="absolute left-4 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-md transition hover:border-green-500 hover:bg-green-500 hover:text-white"
+                                aria-label="Poprzednie zdjęcie"
+                              >
+                                <i class="fas fa-chevron-left"></i>
+                              </button>
+
+
+                              <button
+                                type="button"
+
+                                @click="
+                                  activeIndex =
+                                    activeIndex === total - 1
+                                      ? 0
+                                      : activeIndex + 1
+                                "
+
+                                class="absolute right-4 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-md transition hover:border-green-500 hover:bg-green-500 hover:text-white"
+                                aria-label="Następne zdjęcie"
+                              >
+                                <i class="fas fa-chevron-right"></i>
+                              </button>
+
+
+                              <div
+                                class="absolute right-4 top-4 z-20 rounded-full bg-slate-950/80 px-3 py-1 text-xs font-bold tracking-wider text-white"
+                              >
+                                <span
+                                  x-text="activeIndex + 1"
+                                ></span>
+
+                                /
+
+                                <span
+                                  x-text="total"
+                                ></span>
+                              </div>
+
+
+                              <div
+                                class="absolute bottom-4 left-1/2 z-20 max-w-[85%] -translate-x-1/2 text-center md:max-w-xl"
+                              >
+
+                                {
+                                  item.images.map(
+                                    (img, idx) => (
+
+                                      <p
+                                        x-show={`activeIndex === ${idx}`}
+                                        class="inline-block rounded-full border border-slate-200 bg-white/95 px-4 py-2 text-xs font-medium text-slate-600 shadow-sm md:text-sm"
+                                      >
+                                        {img.caption}
+                                      </p>
+
+                                    )
+                                  )
+                                }
+
+                              </div>
+
+                            </>
+
+                          )
+                        }
+
+                      </div>
+
+                    )
+                    : (
+
+                      <div
+                        class="flex min-h-[180px] items-center border-b border-slate-100 bg-slate-950 p-8 text-white md:p-12"
+                      >
+
+                        <div>
+
+                          <span
+                            class="mb-3 inline-block rounded-md bg-green-500/10 px-3 py-1 text-xs font-black uppercase tracking-wider text-green-400"
+                          >
+                            {item.accent || "REALIZACJA"}
+                          </span>
+
+
+                          <div
+                            class="text-2xl font-black"
+                          >
+                            {item.title}
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                    )
+                  }
+
+
+                  <!-- ================================= -->
+                  <!-- TREŚĆ -->
+                  <!-- ================================= -->
+
+                  <div
+                    class="p-8 md:p-12 lg:p-14"
+                  >
+
+                    <div
+                      class="mb-9 flex flex-col gap-6 border-b border-slate-100 pb-8 md:flex-row md:items-start md:justify-between"
+                    >
+
+                      <div class="max-w-3xl">
+
+                        <span
+                          class="mb-3 block text-xs font-black uppercase tracking-[0.16em] text-green-600"
+                        >
+                          {item.category}
+                        </span>
+
+
+                        <h2
+                          class="text-3xl font-black tracking-tight text-slate-950 md:text-4xl"
+                        >
+                          {item.title}
+                        </h2>
+
+
+                        <p
+                          class="mt-3 text-base leading-relaxed text-slate-500"
+                        >
+                          {item.subtitle}
+                        </p>
+
+                      </div>
+
+
+                      <div
+                        class="flex max-w-md flex-wrap gap-2 md:justify-end"
+                      >
+
+                        {
+                          item.technologies.map((tech) => (
+
+                            <span
+                              class="rounded-lg border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-600"
+                            >
+                              {tech}
+                            </span>
+
+                          ))
+                        }
+
+                      </div>
+
+                    </div>
+
+
+                    <div
+                      class="grid gap-8 lg:grid-cols-3"
+                    >
+
+                      <div
+                        class="rounded-2xl border border-red-100 bg-red-50/40 p-6"
+                      >
+
+                        <span
+                          class="mb-3 block text-xs font-black uppercase tracking-wider text-red-600"
+                        >
+                          Problem
+                        </span>
+
+
+                        <p
+                          class="text-sm leading-relaxed text-slate-600"
+                        >
+                          {item.problem}
+                        </p>
+
+                      </div>
+
+
+                      <div
+                        class="rounded-2xl border border-green-100 bg-green-50/40 p-6"
+                      >
+
+                        <span
+                          class="mb-3 block text-xs font-black uppercase tracking-wider text-green-700"
+                        >
+                          Rozwiązanie
+                        </span>
+
+
+                        <p
+                          class="text-sm leading-relaxed text-slate-600"
+                        >
+                          {item.solution}
+                        </p>
+
+                      </div>
+
+
+                      <div
+                        class="rounded-2xl border border-blue-100 bg-blue-50/40 p-6"
+                      >
+
+                        <span
+                          class="mb-3 block text-xs font-black uppercase tracking-wider text-blue-700"
+                        >
+                          Efekt
+                        </span>
+
+
+                        <p
+                          class="text-sm leading-relaxed text-slate-600"
+                        >
+                          {item.effect}
+                        </p>
+
+                      </div>
+
+                    </div>
+
+
+                    {
+                      item.services
+                      && item.services.length > 0
+                      && (
+
+                        <div
+                          class="mt-8 flex flex-wrap items-center gap-4 border-t border-slate-100 pt-7"
+                        >
+
+                          <span
+                            class="text-sm font-bold text-slate-500"
+                          >
+                            Powiązane usługi:
+                          </span>
+
+
+                          {
+                            item.services.map((service) => (
+
+                              <a
+                                href={service.href}
+                                class="text-sm font-black text-green-700 hover:text-green-600"
+                              >
+                                {service.title} →
+                              </a>
+
+                            ))
+                          }
+
+                        </div>
+
+                      )
+                    }
+
+                  </div>
+
+                </article>
+
+              ))
+            }
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================================================= -->
+      <!-- CTA -->
+      <!-- ================================================= -->
+
+      <section
+        class="bg-white py-24 text-slate-950"
+      >
+
+        <div
+          class="container mx-auto px-4"
+        >
+
+          <div
+            class="mx-auto max-w-6xl overflow-hidden rounded-[3rem] bg-slate-950 p-8 text-white md:p-14"
+          >
+
+            <div
+              class="grid gap-10 lg:grid-cols-[1.4fr_0.6fr] lg:items-center"
+            >
+
+              <div>
+
+                <span
+                  class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-400"
+                >
+                  Twój proces nie musi wyglądać tak samo
+                </span>
+
+
+                <h2
+                  class="mb-5 text-4xl font-black tracking-tighter md:text-5xl"
+                >
+                  Masz inny problem do zautomatyzowania?
+                </h2>
+
+
+                <p
+                  class="max-w-3xl text-lg leading-relaxed text-slate-400"
+                >
+                  Nie musisz wiedzieć, czy potrzebujesz
+                  Excela, API, C#, Pythona, SharePoint
+                  czy innej technologii.
+                  Opisz sposób pracy i oczekiwany efekt.
+                </p>
+
+
+                <p
+                  class="mt-5 text-sm font-bold text-slate-300"
+                >
+                  Realizujemy również mniejsze poprawki
+                  i automatyzacje — nie każdy projekt
+                  musi być dużym wdrożeniem.
+                </p>
+
+              </div>
+
+
+              <div
+                class="lg:text-right"
+              >
+
+                <a
+                  href="#kontakt"
+                  class="inline-flex items-center justify-center rounded-2xl bg-green-500 px-8 py-5 text-sm font-black uppercase tracking-widest text-slate-950 transition-all hover:-translate-y-1 hover:bg-green-400"
+                >
+                  Opisz swój proces
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
       <Contact />
+
     </main>
+
 
     <Footer />
 
-    {/* PEŁNOEKRANOWY LIGHTBOX */}
-    <div 
+
+    <!-- ================================================= -->
+    <!-- LIGHTBOX -->
+    <!-- ================================================= -->
+
+    <div
       x-show="lightboxOpen"
+
       x-transition:enter="transition ease-out duration-200"
       x-transition:enter-start="opacity-0"
       x-transition:enter-end="opacity-100"
+
       x-transition:leave="transition ease-in duration-150"
       x-transition:leave-start="opacity-100"
       x-transition:leave-end="opacity-0"
-      class="fixed inset-0 z-[9999] bg-slate-950/98 flex flex-col justify-between select-none backdrop-blur-md w-screen h-screen overflow-hidden"
+
+      class="fixed inset-0 z-[9999] flex h-screen w-screen select-none flex-col justify-between overflow-hidden bg-slate-950/98 backdrop-blur-md"
+
       style="display: none;"
+
       @click="closeLightbox()"
     >
-      {/* Pasek górny */}
-      <div class="w-full flex items-center justify-between p-4 md:p-6 bg-gradient-to-b from-slate-950/80 to-transparent z-30">
-        <div class="text-xs font-bold text-slate-300 tracking-wider bg-white/5 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 shadow-sm">
-          Zdjęcie <span x-text="lightboxIndex + 1" class="text-emerald-400"></span> z <span x-text="lightboxImages.length"></span>
+
+      <div
+        class="z-30 flex w-full items-center justify-between bg-gradient-to-b from-slate-950/90 to-transparent p-4 md:p-6"
+      >
+
+        <div
+          class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-bold tracking-wider text-slate-300"
+        >
+          Zdjęcie
+
+          <span
+            x-text="lightboxIndex + 1"
+            class="text-green-400"
+          ></span>
+
+          z
+
+          <span
+            x-text="lightboxImages.length"
+          ></span>
         </div>
-        <button 
+
+
+        <button
           type="button"
-          @click="closeLightbox()"
-          class="flex h-12 w-12 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/20 transition-all shadow-lg border border-white/5 active:scale-95"
+
+          @click.stop="closeLightbox()"
+
+          class="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white transition-all hover:bg-white/20"
+
           aria-label="Zamknij"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          <i class="fas fa-times"></i>
         </button>
+
       </div>
 
-      {/* Środek: Okno grafiki */}
-      <div class="relative w-full flex-1 flex items-center justify-center p-2 md:p-8 overflow-hidden">
-        
-        {/* Strzałka Wstecz */}
-        <button 
+
+      <div
+        class="relative flex w-full flex-1 items-center justify-center overflow-hidden p-2 md:p-8"
+      >
+
+        <button
           type="button"
+
           @click.stop="prevLightbox()"
-          class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 flex h-14 w-14 items-center justify-center rounded-full bg-slate-900/60 text-white border border-white/10 hover:bg-emerald-600 hover:border-emerald-600 transition-all shadow-2xl z-30 backdrop-blur-md active:scale-95"
+
+          class="absolute left-4 top-1/2 z-30 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-slate-900/60 text-white transition-all hover:bg-green-600 md:left-8"
+
           aria-label="Poprzednie"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          <i class="fas fa-chevron-left"></i>
         </button>
 
-        {/* Zdjęcie na 100% ekranu */}
-        <div class="w-full h-full flex items-center justify-center p-4">
-          <img 
-            x-bind:src="lightboxImages[lightboxIndex]?.src" 
+
+        <div
+          class="flex h-full w-full items-center justify-center p-4"
+        >
+
+          <img
+            x-bind:src="lightboxImages[lightboxIndex]?.src"
+
             x-bind:alt="lightboxImages[lightboxIndex]?.alt"
-            class="max-w-full max-h-full object-contain shadow-2xl rounded-lg"
+
+            class="max-h-full max-w-full rounded-lg object-contain shadow-2xl"
+
             @click.stop
           />
+
         </div>
 
-        {/* Strzałka Dalej */}
-        <button 
+
+        <button
           type="button"
+
           @click.stop="nextLightbox()"
-          class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 flex h-14 w-14 items-center justify-center rounded-full bg-slate-900/60 text-white border border-white/10 hover:bg-emerald-600 hover:border-emerald-600 transition-all shadow-2xl z-30 backdrop-blur-md active:scale-95"
+
+          class="absolute right-4 top-1/2 z-30 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-slate-900/60 text-white transition-all hover:bg-green-600 md:right-8"
+
           aria-label="Następne"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          <i class="fas fa-chevron-right"></i>
         </button>
+
       </div>
 
-      {/* Pasek dolny */}
-      <div class="w-full text-center p-6 bg-gradient-to-t from-slate-950/90 to-transparent z-30">
-        <p 
-          x-text="lightboxImages[lightboxIndex]?.caption" 
-          class="text-sm md:text-base font-medium text-slate-200 max-w-3xl mx-auto bg-slate-900/80 border border-white/5 px-6 py-2.5 rounded-full inline-block backdrop-blur-md shadow-lg"
+
+      <div
+        class="z-30 w-full bg-gradient-to-t from-slate-950/90 to-transparent p-6 text-center"
+      >
+
+        <p
+          x-text="lightboxImages[lightboxIndex]?.caption"
+
+          class="mx-auto inline-block max-w-3xl rounded-full border border-white/5 bg-slate-900/80 px-6 py-2.5 text-sm font-medium text-slate-200 md:text-base"
         ></p>
+
       </div>
+
     </div>
 
   </div>
+
 </BaseLayout>
+
 
 <style is:global>
   html {

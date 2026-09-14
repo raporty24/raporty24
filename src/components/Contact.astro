@@ -1,5 +1,8 @@
 ---
-// Contact.astro - Wersja Lead Capture (Bez kalkulatora, silna konwersja)
+// Contact.astro - formularz leadowy Raporty24
+// Prosty kontakt + podstawowa kwalifikacja zapytania
+
+const sourcePage = Astro.url.pathname;
 ---
 
 <section
@@ -9,174 +12,738 @@
     email: 'biuro@raporty24.pl',
     copied: false,
     isSubmitting: false,
+
     async copyEmail() {
       try {
         if (navigator?.clipboard?.writeText) {
           await navigator.clipboard.writeText(this.email);
         } else {
           const ta = document.createElement('textarea');
+
           ta.value = this.email;
           ta.setAttribute('readonly', '');
           ta.style.position = 'absolute';
           ta.style.left = '-9999px';
+
           document.body.appendChild(ta);
           ta.select();
           document.execCommand('copy');
           document.body.removeChild(ta);
         }
+
         this.copied = true;
-        setTimeout(() => (this.copied = false), 2500);
+
+        setTimeout(() => {
+          this.copied = false;
+        }, 2500);
       } catch (e) {
-        this.copied = true;
-        setTimeout(() => (this.copied = false), 2500);
+        this.copied = false;
       }
     }
   }"
 >
-  <div class="sr-only">
-    <h2>Kontakt – Ekspert Power BI i Excel Katowice</h2>
-  </div>
-
   <div class="container mx-auto px-4 relative z-10">
 
-    <header class="max-w-4xl mb-20">
-      <div class="inline-flex items-center gap-3 mb-6 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20">
-        <span class="flex h-2 w-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]"></span>
-        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-green-700">Darmowy audyt w 24h</span>
+    <!-- NAGŁÓWEK -->
+
+    <header class="max-w-4xl mb-16 lg:mb-20">
+
+      <div
+        class="inline-flex items-center gap-3 mb-6 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20"
+      >
+        <span
+          class="flex h-2 w-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]"
+          aria-hidden="true"
+        ></span>
+
+        <span
+          class="text-[10px] font-black uppercase tracking-[0.2em] text-green-700"
+        >
+          Bezpłatna wstępna analiza
+        </span>
       </div>
-      <h2 class="text-5xl lg:text-7xl font-black tracking-tighter text-slate-900 mb-8 leading-[0.95]">
-        Opisz wyzwanie. <br/><span class="text-green-600 italic">Zyskaj wycenę.</span>
+
+      <h2
+        class="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter text-slate-900 mb-8 leading-[0.95]"
+      >
+        Opisz proces, który
+        <br />
+
+        <span class="text-green-600 italic">
+          chcesz usprawnić.
+        </span>
       </h2>
-      <p class="text-xl text-slate-600 max-w-2xl leading-relaxed">
-        Przestań marnować czas na ręczną pracę. Wypełnij formularz — <strong class="text-slate-900">im więcej szczegółów nam podasz,</strong> tym dokładniejszą propozycję przygotujemy.
+
+      <p
+        class="text-lg md:text-xl text-slate-600 max-w-3xl leading-relaxed"
+      >
+        Nie musisz wiedzieć, czy potrzebujesz Excela, Power Query,
+        API, Power BI, SharePoint, dodatku do Excela czy małej aplikacji.
+        Opisz problem i sposób, w jaki pracujecie dzisiaj.
+        Dobierzemy możliwie proste rozwiązanie.
       </p>
+
+      <!-- MAŁE ZLECENIA -->
+
+      <div
+        class="mt-8 max-w-3xl rounded-2xl border border-green-200 bg-green-50 p-5"
+      >
+        <div class="flex items-start gap-4">
+
+          <div
+            class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-green-600 text-white"
+          >
+            <i
+              class="fas fa-check"
+              aria-hidden="true"
+            ></i>
+          </div>
+
+          <div>
+            <strong
+              class="block text-base font-black text-slate-950"
+            >
+              Masz małe zlecenie? Też napisz.
+            </strong>
+
+            <p
+              class="mt-1 text-sm leading-relaxed text-slate-600"
+            >
+              Realizujemy zarówno niewielkie poprawki
+              i automatyzacje od kilkuset złotych,
+              jak i większe projekty integracyjne.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
     </header>
 
-    <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
-      <div class="space-y-12">
+    <div
+      class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-20 items-start"
+    >
+
+      <!-- LEWA STRONA -->
+
+      <div class="space-y-10">
+
+        <!-- KONTAKT BEZPOŚREDNI -->
+
         <div>
-          <h3 class="text-2xl font-black text-slate-900 mb-8 uppercase tracking-tight">Bezpośrednia ścieżka</h3>
-          <div class="space-y-6">
-            <button
-              type="button"
-              @click="copyEmail()"
-              class="group flex items-center gap-6 text-xl text-slate-600 hover:text-green-600 transition-all text-left w-full focus:outline-none"
-              title="Kliknij, aby skopiować adres e-mail"
-            >
-              <div class="relative w-16 h-16 bg-slate-50 border border-slate-100 rounded-[1.5rem] flex items-center justify-center shadow-sm group-hover:bg-green-600 group-hover:text-white transition-all duration-500">
-                <i class="fas fa-envelope text-xl" x-show="!copied"></i>
-                <i class="fas fa-check text-xl text-white" x-show="copied" x-cloak></i>
 
+          <h3
+            class="text-2xl font-black text-slate-900 mb-7 uppercase tracking-tight"
+          >
+            Wolisz napisać bezpośrednio?
+          </h3>
+
+          <div class="space-y-5">
+
+            <!-- EMAIL -->
+
+            <div class="flex items-center gap-4 sm:gap-5">
+
+              <a
+                href="mailto:biuro@raporty24.pl"
+                class="group flex items-center gap-5 text-lg sm:text-xl text-slate-600 hover:text-green-600 transition-all min-w-0"
+              >
                 <div
+                  class="shrink-0 w-14 h-14 sm:w-16 sm:h-16 bg-slate-50 border border-slate-100 rounded-[1.5rem] flex items-center justify-center shadow-sm group-hover:bg-green-600 group-hover:text-white transition-all duration-300"
+                >
+                  <i
+                    class="fas fa-envelope text-xl"
+                    aria-hidden="true"
+                  ></i>
+                </div>
+
+                <span
+                  class="font-bold border-b-2 border-slate-100 group-hover:border-green-600 pb-1 transition-all break-all"
+                >
+                  biuro@raporty24.pl
+                </span>
+              </a>
+
+              <button
+                type="button"
+                @click="copyEmail()"
+                class="relative shrink-0 w-11 h-11 rounded-xl border border-slate-200 bg-white text-slate-500 hover:border-green-500 hover:text-green-600 transition"
+                aria-label="Skopiuj adres e-mail"
+                title="Skopiuj adres e-mail"
+              >
+                <i
+                  class="fas fa-copy"
+                  x-show="!copied"
+                  aria-hidden="true"
+                ></i>
+
+                <i
+                  class="fas fa-check text-green-600"
                   x-show="copied"
-                  x-transition:enter="transition ease-out duration-300"
-                  x-transition:enter-start="opacity-0 -translate-y-2"
-                  x-transition:enter-end="opacity-100 translate-y-0"
+                  x-cloak
+                  aria-hidden="true"
+                ></i>
+
+                <span
+                  x-show="copied"
                   x-cloak
                   class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[10px] py-1 px-3 rounded-md font-bold uppercase tracking-wider whitespace-nowrap"
                 >
-                  Skopiowano!
-                </div>
-              </div>
-              <span class="font-bold border-b-2 border-slate-100 group-hover:border-green-600 pb-1 transition-all" x-text="email"></span>
-            </button>
+                  Skopiowano
+                </span>
+              </button>
 
-            <a href="tel:+48784391076" class="group flex items-center gap-6 text-xl text-slate-600 hover:text-green-600 transition-all">
-              <div class="w-16 h-16 bg-slate-50 border border-slate-100 rounded-[1.5rem] flex items-center justify-center shadow-sm group-hover:bg-green-600 group-hover:text-white transition-all duration-500">
-                <i class="fas fa-phone text-xl"></i>
+            </div>
+
+
+            <!-- TELEFON -->
+
+            <a
+              href="tel:+48729790150"
+              class="group flex items-center gap-5 text-lg sm:text-xl text-slate-600 hover:text-green-600 transition-all"
+            >
+              <div
+                class="w-14 h-14 sm:w-16 sm:h-16 bg-slate-50 border border-slate-100 rounded-[1.5rem] flex items-center justify-center shadow-sm group-hover:bg-green-600 group-hover:text-white transition-all duration-300"
+              >
+                <i
+                  class="fas fa-phone text-xl"
+                  aria-hidden="true"
+                ></i>
               </div>
-              <span class="font-bold border-b-2 border-slate-100 group-hover:border-green-600 pb-1 transition-all">+48 784 391 076</span>
+
+              <span
+                class="font-bold border-b-2 border-slate-100 group-hover:border-green-600 pb-1 transition-all"
+              >
+                +48 729 790 150
+              </span>
             </a>
+
           </div>
+
         </div>
 
-        <div class="p-10 bg-slate-50 border border-slate-100 rounded-[2.5rem] group relative overflow-hidden">
-          <div class="absolute -top-10 -right-10 w-32 h-32 bg-green-500/5 rounded-full blur-2xl transition-all"></div>
-          <h4 class="font-black text-slate-900 flex items-center gap-3 mb-4 uppercase tracking-tight">
-            <i class="fas fa-shield-alt text-green-600"></i> Gwarancja Poufności (NDA)
-          </h4>
-          <p class="text-slate-500 text-sm leading-relaxed">
-            Szanujemy tajemnicę Twojej firmy. Dane służą wyłącznie do przygotowania wyceny. Przed przesłaniem jakichkolwiek plików firmowych podpisujemy umowę NDA.
-          </p>
+
+        <!-- CO MOŻNA ZLECIĆ -->
+
+        <div
+          class="p-8 lg:p-10 bg-slate-50 border border-slate-100 rounded-[2.5rem]"
+        >
+
+          <h3
+            class="font-black text-slate-900 text-xl mb-6"
+          >
+            Możesz napisać do nas, jeśli:
+          </h3>
+
+          <ul class="space-y-4 text-slate-600">
+
+            <li class="flex gap-3">
+              <span class="text-green-600 font-black">✓</span>
+
+              <span>
+                przepisujesz dane między plikami lub systemami,
+              </span>
+            </li>
+
+            <li class="flex gap-3">
+              <span class="text-green-600 font-black">✓</span>
+
+              <span>
+                regularnie przygotowujesz podobny raport,
+              </span>
+            </li>
+
+            <li class="flex gap-3">
+              <span class="text-green-600 font-black">✓</span>
+
+              <span>
+                dwa programy nie wymieniają automatycznie danych,
+              </span>
+            </li>
+
+            <li class="flex gap-3">
+              <span class="text-green-600 font-black">✓</span>
+
+              <span>
+                ręcznie generujesz PDF-y, pliki,
+                zestawienia lub eksporty,
+              </span>
+            </li>
+
+            <li class="flex gap-3">
+              <span class="text-green-600 font-black">✓</span>
+
+              <span>
+                pracujecie na SharePoint, OneDrive
+                lub Microsoft 365 i chcecie uporządkować proces,
+              </span>
+            </li>
+
+            <li class="flex gap-3">
+              <span class="text-green-600 font-black">✓</span>
+
+              <span>
+                potrzebujesz niewielkiego programu,
+                dodatku do Excela lub innego narzędzia dla firmy.
+              </span>
+            </li>
+
+          </ul>
+
         </div>
+
+
+        <!-- CENNIK -->
+
+        <div
+          class="p-8 lg:p-10 bg-green-50 border border-green-100 rounded-[2.5rem]"
+        >
+
+          <h3
+            class="font-black text-slate-900 flex items-center gap-3 mb-4"
+          >
+            <i
+              class="fas fa-tag text-green-600"
+              aria-hidden="true"
+            ></i>
+
+            Małe i większe projekty
+          </h3>
+
+          <p
+            class="text-slate-600 text-sm leading-relaxed"
+          >
+            Nie trzeba mieć dużego budżetu, żeby do nas napisać.
+            Małe poprawki i usprawnienia zaczynają się
+            od kilkuset złotych. Większe wdrożenia
+            wyceniamy po poznaniu zakresu.
+          </p>
+
+          <a
+            href="/cennik/"
+            class="mt-5 inline-flex items-center gap-2 text-sm font-black text-green-700 hover:text-green-600"
+          >
+            Zobacz orientacyjny cennik →
+          </a>
+
+        </div>
+
+
+        <!-- WINDOWS / MAC -->
+
+        <div
+          class="p-8 lg:p-10 bg-white border border-slate-200 rounded-[2.5rem]"
+        >
+
+          <h3
+            class="font-black text-slate-900 flex items-center gap-3 mb-4"
+          >
+            <i
+              class="fas fa-laptop-code text-green-600"
+              aria-hidden="true"
+            ></i>
+
+            Windows i macOS
+          </h3>
+
+          <p
+            class="text-slate-500 text-sm leading-relaxed"
+          >
+            Rozwiązania możemy przygotowywać dla środowisk
+            Windows i macOS. Dobór technologii zależy
+            od konkretnego procesu i używanych programów.
+          </p>
+
+        </div>
+
+
+        <!-- NDA -->
+
+        <div
+          class="p-8 lg:p-10 bg-slate-950 text-white rounded-[2.5rem] relative overflow-hidden"
+        >
+
+          <div
+            class="absolute -top-10 -right-10 w-32 h-32 bg-green-500/10 rounded-full blur-2xl"
+          ></div>
+
+          <h3
+            class="font-black flex items-center gap-3 mb-4"
+          >
+            <i
+              class="fas fa-shield-alt text-green-500"
+              aria-hidden="true"
+            ></i>
+
+            Poufność danych
+          </h3>
+
+          <p
+            class="text-slate-400 text-sm leading-relaxed"
+          >
+            Do wstępnej rozmowy zwykle wystarczy opis procesu.
+            Jeżeli analiza wymaga przekazania poufnych plików
+            lub danych firmowych, możemy wcześniej podpisać NDA.
+          </p>
+
+        </div>
+
       </div>
 
-      <div class="bg-white border border-slate-200 rounded-[2.5rem] p-10 lg:p-12 shadow-2xl shadow-slate-200/50 relative">
+
+      <!-- FORMULARZ -->
+
+      <div
+        id="formularz"
+        class="bg-white border border-slate-200 rounded-[2.5rem] p-7 sm:p-10 lg:p-12 shadow-2xl shadow-slate-200/50 relative scroll-mt-28"
+      >
+
+        <div class="mb-9">
+
+          <p
+            class="text-xs font-black uppercase tracking-[0.18em] text-green-600 mb-3"
+          >
+            Opisz problem
+          </p>
+
+          <h3
+            class="text-2xl md:text-3xl font-black text-slate-900 mb-3"
+          >
+            Sprawdzimy, jak najlepiej go rozwiązać
+          </h3>
+
+          <p
+            class="text-sm text-slate-500 leading-relaxed"
+          >
+            Wystarczy kilka informacji.
+            Nie musisz przygotowywać technicznej specyfikacji.
+          </p>
+
+        </div>
+
+
         <form
           name="kontakt"
           method="POST"
           data-netlify="true"
           action="/thanks/"
           netlify-honeypot="bot-field"
-          class="space-y-8"
+          class="space-y-7"
           @submit="isSubmitting = true"
         >
-          <input type="hidden" name="form-name" value="kontakt" />
-          <p class="hidden"><label>Bot field: <input name="bot-field" /></label></p>
 
-          <div class="grid md:grid-cols-2 gap-8">
+          <!-- NETLIFY -->
+
+          <input
+            type="hidden"
+            name="form-name"
+            value="kontakt"
+          />
+
+          <input
+            type="hidden"
+            name="strona"
+            value={sourcePage}
+          />
+
+          <p class="hidden">
+            <label>
+              Nie wypełniaj tego pola:
+
+              <input
+                name="bot-field"
+                tabindex="-1"
+                autocomplete="off"
+              />
+            </label>
+          </p>
+
+
+          <!-- IMIĘ / FIRMA + EMAIL -->
+
+          <div class="grid md:grid-cols-2 gap-6">
+
             <div class="space-y-3">
-              <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Firma / Imię*</label>
-              <input type="text" name="name" required placeholder="Jan Kowalski" class="w-full px-6 py-4 rounded-2xl border border-slate-200 bg-slate-50 focus:border-green-500 focus:ring-4 focus:ring-green-500/5 outline-none transition-all" />
+
+              <label
+                for="contact-name"
+                class="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1"
+              >
+                Imię / firma*
+              </label>
+
+              <input
+                id="contact-name"
+                type="text"
+                name="name"
+                required
+                autocomplete="name"
+                placeholder="Jan / Firma ABC"
+                class="w-full px-6 py-4 rounded-2xl border border-slate-200 bg-slate-50 focus:border-green-500 focus:ring-4 focus:ring-green-500/5 outline-none transition-all"
+              />
+
             </div>
+
+
             <div class="space-y-3">
-              <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Email*</label>
-              <input type="email" name="email" required placeholder="jan@firma.pl" class="w-full px-6 py-4 rounded-2xl border border-slate-200 bg-slate-50 focus:border-green-500 focus:ring-4 focus:ring-green-500/5 outline-none transition-all" />
+
+              <label
+                for="contact-email"
+                class="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1"
+              >
+                E-mail*
+              </label>
+
+              <input
+                id="contact-email"
+                type="email"
+                name="email"
+                required
+                autocomplete="email"
+                placeholder="jan@firma.pl"
+                class="w-full px-6 py-4 rounded-2xl border border-slate-200 bg-slate-50 focus:border-green-500 focus:ring-4 focus:ring-green-500/5 outline-none transition-all"
+              />
+
             </div>
+
           </div>
 
-          <div class="grid md:grid-cols-2 gap-8">
-            <div class="space-y-3">
-              <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Źródło danych*</label>
-              <div class="relative">
-                <select name="zrodlo" required class="w-full px-6 py-4 rounded-2xl border border-slate-200 bg-slate-50 appearance-none focus:border-green-500 outline-none transition-all cursor-pointer text-slate-700">
-                  <option value="" disabled selected>Z czego korzystasz?</option>
-                  <option value="Excel">Tylko Excel / CSV</option>
-                  <option value="ERP">System ERP (Optima, SAP)</option>
-                  <option value="Inne">Inne / Różne systemy</option>
-                </select>
-                <div class="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
-                  <i class="fas fa-chevron-down text-xs"></i>
-                </div>
-              </div>
-            </div>
-            
-            <div class="space-y-3">
-              <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Tracony czas*</label>
-              <div class="relative">
-                <select name="czas" required class="w-full px-6 py-4 rounded-2xl border border-slate-200 bg-slate-50 appearance-none focus:border-green-500 outline-none transition-all cursor-pointer text-slate-700">
-                  <option value="" disabled selected>Ile godzin tracisz?</option>
-                  <option value="Do 10h">Do 10 godzin/msc</option>
-                  <option value="10-20h">10 - 20 godzin/msc</option>
-                  <option value="Powyżej 20h">Powyżej 20 godzin/msc</option>
-                </select>
-                <div class="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
-                  <i class="fas fa-chevron-down text-xs"></i>
-                </div>
-              </div>
-            </div>
-          </div>
+
+          <!-- CZEGO POTRZEBUJESZ -->
 
           <div class="space-y-3">
-            <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Opisz wyzwanie*</label>
-            <textarea name="wiadomosc" required rows="4" placeholder="Opisz krótko co obecnie robicie ręcznie i zajmuje Wam najwięcej czasu..." class="w-full px-6 py-4 rounded-2xl border border-slate-200 bg-slate-50 focus:border-green-500 focus:ring-4 focus:ring-green-500/5 outline-none transition-all resize-none"></textarea>
+
+            <label
+              for="contact-type"
+              class="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1"
+            >
+              Czego potrzebujesz?*
+            </label>
+
+            <div class="relative">
+
+              <select
+                id="contact-type"
+                name="rodzaj"
+                required
+                class="w-full px-6 py-4 pr-12 rounded-2xl border border-slate-200 bg-slate-50 appearance-none focus:border-green-500 focus:ring-4 focus:ring-green-500/5 outline-none transition-all cursor-pointer text-slate-700"
+              >
+                <option
+                  value=""
+                  disabled
+                  selected
+                >
+                  Wybierz najbliższą opcję
+                </option>
+
+                <option value="Mała poprawka">
+                  Mała poprawka / usprawnienie
+                </option>
+
+                <option value="Excel / raportowanie">
+                  Excel / raportowanie
+                </option>
+
+                <option value="Automatyzacja procesu">
+                  Automatyzacja ręcznej pracy
+                </option>
+
+                <option value="Integracja API">
+                  Połączenie systemów / API
+                </option>
+
+                <option value="Power BI">
+                  Power BI / dashboard
+                </option>
+
+                <option value="SharePoint / Microsoft 365">
+                  SharePoint / Microsoft 365
+                </option>
+
+                <option value="Dodatek Excel">
+                  Dodatek do Excela / C#
+                </option>
+
+                <option value="Mini aplikacja">
+                  Mały program / narzędzie dla firmy
+                </option>
+
+                <option value="Pliki / PDF / import / eksport">
+                  Pliki, PDF, CSV, XML, import lub eksport
+                </option>
+
+                <option value="Nie wiem">
+                  Nie wiem — chcę opisać problem
+                </option>
+              </select>
+
+              <div
+                class="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400"
+              >
+                <i
+                  class="fas fa-chevron-down text-xs"
+                  aria-hidden="true"
+                ></i>
+              </div>
+
+            </div>
+
           </div>
+
+
+          <!-- SYSTEM OPERACYJNY -->
+
+          <div class="space-y-3">
+
+            <label
+              for="contact-environment"
+              class="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1"
+            >
+              Na jakim systemie ma działać rozwiązanie?
+            </label>
+
+            <div class="relative">
+
+              <select
+                id="contact-environment"
+                name="system_operacyjny"
+                class="w-full px-6 py-4 pr-12 rounded-2xl border border-slate-200 bg-slate-50 appearance-none focus:border-green-500 focus:ring-4 focus:ring-green-500/5 outline-none transition-all cursor-pointer text-slate-700"
+              >
+                <option value="">
+                  Wybierz opcjonalnie
+                </option>
+
+                <option value="Windows">
+                  Windows
+                </option>
+
+                <option value="macOS">
+                  macOS
+                </option>
+
+                <option value="Windows i macOS">
+                  Windows i macOS
+                </option>
+
+                <option value="Przeglądarka / chmura">
+                  Przeglądarka / rozwiązanie chmurowe
+                </option>
+
+                <option value="Nie wiem">
+                  Nie wiem
+                </option>
+
+                <option value="Nie dotyczy">
+                  Nie dotyczy
+                </option>
+              </select>
+
+              <div
+                class="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400"
+              >
+                <i
+                  class="fas fa-chevron-down text-xs"
+                  aria-hidden="true"
+                ></i>
+              </div>
+
+            </div>
+
+            <p
+              class="text-xs text-slate-400 ml-1"
+            >
+              Opcjonalnie.
+            </p>
+
+          </div>
+
+
+          <!-- OPIS -->
+
+          <div class="space-y-3">
+
+            <label
+              for="contact-message"
+              class="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1"
+            >
+              Opisz problem lub proces*
+            </label>
+
+            <textarea
+              id="contact-message"
+              name="wiadomosc"
+              required
+              rows="7"
+              placeholder="Np. codziennie pobieramy zamówienia ze sklepu, kopiujemy je do Excela i aktualizujemy stany. Chcielibyśmy ograniczyć ręczne przepisywanie danych..."
+              class="w-full px-6 py-4 rounded-2xl border border-slate-200 bg-slate-50 focus:border-green-500 focus:ring-4 focus:ring-green-500/5 outline-none transition-all resize-y"
+            ></textarea>
+
+          </div>
+
+
+          <!-- POMOC -->
+
+          <div
+            class="p-5 rounded-2xl bg-green-50 border border-green-100"
+          >
+            <p
+              class="text-sm text-slate-700 leading-relaxed"
+            >
+              <strong>
+                Nie musisz wiedzieć, jak technicznie rozwiązać problem.
+              </strong>
+
+              Opisz obecną pracę i oczekiwany efekt —
+              technologię dobierzemy po naszej stronie.
+            </p>
+          </div>
+
+
+          <!-- SUBMIT -->
 
           <button
             type="submit"
-            class="w-full py-5 bg-slate-900 rounded-2xl text-white font-black text-xs uppercase tracking-[0.2em] shadow-xl shadow-slate-900/20 hover:bg-green-600 hover:-translate-y-1 transition-all duration-300 text-center"
+            class="w-full py-5 bg-slate-900 rounded-2xl text-white font-black text-xs uppercase tracking-[0.18em] shadow-xl shadow-slate-900/20 hover:bg-green-600 hover:-translate-y-1 transition-all duration-300 text-center"
             :disabled="isSubmitting"
-            :class="isSubmitting ? 'opacity-70 cursor-not-allowed hover:translate-y-0' : ''"
+            :class="
+              isSubmitting
+                ? 'opacity-70 cursor-not-allowed hover:translate-y-0'
+                : ''
+            "
           >
-            <span x-show="!isSubmitting">Odbierz darmową wycenę</span>
-            <span x-show="isSubmitting" x-cloak>Wysyłam…</span>
+            <span x-show="!isSubmitting">
+              Wyślij opis procesu
+            </span>
+
+            <span
+              x-show="isSubmitting"
+              x-cloak
+            >
+              Wysyłam…
+            </span>
           </button>
+
+
+          <p
+            class="text-xs text-center text-slate-400 leading-relaxed px-2"
+          >
+            Dane wykorzystamy do kontaktu w sprawie przesłanego zapytania.
+            Nie przesyłaj poufnych danych, haseł ani kluczy API przez formularz.
+          </p>
+
         </form>
+
       </div>
 
     </div>
+
   </div>
 
-  <div class="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-green-500/[0.03] rounded-full blur-[120px] -z-10"></div>
+
+  <div
+    class="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-green-500/[0.03] rounded-full blur-[120px] -z-10"
+    aria-hidden="true"
+  ></div>
+
 </section>
