@@ -29,6 +29,8 @@ Dzisiejsza analityka biznesowa pozwala na całkowite wyeliminowanie błędu ludz
 *   <i class="fas fa-magic text-green-600"></i> **Automatyczne Czyszczenie Danych:** Power Query sam wykryje literówki, usunie duplikaty i ujednolici formaty walut. Ty otrzymujesz krystalicznie czysty raport końcowy.
 *   <i class="fas fa-calculator text-green-600"></i> **Algorytmy Prowizyjne "Zero-Error":** Niezależnie od tego, jak skomplikowany masz system premiowy (progi, bonusy kwartalne, marża per produkt), kod VBA wyliczy wszystko w ułamku sekundy. Bez kłótni o "przecinek".
 
+Jeśli chcesz ograniczyć ręczne łączenie plików przy raportowaniu, zobacz [automatyzację Excela i Power Query dla firm](/uslugi/automatyzacja-excel-power-query/).
+
 <br/>
 
 <div class="my-10 p-8 bg-green-50 border-l-4 border-green-500 rounded-r-2xl shadow-xl shadow-green-900/5">
