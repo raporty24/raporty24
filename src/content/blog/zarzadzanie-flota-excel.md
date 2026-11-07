@@ -61,6 +61,8 @@ System od Raporty24 to nie jest zwykła tabelka. To silnik, który pracuje dla T
 * **Skalowalność** – Nasze systemy rosną razem z Tobą. Bez problemu obsłużysz flotę od 5 do 500 pojazdów.
 * **Zero ukrytych kosztów** – Płacisz raz za wdrożenie. Zapominasz o miesięcznych fakturach za dostęp do oprogramowania.
 
+Jeśli chcesz przejść od arkusza do narzędzia dopasowanego do floty, zobacz [logistykę i zarządzanie flotą w Excelu](/uslugi/logistyka-w-excelu/) — z ewidencją pojazdów, kosztami paliwa, terminami i raportami.
+
 <br/>
 
 ---
