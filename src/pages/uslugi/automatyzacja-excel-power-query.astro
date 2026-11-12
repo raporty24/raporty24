@@ -611,7 +611,7 @@ const faqSchema = {
 
 
     <!-- ================================================= -->
-    <!-- PRZED / PO -->
+    <!-- PRZYKŁAD WDROŻENIA -->
     <!-- ================================================= -->
 
     <section
@@ -620,177 +620,79 @@ const faqSchema = {
 
       <div class="container mx-auto px-4">
 
-        <div
-          class="mb-14 max-w-4xl"
-        >
-
-          <span
-            class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600"
-          >
-            Przykład
+        <div class="mb-14 max-w-4xl">
+          <span class="mb-4 inline-block text-xs font-black uppercase tracking-[0.22em] text-green-600">
+            Przykład realizacji
           </span>
 
-
-          <h2
-            class="mb-6 text-4xl font-black tracking-tighter md:text-6xl"
-          >
-            Z ręcznego raportu do procesu „Odśwież”
+          <h2 class="mb-6 text-4xl font-black tracking-tighter md:text-6xl">
+            Od pliku ze skanowania do rejestru magazynowego i dokumentów
           </h2>
 
-
-          <p
-            class="text-lg leading-relaxed text-slate-600 md:text-xl"
-          >
-            Załóżmy, że co miesiąc otrzymujesz pliki sprzedażowe
-            z kilku oddziałów i przygotowujesz z nich jeden raport.
+          <p class="text-lg leading-relaxed text-slate-600 md:text-xl">
+            To przykład wdrożonego procesu magazynowego. Telefon służył do odczytania kodów,
+            a dalsza praca polegała na uporządkowaniu plików i wykorzystaniu tych samych danych
+            w rejestrach magazynowych oraz dokumentach.
           </p>
-
         </div>
 
-
-        <div
-          class="grid gap-6 lg:grid-cols-2"
-        >
-
-          <article
-            class="rounded-[2.5rem] border border-red-200 bg-red-50/50 p-8 md:p-10"
-          >
-
-            <span
-              class="text-xs font-black uppercase tracking-wider text-red-600"
-            >
-              Przed automatyzacją
+        <div class="grid gap-6 lg:grid-cols-2">
+          <article class="rounded-[2.5rem] border border-red-200 bg-red-50/50 p-8 md:p-10">
+            <span class="text-xs font-black uppercase tracking-wider text-red-600">
+              Przed uporządkowaniem procesu
             </span>
-
-
-            <h3
-              class="mb-7 mt-4 text-2xl font-black text-slate-950"
-            >
-              Przy każdym raporcie powtarzasz te same czynności
+            <h3 class="mb-7 mt-4 text-2xl font-black text-slate-950">
+              Dane i czynności były rozdzielone
             </h3>
-
-
-            <ol
-              class="space-y-4 text-slate-700"
-            >
-
-              <li class="flex gap-3">
-                <strong class="text-red-500">
-                  1.
-                </strong>
-                Pobierasz wszystkie pliki.
-              </li>
-
-              <li class="flex gap-3">
-                <strong class="text-red-500">
-                  2.
-                </strong>
-                Kopiujesz dane do wspólnego arkusza.
-              </li>
-
-              <li class="flex gap-3">
-                <strong class="text-red-500">
-                  3.
-                </strong>
-                Poprawiasz kolumny i formaty.
-              </li>
-
-              <li class="flex gap-3">
-                <strong class="text-red-500">
-                  4.
-                </strong>
-                Usuwasz duplikaty i błędy.
-              </li>
-
-              <li class="flex gap-3">
-                <strong class="text-red-500">
-                  5.
-                </strong>
-                Aktualizujesz raport.
-              </li>
-
-            </ol>
-
+            <ul class="space-y-4 text-slate-700">
+              <li>Produkty skanowano, a wyniki trafiały do plików.</li>
+              <li>Stany magazynowe i ruchy wymagały osobnej aktualizacji.</li>
+              <li>Dokumenty WZ/PZ trzeba było przygotować na dalszym etapie.</li>
+              <li>Te same informacje mogły być ponownie przepisywane do kolejnych kroków.</li>
+            </ul>
           </article>
 
-
-          <article
-            class="rounded-[2.5rem] border border-green-200 bg-green-50/50 p-8 md:p-10"
-          >
-
-            <span
-              class="text-xs font-black uppercase tracking-wider text-green-700"
-            >
-              Po automatyzacji
+          <article class="rounded-[2.5rem] border border-green-200 bg-green-50/50 p-8 md:p-10">
+            <span class="text-xs font-black uppercase tracking-wider text-green-700">
+              Po połączeniu etapów
             </span>
-
-
-            <h3
-              class="mb-7 mt-4 text-2xl font-black text-slate-950"
-            >
-              Proces przygotowania danych jest już zdefiniowany
+            <h3 class="mb-7 mt-4 text-2xl font-black text-slate-950">
+              Dane przechodzą przez przygotowany przepływ
             </h3>
-
-
-            <ol
-              class="space-y-4 text-slate-700"
-            >
-
-              <li class="flex gap-3">
-                <strong class="text-green-600">
-                  1.
-                </strong>
-                Dodajesz nowe pliki lub aktualizujesz źródło.
-              </li>
-
-              <li class="flex gap-3">
-                <strong class="text-green-600">
-                  2.
-                </strong>
-                Uruchamiasz odświeżanie.
-              </li>
-
-              <li class="flex gap-3">
-                <strong class="text-green-600">
-                  3.
-                </strong>
-                Power Query wykonuje przygotowane transformacje.
-              </li>
-
-              <li class="flex gap-3">
-                <strong class="text-green-600">
-                  4.
-                </strong>
-                Raport otrzymuje aktualne dane.
-              </li>
-
+            <ol class="space-y-4 text-slate-700">
+              <li class="flex gap-3"><strong class="text-green-600">1.</strong> Kody produktów są skanowane i zapisywane w plikach CSV.</li>
+              <li class="flex gap-3"><strong class="text-green-600">2.</strong> Pliki trafiają do importu i są porządkowane w procesie Excel/Power Query.</li>
+              <li class="flex gap-3"><strong class="text-green-600">3.</strong> Dane zasilają rejestr operacji oraz widok stanów magazynowych.</li>
+              <li class="flex gap-3"><strong class="text-green-600">4.</strong> Te same informacje można wykorzystać przy przygotowaniu dokumentów WZ/PZ.</li>
             </ol>
-
-
-            <div
-              class="mt-8 rounded-2xl bg-white p-6"
-            >
-
-              <strong class="text-slate-950">
-                Efekt:
-              </strong>
-
-              <p
-                class="mt-2 leading-relaxed text-slate-600"
-              >
-                Użytkownik nie buduje procesu od początku.
-                Korzysta z przygotowanego wcześniej sposobu
-                pobierania i transformacji danych.
-              </p>
-
-            </div>
-
           </article>
-
         </div>
+
+        <div class="mt-6 grid gap-6 lg:grid-cols-2">
+          <article class="rounded-[2rem] border border-slate-200 bg-slate-50 p-8">
+            <h3 class="mb-3 text-xl font-black text-slate-950">Zakres rozwiązania</h3>
+            <p class="leading-relaxed text-slate-600">
+              Import plików ze skanowania, uporządkowanie rejestru ruchów, aktualizacja widoku stanów
+              oraz wykorzystanie danych przy dokumentach magazynowych. Konkretne walidacje i reguły
+              zależą od struktury plików oraz sposobu pracy firmy.
+            </p>
+          </article>
+          <article class="rounded-[2rem] border border-slate-200 bg-slate-50 p-8">
+            <h3 class="mb-3 text-xl font-black text-slate-950">Rezultat</h3>
+            <p class="leading-relaxed text-slate-600">
+              Operacje, stany i dokumenty korzystają z tych samych uporządkowanych danych, więc kolejne
+              etapy procesu nie muszą zaczynać się od ponownego przepisywania informacji. Nie podajemy
+              szacunku oszczędności czasu, bo nie był mierzony dla tej realizacji.
+            </p>
+          </article>
+        </div>
+
+        <p class="mt-8 text-sm leading-relaxed text-slate-600">
+          Zobacz zdjęcia i opis wdrożenia na stronie <a class="font-bold text-green-700 underline" href="/realizacje/#program-magazynowy-excel">realizacji narzędzia magazynowego</a>.
+          Podobny przepływ można zaprojektować dla innych źródeł danych po sprawdzeniu ich formatu.
+        </p>
 
       </div>
-
     </section>
 
 

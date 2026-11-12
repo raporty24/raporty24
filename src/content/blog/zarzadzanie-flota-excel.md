@@ -1,89 +1,54 @@
 ---
-title: "Zarządzanie flotą samochodową w Excelu: Kary, chaos i uciekające pieniądze"
-description: "Kary z ITD, ręczne przepisywanie faktur z kart paliwowych i brak pewności, czy trasa zarabia? Zobacz, czego nie wiesz o możliwościach nowoczesnego Excela."
+title: "Zarządzanie flotą samochodową w Excelu: ewidencja i raporty"
+description: "Jak prowadzić ewidencję floty w Excelu? Sprawdź, jakie dane zbierać, jak kontrolować koszty i terminy oraz kiedy pomaga Power Query lub system TMS."
 pubDate: 2026-02-22
 author: "Raporty24"
 image: "/biuro-transportowe.webp"
 category: "Logistyka"
-tags: ["Excel", "Logistyka", "Zarządzanie Flotą", "Oszczędności", "Automatyzacja"]
+tags: ["Excel", "Logistyka", "Zarządzanie flotą", "Power Query", "Raporty"]
 ---
 
-Wiele małych i średnich firm transportowych staje przed tym samym dylematem: arkusze papierowe to chaos, a zaawansowane systemy GPS/TMS są zbyt drogie i obciążają firmę wysokim, miesięcznym abonamentem.
+Excel może być dobrym miejscem do ewidencji i okresowych raportów floty, jeśli dane są uporządkowane, a zakres pracy jest jasno określony. Nie zastąpi automatycznie lokalizatora GPS ani systemu TMS. Może za to zebrać informacje z kilku źródeł i pomóc odpowiedzieć na praktyczne pytania: ile kosztuje utrzymanie pojazdu, które terminy zbliżają się i gdzie brakuje danych.
 
-Jako profesjonalna **firma analityczna** często widzimy, z czym na co dzień zmagają się dyspozytorzy i właściciele: ręczne przepisywanie danych z Orlenu, przegapione terminy ubezpieczeń i brak czasu na analizę kosztów. 
+Zanim powstanie arkusz, warto ustalić, kto aktualizuje informacje, skąd pochodzą dane o przebiegach i kosztach oraz jak często potrzebny jest raport. Od tych zasad zależy, czy wystarczy skoroszyt, czy przyda się Power Query, wspólny rejestr lub system branżowy.
 
-Dlatego odpowiadamy: **Tak, da się to zrobić prościej.** Profesjonalne **zarządzanie flotą samochodową w excelu** to złoty środek. Łączy jednorazowy koszt z potężnymi możliwościami analitycznymi. Musisz tylko wiedzieć, jak z nich skorzystać.
+## Jakie dane floty warto prowadzić?
 
-<br/>
+Zamiast przechowywać wszystko w jednej szerokiej tabeli, rozdziel dane pojazdów od zdarzeń, kosztów i terminów. Używaj stałego identyfikatora pojazdu w każdym zestawieniu.
 
-![Nowoczesny dashboard logistyczny w Excelu pokazujący koszty paliwa i terminy przeglądów](/biuro-transportowe.webp)
+| Rejestr | Przykładowe pola | Do czego służy |
+|---|---|---|
+| Pojazdy | ID, numer rejestracyjny, marka/model, typ, przypisany użytkownik | Lista pojazdów i podstawowych informacji |
+| Przebiegi i użytkowanie | ID pojazdu, data, stan licznika, okres lub trasa | Zestawienie wykorzystania i kontrola brakujących odczytów |
+| Koszty | ID pojazdu, data, kategoria, kwota, źródło dokumentu | Porównanie paliwa, serwisu, ubezpieczenia i innych kosztów |
+| Terminy | ID pojazdu, rodzaj terminu, data ważności, osoba odpowiedzialna | Lista przeglądów, polis i innych zaplanowanych czynności |
 
-<br/>
+Zakres pól powinien wynikać z decyzji, które firma chce podejmować. Nie zbieraj danych, których nikt nie aktualizuje ani nie wykorzystuje.
 
-## Czego nie wiesz, że Twój Excel już potrafi? (Najczęstsze bolączki)
+## Jak zorganizować raport floty krok po kroku?
 
-Wielu menedżerów używa Excela jak zwykłego kalkulatora. Zobacz, jak dedykowane **usługi dla firm excel** mogą zlikwidować Twoje największe codzienne problemy:
+1. **Ustal identyfikatory i źródła.** Sprawdź, czy pojazd ma ten sam klucz w ewidencji, plikach kosztowych i danych z innych systemów.
+2. **Zapisuj zdarzenia osobno.** Każdy koszt, odczyt licznika lub termin powinien mieć datę, pojazd i źródło informacji.
+3. **Dodaj kontrole jakości.** Wykrywaj puste identyfikatory, duplikaty dokumentów, błędne daty i przebieg niższy niż poprzedni odczyt.
+4. **Zdefiniuj wskaźniki.** Przykładowo koszty według pojazdu i miesiąca, koszt na kilometr lub listę terminów do sprawdzenia. Sposób obliczania, szczególnie zużycia paliwa, powinien uwzględniać sposób zbierania odczytów.
+5. **Ustal cykl aktualizacji.** Określ, kto wczytuje nowe dane, kiedy odświeża raport i kto wyjaśnia wyjątki.
 
-### 1. Ręczne wpisywanie faktur za paliwo (Koniec z tym!)
-Pobierasz pliki CSV z kart paliwowych (Orlen, Routex, BP) i ręcznie dopasowujesz tankowania do kierowców i aut? To strata godzin pracy i pole do błędów. 
-* **Jak to działa nowocześnie:** Twój arkusz może *samodzielnie zaciągać* te pliki, gdy tylko pojawią się w folderze, automatycznie wyliczając średnie spalanie dla każdego pojazdu. Od razu widzisz, kto przepala budżet.
+Taki układ ułatwia odtworzenie, skąd wzięła się liczba w raporcie. Sam wykres nie naprawi brakujących odczytów ani nie potwierdzi poprawności danych wejściowych.
 
-### 2. Przegapione terminy przeglądów i kary z ITD
-Jeden dzień spóźnienia z odnowieniem licencji lub brakiem przeglądu może skutkować wielotysięczną karą. 
-* **Jak to działa nowocześnie:** Koniec z ręcznym sprawdzaniem kalendarza. Dzięki zastosowaniu makr VBA, arkusz na 30 dni przed upływem polisy OC lub przeglądu, wyśle z Twojej skrzynki automatycznego maila z przypomnieniem do odpowiedniej osoby.
+## Kiedy pomaga Power Query?
 
-### 3. Zabij „Wyszukaj.Pionowo”. Czas na rzetelną rentowność
-Liczenie opłacalności kursu „na oko” przy dzisiejszych stawkach za fracht to ryzyko. Arkusze pękające w szwach od formuł `WYSZUKAJ.PIONOWO` stale się zawieszają.
-* **Jak to działa nowocześnie:** Wdrażamy technologię **Power Query**, by połączyć dane z GPS, faktury leasingowe i wynagrodzenia, bez zawieszania komputera. Dzięki temu nasza **analityka biznesowa** na żywo pokazuje Ci marżę netto z każdej pojedynczej trasy.
+Jeśli dane o paliwie, serwisie lub przebiegach regularnie przychodzą w plikach CSV albo Excel, Power Query może ujednolicić kolumny, typy danych i nazwy, a następnie połączyć kolejne pliki o zgodnej strukturze. Zamiast ponownie kopiować wiersze, użytkownik uruchamia przygotowane odświeżenie.
 
-<br/>
+Power Query przygotowuje dane do analizy — samo nie pobiera automatycznie każdej informacji z GPS i nie zastępuje procesu zatwierdzania kosztów. Trzeba też kontrolować, czy dostawca pliku nie zmienił układu kolumn i czy użytkownik ma dostęp do źródeł.
 
-## Zobacz, jak zautomatyzować logistykę w praktyce (Wideo)
+## Czy Excel wystarczy, czy potrzebny jest TMS?
 
-Na naszym TikToku pokazujemy w praktyce, jak w kilka minut stworzyć system, który sam pobiera dane o tankowaniach z zewnętrznych plików.
+Excel może wystarczyć, gdy firma prowadzi ograniczoną ewidencję, dane są aktualizowane okresowo, a raport przygotowuje mały zespół. Sprawdza się także jako warstwa analizy, gdy dane operacyjne pozostają w innych systemach.
 
-<div class="tiktok-container my-12 flex justify-center border-y border-slate-100 py-10 bg-slate-50 rounded-3xl overflow-hidden shadow-inner">
-  <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@raporty24/video/7591213051613859094" data-video-id="7591213051613859094" style="max-width: 605px;min-width: 325px;">
-    <section>
-      <a target="_blank" title="@raporty24" href="https://www.tiktok.com/@raporty24?refer=embed">@raporty24</a>
-      <p>Logistyka w Excelu - zarządzanie flotą bez abonamentu!</p>
-    </section>
-  </blockquote>
-</div>
+Warto porównać Excel z TMS, systemem GPS lub inną aplikacją, jeśli potrzebujesz bieżącej lokalizacji, dyspozycji zleceń, automatycznych danych z pojazdów, pracy mobilnej wielu osób, szczegółowych uprawnień albo historii operacji. System może przechowywać dane, a Excel lub Power BI nadal służyć do raportowania.
 
-<br/>
+## Przykład zastosowania
 
-## Co zyskujesz, zlecając nam budowę systemu?
+W narzędziu logistycznym można połączyć ewidencję pojazdów, koszty, terminy i raporty z danymi z plików lub systemów używanych przez firmę. Zakres zależy od dostępnych źródeł: inne informacje są w kartach paliwowych, inne w GPS, fakturach czy eksportach ERP. Zanim powstanie raport, trzeba uzgodnić identyfikatory i reguły łączenia.
 
-System od Raporty24 to nie jest zwykła tabelka. To silnik, który pracuje dla Twojej firmy 24/7:
-
-* **100% Bezpieczeństwa (RODO)** – Podpisujemy NDA. Twoje bazy klientów i koszty nie opuszczają Twojego komputera, w przeciwieństwie do systemów chmurowych.
-* **Skalowalność** – Nasze systemy rosną razem z Tobą. Bez problemu obsłużysz flotę od 5 do 500 pojazdów.
-* **Zero ukrytych kosztów** – Płacisz raz za wdrożenie. Zapominasz o miesięcznych fakturach za dostęp do oprogramowania.
-
-Jeśli chcesz przejść od arkusza do narzędzia dopasowanego do floty, zobacz [logistykę i zarządzanie flotą w Excelu](/uslugi/logistyka-w-excelu/) — z ewidencją pojazdów, kosztami paliwa, terminami i raportami.
-
-<br/>
-
----
-
-<div class="bg-slate-900 text-white p-8 md:p-12 rounded-[2rem] my-12 shadow-2xl relative overflow-hidden">
-  <div class="absolute -top-10 -right-10 w-40 h-40 bg-green-500/20 rounded-full blur-3xl"></div>
-  
-  <h3 class="text-3xl font-black uppercase tracking-tight mb-4 relative z-10 leading-tight">
-    Chcesz sprawdzić, ile <span class="text-green-500">możesz zaoszczędzić?</span>
-  </h3>
-  
-  <p class="text-slate-300 mb-8 max-w-2xl relative z-10 text-lg leading-relaxed">
-    Jeśli czujesz, że koszty paliwa i serwisów wymykają się spod kontroli, chętnie przeanalizujemy Twoje obecne arkusze. Podpowiemy Ci, które procesy można zautomatyzować "od ręki".
-  </p>
-  
-  <div class="flex flex-col sm:flex-row gap-4 relative z-10">
-    <a href="/kontakt/" class="inline-block bg-green-500 text-slate-900 font-black py-4 px-8 rounded-xl hover:bg-green-400 hover:-translate-y-1 transition-all uppercase tracking-wide shadow-lg shadow-green-500/30 text-center">
-      Zamów darmowy audyt raportów
-    </a>
-  </div>
-  <p class="text-xs text-slate-500 mt-6 relative z-10 font-bold tracking-wide uppercase">
-    *Konsultacja jest niezobowiązująca. Realizujemy projekty zdalnie dla firm z całej Polski oraz za granicą.
-  </p>
-</div>
+Jeśli chcesz sprawdzić rozwiązanie dopasowane do swojej floty, zobacz [narzędzia dla logistyki i zarządzania flotą w Excelu](/uslugi/logistyka-w-excelu/). Przy powtarzalnym łączeniu plików przydatna może być też [automatyzacja Excel i Power Query](/uslugi/automatyzacja-excel-power-query/).
