@@ -366,24 +366,30 @@ const servicesActive = currentPath.startsWith("/uslugi/");
 
 
       <!-- CTA -->
-      <div
-        class="ml-5 border-l border-slate-200 pl-5"
-      >
+      <div class="ml-4 flex items-center gap-2 border-l border-slate-200 pl-4">
         <a
           href="/kontakt/"
-          class:list={[
-            "green-btn-menu",
-            isActive("/kontakt/") &&
-              "ring-2 ring-green-300 ring-offset-2"
-          ]}
+          class="rounded-full bg-emerald-500 px-5 py-3 text-[10px] font-black uppercase tracking-widest text-white shadow-lg shadow-emerald-500/20 transition-all hover:bg-emerald-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2"
+          aria-current={isActive("/kontakt/") ? "page" : undefined}
         >
-          Bezpłatna analiza
+          Kontakt
+        </a>
+        <a
+          href="/kontakt/#formularz"
+          class="rounded-full border-2 border-green-600 bg-white px-5 py-[10px] text-[10px] font-black uppercase tracking-widest text-green-700 transition-colors hover:bg-green-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400 focus-visible:ring-offset-2"
+        >
+          Darmowa wycena
         </a>
       </div>
 
     </div>
-
-
+    <a
+      href="/kontakt/"
+      class="mr-3 inline-flex shrink-0 items-center rounded-full bg-emerald-500 px-3 py-2 text-[10px] font-black uppercase tracking-wider text-white shadow-md shadow-emerald-500/20 transition-colors hover:bg-emerald-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 xl:hidden"
+      aria-current={isActive("/kontakt/") ? "page" : undefined}
+    >
+      Kontakt
+    </a>
     <!-- MOBILE BUTTON -->
     <button
       class="rounded-xl border border-slate-100 bg-slate-50 p-2 xl:hidden"
@@ -540,16 +546,21 @@ const servicesActive = currentPath.startsWith("/uslugi/");
 
 
       <!-- CTA MOBILE -->
-      <div
-        class="flex flex-col gap-3 pb-5 pt-7"
-      >
-
+      <div class="flex flex-col gap-3 pb-5 pt-7">
         <a
           href="/kontakt/"
-          class="rounded-2xl bg-green-600 py-4 text-center text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-green-500"
+          class="rounded-2xl bg-emerald-500 py-4 text-center text-xs font-black uppercase tracking-widest text-white shadow-md shadow-emerald-500/20 transition-colors hover:bg-emerald-600"
           @click="menuOpen = false"
         >
-          Opisz problem
+          Kontakt
+        </a>
+
+        <a
+          href="/kontakt/#formularz"
+          class="rounded-2xl border-2 border-green-600 bg-white py-4 text-center text-xs font-black uppercase tracking-widest text-green-700 transition-colors hover:bg-green-50"
+          @click="menuOpen = false"
+        >
+          Darmowa wycena
         </a>
 
         <a
@@ -559,7 +570,6 @@ const servicesActive = currentPath.startsWith("/uslugi/");
         >
           Zobacz realizacje
         </a>
-
       </div>
 
     </nav>
